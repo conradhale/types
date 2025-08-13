@@ -914,6 +914,8 @@ export namespace GLib {
          * @see {@link recursiveUnpack} for full recursive unpacking
          */
         unpack(): $ParseShallowVariant<S>;
+        unpack<T>(): T;
+        unpack(): $ParseShallowVariant<S>; // Duplicate overload ensures optimal type inference for ReturnType<...>
 
         /**
          * Recursively unpacks the variant's data into JavaScript values.
@@ -957,14 +959,10 @@ export namespace GLib {
          * @see {@link unpack} for shallow unpacking only
          * @see {@link recursiveUnpack} for full recursive unpacking
          */
-        /**
-         * At extreme nesting depths beyond the GLib/GVariant limit (65), the return type
-         * safely degrades to unknown/any in order to prevent excessive type recursion at compile time.
-         */
         // Overloads: concrete first so call-sites infer precisely; generic allows explicit override; concrete repeated last so ReturnType<...> is precise
         deepUnpack(): $ParseDeepVariant<S>;
         deepUnpack<T>(): T;
-        deepUnpack(): $ParseDeepVariant<S>;
+        deepUnpack(): $ParseDeepVariant<S>; // Duplicate overload ensures optimal type inference for ReturnType<...>
 
         /**
          * Alias for {@link deepUnpack} method.
@@ -977,7 +975,7 @@ export namespace GLib {
          */
         deep_unpack(): $ParseDeepVariant<S>;
         deep_unpack<T>(): T;
-        deep_unpack(): $ParseDeepVariant<S>;
+        deep_unpack(): $ParseDeepVariant<S>; // Duplicate overload ensures optimal type inference for ReturnType<...>
 
         /**
          * Recursively unpacks the variant and **all its descendants** into native JavaScript values.
@@ -1015,6 +1013,8 @@ export namespace GLib {
          * @since GJS 1.64 (GNOME 3.36)
          */
         recursiveUnpack(): $ParseRecursiveVariant<S>;
+        recursiveUnpack<T>(): T;
+        recursiveUnpack(): $ParseRecursiveVariant<S>; // Duplicate overload ensures optimal type inference for ReturnType<...>
     }
 
     /**
