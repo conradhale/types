@@ -2599,7 +2599,7 @@ export namespace IBus {
     const KEY_Ukranian_JE: number;
     const KEY_Ukranian_YI: number;
     const KEY_Ukranian_i: number;
-    const KEY_Ukranian_je: number;
+    const KEY_Ukranian_ie: number;
     const KEY_Ukranian_yi: number;
     const KEY_Umacron: number;
     const KEY_Undo: number;
@@ -2991,6 +2991,11 @@ export namespace IBus {
     const KEY_circle: number;
     const KEY_club: number;
     const KEY_colon: number;
+    const KEY_combining_acute: number;
+    const KEY_combining_belowdot: number;
+    const KEY_combining_grave: number;
+    const KEY_combining_hook: number;
+    const KEY_combining_tilde: number;
     const KEY_comma: number;
     const KEY_containsas: number;
     const KEY_copyright: number;
@@ -3007,6 +3012,7 @@ export namespace IBus {
     const KEY_dead_E: number;
     const KEY_dead_I: number;
     const KEY_dead_O: number;
+    const KEY_dead_SCHWA: number;
     const KEY_dead_U: number;
     const KEY_dead_a: number;
     const KEY_dead_abovecomma: number;
@@ -3037,6 +3043,7 @@ export namespace IBus {
     const KEY_dead_e: number;
     const KEY_dead_grave: number;
     const KEY_dead_greek: number;
+    const KEY_dead_hamza: number;
     const KEY_dead_hook: number;
     const KEY_dead_horn: number;
     const KEY_dead_i: number;
@@ -3049,6 +3056,7 @@ export namespace IBus {
     const KEY_dead_ogonek: number;
     const KEY_dead_perispomeni: number;
     const KEY_dead_psili: number;
+    const KEY_dead_schwa: number;
     const KEY_dead_semivoiced_sound: number;
     const KEY_dead_small_schwa: number;
     const KEY_dead_stroke: number;
@@ -3143,6 +3151,8 @@ export namespace IBus {
     const KEY_grave: number;
     const KEY_greater: number;
     const KEY_greaterthanequal: number;
+    const KEY_guillemetleft: number;
+    const KEY_guillemetright: number;
     const KEY_guillemotleft: number;
     const KEY_guillemotright: number;
     const KEY_h: number;
@@ -3386,6 +3396,7 @@ export namespace IBus {
     const KEY_opentribulletdown: number;
     const KEY_opentribulletup: number;
     const KEY_ordfeminine: number;
+    const KEY_ordmasculine: number;
     const KEY_oslash: number;
     const KEY_otilde: number;
     const KEY_overbar: number;

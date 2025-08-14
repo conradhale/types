@@ -13608,7 +13608,7 @@ export namespace Gdk {
          * what colorstates are, this is probably the right thing.
          * @param color_state The colorstate describing the data
          */
-        set_color_state(color_state?: ColorState | null): void;
+        set_color_state(color_state: ColorState): void;
         /**
          * Sets the format of the bytes.
          *

@@ -2110,7 +2110,7 @@ export namespace Pango {
      * @param inclusive rectangle to round to pixels inclusively
      * @param nearest rectangle to round to nearest pixels
      */
-    function extents_to_pixels(inclusive?: Rectangle | null, nearest?: Rectangle | null): void;
+    function extents_to_pixels(inclusive?: Rectangle, nearest?: Rectangle): [Rectangle, Rectangle];
     /**
      * Searches a string the first character that has a strong
      * direction, according to the Unicode bidirectional algorithm.
@@ -3621,9 +3621,12 @@ export namespace Pango {
         get_coverage(language: Language): Coverage;
         /**
          * Gets the `PangoFontFace` to which `font` belongs.
+         *
+         * Note that this function can return `NULL` in cases
+         * where the font outlives its font map.
          * @returns the `PangoFontFace`
          */
-        get_face(): FontFace;
+        get_face(): FontFace | null;
         /**
          * Obtain the OpenType features that are provided by the font.
          *
@@ -4665,13 +4668,13 @@ export namespace Pango {
         // Virtual methods
 
         /**
-         * Forces a change in the context, which will cause any `PangoContext`
+         * Forces a change in the fontmap, which will cause any `PangoContext`
          * using this fontmap to change.
          *
          * This function is only useful when implementing a new backend
          * for Pango, something applications won't do. Backends should
          * call this function if they have attached extra data to the
-         * context and such data is changed.
+         * fontmap and such data is changed.
          */
         vfunc_changed(): void;
         /**
@@ -4730,13 +4733,13 @@ export namespace Pango {
          */
         add_font_file(filename: string): boolean;
         /**
-         * Forces a change in the context, which will cause any `PangoContext`
+         * Forces a change in the fontmap, which will cause any `PangoContext`
          * using this fontmap to change.
          *
          * This function is only useful when implementing a new backend
          * for Pango, something applications won't do. Backends should
          * call this function if they have attached extra data to the
-         * context and such data is changed.
+         * fontmap and such data is changed.
          */
         changed(): void;
         /**

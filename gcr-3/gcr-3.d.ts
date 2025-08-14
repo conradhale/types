@@ -2234,7 +2234,14 @@ export namespace Gcr {
 
         // Virtual methods
 
+        /**
+         * The default handler for the authenticate signal.
+         * @param count
+         */
         vfunc_authenticate(count: number): boolean;
+        /**
+         * The default handler for the parsed signal.
+         */
         vfunc_parsed(): void;
 
         // Methods
@@ -5450,6 +5457,9 @@ export namespace Gcr {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -6967,7 +6977,7 @@ export namespace Gcr {
     /**
      * A parsed item parsed by a #GcrParser.
      */
-    class Parsed {
+    abstract class Parsed {
         static $gtype: GObject.GType<Parsed>;
 
         // Constructors
@@ -7741,6 +7751,10 @@ export namespace Gcr {
          * @param result an asynchronous result
          */
         vfunc_import_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * optional implementation of [method`Importer`.import]
+         * @param cancellable
+         */
         vfunc_import_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Queues an additional item to be imported. The parsed item is represented
@@ -8287,6 +8301,9 @@ export namespace Gcr {
 
         // Virtual methods
 
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.

@@ -918,12 +918,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2399,12 +2399,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4009,12 +4009,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4891,12 +4891,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5437,12 +5437,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5986,12 +5986,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6774,12 +6774,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7286,12 +7286,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -41976,12 +41976,12 @@ export namespace WebKit2WebExtension {
         // Conflicted with WebKit2WebExtension.DOMEventTarget.add_event_listener
         add_event_listener(...args: never[]): any;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         // Conflicted with WebKit2WebExtension.DOMEventTarget.remove_event_listener
         remove_event_listener(...args: never[]): any;
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -46021,7 +46021,7 @@ export namespace WebKit2WebExtension {
          */
         add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         dispatch_event(event: DOMEvent): boolean;
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * Version of webkit_dom_event_target_remove_event_listener() using a closure
          * instead of a callbacks for easier binding in other languages.
@@ -46036,7 +46036,7 @@ export namespace WebKit2WebExtension {
 
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
     }
 
     export const DOMEventTarget: DOMEventTargetNamespace & {

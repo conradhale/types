@@ -2959,6 +2959,30 @@ export namespace Gst {
      */
     function buffer_get_max_memory(): number;
     /**
+     * Modifies a pointer to a #GstBufferList to point to a different
+     * #GstBufferList. The modification is done atomically (so this is useful for
+     * ensuring thread safety in some cases), and the reference counts are updated
+     * appropriately (the old buffer list is unreffed, the new is reffed).
+     *
+     * Either `new_list` or the #GstBufferList pointed to by `old_list` may be %NULL.
+     * @param old_list pointer to a pointer to a     #GstBufferList to be replaced.
+     * @param new_list pointer to a #GstBufferList that     will replace the buffer list pointed to by @old_list.
+     * @returns %TRUE if @new_list was different from @old_list
+     */
+    function buffer_list_replace(
+        old_list?: BufferList | null,
+        new_list?: BufferList | null,
+    ): [boolean, BufferList | null];
+    /**
+     * Modifies a pointer to a #GstBufferList to point to a different
+     * #GstBufferList. This function is similar to gst_buffer_list_replace() except
+     * that it takes ownership of `new_list`.
+     * @param old_list pointer to a pointer to a #GstBufferList     to be replaced.
+     * @param new_list pointer to a #GstBufferList     that will replace the bufferlist pointed to by @old_list.
+     * @returns %TRUE if @new_list was different from @old_list
+     */
+    function buffer_list_take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
+    /**
      * Creates a #GstCapsFeatures from a string representation.
      * @param features a string representation of a #GstCapsFeatures.
      * @returns a new #GstCapsFeatures or     %NULL when the string could not be parsed.
@@ -2973,6 +2997,18 @@ export namespace Gst {
      * @returns a newly allocated #GstCaps
      */
     function caps_from_string(string: string): Caps | null;
+    /**
+     * Modifies a pointer to a #GstContext to point to a different #GstContext. The
+     * modification is done atomically (so this is useful for ensuring thread safety
+     * in some cases), and the reference counts are updated appropriately (the old
+     * context is unreffed, the new one is reffed).
+     *
+     * Either `new_context` or the #GstContext pointed to by `old_context` may be %NULL.
+     * @param old_context pointer to a pointer to a #GstContext     to be replaced.
+     * @param new_context pointer to a #GstContext that will     replace the context pointed to by @old_context.
+     * @returns %TRUE if @new_context was different from @old_context
+     */
+    function context_replace(old_context: Context, new_context?: Context | null): [boolean, Context];
     function core_error_quark(): GLib.Quark;
     /**
      * Adds the logging function to the list of logging functions.
@@ -3447,6 +3483,15 @@ export namespace Gst {
     function is_initialized(): boolean;
     function library_error_quark(): GLib.Quark;
     /**
+     * Modifies a pointer to a #GstMessage to point to a different #GstMessage. This
+     * function is similar to gst_message_replace() except that it takes ownership
+     * of `new_message`.
+     * @param old_message pointer to a pointer to a #GstMessage     to be replaced.
+     * @param new_message pointer to a #GstMessage that     will replace the message pointed to by @old_message.
+     * @returns %TRUE if @new_message was different from @old_message
+     */
+    function message_take(old_message: Message, new_message?: Message | null): [boolean, Message];
+    /**
      * Get a printable name for the given message type. Do not modify or free.
      * @param type the message type
      * @returns a reference to the static name of the message.
@@ -3765,6 +3810,17 @@ export namespace Gst {
      */
     function protection_select_system(system_identifiers: string[]): string | null;
     /**
+     * Modifies a pointer to a #GstQuery to point to a different #GstQuery. This
+     * function is similar to gst_query_replace() except that it takes ownership of
+     * `new_query`.
+     *
+     * Either `new_query` or the #GstQuery pointed to by `old_query` may be %NULL.
+     * @param old_query pointer to a     pointer to a #GstQuery to be stolen.
+     * @param new_query pointer to a #GstQuery that will     replace the query pointed to by @old_query.
+     * @returns %TRUE if @new_query was different from @old_query
+     */
+    function query_take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
+    /**
      * Gets the #GstQueryTypeFlags associated with `type`.
      * @param type a #GstQueryType
      * @returns a #GstQueryTypeFlags.
@@ -3882,6 +3938,28 @@ export namespace Gst {
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the          given list.
      */
     function tag_list_copy_value(list: TagList, tag: string): [boolean, unknown];
+    /**
+     * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
+     * modification is done atomically (so this is useful for ensuring thread
+     * safety in some cases), and the reference counts are updated appropriately
+     * (the old tag list is unreffed, the new is reffed).
+     *
+     * Either `new_taglist` or the #GstTagList pointed to by `old_taglist` may be
+     * %NULL.
+     * @param old_taglist pointer to a pointer to a     #GstTagList to be replaced.
+     * @param new_taglist pointer to a #GstTagList that     will replace the tag list pointed to by @old_taglist.
+     * @returns %TRUE if @new_taglist was different from @old_taglist
+     */
+    function tag_list_replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
+    /**
+     * Modifies a pointer to a #GstTagList to point to a different #GstTagList.
+     * This function is similar to gst_tag_list_replace() except that it takes
+     * ownership of `new_taglist`.
+     * @param old_taglist pointer to a pointer to a #GstTagList     to be replaced.
+     * @param new_taglist pointer to a #GstTagList that     will replace the taglist pointed to by @old_taglist.
+     * @returns %TRUE if @new_taglist was different from @old_taglist
+     */
+    function tag_list_take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
     /**
      * This is a convenience function for the func argument of gst_tag_register().
      * It concatenates all given strings using a comma. The tag must be registered
@@ -12942,7 +13020,7 @@ export namespace Gst {
          *
          * This function takes ownership of the provided event so you should
          * gst_event_ref() it if you want to reuse the event after this call.
-         * @param event the #GstEvent to send to the pad.
+         * @param event the #GstEvent to push out of the pad.
          * @returns %TRUE if the event was handled. MT safe.
          */
         push_event(event: Event): boolean;
@@ -17046,6 +17124,28 @@ export namespace Gst {
 
         static new_sized(size: number): BufferList;
 
+        // Static methods
+
+        /**
+         * Modifies a pointer to a #GstBufferList to point to a different
+         * #GstBufferList. The modification is done atomically (so this is useful for
+         * ensuring thread safety in some cases), and the reference counts are updated
+         * appropriately (the old buffer list is unreffed, the new is reffed).
+         *
+         * Either `new_list` or the #GstBufferList pointed to by `old_list` may be %NULL.
+         * @param old_list pointer to a pointer to a     #GstBufferList to be replaced.
+         * @param new_list pointer to a #GstBufferList that     will replace the buffer list pointed to by @old_list.
+         */
+        static replace(old_list?: BufferList | null, new_list?: BufferList | null): [boolean, BufferList | null];
+        /**
+         * Modifies a pointer to a #GstBufferList to point to a different
+         * #GstBufferList. This function is similar to gst_buffer_list_replace() except
+         * that it takes ownership of `new_list`.
+         * @param old_list pointer to a pointer to a #GstBufferList     to be replaced.
+         * @param new_list pointer to a #GstBufferList     that will replace the bufferlist pointed to by @old_list.
+         */
+        static take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
+
         // Methods
 
         /**
@@ -17846,8 +17946,27 @@ export namespace Gst {
 
         static ['new'](context_type: string, persistent: boolean): Context;
 
+        // Static methods
+
+        /**
+         * Modifies a pointer to a #GstContext to point to a different #GstContext. The
+         * modification is done atomically (so this is useful for ensuring thread safety
+         * in some cases), and the reference counts are updated appropriately (the old
+         * context is unreffed, the new one is reffed).
+         *
+         * Either `new_context` or the #GstContext pointed to by `old_context` may be %NULL.
+         * @param old_context pointer to a pointer to a #GstContext     to be replaced.
+         * @param new_context pointer to a #GstContext that will     replace the context pointed to by @old_context.
+         */
+        static replace(old_context: Context, new_context?: Context | null): [boolean, Context];
+
         // Methods
 
+        /**
+         * Creates a copy of the context. Returns a copy of the context.
+         * @returns a new copy of @context. MT safe
+         */
+        copy(): Context;
         /**
          * Gets the type of `context`.
          * @returns The type of the context.
@@ -17869,6 +17988,16 @@ export namespace Gst {
          * @returns %TRUE if the context is persistent.
          */
         is_persistent(): boolean;
+        /**
+         * Convenience macro to increase the reference count of the context.
+         * @returns @context (for convenience when doing assignments)
+         */
+        ref(): Context;
+        /**
+         * Convenience macro to decrease the reference count of the context, possibly
+         * freeing it.
+         */
+        unref(): void;
         /**
          * Gets a writable version of the structure.
          * @returns The structure of the context. The structure is still owned by the context, which means that you should not free it and that the pointer becomes invalid when you free the context. This function checks if @context is writable.
@@ -19202,6 +19331,17 @@ export namespace Gst {
             details?: Structure | null,
         ): Message;
 
+        // Static methods
+
+        /**
+         * Modifies a pointer to a #GstMessage to point to a different #GstMessage. This
+         * function is similar to gst_message_replace() except that it takes ownership
+         * of `new_message`.
+         * @param old_message pointer to a pointer to a #GstMessage     to be replaced.
+         * @param new_message pointer to a #GstMessage that     will replace the message pointed to by @old_message.
+         */
+        static take(old_message: Message, new_message?: Message | null): [boolean, Message];
+
         // Methods
 
         /**
@@ -20528,6 +20668,11 @@ export namespace Gst {
          */
         interrupt(): void;
         /**
+         * Increases the refcount of the given `promise` by one.
+         * @returns @promise
+         */
+        ref(): Promise;
+        /**
          * Set a reply on `promise`.  This will wake up any waiters with
          * %GST_PROMISE_RESULT_REPLIED.  Called by the producer of the value to
          * indicate success (or failure).
@@ -20537,6 +20682,11 @@ export namespace Gst {
          * @param s a #GstStructure with the the reply contents
          */
         reply(s?: Structure | null): void;
+        /**
+         * Decreases the refcount of the promise. If the refcount reaches 0, the
+         * promise will be freed.
+         */
+        unref(): void;
         /**
          * Wait for `promise` to move out of the %GST_PROMISE_RESULT_PENDING state.
          * If `promise` is not in %GST_PROMISE_RESULT_PENDING then it will return
@@ -20650,6 +20800,19 @@ export namespace Gst {
         static new_selectable(): Query;
 
         static new_uri(): Query;
+
+        // Static methods
+
+        /**
+         * Modifies a pointer to a #GstQuery to point to a different #GstQuery. This
+         * function is similar to gst_query_replace() except that it takes ownership of
+         * `new_query`.
+         *
+         * Either `new_query` or the #GstQuery pointed to by `old_query` may be %NULL.
+         * @param old_query pointer to a     pointer to a #GstQuery to be stolen.
+         * @param new_query pointer to a #GstQuery that will     replace the query pointed to by @old_query.
+         */
+        static take(old_query?: Query | null, new_query?: Query | null): [boolean, Query | null];
 
         // Methods
 
@@ -20915,6 +21078,11 @@ export namespace Gst {
          * they should make all future requests to the original URI.
          */
         parse_uri_redirection_permanent(): boolean;
+        /**
+         * Increases the refcount of the given query by one.
+         * @returns @q
+         */
+        ref(): Query;
         /**
          * Remove the metadata API at `index` of the metadata API array.
          * @param index position in the metadata API array to remove
@@ -22433,6 +22601,26 @@ export namespace Gst {
          * @param tag tag to read out
          */
         static copy_value(list: TagList, tag: string): [boolean, unknown];
+        /**
+         * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
+         * modification is done atomically (so this is useful for ensuring thread
+         * safety in some cases), and the reference counts are updated appropriately
+         * (the old tag list is unreffed, the new is reffed).
+         *
+         * Either `new_taglist` or the #GstTagList pointed to by `old_taglist` may be
+         * %NULL.
+         * @param old_taglist pointer to a pointer to a     #GstTagList to be replaced.
+         * @param new_taglist pointer to a #GstTagList that     will replace the tag list pointed to by @old_taglist.
+         */
+        static replace(old_taglist?: TagList | null, new_taglist?: TagList | null): [boolean, TagList | null];
+        /**
+         * Modifies a pointer to a #GstTagList to point to a different #GstTagList.
+         * This function is similar to gst_tag_list_replace() except that it takes
+         * ownership of `new_taglist`.
+         * @param old_taglist pointer to a pointer to a #GstTagList     to be replaced.
+         * @param new_taglist pointer to a #GstTagList that     will replace the taglist pointed to by @old_taglist.
+         */
+        static take(old_taglist: TagList, new_taglist?: TagList | null): [boolean, TagList];
 
         // Methods
 
@@ -23204,6 +23392,12 @@ export namespace Gst {
          */
         append_path_segment(path_segment?: string | null): boolean;
         /**
+         * Create a new #GstUri object with the same data as this #GstUri object.
+         * If `uri` is %NULL then returns %NULL.
+         * @returns A new #GstUri object which is a copy of this          #GstUri or %NULL.
+         */
+        copy(): Uri;
+        /**
          * Compares two #GstUri objects to see if they represent the same normalized
          * URI.
          * @param second Second #GstUri to compare.
@@ -23388,6 +23582,12 @@ export namespace Gst {
          */
         query_has_key(query_key: string): boolean;
         /**
+         * Add a reference to this #GstUri object. See gst_mini_object_ref() for further
+         * info.
+         * @returns This object with the reference count incremented.
+         */
+        ref(): Uri;
+        /**
          * Remove an entry from the query table by key.
          * @param query_key The key to remove.
          * @returns %TRUE if the key existed in the table and was removed.
@@ -23485,6 +23685,14 @@ export namespace Gst {
          * @returns The string version of the URI.
          */
         to_string_with_keys(keys?: string[] | null): string;
+        /**
+         * Decrement the reference count to this #GstUri object.
+         *
+         * If the reference count drops to 0 then finalize this object.
+         *
+         * See gst_mini_object_unref() for further info.
+         */
+        unref(): void;
     }
 
     /**
