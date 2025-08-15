@@ -1,4 +1,4 @@
-import GPluginGtk410 from '@girs/gplugingtk4-1.0';
+import type GPluginGtk410 from '@girs/gplugingtk4-1.0';
 
 declare global {
     export interface GjsGiImports {

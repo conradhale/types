@@ -1,4 +1,4 @@
-import Gsk40 from '@girs/gsk-4.0';
+import type Gsk40 from '@girs/gsk-4.0';
 
 declare global {
     export interface GjsGiImports {

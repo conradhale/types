@@ -1,4 +1,4 @@
-import Fcitx10 from '@girs/fcitx-1.0';
+import type Fcitx10 from '@girs/fcitx-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import GioUnix20 from '@girs/giounix-2.0';
+import type GioUnix20 from '@girs/giounix-2.0';
 
 declare global {
     export interface GjsGiImports {

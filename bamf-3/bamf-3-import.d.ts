@@ -1,4 +1,4 @@
-import Bamf3 from '@girs/bamf-3';
+import type Bamf3 from '@girs/bamf-3';
 
 declare global {
     export interface GjsGiImports {

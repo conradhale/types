@@ -1,4 +1,4 @@
-import Xed10 from '@girs/xed-1.0';
+import type Xed10 from '@girs/xed-1.0';
 
 declare global {
     export interface GjsGiImports {

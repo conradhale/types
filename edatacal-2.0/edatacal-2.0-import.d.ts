@@ -1,4 +1,4 @@
-import EDataCal20 from '@girs/edatacal-2.0';
+import type EDataCal20 from '@girs/edatacal-2.0';
 
 declare global {
     export interface GjsGiImports {

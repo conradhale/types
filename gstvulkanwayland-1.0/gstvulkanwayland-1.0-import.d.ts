@@ -1,4 +1,4 @@
-import GstVulkanWayland10 from '@girs/gstvulkanwayland-1.0';
+import type GstVulkanWayland10 from '@girs/gstvulkanwayland-1.0';
 
 declare global {
     export interface GjsGiImports {

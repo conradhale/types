@@ -1,4 +1,4 @@
-import Mtk16 from '@girs/mtk-16';
+import type Mtk16 from '@girs/mtk-16';
 
 declare global {
     export interface GjsGiImports {

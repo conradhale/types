@@ -1,4 +1,4 @@
-import DBus10 from '@girs/dbus-1.0';
+import type DBus10 from '@girs/dbus-1.0';
 
 declare global {
     export interface GjsGiImports {

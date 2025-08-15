@@ -1,4 +1,4 @@
-import LightDM1 from '@girs/lightdm-1';
+import type LightDM1 from '@girs/lightdm-1';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Grss07 from '@girs/grss-0.7';
+import type Grss07 from '@girs/grss-0.7';
 
 declare global {
     export interface GjsGiImports {

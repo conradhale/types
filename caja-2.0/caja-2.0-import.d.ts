@@ -1,4 +1,4 @@
-import Caja20 from '@girs/caja-2.0';
+import type Caja20 from '@girs/caja-2.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Kkc10 from '@girs/kkc-1.0';
+import type Kkc10 from '@girs/kkc-1.0';
 
 declare global {
     export interface GjsGiImports {

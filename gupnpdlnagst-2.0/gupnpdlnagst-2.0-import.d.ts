@@ -1,4 +1,4 @@
-import GUPnPDLNAGst20 from '@girs/gupnpdlnagst-2.0';
+import type GUPnPDLNAGst20 from '@girs/gupnpdlnagst-2.0';
 
 declare global {
     export interface GjsGiImports {

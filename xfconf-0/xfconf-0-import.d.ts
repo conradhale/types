@@ -1,4 +1,4 @@
-import Xfconf0 from '@girs/xfconf-0';
+import type Xfconf0 from '@girs/xfconf-0';
 
 declare global {
     export interface GjsGiImports {

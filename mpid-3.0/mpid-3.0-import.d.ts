@@ -1,4 +1,4 @@
-import MPID30 from '@girs/mpid-3.0';
+import type MPID30 from '@girs/mpid-3.0';
 
 declare global {
     export interface GjsGiImports {

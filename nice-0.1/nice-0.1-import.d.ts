@@ -1,4 +1,4 @@
-import Nice01 from '@girs/nice-0.1';
+import type Nice01 from '@girs/nice-0.1';
 
 declare global {
     export interface GjsGiImports {

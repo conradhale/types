@@ -1,4 +1,4 @@
-import Zeitgeist20 from '@girs/zeitgeist-2.0';
+import type Zeitgeist20 from '@girs/zeitgeist-2.0';
 
 declare global {
     export interface GjsGiImports {

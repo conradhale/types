@@ -1,4 +1,4 @@
-import ECalendar12 from '@girs/ecalendar-1.2';
+import type ECalendar12 from '@girs/ecalendar-1.2';
 
 declare global {
     export interface GjsGiImports {

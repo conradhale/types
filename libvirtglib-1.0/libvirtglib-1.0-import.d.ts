@@ -1,4 +1,4 @@
-import LibvirtGLib10 from '@girs/libvirtglib-1.0';
+import type LibvirtGLib10 from '@girs/libvirtglib-1.0';
 
 declare global {
     export interface GjsGiImports {

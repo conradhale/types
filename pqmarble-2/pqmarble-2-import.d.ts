@@ -1,4 +1,4 @@
-import PQMarble2 from '@girs/pqmarble-2';
+import type PQMarble2 from '@girs/pqmarble-2';
 
 declare global {
     export interface GjsGiImports {

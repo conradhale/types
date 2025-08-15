@@ -1,4 +1,4 @@
-import Graphene10 from '@girs/graphene-1.0';
+import type Graphene10 from '@girs/graphene-1.0';
 
 declare global {
     export interface GjsGiImports {

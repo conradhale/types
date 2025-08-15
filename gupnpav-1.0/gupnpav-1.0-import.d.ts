@@ -1,4 +1,4 @@
-import GUPnPAV10 from '@girs/gupnpav-1.0';
+import type GUPnPAV10 from '@girs/gupnpav-1.0';
 
 declare global {
     export interface GjsGiImports {

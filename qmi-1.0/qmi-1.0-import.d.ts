@@ -1,4 +1,4 @@
-import Qmi10 from '@girs/qmi-1.0';
+import type Qmi10 from '@girs/qmi-1.0';
 
 declare global {
     export interface GjsGiImports {

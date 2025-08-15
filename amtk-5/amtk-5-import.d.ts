@@ -1,4 +1,4 @@
-import Amtk5 from '@girs/amtk-5';
+import type Amtk5 from '@girs/amtk-5';
 
 declare global {
     export interface GjsGiImports {

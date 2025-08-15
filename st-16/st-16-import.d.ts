@@ -1,4 +1,4 @@
-import St16 from '@girs/st-16';
+import type St16 from '@girs/st-16';
 
 declare global {
     export interface GjsGiImports {

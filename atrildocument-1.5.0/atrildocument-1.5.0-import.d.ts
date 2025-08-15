@@ -1,4 +1,4 @@
-import AtrilDocument150 from '@girs/atrildocument-1.5.0';
+import type AtrilDocument150 from '@girs/atrildocument-1.5.0';
 
 declare global {
     export interface GjsGiImports {

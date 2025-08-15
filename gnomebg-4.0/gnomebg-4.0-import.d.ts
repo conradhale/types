@@ -1,4 +1,4 @@
-import GnomeBG40 from '@girs/gnomebg-4.0';
+import type GnomeBG40 from '@girs/gnomebg-4.0';
 
 declare global {
     export interface GjsGiImports {

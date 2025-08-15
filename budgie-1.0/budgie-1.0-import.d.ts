@@ -1,4 +1,4 @@
-import Budgie10 from '@girs/budgie-1.0';
+import type Budgie10 from '@girs/budgie-1.0';
 
 declare global {
     export interface GjsGiImports {

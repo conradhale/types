@@ -1,4 +1,4 @@
-import Snapd2 from '@girs/snapd-2';
+import type Snapd2 from '@girs/snapd-2';
 
 declare global {
     export interface GjsGiImports {

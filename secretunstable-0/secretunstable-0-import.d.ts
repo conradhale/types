@@ -1,4 +1,4 @@
-import SecretUnstable0 from '@girs/secretunstable-0';
+import type SecretUnstable0 from '@girs/secretunstable-0';
 
 declare global {
     export interface GjsGiImports {

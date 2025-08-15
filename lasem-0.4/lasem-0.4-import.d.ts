@@ -1,4 +1,4 @@
-import Lasem04 from '@girs/lasem-0.4';
+import type Lasem04 from '@girs/lasem-0.4';
 
 declare global {
     export interface GjsGiImports {

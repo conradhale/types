@@ -1,4 +1,4 @@
-import Vgsl1 from '@girs/vgsl-1';
+import type Vgsl1 from '@girs/vgsl-1';
 
 declare global {
     export interface GjsGiImports {

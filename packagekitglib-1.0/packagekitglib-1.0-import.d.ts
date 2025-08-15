@@ -1,4 +1,4 @@
-import PackageKitGlib10 from '@girs/packagekitglib-1.0';
+import type PackageKitGlib10 from '@girs/packagekitglib-1.0';
 
 declare global {
     export interface GjsGiImports {

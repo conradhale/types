@@ -1,4 +1,4 @@
-import Nautilus40 from '@girs/nautilus-4.0';
+import type Nautilus40 from '@girs/nautilus-4.0';
 
 declare global {
     export interface GjsGiImports {

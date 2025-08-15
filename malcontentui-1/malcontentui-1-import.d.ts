@@ -1,4 +1,4 @@
-import MalcontentUi1 from '@girs/malcontentui-1';
+import type MalcontentUi1 from '@girs/malcontentui-1';
 
 declare global {
     export interface GjsGiImports {

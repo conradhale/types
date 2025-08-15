@@ -1,4 +1,4 @@
-import GarconGtk10 from '@girs/garcongtk-1.0';
+import type GarconGtk10 from '@girs/garcongtk-1.0';
 
 declare global {
     export interface GjsGiImports {

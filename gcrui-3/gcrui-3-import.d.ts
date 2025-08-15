@@ -1,4 +1,4 @@
-import GcrUi3 from '@girs/gcrui-3';
+import type GcrUi3 from '@girs/gcrui-3';
 
 declare global {
     export interface GjsGiImports {

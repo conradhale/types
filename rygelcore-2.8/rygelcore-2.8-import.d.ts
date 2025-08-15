@@ -1,4 +1,4 @@
-import RygelCore28 from '@girs/rygelcore-2.8';
+import type RygelCore28 from '@girs/rygelcore-2.8';
 
 declare global {
     export interface GjsGiImports {

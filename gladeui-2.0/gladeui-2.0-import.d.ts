@@ -1,4 +1,4 @@
-import Gladeui20 from '@girs/gladeui-2.0';
+import type Gladeui20 from '@girs/gladeui-2.0';
 
 declare global {
     export interface GjsGiImports {

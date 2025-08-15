@@ -1,4 +1,4 @@
-import P11Kit10 from '@girs/p11kit-1.0';
+import type P11Kit10 from '@girs/p11kit-1.0';
 
 declare global {
     export interface GjsGiImports {

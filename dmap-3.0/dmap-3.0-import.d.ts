@@ -1,4 +1,4 @@
-import DMAP30 from '@girs/dmap-3.0';
+import type DMAP30 from '@girs/dmap-3.0';
 
 declare global {
     export interface GjsGiImports {

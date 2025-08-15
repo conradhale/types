@@ -1,4 +1,4 @@
-import GeocodeGlib20 from '@girs/geocodeglib-2.0';
+import type GeocodeGlib20 from '@girs/geocodeglib-2.0';
 
 declare global {
     export interface GjsGiImports {

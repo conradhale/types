@@ -1,4 +1,4 @@
-import Gimp30 from '@girs/gimp-3.0';
+import type Gimp30 from '@girs/gimp-3.0';
 
 declare global {
     export interface GjsGiImports {

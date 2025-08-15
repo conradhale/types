@@ -1,4 +1,4 @@
-import GstValidate10 from '@girs/gstvalidate-1.0';
+import type GstValidate10 from '@girs/gstvalidate-1.0';
 
 declare global {
     export interface GjsGiImports {

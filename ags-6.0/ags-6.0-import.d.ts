@@ -1,4 +1,4 @@
-import Ags60 from '@girs/ags-6.0';
+import type Ags60 from '@girs/ags-6.0';
 
 declare global {
     export interface GjsGiImports {

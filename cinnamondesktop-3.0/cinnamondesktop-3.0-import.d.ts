@@ -1,4 +1,4 @@
-import CinnamonDesktop30 from '@girs/cinnamondesktop-3.0';
+import type CinnamonDesktop30 from '@girs/cinnamondesktop-3.0';
 
 declare global {
     export interface GjsGiImports {

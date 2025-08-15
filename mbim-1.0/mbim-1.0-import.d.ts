@@ -1,4 +1,4 @@
-import Mbim10 from '@girs/mbim-1.0';
+import type Mbim10 from '@girs/mbim-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Plasma10 from '@girs/plasma-1.0';
+import type Plasma10 from '@girs/plasma-1.0';
 
 declare global {
     export interface GjsGiImports {

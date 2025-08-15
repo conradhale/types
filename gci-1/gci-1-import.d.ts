@@ -1,4 +1,4 @@
-import GCi1 from '@girs/gci-1';
+import type GCi1 from '@girs/gci-1';
 
 declare global {
     export interface GjsGiImports {

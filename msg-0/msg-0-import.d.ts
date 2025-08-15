@@ -1,4 +1,4 @@
-import Msg0 from '@girs/msg-0';
+import type Msg0 from '@girs/msg-0';
 
 declare global {
     export interface GjsGiImports {

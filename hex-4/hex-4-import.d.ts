@@ -1,4 +1,4 @@
-import Hex4 from '@girs/hex-4';
+import type Hex4 from '@girs/hex-4';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import GitgExt10 from '@girs/gitgext-1.0';
+import type GitgExt10 from '@girs/gitgext-1.0';
 
 declare global {
     export interface GjsGiImports {

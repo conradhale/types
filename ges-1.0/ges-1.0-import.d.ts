@@ -1,4 +1,4 @@
-import GES10 from '@girs/ges-1.0';
+import type GES10 from '@girs/ges-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Tsparql30 from '@girs/tsparql-3.0';
+import type Tsparql30 from '@girs/tsparql-3.0';
 
 declare global {
     export interface GjsGiImports {

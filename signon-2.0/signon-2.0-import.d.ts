@@ -1,4 +1,4 @@
-import Signon20 from '@girs/signon-2.0';
+import type Signon20 from '@girs/signon-2.0';
 
 declare global {
     export interface GjsGiImports {

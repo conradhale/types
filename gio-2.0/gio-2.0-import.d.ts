@@ -1,4 +1,4 @@
-import Gio20 from '@girs/gio-2.0';
+import type Gio20 from '@girs/gio-2.0';
 
 declare global {
     export interface GjsGiImports {

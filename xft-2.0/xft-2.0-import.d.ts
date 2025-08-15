@@ -1,4 +1,4 @@
-import Xft20 from '@girs/xft-2.0';
+import type Xft20 from '@girs/xft-2.0';
 
 declare global {
     export interface GjsGiImports {

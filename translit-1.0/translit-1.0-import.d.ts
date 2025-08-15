@@ -1,4 +1,4 @@
-import Translit10 from '@girs/translit-1.0';
+import type Translit10 from '@girs/translit-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import BraseroBurn31 from '@girs/braseroburn-3.1';
+import type BraseroBurn31 from '@girs/braseroburn-3.1';
 
 declare global {
     export interface GjsGiImports {

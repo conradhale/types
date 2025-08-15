@@ -1,4 +1,4 @@
-import GcrGtk34 from '@girs/gcrgtk3-4';
+import type GcrGtk34 from '@girs/gcrgtk3-4';
 
 declare global {
     export interface GjsGiImports {

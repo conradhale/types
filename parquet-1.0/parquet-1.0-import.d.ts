@@ -1,4 +1,4 @@
-import Parquet10 from '@girs/parquet-1.0';
+import type Parquet10 from '@girs/parquet-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import EDataBook12 from '@girs/edatabook-1.2';
+import type EDataBook12 from '@girs/edatabook-1.2';
 
 declare global {
     export interface GjsGiImports {

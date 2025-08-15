@@ -1,4 +1,4 @@
-import GstPbutils10 from '@girs/gstpbutils-1.0';
+import type GstPbutils10 from '@girs/gstpbutils-1.0';
 
 declare global {
     export interface GjsGiImports {

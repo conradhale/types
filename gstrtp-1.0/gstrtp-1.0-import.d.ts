@@ -1,4 +1,4 @@
-import GstRtp10 from '@girs/gstrtp-1.0';
+import type GstRtp10 from '@girs/gstrtp-1.0';
 
 declare global {
     export interface GjsGiImports {

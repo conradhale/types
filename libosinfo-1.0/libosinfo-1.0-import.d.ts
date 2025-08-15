@@ -1,4 +1,4 @@
-import Libosinfo10 from '@girs/libosinfo-1.0';
+import type Libosinfo10 from '@girs/libosinfo-1.0';
 
 declare global {
     export interface GjsGiImports {

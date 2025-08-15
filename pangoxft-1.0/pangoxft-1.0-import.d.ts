@@ -1,4 +1,4 @@
-import PangoXft10 from '@girs/pangoxft-1.0';
+import type PangoXft10 from '@girs/pangoxft-1.0';
 
 declare global {
     export interface GjsGiImports {

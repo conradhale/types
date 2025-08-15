@@ -1,4 +1,4 @@
-import GstCodecs10 from '@girs/gstcodecs-1.0';
+import type GstCodecs10 from '@girs/gstcodecs-1.0';
 
 declare global {
     export interface GjsGiImports {

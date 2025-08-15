@@ -1,4 +1,4 @@
-import HarfBuzz00 from '@girs/harfbuzz-0.0';
+import type HarfBuzz00 from '@girs/harfbuzz-0.0';
 
 declare global {
     export interface GjsGiImports {

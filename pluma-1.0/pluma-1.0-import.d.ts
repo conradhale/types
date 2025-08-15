@@ -1,4 +1,4 @@
-import Pluma10 from '@girs/pluma-1.0';
+import type Pluma10 from '@girs/pluma-1.0';
 
 declare global {
     export interface GjsGiImports {

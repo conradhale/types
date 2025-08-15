@@ -1,4 +1,4 @@
-import GtkClutter10 from '@girs/gtkclutter-1.0';
+import type GtkClutter10 from '@girs/gtkclutter-1.0';
 
 declare global {
     export interface GjsGiImports {

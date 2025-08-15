@@ -1,4 +1,4 @@
-import CryptUI00 from '@girs/cryptui-0.0';
+import type CryptUI00 from '@girs/cryptui-0.0';
 
 declare global {
     export interface GjsGiImports {

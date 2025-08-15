@@ -1,4 +1,4 @@
-import GstController10 from '@girs/gstcontroller-1.0';
+import type GstController10 from '@girs/gstcontroller-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import BraseroMedia31 from '@girs/braseromedia-3.1';
+import type BraseroMedia31 from '@girs/braseromedia-3.1';
 
 declare global {
     export interface GjsGiImports {

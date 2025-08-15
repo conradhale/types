@@ -1,4 +1,4 @@
-import GeglGtk301 from '@girs/geglgtk3-0.1';
+import type GeglGtk301 from '@girs/geglgtk3-0.1';
 
 declare global {
     export interface GjsGiImports {

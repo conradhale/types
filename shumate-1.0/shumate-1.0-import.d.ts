@@ -1,4 +1,4 @@
-import Shumate10 from '@girs/shumate-1.0';
+import type Shumate10 from '@girs/shumate-1.0';
 
 declare global {
     export interface GjsGiImports {

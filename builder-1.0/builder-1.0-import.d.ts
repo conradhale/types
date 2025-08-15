@@ -1,4 +1,4 @@
-import Builder10 from '@girs/builder-1.0';
+import type Builder10 from '@girs/builder-1.0';
 
 declare global {
     export interface GjsGiImports {

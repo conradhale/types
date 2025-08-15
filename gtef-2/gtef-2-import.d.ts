@@ -1,4 +1,4 @@
-import Gtef2 from '@girs/gtef-2';
+import type Gtef2 from '@girs/gtef-2';
 
 declare global {
     export interface GjsGiImports {

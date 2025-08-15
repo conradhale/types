@@ -1,4 +1,4 @@
-import GDesktopEnums30 from '@girs/gdesktopenums-3.0';
+import type GDesktopEnums30 from '@girs/gdesktopenums-3.0';
 
 declare global {
     export interface GjsGiImports {

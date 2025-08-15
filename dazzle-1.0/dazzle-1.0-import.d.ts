@@ -1,4 +1,4 @@
-import Dazzle10 from '@girs/dazzle-1.0';
+import type Dazzle10 from '@girs/dazzle-1.0';
 
 declare global {
     export interface GjsGiImports {

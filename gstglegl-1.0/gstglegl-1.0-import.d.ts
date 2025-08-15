@@ -1,4 +1,4 @@
-import GstGLEGL10 from '@girs/gstglegl-1.0';
+import type GstGLEGL10 from '@girs/gstglegl-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Vulkan10 from '@girs/vulkan-1.0';
+import type Vulkan10 from '@girs/vulkan-1.0';
 
 declare global {
     export interface GjsGiImports {

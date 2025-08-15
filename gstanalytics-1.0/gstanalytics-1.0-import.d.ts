@@ -1,4 +1,4 @@
-import GstAnalytics10 from '@girs/gstanalytics-1.0';
+import type GstAnalytics10 from '@girs/gstanalytics-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import MetaTest16 from '@girs/metatest-16';
+import type MetaTest16 from '@girs/metatest-16';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import LangTag06 from '@girs/langtag-0.6';
+import type LangTag06 from '@girs/langtag-0.6';
 
 declare global {
     export interface GjsGiImports {

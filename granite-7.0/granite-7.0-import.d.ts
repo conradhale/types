@@ -1,4 +1,4 @@
-import Granite70 from '@girs/granite-7.0';
+import type Granite70 from '@girs/granite-7.0';
 
 declare global {
     export interface GjsGiImports {

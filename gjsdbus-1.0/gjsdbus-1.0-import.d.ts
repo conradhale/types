@@ -1,4 +1,4 @@
-import GjsDBus10 from '@girs/gjsdbus-1.0';
+import type GjsDBus10 from '@girs/gjsdbus-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Lfb00 from '@girs/lfb-0.0';
+import type Lfb00 from '@girs/lfb-0.0';
 
 declare global {
     export interface GjsGiImports {

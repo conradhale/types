@@ -1,4 +1,4 @@
-import NemoPreview10 from '@girs/nemopreview-1.0';
+import type NemoPreview10 from '@girs/nemopreview-1.0';
 
 declare global {
     export interface GjsGiImports {

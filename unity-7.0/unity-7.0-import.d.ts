@@ -1,4 +1,4 @@
-import Unity70 from '@girs/unity-7.0';
+import type Unity70 from '@girs/unity-7.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Gkbd30 from '@girs/gkbd-3.0';
+import type Gkbd30 from '@girs/gkbd-3.0';
 
 declare global {
     export interface GjsGiImports {

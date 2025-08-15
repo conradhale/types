@@ -1,4 +1,4 @@
-import PackageKitPlugin10 from '@girs/packagekitplugin-1.0';
+import type PackageKitPlugin10 from '@girs/packagekitplugin-1.0';
 
 declare global {
     export interface GjsGiImports {

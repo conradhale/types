@@ -1,4 +1,4 @@
-import XApp10 from '@girs/xapp-1.0';
+import type XApp10 from '@girs/xapp-1.0';
 
 declare global {
     export interface GjsGiImports {

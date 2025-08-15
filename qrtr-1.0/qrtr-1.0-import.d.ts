@@ -1,4 +1,4 @@
-import Qrtr10 from '@girs/qrtr-1.0';
+import type Qrtr10 from '@girs/qrtr-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Midori06 from '@girs/midori-0.6';
+import type Midori06 from '@girs/midori-0.6';
 
 declare global {
     export interface GjsGiImports {

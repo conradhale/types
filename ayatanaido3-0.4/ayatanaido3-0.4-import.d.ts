@@ -1,4 +1,4 @@
-import AyatanaIdo304 from '@girs/ayatanaido3-0.4';
+import type AyatanaIdo304 from '@girs/ayatanaido3-0.4';
 
 declare global {
     export interface GjsGiImports {

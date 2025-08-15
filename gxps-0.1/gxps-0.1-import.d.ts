@@ -1,4 +1,4 @@
-import GXPS01 from '@girs/gxps-0.1';
+import type GXPS01 from '@girs/gxps-0.1';
 
 declare global {
     export interface GjsGiImports {

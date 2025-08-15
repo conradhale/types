@@ -1,4 +1,4 @@
-import GSignon10 from '@girs/gsignon-1.0';
+import type GSignon10 from '@girs/gsignon-1.0';
 
 declare global {
     export interface GjsGiImports {

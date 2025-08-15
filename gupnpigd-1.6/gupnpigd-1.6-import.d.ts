@@ -1,4 +1,4 @@
-import GUPnPIgd16 from '@girs/gupnpigd-1.6';
+import type GUPnPIgd16 from '@girs/gupnpigd-1.6';
 
 declare global {
     export interface GjsGiImports {

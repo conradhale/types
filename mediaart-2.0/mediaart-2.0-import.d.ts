@@ -1,4 +1,4 @@
-import MediaArt20 from '@girs/mediaart-2.0';
+import type MediaArt20 from '@girs/mediaart-2.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import GLib20 from '@girs/glib-2.0';
+import type GLib20 from '@girs/glib-2.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Atk10 from '@girs/atk-1.0';
+import type Atk10 from '@girs/atk-1.0';
 
 declare global {
     export interface GjsGiImports {

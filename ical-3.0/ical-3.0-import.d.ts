@@ -1,4 +1,4 @@
-import ICal30 from '@girs/ical-3.0';
+import type ICal30 from '@girs/ical-3.0';
 
 declare global {
     export interface GjsGiImports {

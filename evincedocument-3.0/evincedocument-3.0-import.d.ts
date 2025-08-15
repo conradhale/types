@@ -1,4 +1,4 @@
-import EvinceDocument30 from '@girs/evincedocument-3.0';
+import type EvinceDocument30 from '@girs/evincedocument-3.0';
 
 declare global {
     export interface GjsGiImports {

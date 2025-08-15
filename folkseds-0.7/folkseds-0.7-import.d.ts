@@ -1,4 +1,4 @@
-import FolksEds07 from '@girs/folkseds-0.7';
+import type FolksEds07 from '@girs/folkseds-0.7';
 
 declare global {
     export interface GjsGiImports {

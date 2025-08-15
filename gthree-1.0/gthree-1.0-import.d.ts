@@ -1,4 +1,4 @@
-import Gthree10 from '@girs/gthree-1.0';
+import type Gthree10 from '@girs/gthree-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import SugarExt10 from '@girs/sugarext-1.0';
+import type SugarExt10 from '@girs/sugarext-1.0';
 
 declare global {
     export interface GjsGiImports {

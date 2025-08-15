@@ -1,4 +1,4 @@
-import Camel12 from '@girs/camel-1.2';
+import type Camel12 from '@girs/camel-1.2';
 
 declare global {
     export interface GjsGiImports {

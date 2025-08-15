@@ -1,4 +1,4 @@
-import AppStreamGlib10 from '@girs/appstreamglib-1.0';
+import type AppStreamGlib10 from '@girs/appstreamglib-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Gamerzilla01 from '@girs/gamerzilla-0.1';
+import type Gamerzilla01 from '@girs/gamerzilla-0.1';
 
 declare global {
     export interface GjsGiImports {

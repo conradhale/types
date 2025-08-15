@@ -1,4 +1,4 @@
-import Gdk40 from '@girs/gdk-4.0';
+import type Gdk40 from '@girs/gdk-4.0';
 
 declare global {
     export interface GjsGiImports {

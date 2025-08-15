@@ -1,4 +1,4 @@
-import Garcon10 from '@girs/garcon-1.0';
+import type Garcon10 from '@girs/garcon-1.0';
 
 declare global {
     export interface GjsGiImports {

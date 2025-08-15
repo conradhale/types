@@ -1,4 +1,4 @@
-import NMClient10 from '@girs/nmclient-1.0';
+import type NMClient10 from '@girs/nmclient-1.0';
 
 declare global {
     export interface GjsGiImports {

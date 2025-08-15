@@ -1,4 +1,4 @@
-import Notify07 from '@girs/notify-0.7';
+import type Notify07 from '@girs/notify-0.7';
 
 declare global {
     export interface GjsGiImports {

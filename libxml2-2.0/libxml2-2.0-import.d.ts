@@ -1,4 +1,4 @@
-import Libxml220 from '@girs/libxml2-2.0';
+import type Libxml220 from '@girs/libxml2-2.0';
 
 declare global {
     export interface GjsGiImports {

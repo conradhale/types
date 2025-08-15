@@ -1,4 +1,4 @@
-import GstTag10 from '@girs/gsttag-1.0';
+import type GstTag10 from '@girs/gsttag-1.0';
 
 declare global {
     export interface GjsGiImports {

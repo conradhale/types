@@ -1,4 +1,4 @@
-import Adw1 from '@girs/adw-1';
+import type Adw1 from '@girs/adw-1';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Gck2 from '@girs/gck-2';
+import type Gck2 from '@girs/gck-2';
 
 declare global {
     export interface GjsGiImports {

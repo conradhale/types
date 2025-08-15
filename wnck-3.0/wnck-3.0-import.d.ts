@@ -1,4 +1,4 @@
-import Wnck30 from '@girs/wnck-3.0';
+import type Wnck30 from '@girs/wnck-3.0';
 
 declare global {
     export interface GjsGiImports {

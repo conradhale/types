@@ -1,4 +1,4 @@
-import Gedit30 from '@girs/gedit-3.0';
+import type Gedit30 from '@girs/gedit-3.0';
 
 declare global {
     export interface GjsGiImports {

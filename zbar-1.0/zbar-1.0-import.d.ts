@@ -1,4 +1,4 @@
-import ZBar10 from '@girs/zbar-1.0';
+import type ZBar10 from '@girs/zbar-1.0';
 
 declare global {
     export interface GjsGiImports {

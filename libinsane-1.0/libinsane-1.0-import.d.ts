@@ -1,4 +1,4 @@
-import Libinsane10 from '@girs/libinsane-1.0';
+import type Libinsane10 from '@girs/libinsane-1.0';
 
 declare global {
     export interface GjsGiImports {

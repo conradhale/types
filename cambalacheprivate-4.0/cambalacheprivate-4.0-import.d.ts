@@ -1,4 +1,4 @@
-import CambalachePrivate40 from '@girs/cambalacheprivate-4.0';
+import type CambalachePrivate40 from '@girs/cambalacheprivate-4.0';
 
 declare global {
     export interface GjsGiImports {

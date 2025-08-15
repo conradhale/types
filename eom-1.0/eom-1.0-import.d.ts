@@ -1,4 +1,4 @@
-import Eom10 from '@girs/eom-1.0';
+import type Eom10 from '@girs/eom-1.0';
 
 declare global {
     export interface GjsGiImports {

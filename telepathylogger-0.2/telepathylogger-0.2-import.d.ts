@@ -1,4 +1,4 @@
-import TelepathyLogger02 from '@girs/telepathylogger-0.2';
+import type TelepathyLogger02 from '@girs/telepathylogger-0.2';
 
 declare global {
     export interface GjsGiImports {

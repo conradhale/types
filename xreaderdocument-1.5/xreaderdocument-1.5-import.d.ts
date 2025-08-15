@@ -1,4 +1,4 @@
-import XreaderDocument15 from '@girs/xreaderdocument-1.5';
+import type XreaderDocument15 from '@girs/xreaderdocument-1.5';
 
 declare global {
     export interface GjsGiImports {

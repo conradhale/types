@@ -1,4 +1,4 @@
-import Flatpak10 from '@girs/flatpak-1.0';
+import type Flatpak10 from '@girs/flatpak-1.0';
 
 declare global {
     export interface GjsGiImports {

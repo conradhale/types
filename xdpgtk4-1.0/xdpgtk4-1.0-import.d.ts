@@ -1,4 +1,4 @@
-import XdpGtk410 from '@girs/xdpgtk4-1.0';
+import type XdpGtk410 from '@girs/xdpgtk4-1.0';
 
 declare global {
     export interface GjsGiImports {

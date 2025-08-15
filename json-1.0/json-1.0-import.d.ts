@@ -1,4 +1,4 @@
-import Json10 from '@girs/json-1.0';
+import type Json10 from '@girs/json-1.0';
 
 declare global {
     export interface GjsGiImports {

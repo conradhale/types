@@ -1,4 +1,4 @@
-import Cheese30 from '@girs/cheese-3.0';
+import type Cheese30 from '@girs/cheese-3.0';
 
 declare global {
     export interface GjsGiImports {

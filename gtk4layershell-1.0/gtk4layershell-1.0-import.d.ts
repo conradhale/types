@@ -1,4 +1,4 @@
-import Gtk4LayerShell10 from '@girs/gtk4layershell-1.0';
+import type Gtk4LayerShell10 from '@girs/gtk4layershell-1.0';
 
 declare global {
     export interface GjsGiImports {

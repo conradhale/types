@@ -1,4 +1,4 @@
-import GMenu30 from '@girs/gmenu-3.0';
+import type GMenu30 from '@girs/gmenu-3.0';
 
 declare global {
     export interface GjsGiImports {

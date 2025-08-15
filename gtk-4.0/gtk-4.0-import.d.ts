@@ -1,4 +1,4 @@
-import Gtk40 from '@girs/gtk-4.0';
+import type Gtk40 from '@girs/gtk-4.0';
 
 declare global {
     export interface GjsGiImports {

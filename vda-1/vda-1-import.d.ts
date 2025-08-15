@@ -1,4 +1,4 @@
-import Vda1 from '@girs/vda-1';
+import type Vda1 from '@girs/vda-1';
 
 declare global {
     export interface GjsGiImports {

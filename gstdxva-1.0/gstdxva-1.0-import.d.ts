@@ -1,4 +1,4 @@
-import GstDxva10 from '@girs/gstdxva-1.0';
+import type GstDxva10 from '@girs/gstdxva-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Clutter16 from '@girs/clutter-16';
+import type Clutter16 from '@girs/clutter-16';
 
 declare global {
     export interface GjsGiImports {

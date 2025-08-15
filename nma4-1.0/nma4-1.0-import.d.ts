@@ -1,4 +1,4 @@
-import NMA410 from '@girs/nma4-1.0';
+import type NMA410 from '@girs/nma4-1.0';
 
 declare global {
     export interface GjsGiImports {

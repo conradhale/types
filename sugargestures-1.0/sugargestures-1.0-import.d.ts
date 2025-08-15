@@ -1,4 +1,4 @@
-import SugarGestures10 from '@girs/sugargestures-1.0';
+import type SugarGestures10 from '@girs/sugargestures-1.0';
 
 declare global {
     export interface GjsGiImports {

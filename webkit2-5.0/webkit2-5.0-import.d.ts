@@ -1,4 +1,4 @@
-import WebKit250 from '@girs/webkit2-5.0';
+import type WebKit250 from '@girs/webkit2-5.0';
 
 declare global {
     export interface GjsGiImports {

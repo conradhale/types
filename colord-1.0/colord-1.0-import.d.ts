@@ -1,4 +1,4 @@
-import Colord10 from '@girs/colord-1.0';
+import type Colord10 from '@girs/colord-1.0';
 
 declare global {
     export interface GjsGiImports {

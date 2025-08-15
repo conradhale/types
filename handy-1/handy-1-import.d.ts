@@ -1,4 +1,4 @@
-import Handy1 from '@girs/handy-1';
+import type Handy1 from '@girs/handy-1';
 
 declare global {
     export interface GjsGiImports {

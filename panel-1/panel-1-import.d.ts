@@ -1,4 +1,4 @@
-import Panel1 from '@girs/panel-1';
+import type Panel1 from '@girs/panel-1';
 
 declare global {
     export interface GjsGiImports {

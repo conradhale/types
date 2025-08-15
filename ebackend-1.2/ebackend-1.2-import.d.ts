@@ -1,4 +1,4 @@
-import EBackend12 from '@girs/ebackend-1.2';
+import type EBackend12 from '@girs/ebackend-1.2';
 
 declare global {
     export interface GjsGiImports {

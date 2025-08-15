@@ -1,4 +1,4 @@
-import AyatanaAppIndicator301 from '@girs/ayatanaappindicator3-0.1';
+import type AyatanaAppIndicator301 from '@girs/ayatanaappindicator3-0.1';
 
 declare global {
     export interface GjsGiImports {

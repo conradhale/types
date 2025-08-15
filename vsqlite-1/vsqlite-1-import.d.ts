@@ -1,4 +1,4 @@
-import Vsqlite1 from '@girs/vsqlite-1';
+import type Vsqlite1 from '@girs/vsqlite-1';
 
 declare global {
     export interface GjsGiImports {

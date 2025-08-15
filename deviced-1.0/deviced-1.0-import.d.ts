@@ -1,4 +1,4 @@
-import Deviced10 from '@girs/deviced-1.0';
+import type Deviced10 from '@girs/deviced-1.0';
 
 declare global {
     export interface GjsGiImports {

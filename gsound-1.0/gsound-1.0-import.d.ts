@@ -1,4 +1,4 @@
-import GSound10 from '@girs/gsound-1.0';
+import type GSound10 from '@girs/gsound-1.0';
 
 declare global {
     export interface GjsGiImports {

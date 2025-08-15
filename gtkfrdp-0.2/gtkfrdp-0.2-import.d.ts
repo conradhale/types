@@ -1,4 +1,4 @@
-import GtkFrdp02 from '@girs/gtkfrdp-0.2';
+import type GtkFrdp02 from '@girs/gtkfrdp-0.2';
 
 declare global {
     export interface GjsGiImports {

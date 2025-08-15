@@ -1,4 +1,4 @@
-import Pnl10 from '@girs/pnl-1.0';
+import type Pnl10 from '@girs/pnl-1.0';
 
 declare global {
     export interface GjsGiImports {

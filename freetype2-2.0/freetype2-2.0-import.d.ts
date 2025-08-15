@@ -1,4 +1,4 @@
-import Freetype220 from '@girs/freetype2-2.0';
+import type Freetype220 from '@girs/freetype2-2.0';
 
 declare global {
     export interface GjsGiImports {

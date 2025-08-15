@@ -1,4 +1,4 @@
-import GCalc2 from '@girs/gcalc-2';
+import type GCalc2 from '@girs/gcalc-2';
 
 declare global {
     export interface GjsGiImports {

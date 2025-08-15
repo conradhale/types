@@ -1,4 +1,4 @@
-import GstCheck10 from '@girs/gstcheck-1.0';
+import type GstCheck10 from '@girs/gstcheck-1.0';
 
 declare global {
     export interface GjsGiImports {

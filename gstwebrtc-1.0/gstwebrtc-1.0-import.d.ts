@@ -1,4 +1,4 @@
-import GstWebRTC10 from '@girs/gstwebrtc-1.0';
+import type GstWebRTC10 from '@girs/gstwebrtc-1.0';
 
 declare global {
     export interface GjsGiImports {

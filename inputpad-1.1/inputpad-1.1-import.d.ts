@@ -1,4 +1,4 @@
-import InputPad11 from '@girs/inputpad-1.1';
+import type InputPad11 from '@girs/inputpad-1.1';
 
 declare global {
     export interface GjsGiImports {

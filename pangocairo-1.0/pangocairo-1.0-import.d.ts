@@ -1,4 +1,4 @@
-import PangoCairo10 from '@girs/pangocairo-1.0';
+import type PangoCairo10 from '@girs/pangocairo-1.0';
 
 declare global {
     export interface GjsGiImports {

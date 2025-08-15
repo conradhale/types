@@ -1,4 +1,4 @@
-import Ide47 from '@girs/ide-47';
+import type Ide47 from '@girs/ide-47';
 
 declare global {
     export interface GjsGiImports {

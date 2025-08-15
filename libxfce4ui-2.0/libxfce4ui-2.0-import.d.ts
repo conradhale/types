@@ -1,4 +1,4 @@
-import Libxfce4ui20 from '@girs/libxfce4ui-2.0';
+import type Libxfce4ui20 from '@girs/libxfce4ui-2.0';
 
 declare global {
     export interface GjsGiImports {

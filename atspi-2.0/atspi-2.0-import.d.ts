@@ -1,4 +1,4 @@
-import Atspi20 from '@girs/atspi-2.0';
+import type Atspi20 from '@girs/atspi-2.0';
 
 declare global {
     export interface GjsGiImports {

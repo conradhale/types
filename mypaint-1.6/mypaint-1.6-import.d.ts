@@ -1,4 +1,4 @@
-import MyPaint16 from '@girs/mypaint-1.6';
+import type MyPaint16 from '@girs/mypaint-1.6';
 
 declare global {
     export interface GjsGiImports {

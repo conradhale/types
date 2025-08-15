@@ -1,4 +1,4 @@
-import Playerctl20 from '@girs/playerctl-2.0';
+import type Playerctl20 from '@girs/playerctl-2.0';
 
 declare global {
     export interface GjsGiImports {

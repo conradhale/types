@@ -1,4 +1,4 @@
-import GPasteGtk4 from '@girs/gpastegtk-4';
+import type GPasteGtk4 from '@girs/gpastegtk-4';
 
 declare global {
     export interface GjsGiImports {

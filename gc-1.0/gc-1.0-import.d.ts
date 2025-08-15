@@ -1,4 +1,4 @@
-import Gc10 from '@girs/gc-1.0';
+import type Gc10 from '@girs/gc-1.0';
 
 declare global {
     export interface GjsGiImports {

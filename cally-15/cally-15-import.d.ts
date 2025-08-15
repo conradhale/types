@@ -1,4 +1,4 @@
-import Cally15 from '@girs/cally-15';
+import type Cally15 from '@girs/cally-15';
 
 declare global {
     export interface GjsGiImports {

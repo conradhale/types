@@ -1,4 +1,4 @@
-import MateMenu20 from '@girs/matemenu-2.0';
+import type MateMenu20 from '@girs/matemenu-2.0';
 
 declare global {
     export interface GjsGiImports {

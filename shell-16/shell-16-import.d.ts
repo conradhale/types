@@ -1,4 +1,4 @@
-import Shell16 from '@girs/shell-16';
+import type Shell16 from '@girs/shell-16';
 
 declare global {
     export interface GjsGiImports {

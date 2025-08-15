@@ -1,4 +1,4 @@
-import Xdp10 from '@girs/xdp-1.0';
+import type Xdp10 from '@girs/xdp-1.0';
 
 declare global {
     export interface GjsGiImports {

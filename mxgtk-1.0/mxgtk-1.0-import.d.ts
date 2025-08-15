@@ -1,4 +1,4 @@
-import MxGtk10 from '@girs/mxgtk-1.0';
+import type MxGtk10 from '@girs/mxgtk-1.0';
 
 declare global {
     export interface GjsGiImports {

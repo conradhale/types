@@ -1,4 +1,4 @@
-import Secret1 from '@girs/secret-1';
+import type Secret1 from '@girs/secret-1';
 
 declare global {
     export interface GjsGiImports {

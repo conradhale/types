@@ -1,4 +1,4 @@
-import Epc10 from '@girs/epc-1.0';
+import type Epc10 from '@girs/epc-1.0';
 
 declare global {
     export interface GjsGiImports {

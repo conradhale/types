@@ -1,4 +1,4 @@
-import GConf20 from '@girs/gconf-2.0';
+import type GConf20 from '@girs/gconf-2.0';
 
 declare global {
     export interface GjsGiImports {

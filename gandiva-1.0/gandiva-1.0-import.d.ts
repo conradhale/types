@@ -1,4 +1,4 @@
-import Gandiva10 from '@girs/gandiva-1.0';
+import type Gandiva10 from '@girs/gandiva-1.0';
 
 declare global {
     export interface GjsGiImports {

@@ -1,4 +1,4 @@
-import Gegl04 from '@girs/gegl-0.4';
+import type Gegl04 from '@girs/gegl-0.4';
 
 declare global {
     export interface GjsGiImports {

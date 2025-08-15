@@ -1,4 +1,4 @@
-import Clapper00 from '@girs/clapper-0.0';
+import type Clapper00 from '@girs/clapper-0.0';
 
 declare global {
     export interface GjsGiImports {

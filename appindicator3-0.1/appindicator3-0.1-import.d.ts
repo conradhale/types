@@ -1,4 +1,4 @@
-import AppIndicator301 from '@girs/appindicator3-0.1';
+import type AppIndicator301 from '@girs/appindicator3-0.1';
 
 declare global {
     export interface GjsGiImports {

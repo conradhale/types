@@ -1,4 +1,4 @@
-import Zpj00 from '@girs/zpj-0.0';
+import type Zpj00 from '@girs/zpj-0.0';
 
 declare global {
     export interface GjsGiImports {

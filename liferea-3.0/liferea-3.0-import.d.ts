@@ -1,4 +1,4 @@
-import Liferea30 from '@girs/liferea-3.0';
+import type Liferea30 from '@girs/liferea-3.0';
 
 declare global {
     export interface GjsGiImports {

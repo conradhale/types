@@ -1,4 +1,4 @@
-import Gda60 from '@girs/gda-6.0';
+import type Gda60 from '@girs/gda-6.0';
 
 declare global {
     export interface GjsGiImports {

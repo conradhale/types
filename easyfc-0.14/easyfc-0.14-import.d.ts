@@ -1,4 +1,4 @@
-import Easyfc014 from '@girs/easyfc-0.14';
+import type Easyfc014 from '@girs/easyfc-0.14';
 
 declare global {
     export interface GjsGiImports {

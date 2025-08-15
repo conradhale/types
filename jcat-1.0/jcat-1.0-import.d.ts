@@ -1,4 +1,4 @@
-import Jcat10 from '@girs/jcat-1.0';
+import type Jcat10 from '@girs/jcat-1.0';
 
 declare global {
     export interface GjsGiImports {

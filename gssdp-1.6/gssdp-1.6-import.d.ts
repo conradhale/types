@@ -1,4 +1,4 @@
-import GSSDP16 from '@girs/gssdp-1.6';
+import type GSSDP16 from '@girs/gssdp-1.6';
 
 declare global {
     export interface GjsGiImports {

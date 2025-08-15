@@ -1,4 +1,4 @@
-import Shew0 from '@girs/shew-0';
+import type Shew0 from '@girs/shew-0';
 
 declare global {
     export interface GjsGiImports {

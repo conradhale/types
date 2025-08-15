@@ -1,4 +1,4 @@
-import GtkSpell30 from '@girs/gtkspell-3.0';
+import type GtkSpell30 from '@girs/gtkspell-3.0';
 
 declare global {
     export interface GjsGiImports {
