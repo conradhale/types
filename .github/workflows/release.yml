@@ -29,14 +29,7 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
-      - name: Build Script
-        run: |
-          cd ./.github/release-script
-          npm ci
-          npm run build
-
-
       - name: Publish 
-        run: node ./.github/release-script/
+        run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
