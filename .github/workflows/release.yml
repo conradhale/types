@@ -1,0 +1,42 @@
+name: Release CI
+
+on:
+  release:
+    types: published
+  push:
+    branches:
+      - "main"
+
+env:
+  node-version: 22.x
+
+jobs:
+  release:
+    name: Release CI
+    runs-on: ubuntu-24.04
+    environment: npm-release
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # This also setups a .npmrc file to publish to npm
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Build Script
+        run: |
+          cd ./.github/release-script
+          npm ci
+          npm run build
+
+
+      - name: Publish 
+        run: node ./.github/release-script/
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
