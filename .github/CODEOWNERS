@@ -1,0 +1,13 @@
+# CODEOWNERS file for @girs/types repository
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Critical infrastructure files - require review from core maintainers
+/.github/** @JumpLink @ewlsh
+/package.json @JumpLink @ewlsh
+
+# Package configurations - critical for npm releases
+/**/package.json @JumpLink @ewlsh
+
+# CODEOWNERS file itself - only core maintainers can change
+/.github/CODEOWNERS @JumpLink @ewlsh
+
