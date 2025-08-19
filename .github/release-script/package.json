@@ -1,0 +1,14 @@
+{
+  "name": "release-script",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.3.0"
+  }
+}
