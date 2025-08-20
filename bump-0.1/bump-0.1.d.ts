@@ -782,21 +782,21 @@ export namespace Bump {
         execute(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): any;
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<any>;
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
@@ -804,7 +804,7 @@ export namespace Bump {
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_?: Gio.AsyncReadyCallback<this>,
@@ -813,14 +813,14 @@ export namespace Bump {
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<any>;
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
@@ -828,7 +828,7 @@ export namespace Bump {
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: Event.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_?: Gio.AsyncReadyCallback<this>,
@@ -1281,21 +1281,21 @@ export namespace Bump {
         execute(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): any;
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<any>;
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
@@ -1303,7 +1303,7 @@ export namespace Bump {
         execute_async(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_?: Gio.AsyncReadyCallback<this>,
@@ -1312,14 +1312,14 @@ export namespace Bump {
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<any>;
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
@@ -1327,7 +1327,7 @@ export namespace Bump {
         execute_background(
             r_type: GObject.GType,
             r_dup_func: GObject.BoxedCopyFunc,
-            func: Callback,
+            func: ResourcePool.Callback,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_?: Gio.AsyncReadyCallback<this>,
@@ -2224,6 +2224,17 @@ export namespace Bump {
     type QueueIface = typeof Queue;
     type ThreadingIface = typeof Threading;
     namespace Queue {
+        /**
+         * Interface for implementing Queue.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_process(wait: GLib.TimeSpan): boolean;
+            vfunc_get_length(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2235,7 +2246,7 @@ export namespace Bump {
         $gtype: GObject.GType<Queue>;
         prototype: Queue;
     }
-    interface Queue extends GObject.Object {
+    interface Queue extends GObject.Object, Queue.Interface {
         // Properties
 
         get length(): number;
@@ -2244,11 +2255,6 @@ export namespace Bump {
 
         process(wait: GLib.TimeSpan): boolean;
         get_length(): number;
-
-        // Virtual methods
-
-        vfunc_process(wait: GLib.TimeSpan): boolean;
-        vfunc_get_length(): number;
     }
 
     export const Queue: QueueNamespace & {
@@ -2256,6 +2262,16 @@ export namespace Bump {
     };
 
     namespace Threading {
+        /**
+         * Interface for implementing Threading.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_spawn(max_new_threads: number): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2265,7 +2281,7 @@ export namespace Bump {
         $gtype: GObject.GType<Threading>;
         prototype: Threading;
     }
-    interface Threading extends GObject.Object {
+    interface Threading extends GObject.Object, Threading.Interface {
         // Methods
 
         get_max_threads(): number;
@@ -2277,10 +2293,6 @@ export namespace Bump {
         increase_max_threads(new_max_threads: number): void;
         run_task(func: GLib.SourceFunc): boolean;
         spawn(max_new_threads: number): number;
-
-        // Virtual methods
-
-        vfunc_spawn(max_new_threads: number): number;
     }
 
     export const Threading: ThreadingNamespace & {
