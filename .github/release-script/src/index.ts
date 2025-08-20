@@ -325,9 +325,10 @@ async function main(): Promise<void> {
 
 	const packages: Package[] = await collectPackages();
 
-	// Process packages in batches for better performance
-	const batchSize = 5; // Process 5 packages concurrently
-	const npmStatus: Status[] = [];
+	const batchSize = 5;
+	let publishedCount = 0;
+	let unpublishedCount = 0;
+	let errorCount = 0;
 
 	console.log(`🚀 Processing ${packages.length} packages in batches of ${batchSize}...`);
 
@@ -340,16 +341,33 @@ async function main(): Promise<void> {
 			`📦 Processing batch ${batchNumber}/${totalBatches} (packages ${i + 1}-${Math.min(i + batchSize, packages.length)})`,
 		);
 
-		// Process batch concurrently
+		// Process each package in the batch: check status and publish immediately if needed
 		const batchPromises = batch.map(async (pkg) => {
 			try {
+				// Check npm status first
 				const status = await getNpmStatus(pkg, registry);
-				return { status, pkg };
+				
+				if (status === "published") {
+					console.log(`✅ Package ${pkg.name}@${pkg.version} is already published`);
+					return { result: "already-published", pkg };
+				} else {
+					// Package is unpublished, publish it immediately
+					if (dryRun) {
+						console.log(`📦 [DRY RUN] Would publish package: ${pkg.name}@${pkg.version}`);
+						return { result: "dry-run-publish", pkg };
+					} else {
+						await processPackage(pkg, token, registry, timeoutSec, dryRun);
+						console.log(`🚀 Successfully published ${pkg.name}@${pkg.version}`);
+						return { result: "published", pkg };
+					}
+				}
 			} catch (error) {
+				const errorMessage = (error as Error).message;
+				console.error(`❌ Error processing package ${pkg.name}: ${errorMessage}`);
+				
 				if (continueOnError) {
-					console.log(`⚠️  Skipping package ${pkg.name} due to error: ${(error as Error).message}`);
-					// Mark as unpublished to continue processing
-					return { status: "unpublished" as NpmStatus, pkg };
+					console.log(`⚠️  Continuing despite error for package ${pkg.name}`);
+					return { result: "error", pkg, error: errorMessage };
 				} else {
 					throw error;
 				}
@@ -359,13 +377,26 @@ async function main(): Promise<void> {
 		// Wait for batch to complete
 		const batchResults = await Promise.allSettled(batchPromises);
 
-		// Process batch results
+		// Process batch results and update counters
 		for (const result of batchResults) {
 			if (result.status === "fulfilled") {
-				npmStatus.push(result.value);
+				const { result: operationResult } = result.value;
+				
+				switch (operationResult) {
+					case "already-published":
+						publishedCount++;
+						break;
+					case "published":
+					case "dry-run-publish":
+						unpublishedCount++;
+						break;
+					case "error":
+						errorCount++;
+						break;
+				}
 			} else if (continueOnError) {
 				console.log(`⚠️  Batch item failed: ${result.reason}`);
-				// Skip failed items in continue-on-error mode
+				errorCount++;
 			} else {
 				throw result.reason;
 			}
@@ -374,44 +405,28 @@ async function main(): Promise<void> {
 		// Progress indicator
 		const progress = (((i + batchSize) / packages.length) * 100).toFixed(1);
 		console.log(`✅ Batch ${batchNumber}/${totalBatches} completed (${progress}% done)`);
+		console.log(`   📊 Current status: ${publishedCount} already published, ${unpublishedCount} processed for publishing, ${errorCount} errors`);
 
 		// Add a small delay between batches to avoid overwhelming the npm registry
 		if (i + batchSize < packages.length) {
-			console.log(`⏳ Waiting 2 seconds before next batch...`);
-			await new Promise((resolve) => setTimeout(resolve, 2000));
+			console.log(`⏳ Waiting 3 seconds before next batch...`);
+			await new Promise((resolve) => setTimeout(resolve, 3000));
 		}
 	}
 
-	// Count packages by status
-	const publishedCount = npmStatus.filter((s) => s.status === "published").length;
-	const unpublishedCount = npmStatus.filter((s) => s.status === "unpublished").length;
+	// Final summary
+	console.log(`📊 Final Package Processing Summary:`);
+	console.log(`   ✅ Already Published: ${publishedCount}`);
+	console.log(`   🚀 ${dryRun ? 'Would be published' : 'Newly Published'}: ${unpublishedCount}`);
+	console.log(`   ❌ Errors: ${errorCount}`);
+	console.log(`   📋 Total: ${publishedCount + unpublishedCount + errorCount}`);
 
-	console.log(`📊 Package Status Summary:`);
-	console.log(`   ✅ Published: ${publishedCount}`);
-	console.log(`   📦 Unpublished: ${unpublishedCount}`);
-	console.log(`   📋 Total: ${npmStatus.length}`);
-
-	// Process unpublished packages
-	const unpublishedPackages = npmStatus.filter((s) => s.status === "unpublished");
-
-	if (unpublishedPackages.length === 0) {
-		console.log("🎉 All packages are already published!");
-	} else {
-		console.log(`🚀 Processing ${unpublishedPackages.length} unpublished packages...`);
-
-		await Promise.all(
-			unpublishedPackages.map(async (status): Promise<void> => {
-				if (dryRun) {
-					console.log(`📦 [DRY RUN] Would publish package: ${status.pkg.name}@${status.pkg.version}`);
-				} else {
-					await processPackage(status.pkg, token, registry, timeoutSec, dryRun);
-				}
-			}),
-		);
+	if (errorCount > 0 && !continueOnError) {
+		throw new Error(`Processing failed with ${errorCount} errors`);
 	}
 
 	if (dryRun) {
-		console.log("✅ DRY RUN completed - No packages were published");
+		console.log("✅ DRY RUN completed - No packages were actually published");
 	} else {
 		console.log("✅ All packages processed successfully");
 	}
