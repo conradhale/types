@@ -182,6 +182,11 @@ async function processPackage(
 
 		const tag = getTagFromPackage(pkg);
 
+		// Debug: Log authentication info (without exposing token)
+		console.log(`🔍 Publishing ${pkg.name}@${pkg.version} to ${registry}`);
+		console.log(`🏷️  Tag: ${tag}`);
+		console.log(`🔑 Auth token present: ${token ? 'YES' : 'NO'}`);
+
 		// Ensure we have the full environment, especially PATH for node/npm
 		const env = { ...process.env, NODE_AUTH_TOKEN: token };
 
@@ -192,7 +197,12 @@ async function processPackage(
 			stdio: "pipe",
 		});
 
+		let stdout = "";
 		let stderr = "";
+
+		proc.stdout.on("data", (data) => {
+			stdout += data.toString();
+		});
 
 		proc.stderr.on("data", (data) => {
 			stderr += data.toString();
@@ -217,7 +227,18 @@ async function processPackage(
 				console.error(`❌ Process exited with code: ${code}`);
 				console.error(`📦 Package: ${pkg.name}@${pkg.version}`);
 				console.error(`📁 Working directory: ${pkg.rootFolder}`);
-				console.error(stderr);
+				console.error(`📤 Registry: ${registry}`);
+				console.error(`🔧 Command: npm publish --tag ${tag} --access public --provenance --registry ${registry}`);
+				console.error(`📝 STDOUT:`, stdout);
+				console.error(`❌ STDERR:`, stderr);
+				
+				// Check if it's already published error
+				if (stderr.includes("You cannot publish over the previously published versions")) {
+					console.log(`⚠️  Package ${pkg.name}@${pkg.version} is already published (ignoring error)`);
+					resolve();
+					return;
+				}
+				
 				reject(new Error(`Failed to publish for package ${pkg.name}: process exited with status code ${code}`));
 				return;
 			}
@@ -312,6 +333,46 @@ function getOptions(): Options {
 	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token, dryRun, continueOnError };
 }
 
+async function testNpmAuth(registry: string, token: string | undefined): Promise<void> {
+	return new Promise<void>((resolve, reject) => {
+		const env = { ...process.env, NODE_AUTH_TOKEN: token };
+		
+		console.log("🔐 Testing npm authentication...");
+		
+		const proc = spawn("npm", ["whoami", "--registry", registry], {
+			env,
+			shell: true,
+			stdio: "pipe",
+		});
+
+		let stdout = "";
+		let stderr = "";
+
+		proc.stdout.on("data", (data) => {
+			stdout += data.toString();
+		});
+
+		proc.stderr.on("data", (data) => {
+			stderr += data.toString();
+		});
+
+		proc.on("exit", (code) => {
+			if (code === 0) {
+				console.log(`✅ npm authentication successful. Logged in as: ${stdout.trim()}`);
+				resolve();
+			} else {
+				console.error(`❌ npm authentication failed (code: ${code})`);
+				console.error(`STDERR: ${stderr}`);
+				reject(new Error(`npm authentication failed: ${stderr}`));
+			}
+		});
+
+		proc.on("error", (err) => {
+			reject(new Error(`Failed to test npm auth: ${err.message}`));
+		});
+	});
+}
+
 async function main(): Promise<void> {
 	const { registry, timeoutSec, token, dryRun, continueOnError } = getOptions();
 
@@ -321,6 +382,16 @@ async function main(): Promise<void> {
 
 	if (continueOnError) {
 		console.log("🔄 CONTINUE ON ERROR MODE - Will continue processing even if some packages fail");
+	}
+
+	// Test npm authentication first
+	if (!dryRun) {
+		try {
+			await testNpmAuth(registry, token);
+		} catch (error) {
+			console.error("❌ npm authentication test failed. Continuing anyway...");
+			console.error((error as Error).message);
+		}
 	}
 
 	const packages: Package[] = await collectPackages();
