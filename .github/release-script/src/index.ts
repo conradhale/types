@@ -1,7 +1,6 @@
 import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
-import { readdir as readdirAsync, stat as statAsync, readFile as readFileAsync } from "node:fs/promises";
-import { basename, dirname, isAbsolute, join, resolve } from "node:path";
+import { readdir as readdirAsync, readFile as readFileAsync, stat as statAsync } from "node:fs/promises";
+import { basename, dirname, isAbsolute, join } from "node:path";
 
 function showUsage(): void {
 	console.log("Usage: node index.js [options]");
@@ -14,7 +13,7 @@ function showUsage(): void {
 	console.log("Environment variables:");
 	console.log("  NPM_TOKEN        NPM authentication token (required)");
 	console.log("  NPM_REGISTRY     NPM registry URL (default: https://registry.npmjs.org/)");
-	console.log("  NPM_TIMEOUT_SEC  Timeout in seconds (default: 60)");
+	console.log("  NPM_TIMEOUT_SEC  Timeout in seconds (default: 300)");
 	console.log("");
 }
 
@@ -117,7 +116,7 @@ async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> 
 		const res = await fetch(url, {
 			signal: AbortSignal.timeout(10000), // 10 second timeout
 		});
-		
+
 		if (!res.ok) {
 			if (res.status === 404) {
 				return "unpublished";
@@ -135,10 +134,10 @@ async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> 
 			return "published";
 		}
 	} catch (error) {
-		if (error instanceof Error && error.name === 'AbortError') {
+		if (error instanceof Error && error.name === "AbortError") {
 			throw new Error(`Timeout checking package ${pkg.name}`);
 		}
-		
+
 		throw new Error(`Failed to fetch package info for package ${pkg.name}: ${(error as Error).message}`);
 	}
 }
@@ -157,7 +156,13 @@ function getTagFromPackage(_pkg: Package): Tag {
 	return tag;
 }
 
-async function processPackage(pkg: Package, token: string | undefined, registry: string, timeoutSec: number, dryRun: boolean = false): Promise<void> {
+async function processPackage(
+	pkg: Package,
+	token: string | undefined,
+	registry: string,
+	timeoutSec: number,
+	dryRun: boolean = false,
+): Promise<void> {
 	return new Promise<void>((resolve, reject) => {
 		if (dryRun) {
 			console.log(`📦 [DRY RUN] Would publish package: ${pkg.name}@${pkg.version}`);
@@ -166,24 +171,26 @@ async function processPackage(pkg: Package, token: string | undefined, registry:
 		}
 
 		setTimeout(() => {
-			reject(new Error(`Failed to publish to registry: ${registry} for package ${pkg.name}: timeout (${timeoutSec} secs)`));
+			console.error(`⏰ Timeout occurred after ${timeoutSec} seconds for package ${pkg.name}`);
+			console.error(`📦 Package details: ${pkg.name}@${pkg.version} in ${pkg.rootFolder}`);
+			reject(
+				new Error(
+					`Failed to publish to registry: ${registry} for package ${pkg.name}: timeout (${timeoutSec} secs) - consider increasing NPM_TIMEOUT_SEC environment variable`,
+				),
+			);
 		}, timeoutSec * 1000);
 
 		const tag = getTagFromPackage(pkg);
 
 		// Ensure we have the full environment, especially PATH for node/npm
 		const env = { ...process.env, NPM_TOKEN: token };
-		
-		const proc = spawn(
-			"npm",
-			["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry],
-			{
-				cwd: pkg.rootFolder,
-				env,
-				shell: true,
-				stdio: "pipe",
-			},
-		);
+
+		const proc = spawn("npm", ["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry], {
+			cwd: pkg.rootFolder,
+			env,
+			shell: true,
+			stdio: "pipe",
+		});
 
 		let stderr = "";
 
@@ -198,17 +205,24 @@ async function processPackage(pkg: Package, token: string | undefined, registry:
 
 		proc.on("exit", (code, signal) => {
 			if (signal !== null) {
+				console.error(`❌ Process killed by signal: ${signal}`);
+				console.error(`📦 Package: ${pkg.name}@${pkg.version}`);
+				console.error(`📁 Working directory: ${pkg.rootFolder}`);
 				console.error(stderr);
 				reject(new Error(`Failed to publish for package ${pkg.name}: caught signal ${signal}`));
 				return;
 			}
 
 			if (code !== 0) {
+				console.error(`❌ Process exited with code: ${code}`);
+				console.error(`📦 Package: ${pkg.name}@${pkg.version}`);
+				console.error(`📁 Working directory: ${pkg.rootFolder}`);
 				console.error(stderr);
 				reject(new Error(`Failed to publish for package ${pkg.name}: process exited with status code ${code}`));
 				return;
 			}
 
+			console.log(`✅ Successfully published ${pkg.name}@${pkg.version}`);
 			resolve();
 			return;
 		});
@@ -219,11 +233,11 @@ async function collectPackages(): Promise<Package[]> {
 	const cwd = process.cwd();
 
 	// Get the directory where this script is located
-	const scriptDir = new URL('.', import.meta.url).pathname;
-	
+	const scriptDir = new URL(".", import.meta.url).pathname;
+
 	// Since the script is in .github/release-script/src/, go up three levels to get to the project root
 	const projectRoot = join(scriptDir, "..", "..", "..");
-	
+
 	console.log(`📁 Script location: ${scriptDir}`);
 	console.log(`📁 Project root: ${projectRoot}`);
 
@@ -257,7 +271,6 @@ interface Options {
 }
 
 function getOptions(): Options {
-
 	// Parse command line arguments
 	if (process.argv.includes("--help") || process.argv.includes("-h")) {
 		showUsage();
@@ -283,7 +296,7 @@ function getOptions(): Options {
 		throw new Error(`Invalid registry: ${registry}`);
 	}
 
-	let timeoutSec: number = 60;
+	let timeoutSec: number = 300; // Timeout of 300 seconds (5 minutes)
 
 	if (process.env["NPM_TIMEOUT_SEC"] !== undefined) {
 		const timeoutRaw = process.env["NPM_TIMEOUT_SEC"];
@@ -305,7 +318,7 @@ async function main(): Promise<void> {
 	if (dryRun) {
 		console.log("🔍 DRY RUN MODE - No packages will be published");
 	}
-	
+
 	if (continueOnError) {
 		console.log("🔄 CONTINUE ON ERROR MODE - Will continue processing even if some packages fail");
 	}
@@ -313,18 +326,20 @@ async function main(): Promise<void> {
 	const packages: Package[] = await collectPackages();
 
 	// Process packages in batches for better performance
-	const batchSize = 10; // Process 10 packages concurrently
+	const batchSize = 5; // Process 5 packages concurrently
 	const npmStatus: Status[] = [];
-	
+
 	console.log(`🚀 Processing ${packages.length} packages in batches of ${batchSize}...`);
-	
+
 	for (let i = 0; i < packages.length; i += batchSize) {
 		const batch = packages.slice(i, i + batchSize);
 		const batchNumber = Math.floor(i / batchSize) + 1;
 		const totalBatches = Math.ceil(packages.length / batchSize);
-		
-		console.log(`📦 Processing batch ${batchNumber}/${totalBatches} (packages ${i + 1}-${Math.min(i + batchSize, packages.length)})`);
-		
+
+		console.log(
+			`📦 Processing batch ${batchNumber}/${totalBatches} (packages ${i + 1}-${Math.min(i + batchSize, packages.length)})`,
+		);
+
 		// Process batch concurrently
 		const batchPromises = batch.map(async (pkg) => {
 			try {
@@ -340,13 +355,13 @@ async function main(): Promise<void> {
 				}
 			}
 		});
-		
+
 		// Wait for batch to complete
 		const batchResults = await Promise.allSettled(batchPromises);
-		
+
 		// Process batch results
 		for (const result of batchResults) {
-			if (result.status === 'fulfilled') {
+			if (result.status === "fulfilled") {
 				npmStatus.push(result.value);
 			} else if (continueOnError) {
 				console.log(`⚠️  Batch item failed: ${result.reason}`);
@@ -355,29 +370,35 @@ async function main(): Promise<void> {
 				throw result.reason;
 			}
 		}
-		
+
 		// Progress indicator
-		const progress = ((i + batchSize) / packages.length * 100).toFixed(1);
+		const progress = (((i + batchSize) / packages.length) * 100).toFixed(1);
 		console.log(`✅ Batch ${batchNumber}/${totalBatches} completed (${progress}% done)`);
+
+		// Add a small delay between batches to avoid overwhelming the npm registry
+		if (i + batchSize < packages.length) {
+			console.log(`⏳ Waiting 2 seconds before next batch...`);
+			await new Promise((resolve) => setTimeout(resolve, 2000));
+		}
 	}
 
 	// Count packages by status
-	const publishedCount = npmStatus.filter(s => s.status === "published").length;
-	const unpublishedCount = npmStatus.filter(s => s.status === "unpublished").length;
-	
+	const publishedCount = npmStatus.filter((s) => s.status === "published").length;
+	const unpublishedCount = npmStatus.filter((s) => s.status === "unpublished").length;
+
 	console.log(`📊 Package Status Summary:`);
 	console.log(`   ✅ Published: ${publishedCount}`);
 	console.log(`   📦 Unpublished: ${unpublishedCount}`);
 	console.log(`   📋 Total: ${npmStatus.length}`);
 
 	// Process unpublished packages
-	const unpublishedPackages = npmStatus.filter(s => s.status === "unpublished");
-	
+	const unpublishedPackages = npmStatus.filter((s) => s.status === "unpublished");
+
 	if (unpublishedPackages.length === 0) {
 		console.log("🎉 All packages are already published!");
 	} else {
 		console.log(`🚀 Processing ${unpublishedPackages.length} unpublished packages...`);
-		
+
 		await Promise.all(
 			unpublishedPackages.map(async (status): Promise<void> => {
 				if (dryRun) {
