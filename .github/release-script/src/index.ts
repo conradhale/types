@@ -3,6 +3,20 @@ import { existsSync } from "node:fs";
 import { readdir as readdirAsync, stat as statAsync, readFile as readFileAsync } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 
+function showUsage(): void {
+	console.log("Usage: node index.js [options]");
+	console.log("");
+	console.log("Options:");
+	console.log("  --dry-run, -d    Show what would be published without actually publishing");
+	console.log("  --help, -h       Show this help message");
+	console.log("");
+	console.log("Environment variables:");
+	console.log("  NPM_TOKEN        NPM authentication token (required)");
+	console.log("  NPM_REGISTRY     NPM registry URL (default: https://registry.npmjs.org/)");
+	console.log("  NPM_TIMEOUT_SEC  Timeout in seconds (default: 60)");
+	console.log("");
+}
+
 type MatchFn = (file: string) => boolean;
 
 async function getAllFilesMatching(folder: string, fn: MatchFn): Promise<string[]> {
@@ -130,10 +144,16 @@ function getTagFromPackage(_pkg: Package): Tag {
 	return tag;
 }
 
-async function processPackage(pkg: Package, token: string, registry: string, timeoutSec: number): Promise<void> {
+async function processPackage(pkg: Package, token: string | undefined, registry: string, timeoutSec: number, dryRun: boolean = false): Promise<void> {
 	return new Promise<void>((resolve, reject) => {
+		if (dryRun) {
+			console.log(`📦 [DRY RUN] Would publish package: ${pkg.name}@${pkg.version}`);
+			resolve();
+			return;
+		}
+
 		setTimeout(() => {
-			reject(new Error(`Failed to publish for package ${pkg.name}: timeout (${timeoutSec} secs)`));
+			reject(new Error(`Failed to publish to registry: ${registry} for package ${pkg.name}: timeout (${timeoutSec} secs)`));
 		}, timeoutSec * 1000);
 
 		const tag = getTagFromPackage(pkg);
@@ -182,32 +202,26 @@ async function processPackage(pkg: Package, token: string, registry: string, tim
 async function collectPackages(): Promise<Package[]> {
 	const cwd = process.cwd();
 
-	const currentDir = new URL('.', import.meta.url).pathname;
+	// Get the directory where this script is located
+	const scriptDir = new URL('.', import.meta.url).pathname;
+	
+	// Since the script is in .github/release-script/src/, go up three levels to get to the project root
+	const projectRoot = join(scriptDir, "..", "..", "..");
+	
+	console.log(`📁 Script location: ${scriptDir}`);
+	console.log(`📁 Project root: ${projectRoot}`);
 
-	const expectedPackagePath = join(cwd, ".github", "release-script");
-
-	let packagePath = resolve(currentDir);
-
-	while (!existsSync(join(packagePath, "package.json"))) {
-		packagePath = join(packagePath, "..");
-		if (packagePath === "" || packagePath === "/") {
-			throw new Error(`Couldn't find package path by searching for package.json`);
-		}
-	}
-
-	if (packagePath !== expectedPackagePath) {
-		throw new Error(
-			`Script executed from wrong cwd: expected package path to be '${expectedPackagePath}' but it was '${packagePath}'`,
-		);
-	}
-
-	const allPackageFiles: string[] = await getAllFilesMatching(process.cwd(), (file: string) => {
+	// Get all package.json files in the project, excluding the release-script directory
+	const allPackageFiles: string[] = await getAllFilesMatching(projectRoot, (file: string) => {
+		// Skip files in the .github/release-script directory
 		if (dirname(file).includes(".github/release-script")) {
 			return false;
 		}
 
 		return basename(file) === "package.json";
 	});
+
+	console.log(`📦 Found ${allPackageFiles.length} package.json files`);
 
 	const packages: Package[] = await Promise.all(allPackageFiles.map((packageFile) => getPackage(packageFile)));
 	return packages;
@@ -219,15 +233,25 @@ function isValidRegistry(_registry: string): boolean {
 }
 
 interface Options {
-	token: string;
+	token?: string;
 	registry: string;
 	timeoutSec: number;
+	dryRun: boolean;
 }
 
 function getOptions(): Options {
+
+	// Parse command line arguments
+	if (process.argv.includes("--help") || process.argv.includes("-h")) {
+		showUsage();
+		process.exit(0);
+	}
+
+	const dryRun = process.argv.includes("--dry-run") || process.argv.includes("-d");
+
 	const token = process.env["NPM_TOKEN"];
 
-	if (token === undefined || token === "") {
+	if (!dryRun && (token === undefined || token === "")) {
 		throw new Error(`env variable NPM_TOKEN not specified`);
 	}
 
@@ -254,11 +278,17 @@ function getOptions(): Options {
 		timeoutSec = timeoutNum;
 	}
 
-	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token };
+
+
+	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token, dryRun };
 }
 
 async function main(): Promise<void> {
-	const { registry, timeoutSec, token } = getOptions();
+	const { registry, timeoutSec, token, dryRun } = getOptions();
+
+	if (dryRun) {
+		console.log("🔍 DRY RUN MODE - No packages will be published");
+	}
 
 	const packages: Package[] = await collectPackages();
 
@@ -273,10 +303,14 @@ async function main(): Promise<void> {
 	await Promise.all(
 		npmStatus.map(async (status): Promise<void> => {
 			if (status.status === "unpublished") {
-				await processPackage(status.pkg, token, registry, timeoutSec);
+				await processPackage(status.pkg, token, registry, timeoutSec, dryRun);
 			}
 		}),
 	);
+
+	if (dryRun) {
+		console.log("✅ DRY RUN completed - No packages were published");
+	}
 }
 
 void main();
