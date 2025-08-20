@@ -32,7 +32,7 @@ interface BatchResult {
 }
 
 // Constants
-const DEFAULT_REGISTRY = "https://registry.npmjs.org/";
+const DEFAULT_REGISTRY = "https://registry.npmjs.org";
 const DEFAULT_TIMEOUT_SEC = 300;
 const BATCH_SIZE = 5;
 const BATCH_DELAY_MS = 3000;
@@ -59,7 +59,14 @@ function normalizeRegistryUrl(url: string): string {
 	if (!result.startsWith("http")) {
 		result = `https://${result}`;
 	}
-	return result.endsWith("/") ? result : `${result}/`;
+	// Remove trailing slash for consistency
+	return result.endsWith("/") ? result.slice(0, -1) : result;
+}
+
+function getApiUrl(registry: string, packageName: string): string {
+	// For API calls, we need the registry URL with trailing slash
+	const baseUrl = registry.endsWith("/") ? registry : `${registry}/`;
+	return `${baseUrl}${encodeURIComponent(packageName)}`;
 }
 
 function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
@@ -190,7 +197,7 @@ async function checkPackageStatus(pkg: Package, registry: string): Promise<Packa
 	console.log(`🔍 Checking ${pkg.name}...`);
 
 	try {
-		const url = `${registry}${encodeURIComponent(pkg.name)}`;
+		const url = getApiUrl(registry, pkg.name);
 		const response = await fetch(url, {
 			headers: {
 				Accept: "application/json",
