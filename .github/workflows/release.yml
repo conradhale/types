@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
           registry-url: 'https://registry.npmjs.org'
+          scope: '@girs'
 
       - name: Publish 
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts
