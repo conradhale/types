@@ -7,8 +7,9 @@ function showUsage(): void {
 	console.log("Usage: node index.js [options]");
 	console.log("");
 	console.log("Options:");
-	console.log("  --dry-run, -d    Show what would be published without actually publishing");
-	console.log("  --help, -h       Show this help message");
+	console.log("  --dry-run, -d           Show what would be published without actually publishing");
+	console.log("  --continue-on-error, -c Continue processing even if some packages fail");
+	console.log("  --help, -h              Show this help message");
 	console.log("");
 	console.log("Environment variables:");
 	console.log("  NPM_TOKEN        NPM authentication token (required)");
@@ -113,19 +114,39 @@ async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> 
 	const url = `${registry}${pkg.name}`;
 
 	try {
-		const res = await fetch(url);
-		if (!res.ok) throw new Error(`Failed to fetch package info for package ${pkg.name}: Status Code ${res.status}`);
+		console.log(`🔍 Checking package: ${pkg.name}@${pkg.version} at ${url}`);
+		
+		const res = await fetch(url, {
+			signal: AbortSignal.timeout(10000), // 10 second timeout
+		});
+		
+		if (!res.ok) {
+			if (res.status === 404) {
+				console.log(`📦 Package ${pkg.name} not found in registry (404) - marking as unpublished`);
+				return "unpublished";
+			}
+			throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+		}
 
 		const data = (await res.json()) as NPMData;
 
 		const versionInfo = data.versions[pkg.version];
 
 		if (versionInfo === undefined) {
+			console.log(`📦 Package ${pkg.name}@${pkg.version} not found in registry - marking as unpublished`);
 			return "unpublished";
 		} else {
+			console.log(`✅ Package ${pkg.name}@${pkg.version} already published`);
 			return "published";
 		}
 	} catch (error) {
+		if (error instanceof Error && error.name === 'AbortError') {
+			console.log(`⏰ Timeout checking package ${pkg.name} - marking as unpublished`);
+			return "unpublished";
+		}
+		
+		console.error(`❌ Error checking package ${pkg.name}: ${(error as Error).message}`);
+		// In dry-run mode, continue with unpublished status instead of failing
 		throw new Error(`Failed to fetch package info for package ${pkg.name}: ${(error as Error).message}`);
 	}
 }
@@ -158,12 +179,15 @@ async function processPackage(pkg: Package, token: string | undefined, registry:
 
 		const tag = getTagFromPackage(pkg);
 
+		// Ensure we have the full environment, especially PATH for node/npm
+		const env = { ...process.env, NPM_TOKEN: token };
+		
 		const proc = spawn(
 			"npm",
 			["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry],
 			{
 				cwd: pkg.rootFolder,
-				env: { NPM_TOKEN: token },
+				env,
 				shell: true,
 				stdio: "pipe",
 			},
@@ -237,6 +261,7 @@ interface Options {
 	registry: string;
 	timeoutSec: number;
 	dryRun: boolean;
+	continueOnError: boolean;
 }
 
 function getOptions(): Options {
@@ -248,6 +273,7 @@ function getOptions(): Options {
 	}
 
 	const dryRun = process.argv.includes("--dry-run") || process.argv.includes("-d");
+	const continueOnError = process.argv.includes("--continue-on-error") || process.argv.includes("-c");
 
 	const token = process.env["NPM_TOKEN"];
 
@@ -278,27 +304,39 @@ function getOptions(): Options {
 		timeoutSec = timeoutNum;
 	}
 
-
-
-	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token, dryRun };
+	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token, dryRun, continueOnError };
 }
 
 async function main(): Promise<void> {
-	const { registry, timeoutSec, token, dryRun } = getOptions();
+	const { registry, timeoutSec, token, dryRun, continueOnError } = getOptions();
 
 	if (dryRun) {
 		console.log("🔍 DRY RUN MODE - No packages will be published");
 	}
+	
+	if (continueOnError) {
+		console.log("🔄 CONTINUE ON ERROR MODE - Will continue processing even if some packages fail");
+	}
 
 	const packages: Package[] = await collectPackages();
 
-	const npmStatus: Status[] = await Promise.all(
-		packages.map(async (pkg) => {
+	// Process packages with better error handling
+	const npmStatus: Status[] = [];
+	
+	for (const pkg of packages) {
+		try {
 			const status = await getNpmStatus(pkg, registry);
-
-			return { status, pkg };
-		}),
-	);
+			npmStatus.push({ status, pkg });
+		} catch (error) {
+			if (continueOnError) {
+				console.log(`⚠️  Skipping package ${pkg.name} due to error: ${(error as Error).message}`);
+				// Mark as unpublished to continue processing
+				npmStatus.push({ status: "unpublished" as NpmStatus, pkg });
+			} else {
+				throw error;
+			}
+		}
+	}
 
 	await Promise.all(
 		npmStatus.map(async (status): Promise<void> => {
