@@ -28,8 +28,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Publish 
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

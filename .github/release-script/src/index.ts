@@ -11,7 +11,7 @@ function showUsage(): void {
 	console.log("  --help, -h              Show this help message");
 	console.log("");
 	console.log("Environment variables:");
-	console.log("  NPM_TOKEN        NPM authentication token (required)");
+	console.log("  NODE_AUTH_TOKEN        NPM authentication token (required)");
 	console.log("  NPM_REGISTRY     NPM registry URL (default: https://registry.npmjs.org/)");
 	console.log("  NPM_TIMEOUT_SEC  Timeout in seconds (default: 300)");
 	console.log("");
@@ -183,7 +183,7 @@ async function processPackage(
 		const tag = getTagFromPackage(pkg);
 
 		// Ensure we have the full environment, especially PATH for node/npm
-		const env = { ...process.env, NPM_TOKEN: token };
+		const env = { ...process.env, NODE_AUTH_TOKEN: token };
 
 		const proc = spawn("npm", ["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry], {
 			cwd: pkg.rootFolder,
@@ -280,10 +280,10 @@ function getOptions(): Options {
 	const dryRun = process.argv.includes("--dry-run") || process.argv.includes("-d");
 	const continueOnError = process.argv.includes("--continue-on-error") || process.argv.includes("-c");
 
-	const token = process.env["NPM_TOKEN"];
+	const token = process.env["NODE_AUTH_TOKEN"];
 
 	if (!dryRun && (token === undefined || token === "")) {
-		throw new Error(`env variable NPM_TOKEN not specified`);
+		throw new Error(`env variable NODE_AUTH_TOKEN not specified`);
 	}
 
 	let registry = "https://registry.npmjs.org/";
