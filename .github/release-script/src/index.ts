@@ -186,16 +186,23 @@ async function checkForTestPackages(packages: Package[]): Promise<void> {
 }
 
 // NPM API utilities
-async function checkPackageStatus(pkg: Package, registry: string): Promise<PackageStatus> {
+async function checkPackageStatus(pkg: Package, registry: string, token?: string): Promise<PackageStatus> {
 	console.log(`🔍 Checking ${pkg.name}...`);
 
 	try {
 		const url = `${registry}${encodeURIComponent(pkg.name)}`;
+		const headers: Record<string, string> = {
+			Accept: "application/json",
+			"User-Agent": "ts-for-gir-release-script/1.0.0",
+		};
+		
+		// Add authorization header if token is provided
+		if (token) {
+			headers.Authorization = `Bearer ${token}`;
+		}
+		
 		const response = await fetch(url, {
-			headers: {
-				Accept: "application/json",
-				"User-Agent": "ts-for-gir-release-script/1.0.0",
-			},
+			headers,
 			signal: AbortSignal.timeout(API_TIMEOUT_MS),
 		});
 
@@ -213,7 +220,9 @@ async function checkPackageStatus(pkg: Package, registry: string): Promise<Packa
 		const versions = Object.keys(data.versions || {});
 		const latestVersion = data["dist-tags"]?.latest;
 
-		console.log(`✅ ${pkg.name} - exists (${versions.length} versions)`);
+		console.log(`✅ ${pkg.name} - exists (${versions.length} versions, latest: ${latestVersion})`);
+		console.log(`🔍 ${pkg.name} - checking if version ${pkg.version} exists in: [${versions.slice(0, 5).join(', ')}${versions.length > 5 ? '...' : ''}]`);
+		
 		return { exists: true, versions, latestVersion };
 	} catch (error) {
 		const message = error instanceof Error ? error.message : "Unknown error";
@@ -223,21 +232,65 @@ async function checkPackageStatus(pkg: Package, registry: string): Promise<Packa
 }
 
 // Publishing utilities
-async function publishPackage(pkg: Package, config: Config): Promise<void> {
+async function publishPackage(pkg: Package, config: Config, projectRoot: string): Promise<void> {
 	if (config.dryRun) {
 		console.log(`📦 [DRY RUN] Would publish ${pkg.name}@${pkg.version}`);
 		return;
 	}
 
 	console.log(`🚀 Publishing ${pkg.name}@${pkg.version}...`);
+	
+	// Debug: Show authentication status
+	console.log(`🔍 Registry: ${config.registry}`);
+	console.log(`🔍 Token available: ${config.token ? 'Yes' : 'No'}`);
+	console.log(`🔍 Package scope: ${pkg.name.startsWith('@') ? pkg.name.split('/')[0] : 'none'}`);
+	
+	// Copy .npmrc from project root if it exists, otherwise create one
+	try {
+		const { writeFile, copyFile } = await import("node:fs/promises");
+		const packageNpmrcPath = join(pkg.rootFolder, ".npmrc");
+		
+		const rootNpmrcPath = join(projectRoot, ".npmrc");
+		
+		try {
+			// Try to copy existing .npmrc from project root
+			await copyFile(rootNpmrcPath, packageNpmrcPath);
+			console.log(`🔍 Copied .npmrc from project root to package directory`);
+		} catch {
+			// If no .npmrc in root, create one if we have a token
+			if (config.token) {
+				const npmrcContent = `//registry.npmjs.org/:_authToken=${config.token}\nregistry=${config.registry}\n`;
+				await writeFile(packageNpmrcPath, npmrcContent, "utf-8");
+				console.log(`🔍 Created .npmrc in package directory`);
+			} else {
+				console.log(`⚠️  No .npmrc found in project root and no token available`);
+			}
+		}
+	} catch (error) {
+		console.log(`⚠️  Could not handle .npmrc: ${error}`);
+	}
 
 	return new Promise((resolve, reject) => {
 		const timeoutId = setTimeout(() => {
 			reject(new Error(`Timeout after ${config.timeoutSec}s for ${pkg.name}`));
 		}, config.timeoutSec * 1000);
 
-		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
-		const args = ["publish", "--tag", "latest", "--access", "public", "--provenance", "--registry", config.registry];
+		const env = { ...process.env };
+		if (config.token) {
+			env.NODE_AUTH_TOKEN = config.token;
+			// Also set NPM_TOKEN for compatibility
+			env.NPM_TOKEN = config.token;
+		}
+		
+		// Build npm publish arguments with explicit authentication
+		const args = ["publish", "--tag", "latest", "--access", "public", "--registry", config.registry];
+		
+		// Add provenance only if we have a token (required for provenance)
+		if (config.token) {
+			args.push("--provenance");
+		}
+		
+
 
 		const proc = spawn("npm", args, {
 			cwd: pkg.rootFolder,
@@ -257,8 +310,19 @@ async function publishPackage(pkg: Package, config: Config): Promise<void> {
 			reject(new Error(`Spawn error for ${pkg.name}: ${err.message}`));
 		});
 
-		proc.on("exit", (code) => {
+		proc.on("exit", async (code) => {
 			clearTimeout(timeoutId);
+
+			// Clean up .npmrc file
+			if (config.token) {
+				try {
+					const { unlink } = await import("node:fs/promises");
+					const npmrcPath = join(pkg.rootFolder, ".npmrc");
+					await unlink(npmrcPath);
+				} catch {
+					// Ignore cleanup errors
+				}
+			}
 
 			if (code === 0) {
 				console.log(`✅ Published ${pkg.name}@${pkg.version}`);
@@ -287,7 +351,7 @@ async function publishPackage(pkg: Package, config: Config): Promise<void> {
 	});
 }
 
-async function collectPackages(): Promise<Package[]> {
+async function collectPackages(): Promise<{ packages: Package[]; projectRoot: string }> {
 	// Get project root (3 levels up from .github/release-script/src/)
 	const scriptDir = new URL(".", import.meta.url).pathname;
 	const projectRoot = join(scriptDir, "..", "..", "..");
@@ -299,7 +363,7 @@ async function collectPackages(): Promise<Package[]> {
 
 	const packages = await Promise.all(packageFiles.map((file) => parsePackageJson(file)));
 
-	return packages;
+	return { packages, projectRoot };
 }
 
 async function testNpmAuth(config: Config): Promise<void> {
@@ -346,6 +410,7 @@ async function testNpmAuth(config: Config): Promise<void> {
 async function processPackagesBatch(
 	packages: Package[],
 	config: Config,
+	projectRoot: string,
 ): Promise<{ published: number; processed: number; errors: number }> {
 	let published = 0;
 	let processed = 0;
@@ -361,7 +426,7 @@ async function processPackagesBatch(
 		const batchResults = await Promise.allSettled(
 			batch.map(async (pkg): Promise<BatchResult> => {
 				try {
-					const status = await checkPackageStatus(pkg, config.registry);
+					const status = await checkPackageStatus(pkg, config.registry, config.token);
 
 					if (status.exists && status.versions.includes(pkg.version)) {
 						console.log(`✅ ${pkg.name}@${pkg.version} already published`);
@@ -370,13 +435,19 @@ async function processPackagesBatch(
 
 					const isUpdate = status.exists;
 					const action = isUpdate ? "update" : "create";
+					
+					if (status.exists) {
+						console.log(`📝 ${pkg.name}@${pkg.version} - will ${action} (current latest: ${status.latestVersion})`);
+					} else {
+						console.log(`📦 ${pkg.name}@${pkg.version} - will ${action} (new package)`);
+					}
 
 					if (config.dryRun) {
 						console.log(`📦 [DRY RUN] Would ${action} ${pkg.name}@${pkg.version}`);
 						return { result: `dry-run-${action}` as ProcessResult, pkg };
 					}
 
-					await publishPackage(pkg, config);
+					await publishPackage(pkg, config, projectRoot);
 					return { result: isUpdate ? "updated" : "created", pkg };
 				} catch (error) {
 					const message = error instanceof Error ? error.message : "Unknown error";
@@ -442,14 +513,14 @@ async function main(): Promise<void> {
 		}
 
 		await testNpmAuth(config);
-		const packages = await collectPackages();
+		const { packages, projectRoot } = await collectPackages();
 
 		// Check for test packages with workspace dependencies
 		await checkForTestPackages(packages);
 
 		console.log(`🚀 Processing ${packages.length} packages...`);
 
-		const { published, processed, errors } = await processPackagesBatch(packages, config);
+		const { published, processed, errors } = await processPackagesBatch(packages, config, projectRoot);
 
 		// Final summary
 		console.log("📊 Final Summary:");
