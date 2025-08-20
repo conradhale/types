@@ -1,23 +1,23 @@
-import * as child_process from "node:child_process";
-import * as fs from "node:fs";
-import * as fsAsync from "node:fs/promises";
-import * as path from "node:path";
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import { readdir as readdirAsync, stat as statAsync, readFile as readFileAsync } from "node:fs/promises";
+import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 
 type MatchFn = (file: string) => boolean;
 
 async function getAllFilesMatching(folder: string, fn: MatchFn): Promise<string[]> {
-	if (!path.isAbsolute(folder)) {
+	if (!isAbsolute(folder)) {
 		throw new Error(`Implementation error: not an absolute path: '${folder}'`);
 	}
 
 	const result: string[] = [];
 
-	const subFiles = await fsAsync.readdir(folder);
+	const subFiles = await readdirAsync(folder);
 
 	for (const file_ of subFiles) {
-		const file = path.join(folder, file_);
+		const file = join(folder, file_);
 
-		const stat = await fsAsync.stat(file);
+		const stat = await statAsync(file);
 		if (stat.isDirectory()) {
 			const subResult = await getAllFilesMatching(file, fn);
 			result.push(...subResult);
@@ -48,7 +48,7 @@ interface PackageInfoRaw extends Record<string, unknown> {
 }
 
 async function getPackageInfo(packageFile: string): Promise<PackageInfo> {
-	const packageInfoRaw = await (await fsAsync.readFile(packageFile)).toString();
+	const packageInfoRaw = (await readFileAsync(packageFile)).toString();
 
 	const packageInfo = JSON.parse(packageInfoRaw) as PackageInfoRaw;
 
@@ -66,7 +66,7 @@ async function getPackageInfo(packageFile: string): Promise<PackageInfo> {
 async function getPackage(packageFile: string): Promise<Package> {
 	const packageInfo = await getPackageInfo(packageFile);
 
-	const rootFolder = path.dirname(packageFile);
+	const rootFolder = dirname(packageFile);
 
 	return { name: packageInfo.name, version: packageInfo.version, rootFolder };
 }
@@ -138,7 +138,7 @@ async function processPackage(pkg: Package, token: string, registry: string, tim
 
 		const tag = getTagFromPackage(pkg);
 
-		const proc = child_process.spawn(
+		const proc = spawn(
 			"npm",
 			["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry],
 			{
@@ -182,14 +182,14 @@ async function processPackage(pkg: Package, token: string, registry: string, tim
 async function collectPackages(): Promise<Package[]> {
 	const cwd = process.cwd();
 
-	const currentDir = __dirname;
+	const currentDir = new URL('.', import.meta.url).pathname;
 
-	const expectedPackagePath = path.join(cwd, ".github", "release-script");
+	const expectedPackagePath = join(cwd, ".github", "release-script");
 
-	let packagePath = path.resolve(currentDir);
+	let packagePath = resolve(currentDir);
 
-	while (!fs.existsSync(path.join(packagePath, "package.json"))) {
-		packagePath = path.join(packagePath, "..");
+	while (!existsSync(join(packagePath, "package.json"))) {
+		packagePath = join(packagePath, "..");
 		if (packagePath === "" || packagePath === "/") {
 			throw new Error(`Couldn't find package path by searching for package.json`);
 		}
@@ -202,11 +202,11 @@ async function collectPackages(): Promise<Package[]> {
 	}
 
 	const allPackageFiles: string[] = await getAllFilesMatching(process.cwd(), (file: string) => {
-		if (path.dirname(file).includes(".github/release-script")) {
+		if (dirname(file).includes(".github/release-script")) {
 			return false;
 		}
 
-		return path.basename(file) === "package.json";
+		return basename(file) === "package.json";
 	});
 
 	const packages: Package[] = await Promise.all(allPackageFiles.map((packageFile) => getPackage(packageFile)));
