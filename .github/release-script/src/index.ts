@@ -141,6 +141,50 @@ async function parsePackageJson(packageFile: string): Promise<Package> {
 	};
 }
 
+function hasWorkspaceDependencies(packageData: Record<string, unknown>): boolean {
+	const dependencyFields = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'];
+	
+	for (const field of dependencyFields) {
+		const deps = packageData[field];
+		if (deps && typeof deps === 'object' && deps !== null) {
+			const depsObj = deps as Record<string, unknown>;
+			for (const [depName, depVersion] of Object.entries(depsObj)) {
+				if (typeof depVersion === 'string' && depVersion.startsWith('workspace:^')) {
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
+}
+
+async function checkForTestPackages(packages: Package[]): Promise<void> {
+	console.log('🔍 Checking for test packages with workspace dependencies...');
+	
+	for (const pkg of packages) {
+		const packageJsonPath = join(pkg.rootFolder, 'package.json');
+		try {
+			const content = await readFile(packageJsonPath, 'utf-8');
+			const data = JSON.parse(content) as Record<string, unknown>;
+			
+			if (hasWorkspaceDependencies(data)) {
+				console.error(`❌ Test package detected: ${pkg.name}`);
+				console.error(`   Package at ${pkg.rootFolder} uses "workspace:^" dependencies`);
+				console.error(`   This indicates test packages that should not be released`);
+				throw new Error('Release aborted: Test packages with workspace dependencies detected');
+			}
+		} catch (error) {
+			if (error instanceof Error && error.message.includes('Release aborted')) {
+				throw error;
+			}
+			console.warn(`⚠️  Could not check workspace dependencies for ${pkg.name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+	
+	console.log('✅ No test packages with workspace dependencies found');
+}
+
 // NPM API utilities
 async function checkPackageStatus(pkg: Package, registry: string): Promise<PackageStatus> {
 	console.log(`🔍 Checking ${pkg.name}...`);
@@ -399,6 +443,9 @@ async function main(): Promise<void> {
 
 		await testNpmAuth(config);
 		const packages = await collectPackages();
+
+		// Check for test packages with workspace dependencies
+		await checkForTestPackages(packages);
 
 		console.log(`🚀 Processing ${packages.length} packages...`);
 
