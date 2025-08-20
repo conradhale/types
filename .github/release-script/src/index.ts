@@ -1,7 +1,44 @@
 import { spawn } from "node:child_process";
-import { readdir as readdirAsync, readFile as readFileAsync, stat as statAsync } from "node:fs/promises";
-import { basename, dirname, isAbsolute, join } from "node:path";
+import { readdir, readFile, stat } from "node:fs/promises";
+import { basename, dirname, join } from "node:path";
 
+// Configuration and types
+interface Config {
+	token?: string;
+	registry: string;
+	timeoutSec: number;
+	dryRun: boolean;
+	continueOnError: boolean;
+}
+
+interface Package {
+	name: string;
+	version: string;
+	rootFolder: string;
+}
+
+interface PackageStatus {
+	exists: boolean;
+	versions: string[];
+	latestVersion?: string;
+}
+
+type ProcessResult = "already-published" | "created" | "updated" | "dry-run-create" | "dry-run-update" | "error";
+
+interface BatchResult {
+	result: ProcessResult;
+	pkg: Package;
+	error?: string;
+}
+
+// Constants
+const DEFAULT_REGISTRY = "https://registry.npmjs.org/";
+const DEFAULT_TIMEOUT_SEC = 300;
+const BATCH_SIZE = 5;
+const BATCH_DELAY_MS = 3000;
+const API_TIMEOUT_MS = 10000;
+
+// Utility functions
 function showUsage(): void {
 	console.log("Usage: node index.js [options]");
 	console.log("");
@@ -12,334 +49,223 @@ function showUsage(): void {
 	console.log("");
 	console.log("Environment variables:");
 	console.log("  NODE_AUTH_TOKEN        NPM authentication token (required)");
-	console.log("  NPM_REGISTRY     NPM registry URL (default: https://registry.npmjs.org/)");
-	console.log("  NPM_TIMEOUT_SEC  Timeout in seconds (default: 300)");
+	console.log("  NPM_REGISTRY           NPM registry URL (default: https://registry.npmjs.org/)");
+	console.log("  NPM_TIMEOUT_SEC        Timeout in seconds (default: 300)");
 	console.log("");
 }
 
-type MatchFn = (file: string) => boolean;
-
-async function getAllFilesMatching(folder: string, fn: MatchFn): Promise<string[]> {
-	if (!isAbsolute(folder)) {
-		throw new Error(`Implementation error: not an absolute path: '${folder}'`);
-	}
-
-	const result: string[] = [];
-
-	const subFiles = await readdirAsync(folder);
-
-	for (const file_ of subFiles) {
-		const file = join(folder, file_);
-
-		const stat = await statAsync(file);
-		if (stat.isDirectory()) {
-			const subResult = await getAllFilesMatching(file, fn);
-			result.push(...subResult);
-		} else {
-			if (fn(file)) {
-				result.push(file);
-			}
-		}
-	}
-
-	return result;
-}
-
-interface Package {
-	name: string;
-	version: string;
-	rootFolder: string;
-}
-
-interface PackageInfo {
-	name: string;
-	version: string;
-}
-
-interface PackageInfoRaw extends Record<string, unknown> {
-	name?: string | undefined;
-	version?: string | undefined;
-}
-
-async function getPackageInfo(packageFile: string): Promise<PackageInfo> {
-	const packageInfoRaw = (await readFileAsync(packageFile)).toString();
-
-	const packageInfo = JSON.parse(packageInfoRaw) as PackageInfoRaw;
-
-	if (typeof packageInfo.name !== "string") {
-		throw new Error(`Invalid package.json: ${packageFile}`);
-	}
-
-	if (typeof packageInfo.version !== "string") {
-		throw new Error(`Invalid package.json: ${packageFile}`);
-	}
-
-	return { name: packageInfo.name, version: packageInfo.version };
-}
-
-async function getPackage(packageFile: string): Promise<Package> {
-	const packageInfo = await getPackageInfo(packageFile);
-
-	const rootFolder = dirname(packageFile);
-
-	return { name: packageInfo.name, version: packageInfo.version, rootFolder };
-}
-
-interface NPMVersionInfo {
-	name: string;
-	version: string;
-}
-
-interface NPMData {
-	versions: Record<string, NPMVersionInfo | undefined>;
-}
-
-type NpmStatus = "unpublished" | "published";
-
-function getNormalizedRegistryUrl(url: string): string {
+function normalizeRegistryUrl(url: string): string {
 	let result = url;
 	if (!result.startsWith("http")) {
 		result = `https://${result}`;
 	}
+	return result.endsWith("/") ? result : `${result}/`;
+}
 
-	if (!result.endsWith("/")) {
-		result += "/";
+function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
+	const args = process.argv;
+	return {
+		dryRun: args.includes("--dry-run") || args.includes("-d"),
+		continueOnError: args.includes("--continue-on-error") || args.includes("-c"),
+	};
+}
+
+function getEnvConfig(): Pick<Config, "token" | "registry" | "timeoutSec"> {
+	const token = process.env.NODE_AUTH_TOKEN;
+	const registry = normalizeRegistryUrl(process.env.NPM_REGISTRY || DEFAULT_REGISTRY);
+	const timeoutSec = process.env.NPM_TIMEOUT_SEC
+		? Number.parseInt(process.env.NPM_TIMEOUT_SEC, 10)
+		: DEFAULT_TIMEOUT_SEC;
+
+	if (Number.isNaN(timeoutSec)) {
+		throw new Error(`Invalid timeout value: ${process.env.NPM_TIMEOUT_SEC}`);
 	}
 
+	return { token, registry, timeoutSec };
+}
+
+function createConfig(): Config {
+	if (process.argv.includes("--help") || process.argv.includes("-h")) {
+		showUsage();
+		process.exit(0);
+	}
+
+	const args = parseArgs();
+	const env = getEnvConfig();
+
+	if (!args.dryRun && !env.token) {
+		throw new Error("NODE_AUTH_TOKEN environment variable is required");
+	}
+
+	return { ...args, ...env };
+}
+
+// File system utilities
+async function findAllPackageFiles(rootDir: string): Promise<string[]> {
+	const result: string[] = [];
+
+	async function traverse(dir: string): Promise<void> {
+		const entries = await readdir(dir);
+
+		for (const entry of entries) {
+			const fullPath = join(dir, entry);
+			const stats = await stat(fullPath);
+
+			if (stats.isDirectory()) {
+				// Skip release-script directory
+				if (!fullPath.includes(".github/release-script")) {
+					await traverse(fullPath);
+				}
+			} else if (basename(fullPath) === "package.json") {
+				result.push(fullPath);
+			}
+		}
+	}
+
+	await traverse(rootDir);
 	return result;
 }
 
-async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> {
-	const url = `${registry}${pkg.name}`;
+async function parsePackageJson(packageFile: string): Promise<Package> {
+	const content = await readFile(packageFile, "utf-8");
+	const data = JSON.parse(content) as Record<string, unknown>;
+
+	if (typeof data.name !== "string" || typeof data.version !== "string") {
+		throw new Error(`Invalid package.json at ${packageFile}: missing name or version`);
+	}
+
+	return {
+		name: data.name,
+		version: data.version,
+		rootFolder: dirname(packageFile),
+	};
+}
+
+// NPM API utilities
+async function checkPackageStatus(pkg: Package, registry: string): Promise<PackageStatus> {
+	console.log(`🔍 Checking ${pkg.name}...`);
 
 	try {
-		const res = await fetch(url, {
-			signal: AbortSignal.timeout(10000), // 10 second timeout
+		const url = `${registry}${encodeURIComponent(pkg.name)}`;
+		const response = await fetch(url, {
+			headers: {
+				Accept: "application/json",
+				"User-Agent": "ts-for-gir-release-script/1.0.0",
+			},
+			signal: AbortSignal.timeout(API_TIMEOUT_MS),
 		});
 
-		if (!res.ok) {
-			if (res.status === 404) {
-				return "unpublished";
-			}
-			throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+		if (response.status === 404) {
+			console.log(`📦 ${pkg.name} - new package`);
+			return { exists: false, versions: [] };
 		}
 
-		const data = (await res.json()) as NPMData;
-
-		const versionInfo = data.versions[pkg.version];
-
-		if (versionInfo === undefined) {
-			return "unpublished";
-		} else {
-			return "published";
+		if (!response.ok) {
+			console.log(`⚠️  ${pkg.name} - API error ${response.status}, treating as new`);
+			return { exists: false, versions: [] };
 		}
+
+		const data = await response.json();
+		const versions = Object.keys(data.versions || {});
+		const latestVersion = data["dist-tags"]?.latest;
+
+		console.log(`✅ ${pkg.name} - exists (${versions.length} versions)`);
+		return { exists: true, versions, latestVersion };
 	} catch (error) {
-		if (error instanceof Error && error.name === "AbortError") {
-			throw new Error(`Timeout checking package ${pkg.name}`);
-		}
-
-		throw new Error(`Failed to fetch package info for package ${pkg.name}: ${(error as Error).message}`);
+		const message = error instanceof Error ? error.message : "Unknown error";
+		console.log(`⚠️  ${pkg.name} - check failed: ${message}`);
+		return { exists: false, versions: [] };
 	}
 }
 
-interface Status {
-	status: NpmStatus;
-	pkg: Package;
-}
+// Publishing utilities
+async function publishPackage(pkg: Package, config: Config): Promise<void> {
+	if (config.dryRun) {
+		console.log(`📦 [DRY RUN] Would publish ${pkg.name}@${pkg.version}`);
+		return;
+	}
 
-type Tag = "latest";
+	console.log(`🚀 Publishing ${pkg.name}@${pkg.version}...`);
 
-function getTagFromPackage(_pkg: Package): Tag {
-	//TODO: once we use more than one tag, get the tag from the name properly
-	const tag = "latest";
+	return new Promise((resolve, reject) => {
+		const timeoutId = setTimeout(() => {
+			reject(new Error(`Timeout after ${config.timeoutSec}s for ${pkg.name}`));
+		}, config.timeoutSec * 1000);
 
-	return tag;
-}
+		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
+		const args = ["publish", "--tag", "latest", "--access", "public", "--provenance", "--registry", config.registry];
 
-async function processPackage(
-	pkg: Package,
-	token: string | undefined,
-	registry: string,
-	timeoutSec: number,
-	dryRun: boolean = false,
-): Promise<void> {
-	return new Promise<void>((resolve, reject) => {
-		if (dryRun) {
-			console.log(`📦 [DRY RUN] Would publish package: ${pkg.name}@${pkg.version}`);
-			resolve();
-			return;
-		}
-
-		setTimeout(() => {
-			console.error(`⏰ Timeout occurred after ${timeoutSec} seconds for package ${pkg.name}`);
-			console.error(`📦 Package details: ${pkg.name}@${pkg.version} in ${pkg.rootFolder}`);
-			reject(
-				new Error(
-					`Failed to publish to registry: ${registry} for package ${pkg.name}: timeout (${timeoutSec} secs) - consider increasing NPM_TIMEOUT_SEC environment variable`,
-				),
-			);
-		}, timeoutSec * 1000);
-
-		const tag = getTagFromPackage(pkg);
-
-		// Debug: Log authentication info (without exposing token)
-		console.log(`🔍 Publishing ${pkg.name}@${pkg.version} to ${registry}`);
-		console.log(`🏷️  Tag: ${tag}`);
-		console.log(`🔑 Auth token present: ${token ? 'YES' : 'NO'}`);
-
-		// Ensure we have the full environment, especially PATH for node/npm
-		const env = { ...process.env, NODE_AUTH_TOKEN: token };
-
-		const proc = spawn("npm", ["publish", "--tag", tag, "--access", "public", "--provenance", "--registry", registry], {
+		const proc = spawn("npm", args, {
 			cwd: pkg.rootFolder,
 			env,
 			shell: true,
 			stdio: "pipe",
 		});
 
-		let stdout = "";
 		let stderr = "";
-
-		proc.stdout.on("data", (data) => {
-			stdout += data.toString();
-		});
 
 		proc.stderr.on("data", (data) => {
 			stderr += data.toString();
 		});
 
 		proc.on("error", (err) => {
-			reject(new Error(`Failed to publish for package ${pkg.name}: ${err.message}`));
-			return;
+			clearTimeout(timeoutId);
+			reject(new Error(`Spawn error for ${pkg.name}: ${err.message}`));
 		});
 
-		proc.on("exit", (code, signal) => {
-			if (signal !== null) {
-				console.error(`❌ Process killed by signal: ${signal}`);
-				console.error(`📦 Package: ${pkg.name}@${pkg.version}`);
-				console.error(`📁 Working directory: ${pkg.rootFolder}`);
-				console.error(stderr);
-				reject(new Error(`Failed to publish for package ${pkg.name}: caught signal ${signal}`));
+		proc.on("exit", (code) => {
+			clearTimeout(timeoutId);
+
+			if (code === 0) {
+				console.log(`✅ Published ${pkg.name}@${pkg.version}`);
+				resolve();
 				return;
 			}
 
-			if (code !== 0) {
-				console.error(`❌ Process exited with code: ${code}`);
-				console.error(`📦 Package: ${pkg.name}@${pkg.version}`);
-				console.error(`📁 Working directory: ${pkg.rootFolder}`);
-				console.error(`📤 Registry: ${registry}`);
-				console.error(`🔧 Command: npm publish --tag ${tag} --access public --provenance --registry ${registry}`);
-				console.error(`📝 STDOUT:`, stdout);
-				console.error(`❌ STDERR:`, stderr);
-				
-				// Check if it's already published error
-				if (stderr.includes("You cannot publish over the previously published versions")) {
-					console.log(`⚠️  Package ${pkg.name}@${pkg.version} is already published (ignoring error)`);
-					resolve();
-					return;
-				}
-				
-				reject(new Error(`Failed to publish for package ${pkg.name}: process exited with status code ${code}`));
+			// Handle common npm publish errors
+			if (
+				stderr.includes("You cannot publish over the previously published versions") ||
+				stderr.includes("Cannot publish over existing version")
+			) {
+				console.log(`⚠️  ${pkg.name}@${pkg.version} already published`);
+				resolve();
 				return;
 			}
 
-			console.log(`✅ Successfully published ${pkg.name}@${pkg.version}`);
-			resolve();
-			return;
+			if (stderr.includes("404 Not Found") && stderr.includes("organization")) {
+				const orgName = pkg.name.split("/")[0];
+				reject(new Error(`Organization '${orgName}' not found. Create it at https://www.npmjs.com/org/create`));
+				return;
+			}
+
+			reject(new Error(`Failed to publish ${pkg.name}: ${stderr.trim() || `exit code ${code}`}`));
 		});
 	});
 }
 
 async function collectPackages(): Promise<Package[]> {
-	const cwd = process.cwd();
-
-	// Get the directory where this script is located
+	// Get project root (3 levels up from .github/release-script/src/)
 	const scriptDir = new URL(".", import.meta.url).pathname;
-
-	// Since the script is in .github/release-script/src/, go up three levels to get to the project root
 	const projectRoot = join(scriptDir, "..", "..", "..");
 
-	console.log(`📁 Script location: ${scriptDir}`);
-	console.log(`📁 Project root: ${projectRoot}`);
+	console.log(`📁 Scanning ${projectRoot} for packages...`);
 
-	// Get all package.json files in the project, excluding the release-script directory
-	const allPackageFiles: string[] = await getAllFilesMatching(projectRoot, (file: string) => {
-		// Skip files in the .github/release-script directory
-		if (dirname(file).includes(".github/release-script")) {
-			return false;
-		}
+	const packageFiles = await findAllPackageFiles(projectRoot);
+	console.log(`📦 Found ${packageFiles.length} package.json files`);
 
-		return basename(file) === "package.json";
-	});
+	const packages = await Promise.all(packageFiles.map((file) => parsePackageJson(file)));
 
-	console.log(`📦 Found ${allPackageFiles.length} package.json files`);
-
-	const packages: Package[] = await Promise.all(allPackageFiles.map((packageFile) => getPackage(packageFile)));
 	return packages;
 }
 
-function isValidRegistry(_registry: string): boolean {
-	//TODO: implement, if necessary
-	return true;
-}
+async function testNpmAuth(config: Config): Promise<void> {
+	if (config.dryRun) return;
 
-interface Options {
-	token?: string;
-	registry: string;
-	timeoutSec: number;
-	dryRun: boolean;
-	continueOnError: boolean;
-}
+	console.log("🔐 Testing npm authentication...");
 
-function getOptions(): Options {
-	// Parse command line arguments
-	if (process.argv.includes("--help") || process.argv.includes("-h")) {
-		showUsage();
-		process.exit(0);
-	}
-
-	const dryRun = process.argv.includes("--dry-run") || process.argv.includes("-d");
-	const continueOnError = process.argv.includes("--continue-on-error") || process.argv.includes("-c");
-
-	const token = process.env["NODE_AUTH_TOKEN"];
-
-	if (!dryRun && (token === undefined || token === "")) {
-		throw new Error(`env variable NODE_AUTH_TOKEN not specified`);
-	}
-
-	let registry = "https://registry.npmjs.org/";
-
-	if (process.env["NPM_REGISTRY"] !== undefined) {
-		registry = process.env["NPM_REGISTRY"];
-	}
-
-	if (!isValidRegistry(registry)) {
-		throw new Error(`Invalid registry: ${registry}`);
-	}
-
-	let timeoutSec: number = 300; // Timeout of 300 seconds (5 minutes)
-
-	if (process.env["NPM_TIMEOUT_SEC"] !== undefined) {
-		const timeoutRaw = process.env["NPM_TIMEOUT_SEC"];
-		const timeoutNum = Number.parseInt(timeoutRaw);
-
-		if (Number.isNaN(timeoutNum)) {
-			throw new Error(`Specified invalid timeout secs, not a number: ${timeoutRaw}`);
-		}
-
-		timeoutSec = timeoutNum;
-	}
-
-	return { registry: getNormalizedRegistryUrl(registry), timeoutSec, token, dryRun, continueOnError };
-}
-
-async function testNpmAuth(registry: string, token: string | undefined): Promise<void> {
-	return new Promise<void>((resolve, reject) => {
-		const env = { ...process.env, NODE_AUTH_TOKEN: token };
-		
-		console.log("🔐 Testing npm authentication...");
-		
-		const proc = spawn("npm", ["whoami", "--registry", registry], {
+	return new Promise((resolve) => {
+		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
+		const proc = spawn("npm", ["whoami", "--registry", config.registry], {
 			env,
 			shell: true,
 			stdio: "pipe",
@@ -351,155 +277,148 @@ async function testNpmAuth(registry: string, token: string | undefined): Promise
 		proc.stdout.on("data", (data) => {
 			stdout += data.toString();
 		});
-
 		proc.stderr.on("data", (data) => {
 			stderr += data.toString();
 		});
 
 		proc.on("exit", (code) => {
 			if (code === 0) {
-				console.log(`✅ npm authentication successful. Logged in as: ${stdout.trim()}`);
+				console.log(`✅ Authenticated as: ${stdout.trim()}`);
 				resolve();
 			} else {
-				console.error(`❌ npm authentication failed (code: ${code})`);
-				console.error(`STDERR: ${stderr}`);
-				reject(new Error(`npm authentication failed: ${stderr}`));
+				console.warn(`⚠️  Auth test failed: ${stderr.trim()}`);
+				resolve(); // Continue anyway
 			}
 		});
 
 		proc.on("error", (err) => {
-			reject(new Error(`Failed to test npm auth: ${err.message}`));
+			console.warn(`⚠️  Auth test error: ${err.message}`);
+			resolve(); // Continue anyway
 		});
 	});
 }
 
-async function main(): Promise<void> {
-	const { registry, timeoutSec, token, dryRun, continueOnError } = getOptions();
+// Main processing logic
+async function processPackagesBatch(
+	packages: Package[],
+	config: Config,
+): Promise<{ published: number; processed: number; errors: number }> {
+	let published = 0;
+	let processed = 0;
+	let errors = 0;
 
-	if (dryRun) {
-		console.log("🔍 DRY RUN MODE - No packages will be published");
-	}
+	for (let i = 0; i < packages.length; i += BATCH_SIZE) {
+		const batch = packages.slice(i, i + BATCH_SIZE);
+		const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+		const totalBatches = Math.ceil(packages.length / BATCH_SIZE);
 
-	if (continueOnError) {
-		console.log("🔄 CONTINUE ON ERROR MODE - Will continue processing even if some packages fail");
-	}
+		console.log(`📦 Batch ${batchNum}/${totalBatches} (${i + 1}-${Math.min(i + BATCH_SIZE, packages.length)})`);
 
-	// Test npm authentication first
-	if (!dryRun) {
-		try {
-			await testNpmAuth(registry, token);
-		} catch (error) {
-			console.error("❌ npm authentication test failed. Continuing anyway...");
-			console.error((error as Error).message);
-		}
-	}
+		const batchResults = await Promise.allSettled(
+			batch.map(async (pkg): Promise<BatchResult> => {
+				try {
+					const status = await checkPackageStatus(pkg, config.registry);
 
-	const packages: Package[] = await collectPackages();
-
-	const batchSize = 5;
-	let publishedCount = 0;
-	let unpublishedCount = 0;
-	let errorCount = 0;
-
-	console.log(`🚀 Processing ${packages.length} packages in batches of ${batchSize}...`);
-
-	for (let i = 0; i < packages.length; i += batchSize) {
-		const batch = packages.slice(i, i + batchSize);
-		const batchNumber = Math.floor(i / batchSize) + 1;
-		const totalBatches = Math.ceil(packages.length / batchSize);
-
-		console.log(
-			`📦 Processing batch ${batchNumber}/${totalBatches} (packages ${i + 1}-${Math.min(i + batchSize, packages.length)})`,
-		);
-
-		// Process each package in the batch: check status and publish immediately if needed
-		const batchPromises = batch.map(async (pkg) => {
-			try {
-				// Check npm status first
-				const status = await getNpmStatus(pkg, registry);
-				
-				if (status === "published") {
-					console.log(`✅ Package ${pkg.name}@${pkg.version} is already published`);
-					return { result: "already-published", pkg };
-				} else {
-					// Package is unpublished, publish it immediately
-					if (dryRun) {
-						console.log(`📦 [DRY RUN] Would publish package: ${pkg.name}@${pkg.version}`);
-						return { result: "dry-run-publish", pkg };
-					} else {
-						await processPackage(pkg, token, registry, timeoutSec, dryRun);
-						console.log(`🚀 Successfully published ${pkg.name}@${pkg.version}`);
-						return { result: "published", pkg };
+					if (status.exists && status.versions.includes(pkg.version)) {
+						console.log(`✅ ${pkg.name}@${pkg.version} already published`);
+						return { result: "already-published", pkg };
 					}
-				}
-			} catch (error) {
-				const errorMessage = (error as Error).message;
-				console.error(`❌ Error processing package ${pkg.name}: ${errorMessage}`);
-				
-				if (continueOnError) {
-					console.log(`⚠️  Continuing despite error for package ${pkg.name}`);
-					return { result: "error", pkg, error: errorMessage };
-				} else {
+
+					const isUpdate = status.exists;
+					const action = isUpdate ? "update" : "create";
+
+					if (config.dryRun) {
+						console.log(`📦 [DRY RUN] Would ${action} ${pkg.name}@${pkg.version}`);
+						return { result: `dry-run-${action}` as ProcessResult, pkg };
+					}
+
+					await publishPackage(pkg, config);
+					return { result: isUpdate ? "updated" : "created", pkg };
+				} catch (error) {
+					const message = error instanceof Error ? error.message : "Unknown error";
+					console.error(`❌ ${pkg.name}: ${message}`);
+
+					if (config.continueOnError) {
+						return { result: "error", pkg, error: message };
+					}
 					throw error;
 				}
-			}
-		});
+			}),
+		);
 
-		// Wait for batch to complete
-		const batchResults = await Promise.allSettled(batchPromises);
-
-		// Process batch results and update counters
+		// Process results
 		for (const result of batchResults) {
 			if (result.status === "fulfilled") {
-				const { result: operationResult } = result.value;
-				
-				switch (operationResult) {
+				switch (result.value.result) {
 					case "already-published":
-						publishedCount++;
+						published++;
 						break;
-					case "published":
-					case "dry-run-publish":
-						unpublishedCount++;
+					case "created":
+					case "updated":
+					case "dry-run-create":
+					case "dry-run-update":
+						processed++;
 						break;
 					case "error":
-						errorCount++;
+						errors++;
 						break;
 				}
-			} else if (continueOnError) {
-				console.log(`⚠️  Batch item failed: ${result.reason}`);
-				errorCount++;
+			} else if (config.continueOnError) {
+				console.error(`❌ Batch error: ${result.reason}`);
+				errors++;
 			} else {
 				throw result.reason;
 			}
 		}
 
-		// Progress indicator
-		const progress = (((i + batchSize) / packages.length) * 100).toFixed(1);
-		console.log(`✅ Batch ${batchNumber}/${totalBatches} completed (${progress}% done)`);
-		console.log(`   📊 Current status: ${publishedCount} already published, ${unpublishedCount} processed for publishing, ${errorCount} errors`);
+		const progress = (((i + BATCH_SIZE) / packages.length) * 100).toFixed(1);
+		console.log(
+			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Published: ${published}, Processed: ${processed}, Errors: ${errors}`,
+		);
 
-		// Add a small delay between batches to avoid overwhelming the npm registry
-		if (i + batchSize < packages.length) {
-			console.log(`⏳ Waiting 3 seconds before next batch...`);
-			await new Promise((resolve) => setTimeout(resolve, 3000));
+		// Delay between batches
+		if (i + BATCH_SIZE < packages.length) {
+			await new Promise((resolve) => setTimeout(resolve, BATCH_DELAY_MS));
 		}
 	}
 
-	// Final summary
-	console.log(`📊 Final Package Processing Summary:`);
-	console.log(`   ✅ Already Published: ${publishedCount}`);
-	console.log(`   🚀 ${dryRun ? 'Would be published' : 'Newly Published'}: ${unpublishedCount}`);
-	console.log(`   ❌ Errors: ${errorCount}`);
-	console.log(`   📋 Total: ${publishedCount + unpublishedCount + errorCount}`);
+	return { published, processed, errors };
+}
 
-	if (errorCount > 0 && !continueOnError) {
-		throw new Error(`Processing failed with ${errorCount} errors`);
-	}
+async function main(): Promise<void> {
+	try {
+		const config = createConfig();
 
-	if (dryRun) {
-		console.log("✅ DRY RUN completed - No packages were actually published");
-	} else {
-		console.log("✅ All packages processed successfully");
+		if (config.dryRun) {
+			console.log("🔍 DRY RUN MODE - No packages will be published");
+		}
+
+		if (config.continueOnError) {
+			console.log("🔄 CONTINUE ON ERROR MODE - Processing will continue despite failures");
+		}
+
+		await testNpmAuth(config);
+		const packages = await collectPackages();
+
+		console.log(`🚀 Processing ${packages.length} packages...`);
+
+		const { published, processed, errors } = await processPackagesBatch(packages, config);
+
+		// Final summary
+		console.log("📊 Final Summary:");
+		console.log(`   ✅ Already published: ${published}`);
+		console.log(`   🚀 ${config.dryRun ? "Would process" : "Processed"}: ${processed}`);
+		console.log(`   ❌ Errors: ${errors}`);
+		console.log(`   📋 Total: ${published + processed + errors}`);
+
+		if (errors > 0 && !config.continueOnError) {
+			throw new Error(`Processing failed with ${errors} errors`);
+		}
+
+		console.log(`✅ ${config.dryRun ? "DRY RUN" : "Processing"} completed successfully`);
+	} catch (error) {
+		console.error(`❌ Fatal error: ${error instanceof Error ? error.message : error}`);
+		process.exit(1);
 	}
 }
 
