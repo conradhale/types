@@ -114,15 +114,12 @@ async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> 
 	const url = `${registry}${pkg.name}`;
 
 	try {
-		console.log(`🔍 Checking package: ${pkg.name}@${pkg.version} at ${url}`);
-		
 		const res = await fetch(url, {
 			signal: AbortSignal.timeout(10000), // 10 second timeout
 		});
 		
 		if (!res.ok) {
 			if (res.status === 404) {
-				console.log(`📦 Package ${pkg.name} not found in registry (404) - marking as unpublished`);
 				return "unpublished";
 			}
 			throw new Error(`HTTP ${res.status}: ${res.statusText}`);
@@ -133,20 +130,15 @@ async function getNpmStatus(pkg: Package, registry: string): Promise<NpmStatus> 
 		const versionInfo = data.versions[pkg.version];
 
 		if (versionInfo === undefined) {
-			console.log(`📦 Package ${pkg.name}@${pkg.version} not found in registry - marking as unpublished`);
 			return "unpublished";
 		} else {
-			console.log(`✅ Package ${pkg.name}@${pkg.version} already published`);
 			return "published";
 		}
 	} catch (error) {
 		if (error instanceof Error && error.name === 'AbortError') {
-			console.log(`⏰ Timeout checking package ${pkg.name} - marking as unpublished`);
-			return "unpublished";
+			throw new Error(`Timeout checking package ${pkg.name}`);
 		}
 		
-		console.error(`❌ Error checking package ${pkg.name}: ${(error as Error).message}`);
-		// In dry-run mode, continue with unpublished status instead of failing
 		throw new Error(`Failed to fetch package info for package ${pkg.name}: ${(error as Error).message}`);
 	}
 }
@@ -320,34 +312,87 @@ async function main(): Promise<void> {
 
 	const packages: Package[] = await collectPackages();
 
-	// Process packages with better error handling
+	// Process packages in batches for better performance
+	const batchSize = 10; // Process 10 packages concurrently
 	const npmStatus: Status[] = [];
 	
-	for (const pkg of packages) {
-		try {
-			const status = await getNpmStatus(pkg, registry);
-			npmStatus.push({ status, pkg });
-		} catch (error) {
-			if (continueOnError) {
-				console.log(`⚠️  Skipping package ${pkg.name} due to error: ${(error as Error).message}`);
-				// Mark as unpublished to continue processing
-				npmStatus.push({ status: "unpublished" as NpmStatus, pkg });
+	console.log(`🚀 Processing ${packages.length} packages in batches of ${batchSize}...`);
+	
+	for (let i = 0; i < packages.length; i += batchSize) {
+		const batch = packages.slice(i, i + batchSize);
+		const batchNumber = Math.floor(i / batchSize) + 1;
+		const totalBatches = Math.ceil(packages.length / batchSize);
+		
+		console.log(`📦 Processing batch ${batchNumber}/${totalBatches} (packages ${i + 1}-${Math.min(i + batchSize, packages.length)})`);
+		
+		// Process batch concurrently
+		const batchPromises = batch.map(async (pkg) => {
+			try {
+				const status = await getNpmStatus(pkg, registry);
+				return { status, pkg };
+			} catch (error) {
+				if (continueOnError) {
+					console.log(`⚠️  Skipping package ${pkg.name} due to error: ${(error as Error).message}`);
+					// Mark as unpublished to continue processing
+					return { status: "unpublished" as NpmStatus, pkg };
+				} else {
+					throw error;
+				}
+			}
+		});
+		
+		// Wait for batch to complete
+		const batchResults = await Promise.allSettled(batchPromises);
+		
+		// Process batch results
+		for (const result of batchResults) {
+			if (result.status === 'fulfilled') {
+				npmStatus.push(result.value);
+			} else if (continueOnError) {
+				console.log(`⚠️  Batch item failed: ${result.reason}`);
+				// Skip failed items in continue-on-error mode
 			} else {
-				throw error;
+				throw result.reason;
 			}
 		}
+		
+		// Progress indicator
+		const progress = ((i + batchSize) / packages.length * 100).toFixed(1);
+		console.log(`✅ Batch ${batchNumber}/${totalBatches} completed (${progress}% done)`);
 	}
 
-	await Promise.all(
-		npmStatus.map(async (status): Promise<void> => {
-			if (status.status === "unpublished") {
-				await processPackage(status.pkg, token, registry, timeoutSec, dryRun);
-			}
-		}),
-	);
+	// Count packages by status
+	const publishedCount = npmStatus.filter(s => s.status === "published").length;
+	const unpublishedCount = npmStatus.filter(s => s.status === "unpublished").length;
+	
+	console.log(`📊 Package Status Summary:`);
+	console.log(`   ✅ Published: ${publishedCount}`);
+	console.log(`   📦 Unpublished: ${unpublishedCount}`);
+	console.log(`   📋 Total: ${npmStatus.length}`);
+
+	// Process unpublished packages
+	const unpublishedPackages = npmStatus.filter(s => s.status === "unpublished");
+	
+	if (unpublishedPackages.length === 0) {
+		console.log("🎉 All packages are already published!");
+	} else {
+		console.log(`🚀 Processing ${unpublishedPackages.length} unpublished packages...`);
+		
+		await Promise.all(
+			unpublishedPackages.map(async (status): Promise<void> => {
+				if (dryRun) {
+					console.log(`📦 [DRY RUN] Would publish package: ${status.pkg.name}@${status.pkg.version}`);
+				} else {
+					await processPackage(status.pkg, token, registry, timeoutSec, dryRun);
+				}
+			}),
+		);
+	}
 
 	if (dryRun) {
 		console.log("✅ DRY RUN completed - No packages were published");
+	} else {
+		console.log("✅ All packages processed successfully");
 	}
 }
 
