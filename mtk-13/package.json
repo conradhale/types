@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-13",
-    "version": "13.0.0-4.0.0-beta.35",
+    "version": "13.0.0-4.0.0-beta.36",
     "description": "GJS TypeScript type definitions for Mtk-13, generated from library version 13.0.0",
     "type": "module",
     "module": "mtk-13.js",
@@ -31,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.35",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.35",
-      "@girs/gobject-2.0": "2.0.0-4.0.0-beta.35",
-      "@girs/glib-2.0": "2.84.4-4.0.0-beta.35",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.35"    },
+      "@girs/gjs": "4.0.0-beta.36",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.36",
+      "@girs/gobject-2.0": "2.84.4-4.0.0-beta.36",
+      "@girs/glib-2.0": "2.84.4-4.0.0-beta.36",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.36"    },
     "devDependencies": {
       "typescript": "*"
     },

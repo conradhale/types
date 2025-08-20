@@ -1,6 +1,6 @@
 {
     "name": "@girs/grl-0.3",
-    "version": "0.3.0-4.0.0-beta.35",
+    "version": "0.3.0-4.0.0-beta.36",
     "description": "GJS TypeScript type definitions for Grl-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "grl-0.3.js",
@@ -31,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.35",
-      "@girs/gio-2.0": "2.0.0-4.0.0-beta.35",
-      "@girs/gobject-2.0": "2.0.0-4.0.0-beta.35",
-      "@girs/glib-2.0": "2.84.4-4.0.0-beta.35",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.35"    },
+      "@girs/gjs": "4.0.0-beta.36",
+      "@girs/gio-2.0": "2.84.4-4.0.0-beta.36",
+      "@girs/gobject-2.0": "2.84.4-4.0.0-beta.36",
+      "@girs/glib-2.0": "2.84.4-4.0.0-beta.36",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.36"    },
     "devDependencies": {
       "typescript": "*"
     },
