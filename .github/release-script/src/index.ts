@@ -66,7 +66,8 @@ function normalizeRegistryUrl(url: string): string {
 function getApiUrl(registry: string, packageName: string): string {
 	// For API calls, we need the registry URL with trailing slash
 	const baseUrl = registry.endsWith("/") ? registry : `${registry}/`;
-	return `${baseUrl}${encodeURIComponent(packageName)}`;
+	// Don't encode the package name - npm API expects it as-is
+	return `${baseUrl}${packageName}`;
 }
 
 function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
