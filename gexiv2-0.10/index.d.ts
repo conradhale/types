@@ -9,7 +9,5 @@
 
 import './gexiv2-0.10-ambient.d.ts';
 
-import './gexiv2-0.10-import.d.ts';
-
 import GExiv2 from './gexiv2-0.10.js';
 export default GExiv2;

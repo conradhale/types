@@ -1030,6 +1030,22 @@ export namespace Poppler {
         NOT_VERIFIED,
     }
 
+    export namespace Stretch {
+        export const $gtype: GObject.GType<Stretch>;
+    }
+
+    enum Stretch {
+        ULTRA_CONDENSED,
+        EXTRA_CONDENSED,
+        CONDENSED,
+        SEMI_CONDENSED,
+        NORMAL,
+        SEMI_EXPANDED,
+        EXPANDED,
+        EXTRA_EXPANDED,
+        ULTRA_EXPANDED,
+    }
+
     export namespace StructureBlockAlign {
         export const $gtype: GObject.GType<StructureBlockAlign>;
     }
@@ -1253,6 +1269,32 @@ export namespace Poppler {
         LR_TB,
         RL_TB,
         TB_RL,
+    }
+
+    export namespace Style {
+        export const $gtype: GObject.GType<Style>;
+    }
+
+    enum Style {
+        NORMAL,
+        OBLIQUE,
+        ITALIC,
+    }
+
+    export namespace Weight {
+        export const $gtype: GObject.GType<Weight>;
+    }
+
+    enum Weight {
+        THIN,
+        ULTRALIGHT,
+        LIGHT,
+        NORMAL,
+        MEDIUM,
+        SEMIBOLD,
+        BOLD,
+        ULTRABOLD,
+        HEAVY,
     }
     const ANNOT_TEXT_ICON_CIRCLE: string;
     const ANNOT_TEXT_ICON_COMMENT: string;
@@ -1503,6 +1545,45 @@ export namespace Poppler {
          */
         ALL,
     }
+
+    export namespace RenderAnnotsFlags {
+        export const $gtype: GObject.GType<RenderAnnotsFlags>;
+    }
+
+    enum RenderAnnotsFlags {
+        NONE,
+        TEXT,
+        LINK,
+        FREETEXT,
+        LINE,
+        SQUARE,
+        CIRCLE,
+        POLYGON,
+        POLYLINE,
+        HIGHLIGHT,
+        UNDERLINE,
+        SQUIGGLY,
+        STRIKEOUT,
+        STAMP,
+        CARET,
+        INK,
+        POPUP,
+        FILEATTACHMENT,
+        SOUND,
+        MOVIE,
+        WIDGET,
+        SCREEN,
+        PRINTERMARK,
+        TRAPNET,
+        WATERMARK,
+        '3D',
+        RICHMEDIA,
+        PRINT_DOCUMENT,
+        PRINT_MARKUP,
+        PRINT_STAMP,
+        PRINT_ALL,
+        ALL,
+    }
     /**
      * Signature validation flags
      */
@@ -1643,6 +1724,13 @@ export namespace Poppler {
          */
         get_annot_type(): AnnotType;
         /**
+         * Returns the border width of the annotation. Some PDF editors set a border
+         * width even if the border is not actually drawn.
+         * @param width a valid pointer to a double
+         * @returns true and sets @border_width to the actual border width if a border is defined, otherwise returns false and sets @border_width to 0.
+         */
+        get_border_width(width: number): boolean;
+        /**
          * Retrieves the color of `poppler_annot`.
          * @returns a new allocated #PopplerColor with the color values of               @poppler_annot, or %NULL. It must be freed with g_free() when done.
          */
@@ -1681,6 +1769,14 @@ export namespace Poppler {
          */
         get_rectangle(): Rectangle;
         /**
+         * Sets the border width of the annotation. Since there is currently no
+         * mechanism in the GLib binding to control the appearance of the border width,
+         * this should generally only be used to disable the border, although the
+         * API might be completed in the future.
+         * @param width the new border width
+         */
+        set_border_width(width: number): void;
+        /**
          * Sets the color of `poppler_annot`.
          * @param poppler_color a #PopplerColor, or %NULL
          */
@@ -1714,6 +1810,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for circle.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
 
@@ -1775,6 +1876,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for file attachment.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
 
@@ -1837,6 +1943,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for free text.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
 
@@ -1854,6 +1965,8 @@ export namespace Poppler {
         constructor(properties?: Partial<AnnotFreeText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        static ['new'](doc: Document, rect: Rectangle): AnnotFreeText;
 
         // Signals
 
@@ -1882,10 +1995,98 @@ export namespace Poppler {
          */
         get_callout_line(): AnnotCalloutLine;
         /**
+         * Gets the font color.
+         * @returns a copy of the font's #PopplerColor.
+         */
+        get_font_color(): Color;
+        /**
+         * Gets the font description (i.e. font family name, style, weight, stretch and size).
+         * @returns a copy of the annotation font description, or NULL if there is no font description set.
+         */
+        get_font_desc(): FontDescription | null;
+        /**
          * Retrieves the justification of the text of `poppler_annot`.
          * @returns #PopplerAnnotFreeTextQuadding of @poppler_annot.
          */
         get_quadding(): AnnotFreeTextQuadding;
+        /**
+         * Sets the font color.
+         * @param color a #PopplerColor
+         */
+        set_font_color(color: Color): void;
+        /**
+         * Sets the font description (i.e. font family name, style, weight, stretch and size).
+         * @param font_desc a #PopplerFontDescription
+         */
+        set_font_desc(font_desc: FontDescription): void;
+    }
+
+    namespace AnnotInk {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
+    }
+
+    class AnnotInk extends AnnotMarkup {
+        static $gtype: GObject.GType<AnnotInk>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AnnotInk.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<AnnotInk.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](doc: Document, rect: Rectangle): AnnotInk;
+
+        // Signals
+
+        connect<K extends keyof AnnotInk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        connect_after<K extends keyof AnnotInk.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof AnnotInk.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<AnnotInk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Each element of the return value is a path.
+         * @returns a GSList of PopplerPath
+         */
+        get_ink_list(): Path[];
+        /**
+         * Each element of `ink_list` is a path. The annotation must have
+         * already been added to a page, otherwise the annotation may be
+         * wrongly positioned if the page is rotated or has a cropbox.
+         *
+         * This function computes and set the appropriate smallest rectangle
+         * area that contains all the points of `ink_list`. Setting the rectangle
+         * afterwards with #poppler_annot_set_rectangle should not be done
+         * to preserve scaling and positioning.
+         * @param ink_list a list of #PopplerPath
+         */
+        set_ink_list(ink_list: Path[]): void;
     }
 
     namespace AnnotLine {
@@ -1897,6 +2098,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for line.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
 
@@ -1954,6 +2160,11 @@ export namespace Poppler {
         interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
+    /**
+     * An annotation for markup.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
 
@@ -2079,6 +2290,11 @@ export namespace Poppler {
         interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
+    /**
+     * An annotation for movie.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
 
@@ -2138,6 +2354,11 @@ export namespace Poppler {
         interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
+    /**
+     * An annotation for screen.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
 
@@ -2192,6 +2413,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for square.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
 
@@ -2246,14 +2472,19 @@ export namespace Poppler {
 
     namespace AnnotStamp {
         // Signal signatures
-        interface SignalSignatures extends Annot.SignalSignatures {}
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Annot.ConstructorProps {}
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
-    class AnnotStamp extends Annot {
+    /**
+     * An annotation for stamp.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
+    class AnnotStamp extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotStamp>;
 
         /**
@@ -2316,6 +2547,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for text.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
 
@@ -2422,6 +2658,11 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * An annotation for text markup.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
 
@@ -2491,6 +2732,9 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Since 25.06 this type supports g_autoptr
+     */
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
@@ -2653,6 +2897,11 @@ export namespace Poppler {
         }
     }
 
+    /**
+     * A poppler document.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
@@ -3260,6 +3509,11 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Interface for getting the Fonts of a poppler_document
+     *
+     * Since 24.10 this type supports g_autoptr
+     */
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
 
@@ -3338,6 +3592,11 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A #PopplerDocument form field.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
@@ -3610,6 +3869,11 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A #PopplerDocument layer.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
@@ -3803,6 +4067,11 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A #PopplerDocument movie.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
 
@@ -3987,6 +4256,11 @@ export namespace Poppler {
         }
     }
 
+    /**
+     * A #PopplerDocument page.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
@@ -4180,7 +4454,7 @@ export namespace Poppler {
          * Retrieves the contents of the specified `selection` as text.
          * @param style a #PopplerSelectionStyle
          * @param selection the #PopplerRectangle including the text
-         * @returns a pointer to the contents of the @selection               as a string
+         * @returns a pointer to the contents of the @selection as a string
          */
         get_selected_text(style: SelectionStyle | null, selection: Rectangle): string;
         /**
@@ -4291,7 +4565,8 @@ export namespace Poppler {
         /**
          * Render the page to the given cairo context for printing with
          * #POPPLER_PRINT_ALL flags selected.  If you want a different set of flags,
-         * use poppler_page_render_for_printing_with_options().
+         * use poppler_page_render_full() with printing #TRUE and the corresponding
+         * flags.
          *
          * The difference between poppler_page_render() and this function is that some
          * things get rendered differently between screens and printers:
@@ -4332,6 +4607,19 @@ export namespace Poppler {
          */
         render_for_printing_with_options(cairo: cairo.Context, options: PrintFlags | null): void;
         /**
+         * Render the page to the given cairo context, manually selecting which
+         * annotations should be displayed.
+         *
+         * The `printing` parameter determines whether a page is rendered for printing
+         * or for displaying it on a screen. See the documentation for
+         * poppler_page_render_for_printing() for the differences between rendering to
+         * the screen and rendering to a printer.
+         * @param cairo cairo context to render to
+         * @param printing cairo context to render to
+         * @param flags flags which allow to select which annotations to render
+         */
+        render_full(cairo: cairo.Context, printing: boolean, flags: RenderAnnotsFlags | null): void;
+        /**
          * Render the selection specified by `selection` for `page` to
          * the given cairo context.  The selection will be rendered, using
          * `glyph_color` for the glyphs and `background_color` for the selection
@@ -4360,6 +4648,30 @@ export namespace Poppler {
          * @param ps_file the PopplerPSFile to render to
          */
         render_to_ps(ps_file: PSFile): void;
+        /**
+         * Render the selection specified by `selection` for `page` to
+         * the given cairo context.  The selection will be rendered using
+         * `background_color` and `background_opacity` for the selection
+         * background. Glyphs will not be drawn.
+         *
+         * If non-NULL, `old_selection` specifies the selection that is already
+         * rendered to `cairo,` in which case this function will (some day)
+         * only render the changed part of the selection.
+         * @param cairo cairo context to render to
+         * @param selection start and end point of selection as a rectangle
+         * @param old_selection previous selection
+         * @param style a #PopplerSelectionStyle
+         * @param background_color color to use for the selection background
+         * @param background_opacity opacity to use for the selection background
+         */
+        render_transparent_selection(
+            cairo: cairo.Context,
+            selection: Rectangle,
+            old_selection: Rectangle,
+            style: SelectionStyle | null,
+            background_color: Color,
+            background_opacity: number,
+        ): void;
     }
 
     namespace StructureElement {
@@ -4371,6 +4683,11 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A #PopplerDocument structure element.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
 
@@ -4992,6 +5309,11 @@ export namespace Poppler {
         _init(...args: any[]): void;
     }
 
+    /**
+     * An annotation for callout line.
+     *
+     * Since 25.06 this type supports g_autoptr
+     */
     class AnnotCalloutLine {
         static $gtype: GObject.GType<AnnotCalloutLine>;
 
@@ -5038,6 +5360,8 @@ export namespace Poppler {
     /**
      * A #PopplerAnnotMapping structure represents the location
      * of `annot` on the page
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class AnnotMapping {
         static $gtype: GObject.GType<AnnotMapping>;
@@ -5074,6 +5398,8 @@ export namespace Poppler {
     type AttachmentClass = typeof Attachment;
     /**
      * PopplerCertificateInfo contains detailed info about a signing certificate.
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class CertificateInfo {
         static $gtype: GObject.GType<CertificateInfo>;
@@ -5146,6 +5472,8 @@ export namespace Poppler {
     /**
      * A #PopplerColor describes a RGB color. Color components
      * are values between 0 and 65535
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class Color {
         static $gtype: GObject.GType<Color>;
@@ -5192,6 +5520,8 @@ export namespace Poppler {
      * with poppler_named_dest_to_bytestring() first.
      * Also note that `named_dest` does not have a defined encoding and
      * is not in a form suitable to be displayed to the user.
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class Dest {
         static $gtype: GObject.GType<Dest>;
@@ -5227,6 +5557,48 @@ export namespace Poppler {
         free(): void;
     }
 
+    /**
+     * A #PopplerFontDescription structure represents the description
+     * of a font. When used together with Pango, all the fields are
+     * value-compatible with pango equivalent, although Pango font
+     * descriptions may contain more information.
+     *
+     * This type supports g_autoptr
+     */
+    class FontDescription {
+        static $gtype: GObject.GType<FontDescription>;
+
+        // Fields
+
+        font_name: string;
+        size_pt: number;
+        stretch: Stretch;
+        weight: Weight;
+        style: Style;
+
+        // Constructors
+
+        constructor(font_name: string);
+        _init(...args: any[]): void;
+
+        static ['new'](font_name: string): FontDescription;
+
+        // Methods
+
+        /**
+         * Creates a copy of `font_desc`
+         * @returns a new allocated copy of @font_desc
+         */
+        copy(): FontDescription;
+        /**
+         * Frees the given #PopplerFontDescription
+         */
+        free(): void;
+    }
+
+    /**
+     * Since 24.10 this type supports g_autoptr
+     */
     abstract class FontsIter {
         static $gtype: GObject.GType<FontsIter>;
 
@@ -5297,6 +5669,8 @@ export namespace Poppler {
     /**
      * A #PopplerFormFieldMapping structure represents the location
      * of `field` on the page
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class FormFieldMapping {
         static $gtype: GObject.GType<FormFieldMapping>;
@@ -5333,6 +5707,8 @@ export namespace Poppler {
     /**
      * A #PopplerImageMapping structure represents the location
      * of an image on the page
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class ImageMapping {
         static $gtype: GObject.GType<ImageMapping>;
@@ -5367,6 +5743,11 @@ export namespace Poppler {
         free(): void;
     }
 
+    /**
+     * Interface for getting the Index of a poppler_document
+     *
+     * Since 24.10 this type supports g_autoptr
+     */
     class IndexIter {
         static $gtype: GObject.GType<IndexIter>;
 
@@ -5416,6 +5797,11 @@ export namespace Poppler {
         next(): boolean;
     }
 
+    /**
+     * Interface for getting the Layers of a poppler_document
+     *
+     * Since 24.10 this type supports g_autoptr
+     */
     class LayersIter {
         static $gtype: GObject.GType<LayersIter>;
 
@@ -5466,6 +5852,8 @@ export namespace Poppler {
     /**
      * A #PopplerLinkMapping structure represents the location
      * of `action` on the page
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class LinkMapping {
         static $gtype: GObject.GType<LinkMapping>;
@@ -5523,6 +5911,8 @@ export namespace Poppler {
     /**
      * A #PopplerPageTransition structures describes a visual transition
      * to use when moving between pages during a presentation
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class PageTransition {
         static $gtype: GObject.GType<PageTransition>;
@@ -5569,8 +5959,38 @@ export namespace Poppler {
         free(): void;
     }
 
+    class Path {
+        static $gtype: GObject.GType<Path>;
+
+        // Constructors
+
+        constructor(points: Point, n_points: number);
+        _init(...args: any[]): void;
+
+        static new_from_array(points: Point, n_points: number): Path;
+
+        // Methods
+
+        /**
+         * Creates a copy of `path`.
+         * @returns a new allocated copy of @path
+         */
+        copy(): Path;
+        /**
+         * Frees the given #PopplerPath.
+         */
+        free(): void;
+        /**
+         * Returns the array of points of `path`.
+         * @returns all the points of @path
+         */
+        get_points(): Point[];
+    }
+
     /**
      * A #PopplerPoint is used to describe a location point on a page
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class Point {
         static $gtype: GObject.GType<Point>;
@@ -5609,6 +6029,8 @@ export namespace Poppler {
     /**
      * A #PopplerQuadrilateral is used to describe rectangle-like polygon
      *  with arbitrary inclination on a page.
+     *
+     *  Since 24.10 this type supports g_autoptr
      *
      *  Since: 0.26
      */
@@ -5652,6 +6074,8 @@ export namespace Poppler {
     /**
      * A #PopplerRectangle is used to describe
      * locations on a page and bounding boxes
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
@@ -5728,6 +6152,8 @@ export namespace Poppler {
     /**
      * PopplerSignatureInfo contains detailed info about a signature
      * contained in a form field.
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     abstract class SignatureInfo {
         static $gtype: GObject.GType<SignatureInfo>;
@@ -5778,6 +6204,9 @@ export namespace Poppler {
         get_signer_name(): string;
     }
 
+    /**
+     * Since 24.10 this type supports g_autoptr
+     */
     class SigningData {
         static $gtype: GObject.GType<SigningData>;
 
@@ -5991,6 +6420,9 @@ export namespace Poppler {
         set_signature_text_left(signature_text_left: string): void;
     }
 
+    /**
+     * Since 24.10 this type supports g_autoptr
+     */
     class StructureElementIter {
         static $gtype: GObject.GType<StructureElementIter>;
 
@@ -6078,6 +6510,9 @@ export namespace Poppler {
         free(): void;
     }
 
+    /**
+     * Since 24.10 this type supports g_autoptr
+     */
     abstract class TextSpan {
         static $gtype: GObject.GType<TextSpan>;
 
@@ -6129,6 +6564,8 @@ export namespace Poppler {
 
     /**
      * A generic wrapper for actions that exposes only #PopplerActionType.
+     *
+     * Since 24.10 this type supports g_autoptr
      */
     class Action {
         static $gtype: GObject.GType<Action>;

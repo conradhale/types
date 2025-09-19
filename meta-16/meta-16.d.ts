@@ -2714,7 +2714,7 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             meta_display: Display;
@@ -2729,7 +2729,10 @@ export namespace Meta {
      * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
      * the background that are obscured by other windows.
      */
-    class BackgroundActor extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    class BackgroundActor
+        extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<BackgroundActor>;
 
         // Properties

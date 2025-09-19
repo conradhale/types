@@ -9,7 +9,5 @@
 
 import './st-16-ambient.d.ts';
 
-import './st-16-import.d.ts';
-
 import St from './st-16.js';
 export default St;

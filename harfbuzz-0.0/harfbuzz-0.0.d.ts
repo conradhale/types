@@ -26,11 +26,26 @@ export namespace HarfBuzz {
      *
      * In `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES,` non-base
      * characters are merged into the cluster of the base character that precedes them.
+     * There is also cluster merging every time the clusters will otherwise become non-monotone.
      *
      * In `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS,` non-base characters are initially
      * assigned their own cluster values, which are not merged into preceding base
      * clusters. This allows HarfBuzz to perform additional operations like reorder
-     * sequences of adjacent marks.
+     * sequences of adjacent marks. The output is still monotone, but the cluster
+     * values are more granular.
+     *
+     * In `HB_BUFFER_CLUSTER_LEVEL_CHARACTERS,` non-base characters are assigned their
+     * own cluster values, which are not merged into preceding base clusters. Moreover,
+     * the cluster values are not merged into monotone order. This is the most granular
+     * cluster level, and it is useful for clients that need to know the exact cluster
+     * values of each character, but is harder to use for clients, since clusters
+     * might appear in any order.
+     *
+     * In `HB_BUFFER_CLUSTER_LEVEL_GRAPHEMES,` non-base characters are merged into the
+     * cluster of the base character that precedes them. This is similar to the Unicode
+     * Grapheme Cluster algorithm, but it is not exactly the same. The output is
+     * not forced to be monotone. This is useful for clients that want to use HarfBuzz
+     * as a cheap implementation of the Unicode Grapheme Cluster algorithm.
      *
      * `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES` is the default, because it maintains
      * backward compatibility with older versions of HarfBuzz. New client programs that
@@ -45,11 +60,26 @@ export namespace HarfBuzz {
      *
      * In `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES,` non-base
      * characters are merged into the cluster of the base character that precedes them.
+     * There is also cluster merging every time the clusters will otherwise become non-monotone.
      *
      * In `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS,` non-base characters are initially
      * assigned their own cluster values, which are not merged into preceding base
      * clusters. This allows HarfBuzz to perform additional operations like reorder
-     * sequences of adjacent marks.
+     * sequences of adjacent marks. The output is still monotone, but the cluster
+     * values are more granular.
+     *
+     * In `HB_BUFFER_CLUSTER_LEVEL_CHARACTERS,` non-base characters are assigned their
+     * own cluster values, which are not merged into preceding base clusters. Moreover,
+     * the cluster values are not merged into monotone order. This is the most granular
+     * cluster level, and it is useful for clients that need to know the exact cluster
+     * values of each character, but is harder to use for clients, since clusters
+     * might appear in any order.
+     *
+     * In `HB_BUFFER_CLUSTER_LEVEL_GRAPHEMES,` non-base characters are merged into the
+     * cluster of the base character that precedes them. This is similar to the Unicode
+     * Grapheme Cluster algorithm, but it is not exactly the same. The output is
+     * not forced to be monotone. This is useful for clients that want to use HarfBuzz
+     * as a cheap implementation of the Unicode Grapheme Cluster algorithm.
      *
      * `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES` is the default, because it maintains
      * backward compatibility with older versions of HarfBuzz. New client programs that
@@ -74,6 +104,10 @@ export namespace HarfBuzz {
          * Don't group cluster values.
          */
         CHARACTERS,
+        /**
+         * Only group clusters, but don't enforce monotone order.
+         */
+        GRAPHEMES,
         /**
          * Default cluster level,
          *   equal to `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES`.
@@ -1581,7 +1615,7 @@ export namespace HarfBuzz {
      * @param buf string to deserialize
      * @param font font for getting glyph IDs
      * @param format the #hb_buffer_serialize_format_t of the input @buf
-     * @returns `true` if parse was successful, `false` if an error occurred.
+     * @returns `true` if the full string was parsed, `false` otherwise.
      */
     function buffer_deserialize_glyphs(
         buffer: buffer_t,
@@ -1595,7 +1629,7 @@ export namespace HarfBuzz {
      * @param buffer an #hb_buffer_t buffer.
      * @param buf string to deserialize
      * @param format the #hb_buffer_serialize_format_t of the input @buf
-     * @returns `true` if parse was successful, `false` if an error occurred.
+     * @returns `true` if the full string was parsed, `false` otherwise.
      */
     function buffer_deserialize_unicode(
         buffer: buffer_t,
@@ -2129,6 +2163,14 @@ export namespace HarfBuzz {
      */
     function buffer_set_unicode_funcs(buffer: buffer_t, unicode_funcs: unicode_funcs_t): void;
     /**
+     * Allocates `nmemb` elements of `size` bytes each, initialized to zero,
+     * using the allocator set at compile-time. Typically just calloc().
+     * @param nmemb The number of elements to allocate.
+     * @param size The size of each element.
+     * @returns A pointer to the allocated memory.
+     */
+    function calloc(nmemb: number, size: number): any | null;
+    /**
      * Fetches the alpha channel of the given `color`.
      * @param color an #hb_color_t we are interested in its channels.
      * @returns Alpha channel value
@@ -2441,6 +2483,20 @@ export namespace HarfBuzz {
      */
     function face_create_from_file_or_fail(file_name: string, index: number): face_t;
     /**
+     * A thin wrapper around the face loader functions registered with HarfBuzz.
+     * If `loader_name` is `NULL` or the empty string, the first available loader
+     * is used.
+     *
+     * For example, the FreeType ("ft") loader might be able to load
+     * WOFF and WOFF2 files if FreeType is built with those features,
+     * whereas the OpenType ("ot") loader will not.
+     * @param file_name A font filename
+     * @param index The index of the face within the file
+     * @param loader_name The name of the loader to use, or `NULL`
+     * @returns The new face object, or `NULL` if the file cannot be read or the loader fails to load the face.
+     */
+    function face_create_from_file_or_fail_using(file_name: string, index: number, loader_name?: string | null): face_t;
+    /**
      * Like hb_face_create(), but returns `NULL` if the blob data
      * contains no usable font face at the specified index.
      * @param blob #hb_blob_t to work upon
@@ -2448,6 +2504,20 @@ export namespace HarfBuzz {
      * @returns The new face object, or `NULL` if no face is found at the specified index.
      */
     function face_create_or_fail(blob: blob_t, index: number): face_t;
+    /**
+     * A thin wrapper around the face loader functions registered with HarfBuzz.
+     * If `loader_name` is `NULL` or the empty string, the first available loader
+     * is used.
+     *
+     * For example, the FreeType ("ft") loader might be able to load
+     * WOFF and WOFF2 files if FreeType is built with those features,
+     * whereas the OpenType ("ot") loader will not.
+     * @param blob #hb_blob_t to work upon
+     * @param index The index of the face within @blob
+     * @param loader_name The name of the loader to use, or `NULL`
+     * @returns The new face object, or `NULL` if the loader fails to load the face.
+     */
+    function face_create_or_fail_using(blob: blob_t, index: number, loader_name?: string | null): face_t;
     /**
      * Fetches the singleton empty face object.
      * @returns The empty face object
@@ -2490,6 +2560,11 @@ export namespace HarfBuzz {
      * @returns `true` is @face is immutable, `false` otherwise
      */
     function face_is_immutable(face: face_t): bool_t;
+    /**
+     * Retrieves the list of face loaders supported by HarfBuzz.
+     * @returns a    `NULL`-terminated array of supported face loaders    constant strings. The returned array is owned by HarfBuzz    and should not be modified or freed.
+     */
+    function face_list_loaders(): string[];
     /**
      * Makes the given face object immutable.
      * @param face A face object
@@ -2596,6 +2671,9 @@ export namespace HarfBuzz {
      * Converts a #hb_feature_t into a `NULL`-terminated string in the format
      * understood by hb_feature_from_string(). The client in responsible for
      * allocating big enough size for `buf,` 128 bytes is more than enough.
+     *
+     * Note that the feature value will be omitted if it is '1', but the
+     * string won't include any whitespace.
      * @param feature an #hb_feature_t to convert
      */
     function feature_to_string(feature: feature_t): string[];
@@ -2648,6 +2726,9 @@ export namespace HarfBuzz {
     /**
      * Draws the outline that corresponds to a glyph in the specified `font`.
      *
+     * This is an older name for hb_font_draw_glyph_or_fail(), with no
+     * return value.
+     *
      * The outline is returned by way of calls to the callbacks of the `dfuncs`
      * objects, with `draw_data` passed to them.
      * @param font #hb_font_t to work upon
@@ -2656,6 +2737,26 @@ export namespace HarfBuzz {
      * @param draw_data User data to pass to draw callbacks
      */
     function font_draw_glyph(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data?: any | null): void;
+    /**
+     * Draws the outline that corresponds to a glyph in the specified `font`.
+     *
+     * This is a newer name for hb_font_draw_glyph(), that returns `false`
+     * if the font has no outlines for the glyph.
+     *
+     * The outline is returned by way of calls to the callbacks of the `dfuncs`
+     * objects, with `draw_data` passed to them.
+     * @param font #hb_font_t to work upon
+     * @param glyph The glyph ID
+     * @param dfuncs #hb_draw_funcs_t to draw to
+     * @param draw_data User data to pass to draw callbacks
+     * @returns `true` if glyph was drawn, `false` otherwise
+     */
+    function font_draw_glyph_or_fail(
+        font: font_t,
+        glyph: codepoint_t,
+        dfuncs: draw_funcs_t,
+        draw_data?: any | null,
+    ): bool_t;
     /**
      * Creates a new #hb_font_funcs_t structure of font functions.
      * @returns The font-functions structure
@@ -2686,6 +2787,17 @@ export namespace HarfBuzz {
     function font_funcs_set_draw_glyph_func(
         ffuncs: font_funcs_t,
         func: font_draw_glyph_func_t,
+        destroy?: destroy_func_t | null,
+    ): void;
+    /**
+     * Sets the implementation function for #hb_font_draw_glyph_or_fail_func_t.
+     * @param ffuncs A font-function structure
+     * @param func The callback function to assign
+     * @param destroy The function to call when @user_data is not needed anymore
+     */
+    function font_funcs_set_draw_glyph_or_fail_func(
+        ffuncs: font_funcs_t,
+        func: font_draw_glyph_or_fail_func_t,
         destroy?: destroy_func_t | null,
     ): void;
     /**
@@ -2800,6 +2912,17 @@ export namespace HarfBuzz {
         destroy?: destroy_func_t | null,
     ): void;
     /**
+     * Sets the implementation function for #hb_font_get_glyph_h_origins_func_t.
+     * @param ffuncs A font-function structure
+     * @param func The callback function to assign
+     * @param destroy The function to call when @user_data is not needed anymore
+     */
+    function font_funcs_set_glyph_h_origins_func(
+        ffuncs: font_funcs_t,
+        func: font_get_glyph_h_origins_func_t,
+        destroy?: destroy_func_t | null,
+    ): void;
+    /**
      * Sets the implementation function for #hb_font_get_glyph_name_func_t.
      * @param ffuncs A font-function structure
      * @param func The callback function to assign
@@ -2867,6 +2990,17 @@ export namespace HarfBuzz {
         destroy?: destroy_func_t | null,
     ): void;
     /**
+     * Sets the implementation function for #hb_font_get_glyph_v_origins_func_t.
+     * @param ffuncs A font-function structure
+     * @param func The callback function to assign
+     * @param destroy The function to call when @user_data is not needed anymore
+     */
+    function font_funcs_set_glyph_v_origins_func(
+        ffuncs: font_funcs_t,
+        func: font_get_glyph_v_origins_func_t,
+        destroy?: destroy_func_t | null,
+    ): void;
+    /**
      * Sets the implementation function for #hb_font_get_nominal_glyph_func_t.
      * @param ffuncs A font-function structure
      * @param func The callback function to assign
@@ -2897,6 +3031,17 @@ export namespace HarfBuzz {
     function font_funcs_set_paint_glyph_func(
         ffuncs: font_funcs_t,
         func: font_paint_glyph_func_t,
+        destroy?: destroy_func_t | null,
+    ): void;
+    /**
+     * Sets the implementation function for #hb_font_paint_glyph_or_fail_func_t.
+     * @param ffuncs A font-function structure
+     * @param func The callback function to assign
+     * @param destroy The function to call when @user_data is no longer needed
+     */
+    function font_funcs_set_paint_glyph_or_fail_func(
+        ffuncs: font_funcs_t,
+        func: font_paint_glyph_or_fail_func_t,
         destroy?: destroy_func_t | null,
     ): void;
     /**
@@ -3088,6 +3233,25 @@ export namespace HarfBuzz {
      */
     function font_get_glyph_h_origin(font: font_t, glyph: codepoint_t): [bool_t, position_t, position_t];
     /**
+     * Fetches the (X,Y) coordinates of the origin for requested glyph IDs
+     * in the specified font, for horizontal text segments.
+     * @param font #hb_font_t to work upon
+     * @param count The number of glyph IDs in the sequence queried
+     * @param first_glyph The first glyph ID to query
+     * @param glyph_stride The stride between successive glyph IDs
+     * @param x_stride The stride between successive X coordinates
+     * @param y_stride The stride between successive Y coordinates
+     * @returns `true` if data found, `false` otherwise
+     */
+    function font_get_glyph_h_origins(
+        font: font_t,
+        count: number,
+        first_glyph: codepoint_t,
+        glyph_stride: number,
+        x_stride: number,
+        y_stride: number,
+    ): [bool_t, position_t, position_t];
+    /**
      * Fetches the kerning-adjustment value for a glyph-pair in the specified font.
      *
      * Calls the appropriate direction-specific variant (horizontal
@@ -3181,6 +3345,25 @@ export namespace HarfBuzz {
      */
     function font_get_glyph_v_origin(font: font_t, glyph: codepoint_t): [bool_t, position_t, position_t];
     /**
+     * Fetches the (X,Y) coordinates of the origin for requested glyph IDs
+     * in the specified font, for vertical text segments.
+     * @param font #hb_font_t to work upon
+     * @param count The number of glyph IDs in the sequence queried
+     * @param first_glyph The first glyph ID to query
+     * @param glyph_stride The stride between successive glyph IDs
+     * @param x_stride The stride between successive X coordinates
+     * @param y_stride The stride between successive Y coordinates
+     * @returns `true` if data found, `false` otherwise
+     */
+    function font_get_glyph_v_origins(
+        font: font_t,
+        count: number,
+        first_glyph: codepoint_t,
+        glyph_stride: number,
+        x_stride: number,
+        y_stride: number,
+    ): [bool_t, position_t, position_t];
+    /**
      * Fetches the extents for a specified font, for horizontal
      * text segments.
      * @param font #hb_font_t to work upon
@@ -3270,9 +3453,12 @@ export namespace HarfBuzz {
      * Fetches the list of variation coordinates (in design-space units) currently
      * set on a font.
      *
-     * Note that this returned array may only contain values for some
-     * (or none) of the axes; omitted axes effectively have their default
-     * values.
+     * <note>Note that if no variation coordinates are set, this function may
+     * return %NULL.</note>
+     *
+     * <note>If variations have been set on the font using normalized coordinates
+     * (i.e. via hb_font_set_var_coords_normalized()), the design coordinates will
+     * have NaN (Not a Number) values.</note>
      *
      * Return value is valid as long as variation coordinates of the font
      * are not modified.
@@ -3284,8 +3470,8 @@ export namespace HarfBuzz {
      * Fetches the list of normalized variation coordinates currently
      * set on a font.
      *
-     * Note that this returned array may only contain values for some
-     * (or none) of the axes; omitted axes effectively have zero values.
+     * <note>Note that if no variation coordinates are set, this function may
+     * return %NULL.</note>
      *
      * Return value is valid as long as variation coordinates of the font
      * are not modified.
@@ -3343,12 +3529,27 @@ export namespace HarfBuzz {
      */
     function font_is_immutable(font: font_t): bool_t;
     /**
+     * Tests whether a font is synthetic. A synthetic font is one
+     * that has either synthetic slant or synthetic bold set on it.
+     * @param font #hb_font_t to work upon
+     * @returns `true` if the font is synthetic, `false` otherwise.
+     */
+    function font_is_synthetic(font: font_t): bool_t;
+    /**
+     * Retrieves the list of font functions supported by HarfBuzz.
+     * @returns a    `NULL`-terminated array of supported font functions    constant strings. The returned array is owned by HarfBuzz    and should not be modified or freed.
+     */
+    function font_list_funcs(): string[];
+    /**
      * Makes `font` immutable.
      * @param font #hb_font_t to work upon
      */
     function font_make_immutable(font: font_t): void;
     /**
-     * Paints the glyph.
+     * Paints the glyph. This function is similar to
+     * hb_font_paint_glyph_or_fail(), but if painting a color glyph
+     * failed, it will fall back to painting an outline monochrome
+     * glyph.
      *
      * The painting instructions are returned by way of calls to
      * the callbacks of the `funcs` object, with `paint_data` passed
@@ -3373,11 +3574,55 @@ export namespace HarfBuzz {
         foreground: color_t,
     ): void;
     /**
+     * Paints a color glyph.
+     *
+     * This function is similar to, but lower-level than,
+     * hb_font_paint_glyph(). It is suitable for clients that
+     * need more control.  If there are no color glyphs available,
+     * it will return `false`. The client can then fall back to
+     * hb_font_draw_glyph_or_fail() for the monochrome outline glyph.
+     *
+     * The painting instructions are returned by way of calls to
+     * the callbacks of the `funcs` object, with `paint_data` passed
+     * to them.
+     *
+     * If the font has color palettes (see hb_ot_color_has_palettes()),
+     * then `palette_index` selects the palette to use. If the font only
+     * has one palette, this will be 0.
+     * @param font #hb_font_t to work upon
+     * @param glyph The glyph ID
+     * @param pfuncs #hb_paint_funcs_t to paint with
+     * @param paint_data User data to pass to paint callbacks
+     * @param palette_index The index of the font's color palette to use
+     * @param foreground The foreground color, unpremultipled
+     * @returns `true` if glyph was painted, `false` otherwise
+     */
+    function font_paint_glyph_or_fail(
+        font: font_t,
+        glyph: codepoint_t,
+        pfuncs: paint_funcs_t,
+        paint_data: any | null,
+        palette_index: number,
+        foreground: color_t,
+    ): bool_t;
+    /**
      * Sets `face` as the font-face value of `font`.
      * @param font #hb_font_t to work upon
      * @param face The #hb_face_t to assign
      */
     function font_set_face(font: font_t, face: face_t): void;
+    /**
+     * Sets the font-functions structure to use for a font, based on the
+     * specified name.
+     *
+     * If `name` is `NULL` or the empty string, the default (first) functioning font-functions
+     * are used.  This default can be changed by setting the `HB_FONT_FUNCS` environment
+     * variable to the name of the desired font-functions.
+     * @param font #hb_font_t to work upon
+     * @param name The name of the font-functions structure to use, or `NULL`
+     * @returns `true` if the font-functions was found and set, `false` otherwise
+     */
+    function font_set_funcs_using(font: font_t, name: string): bool_t;
     /**
      * Sets the parent font of `font`.
      * @param font #hb_font_t to work upon
@@ -3447,7 +3692,7 @@ export namespace HarfBuzz {
      * points of the glyph shape.
      *
      * Synthetic boldness is applied when rendering a glyph via
-     * hb_font_draw_glyph().
+     * hb_font_draw_glyph_or_fail().
      *
      * If `in_place` is `false`, then glyph advance-widths are also
      * adjusted, otherwise they are not.  The in-place mode is
@@ -3466,7 +3711,7 @@ export namespace HarfBuzz {
      * HarfBuzz needs to know this value to adjust shaping results,
      * metrics, and style values to match the slanted rendering.
      *
-     * <note>Note: The glyph shape fetched via the hb_font_draw_glyph()
+     * <note>Note: The glyph shape fetched via the hb_font_draw_glyph_or_fail()
      * function is slanted to reflect this value as well.</note>
      *
      * <note>Note: The slant value is a ratio.  For example, a
@@ -3546,6 +3791,12 @@ export namespace HarfBuzz {
         y: position_t,
     ): [position_t, position_t];
     /**
+     * Frees the memory pointed to by `ptr,` using the allocator set at
+     * compile-time. Typically just free().
+     * @param ptr The pointer to the memory to free.
+     */
+    function free(ptr?: any | null): void;
+    /**
      * Creates an #hb_face_t face object from the specified FT_Face.
      *
      * Note that this is using the FT_Face object just to get at the underlying
@@ -3566,10 +3817,23 @@ export namespace HarfBuzz {
     function ft_face_create_cached(ft_face: freetype2.Face): face_t;
     /**
      * Creates an #hb_face_t face object from the specified
+     * font blob and face index.
+     *
+     * This is similar in functionality to hb_face_create_from_blob_or_fail(),
+     * but uses the FreeType library for loading the font blob. This can
+     * be useful, for example, to load WOFF and WOFF2 font data.
+     * @param blob A blob
+     * @param index The index of the face within the blob
+     * @returns The new face object, or `NULL` if loading fails (eg. blob does not contain valid font data).
+     */
+    function ft_face_create_from_blob_or_fail(blob: blob_t, index: number): face_t;
+    /**
+     * Creates an #hb_face_t face object from the specified
      * font file and face index.
      *
      * This is similar in functionality to hb_face_create_from_file_or_fail(),
-     * but uses the FreeType library for loading the font file.
+     * but uses the FreeType library for loading the font file. This can
+     * be useful, for example, to load WOFF and WOFF2 font data.
      * @param file_name A font filename
      * @param index The index of the face within the file
      * @returns The new face object, or `NULL` if no face is found at the specified index or the file cannot be read.
@@ -3670,6 +3934,10 @@ export namespace HarfBuzz {
      * This function should be called after changing the size or
      * variation-axis settings on the `font`.
      * This call is fast if nothing has changed on `font`.
+     *
+     * Note that as of version 11.0.0, calling this function is not necessary,
+     * as HarfBuzz will automatically detect changes to the font and update
+     * the underlying FT_Face as needed.
      * @param font #hb_font_t to work upon
      * @returns true if changed, false otherwise
      */
@@ -3741,6 +4009,13 @@ export namespace HarfBuzz {
      * @returns A `NULL`-terminated string representing the @language. Must not be freed by the caller.
      */
     function language_to_string(language: language_t): string;
+    /**
+     * Allocates `size` bytes of memory, using the allocator set at
+     * compile-time. Typically just malloc().
+     * @param size The size of the memory to allocate.
+     * @returns A pointer to the allocated memory.
+     */
+    function malloc(size: number): any | null;
     /**
      * Tests whether memory allocation for a set was successful.
      * @param map A map
@@ -4395,9 +4670,10 @@ export namespace HarfBuzz {
         face: face_t,
         table_tag: tag_t,
         lookup_index: number,
-    ): [set_t, set_t, set_t, set_t];
+    ): [set_t | null, set_t | null, set_t | null, set_t | null];
     /**
-     * Fetches alternates of a glyph from a given GSUB lookup index.
+     * Fetches alternates of a glyph from a given GSUB lookup index. Note that for one-to-one GSUB
+     * glyph substitutions, this function fetches the substituted glyph.
      * @param face a face.
      * @param lookup_index index of the feature lookup to query.
      * @param glyph a glyph id.
@@ -5007,6 +5283,10 @@ export namespace HarfBuzz {
      *
      * Any additional scaling defined in the face's `avar` table is also
      * applied, as described at https://docs.microsoft.com/en-us/typography/opentype/spec/avar
+     *
+     * Note: `coords_length` must be the same as the number of axes in the face, as
+     * for example returned by hb_ot_var_get_axis_count().
+     * Otherwise, the behavior is undefined.
      * @param face The #hb_face_t to work on
      * @param coords_length The length of the coordinate array
      * @param design_coords The design-space coordinates to normalize
@@ -5238,7 +5518,7 @@ export namespace HarfBuzz {
      * @param width width of the raster image in pixels, or 0
      * @param height height of the raster image in pixels, or 0
      * @param format the image format as a tag
-     * @param slant the synthetic slant ratio to be applied to the image during rendering
+     * @param slant Deprecated. set to 0.0
      * @param extents the extents of the glyph
      */
     function paint_image(
@@ -5324,11 +5604,27 @@ export namespace HarfBuzz {
         ymax: number,
     ): void;
     /**
+     * Push the transform reflecting the font's scale and slant
+     * settings onto the paint functions.
+     * @param funcs paint functions
+     * @param paint_data associated data passed by the caller
+     * @param font a font
+     */
+    function paint_push_font_transform(funcs: paint_funcs_t, paint_data: any | null, font: font_t): void;
+    /**
      * Perform a "push-group" paint operation.
      * @param funcs paint functions
      * @param paint_data associated data passed by the caller
      */
     function paint_push_group(funcs: paint_funcs_t, paint_data?: any | null): void;
+    /**
+     * Push the inverse of the transform reflecting the font's
+     * scale and slant settings onto the paint functions.
+     * @param funcs paint functions
+     * @param paint_data associated data passed by the caller
+     * @param font a font
+     */
+    function paint_push_inverse_font_transform(funcs: paint_funcs_t, paint_data: any | null, font: font_t): void;
     /**
      * Perform a "push-transform" paint operation.
      * @param funcs paint functions
@@ -5393,6 +5689,14 @@ export namespace HarfBuzz {
         end_angle: number,
     ): void;
     /**
+     * Reallocates the memory pointed to by `ptr` to `size` bytes, using the
+     * allocator set at compile-time. Typically just realloc().
+     * @param ptr The pointer to the memory to reallocate.
+     * @param size The new size of the memory.
+     * @returns A pointer to the reallocated memory.
+     */
+    function realloc(ptr: any | null, size: number): any | null;
+    /**
      * Converts an ISO 15924 script tag to a corresponding #hb_script_t.
      * @param tag an #hb_tag_t representing an ISO 15924 tag.
      * @returns An #hb_script_t corresponding to the ISO 15924 tag.
@@ -5410,8 +5714,11 @@ export namespace HarfBuzz {
      * Fetches the #hb_direction_t of a script when it is
      * set horizontally. All right-to-left scripts will return
      * #HB_DIRECTION_RTL. All left-to-right scripts will return
-     * #HB_DIRECTION_LTR.  Scripts that can be written either
-     * horizontally or vertically will return #HB_DIRECTION_INVALID.
+     * #HB_DIRECTION_LTR.
+     *
+     * Scripts that can be written either right-to-left or
+     * left-to-right will return #HB_DIRECTION_INVALID.
+     *
      * Unknown scripts will return #HB_DIRECTION_LTR.
      * @param script The #hb_script_t to query
      * @returns The horizontal #hb_direction_t of @script
@@ -5688,7 +5995,7 @@ export namespace HarfBuzz {
     ): bool_t;
     /**
      * Retrieves the list of shapers supported by HarfBuzz.
-     * @returns an array of    constant strings
+     * @returns a    `NULL`-terminated array of supported shapers constant string.    The returned array is owned by HarfBuzz and should not be    modified or freed.
      */
     function shape_list_shapers(): string[];
     /**
@@ -6018,6 +6325,8 @@ export namespace HarfBuzz {
      * Converts an #hb_variation_t into a `NULL`-terminated string in the format
      * understood by hb_variation_from_string(). The client in responsible for
      * allocating big enough size for `buf,` 128 bytes is more than enough.
+     *
+     * Note that the string won't include any whitespace.
      * @param variation an #hb_variation_t to convert
      */
     function variation_to_string(variation: variation_t): string[];
@@ -6075,6 +6384,15 @@ export namespace HarfBuzz {
             draw_data?: any | null,
         ): void;
     }
+    interface font_draw_glyph_or_fail_func_t {
+        (
+            font: font_t,
+            font_data: any | null,
+            glyph: codepoint_t,
+            draw_funcs: draw_funcs_t,
+            draw_data?: any | null,
+        ): bool_t;
+    }
     interface font_get_font_extents_func_t {
         (font: font_t, font_data: any | null): bool_t;
     }
@@ -6112,6 +6430,17 @@ export namespace HarfBuzz {
     interface font_get_glyph_origin_func_t {
         (font: font_t, font_data: any | null, glyph: codepoint_t): bool_t;
     }
+    interface font_get_glyph_origins_func_t {
+        (
+            font: font_t,
+            font_data: any | null,
+            count: number,
+            first_glyph: codepoint_t,
+            glyph_stride: number,
+            x_stride: number,
+            y_stride: number,
+        ): bool_t;
+    }
     interface font_get_glyph_shape_func_t {
         (
             font: font_t,
@@ -6146,7 +6475,18 @@ export namespace HarfBuzz {
             paint_data: any | null,
             palette_index: number,
             foreground: color_t,
-        ): void;
+        ): bool_t;
+    }
+    interface font_paint_glyph_or_fail_func_t {
+        (
+            font: font_t,
+            font_data: any | null,
+            glyph: codepoint_t,
+            paint_funcs: paint_funcs_t,
+            paint_data: any | null,
+            palette_index: number,
+            foreground: color_t,
+        ): bool_t;
     }
     interface get_table_tags_func_t {
         (face: face_t, start_offset: number): number;
@@ -8766,6 +9106,22 @@ export namespace HarfBuzz {
          */
         B_SCRIPT_TULU_TIGALARI,
         /**
+         * `Berf`, Since: 11.5.0
+         */
+        B_SCRIPT_BERIA_ERFE,
+        /**
+         * `Sidt`, Since: 11.5.0
+         */
+        B_SCRIPT_SIDETIC,
+        /**
+         * `Tayo`, Since: 11.5.0
+         */
+        B_SCRIPT_TAI_YO,
+        /**
+         * `Tols`, Since: 11.5.0
+         */
+        B_SCRIPT_TOLONG_SIKI,
+        /**
          * No script set
          */
         B_SCRIPT_INVALID,
@@ -9011,12 +9367,15 @@ export namespace HarfBuzz {
          * Converts a #hb_feature_t into a `NULL`-terminated string in the format
          * understood by hb_feature_from_string(). The client in responsible for
          * allocating big enough size for `buf,` 128 bytes is more than enough.
+         *
+         * Note that the feature value will be omitted if it is '1', but the
+         * string won't include any whitespace.
          */
         _string(): string[];
     }
 
     /**
-     * Font-wide extent values, measured in font units.
+     * Font-wide extent values, measured in scaled units.
      *
      * Note that typically `ascender` is positive and `descender`
      * negative, in coordinate systems that grow up.
@@ -9481,6 +9840,8 @@ export namespace HarfBuzz {
          * Converts an #hb_variation_t into a `NULL`-terminated string in the format
          * understood by hb_variation_from_string(). The client in responsible for
          * allocating big enough size for `buf,` 128 bytes is more than enough.
+         *
+         * Note that the string won't include any whitespace.
          */
         _string(): string[];
     }
@@ -9550,10 +9911,12 @@ export namespace HarfBuzz {
     type font_get_glyph_h_advances_func_t = font_get_glyph_advances_func_t;
     type font_get_glyph_h_kerning_func_t = font_get_glyph_kerning_func_t;
     type font_get_glyph_h_origin_func_t = font_get_glyph_origin_func_t;
+    type font_get_glyph_h_origins_func_t = font_get_glyph_origins_func_t;
     type font_get_glyph_v_advance_func_t = font_get_glyph_advance_func_t;
     type font_get_glyph_v_advances_func_t = font_get_glyph_advances_func_t;
     type font_get_glyph_v_kerning_func_t = font_get_glyph_kerning_func_t;
     type font_get_glyph_v_origin_func_t = font_get_glyph_origin_func_t;
+    type font_get_glyph_v_origins_func_t = font_get_glyph_origins_func_t;
     type mask_t = number;
     type ot_name_id_t = number;
     type position_t = number;

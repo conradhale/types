@@ -2599,7 +2599,7 @@ export namespace IBus {
     const KEY_Ukranian_JE: number;
     const KEY_Ukranian_YI: number;
     const KEY_Ukranian_i: number;
-    const KEY_Ukranian_ie: number;
+    const KEY_Ukranian_je: number;
     const KEY_Ukranian_yi: number;
     const KEY_Umacron: number;
     const KEY_Undo: number;
@@ -3645,6 +3645,10 @@ export namespace IBus {
      * IBus minor version.
      */
     const MINOR_VERSION: number;
+    /**
+     * This is a filter for shortcut keys.
+     */
+    const MODIFIER_FILTER: number;
     const Mabovedot: number;
     const Macedonia_DSE: number;
     const Macedonia_GJE: number;
@@ -5122,7 +5126,7 @@ export namespace IBus {
     /**
      * Convert from a ISO10646 character to a key symbol.
      * @param wc a ISO10646 encoded character
-     * @returns the corresponding IBus key symbol, if one exists.          or, if there is no corresponding symbol,          wc | 0x01000000
+     * @returns the corresponding IBus key symbol, if one exists.          or, if there is no corresponding symbol,          `wc | 0x01000000`
      */
     function unicode_to_keyval(wc: string): number;
     /**
@@ -5612,7 +5616,13 @@ export namespace IBus {
             connected: () => void;
             disconnected: () => void;
             'global-engine-changed': (arg0: string) => void;
-            'global-shortcut-key-responded': (arg0: number, arg1: boolean, arg2: boolean) => void;
+            'global-shortcut-key-responded': (
+                arg0: number,
+                arg1: number,
+                arg2: number,
+                arg3: number,
+                arg4: boolean,
+            ) => void;
             'name-owner-changed': (arg0: string, arg1: string, arg2: string) => void;
             'notify::client-only': (pspec: GObject.ParamSpec) => void;
             'notify::connect-async': (pspec: GObject.ParamSpec) => void;
@@ -10916,6 +10926,14 @@ export namespace IBus {
          * by sending a "CursorUp" to IBus service.
          */
         cursor_up(): void;
+        /**
+         * Forward key events when an IBus popup takes the focus and the events
+         * needs to be forwared to the target IBus engine.
+         * @param keyval Key symbol of a key event.
+         * @param keycode Keycode of a key event.
+         * @param state Key modifier flags.
+         */
+        forward_process_key_event(keyval: number, keycode: number, state: number): void;
         /**
          * Notify that the preedit is hidden by the panel extension
          */

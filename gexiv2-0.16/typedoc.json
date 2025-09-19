@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gexiv2-0.16.d.ts"],
+    "readme": "./README.md",
+    "name": "GExiv2-0.16",
+    "tsconfig": "./tsconfig.json"
+}
+

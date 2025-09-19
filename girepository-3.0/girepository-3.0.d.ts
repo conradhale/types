@@ -413,13 +413,17 @@ export namespace GIRepository {
 
     enum FieldInfoFlags {
         /**
+         * no flags set (since: 2.86)
+         */
+        INFO_FLAGS_NONE,
+        /**
          * field is readable.
          */
-        READABLE,
+        IS_READABLE,
         /**
          * field is writable.
          */
-        WRITABLE,
+        IS_WRITABLE,
     }
     /**
      * Flags for a [class`GIRepository`.FunctionInfo] struct.
@@ -433,6 +437,10 @@ export namespace GIRepository {
     }
 
     enum FunctionInfoFlags {
+        /**
+         * no flags set (since: 2.86)
+         */
+        INFO_FLAGS_NONE,
         /**
          * is a method.
          */
@@ -489,17 +497,21 @@ export namespace GIRepository {
 
     enum VFuncInfoFlags {
         /**
+         * no flags set (since: 2.86)
+         */
+        INFO_FLAGS_NONE,
+        /**
          * chains up to the parent type
          */
-        CHAIN_UP,
+        MUST_CHAIN_UP,
         /**
          * overrides
          */
-        OVERRIDE,
+        MUST_OVERRIDE,
         /**
          * does not override
          */
-        NOT_OVERRIDE,
+        MUST_NOT_OVERRIDE,
     }
     namespace ArgInfo {
         // Signal signatures
@@ -2023,6 +2035,16 @@ export namespace GIRepository {
          * @param output_filename Output filename (for example `output.xml`)
          */
         static dump(input_filename: string, output_filename: string): boolean;
+        /**
+         * Gets the singleton process-global default `GIRepository`.
+         *
+         * The singleton is needed for situations where you must coordinate between
+         * bindings and libraries which also need to interact with introspection which
+         * could affect the bindings. For example, a Python application using a
+         * GObject-based library through `GIRepository` to load plugins also written in
+         * Python.
+         */
+        static dup_default(): Repository;
         static error_quark(): GLib.Quark;
         /**
          * Obtain the option group for girepository.

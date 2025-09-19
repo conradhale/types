@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gjsprivate-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GjsPrivate-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -4274,6 +4274,10 @@ export namespace Shumate {
      * layer and won't show anything. A [class`Shumate`.Layer] can be added or removed
      * using the [method`Shumate`.Map.add_layer] or [method`Shumate`.Map.remove_layer]
      * methods.
+     *
+     * ## CSS nodes
+     *
+     * `ShumateMap` has a single CSS node with the name “map-view”.
      */
     class Map extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Map>;
@@ -5271,6 +5275,10 @@ export namespace Shumate {
     /**
      * A [class`Shumate`.Layer] implementation that fetches tiles from a [class`Shumate`.MapSource]
      * and draws them as a grid.
+     *
+     * ## CSS nodes
+     *
+     * `ShumatePoint` has a single CSS node with the name “map-layer”.
      */
     class MapLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MapLayer>;
@@ -6722,6 +6730,8 @@ export namespace Shumate {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             'notify::child': (pspec: GObject.ParamSpec) => void;
             'notify::selectable': (pspec: GObject.ParamSpec) => void;
+            'notify::x-hotspot': (pspec: GObject.ParamSpec) => void;
+            'notify::y-hotspot': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
             'notify::can-target': (pspec: GObject.ParamSpec) => void;
             'notify::css-classes': (pspec: GObject.ParamSpec) => void;
@@ -6772,6 +6782,10 @@ export namespace Shumate {
                 Location.ConstructorProps {
             child: Gtk.Widget;
             selectable: boolean;
+            x_hotspot: number;
+            xHotspot: number;
+            y_hotspot: number;
+            yHotspot: number;
         }
     }
 
@@ -6788,6 +6802,10 @@ export namespace Shumate {
      * instance to add a [class`Gtk`.Image] with a pin image and add the
      * [class`Gtk`.GestureClick] controller to listen to click events and show
      * a [class`Gtk`.Popover] with the description of the marker.
+     *
+     * ## CSS nodes
+     *
+     * `ShumateMarker` has a single CSS node with the name “map-marker”.
      */
     class Marker extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Marker>;
@@ -6804,6 +6822,34 @@ export namespace Shumate {
          */
         get selectable(): boolean;
         set selectable(val: boolean);
+        /**
+         * The x hotspot of the marker, a negative value means that the actual
+         * x hotspot is calculated with the [property`Gtk`.Widget:halign] property.
+         * The x hotspot should not be more than the width of the widget.
+         */
+        get x_hotspot(): number;
+        set x_hotspot(val: number);
+        /**
+         * The x hotspot of the marker, a negative value means that the actual
+         * x hotspot is calculated with the [property`Gtk`.Widget:halign] property.
+         * The x hotspot should not be more than the width of the widget.
+         */
+        get xHotspot(): number;
+        set xHotspot(val: number);
+        /**
+         * The y hotspot of the marker, a negative value means that the actual
+         * y hotspot is calculated with the [property`Gtk`.Widget:valign] property.
+         * The y hotspot should not be more than the height of the widget.
+         */
+        get y_hotspot(): number;
+        set y_hotspot(val: number);
+        /**
+         * The y hotspot of the marker, a negative value means that the actual
+         * y hotspot is calculated with the [property`Gtk`.Widget:valign] property.
+         * The y hotspot should not be more than the height of the widget.
+         */
+        get yHotspot(): number;
+        set yHotspot(val: number);
 
         /**
          * Compile-time signal type information.
@@ -6853,6 +6899,13 @@ export namespace Shumate {
         get_child(): Gtk.Widget | null;
         get_draggable(): boolean;
         /**
+         * Get the hotspot point for the given marker. The value is in pixel relative
+         * to the top-left corner. Any negative value means that the hotspot get
+         * computed with the [property`Gtk`.Widget:halign] or [property`Gtk`.Widget:valign]
+         * properties.
+         */
+        get_hotspot(): [number, number];
+        /**
          * Checks whether the marker is selectable.
          * @returns the selectable or not state of the marker.
          */
@@ -6868,6 +6921,14 @@ export namespace Shumate {
          */
         set_child(child?: Gtk.Widget | null): void;
         set_draggable(value: boolean): void;
+        /**
+         * Set the hotspot point for the given marker. The value is in pixel relative
+         * to the top-left corner. Use any negative value to fallback to the
+         * [property`Gtk`.Widget:halign] or [property`Gtk`.Widget:valign] properties.
+         * @param x_hotspot the x hotspot
+         * @param y_hotspot the y hotspot
+         */
+        set_hotspot(x_hotspot: number, y_hotspot: number): void;
         /**
          * Sets the marker as selectable or not.
          * @param value the selectable state
@@ -9030,6 +9091,8 @@ export namespace Shumate {
         interface SignalSignatures extends Marker.SignalSignatures {
             'notify::child': (pspec: GObject.ParamSpec) => void;
             'notify::selectable': (pspec: GObject.ParamSpec) => void;
+            'notify::x-hotspot': (pspec: GObject.ParamSpec) => void;
+            'notify::y-hotspot': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
             'notify::can-target': (pspec: GObject.ParamSpec) => void;
             'notify::css-classes': (pspec: GObject.ParamSpec) => void;
@@ -9082,6 +9145,10 @@ export namespace Shumate {
     /**
      * A simple variant of [class`Marker]` showing the location of the point as a
      * circle on the map.
+     *
+     * ## CSS nodes
+     *
+     * `ShumatePoint` has a single CSS node with the name “map-point”.
      */
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Point>;
@@ -10800,7 +10867,21 @@ export namespace Shumate {
          * @returns a [class@Viewport]
          */
         get_viewport(): Viewport;
-        insert_overlay_layer(layer: Layer, idx: number): void;
+        /**
+         * Inserts a map layer as an overlay on top of the base map. The layer will
+         * appear above `sibling,` or at the bottom (but still above the base map)
+         * if `sibling` is %NULL.
+         * @param layer a [class@Layer] to insert
+         * @param sibling
+         */
+        insert_overlay_layer_above(layer: Layer, sibling: Layer): void;
+        /**
+         * Inserts a map layer as an overlay on top of the base map. The layer will
+         * appear just below `sibling,` or above everything else if `sibling` is %NULL.
+         * @param layer a [class@Layer] to insert
+         * @param sibling
+         */
+        insert_overlay_layer_behind(layer: Layer, sibling: Layer): void;
         /**
          * Removes a layer from the map.
          * @param layer a [class@Layer] that was added to the map previously
@@ -11547,6 +11628,7 @@ export namespace Shumate {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::feature-id': (pspec: GObject.ParamSpec) => void;
             'notify::layer': (pspec: GObject.ParamSpec) => void;
+            'notify::n-press': (pspec: GObject.ParamSpec) => void;
             'notify::source-layer': (pspec: GObject.ParamSpec) => void;
             'notify::latitude': (pspec: GObject.ParamSpec) => void;
             'notify::longitude': (pspec: GObject.ParamSpec) => void;
@@ -11558,6 +11640,8 @@ export namespace Shumate {
             feature_id: string;
             featureId: string;
             layer: string;
+            n_press: number;
+            nPress: number;
             source_layer: string;
             sourceLayer: string;
         }
@@ -11594,6 +11678,16 @@ export namespace Shumate {
          * The ID of the style layer of the symbol that this event pertains to.
          */
         get layer(): string;
+        /**
+         * The number of clicks/presses triggering the symbol event.
+         */
+        get n_press(): number;
+        set n_press(val: number);
+        /**
+         * The number of clicks/presses triggering the symbol event.
+         */
+        get nPress(): number;
+        set nPress(val: number);
         /**
          * The ID of the source layer of the symbol that this event pertains to.
          */
@@ -11662,6 +11756,11 @@ export namespace Shumate {
          * @returns the layer name
          */
         get_layer(): string;
+        /**
+         * Gets the number of clicks/presses that initiated the event.
+         * @returns the number of presses
+         */
+        get_n_press(): number;
         /**
          * Gets the name of the source layer the clicked feature is in,
          * as named in the vector tile schema.

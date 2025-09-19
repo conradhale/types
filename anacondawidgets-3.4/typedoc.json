@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./anacondawidgets-3.4.d.ts"],
+    "readme": "./README.md",
+    "name": "AnacondaWidgets-3.4",
+    "tsconfig": "./tsconfig.json"
+}
+

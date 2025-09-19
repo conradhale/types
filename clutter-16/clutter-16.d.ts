@@ -5105,7 +5105,7 @@ export namespace Clutter {
 
         // Constructor properties interface
 
-        interface ConstructorProps
+        interface ConstructorProps<A extends LayoutManager = LayoutManager, B extends Content = Content>
             extends GObject.InitiallyUnowned.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Animatable.ConstructorProps {
@@ -5130,7 +5130,7 @@ export namespace Clutter {
             color_state: ColorState;
             colorState: ColorState;
             constraints: Constraint;
-            content: Content;
+            content: B;
             content_box: ActorBox;
             contentBox: ActorBox;
             content_gravity: ContentGravity;
@@ -5154,8 +5154,8 @@ export namespace Clutter {
             height: number;
             last_child: Actor;
             lastChild: Actor;
-            layout_manager: LayoutManager;
-            layoutManager: LayoutManager;
+            layout_manager: A;
+            layoutManager: A;
             magnification_filter: ScalingFilter;
             magnificationFilter: ScalingFilter;
             mapped: boolean;
@@ -5693,7 +5693,10 @@ export namespace Clutter {
      * }
      * ```
      */
-    class Actor extends GObject.InitiallyUnowned implements Atk.ImplementorIface, Animatable {
+    class Actor<A extends LayoutManager = LayoutManager, B extends Content = Content>
+        extends GObject.InitiallyUnowned
+        implements Atk.ImplementorIface, Animatable
+    {
         static $gtype: GObject.GType<Actor>;
 
         // Properties
@@ -5845,8 +5848,8 @@ export namespace Clutter {
          * The #ClutterContent implementation that controls the content
          * of the actor.
          */
-        get content(): Content;
-        set content(val: Content);
+        get content(): B;
+        set content(val: B);
         /**
          * The bounding box for the #ClutterContent used by the actor.
          *
@@ -6010,14 +6013,14 @@ export namespace Clutter {
          * A delegate object for controlling the layout of the children of
          * an actor.
          */
-        get layout_manager(): LayoutManager;
-        set layout_manager(val: LayoutManager);
+        get layout_manager(): A;
+        set layout_manager(val: A);
         /**
          * A delegate object for controlling the layout of the children of
          * an actor.
          */
-        get layoutManager(): LayoutManager;
-        set layoutManager(val: LayoutManager);
+        get layoutManager(): A;
+        set layoutManager(val: A);
         get magnification_filter(): ScalingFilter;
         set magnification_filter(val: ScalingFilter);
         get magnificationFilter(): ScalingFilter;
@@ -7633,7 +7636,7 @@ export namespace Clutter {
          * Retrieves the contents of `self`.
          * @returns a pointer to the #ClutterContent   instance, or %NULL if none was set
          */
-        get_content(): Content | null;
+        get_content(): B | null;
         /**
          * Retrieves the bounding box for the #ClutterContent of `self`.
          *
@@ -7754,7 +7757,7 @@ export namespace Clutter {
          * Retrieves the #ClutterLayoutManager used by `self`.
          * @returns a pointer to the   #ClutterLayoutManager, or %NULL
          */
-        get_layout_manager(): LayoutManager | null;
+        get_layout_manager(): A | null;
         /**
          * Retrieves all the components of the margin of a #ClutterActor.
          */
@@ -8796,7 +8799,7 @@ export namespace Clutter {
          * Sets the contents of a #ClutterActor.
          * @param content a #ClutterContent, or %NULL
          */
-        set_content(content?: Content | null): void;
+        set_content(content?: B | null): void;
         /**
          * Sets the gravity of the #ClutterContent used by `self`.
          *
@@ -8869,7 +8872,7 @@ export namespace Clutter {
          * the actor is destroyed.
          * @param manager a #ClutterLayoutManager, or %NULL to unset it
          */
-        set_layout_manager(manager?: LayoutManager | null): void;
+        set_layout_manager(manager?: A | null): void;
         /**
          * Sets all the components of the margin of a #ClutterActor.
          * @param margin a #ClutterMargin
@@ -12267,11 +12270,11 @@ export namespace Clutter {
 
         // Constructor properties interface
 
-        interface ConstructorProps
+        interface ConstructorProps<A extends Actor = Actor>
             extends Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Animatable.ConstructorProps {
-            source: Actor;
+            source: A;
         }
     }
 
@@ -12286,7 +12289,7 @@ export namespace Clutter {
      * #ClutterClone does not require the presence of support for FBOs
      * in the underlying GL or GLES implementation.
      */
-    class Clone extends Actor implements Atk.ImplementorIface, Animatable {
+    class Clone<A extends Actor = Actor> extends Actor implements Atk.ImplementorIface, Animatable {
         static $gtype: GObject.GType<Clone>;
 
         // Properties
@@ -12294,8 +12297,8 @@ export namespace Clutter {
         /**
          * This property specifies the source actor being cloned.
          */
-        get source(): Actor;
-        set source(val: Actor);
+        get source(): A;
+        set source(val: A);
 
         /**
          * Compile-time signal type information.
@@ -12341,12 +12344,12 @@ export namespace Clutter {
          * Retrieves the source #ClutterActor being cloned by `self`.
          * @returns the actor source for the clone
          */
-        get_source(): Actor;
+        get_source(): A;
         /**
          * Sets `source` as the source actor to be cloned by `self`.
          * @param source a #ClutterActor, or %NULL
          */
-        set_source(source?: Actor | null): void;
+        set_source(source?: A | null): void;
 
         // Inherited methods
         /**

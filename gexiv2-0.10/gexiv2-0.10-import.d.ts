@@ -1,9 +1,1 @@
-import type GExiv2010 from '@girs/gexiv2-0.10';
-
-declare global {
-    export interface GjsGiImports {
-        GExiv2: typeof GExiv2010;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GExiv2"

@@ -1342,11 +1342,11 @@ export namespace St {
 
         // Constructor properties interface
 
-        interface ConstructorProps
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
-            child: Clutter.Actor;
+            child: A;
         }
     }
 
@@ -1356,7 +1356,10 @@ export namespace St {
      * #StBin is a simple container capable of having only one
      * #ClutterActor as a child.
      */
-    class Bin extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class Bin<A extends Clutter.Actor = Clutter.Actor>
+        extends Widget
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Bin>;
 
         // Properties
@@ -1364,8 +1367,8 @@ export namespace St {
         /**
          * The child #ClutterActor of the #StBin container.
          */
-        get child(): Clutter.Actor;
-        set child(val: Clutter.Actor);
+        get child(): A;
+        set child(val: A);
 
         /**
          * Compile-time signal type information.
@@ -1408,14 +1411,14 @@ export namespace St {
          * Gets the #ClutterActor child for `bin`.
          * @returns a #ClutterActor, or %NULL
          */
-        get_child(): Clutter.Actor | null;
+        get_child(): A | null;
         /**
          * Sets `child` as the child of `bin`.
          *
          * If `bin` already has a child, the previous child is removed.
          * @param child a #ClutterActor, or %NULL
          */
-        set_child(child?: Clutter.Actor | null): void;
+        set_child(child?: A | null): void;
 
         // Inherited methods
         /**
@@ -2023,7 +2026,7 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Viewport.ConstructorProps,
+            extends Viewport.ConstructorProps<Clutter.BoxLayout>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Scrollable.ConstructorProps {
@@ -2042,7 +2045,10 @@ export namespace St {
      * is enabled, then the position of the actor within the available space can
      * be determined by the alignment child property.
      */
-    class BoxLayout extends Viewport implements Atk.ImplementorIface, Clutter.Animatable, Scrollable {
+    class BoxLayout
+        extends Viewport<Clutter.BoxLayout>
+        implements Atk.ImplementorIface, Clutter.Animatable, Scrollable
+    {
         static $gtype: GObject.GType<BoxLayout>;
 
         // Properties
@@ -2725,8 +2731,8 @@ export namespace St {
 
         // Constructor properties interface
 
-        interface ConstructorProps
-            extends Bin.ConstructorProps,
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
+            extends Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             button_mask: ButtonMask;
@@ -2747,7 +2753,10 @@ export namespace St {
      * A button widget with support for either a text label or icon, toggle mode
      * and transitions effects between states.
      */
-    class Button extends Bin implements Atk.ImplementorIface, Clutter.Animatable {
+    class Button<A extends Clutter.Actor = Clutter.Actor>
+        extends Bin<A>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Button>;
 
         // Properties
@@ -9656,7 +9665,7 @@ export namespace St {
 
         // Constructor properties interface
 
-        interface ConstructorProps
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
@@ -9685,7 +9694,10 @@ export namespace St {
      * #StScrollable. It provides scrollbars around the edge of the child to
      * allow the user to move around the scrollable area.
      */
-    class ScrollView extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class ScrollView<A extends Clutter.Actor = Clutter.Actor>
+        extends Widget
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<ScrollView>;
 
         // Properties
@@ -12158,8 +12170,10 @@ export namespace St {
 
         // Constructor properties interface
 
-        interface ConstructorProps
-            extends Widget.ConstructorProps,
+        interface ConstructorProps<
+            A extends Clutter.LayoutManager = Clutter.LayoutManager,
+            B extends Clutter.Content = Clutter.Content,
+        > extends Widget.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Scrollable.ConstructorProps {
@@ -12173,7 +12187,10 @@ export namespace St {
      *
      * The #StViewport is a generic #StScrollable implementation.
      */
-    class Viewport extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Scrollable {
+    class Viewport<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
+        extends Widget<A, B>
+        implements Atk.ImplementorIface, Clutter.Animatable, Scrollable
+    {
         static $gtype: GObject.GType<Viewport>;
 
         // Properties
@@ -12822,8 +12839,10 @@ export namespace St {
 
         // Constructor properties interface
 
-        interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+        interface ConstructorProps<
+            A extends Clutter.LayoutManager = Clutter.LayoutManager,
+            B extends Clutter.Content = Clutter.Content,
+        > extends Clutter.Actor.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             can_focus: boolean;
@@ -12850,7 +12869,10 @@ export namespace St {
      * Actors in the St library should subclass #StWidget if they plan
      * to obey to a certain #StStyle.
      */
-    class Widget extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    class Widget<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
+        extends Clutter.Actor<A, B>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Widget>;
 
         // Properties

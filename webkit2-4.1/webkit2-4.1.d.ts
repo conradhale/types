@@ -3764,11 +3764,12 @@ export namespace WebKit2 {
     }
 
     /**
-     * A permission request for accessing user's audio/video devices.
+     * A permission request for enumerating the user's media devices
      *
-     * WebKitUserMediaPermissionRequest represents a request for
+     * WebKitDeviceInfoPermissionRequest represents a request for
      * permission to whether WebKit should be allowed to access the user's
-     * devices information when requested through the enumerateDevices API.
+     * devices information when requested through the MediaDevices.enumerateDevices
+     * API.
      *
      * When a WebKitDeviceInfoPermissionRequest is not handled by the user,
      * it is denied by default.
@@ -14158,6 +14159,7 @@ export namespace WebKit2 {
             'notify::page-id': (pspec: GObject.ParamSpec) => void;
             'notify::related-view': (pspec: GObject.ParamSpec) => void;
             'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::theme-color': (pspec: GObject.ParamSpec) => void;
             'notify::title': (pspec: GObject.ParamSpec) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
             'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;
@@ -14246,6 +14248,8 @@ export namespace WebKit2 {
             related_view: WebView;
             relatedView: WebView;
             settings: Settings;
+            theme_color: Gdk.RGBA;
+            themeColor: Gdk.RGBA;
             title: string;
             uri: string;
             user_content_manager: UserContentManager;
@@ -14571,6 +14575,14 @@ export namespace WebKit2 {
          * The #WebKitSettings of the view.
          */
         set settings(val: Settings);
+        /**
+         * The theme color of the WebView's current page.
+         */
+        get theme_color(): Gdk.RGBA;
+        /**
+         * The theme color of the WebView's current page.
+         */
+        get themeColor(): Gdk.RGBA;
         /**
          * The main frame document title of this #WebKitWebView. If
          * the title has not been received yet, it will be %NULL.
@@ -15445,6 +15457,13 @@ export namespace WebKit2 {
          * @returns an image with the retrieved snapshot, or %NULL in case of error.
          */
         get_snapshot_finish(result: Gio.AsyncResult): cairo.Surface;
+        /**
+         * Gets the theme color that is specified by the content in the `web_view`.
+         * If the `web_view` doesn't have a theme color it will fill the `rgba`
+         * with transparent black content.
+         * @returns Whether the currently loaded page defines a theme color.
+         */
+        get_theme_color(): [boolean, Gdk.RGBA];
         /**
          * Gets the value of the #WebKitWebView:title property.
          *
@@ -19669,7 +19688,7 @@ export namespace WebKit2 {
      * Configures network proxies.
      *
      * WebKitNetworkProxySettings can be used to provide a custom proxy configuration
-     * to a #WebKitWebContext. You need to call webkit_web_context_set_network_proxy_settings()
+     * to a #WebKitWebsiteDataManager. You need to call webkit_website_data_manager_set_network_proxy_settings()
      * with %WEBKIT_NETWORK_PROXY_MODE_CUSTOM and a WebKitNetworkProxySettings.
      */
     class NetworkProxySettings {

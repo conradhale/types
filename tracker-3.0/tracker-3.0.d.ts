@@ -2195,10 +2195,7 @@ export namespace Tracker {
         // Methods
 
         /**
-         * Adds `prefix` as the recognised abbreviaton of `namespace`.
-         *
-         * Only one prefix is allowed for a given namespace, and all prefixes must
-         * be unique.
+         * Adds `prefix` as the recognised abbreviation of `namespace`.
          *
          * Since 3.3, The `TrackerNamespaceManager` instances obtained through
          * [method`SparqlConnection`.get_namespace_manager] are "sealed",
@@ -3015,7 +3012,7 @@ export namespace Tracker {
          *
          * See [ctor`SparqlConnection`.new] for more information.
          * @param flags Connection flags to define the SPARQL connection behavior
-         * @param store The directory that contains the database as a [iface@Gio.File], or %NULL
+         * @param store The database location as a [iface@Gio.File], or %NULL
          * @param ontology The directory that contains the database schemas as a [iface@Gio.File], or %NULL
          * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.

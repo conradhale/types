@@ -5607,6 +5607,7 @@ export namespace GstValidate {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'action-done': (arg0: Action) => void;
             done: () => void;
+            stopping: () => void;
             'notify::execute-on-idle': (pspec: GObject.ParamSpec) => void;
             'notify::handles-states': (pspec: GObject.ParamSpec) => void;
             'notify::validate-runner': (pspec: GObject.ParamSpec) => void;

@@ -431,8 +431,8 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             action_group: Gio.ActionGroup;
             actionGroup: Gio.ActionGroup;
-            app_info: Gio.DesktopAppInfo;
-            appInfo: Gio.DesktopAppInfo;
+            app_info: never;
+            appInfo: never;
             busy: boolean;
             icon: Gio.Icon;
             id: string;
@@ -464,11 +464,11 @@ export namespace Shell {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get app_info(): Gio.DesktopAppInfo;
+        get app_info(): never;
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get appInfo(): Gio.DesktopAppInfo;
+        get appInfo(): never;
         /**
          * Whether the application has marked itself as busy.
          */
@@ -645,7 +645,7 @@ export namespace Shell {
          */
         create_icon_texture(size: number): Clutter.Actor;
         get_action_group(): Gio.ActionGroup | null;
-        get_app_info(): Gio.DesktopAppInfo;
+        get_app_info(): never;
         get_busy(): boolean;
         get_description(): string;
         /**
@@ -1092,7 +1092,12 @@ export namespace Shell {
          * @param code GLSL code
          * @param is_replace whether Cogl code should be replaced by the custom shader
          */
-        add_glsl_snippet(hook: Cogl.SnippetHook | null, declarations: string, code: string, is_replace: boolean): void;
+        add_glsl_snippet(
+            hook: (never | Cogl.SnippetHook) | null,
+            declarations: string,
+            code: string,
+            is_replace: boolean,
+        ): void;
         get_uniform_location(name: string): number;
         set_uniform_float(uniform: number, n_components: number, value: number[]): void;
         set_uniform_matrix(uniform: number, transpose: boolean, dimensions: number, value: number[]): void;
@@ -4174,13 +4179,16 @@ export namespace Shell {
 
         // Constructor properties interface
 
-        interface ConstructorProps
-            extends St.Bin.ConstructorProps,
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
+            extends St.Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {}
     }
 
-    class SquareBin extends St.Bin implements Atk.ImplementorIface, Clutter.Animatable {
+    class SquareBin<A extends Clutter.Actor = Clutter.Actor>
+        extends St.Bin<A>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<SquareBin>;
 
         /**
@@ -5325,8 +5333,8 @@ export namespace Shell {
 
         // Constructor properties interface
 
-        interface ConstructorProps
-            extends Clutter.Clone.ConstructorProps,
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
+            extends Clutter.Clone.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             pid: number;
@@ -5336,7 +5344,10 @@ export namespace Shell {
         }
     }
 
-    class TrayIcon extends Clutter.Clone implements Atk.ImplementorIface, Clutter.Animatable {
+    class TrayIcon<A extends Clutter.Actor = Clutter.Actor>
+        extends Clutter.Clone<A>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<TrayIcon>;
 
         // Properties

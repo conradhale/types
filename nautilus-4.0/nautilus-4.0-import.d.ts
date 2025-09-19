@@ -1,9 +1,1 @@
-import type Nautilus40 from '@girs/nautilus-4.0';
-
-declare global {
-    export interface GjsGiImports {
-        Nautilus: typeof Nautilus40;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Nautilus"

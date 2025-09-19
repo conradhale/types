@@ -648,29 +648,6 @@ export namespace Gda {
         MODIFY_ROW,
     }
 
-    export namespace ForeignKeyMatch {
-        export const $gtype: GObject.GType<ForeignKeyMatch>;
-    }
-
-    enum ForeignKeyMatch {
-        NONE,
-        FULL,
-        PARTIAL,
-    }
-
-    export namespace ForeignKeyRule {
-        export const $gtype: GObject.GType<ForeignKeyRule>;
-    }
-
-    enum ForeignKeyRule {
-        NONE,
-        CASCADE,
-        SET_NULL,
-        SET_DEFAULT,
-        RESTRICT,
-        NO_ACTION,
-    }
-
     export namespace HolderError {
         export const $gtype: GObject.GType<HolderError>;
     }
@@ -1434,9 +1411,6 @@ export namespace Gda {
      * @returns @text if conversion succeeded or %NULL if an error occurred
      */
     function alphanum_to_text(text: string): string | null;
-    function column_attributes_from_string(str: string): ColumnAttributes;
-    function column_attributes_items(result_length1: number): ColumnAttributes;
-    function column_attributes_to_string(self: ColumnAttributes | null): string;
     /**
      * Creates an array of strings (terminated by a %NULL) corresponding to possible completions.
      * If no completion is available, then the returned array contains just one NULL entry, and
@@ -1541,12 +1515,6 @@ export namespace Gda {
      * @param out_password a place to store the new string containing the &lt;password&gt; part
      */
     function dsn_split(string: string, out_dsn: string, out_username: string, out_password: string): void;
-    function foreign_key_match_from_string(str: string): ForeignKeyMatch;
-    function foreign_key_match_items(result_length1: number): ForeignKeyMatch;
-    function foreign_key_match_to_string(self: ForeignKeyMatch | null): string;
-    function foreign_key_rule_from_string(str: string): ForeignKeyRule;
-    function foreign_key_rule_items(result_length1: number): ForeignKeyRule;
-    function foreign_key_rule_to_string(self: ForeignKeyRule | null): string;
     /**
      * Converts a named type to ts GType type (also see the gda_g_type_to_string() function).
      *
@@ -2390,21 +2358,6 @@ export namespace Gda {
     }
     type Default = object | null;
     type Null = object | null;
-
-    export namespace ColumnAttributes {
-        export const $gtype: GObject.GType<ColumnAttributes>;
-    }
-
-    enum ColumnAttributes {
-        NONE,
-        PRIMARY_KEY,
-        UNIQUE,
-        FOREIGN_KEY,
-        CHECK,
-        HAVE_DEFAULT,
-        CAN_BE_NULL,
-        AUTO_INCREMENT,
-    }
     /**
      * Specifies some aspects of a connection when opening it.
      *
@@ -4828,85 +4781,6 @@ export namespace Gda {
          * @param sqlstate SQL state.
          */
         set_sqlstate(sqlstate: string): void;
-    }
-
-    namespace ConnectionModelParams {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cnc-string': (pspec: GObject.ParamSpec) => void;
-            'notify::pasword': (pspec: GObject.ParamSpec) => void;
-            'notify::user': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            cnc_string: string;
-            cncString: string;
-            pasword: string;
-            user: string;
-        }
-    }
-
-    class ConnectionModelParams extends GObject.Object {
-        static $gtype: GObject.GType<ConnectionModelParams>;
-
-        // Properties
-
-        get cnc_string(): string;
-        set cnc_string(val: string);
-        get cncString(): string;
-        set cncString(val: string);
-        get pasword(): string;
-        set pasword(val: string);
-        get user(): string;
-        set user(val: string);
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: ConnectionModelParams.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<ConnectionModelParams.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): ConnectionModelParams;
-
-        // Signals
-
-        connect<K extends keyof ConnectionModelParams.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionModelParams.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof ConnectionModelParams.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionModelParams.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        emit<K extends keyof ConnectionModelParams.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionModelParams.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        get_cnc_string(): string;
-        get_pasword(): string;
-        get_user(): string;
-        set_cnc_string(value: string): void;
-        set_pasword(value: string): void;
-        set_user(value: string): void;
     }
 
     namespace DataAccessWrapper {
@@ -13718,9 +13592,11 @@ export namespace Gda {
         // Methods
 
         /**
-         * Compares two objects similar to g_strcmp().
+         * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
+         * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
+         * null.null.customer and main.main.customer are identical.
          * @param b second #GdaDbBase object
-         * @returns 0 if catalog, schema and name are the same
+         * @returns 0 if two objects are identical or -1 or 1 otherwise.
          */
         compare(b: DbBase): number;
         /**
@@ -13859,7 +13735,57 @@ export namespace Gda {
          * @param view view to append
          */
         append_view(view: DbView): void;
+        /**
+         * Convenient function to get a table based on `name`. The coller is responsible
+         * for calling gda_db_catalog_parse_cnc() before calling this function.
+         * @param catalog
+         * @param schema
+         * @param name table name
+         * @returns table as #GdaDbTable or %NULL if the table is not found. The returned pointer should not be freed and belongs to the @self.
+         */
+        get_table(catalog: string, schema: string, name: string): DbTable;
         get_tables(): DbTable[];
+        /**
+         * Convenient function to get a view based on name. The coller is responsible
+         * for calling gda_db_catalog_parse_cnc() before calling this function. This
+         * code is equivalent to the following code:
+         *
+         *
+         * ```c
+         *  GdaDbBase *iobj;
+         *  GList *it;
+         *
+         *  GdaDbCatalogPrivate *priv = gda_db_catalog_get_instance_private (self);
+         *
+         *  if (gda_db_catalog_parse_cnc (self, error))
+         *    return NULL;
+         *
+         *  iobj = gda_db_base_new ();
+         *  gda_db_base_set_names (iobj, catalog, schema, name);
+         *
+         *  for (it = priv->mp_views; it; it = it->next)
+         *    {
+         *      if (!gda_db_base_compare (iobj, GDA_DB_BASE (it->data)))
+         *        {
+         *          if (iobj)
+         *            g_object_unref (iobj);
+         *
+         *          return GDA_DB_VIEW (it->data);
+         *        }
+         *    }
+         *
+         *  if (iobj)
+         *    g_object_unref (iobj);
+         *
+         *  return NULL;
+         * ```
+         *
+         * @param catalog a catalog name or %NULL
+         * @param schema a schema name or %NULL
+         * @param name view name. Can't be %NULL
+         * @returns View as #GdaDbView or %NULL if the view is not found. The returned pointer should not be freed and belongs to @self
+         */
+        get_view(catalog: string, schema: string, name: string): DbView;
         get_views(): DbView[];
         /**
          * Parse internal cnc to populate `self` object. This method should be called every time after
@@ -24841,6 +24767,7 @@ export namespace Gda {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::column-error': (pspec: GObject.ParamSpec) => void;
+            'notify::debug': (pspec: GObject.ParamSpec) => void;
             'notify::line-error': (pspec: GObject.ParamSpec) => void;
             'notify::mode': (pspec: GObject.ParamSpec) => void;
             'notify::tokenizer-flavour': (pspec: GObject.ParamSpec) => void;
@@ -24851,6 +24778,7 @@ export namespace Gda {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
             column_error: number;
             columnError: number;
+            debug: boolean;
             line_error: number;
             lineError: number;
             mode: number;
@@ -24866,6 +24794,7 @@ export namespace Gda {
 
         get column_error(): number;
         get columnError(): number;
+        set debug(val: boolean);
         get line_error(): number;
         get lineError(): number;
         get mode(): number;
@@ -26623,7 +26552,6 @@ export namespace Gda {
         unregister_connection(cnc: Connection): void;
     }
 
-    type AfectedRowsIface = typeof AfectedRows;
     type BatchClass = typeof Batch;
     class Binary {
         static $gtype: GObject.GType<Binary>;
@@ -26733,22 +26661,9 @@ export namespace Gda {
     }
 
     type ColumnClass = typeof Column;
-    type ColumnModelIface = typeof ColumnModel;
     type ConfigClass = typeof Config;
     type ConnectionClass = typeof Connection;
     type ConnectionEventClass = typeof ConnectionEvent;
-    type ConnectionModelIface = typeof ConnectionModel;
-    type ConnectionModelParamsClass = typeof ConnectionModelParams;
-    abstract class ConnectionModelParamsPrivate {
-        static $gtype: GObject.GType<ConnectionModelParamsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type CreateDatabaseBuilderIface = typeof CreateDatabaseBuilder;
-    type CreateTableBuilderIface = typeof CreateTableBuilder;
     type DataAccessWrapperClass = typeof DataAccessWrapper;
     type DataComparatorClass = typeof DataComparator;
     type DataHandlerInterface = typeof DataHandler;
@@ -26795,8 +26710,6 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    type DropDatabaseBuilderIface = typeof DropDatabaseBuilder;
-    type DropTableBuilderIface = typeof DropTableBuilder;
     /**
      * This structure defines the properties of a named data source (DSN).
      */
@@ -26850,7 +26763,6 @@ export namespace Gda {
         free(): void;
     }
 
-    type ForeignKeyIface = typeof ForeignKey;
     class GeometricPoint {
         static $gtype: GObject.GType<GeometricPoint>;
 
@@ -26879,10 +26791,7 @@ export namespace Gda {
     type HandlerTimeClass = typeof HandlerTime;
     type HandlerTypeClass = typeof HandlerType;
     type HolderClass = typeof Holder;
-    type InsertedIface = typeof Inserted;
     type LockableInterface = typeof Lockable;
-    type MetaCatalogIface = typeof MetaCatalog;
-    type MetaColumnIface = typeof MetaColumn;
     /**
      * The <structname>GdaMetaContext</structname> represents a meta data modification
      * context: the <emphasis>how</emphasis> when used with gda_meta_store_modify_with_context(),
@@ -27027,6 +26936,27 @@ export namespace Gda {
     type MetaStoreClass = typeof MetaStore;
     type MetaStructClass = typeof MetaStruct;
     /**
+     * This structure specifies a #GdaMetaDbObject to represent a table's specific attributes,
+     * its contents must not be modified.
+     *
+     * Note that in some cases, the columns cannot be determined for views, and in this case the
+     * `columns` will be %NULL (this can be the case for example with SQLite where a view
+     * uses a function which is not natively provided by SQLite.
+     */
+    class MetaTable {
+        static $gtype: GObject.GType<MetaTable>;
+
+        // Fields
+
+        pk_cols_array: number;
+        pk_cols_nb: number;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
+    /**
      * This structure represents a table of view's column, its contents must not be modified.
      */
     class MetaTableColumn {
@@ -27068,7 +26998,6 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    type MetaTableIface = typeof MetaTable;
     /**
      * This structure specifies a #GdaMetaDbObject to represent a view's specific attributes,
      * its contents must not be modified.
@@ -27078,7 +27007,6 @@ export namespace Gda {
 
         // Fields
 
-        table: MetaTable;
         view_def: string;
         is_updatable: boolean;
 
@@ -27153,8 +27081,6 @@ export namespace Gda {
     }
 
     type PStmtClass = typeof PStmt;
-    type ParametersIface = typeof Parameters;
-    type PreparedQueryIface = typeof PreparedQuery;
     /**
      * This structure holds the information associated to a database provider as discovered by Libgda.
      */
@@ -27254,15 +27180,8 @@ export namespace Gda {
         remove(name: string): void;
     }
 
-    type QueryBuilderIface = typeof QueryBuilder;
-    type QueryIface = typeof Query;
-    type ReadonlyTableModelIface = typeof ReadonlyTableModel;
-    type ReferencedColumnIface = typeof ReferencedColumn;
     type RepetitiveStatementClass = typeof RepetitiveStatement;
-    type ResultIface = typeof Result;
-    type ResultTableIface = typeof ResultTable;
     type RowClass = typeof Row;
-    type RowModelIface = typeof RowModel;
     type ServerOperationClass = typeof ServerOperation;
     class ServerOperationCreateTableArg {
         static $gtype: GObject.GType<ServerOperationCreateTableArg>;
@@ -28636,8 +28555,6 @@ export namespace Gda {
     }
 
     type StatementClass = typeof Statement;
-    type TableConstraintIface = typeof TableConstraint;
-    type TableModelIface = typeof TableModel;
     class Text {
         static $gtype: GObject.GType<Text>;
 
@@ -29004,7 +28921,6 @@ export namespace Gda {
         wait_job(func: WorkerFunc, data_destroy_func?: GLib.DestroyNotify | null): any | null;
     }
 
-    type WritableTableModelIface = typeof WritableTableModel;
     type XaTransactionClass = typeof XaTransaction;
     class XaTransactionId {
         static $gtype: GObject.GType<XaTransactionId>;
@@ -29038,256 +28954,6 @@ export namespace Gda {
          */
         to_string(): string;
     }
-
-    namespace AfectedRows {
-        /**
-         * Interface for implementing AfectedRows.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_number(): number;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Result.ConstructorProps {
-            number: number;
-        }
-    }
-
-    export interface AfectedRowsNamespace {
-        $gtype: GObject.GType<AfectedRows>;
-        prototype: AfectedRows;
-    }
-    interface AfectedRows extends Result, AfectedRows.Interface {
-        // Properties
-
-        get number(): number;
-
-        // Methods
-
-        get_number(): number;
-    }
-
-    export const AfectedRows: AfectedRowsNamespace & {
-        new (): AfectedRows; // This allows `obj instanceof AfectedRows`
-    };
-
-    namespace ColumnModel {
-        /**
-         * Interface for implementing ColumnModel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_attributes(): ColumnAttributes;
-            vfunc_get_data_type(): GObject.GType;
-            vfunc_get_index(): number;
-            vfunc_get_name(): string;
-            vfunc_get_value(): unknown;
-            vfunc_set_attributes(value: ColumnAttributes): void;
-            vfunc_set_foreign_key(value: ForeignKey): void;
-            vfunc_set_value(value: GObject.Value | any): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: ColumnAttributes;
-            data_type: GObject.GType;
-            dataType: GObject.GType;
-            foreign_key: ForeignKey;
-            foreignKey: ForeignKey;
-            index: number;
-            name: string;
-            value: GObject.Value;
-        }
-    }
-
-    export interface ColumnModelNamespace {
-        $gtype: GObject.GType<ColumnModel>;
-        prototype: ColumnModel;
-    }
-    interface ColumnModel extends GObject.Object, ColumnModel.Interface {
-        // Properties
-
-        get attributes(): ColumnAttributes;
-        set attributes(val: ColumnAttributes);
-        get data_type(): GObject.GType;
-        get dataType(): GObject.GType;
-        get foreign_key(): ForeignKey;
-        set foreign_key(val: ForeignKey);
-        get foreignKey(): ForeignKey;
-        set foreignKey(val: ForeignKey);
-        get index(): number;
-        get name(): string;
-        get value(): GObject.Value;
-        set value(val: GObject.Value);
-
-        // Methods
-
-        get_attributes(): ColumnAttributes;
-        get_data_type(): GObject.GType;
-        get_index(): number;
-        get_name(): string;
-        get_value(): unknown;
-        set_attributes(value: ColumnAttributes | null): void;
-        set_foreign_key(value: ForeignKey): void;
-        set_value(value: GObject.Value | any): void;
-    }
-
-    export const ColumnModel: ColumnModelNamespace & {
-        new (): ColumnModel; // This allows `obj instanceof ColumnModel`
-    };
-
-    namespace ConnectionModel {
-        /**
-         * Interface for implementing ConnectionModel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_close(): void;
-            vfunc_close_no_warning(): void;
-            vfunc_get_is_opened(): boolean;
-            vfunc_open(): boolean;
-            vfunc_set_cnc_params(value: ConnectionModelParams): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            cnc_params: ConnectionModelParams;
-            cncParams: ConnectionModelParams;
-            is_opened: boolean;
-            isOpened: boolean;
-        }
-    }
-
-    export interface ConnectionModelNamespace {
-        $gtype: GObject.GType<ConnectionModel>;
-        prototype: ConnectionModel;
-    }
-    interface ConnectionModel extends GObject.Object, ConnectionModel.Interface {
-        // Properties
-
-        get cnc_params(): ConnectionModelParams;
-        set cnc_params(val: ConnectionModelParams);
-        get cncParams(): ConnectionModelParams;
-        set cncParams(val: ConnectionModelParams);
-        get is_opened(): boolean;
-        get isOpened(): boolean;
-
-        // Methods
-
-        close(): void;
-        close_no_warning(): void;
-        get_is_opened(): boolean;
-        open(): boolean;
-        set_cnc_params(value: ConnectionModelParams): void;
-    }
-
-    export const ConnectionModel: ConnectionModelNamespace & {
-        new (): ConnectionModel; // This allows `obj instanceof ConnectionModel`
-    };
-
-    namespace CreateDatabaseBuilder {
-        /**
-         * Interface for implementing CreateDatabaseBuilder.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends QueryBuilder.Interface {
-            // Virtual methods
-
-            vfunc_get_database_name(): string;
-            vfunc_set_database_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends QueryBuilder.ConstructorProps {
-            database_name: string;
-            databaseName: string;
-        }
-    }
-
-    export interface CreateDatabaseBuilderNamespace {
-        $gtype: GObject.GType<CreateDatabaseBuilder>;
-        prototype: CreateDatabaseBuilder;
-    }
-    interface CreateDatabaseBuilder extends QueryBuilder, CreateDatabaseBuilder.Interface {
-        // Properties
-
-        get database_name(): string;
-        set database_name(val: string);
-        get databaseName(): string;
-        set databaseName(val: string);
-
-        // Methods
-
-        get_database_name(): string;
-        set_database_name(value: string): void;
-    }
-
-    export const CreateDatabaseBuilder: CreateDatabaseBuilderNamespace & {
-        new (): CreateDatabaseBuilder; // This allows `obj instanceof CreateDatabaseBuilder`
-    };
-
-    namespace CreateTableBuilder {
-        /**
-         * Interface for implementing CreateTableBuilder.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends QueryBuilder.Interface {
-            // Virtual methods
-
-            vfunc_get_table_name(): string;
-            vfunc_set_columns(value: Gio.ListModel): void;
-            vfunc_set_contraints(value: Gio.ListModel): void;
-            vfunc_set_table_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends QueryBuilder.ConstructorProps {
-            columns: Gio.ListModel;
-            contraints: Gio.ListModel;
-            table_name: string;
-            tableName: string;
-        }
-    }
-
-    export interface CreateTableBuilderNamespace {
-        $gtype: GObject.GType<CreateTableBuilder>;
-        prototype: CreateTableBuilder;
-    }
-    interface CreateTableBuilder extends QueryBuilder, CreateTableBuilder.Interface {
-        // Properties
-
-        get columns(): Gio.ListModel;
-        set columns(val: Gio.ListModel);
-        get contraints(): Gio.ListModel;
-        set contraints(val: Gio.ListModel);
-        get table_name(): string;
-        set table_name(val: string);
-        get tableName(): string;
-        set tableName(val: string);
-
-        // Methods
-
-        get_table_name(): string;
-        set_columns(value: Gio.ListModel): void;
-        set_contraints(value: Gio.ListModel): void;
-        set_table_name(value: string): void;
-    }
-
-    export const CreateTableBuilder: CreateTableBuilderNamespace & {
-        new (): CreateTableBuilder; // This allows `obj instanceof CreateTableBuilder`
-    };
 
     namespace DataHandler {
         /**
@@ -30042,222 +29708,6 @@ export namespace Gda {
         new (): DdlModifiable; // This allows `obj instanceof DdlModifiable`
     };
 
-    namespace DropDatabaseBuilder {
-        /**
-         * Interface for implementing DropDatabaseBuilder.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends QueryBuilder.Interface {
-            // Virtual methods
-
-            vfunc_get_database_name(): string;
-            vfunc_set_database_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends QueryBuilder.ConstructorProps {
-            database_name: string;
-            databaseName: string;
-        }
-    }
-
-    export interface DropDatabaseBuilderNamespace {
-        $gtype: GObject.GType<DropDatabaseBuilder>;
-        prototype: DropDatabaseBuilder;
-    }
-    interface DropDatabaseBuilder extends QueryBuilder, DropDatabaseBuilder.Interface {
-        // Properties
-
-        get database_name(): string;
-        set database_name(val: string);
-        get databaseName(): string;
-        set databaseName(val: string);
-
-        // Methods
-
-        get_database_name(): string;
-        set_database_name(value: string): void;
-    }
-
-    export const DropDatabaseBuilder: DropDatabaseBuilderNamespace & {
-        new (): DropDatabaseBuilder; // This allows `obj instanceof DropDatabaseBuilder`
-    };
-
-    namespace DropTableBuilder {
-        /**
-         * Interface for implementing DropTableBuilder.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends QueryBuilder.Interface {
-            // Virtual methods
-
-            vfunc_get_cascade(): boolean;
-            vfunc_get_table_name(): string;
-            vfunc_set_cascade(value: boolean): void;
-            vfunc_set_table_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends QueryBuilder.ConstructorProps {
-            cascade: boolean;
-            table_name: string;
-            tableName: string;
-        }
-    }
-
-    export interface DropTableBuilderNamespace {
-        $gtype: GObject.GType<DropTableBuilder>;
-        prototype: DropTableBuilder;
-    }
-    interface DropTableBuilder extends QueryBuilder, DropTableBuilder.Interface {
-        // Properties
-
-        get cascade(): boolean;
-        set cascade(val: boolean);
-        get table_name(): string;
-        set table_name(val: string);
-        get tableName(): string;
-        set tableName(val: string);
-
-        // Methods
-
-        get_cascade(): boolean;
-        get_table_name(): string;
-        set_cascade(value: boolean): void;
-        set_table_name(value: string): void;
-    }
-
-    export const DropTableBuilder: DropTableBuilderNamespace & {
-        new (): DropTableBuilder; // This allows `obj instanceof DropTableBuilder`
-    };
-
-    namespace ForeignKey {
-        /**
-         * Interface for implementing ForeignKey.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_delete_rule(): ForeignKeyRule;
-            vfunc_get_match(): ForeignKeyMatch;
-            vfunc_get_name(): string;
-            vfunc_get_refname(): string;
-            vfunc_get_update_rule(): ForeignKeyRule;
-            vfunc_set_delete_rule(value: ForeignKeyRule): void;
-            vfunc_set_match(value: ForeignKeyMatch): void;
-            vfunc_set_name(value: string): void;
-            vfunc_set_refcol(value: Gio.ListModel): void;
-            vfunc_set_refname(value: string): void;
-            vfunc_set_reftable(value: TableModel): void;
-            vfunc_set_update_rule(value: ForeignKeyRule): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            delete_rule: ForeignKeyRule;
-            deleteRule: ForeignKeyRule;
-            match: ForeignKeyMatch;
-            name: string;
-            refcol: Gio.ListModel;
-            refname: string;
-            reftable: TableModel;
-            update_rule: ForeignKeyRule;
-            updateRule: ForeignKeyRule;
-        }
-    }
-
-    export interface ForeignKeyNamespace {
-        $gtype: GObject.GType<ForeignKey>;
-        prototype: ForeignKey;
-    }
-    interface ForeignKey extends GObject.Object, ForeignKey.Interface {
-        // Properties
-
-        get delete_rule(): ForeignKeyRule;
-        set delete_rule(val: ForeignKeyRule);
-        get deleteRule(): ForeignKeyRule;
-        set deleteRule(val: ForeignKeyRule);
-        get match(): ForeignKeyMatch;
-        set match(val: ForeignKeyMatch);
-        get name(): string;
-        set name(val: string);
-        get refcol(): Gio.ListModel;
-        set refcol(val: Gio.ListModel);
-        get refname(): string;
-        set refname(val: string);
-        get reftable(): TableModel;
-        set reftable(val: TableModel);
-        get update_rule(): ForeignKeyRule;
-        set update_rule(val: ForeignKeyRule);
-        get updateRule(): ForeignKeyRule;
-        set updateRule(val: ForeignKeyRule);
-
-        // Methods
-
-        equal(fkey: ForeignKey): boolean;
-        get_delete_rule(): ForeignKeyRule;
-        get_match(): ForeignKeyMatch;
-        get_name(): string;
-        get_refname(): string;
-        get_update_rule(): ForeignKeyRule;
-        set_delete_rule(value: ForeignKeyRule | null): void;
-        set_match(value: ForeignKeyMatch | null): void;
-        set_name(value: string): void;
-        set_refcol(value: Gio.ListModel): void;
-        set_refname(value: string): void;
-        set_reftable(value: TableModel): void;
-        set_update_rule(value: ForeignKeyRule | null): void;
-        to_string(): string;
-    }
-
-    export const ForeignKey: ForeignKeyNamespace & {
-        new (): ForeignKey; // This allows `obj instanceof ForeignKey`
-    };
-
-    namespace Inserted {
-        /**
-         * Interface for implementing Inserted.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_number(): number;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Result.ConstructorProps {
-            last_insertd: RowModel;
-            lastInsertd: RowModel;
-            number: number;
-        }
-    }
-
-    export interface InsertedNamespace {
-        $gtype: GObject.GType<Inserted>;
-        prototype: Inserted;
-    }
-    interface Inserted extends Result, Inserted.Interface {
-        // Properties
-
-        get last_insertd(): RowModel;
-        get lastInsertd(): RowModel;
-        get number(): number;
-
-        // Methods
-
-        get_number(): number;
-    }
-
-    export const Inserted: InsertedNamespace & {
-        new (): Inserted; // This allows `obj instanceof Inserted`
-    };
-
     namespace Lockable {
         /**
          * Interface for implementing Lockable.
@@ -30327,220 +29777,6 @@ export namespace Gda {
 
     export const Lockable: LockableNamespace & {
         new (): Lockable; // This allows `obj instanceof Lockable`
-    };
-
-    namespace MetaCatalog {
-        /**
-         * Interface for implementing MetaCatalog.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_set_connection(value: ConnectionModel): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            connection: ConnectionModel;
-        }
-    }
-
-    export interface MetaCatalogNamespace {
-        $gtype: GObject.GType<MetaCatalog>;
-        prototype: MetaCatalog;
-    }
-    interface MetaCatalog extends GObject.Object, MetaCatalog.Interface {
-        // Properties
-
-        get connection(): ConnectionModel;
-        set connection(val: ConnectionModel);
-
-        // Methods
-
-        set_connection(value: ConnectionModel): void;
-    }
-
-    export const MetaCatalog: MetaCatalogNamespace & {
-        new (): MetaCatalog; // This allows `obj instanceof MetaCatalog`
-    };
-
-    namespace MetaColumn {
-        /**
-         * Interface for implementing MetaColumn.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_column_type(): GObject.GType;
-            vfunc_get_column_type_name(): string;
-            vfunc_get_name(): string;
-            vfunc_set_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            column_type: GObject.GType;
-            columnType: GObject.GType;
-            column_type_name: string;
-            columnTypeName: string;
-            name: string;
-        }
-    }
-
-    export interface MetaColumnNamespace {
-        $gtype: GObject.GType<MetaColumn>;
-        prototype: MetaColumn;
-    }
-    interface MetaColumn extends GObject.Object, MetaColumn.Interface {
-        // Properties
-
-        get column_type(): GObject.GType;
-        get columnType(): GObject.GType;
-        get column_type_name(): string;
-        get columnTypeName(): string;
-        get name(): string;
-        set name(val: string);
-
-        // Methods
-
-        get_column_type(): GObject.GType;
-        get_column_type_name(): string;
-        get_name(): string;
-        set_name(value: string): void;
-    }
-
-    export const MetaColumn: MetaColumnNamespace & {
-        new (): MetaColumn; // This allows `obj instanceof MetaColumn`
-    };
-
-    namespace MetaTable {
-        /**
-         * Interface for implementing MetaTable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_catalog(): string;
-            vfunc_get_name(): string;
-            vfunc_get_schema(): string;
-            vfunc_set_catalog(value: string): void;
-            vfunc_set_name(value: string): void;
-            vfunc_set_schema(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            catalog: string;
-            columns: Gio.ListModel;
-            name: string;
-            schema: string;
-        }
-    }
-
-    export interface MetaTableNamespace {
-        $gtype: GObject.GType<MetaTable>;
-        prototype: MetaTable;
-    }
-    interface MetaTable extends GObject.Object, MetaTable.Interface {
-        // Properties
-
-        get catalog(): string;
-        set catalog(val: string);
-        get columns(): Gio.ListModel;
-        get name(): string;
-        set name(val: string);
-        get schema(): string;
-        set schema(val: string);
-
-        // Methods
-
-        get_catalog(): string;
-        get_name(): string;
-        get_schema(): string;
-        set_catalog(value: string): void;
-        set_name(value: string): void;
-        set_schema(value: string): void;
-    }
-
-    export const MetaTable: MetaTableNamespace & {
-        new (): MetaTable; // This allows `obj instanceof MetaTable`
-    };
-
-    namespace Parameters {
-        /**
-         * Interface for implementing Parameters.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface<A extends GObject.Object = GObject.Object> extends Gio.ListModel.Interface {
-            // Virtual methods
-
-            vfunc_get_value(name: string): unknown;
-            vfunc_set_value(name: string, val: GObject.Value | any): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gio.ListModel.ConstructorProps<A> {}
-    }
-
-    export interface ParametersNamespace {
-        $gtype: GObject.GType<Parameters>;
-        prototype: Parameters;
-    }
-    interface Parameters<A extends GObject.Object = GObject.Object> extends Gio.ListModel, Parameters.Interface<A> {
-        // Methods
-
-        get_value(name: string): unknown;
-        set_value(name: string, val: GObject.Value | any): void;
-    }
-
-    export const Parameters: ParametersNamespace & {
-        new (): Parameters; // This allows `obj instanceof Parameters`
-    };
-
-    namespace PreparedQuery {
-        /**
-         * Interface for implementing PreparedQuery.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Query.Interface {
-            // Virtual methods
-
-            vfunc_get_name(): string;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Query.ConstructorProps {
-            name: string;
-            parameters: Parameters;
-        }
-    }
-
-    export interface PreparedQueryNamespace {
-        $gtype: GObject.GType<PreparedQuery>;
-        prototype: PreparedQuery;
-    }
-    interface PreparedQuery extends Query, PreparedQuery.Interface {
-        // Properties
-
-        get name(): string;
-        get parameters(): Parameters;
-
-        // Methods
-
-        get_name(): string;
-    }
-
-    export const PreparedQuery: PreparedQueryNamespace & {
-        new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
     };
 
     namespace Provider {
@@ -30869,347 +30105,6 @@ export namespace Gda {
 
     export const ProviderMeta: ProviderMetaNamespace & {
         new (): ProviderMeta; // This allows `obj instanceof ProviderMeta`
-    };
-
-    namespace Query {
-        /**
-         * Interface for implementing Query.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_cancel(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-            vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
-            vfunc_execute(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-            vfunc_get_name(): string;
-            vfunc_get_sql(): string;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            connection: ConnectionModel;
-            name: string;
-            sql: string;
-        }
-    }
-
-    export interface QueryNamespace {
-        $gtype: GObject.GType<Query>;
-        prototype: Query;
-    }
-    interface Query extends GObject.Object, Query.Interface {
-        // Properties
-
-        get connection(): ConnectionModel;
-        get name(): string;
-        get sql(): string;
-
-        // Methods
-
-        cancel(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-        cancel_finish(_res_: Gio.AsyncResult): void;
-        execute(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-        get_name(): string;
-        get_sql(): string;
-    }
-
-    export const Query: QueryNamespace & {
-        new (): Query; // This allows `obj instanceof Query`
-    };
-
-    namespace QueryBuilder {
-        /**
-         * Interface for implementing QueryBuilder.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_add_savepoint(name: string): boolean;
-            vfunc_begin_transaction(name: string): boolean;
-            vfunc_commit_transaction(name: string): boolean;
-            vfunc_delete_savepoint(name: string): boolean;
-            vfunc_get_name(): string;
-            vfunc_get_sql(): string;
-            vfunc_rollback_savepoint(name: string): boolean;
-            vfunc_rollback_transaction(name: string): boolean;
-            vfunc_set_name(value: string): void;
-            vfunc_set_sql(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            name: string;
-            parameters: Parameters;
-            sql: string;
-        }
-    }
-
-    export interface QueryBuilderNamespace {
-        $gtype: GObject.GType<QueryBuilder>;
-        prototype: QueryBuilder;
-    }
-    interface QueryBuilder extends GObject.Object, QueryBuilder.Interface {
-        // Properties
-
-        get name(): string;
-        set name(val: string);
-        get parameters(): Parameters;
-        get sql(): string;
-        set sql(val: string);
-
-        // Methods
-
-        add_savepoint(name: string): boolean;
-        begin_transaction(name: string): boolean;
-        commit_transaction(name: string): boolean;
-        delete_savepoint(name: string): boolean;
-        get_name(): string;
-        get_sql(): string;
-        rollback_savepoint(name: string): boolean;
-        rollback_transaction(name: string): boolean;
-        set_name(value: string): void;
-        set_sql(value: string): void;
-    }
-
-    export const QueryBuilder: QueryBuilderNamespace & {
-        new (): QueryBuilder; // This allows `obj instanceof QueryBuilder`
-    };
-
-    namespace ReadonlyTableModel {
-        /**
-         * Interface for implementing ReadonlyTableModel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends MetaTable.Interface {
-            // Virtual methods
-
-            vfunc_get_value(row: number, column: string, result: GObject.Value | any): void;
-            vfunc_get_value_at(row: number, column: number, result: GObject.Value | any): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends MetaTable.ConstructorProps {
-            rows: Gio.ListModel;
-        }
-    }
-
-    export interface ReadonlyTableModelNamespace {
-        $gtype: GObject.GType<ReadonlyTableModel>;
-        prototype: ReadonlyTableModel;
-    }
-    interface ReadonlyTableModel extends MetaTable, ReadonlyTableModel.Interface {
-        // Properties
-
-        get rows(): Gio.ListModel;
-
-        // Methods
-
-        get_value(row: number, column: string, result: GObject.Value | any): void;
-        get_value_at(row: number, column: number, result: GObject.Value | any): void;
-    }
-
-    export const ReadonlyTableModel: ReadonlyTableModelNamespace & {
-        new (): ReadonlyTableModel; // This allows `obj instanceof ReadonlyTableModel`
-    };
-
-    namespace ReferencedColumn {
-        /**
-         * Interface for implementing ReferencedColumn.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_name(): string;
-            vfunc_set_table_name(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            name: string;
-            table_name: string;
-            tableName: string;
-        }
-    }
-
-    export interface ReferencedColumnNamespace {
-        $gtype: GObject.GType<ReferencedColumn>;
-        prototype: ReferencedColumn;
-    }
-    interface ReferencedColumn extends GObject.Object, ReferencedColumn.Interface {
-        // Properties
-
-        get name(): string;
-        set table_name(val: string);
-        set tableName(val: string);
-
-        // Methods
-
-        get_name(): string;
-        set_table_name(value: string): void;
-    }
-
-    export const ReferencedColumn: ReferencedColumnNamespace & {
-        new (): ReferencedColumn; // This allows `obj instanceof ReferencedColumn`
-    };
-
-    namespace Result {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface ResultNamespace {
-        $gtype: GObject.GType<Result>;
-        prototype: Result;
-    }
-    interface Result extends GObject.Object {}
-
-    export const Result: ResultNamespace & {
-        new (): Result; // This allows `obj instanceof Result`
-    };
-
-    namespace ResultTable {
-        // Constructor properties interface
-
-        interface ConstructorProps extends MetaTable.ConstructorProps {}
-    }
-
-    export interface ResultTableNamespace {
-        $gtype: GObject.GType<ResultTable>;
-        prototype: ResultTable;
-    }
-    interface ResultTable extends MetaTable {}
-
-    export const ResultTable: ResultTableNamespace & {
-        new (): ResultTable; // This allows `obj instanceof ResultTable`
-    };
-
-    namespace RowModel {
-        /**
-         * Interface for implementing RowModel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface<A extends GObject.Object = GObject.Object> extends Gio.ListModel.Interface {
-            // Virtual methods
-
-            vfunc_get_n_columns(): number;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gio.ListModel.ConstructorProps<A> {
-            n_columns: number;
-            nColumns: number;
-        }
-    }
-
-    export interface RowModelNamespace {
-        $gtype: GObject.GType<RowModel>;
-        prototype: RowModel;
-    }
-    interface RowModel<A extends GObject.Object = GObject.Object> extends Gio.ListModel, RowModel.Interface<A> {
-        // Properties
-
-        get n_columns(): number;
-        get nColumns(): number;
-
-        // Methods
-
-        get_n_columns(): number;
-    }
-
-    export const RowModel: RowModelNamespace & {
-        new (): RowModel; // This allows `obj instanceof RowModel`
-    };
-
-    namespace TableConstraint {
-        /**
-         * Interface for implementing TableConstraint.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_definition(): string;
-            vfunc_set_definition(value: string): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface TableConstraintNamespace {
-        $gtype: GObject.GType<TableConstraint>;
-        prototype: TableConstraint;
-    }
-    interface TableConstraint extends GObject.Object, TableConstraint.Interface {
-        // Methods
-
-        get_definition(): string;
-        set_definition(value: string): void;
-    }
-
-    export const TableConstraint: TableConstraintNamespace & {
-        new (): TableConstraint; // This allows `obj instanceof TableConstraint`
-    };
-
-    namespace TableModel {
-        // Constructor properties interface
-
-        interface ConstructorProps extends MetaTable.ConstructorProps {}
-    }
-
-    export interface TableModelNamespace {
-        $gtype: GObject.GType<TableModel>;
-        prototype: TableModel;
-    }
-    interface TableModel extends MetaTable {}
-
-    export const TableModel: TableModelNamespace & {
-        new (): TableModel; // This allows `obj instanceof TableModel`
-    };
-
-    namespace WritableTableModel {
-        /**
-         * Interface for implementing WritableTableModel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends MetaTable.Interface {
-            // Virtual methods
-
-            vfunc_insert_row(new_row: RowModel): void;
-            vfunc_set_value(row: number, column: string, value: GObject.Value | any): void;
-            vfunc_set_value_at(row: number, column: number, value: GObject.Value | any): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends MetaTable.ConstructorProps {}
-    }
-
-    export interface WritableTableModelNamespace {
-        $gtype: GObject.GType<WritableTableModel>;
-        prototype: WritableTableModel;
-    }
-    interface WritableTableModel extends MetaTable, WritableTableModel.Interface {
-        // Methods
-
-        insert_row(new_row: RowModel): void;
-        set_value(row: number, column: string, value: GObject.Value | any): void;
-        set_value_at(row: number, column: number, value: GObject.Value | any): void;
-    }
-
-    export const WritableTableModel: WritableTableModelNamespace & {
-        new (): WritableTableModel; // This allows `obj instanceof WritableTableModel`
     };
 
     type SqlBuilderId = number;

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./glygtk4-2.d.ts"],
+    "readme": "./README.md",
+    "name": "GlyGtk4-2",
+    "tsconfig": "./tsconfig.json"
+}
+

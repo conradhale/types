@@ -9,7 +9,5 @@
 
 import './meta-16-ambient.d.ts';
 
-import './meta-16-import.d.ts';
-
 import Meta from './meta-16.js';
 export default Meta;

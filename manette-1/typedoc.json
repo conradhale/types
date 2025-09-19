@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./manette-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Manette-1",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -9,7 +9,5 @@
 
 import './ide-47-ambient.d.ts';
 
-import './ide-47-import.d.ts';
-
 import Ide from './ide-47.js';
 export default Ide;

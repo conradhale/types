@@ -693,6 +693,8 @@ export namespace Granite {
             'notify::invisible-char': (pspec: GObject.ParamSpec) => void;
             'notify::invisible-char-set': (pspec: GObject.ParamSpec) => void;
             'notify::max-length': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-primary-text': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-secondary-text': (pspec: GObject.ParamSpec) => void;
             'notify::overwrite-mode': (pspec: GObject.ParamSpec) => void;
             'notify::placeholder-text': (pspec: GObject.ParamSpec) => void;
             'notify::primary-icon-activatable': (pspec: GObject.ParamSpec) => void;
@@ -2454,6 +2456,8 @@ export namespace Granite {
             'notify::invisible-char': (pspec: GObject.ParamSpec) => void;
             'notify::invisible-char-set': (pspec: GObject.ParamSpec) => void;
             'notify::max-length': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-primary-text': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-secondary-text': (pspec: GObject.ParamSpec) => void;
             'notify::overwrite-mode': (pspec: GObject.ParamSpec) => void;
             'notify::placeholder-text': (pspec: GObject.ParamSpec) => void;
             'notify::primary-icon-activatable': (pspec: GObject.ParamSpec) => void;
@@ -2705,6 +2709,8 @@ export namespace Granite {
             'notify::invisible-char': (pspec: GObject.ParamSpec) => void;
             'notify::invisible-char-set': (pspec: GObject.ParamSpec) => void;
             'notify::max-length': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-primary-text': (pspec: GObject.ParamSpec) => void;
+            'notify::menu-entry-icon-secondary-text': (pspec: GObject.ParamSpec) => void;
             'notify::overwrite-mode': (pspec: GObject.ParamSpec) => void;
             'notify::placeholder-text': (pspec: GObject.ParamSpec) => void;
             'notify::primary-icon-activatable': (pspec: GObject.ParamSpec) => void;

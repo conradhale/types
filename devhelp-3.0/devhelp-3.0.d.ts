@@ -158,6 +158,7 @@ export namespace Devhelp {
             'notify::page-id': (pspec: GObject.ParamSpec) => void;
             'notify::related-view': (pspec: GObject.ParamSpec) => void;
             'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::theme-color': (pspec: GObject.ParamSpec) => void;
             'notify::title': (pspec: GObject.ParamSpec) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
             'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;
@@ -6161,6 +6162,7 @@ export namespace Devhelp {
             'notify::page-id': (pspec: GObject.ParamSpec) => void;
             'notify::related-view': (pspec: GObject.ParamSpec) => void;
             'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::theme-color': (pspec: GObject.ParamSpec) => void;
             'notify::title': (pspec: GObject.ParamSpec) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
             'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;

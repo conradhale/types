@@ -9,7 +9,5 @@
 
 import './msg-0-ambient.d.ts';
 
-import './msg-0-import.d.ts';
-
 import Msg from './msg-0.js';
 export default Msg;

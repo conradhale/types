@@ -1,7 +1,7 @@
 {
     "name": "@girs/rsvg-2.0",
-    "version": "2.60.0-4.0.0-beta.36",
-    "description": "GJS TypeScript type definitions for Rsvg-2.0, generated from library version 2.60.0",
+    "version": "2.61.1-4.0.0-beta.36",
+    "description": "GJS TypeScript type definitions for Rsvg-2.0, generated from library version 2.61.1",
     "type": "module",
     "module": "rsvg-2.0.js",
     "main": "rsvg-2.0.js",

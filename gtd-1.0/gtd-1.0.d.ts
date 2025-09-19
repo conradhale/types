@@ -1544,6 +1544,17 @@ export namespace Gtd {
          */
         add_provider(provider: Provider): void;
         /**
+         * Reports an error.
+         * @param title the title of the error
+         * @param description detailed description of the error
+         * @param _function function to be called when the notification is dismissed
+         */
+        emit_error_message(
+            title?: string | null,
+            description?: string | null,
+            _function?: ErrorActionFunc | null,
+        ): void;
+        /**
          * Retrieves the #GListModel containing #GtdTasks from
          * `self`. You can use the this model to bind to GtkListBox
          * or other widgets.
@@ -1576,7 +1587,7 @@ export namespace Gtd {
         get_inbox_model(): Gio.ListModel;
         /**
          * Retrieves the 'first-run' setting.
-         * @returns %TRUE if GNOME To Do was never run before, %FALSE otherwise.
+         * @returns %TRUE if Endeavour was never run before, %FALSE otherwise.
          */
         get_is_first_run(): boolean;
         /**
@@ -1766,24 +1777,24 @@ export namespace Gtd {
         get_width_chars(): number;
         /**
          * Sets the maximum height `self` has.
-         * @param max_height
+         * @param max_height maximum height of the widget @self is attached to
          */
         set_max_height(max_height: number): void;
         /**
          * Sets the maximum width `self` has.
-         * @param max_width
+         * @param max_width maximum width of the widget @self is attached to
          */
         set_max_width(max_width: number): void;
         /**
          * Sets the maximum width `self` has, in characters length. It is a programming
          * error to set a value smaller than #GtdMaxSizeLayout:width-layout.
-         * @param max_width_chars
+         * @param max_width_chars maximum width of the widget @self is attached to, in character length
          */
         set_max_width_chars(max_width_chars: number): void;
         /**
          * Sets the minimum width `self` has, in characters length. It is a programming
          * error to set a value bigger than #GtdMaxSizeLayout:max-width-layout.
-         * @param width_chars
+         * @param width_chars minimum width of the widget @self is attached to, in character length
          */
         set_width_chars(width_chars: number): void;
     }
@@ -1963,6 +1974,11 @@ export namespace Gtd {
         get_direction(): Gtk.ArrowType;
         // Conflicted with Gtk.Widget.get_direction
         get_direction(...args: never[]): any;
+        /**
+         * Gets the name of the icon shown in the button.
+         * @returns the name of the icon shown in the button
+         */
+        get_gicon(): Gio.Icon;
         /**
          * Returns whether the button has a frame.
          * @returns %TRUE if the button has a frame
@@ -2813,11 +2829,10 @@ export namespace Gtd {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             executed: () => void;
-            'notify::has-primary-action': (pspec: GObject.ParamSpec) => void;
+            'notify::has-dismissal-action': (pspec: GObject.ParamSpec) => void;
             'notify::has-secondary-action': (pspec: GObject.ParamSpec) => void;
             'notify::secondary-action-name': (pspec: GObject.ParamSpec) => void;
             'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::timeout': (pspec: GObject.ParamSpec) => void;
             'notify::loading': (pspec: GObject.ParamSpec) => void;
             'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
@@ -2825,14 +2840,13 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            has_primary_action: boolean;
-            hasPrimaryAction: boolean;
+            has_dismissal_action: boolean;
+            hasDismissalAction: boolean;
             has_secondary_action: boolean;
             hasSecondaryAction: boolean;
             secondary_action_name: string;
             secondaryActionName: string;
             text: string;
-            timeout: number;
         }
     }
 
@@ -2841,8 +2855,8 @@ export namespace Gtd {
 
         // Properties
 
-        get has_primary_action(): boolean;
-        get hasPrimaryAction(): boolean;
+        get has_dismissal_action(): boolean;
+        get hasDismissalAction(): boolean;
         get has_secondary_action(): boolean;
         get hasSecondaryAction(): boolean;
         get secondary_action_name(): string;
@@ -2851,8 +2865,6 @@ export namespace Gtd {
         set secondaryActionName(val: string);
         get text(): string;
         set text(val: string);
-        get timeout(): number;
-        set timeout(val: number);
 
         /**
          * Compile-time signal type information.
@@ -2869,7 +2881,7 @@ export namespace Gtd {
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string | null, timeout: number): Notification;
+        static ['new'](text?: string | null): Notification;
         // Conflicted with Gtd.Object.new
 
         static ['new'](...args: never[]): any;
@@ -2895,9 +2907,9 @@ export namespace Gtd {
         // Methods
 
         /**
-         * Executes the primary action of `notification` if set.
+         * Executes the dismissal action of `notification` if any.
          */
-        execute_primary_action(): void;
+        execute_dismissal_action(): void;
         /**
          * Executes the secondary action of `notification` if any.
          */
@@ -2908,16 +2920,10 @@ export namespace Gtd {
          */
         get_text(): string;
         /**
-         * Retrieves the timeout of `notification`.
-         * @returns the timeout of @notification.
+         * Sets the dismissal action of `notification`
+         * @param func the dismissal action function
          */
-        get_timeout(): number;
-        /**
-         * Sets the primary action of `notification,` which is triggered
-         * on dismiss or timeout.
-         * @param func the primary action function
-         */
-        set_primary_action(func?: NotificationActionFunc | null): void;
+        set_dismissal_action(func?: NotificationActionFunc | null): void;
         /**
          * Sets the secondary action of `notification,` which is triggered
          * only on user explicit input.
@@ -2930,22 +2936,6 @@ export namespace Gtd {
          * @param text the user-visible text of @notification
          */
         set_text(text: string): void;
-        /**
-         * Sets the timeout of `notification` to `timeout`. Set it to %0 to disable
-         * the timeout.
-         * @param timeout the time to wait before running @notification, in miliseconds
-         */
-        set_timeout(timeout: number): void;
-        /**
-         * Starts the timeout of notification. Use gtd_notification_stop()
-         * to stop it.
-         */
-        start(): void;
-        /**
-         * Stops the timeout of notification. Use gtd_notification_start()
-         * to start it.
-         */
-        stop(): void;
     }
 
     namespace Object {
@@ -7314,7 +7304,7 @@ export namespace Gtd {
          * The value is referenced for thread safety. Returns %NULL if
          * no date is set.
          */
-        vfunc_get_due_date(): GLib.DateTime;
+        vfunc_get_due_date(): GLib.DateTime | null;
         /**
          * Retrieves whether `self` is `important` or not.
          */
@@ -7347,9 +7337,9 @@ export namespace Gtd {
         vfunc_set_description(description?: string | null): void;
         /**
          * Updates the internal `GtdTask:`:due-date property.
-         * @param due_date
+         * @param dt a #GDateTime
          */
-        vfunc_set_due_date(due_date: GLib.DateTime): void;
+        vfunc_set_due_date(dt?: GLib.DateTime | null): void;
         /**
          * Sets whether `self` is `important` or not.
          * @param important whether @self is important or not
@@ -7406,7 +7396,7 @@ export namespace Gtd {
          * no date is set.
          * @returns the internal #GDateTime referenced for thread safety, or %NULL. Unreference it after use.
          */
-        get_due_date(): GLib.DateTime;
+        get_due_date(): GLib.DateTime | null;
         /**
          * Retrieves whether `self` is `important` or not.
          * @returns %TRUE if @self is important, %FALSE otherwise
@@ -7426,7 +7416,7 @@ export namespace Gtd {
         get_position(): number;
         /**
          * Utility function to retrieve the data provider that backs this
-         * task. Notice that this is exactly the same as writting:
+         * task. Notice that this is exactly the same as writing:
          *
          *
          * ```c
@@ -7634,6 +7624,40 @@ export namespace Gtd {
          */
         get_task_by_id(id: string): Task | null;
         /**
+         * Imports task into `self`
+         * @param task a #GtdTask
+         * @param cancellable
+         */
+        import_task(task: Task, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.Task>;
+        /**
+         * Imports task into `self`
+         * @param task a #GtdTask
+         * @param cancellable
+         * @param callback
+         */
+        import_task(
+            task: Task,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Imports task into `self`
+         * @param task a #GtdTask
+         * @param cancellable
+         * @param callback
+         */
+        import_task(
+            task: Task,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Gio.Task> | void;
+        /**
+         * Imports task into `self`
+         * @param result a #GAsyncResult
+         * @returns a #GTask
+         */
+        import_task_finish(result: Gio.AsyncResult): Gio.Task;
+        /**
          * Retrieves whether `self` is the inbox task list of its provider.
          * @returns %TRUE if @self is the inbox of it's provider, %FALSE otherwise.
          */
@@ -7642,7 +7666,7 @@ export namespace Gtd {
          * Moves `task` to `new_position,` and repositions the elements
          * in between as well.
          *
-         * `task` must belog to `self`.
+         * `task` must belong to `self`.
          * @param task a #GtdTask
          * @param new_position the new position of @task inside @self
          */
@@ -10031,24 +10055,12 @@ export namespace Gtd {
 
         // Methods
 
-        /**
-         * Cancels `notification`.
-         * @param notification a #GtdNotification
-         */
-        cancel_notification(notification: Notification): void;
-        /**
-         * Embeds `widget` into `self'`s header bar.
-         * @param widget a #GtkWidget
-         * @param position either @GTK_POS_LEFT or @GTK_POS_RIGHT
-         */
         embed_widget_in_header(widget: Gtk.Widget, position: Gtk.PositionType | null): void;
         /**
-         * Shows a notification on the top of the main window.
-         * @param notification a #GtdNotification
+         * Retrieves the currently active workspace
+         * @returns a #GtdWorkspace
          */
-        notify(notification: Notification): void;
-        // Conflicted with GObject.Object.notify
-        notify(...args: never[]): any;
+        get_current_workspace(): Workspace;
 
         // Inherited properties
         /**
@@ -11151,6 +11163,20 @@ export namespace Gtd {
          * @returns %TRUE if @object has a floating reference
          */
         is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
@@ -13525,14 +13551,6 @@ export namespace Gtd {
     type MaxSizeLayoutClass = typeof MaxSizeLayout;
     type MenuButtonClass = typeof MenuButton;
     type NotificationClass = typeof Notification;
-    abstract class NotificationWidget {
-        static $gtype: GObject.GType<NotificationWidget>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type ObjectClass = typeof Object;
     type OmniAreaAddinInterface = typeof OmniAreaAddin;
     type OmniAreaClass = typeof OmniArea;
@@ -13706,16 +13724,16 @@ export namespace Gtd {
             /**
              * Requests that the #GtdOmniAreaAddin initialize, possibly modifying
              * `omni_bar` as necessary.
-             * @param omni_area
+             * @param omni_bar an #GtdOmniArea
              */
-            vfunc_load(omni_area: OmniArea): void;
+            vfunc_load(omni_bar: OmniArea): void;
             /**
              * Requests that the #GtdOmniAreaAddin shutdown, possibly modifying
              * `omni_bar` as necessary to return it to the original state before
              * the addin was loaded.
-             * @param omni_area
+             * @param omni_bar an #GtdOmniArea
              */
-            vfunc_unload(omni_area: OmniArea): void;
+            vfunc_unload(omni_bar: OmniArea): void;
         }
 
         // Constructor properties interface
@@ -13909,8 +13927,8 @@ export namespace Gtd {
 
             /**
              * Creates the given task in `provider`.
-             * @param list
-             * @param title
+             * @param list a #GtdTaskLast
+             * @param title The task title
              * @param due_date a #GDateTime
              * @param cancellable a #GCancellable
              * @param callback a callback
@@ -13939,8 +13957,8 @@ export namespace Gtd {
                 callback?: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
-             * Finishes updating the task list. The provider will emit the
-             * GtdProvider:list-updated signal after updating the task list.
+             * Finishes creating the task list. The provider will emit the
+             * GtdProvider:list-added signal after creating the task list.
              * @param result a #GAsyncResult
              */
             vfunc_create_task_list_finish(result: Gio.AsyncResult): boolean;
@@ -14050,6 +14068,11 @@ export namespace Gtd {
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * Finishes updating the task list. The provider will emit the
+             * GtdProvider:list-updated signal after updating the task list.
+             * @param result a #GAsyncResult
+             */
             vfunc_update_task_list_finish(result: Gio.AsyncResult): boolean;
         }
 
@@ -14092,8 +14115,8 @@ export namespace Gtd {
         compare(b: Provider): number;
         /**
          * Creates the given task in `provider`.
-         * @param list
-         * @param title
+         * @param list a #GtdTaskLast
+         * @param title The task title
          * @param due_date a #GDateTime
          * @param cancellable a #GCancellable
          */
@@ -14105,8 +14128,8 @@ export namespace Gtd {
         ): globalThis.Promise<Task | null>;
         /**
          * Creates the given task in `provider`.
-         * @param list
-         * @param title
+         * @param list a #GtdTaskLast
+         * @param title The task title
          * @param due_date a #GDateTime
          * @param cancellable a #GCancellable
          * @param callback a callback
@@ -14120,8 +14143,8 @@ export namespace Gtd {
         ): void;
         /**
          * Creates the given task in `provider`.
-         * @param list
-         * @param title
+         * @param list a #GtdTaskLast
+         * @param title The task title
          * @param due_date a #GDateTime
          * @param cancellable a #GCancellable
          * @param callback a callback
@@ -14168,8 +14191,8 @@ export namespace Gtd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes updating the task list. The provider will emit the
-         * GtdProvider:list-updated signal after updating the task list.
+         * Finishes creating the task list. The provider will emit the
+         * GtdProvider:list-added signal after creating the task list.
          * @param result a #GAsyncResult
          * @returns %TRUE if task list was successfully created, %FALSE otherwise
          */
@@ -14359,6 +14382,12 @@ export namespace Gtd {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * Finishes updating the task list. The provider will emit the
+         * GtdProvider:list-updated signal after updating the task list.
+         * @param result a #GAsyncResult
+         * @returns %TRUE if task list was successfully updated, %FALSE otherwise
+         */
         update_task_list_finish(result: Gio.AsyncResult): boolean;
     }
 
@@ -14386,12 +14415,17 @@ export namespace Gtd {
              */
             vfunc_deactivate(): void;
             /**
+             * Retrieves the icon of `self`. It is mandatory to implement
+             * this.
+             */
+            vfunc_get_icon(): Gio.Icon;
+            /**
              * Retrieves the id of `self`. It is mandatory to implement
              * this.
              */
             vfunc_get_id(): string;
             /**
-             * Retrieves the icon of `self`. It is mandatory to implement
+             * Retrieves the priority of `self`. It is mandatory to implement
              * this.
              */
             vfunc_get_priority(): number;
@@ -14436,15 +14470,21 @@ export namespace Gtd {
          */
         deactivate(): void;
         /**
+         * Retrieves the icon of `self`. It is mandatory to implement
+         * this.
+         * @returns a #GIcon
+         */
+        get_icon(): Gio.Icon;
+        /**
          * Retrieves the id of `self`. It is mandatory to implement
          * this.
          * @returns the id of @self
          */
         get_id(): string;
         /**
-         * Retrieves the icon of `self`. It is mandatory to implement
+         * Retrieves the priority of `self`. It is mandatory to implement
          * this.
-         * @returns a #GIcon
+         * @returns the priority of @self
          */
         get_priority(): number;
         /**

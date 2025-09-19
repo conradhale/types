@@ -9,7 +9,5 @@
 
 import './nautilus-4.0-ambient.d.ts';
 
-import './nautilus-4.0-import.d.ts';
-
 import Nautilus from './nautilus-4.0.js';
 export default Nautilus;

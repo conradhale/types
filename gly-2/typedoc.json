@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gly-2.d.ts"],
+    "readme": "./README.md",
+    "name": "Gly-2",
+    "tsconfig": "./tsconfig.json"
+}
+

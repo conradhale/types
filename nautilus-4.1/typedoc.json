@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./nautilus-4.1.d.ts"],
+    "readme": "./README.md",
+    "name": "Nautilus-4.1",
+    "tsconfig": "./tsconfig.json"
+}
+

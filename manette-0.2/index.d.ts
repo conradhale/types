@@ -9,7 +9,5 @@
 
 import './manette-0.2-ambient.d.ts';
 
-import './manette-0.2-import.d.ts';
-
 import Manette from './manette-0.2.js';
 export default Manette;

@@ -774,7 +774,7 @@ export namespace GtkSource {
          * @param category category to search for, or %NULL
          * @returns whether @iter was moved.
          */
-        backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): boolean;
+        backward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
         /**
          * Marks the beginning of a not undoable action on the buffer,
          * disabling the undo manager.  Typically you would call this function
@@ -841,7 +841,7 @@ export namespace GtkSource {
          * @param category category to search for, or %NULL
          * @returns whether @iter was moved.
          */
-        forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): boolean;
+        forward_iter_to_source_mark(iter: Gtk.TextIter, category?: string | null): [boolean, Gtk.TextIter];
         /**
          * Get all defined context classes at `iter`.
          *
@@ -917,7 +917,7 @@ export namespace GtkSource {
          * @param context_class the context class.
          * @returns whether we found a context class toggle before @iter
          */
-        iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
+        iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [boolean, Gtk.TextIter];
         /**
          * Moves forward to the next toggle (on or off) of the context class. If no
          * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
@@ -930,7 +930,7 @@ export namespace GtkSource {
          * @param context_class the context class.
          * @returns whether we found a context class toggle after @iter
          */
-        iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
+        iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [boolean, Gtk.TextIter];
         /**
          * Check if the class `context_class` is set on `iter`.
          *
@@ -15182,7 +15182,7 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
-    abstract class Encoding {
+    class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors

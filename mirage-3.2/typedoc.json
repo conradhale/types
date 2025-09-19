@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./mirage-3.2.d.ts"],
+    "readme": "./README.md",
+    "name": "Mirage-3.2",
+    "tsconfig": "./tsconfig.json"
+}
+
