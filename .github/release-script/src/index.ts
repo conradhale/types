@@ -34,9 +34,89 @@ interface BatchResult {
 // Constants
 const DEFAULT_REGISTRY = "https://registry.npmjs.org";
 const DEFAULT_TIMEOUT_SEC = 300;
-const BATCH_SIZE = 5;
-const BATCH_DELAY_MS = 3000;
+// Read pacing and retry config from env with safe parsing
+function getEnvInt(name: string, fallback: number): number {
+	const raw = process.env[name];
+	if (!raw) return fallback;
+	const num = Number.parseInt(raw, 10);
+	return Number.isNaN(num) ? fallback : num;
+}
+
+const BATCH_SIZE = Math.max(1, getEnvInt("NPM_BATCH_SIZE", 1));
+const BATCH_DELAY_MS = Math.max(0, getEnvInt("NPM_BATCH_DELAY_MS", 5000));
+const PUBLISH_DELAY_MS = Math.max(0, getEnvInt("NPM_PUBLISH_DELAY_MS", 2000));
+
+const MAX_RETRIES_PUBLISH = Math.max(0, getEnvInt("NPM_MAX_RETRIES", 8));
+const MAX_RETRIES_STATUS = Math.max(0, getEnvInt("NPM_STATUS_MAX_RETRIES", 5));
+const RETRY_BASE_MS = Math.max(100, getEnvInt("NPM_RETRY_BASE_MS", 2000));
+const RETRY_MAX_MS = Math.max(RETRY_BASE_MS, getEnvInt("NPM_RETRY_MAX_MS", 60000));
+
 const API_TIMEOUT_MS = 10000;
+
+function sleep(ms: number): Promise<void> {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function calcBackoffMs(attempt: number, baseMs: number, maxMs: number): number {
+	const exp = Math.min(maxMs, baseMs * 2 ** attempt);
+	// Add jitter (+/-20%) to avoid thundering herd
+	const jitter = exp * (Math.random() * 0.4 - 0.2);
+	return Math.max(100, Math.floor(exp + jitter));
+}
+
+function isRateLimitedError(message: string): boolean {
+	const lower = message.toLowerCase();
+	return (
+		lower.includes("e429") ||
+		lower.includes("429") ||
+		lower.includes("too many requests") ||
+		lower.includes("rate limit")
+	);
+}
+
+function isRetryableHttpStatus(status: number): boolean {
+	return status === 408 || status === 429 || (status >= 500 && status < 600);
+}
+
+class HttpStatusError extends Error {
+	status: number;
+	constructor(status: number, message: string) {
+		super(message);
+		this.status = status;
+	}
+}
+
+function isHttpStatusError(error: unknown): error is HttpStatusError {
+	return typeof error === "object" && error !== null && "status" in error && typeof (error as { status: unknown }).status === "number";
+}
+
+interface RetryConfig {
+	label: string;
+	maxRetries: number;
+	baseDelayMs: number;
+	maxDelayMs: number;
+	shouldRetry: (error: unknown) => boolean;
+	onRetry?: (attempt: number, waitMs: number, error: unknown) => void;
+}
+
+async function withRetry<T>(fn: () => Promise<T>, config: RetryConfig): Promise<T> {
+	for (let attempt = 0; attempt <= config.maxRetries; attempt++) {
+		try {
+			return await fn();
+		} catch (error) {
+			if (attempt < config.maxRetries && config.shouldRetry(error)) {
+				const wait = calcBackoffMs(attempt, config.baseDelayMs, config.maxDelayMs);
+				config.onRetry?.(attempt + 1, wait, error);
+				await sleep(wait);
+				continue;
+			}
+			throw error instanceof Error ? error : new Error(String(error));
+		}
+	}
+	// Unreachable, typing appeasement
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	return await fn();
+}
 
 // Utility functions
 function showUsage(): void {
@@ -196,8 +276,8 @@ async function checkForTestPackages(packages: Package[]): Promise<void> {
 async function checkPackageStatus(pkg: Package, registry: string): Promise<PackageStatus> {
 	console.log(`🔍 Checking ${pkg.name}...`);
 
-	try {
-		const url = getApiUrl(registry, pkg.name);
+	const url = getApiUrl(registry, pkg.name);
+	const result = await withRetry(async () => {
 		const response = await fetch(url, {
 			headers: {
 				Accept: "application/json",
@@ -207,32 +287,44 @@ async function checkPackageStatus(pkg: Package, registry: string): Promise<Packa
 		});
 
 		if (response.status === 404) {
-			console.log(`📦 ${pkg.name} - new package`);
-			return { exists: false, versions: [] };
+			return { exists: false, versions: [] } satisfies PackageStatus;
 		}
 
 		if (!response.ok) {
-			console.log(`⚠️  ${pkg.name} - API error ${response.status}, treating as new`);
-			return { exists: false, versions: [] };
+			if (isRetryableHttpStatus(response.status)) {
+				throw new HttpStatusError(response.status, `Registry responded with ${response.status}`);
+			}
+			return { exists: false, versions: [] } satisfies PackageStatus;
 		}
 
 		const data = await response.json();
 		const versions = Object.keys(data.versions || {});
-		const latestVersion = data["dist-tags"]?.latest;
+		const latestVersion = data["dist-tags"]?.latest as string | undefined;
+		return { exists: true, versions, latestVersion } satisfies PackageStatus;
+	}, {
+		label: `status:${pkg.name}`,
+		maxRetries: MAX_RETRIES_STATUS,
+		baseDelayMs: RETRY_BASE_MS,
+		maxDelayMs: RETRY_MAX_MS,
+		shouldRetry: (err) => isHttpStatusError(err) && isRetryableHttpStatus((err as HttpStatusError).status),
+		onRetry: (attempt, wait, err) => {
+			const status = isHttpStatusError(err) ? (err as HttpStatusError).status : 'unknown';
+			console.log(`⚠️  ${pkg.name} - API ${status}, retrying in ${wait}ms (${attempt}/${MAX_RETRIES_STATUS})`);
+		},
+	});
 
-		console.log(`✅ ${pkg.name} - exists (${versions.length} versions)`);
-		console.log(`🔍 ${pkg.name} - latest: ${latestVersion}, checking: ${pkg.version}`);
-		
-		return { exists: true, versions, latestVersion };
-	} catch (error) {
-		const message = error instanceof Error ? error.message : "Unknown error";
-		console.log(`⚠️  ${pkg.name} - check failed: ${message}`);
-		return { exists: false, versions: [] };
+	if (result.exists) {
+		console.log(`✅ ${pkg.name} - exists (${result.versions.length} versions)`);
+		console.log(`🔍 ${pkg.name} - latest: ${result.latestVersion}, checking: ${pkg.version}`);
+	} else {
+		console.log(`📦 ${pkg.name} - new package`);
 	}
+
+	return result;
 }
 
 // Publishing utilities
-async function publishPackage(pkg: Package, config: Config): Promise<void> {
+async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 	if (config.dryRun) {
 		console.log(`📦 [DRY RUN] Would publish ${pkg.name}@${pkg.version}`);
 		return;
@@ -294,6 +386,29 @@ async function publishPackage(pkg: Package, config: Config): Promise<void> {
 			reject(new Error(`Failed to publish ${pkg.name}: ${stderr.trim() || `exit code ${code}`}`));
 		});
 	});
+}
+
+async function publishPackageWithRetry(pkg: Package, config: Config): Promise<void> {
+	await withRetry(
+		() => publishPackageOnce(pkg, config),
+		{
+			label: `publish:${pkg.name}@${pkg.version}`,
+			maxRetries: MAX_RETRIES_PUBLISH,
+			baseDelayMs: RETRY_BASE_MS,
+			maxDelayMs: RETRY_MAX_MS,
+			shouldRetry: (err) => {
+				const msg = (err instanceof Error ? err.message : String(err)).toLowerCase();
+				return isRateLimitedError(msg) || msg.includes("econnreset") || msg.includes("etimedout") || msg.includes("socket hang up");
+			},
+			onRetry: (attempt, wait, err) => {
+				const message = err instanceof Error ? err.message : String(err);
+				console.log(`⏳ ${pkg.name}@${pkg.version} retry ${attempt}/${MAX_RETRIES_PUBLISH} in ${wait}ms: ${message}`);
+			},
+		},
+	);
+	if (PUBLISH_DELAY_MS > 0) {
+		await sleep(PUBLISH_DELAY_MS);
+	}
 }
 
 async function collectPackages(): Promise<Package[]> {
@@ -387,7 +502,7 @@ async function processPackagesBatch(
 						return { result: `dry-run-${action}` as ProcessResult, pkg };
 					}
 
-					await publishPackage(pkg, config);
+					await publishPackageWithRetry(pkg, config);
 					return { result: isUpdate ? "updated" : "created", pkg };
 				} catch (error) {
 					const message = error instanceof Error ? error.message : "Unknown error";

@@ -7,13 +7,27 @@ on:
     branches:
       - "main"
 
+concurrency:
+  group: npm-publish-types
+  cancel-in-progress: false
+
 env:
   node-version: 22.x
+  # Conservative defaults to avoid npm 429 rate limits; overridable per-run
+  NPM_BATCH_SIZE: 1
+  NPM_BATCH_DELAY_MS: 5000
+  NPM_PUBLISH_DELAY_MS: 2000
+  NPM_MAX_RETRIES: 8
+  NPM_STATUS_MAX_RETRIES: 5
+  NPM_RETRY_BASE_MS: 2000
+  NPM_RETRY_MAX_MS: 60000
+  NPM_TIMEOUT_SEC: 600
 
 jobs:
   release:
     name: Release CI
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
     environment: npm-release
     permissions:
       contents: read
@@ -32,6 +46,6 @@ jobs:
           scope: '@girs'
 
       - name: Publish 
-        run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts
+        run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
