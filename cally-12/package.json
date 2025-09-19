@@ -6,62 +6,68 @@
     "module": "cally-12.js",
     "main": "cally-12.js",
     "exports": {
-      "./ambient": {
-        "types": "./cally-12-ambient.d.ts",
-        "import": "./cally-12-ambient.js",
-        "default": "./cally-12-ambient.js"
-      },
-      "./import": {
-        "types": "./cally-12-import.d.ts",
-        "import": "./cally-12-import.js",
-        "default": "./cally-12-import.js"
-      },
-      "./cally-12": {
-        "types": "./cally-12.d.ts",
-        "import": "./cally-12.js",
-        "default": "./cally-12.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./cally-12-ambient.d.ts",
+            "import": "./cally-12-ambient.js",
+            "default": "./cally-12-ambient.js"
+        },
+        "./import": {
+            "types": "./cally-12-import.d.ts",
+            "import": "./cally-12-import.js",
+            "default": "./cally-12-import.js"
+        },
+        "./cally-12": {
+            "types": "./cally-12.d.ts",
+            "import": "./cally-12.js",
+            "default": "./cally-12.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.37",
-      "@girs/coglpango-12": "12.0.0-4.0.0-beta.37",
-      "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/pango-1.0": "1.57.0-4.0.0-beta.37",
-      "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.37",
-      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.37",
-      "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.37",
-      "@girs/cogl-12": "12.0.0-4.0.0-beta.37",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/gl-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/clutter-12": "12.0.0-4.0.0-beta.37",
-      "@girs/json-1.0": "1.10.8-4.0.0-beta.37",
-      "@girs/atk-1.0": "2.58.0-4.0.0-beta.37"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/atk-1.0": "2.58.0-4.0.0-beta.37",
+        "@girs/cairo-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/clutter-12": "12.0.0-4.0.0-beta.37",
+        "@girs/cogl-12": "12.0.0-4.0.0-beta.37",
+        "@girs/coglpango-12": "12.0.0-4.0.0-beta.37",
+        "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.37",
+        "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/gjs": "4.0.0-beta.37",
+        "@girs/gl-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.37",
+        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/graphene-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.37",
+        "@girs/json-1.0": "1.10.8-4.0.0-beta.37",
+        "@girs/pango-1.0": "1.57.0-4.0.0-beta.37",
+        "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.37"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Cally-12"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Cally-12"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/cally-12#readme"
 }
-
-

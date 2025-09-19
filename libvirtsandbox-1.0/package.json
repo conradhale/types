@@ -6,54 +6,60 @@
     "module": "libvirtsandbox-1.0.js",
     "main": "libvirtsandbox-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./libvirtsandbox-1.0-ambient.d.ts",
-        "import": "./libvirtsandbox-1.0-ambient.js",
-        "default": "./libvirtsandbox-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./libvirtsandbox-1.0-import.d.ts",
-        "import": "./libvirtsandbox-1.0-import.js",
-        "default": "./libvirtsandbox-1.0-import.js"
-      },
-      "./libvirtsandbox-1.0": {
-        "types": "./libvirtsandbox-1.0.d.ts",
-        "import": "./libvirtsandbox-1.0.js",
-        "default": "./libvirtsandbox-1.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./libvirtsandbox-1.0-ambient.d.ts",
+            "import": "./libvirtsandbox-1.0-ambient.js",
+            "default": "./libvirtsandbox-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./libvirtsandbox-1.0-import.d.ts",
+            "import": "./libvirtsandbox-1.0-import.js",
+            "default": "./libvirtsandbox-1.0-import.js"
+        },
+        "./libvirtsandbox-1.0": {
+            "types": "./libvirtsandbox-1.0.d.ts",
+            "import": "./libvirtsandbox-1.0.js",
+            "default": "./libvirtsandbox-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.37",
-      "@girs/libvirtgobject-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/libvirtglib-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/libvirtgconfig-1.0": "1.0.0-4.0.0-beta.37",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.37",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.37"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/gjs": "4.0.0-beta.37",
+        "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.37",
+        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
+        "@girs/libvirtgconfig-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/libvirtglib-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/libvirtgobject-1.0": "1.0.0-4.0.0-beta.37",
+        "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.37"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "LibvirtSandbox-1.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "LibvirtSandbox-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/libvirtsandbox-1.0#readme"
 }
-
-
