@@ -1,77 +1,71 @@
 {
     "name": "@girs/gtkchamplain-0.12",
-    "version": "0.12.0-4.0.0-beta.37",
+    "version": "0.12.0-4.0.0-beta.38",
     "description": "GJS TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0",
     "type": "module",
     "module": "gtkchamplain-0.12.js",
     "main": "gtkchamplain-0.12.js",
     "exports": {
-        "./ambient": {
-            "types": "./gtkchamplain-0.12-ambient.d.ts",
-            "import": "./gtkchamplain-0.12-ambient.js",
-            "default": "./gtkchamplain-0.12-ambient.js"
-        },
-        "./import": {
-            "types": "./gtkchamplain-0.12-import.d.ts",
-            "import": "./gtkchamplain-0.12-import.js",
-            "default": "./gtkchamplain-0.12-import.js"
-        },
-        "./gtkchamplain-0.12": {
-            "types": "./gtkchamplain-0.12.d.ts",
-            "import": "./gtkchamplain-0.12.js",
-            "default": "./gtkchamplain-0.12.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./gtkchamplain-0.12-ambient.d.ts",
+        "import": "./gtkchamplain-0.12-ambient.js",
+        "default": "./gtkchamplain-0.12-ambient.js"
+      },
+      "./import": {
+        "types": "./gtkchamplain-0.12-import.d.ts",
+        "import": "./gtkchamplain-0.12-import.js",
+        "default": "./gtkchamplain-0.12-import.js"
+      },
+      "./gtkchamplain-0.12": {
+        "types": "./gtkchamplain-0.12.d.ts",
+        "import": "./gtkchamplain-0.12.js",
+        "default": "./gtkchamplain-0.12.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/atk-1.0": "2.58.0-4.0.0-beta.37",
-        "@girs/cairo-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/champlain-0.12": "0.12.22-4.0.0-beta.37",
-        "@girs/clutter-1.0": "1.26.5-4.0.0-beta.37",
-        "@girs/cogl-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/coglpango-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.37",
-        "@girs/gdk-3.0": "3.24.49-4.0.0-beta.37",
-        "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.37",
-        "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/gjs": "4.0.0-beta.37",
-        "@girs/gl-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.37",
-        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/gtk-3.0": "3.24.49-4.0.0-beta.37",
-        "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.37",
-        "@girs/json-1.0": "1.10.8-4.0.0-beta.37",
-        "@girs/pango-1.0": "1.57.0-4.0.0-beta.37",
-        "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/xlib-2.0": "2.0.0-4.0.0-beta.37"
-    },
+      "@girs/gjs": "4.0.0-beta.38",
+      "@girs/gtk-3.0": "3.24.50-4.0.0-beta.38",
+      "@girs/xlib-2.0": "2.0.0-4.0.0-beta.38",
+      "@girs/gdk-3.0": "3.24.50-4.0.0-beta.38",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
+      "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+      "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+      "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.38",
+      "@girs/atk-1.0": "2.58.0-4.0.0-beta.38",
+      "@girs/clutter-1.0": "1.26.5-4.0.0-beta.38",
+      "@girs/json-1.0": "1.10.8-4.0.0-beta.38",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.38",
+      "@girs/coglpango-1.0": "1.0.0-4.0.0-beta.38",
+      "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.38",
+      "@girs/cogl-1.0": "1.0.0-4.0.0-beta.38",
+      "@girs/champlain-0.12": "0.12.22-4.0.0-beta.38"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GtkChamplain-0.12"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GtkChamplain-0.12"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gtkchamplain-0.12#readme"
 }
+
+
