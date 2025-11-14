@@ -1,1 +1,9 @@
-// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Cogl"
+import type Cogl17 from '@girs/cogl-17';
+
+declare global {
+    export interface GjsGiImports {
+        Cogl: typeof Cogl17;
+    }
+}
+
+export default GjsGiImports;

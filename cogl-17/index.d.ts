@@ -9,5 +9,7 @@
 
 import './cogl-17-ambient.d.ts';
 
+import './cogl-17-import.d.ts';
+
 import Cogl from './cogl-17.js';
 export default Cogl;

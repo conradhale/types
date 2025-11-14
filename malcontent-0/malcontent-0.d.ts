@@ -21,29 +21,6 @@ export namespace Malcontent {
      */
 
     /**
-     * Different semantics for interpreting an application list.
-     */
-
-    /**
-     * Different semantics for interpreting an application list.
-     */
-    export namespace AppFilterListType {
-        export const $gtype: GObject.GType<AppFilterListType>;
-    }
-
-    enum AppFilterListType {
-        /**
-         * Any program in the list is not allowed to
-         *    be run.
-         */
-        BLOCKLIST,
-        /**
-         * Any program not in the list is not allowed
-         *    to be run.
-         */
-        ALLOWLIST,
-    }
-    /**
      * Rating values of the intensity of a given section in an app or game.
      * These are directly equivalent to the values in the #AsContentRatingValue
      * enumeration in libappstream.
@@ -121,30 +98,6 @@ export namespace Malcontent {
     }
 
     /**
-     * Types of session limit which can be imposed on an account. Additional types
-     * may be added in future.
-     */
-
-    /**
-     * Types of session limit which can be imposed on an account. Additional types
-     * may be added in future.
-     */
-    export namespace SessionLimitsType {
-        export const $gtype: GObject.GType<SessionLimitsType>;
-    }
-
-    enum SessionLimitsType {
-        /**
-         * No session limits are imposed.
-         */
-        NONE,
-        /**
-         * Sessions are limited to between a
-         *     pair of given times each day.
-         */
-        DAILY_SCHEDULE,
-    }
-    /**
      * Deserialize an app filter previously serialized with
      * mct_app_filter_serialize(). This function guarantees to be able to
      * deserialize any serialized form from this version or older versions of
@@ -155,7 +108,7 @@ export namespace Malcontent {
      * @param user_id the ID of the user the app filter relates to
      * @returns deserialized app filter
      */
-    function app_filter_deserialize(variant: GLib.Variant, user_id: number): AppFilter;
+    function app_filter_deserialize(variant: GLib.Variant, user_id: never): AppFilter;
     function app_filter_error_quark(): GLib.Quark;
     function manager_error_quark(): GLib.Quark;
     /**
@@ -169,7 +122,7 @@ export namespace Malcontent {
      * @param user_id the ID of the user the session limits relate to
      * @returns deserialized session limits
      */
-    function session_limits_deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
+    function session_limits_deserialize(variant: GLib.Variant, user_id: never): SessionLimits;
     /**
      * Flags to control the behaviour of getter functions like
      * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
@@ -293,7 +246,7 @@ export namespace Malcontent {
          * @returns app filter for the queried user
          */
         get_app_filter(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): AppFilter;
@@ -308,7 +261,7 @@ export namespace Malcontent {
          * @param cancellable a #GCancellable, or %NULL
          */
         get_app_filter_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<AppFilter>;
@@ -324,7 +277,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         get_app_filter_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -341,7 +294,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         get_app_filter_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -361,7 +314,7 @@ export namespace Malcontent {
          * @returns session limits for the queried user
          */
         get_session_limits(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): SessionLimits;
@@ -376,7 +329,7 @@ export namespace Malcontent {
          * @param cancellable a #GCancellable, or %NULL
          */
         get_session_limits_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<SessionLimits>;
@@ -392,7 +345,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         get_session_limits_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -409,7 +362,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         get_session_limits_async(
-            user_id: number,
+            user_id: never,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -430,7 +383,7 @@ export namespace Malcontent {
          * @returns %TRUE on success, %FALSE otherwise
          */
         set_app_filter(
-            user_id: number,
+            user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -447,7 +400,7 @@ export namespace Malcontent {
          * @param cancellable a #GCancellable, or %NULL
          */
         set_app_filter_async(
-            user_id: number,
+            user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -465,7 +418,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         set_app_filter_async(
-            user_id: number,
+            user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags | null,
             cancellable: Gio.Cancellable | null,
@@ -484,7 +437,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         set_app_filter_async(
-            user_id: number,
+            user_id: never,
             app_filter: AppFilter,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -506,7 +459,7 @@ export namespace Malcontent {
          * @returns %TRUE on success, %FALSE otherwise
          */
         set_session_limits(
-            user_id: number,
+            user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -524,7 +477,7 @@ export namespace Malcontent {
          * @param cancellable a #GCancellable, or %NULL
          */
         set_session_limits_async(
-            user_id: number,
+            user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -543,7 +496,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         set_session_limits_async(
-            user_id: number,
+            user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags | null,
             cancellable: Gio.Cancellable | null,
@@ -563,7 +516,7 @@ export namespace Malcontent {
          * @param callback a #GAsyncReadyCallback
          */
         set_session_limits_async(
-            user_id: number,
+            user_id: never,
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
@@ -587,17 +540,8 @@ export namespace Malcontent {
      * are read-only for non-administrative users. The precise policy is set using
      * polkit.
      */
-    class AppFilter {
+    abstract class AppFilter {
         static $gtype: GObject.GType<AppFilter>;
-
-        // Fields
-
-        ref_count: number;
-        user_id: number;
-        app_list: string;
-        app_list_type: AppFilterListType;
-        allow_user_installation: boolean;
-        allow_system_installation: boolean;
 
         // Constructors
 
@@ -615,7 +559,7 @@ export namespace Malcontent {
          * @param variant a serialized app filter variant
          * @param user_id the ID of the user the app filter relates to
          */
-        static deserialize(variant: GLib.Variant, user_id: number): AppFilter;
+        static deserialize(variant: GLib.Variant, user_id: never): AppFilter;
         static error_quark(): GLib.Quark;
 
         // Methods
@@ -651,11 +595,15 @@ export namespace Malcontent {
          * Get the user ID of the user this #MctAppFilter is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
          */
-        get_user_id(): number;
+        get_user_id(): never;
         /**
          * Check whether the app with the given `app_info` is allowed to be run
          * according to this app filter. This matches on multiple keys potentially
          * present in the #GAppInfo, including the path of the executable.
+         *
+         * If the appfilter is a blocklist, the `app_info` is blocked if any of its
+         * keys are blocked. If the appfilter is an allowlist, the `app_info` is allowed
+         * if any of its keys are allowed.
          * @param app_info application information
          * @returns %TRUE if the user this @filter corresponds to is allowed to run the    app represented by @app_info according to the @filter policy; %FALSE    otherwise
          */
@@ -860,16 +808,8 @@ export namespace Malcontent {
      * and are read-only for non-administrative users. The precise policy is set
      * using polkit.
      */
-    class SessionLimits {
+    abstract class SessionLimits {
         static $gtype: GObject.GType<SessionLimits>;
-
-        // Fields
-
-        ref_count: number;
-        user_id: number;
-        limit_type: SessionLimitsType;
-        daily_start_time: number;
-        daily_end_time: number;
 
         // Constructors
 
@@ -887,7 +827,7 @@ export namespace Malcontent {
          * @param variant a serialized session limits variant
          * @param user_id the ID of the user the session limits relate to
          */
-        static deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
+        static deserialize(variant: GLib.Variant, user_id: never): SessionLimits;
 
         // Methods
 
@@ -907,7 +847,7 @@ export namespace Malcontent {
          * Get the user ID of the user this #MctSessionLimits is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
          */
-        get_user_id(): number;
+        get_user_id(): never;
         /**
          * Check whether any session limits are enabled and are going to impose at least
          * one restriction on the user. This gives a high level view of whether session

@@ -1,1 +1,9 @@
-// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Meta"
+import type Meta17 from '@girs/meta-17';
+
+declare global {
+    export interface GjsGiImports {
+        Meta: typeof Meta17;
+    }
+}
+
+export default GjsGiImports;

@@ -648,17 +648,17 @@ declare global {
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.gettext}
      */
-    const _: typeof gettext.gettext;
+    var _: typeof gettext.gettext;
     /**
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.pgettext}
      */
-    const C_: typeof gettext.pgettext;
+    var C_: typeof gettext.pgettext;
     /**
      * Run `pkg.initGettext()` before using this.
      * Currently not implemented.
      */
-    const N_: (x: string) => string;
+    var N_: (x: string) => string;
 
     function print(...args: any[]): void;
     function printerr(...args: any[]): void;
