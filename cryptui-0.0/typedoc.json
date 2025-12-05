@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./cryptui-0.0.d.ts"],
-    "readme": "./README.md",
-    "name": "CryptUI-0.0",
-    "tsconfig": "./tsconfig.json"
-}
-

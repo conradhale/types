@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./blockdev-3.0.d.ts"],
-    "readme": "./README.md",
-    "name": "BlockDev-3.0",
-    "tsconfig": "./tsconfig.json"
-}
-

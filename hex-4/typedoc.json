@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./hex-4.d.ts"],
-    "readme": "./README.md",
-    "name": "Hex-4",
-    "tsconfig": "./tsconfig.json"
-}
-

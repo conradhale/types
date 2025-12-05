@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./cogl-7.d.ts"],
-    "readme": "./README.md",
-    "name": "Cogl-7",
-    "tsconfig": "./tsconfig.json"
-}
-

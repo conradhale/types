@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./clappergtk-0.0.d.ts"],
-    "readme": "./README.md",
-    "name": "ClapperGtk-0.0",
-    "tsconfig": "./tsconfig.json"
-}
-

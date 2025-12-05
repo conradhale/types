@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./braseroburn-3.1.d.ts"],
-    "readme": "./README.md",
-    "name": "BraseroBurn-3.1",
-    "tsconfig": "./tsconfig.json"
-}
-

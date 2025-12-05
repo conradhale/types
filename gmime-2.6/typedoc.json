@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./gmime-2.6.d.ts"],
-    "readme": "./README.md",
-    "name": "GMime-2.6",
-    "tsconfig": "./tsconfig.json"
-}
-

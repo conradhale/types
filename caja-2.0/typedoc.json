@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./caja-2.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Caja-2.0",
-    "tsconfig": "./tsconfig.json"
-}
-

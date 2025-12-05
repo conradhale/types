@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./gtkvnc-2.0.d.ts"],
-    "readme": "./README.md",
-    "name": "GtkVnc-2.0",
-    "tsconfig": "./tsconfig.json"
-}
-

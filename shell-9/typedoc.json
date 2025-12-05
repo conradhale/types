@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./shell-9.d.ts"],
-    "readme": "./README.md",
-    "name": "Shell-9",
-    "tsconfig": "./tsconfig.json"
-}
-

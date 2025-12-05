@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./easyfc-0.14.d.ts"],
-    "readme": "./README.md",
-    "name": "Easyfc-0.14",
-    "tsconfig": "./tsconfig.json"
-}
-

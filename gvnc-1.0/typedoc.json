@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./gvnc-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "GVnc-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

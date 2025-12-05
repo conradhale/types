@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./playerctl-2.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Playerctl-2.0",
-    "tsconfig": "./tsconfig.json"
-}
-

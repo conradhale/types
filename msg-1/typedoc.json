@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./msg-1.d.ts"],
-    "readme": "./README.md",
-    "name": "Msg-1",
-    "tsconfig": "./tsconfig.json"
-}
-
