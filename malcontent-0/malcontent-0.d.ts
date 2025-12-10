@@ -36,12 +36,12 @@ export namespace Malcontent {
          * Any program in the list is not allowed to
          *    be run.
          */
-        BLOCKLIST,
+        BLOCKLIST = 0,
         /**
          * Any program not in the list is not allowed
          *    to be run.
          */
-        ALLOWLIST,
+        ALLOWLIST = 1,
     }
     /**
      * Rating values of the intensity of a given section in an app or game.
@@ -63,25 +63,25 @@ export namespace Malcontent {
          * Unknown value for the given
          *    section.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No rating for the given section.
          */
-        NONE,
+        NONE = 1,
         /**
          * Mild rating for the given section.
          */
-        MILD,
+        MILD = 2,
         /**
          * Moderate rating for the given
          *    section.
          */
-        MODERATE,
+        MODERATE = 3,
         /**
          * Intense rating for the given
          *    section.
          */
-        INTENSE,
+        INTENSE = 4,
     }
     /**
      * Errors relating to get/set operations on an #MctManager instance.
@@ -137,12 +137,12 @@ export namespace Malcontent {
         /**
          * No session limits are imposed.
          */
-        NONE,
+        NONE = 0,
         /**
          * Sessions are limited to between a
          *     pair of given times each day.
          */
-        DAILY_SCHEDULE,
+        DAILY_SCHEDULE = 1,
     }
     /**
      * Deserialize an app filter previously serialized with
@@ -187,12 +187,12 @@ export namespace Malcontent {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow interactive polkit dialogs
          *    when requesting authorization.
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
     }
     /**
      * Flags to control the behaviour of setter functions like
@@ -211,12 +211,12 @@ export namespace Malcontent {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow interactive polkit dialogs
          *    when requesting authorization.
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
     }
     namespace Manager {
         // Signal signatures

@@ -24,8 +24,8 @@ export namespace Mtk {
     }
 
     enum AnonymousFileMapmode {
-        PRIVATE,
-        SHARED,
+        PRIVATE = 0,
+        SHARED = 1,
     }
     class MonitorTransform {
         static $gtype: GObject.GType<MonitorTransform>;
@@ -51,9 +51,9 @@ export namespace Mtk {
     }
 
     enum RegionOverlap {
-        OUT,
-        IN,
-        PART,
+        OUT = 0,
+        IN = 1,
+        PART = 2,
     }
 
     export namespace RoundingStrategy {
@@ -61,9 +61,9 @@ export namespace Mtk {
     }
 
     enum RoundingStrategy {
-        SHRINK,
-        GROW,
-        ROUND,
+        SHRINK = 0,
+        GROW = 1,
+        ROUND = 2,
     }
     const MONITOR_ALL_TRANSFORMS: number;
     const MONITOR_N_TRANSFORMS: number;
@@ -116,7 +116,7 @@ export namespace Mtk {
         // Methods
 
         free(): void;
-        get_pid(): never;
+        get_pid(): number;
         get_pidfd(): number;
     }
 

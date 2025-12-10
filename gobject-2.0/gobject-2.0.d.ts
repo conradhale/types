@@ -2677,19 +2677,19 @@ export namespace GObject {
          * The default binding; if the source property
          *   changes, the target property is updated with its value.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Bidirectional binding; if either the
          *   property of the source or the property of the target changes,
          *   the other is updated.
          */
-        BIDIRECTIONAL,
+        BIDIRECTIONAL = 1,
         /**
          * Synchronize the values of the source and
          *   target properties when creating the binding; the direction of
          *   the synchronization is always from the source to the target.
          */
-        SYNC_CREATE,
+        SYNC_CREATE = 2,
         /**
          * If the two properties being bound are
          *   booleans, setting one to %TRUE will result in the other being
@@ -2697,7 +2697,7 @@ export namespace GObject {
          *   boolean properties, and cannot be used when passing custom
          *   transformation functions to g_object_bind_property_full().
          */
-        INVERT_BOOLEAN,
+        INVERT_BOOLEAN = 4,
     }
     /**
      * The connection flags are used to specify the behaviour of a signal's
@@ -2716,18 +2716,18 @@ export namespace GObject {
         /**
          * Default behaviour (no special flags). Since: 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * If set, the handler should be called after the
          *  default handler of the signal. Normally, the handler is called before
          *  the default handler.
          */
-        AFTER,
+        AFTER = 1,
         /**
          * If set, the instance and data should be swapped when
          *  calling the handler; see g_signal_connect_swapped() for an example.
          */
-        SWAPPED,
+        SWAPPED = 2,
     }
 
     export namespace IOCondition {
@@ -2735,12 +2735,12 @@ export namespace GObject {
     }
 
     enum IOCondition {
-        IN,
-        OUT,
-        PRI,
-        ERR,
-        HUP,
-        NVAL,
+        IN = 1,
+        OUT = 4,
+        PRI = 2,
+        ERR = 8,
+        HUP = 16,
+        NVAL = 32,
     }
     /**
      * Through the #GParamFlags flag values, certain aspects of parameters
@@ -2763,69 +2763,69 @@ export namespace GObject {
         /**
          * the parameter is readable
          */
-        READABLE,
+        READABLE = 1,
         /**
          * the parameter is writable
          */
-        WRITABLE,
+        WRITABLE = 2,
         /**
          * alias for %G_PARAM_READABLE | %G_PARAM_WRITABLE
          */
-        READWRITE,
+        READWRITE = 3,
         /**
          * the parameter will be set upon object construction.
          *   See [vfunc`Object`.constructed] for more details
          */
-        CONSTRUCT,
+        CONSTRUCT = 4,
         /**
          * the parameter can only be set upon object construction.
          *   See [vfunc`Object`.constructed] for more details
          */
-        CONSTRUCT_ONLY,
+        CONSTRUCT_ONLY = 8,
         /**
          * upon parameter conversion (see g_param_value_convert())
          *  strict validation is not required
          */
-        LAX_VALIDATION,
+        LAX_VALIDATION = 16,
         /**
          * the string used as name when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_NAME,
+        STATIC_NAME = 32,
         /**
          * internal
          */
-        PRIVATE,
+        PRIVATE = 32,
         /**
          * the string used as nick when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_NICK,
+        STATIC_NICK = 64,
         /**
          * the string used as blurb when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_BLURB,
+        STATIC_BLURB = 128,
         /**
          * calls to g_object_set_property() for this
          *   property will not automatically result in a "notify" signal being
          *   emitted: the implementation must call g_object_notify() themselves
          *   in case the property actually changes.  Since: 2.42.
          */
-        EXPLICIT_NOTIFY,
+        EXPLICIT_NOTIFY = 1073741824,
         /**
          * the parameter is deprecated and will be removed
          *  in a future version. A warning will be generated if it is used
          *  while running with G_ENABLE_DIAGNOSTIC=1.
          *  Since 2.26
          */
-        DEPRECATED,
+        DEPRECATED = 2147483648,
     }
     /**
      * The signal flags are used to specify a signal's behaviour.
@@ -2842,26 +2842,26 @@ export namespace GObject {
         /**
          * Invoke the object method handler in the first emission stage.
          */
-        RUN_FIRST,
+        RUN_FIRST = 1,
         /**
          * Invoke the object method handler in the third emission stage.
          */
-        RUN_LAST,
+        RUN_LAST = 2,
         /**
          * Invoke the object method handler in the last emission stage.
          */
-        RUN_CLEANUP,
+        RUN_CLEANUP = 4,
         /**
          * Signals being emitted for an object while currently being in
          *  emission for this very object will not be emitted recursively,
          *  but instead cause the first emission to be restarted.
          */
-        NO_RECURSE,
+        NO_RECURSE = 8,
         /**
          * This signal supports "::detail" appendices to the signal name
          *  upon handler connections and emissions.
          */
-        DETAILED,
+        DETAILED = 16,
         /**
          * Action signals are signals that may freely be emitted on alive
          *  objects from user code via g_signal_emit() and friends, without
@@ -2870,23 +2870,23 @@ export namespace GObject {
          *  of as object methods which can be called generically by
          *  third-party code.
          */
-        ACTION,
+        ACTION = 32,
         /**
          * No emissions hooks are supported for this signal.
          */
-        NO_HOOKS,
+        NO_HOOKS = 64,
         /**
          * Varargs signal emission will always collect the arguments, even if there
          * are no signal handlers connected.
          */
-        MUST_COLLECT,
+        MUST_COLLECT = 128,
         /**
          * The signal is deprecated and will be removed in a future version.
          *
          * A warning will be generated if it is connected while running with
          * `G_ENABLE_DIAGNOSTIC=1`.
          */
-        DEPRECATED,
+        DEPRECATED = 256,
         /**
          * The signal accumulator was invoked for the first time.
          *
@@ -2894,7 +2894,7 @@ export namespace GObject {
          * for the `run_type` field of the [struct`GObject`.SignalInvocationHint], to
          * mark the first call to the accumulator function for a signal emission.
          */
-        ACCUMULATOR_FIRST_RUN,
+        ACCUMULATOR_FIRST_RUN = 131072,
     }
     /**
      * The match types specify what g_signal_handlers_block_matched(),
@@ -2915,27 +2915,27 @@ export namespace GObject {
         /**
          * The signal id must be equal.
          */
-        ID,
+        ID = 1,
         /**
          * The signal detail must be equal.
          */
-        DETAIL,
+        DETAIL = 2,
         /**
          * The closure must be the same.
          */
-        CLOSURE,
+        CLOSURE = 4,
         /**
          * The C closure callback must be the same.
          */
-        FUNC,
+        FUNC = 8,
         /**
          * The closure data must be the same.
          */
-        DATA,
+        DATA = 16,
         /**
          * Only unblocked signals may be matched.
          */
-        UNBLOCKED,
+        UNBLOCKED = 32,
     }
     /**
      * These flags used to be passed to g_type_init_with_debug_flags() which
@@ -2960,23 +2960,23 @@ export namespace GObject {
         /**
          * Print no messages
          */
-        NONE,
+        NONE = 0,
         /**
          * Print messages about object bookkeeping
          */
-        OBJECTS,
+        OBJECTS = 1,
         /**
          * Print messages about signal emissions
          */
-        SIGNALS,
+        SIGNALS = 2,
         /**
          * Keep a count of instances of each type
          */
-        INSTANCE_COUNT,
+        INSTANCE_COUNT = 4,
         /**
          * Mask covering all debug flags
          */
-        MASK,
+        MASK = 7,
     }
     /**
      * Bit masks used to check or determine characteristics of a type.
@@ -2993,29 +2993,29 @@ export namespace GObject {
         /**
          * No special flags. Since: 2.74
          */
-        NONE,
+        NONE = 0,
         /**
          * Indicates an abstract type. No instances can be
          *  created for an abstract type
          */
-        ABSTRACT,
+        ABSTRACT = 16,
         /**
          * Indicates an abstract value type, i.e. a type
          *  that introduces a value table, but can't be used for
          *  g_value_init()
          */
-        VALUE_ABSTRACT,
+        VALUE_ABSTRACT = 32,
         /**
          * Indicates a final type. A final type is a non-derivable
          *  leaf node in a deep derivable type hierarchy tree. Since: 2.70
          */
-        FINAL,
+        FINAL = 64,
         /**
          * The type is deprecated and may be removed in a
          *  future version. A warning will be emitted if it is instantiated while
          *  running with `G_ENABLE_DIAGNOSTIC=1`. Since 2.76
          */
-        DEPRECATED,
+        DEPRECATED = 128,
     }
     /**
      * Bit masks used to check or determine specific characteristics of a
@@ -3034,19 +3034,19 @@ export namespace GObject {
         /**
          * Indicates a classed type
          */
-        CLASSED,
+        CLASSED = 1,
         /**
          * Indicates an instantiatable type (implies classed)
          */
-        INSTANTIATABLE,
+        INSTANTIATABLE = 2,
         /**
          * Indicates a flat derivable type
          */
-        DERIVABLE,
+        DERIVABLE = 4,
         /**
          * Indicates a deep derivable type (implies derivable)
          */
-        DEEP_DERIVABLE,
+        DEEP_DERIVABLE = 8,
     }
     namespace Binding {
         // Signal signatures

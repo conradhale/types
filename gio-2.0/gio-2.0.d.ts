@@ -71,19 +71,19 @@ export namespace Gio {
         /**
          * An alias for the message bus that activated the process, if any.
          */
-        STARTER,
+        STARTER = -1,
         /**
          * Not a message bus.
          */
-        NONE,
+        NONE = 0,
         /**
          * The system-wide message bus.
          */
-        SYSTEM,
+        SYSTEM = 1,
         /**
          * The login session message bus.
          */
-        SESSION,
+        SESSION = 2,
     }
     /**
      * Results returned from g_converter_convert().
@@ -100,19 +100,19 @@ export namespace Gio {
         /**
          * There was an error during conversion.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * Some data was consumed or produced
          */
-        CONVERTED,
+        CONVERTED = 1,
         /**
          * The conversion is finished
          */
-        FINISHED,
+        FINISHED = 2,
         /**
          * Flushing is finished
          */
-        FLUSHED,
+        FLUSHED = 3,
     }
     /**
      * Enumeration describing different kinds of native credential types.
@@ -129,35 +129,35 @@ export namespace Gio {
         /**
          * Indicates an invalid native credential type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The native credentials type is a `struct ucred`.
          */
-        LINUX_UCRED,
+        LINUX_UCRED = 1,
         /**
          * The native credentials type is a `struct cmsgcred`.
          */
-        FREEBSD_CMSGCRED,
+        FREEBSD_CMSGCRED = 2,
         /**
          * The native credentials type is a `struct sockpeercred`. Added in 2.30.
          */
-        OPENBSD_SOCKPEERCRED,
+        OPENBSD_SOCKPEERCRED = 3,
         /**
          * The native credentials type is a `ucred_t`. Added in 2.40.
          */
-        SOLARIS_UCRED,
+        SOLARIS_UCRED = 4,
         /**
          * The native credentials type is a `struct unpcbid`. Added in 2.42.
          */
-        NETBSD_UNPCBID,
+        NETBSD_UNPCBID = 5,
         /**
          * The native credentials type is a `struct xucred`. Added in 2.66.
          */
-        APPLE_XUCRED,
+        APPLE_XUCRED = 6,
         /**
          * The native credentials type is a PID `DWORD`. Added in 2.72.
          */
-        WIN32_PID,
+        WIN32_PID = 7,
     }
     /**
      * Error codes for the %G_DBUS_ERROR error domain.
@@ -519,11 +519,11 @@ export namespace Gio {
         /**
          * The byte order is big endian.
          */
-        BIG_ENDIAN,
+        BIG_ENDIAN = 66,
         /**
          * The byte order is little endian.
          */
-        LITTLE_ENDIAN,
+        LITTLE_ENDIAN = 108,
     }
     /**
      * Header fields used in #GDBusMessage.
@@ -540,43 +540,43 @@ export namespace Gio {
         /**
          * Not a valid header field.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The object path.
          */
-        PATH,
+        PATH = 1,
         /**
          * The interface name.
          */
-        INTERFACE,
+        INTERFACE = 2,
         /**
          * The method or signal name.
          */
-        MEMBER,
+        MEMBER = 3,
         /**
          * The name of the error that occurred.
          */
-        ERROR_NAME,
+        ERROR_NAME = 4,
         /**
          * The serial number the message is a reply to.
          */
-        REPLY_SERIAL,
+        REPLY_SERIAL = 5,
         /**
          * The name the message is intended for.
          */
-        DESTINATION,
+        DESTINATION = 6,
         /**
          * Unique name of the sender of the message (filled in by the bus).
          */
-        SENDER,
+        SENDER = 7,
         /**
          * The signature of the message body.
          */
-        SIGNATURE,
+        SIGNATURE = 8,
         /**
          * The number of UNIX file descriptors that accompany the message.
          */
-        NUM_UNIX_FDS,
+        NUM_UNIX_FDS = 9,
     }
     /**
      * Message types used in #GDBusMessage.
@@ -593,23 +593,23 @@ export namespace Gio {
         /**
          * Message is of invalid type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Method call.
          */
-        METHOD_CALL,
+        METHOD_CALL = 1,
         /**
          * Method reply.
          */
-        METHOD_RETURN,
+        METHOD_RETURN = 2,
         /**
          * Error reply.
          */
-        ERROR,
+        ERROR = 3,
         /**
          * Signal emission.
          */
-        SIGNAL,
+        SIGNAL = 4,
     }
     /**
      * #GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
@@ -628,15 +628,15 @@ export namespace Gio {
         /**
          * Selects Big Endian byte order.
          */
-        BIG_ENDIAN,
+        BIG_ENDIAN = 0,
         /**
          * Selects Little Endian byte order.
          */
-        LITTLE_ENDIAN,
+        LITTLE_ENDIAN = 1,
         /**
          * Selects endianness based on host machine's architecture.
          */
-        HOST_ENDIAN,
+        HOST_ENDIAN = 2,
     }
     /**
      * #GDataStreamNewlineType is used when checking for or setting the line endings for a given file.
@@ -653,19 +653,19 @@ export namespace Gio {
         /**
          * Selects "LF" line endings, common on most modern UNIX platforms.
          */
-        LF,
+        LF = 0,
         /**
          * Selects "CR" line endings.
          */
-        CR,
+        CR = 1,
         /**
          * Selects "CR, LF" line ending, common on Microsoft Windows.
          */
-        CR_LF,
+        CR_LF = 2,
         /**
          * Automatically try to handle any line ending type.
          */
-        ANY,
+        ANY = 3,
     }
     /**
      * Enumeration describing how a drive can be started/stopped.
@@ -683,30 +683,30 @@ export namespace Gio {
          * Unknown or drive doesn't support
          *    start/stop.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The stop method will physically
          *    shut down the drive and e.g. power down the port the drive is
          *    attached to.
          */
-        SHUTDOWN,
+        SHUTDOWN = 1,
         /**
          * The start/stop methods are used
          *    for connecting/disconnect to the drive over the network.
          */
-        NETWORK,
+        NETWORK = 2,
         /**
          * The start/stop methods will
          *    assemble/disassemble a virtual drive from several physical
          *    drives.
          */
-        MULTIDISK,
+        MULTIDISK = 3,
         /**
          * The start/stop methods will
          *    unlock/lock the disk (for example using the ATA `SECURITY UNLOCK
          *    DEVICE` command)
          */
-        PASSWORD,
+        PASSWORD = 4,
     }
     /**
      * GEmblemOrigin is used to add information about the origin of the emblem
@@ -725,19 +725,19 @@ export namespace Gio {
         /**
          * Emblem of unknown origin
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Emblem adds device-specific information
          */
-        DEVICE,
+        DEVICE = 1,
         /**
          * Emblem depicts live metadata, such as "readonly"
          */
-        LIVEMETADATA,
+        LIVEMETADATA = 2,
         /**
          * Emblem comes from a user-defined tag, e.g. set by nautilus (in the future)
          */
-        TAG,
+        TAG = 3,
     }
     /**
      * Used by g_file_set_attributes_from_info() when setting file attributes.
@@ -754,15 +754,15 @@ export namespace Gio {
         /**
          * Attribute value is unset (empty).
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Attribute value is set.
          */
-        SET,
+        SET = 1,
         /**
          * Indicates an error in setting the value.
          */
-        ERROR_SETTING,
+        ERROR_SETTING = 2,
     }
     /**
      * The data types for file attributes.
@@ -779,43 +779,43 @@ export namespace Gio {
         /**
          * indicates an invalid or uninitialized type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * a null terminated UTF8 string.
          */
-        STRING,
+        STRING = 1,
         /**
          * a zero terminated string of non-zero bytes.
          */
-        BYTE_STRING,
+        BYTE_STRING = 2,
         /**
          * a boolean value.
          */
-        BOOLEAN,
+        BOOLEAN = 3,
         /**
          * an unsigned 4-byte/32-bit integer.
          */
-        UINT32,
+        UINT32 = 4,
         /**
          * a signed 4-byte/32-bit integer.
          */
-        INT32,
+        INT32 = 5,
         /**
          * an unsigned 8-byte/64-bit integer.
          */
-        UINT64,
+        UINT64 = 6,
         /**
          * a signed 8-byte/64-bit integer.
          */
-        INT64,
+        INT64 = 7,
         /**
          * a #GObject.
          */
-        OBJECT,
+        OBJECT = 8,
         /**
          * a %NULL terminated char **. Since 2.22
          */
-        STRINGV,
+        STRINGV = 9,
     }
     /**
      * Specifies what type of event a monitor event is.
@@ -832,54 +832,54 @@ export namespace Gio {
         /**
          * a file changed.
          */
-        CHANGED,
+        CHANGED = 0,
         /**
          * a hint that this was probably the last change in a set of changes.
          */
-        CHANGES_DONE_HINT,
+        CHANGES_DONE_HINT = 1,
         /**
          * a file was deleted.
          */
-        DELETED,
+        DELETED = 2,
         /**
          * a file was created.
          */
-        CREATED,
+        CREATED = 3,
         /**
          * a file attribute was changed.
          */
-        ATTRIBUTE_CHANGED,
+        ATTRIBUTE_CHANGED = 4,
         /**
          * the file location will soon be unmounted.
          */
-        PRE_UNMOUNT,
+        PRE_UNMOUNT = 5,
         /**
          * the file location was unmounted.
          */
-        UNMOUNTED,
+        UNMOUNTED = 6,
         /**
          * the file was moved -- only sent if the
          *   (deprecated) %G_FILE_MONITOR_SEND_MOVED flag is set
          */
-        MOVED,
+        MOVED = 7,
         /**
          * the file was renamed within the
          *   current directory -- only sent if the %G_FILE_MONITOR_WATCH_MOVES
          *   flag is set.  Since: 2.46.
          */
-        RENAMED,
+        RENAMED = 8,
         /**
          * the file was moved into the
          *   monitored directory from another location -- only sent if the
          *   %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46.
          */
-        MOVED_IN,
+        MOVED_IN = 9,
         /**
          * the file was moved out of the
          *   monitored directory to another location -- only sent if the
          *   %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46
          */
-        MOVED_OUT,
+        MOVED_OUT = 10,
     }
     /**
      * Indicates the file's on-disk type.
@@ -914,33 +914,33 @@ export namespace Gio {
         /**
          * File's type is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * File handle represents a regular file.
          */
-        REGULAR,
+        REGULAR = 1,
         /**
          * File handle represents a directory.
          */
-        DIRECTORY,
+        DIRECTORY = 2,
         /**
          * File handle represents a symbolic link
          *    (Unix systems).
          */
-        SYMBOLIC_LINK,
+        SYMBOLIC_LINK = 3,
         /**
          * File is a "special" file, such as a socket, fifo,
          *    block device, or character device.
          */
-        SPECIAL,
+        SPECIAL = 4,
         /**
          * File is a shortcut (Windows systems).
          */
-        SHORTCUT,
+        SHORTCUT = 5,
         /**
          * File is a mountable location.
          */
-        MOUNTABLE,
+        MOUNTABLE = 6,
     }
     /**
      * Indicates a hint from the file system whether files should be
@@ -961,15 +961,15 @@ export namespace Gio {
         /**
          * Only preview files if user has explicitly requested it.
          */
-        IF_ALWAYS,
+        IF_ALWAYS = 0,
         /**
          * Preview files if user has requested preview of "local" files.
          */
-        IF_LOCAL,
+        IF_LOCAL = 1,
         /**
          * Never preview files.
          */
-        NEVER,
+        NEVER = 2,
     }
     /**
      * Error codes returned by GIO functions.
@@ -1233,13 +1233,13 @@ export namespace Gio {
         /**
          * No module scan flags
          */
-        NONE,
+        NONE = 0,
         /**
          * When using this scope to load or
          *     scan modules, automatically block a modules which has the same base
          *     basename as previously loaded module.
          */
-        BLOCK_DUPLICATES,
+        BLOCK_DUPLICATES = 1,
     }
     /**
      * Memory availability warning levels.
@@ -1276,19 +1276,19 @@ export namespace Gio {
          *   should free up unneeded resources (for example, in-memory caches) so they can
          *   be used elsewhere.
          */
-        LOW,
+        LOW = 50,
         /**
          * Same as `G_MEMORY_MONITOR_WARNING_LEVEL_LOW`
          *   but the device has even less free memory, so processes should try harder to free
          *   up unneeded resources. If your process does not need to stay running, it is a
          *   good time for it to quit.
          */
-        MEDIUM,
+        MEDIUM = 100,
         /**
          * The system will soon start terminating
          *   processes to reclaim memory, including background processes.
          */
-        CRITICAL,
+        CRITICAL = 255,
     }
     /**
      * #GMountOperationResult is returned as a result when a request for
@@ -1308,17 +1308,17 @@ export namespace Gio {
          * The request was fulfilled and the
          *     user specified data is now available
          */
-        HANDLED,
+        HANDLED = 0,
         /**
          * The user requested the mount operation
          *     to be aborted
          */
-        ABORTED,
+        ABORTED = 1,
         /**
          * The request was unhandled (i.e. not
          *     implemented)
          */
-        UNHANDLED,
+        UNHANDLED = 2,
     }
     /**
      * The host's network connectivity state, as reported by #GNetworkMonitor.
@@ -1337,23 +1337,23 @@ export namespace Gio {
          *   route to the Internet; it may or may not be connected to a local
          *   network.
          */
-        LOCAL,
+        LOCAL = 1,
         /**
          * The host is connected to a network, but
          *   does not appear to be able to reach the full Internet, perhaps
          *   due to upstream network problems.
          */
-        LIMITED,
+        LIMITED = 2,
         /**
          * The host is behind a captive portal and
          *   cannot reach the full Internet.
          */
-        PORTAL,
+        PORTAL = 3,
         /**
          * The host is connected to a network, and
          *   appears to be able to reach the full Internet.
          */
-        FULL,
+        FULL = 4,
     }
     /**
      * Priority levels for #GNotifications.
@@ -1372,25 +1372,25 @@ export namespace Gio {
          *   majority of notifications (for example email messages, software updates,
          *   completed download/sync operations)
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * for notifications that do not require
          *   immediate attention - typically used for contextual background
          *   information, such as contact birthdays or local weather
          */
-        LOW,
+        LOW = 1,
         /**
          * for events that require more attention,
          *   usually because responses are time-sensitive (for example chat and SMS
          *   messages or alarms)
          */
-        HIGH,
+        HIGH = 2,
         /**
          * for urgent notifications, or notifications
          *   that require a response in a short space of time (for example phone calls
          *   or emergency warnings)
          */
-        URGENT,
+        URGENT = 3,
     }
     /**
      * #GPasswordSave is used to indicate the lifespan of a saved password.
@@ -1413,15 +1413,15 @@ export namespace Gio {
         /**
          * never save a password.
          */
-        NEVER,
+        NEVER = 0,
         /**
          * save a password for the session.
          */
-        FOR_SESSION,
+        FOR_SESSION = 1,
         /**
          * save a password permanently.
          */
-        PERMANENTLY,
+        PERMANENTLY = 2,
     }
     /**
      * Return value for various IO operations that signal errors via the
@@ -1454,15 +1454,15 @@ export namespace Gio {
         /**
          * Generic error condition for when an operation fails.
          */
-        FAILED,
+        FAILED = 0,
         /**
          * The operation was successfully finished.
          */
-        OK,
+        OK = 1,
         /**
          * The operation would block.
          */
-        WOULD_BLOCK,
+        WOULD_BLOCK = -27,
     }
     /**
      * An error code used with %G_RESOLVER_ERROR in a #GError returned
@@ -1574,23 +1574,23 @@ export namespace Gio {
         /**
          * look up DNS SRV records for a domain
          */
-        SRV,
+        SRV = 1,
         /**
          * look up DNS MX records for a domain
          */
-        MX,
+        MX = 2,
         /**
          * look up DNS TXT records for a name
          */
-        TXT,
+        TXT = 3,
         /**
          * look up DNS SOA records for a zone
          */
-        SOA,
+        SOA = 4,
         /**
          * look up DNS NS records for a domain
          */
-        NS,
+        NS = 5,
     }
     /**
      * An error code used with %G_RESOURCE_ERROR in a #GError returned
@@ -1644,46 +1644,46 @@ export namespace Gio {
         /**
          * The client is doing a DNS lookup.
          */
-        RESOLVING,
+        RESOLVING = 0,
         /**
          * The client has completed a DNS lookup.
          */
-        RESOLVED,
+        RESOLVED = 1,
         /**
          * The client is connecting to a remote
          *   host (either a proxy or the destination server).
          */
-        CONNECTING,
+        CONNECTING = 2,
         /**
          * The client has connected to a remote
          *   host.
          */
-        CONNECTED,
+        CONNECTED = 3,
         /**
          * The client is negotiating
          *   with a proxy to connect to the destination server.
          */
-        PROXY_NEGOTIATING,
+        PROXY_NEGOTIATING = 4,
         /**
          * The client has negotiated
          *   with the proxy server.
          */
-        PROXY_NEGOTIATED,
+        PROXY_NEGOTIATED = 5,
         /**
          * The client is performing a
          *   TLS handshake.
          */
-        TLS_HANDSHAKING,
+        TLS_HANDSHAKING = 6,
         /**
          * The client has performed a
          *   TLS handshake.
          */
-        TLS_HANDSHAKED,
+        TLS_HANDSHAKED = 7,
         /**
          * The client is done with a particular
          *   #GSocketConnectable.
          */
-        COMPLETE,
+        COMPLETE = 8,
     }
     /**
      * The protocol family of a #GSocketAddress. (These values are
@@ -1704,19 +1704,19 @@ export namespace Gio {
         /**
          * no address family
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the UNIX domain family
          */
-        UNIX,
+        UNIX = 1,
         /**
          * the IPv4 family
          */
-        IPV4,
+        IPV4 = 2,
         /**
          * the IPv6 family
          */
-        IPV6,
+        IPV6 = 10,
     }
     /**
      * Describes an event occurring on a #GSocketListener. See the
@@ -1739,21 +1739,21 @@ export namespace Gio {
         /**
          * The listener is about to bind a socket.
          */
-        BINDING,
+        BINDING = 0,
         /**
          * The listener has bound a socket.
          */
-        BOUND,
+        BOUND = 1,
         /**
          * The listener is about to start
          *    listening on this socket.
          */
-        LISTENING,
+        LISTENING = 2,
         /**
          * The listener is now listening on
          *   this socket.
          */
-        LISTENED,
+        LISTENED = 3,
     }
     /**
      * A protocol identifier is specified when creating a #GSocket, which is a
@@ -1782,23 +1782,23 @@ export namespace Gio {
         /**
          * The protocol type is unknown
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * The default protocol for the family/type
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * TCP over IP
          */
-        TCP,
+        TCP = 6,
         /**
          * UDP over IP
          */
-        UDP,
+        UDP = 17,
         /**
          * SCTP over IP
          */
-        SCTP,
+        SCTP = 132,
     }
     /**
      * Flags used when creating a #GSocket. Some protocols may not implement
@@ -1817,21 +1817,21 @@ export namespace Gio {
         /**
          * Type unknown or wrong
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Reliable connection-based byte streams (e.g. TCP).
          */
-        STREAM,
+        STREAM = 1,
         /**
          * Connectionless, unreliable datagram passing.
          *     (e.g. UDP)
          */
-        DATAGRAM,
+        DATAGRAM = 2,
         /**
          * Reliable connection-based passing of datagrams
          *     of fixed maximum length (e.g. SCTP).
          */
-        SEQPACKET,
+        SEQPACKET = 3,
     }
     /**
      * The client authentication mode for a #GTlsServerConnection.
@@ -1848,15 +1848,15 @@ export namespace Gio {
         /**
          * client authentication not required
          */
-        NONE,
+        NONE = 0,
         /**
          * client authentication is requested
          */
-        REQUESTED,
+        REQUESTED = 1,
         /**
          * client authentication is required
          */
-        REQUIRED,
+        REQUIRED = 2,
     }
     /**
      * Flags for g_tls_interaction_request_certificate(),
@@ -1877,7 +1877,7 @@ export namespace Gio {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * An error code used with %G_TLS_CHANNEL_BINDING_ERROR in a #GError to
@@ -1955,17 +1955,17 @@ export namespace Gio {
          * [`tls-unique`](https://tools.ietf.org/html/rfc5929#section-3) binding
          *    type
          */
-        UNIQUE,
+        UNIQUE = 0,
         /**
          * [`tls-server-end-point`](https://tools.ietf.org/html/rfc5929#section-4)
          *    binding type
          */
-        SERVER_END_POINT,
+        SERVER_END_POINT = 1,
         /**
          * [`tls-exporter`](https://www.rfc-editor.org/rfc/rfc9266.html) binding
          *    type. Since: 2.74
          */
-        EXPORTER,
+        EXPORTER = 2,
     }
     /**
      * Flags for g_tls_database_lookup_certificate_for_handle(),
@@ -1986,12 +1986,12 @@ export namespace Gio {
         /**
          * No lookup flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Restrict lookup to certificates that have
          *     a private key.
          */
-        KEYPAIR,
+        KEYPAIR = 1,
     }
     /**
      * An error code used with %G_TLS_ERROR in a #GError returned from a
@@ -2080,17 +2080,17 @@ export namespace Gio {
          * The interaction was unhandled (i.e. not
          *     implemented).
          */
-        UNHANDLED,
+        UNHANDLED = 0,
         /**
          * The interaction completed, and resulting data
          *     is available.
          */
-        HANDLED,
+        HANDLED = 1,
         /**
          * The interaction has failed, or was cancelled.
          *     and the operation should be aborted.
          */
-        FAILED,
+        FAILED = 2,
     }
     /**
      * The TLS or DTLS protocol version used by a #GTlsConnection or
@@ -2123,35 +2123,35 @@ export namespace Gio {
         /**
          * No protocol version or unknown protocol version
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * SSL 3.0, which is insecure and should not be used
          */
-        SSL_3_0,
+        SSL_3_0 = 1,
         /**
          * TLS 1.0, which is insecure and should not be used
          */
-        TLS_1_0,
+        TLS_1_0 = 2,
         /**
          * TLS 1.1, which is insecure and should not be used
          */
-        TLS_1_1,
+        TLS_1_1 = 3,
         /**
          * TLS 1.2, defined by [RFC 5246](https://datatracker.ietf.org/doc/html/rfc5246)
          */
-        TLS_1_2,
+        TLS_1_2 = 4,
         /**
          * TLS 1.3, defined by [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
          */
-        TLS_1_3,
+        TLS_1_3 = 5,
         /**
          * DTLS 1.0, which is insecure and should not be used
          */
-        DTLS_1_0,
+        DTLS_1_0 = 201,
         /**
          * DTLS 1.2, defined by [RFC 6347](https://datatracker.ietf.org/doc/html/rfc6347)
          */
-        DTLS_1_2,
+        DTLS_1_2 = 202,
     }
     /**
      * When to allow rehandshaking. See
@@ -2170,15 +2170,15 @@ export namespace Gio {
         /**
          * Never allow rehandshaking
          */
-        NEVER,
+        NEVER = 0,
         /**
          * Allow safe rehandshaking only
          */
-        SAFELY,
+        SAFELY = 1,
         /**
          * Allow unsafe rehandshaking
          */
-        UNSAFELY,
+        UNSAFELY = 2,
     }
     /**
      * The type of name used by a #GUnixSocketAddress.
@@ -2219,24 +2219,24 @@ export namespace Gio {
         /**
          * invalid
          */
-        INVALID,
+        INVALID = 0,
         /**
          * anonymous
          */
-        ANONYMOUS,
+        ANONYMOUS = 1,
         /**
          * a filesystem path
          */
-        PATH,
+        PATH = 2,
         /**
          * an abstract name
          */
-        ABSTRACT,
+        ABSTRACT = 3,
         /**
          * an abstract name, 0-padded
          *   to the full length of a unix socket name
          */
-        ABSTRACT_PADDED,
+        ABSTRACT_PADDED = 4,
     }
     /**
      * Used to select the type of data format to use for #GZlibDecompressor
@@ -2255,15 +2255,15 @@ export namespace Gio {
         /**
          * deflate compression with zlib header
          */
-        ZLIB,
+        ZLIB = 0,
         /**
          * gzip file format
          */
-        GZIP,
+        GZIP = 1,
         /**
          * deflate compression with no header
          */
-        RAW,
+        RAW = 2,
     }
     /**
      * The value returned by handlers of the signals generated by
@@ -5684,19 +5684,19 @@ export namespace Gio {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Application opens in a terminal window.
          */
-        NEEDS_TERMINAL,
+        NEEDS_TERMINAL = 1,
         /**
          * Application supports URI arguments.
          */
-        SUPPORTS_URIS,
+        SUPPORTS_URIS = 2,
         /**
          * Application supports startup notification. Since 2.26
          */
-        SUPPORTS_STARTUP_NOTIFICATION,
+        SUPPORTS_STARTUP_NOTIFICATION = 4,
     }
     /**
      * Flags used to define the behaviour of a #GApplication.
@@ -5713,22 +5713,22 @@ export namespace Gio {
         /**
          * Default flags.
          */
-        FLAGS_NONE,
+        FLAGS_NONE = 0,
         /**
          * Default flags.
          */
-        DEFAULT_FLAGS,
+        DEFAULT_FLAGS = 0,
         /**
          * Run as a service. In this mode, registration
          *      fails if the service is already running, and the application
          *      will initially wait up to 10 seconds for an initial activation
          *      message to arrive.
          */
-        IS_SERVICE,
+        IS_SERVICE = 1,
         /**
          * Don't try to become the primary instance.
          */
-        IS_LAUNCHER,
+        IS_LAUNCHER = 2,
         /**
          * This application handles opening files (in
          *     the primary instance). Note that this flag only affects the default
@@ -5736,14 +5736,14 @@ export namespace Gio {
          *     %G_APPLICATION_HANDLES_COMMAND_LINE is given.
          *     See g_application_run() for details.
          */
-        HANDLES_OPEN,
+        HANDLES_OPEN = 4,
         /**
          * This application handles command line
          *     arguments (in the primary instance). Note that this flag only affect
          *     the default implementation of local_command_line().
          *     See g_application_run() for details.
          */
-        HANDLES_COMMAND_LINE,
+        HANDLES_COMMAND_LINE = 8,
         /**
          * Send the environment of the
          *     launching process to the primary instance. Set this flag if your
@@ -5754,7 +5754,7 @@ export namespace Gio {
          *     to the #GApplication::command-line signal handler, via
          *     g_application_command_line_getenv().
          */
-        SEND_ENVIRONMENT,
+        SEND_ENVIRONMENT = 16,
         /**
          * Make no attempts to do any of the typical
          *     single-instance application negotiation, even if the application
@@ -5763,24 +5763,24 @@ export namespace Gio {
          *     owner already exists.  Everything occurs in the local process.
          *     Since: 2.30.
          */
-        NON_UNIQUE,
+        NON_UNIQUE = 32,
         /**
          * Allow users to override the
          *     application ID from the command line with `--gapplication-app-id`.
          *     Since: 2.48
          */
-        CAN_OVERRIDE_APP_ID,
+        CAN_OVERRIDE_APP_ID = 64,
         /**
          * Allow another instance to take over
          *     the bus name. Since: 2.60
          */
-        ALLOW_REPLACEMENT,
+        ALLOW_REPLACEMENT = 128,
         /**
          * Take over from another instance. This flag is
          *     usually set by passing `--gapplication-replace` on the commandline.
          *     Since: 2.60
          */
-        REPLACE,
+        REPLACE = 256,
     }
     /**
      * #GAskPasswordFlags are used to request specific information from the
@@ -5801,27 +5801,27 @@ export namespace Gio {
         /**
          * operation requires a password.
          */
-        NEED_PASSWORD,
+        NEED_PASSWORD = 1,
         /**
          * operation requires a username.
          */
-        NEED_USERNAME,
+        NEED_USERNAME = 2,
         /**
          * operation requires a domain.
          */
-        NEED_DOMAIN,
+        NEED_DOMAIN = 4,
         /**
          * operation supports saving settings.
          */
-        SAVING_SUPPORTED,
+        SAVING_SUPPORTED = 8,
         /**
          * operation supports anonymous users.
          */
-        ANONYMOUS_SUPPORTED,
+        ANONYMOUS_SUPPORTED = 16,
         /**
          * operation takes TCRYPT parameters (Since: 2.58)
          */
-        TCRYPT,
+        TCRYPT = 32,
     }
     /**
      * Flags used in g_bus_own_name().
@@ -5838,21 +5838,21 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow another message bus connection to claim the name.
          */
-        ALLOW_REPLACEMENT,
+        ALLOW_REPLACEMENT = 1,
         /**
          * If another message bus connection owns the name and have
          * specified %G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, then take the name from the other connection.
          */
-        REPLACE,
+        REPLACE = 2,
         /**
          * If another message bus connection owns the name, immediately
          * return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)
          */
-        DO_NOT_QUEUE,
+        DO_NOT_QUEUE = 4,
     }
     /**
      * Flags used in g_bus_watch_name().
@@ -5869,13 +5869,13 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * If no-one owns the name when
          * beginning to watch the name, ask the bus to launch an owner for the
          * name.
          */
-        AUTO_START,
+        AUTO_START = 1,
     }
     /**
      * Flags used when calling a g_converter_convert().
@@ -5892,15 +5892,15 @@ export namespace Gio {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * At end of input data
          */
-        INPUT_AT_END,
+        INPUT_AT_END = 1,
         /**
          * Flush data
          */
-        FLUSH,
+        FLUSH = 2,
     }
     /**
      * Flags used in g_dbus_connection_call() and similar APIs.
@@ -5917,18 +5917,18 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The bus must not launch
          * an owner for the destination name in response to this method
          * invocation.
          */
-        NO_AUTO_START,
+        NO_AUTO_START = 1,
         /**
          * the caller is prepared to
          * wait for interactive authorization. Since 2.46.
          */
-        ALLOW_INTERACTIVE_AUTHORIZATION,
+        ALLOW_INTERACTIVE_AUTHORIZATION = 2,
     }
     /**
      * Capabilities negotiated with the remote peer.
@@ -5945,12 +5945,12 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The connection
          * supports exchanging UNIX file descriptors with the remote peer.
          */
-        UNIX_FD_PASSING,
+        UNIX_FD_PASSING = 1,
     }
     /**
      * Flags used when creating a new #GDBusConnection.
@@ -5967,36 +5967,36 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Perform authentication against server.
          */
-        AUTHENTICATION_CLIENT,
+        AUTHENTICATION_CLIENT = 1,
         /**
          * Perform authentication against client.
          */
-        AUTHENTICATION_SERVER,
+        AUTHENTICATION_SERVER = 2,
         /**
          * When
          * authenticating as a server, allow the anonymous authentication
          * method.
          */
-        AUTHENTICATION_ALLOW_ANONYMOUS,
+        AUTHENTICATION_ALLOW_ANONYMOUS = 4,
         /**
          * Pass this flag if connecting to a peer that is a
          * message bus. This means that the Hello() method will be invoked as part of the connection setup.
          */
-        MESSAGE_BUS_CONNECTION,
+        MESSAGE_BUS_CONNECTION = 8,
         /**
          * If set, processing of D-Bus messages is
          * delayed until g_dbus_connection_start_message_processing() is called.
          */
-        DELAY_MESSAGE_PROCESSING,
+        DELAY_MESSAGE_PROCESSING = 16,
         /**
          * When authenticating
          * as a server, require the UID of the peer to be the same as the UID of the server. (Since: 2.68)
          */
-        AUTHENTICATION_REQUIRE_SAME_USER,
+        AUTHENTICATION_REQUIRE_SAME_USER = 32,
         /**
          * When authenticating, try to use
          *  protocols that work across a Linux user namespace boundary, even if this
@@ -6005,7 +6005,7 @@ export namespace Gio {
          *  connections to a server in another user namespace succeed, but causes
          *  a deadlock when connecting to a GDBus server older than 2.73.3. Since: 2.74
          */
-        CROSS_NAMESPACE,
+        CROSS_NAMESPACE = 64,
     }
     /**
      * Flags describing the behavior of a #GDBusInterfaceSkeleton instance.
@@ -6022,14 +6022,14 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Each method invocation is handled in
          *   a thread dedicated to the invocation. This means that the method implementation can use blocking IO
          *   without blocking any other part of the process. It also means that the method implementation must
          *   use locking to access data structures used by other threads.
          */
-        HANDLE_METHOD_INVOCATIONS_IN_THREAD,
+        HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1,
     }
     /**
      * Message flags used in #GDBusMessage.
@@ -6046,22 +6046,22 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * A reply is not expected.
          */
-        NO_REPLY_EXPECTED,
+        NO_REPLY_EXPECTED = 1,
         /**
          * The bus must not launch an
          * owner for the destination name in response to this message.
          */
-        NO_AUTO_START,
+        NO_AUTO_START = 2,
         /**
          * If set on a method
          * call, this flag means that the caller is prepared to wait for interactive
          * authorization. Since 2.46.
          */
-        ALLOW_INTERACTIVE_AUTHORIZATION,
+        ALLOW_INTERACTIVE_AUTHORIZATION = 4,
     }
     /**
      * Flags used when constructing a #GDBusObjectManagerClient.
@@ -6078,14 +6078,14 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * If not set and the
          *   manager is for a well-known name, then request the bus to launch
          *   an owner for the name if no-one owns the name. This flag can only
          *   be used in managers for well-known names.
          */
-        DO_NOT_AUTO_START,
+        DO_NOT_AUTO_START = 1,
     }
     /**
      * Flags describing the access control of a D-Bus property.
@@ -6102,15 +6102,15 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Property is readable.
          */
-        READABLE,
+        READABLE = 1,
         /**
          * Property is writable.
          */
-        WRITABLE,
+        WRITABLE = 2,
     }
     /**
      * Flags used when constructing an instance of a #GDBusProxy derived class.
@@ -6127,38 +6127,38 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't load properties.
          */
-        DO_NOT_LOAD_PROPERTIES,
+        DO_NOT_LOAD_PROPERTIES = 1,
         /**
          * Don't connect to signals on the remote object.
          */
-        DO_NOT_CONNECT_SIGNALS,
+        DO_NOT_CONNECT_SIGNALS = 2,
         /**
          * If the proxy is for a well-known name,
          * do not ask the bus to launch an owner during proxy initialization or a method call.
          * This flag is only meaningful in proxies for well-known names.
          */
-        DO_NOT_AUTO_START,
+        DO_NOT_AUTO_START = 4,
         /**
          * If set, the property value for any __invalidated property__ will be (asynchronously) retrieved upon receiving the [`PropertiesChanged`](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties) D-Bus signal and the property will not cause emission of the #GDBusProxy::g-properties-changed signal. When the value is received the #GDBusProxy::g-properties-changed signal is emitted for the property along with the retrieved value. Since 2.32.
          */
-        GET_INVALIDATED_PROPERTIES,
+        GET_INVALIDATED_PROPERTIES = 8,
         /**
          * If the proxy is for a well-known name,
          * do not ask the bus to launch an owner during proxy initialization, but allow it to be
          * autostarted by a method call. This flag is only meaningful in proxies for well-known names,
          * and only if %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is not also specified.
          */
-        DO_NOT_AUTO_START_AT_CONSTRUCTION,
+        DO_NOT_AUTO_START_AT_CONSTRUCTION = 16,
         /**
          * Don't actually send the AddMatch D-Bus
          *    call for this signal subscription. This gives you more control
          *    over which match rules you add (but you must add them manually). (Since: 2.72)
          */
-        NO_MATCH_RULE,
+        NO_MATCH_RULE = 32,
     }
     /**
      * Flags used when sending #GDBusMessages on a #GDBusConnection.
@@ -6175,13 +6175,13 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not automatically
          * assign a serial number from the #GDBusConnection object when
          * sending a message.
          */
-        PRESERVE_SERIAL,
+        PRESERVE_SERIAL = 1,
     }
     /**
      * Flags used when creating a #GDBusServer.
@@ -6198,23 +6198,23 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * All #GDBusServer::new-connection
          * signals will run in separated dedicated threads (see signal for
          * details).
          */
-        RUN_IN_THREAD,
+        RUN_IN_THREAD = 1,
         /**
          * Allow the anonymous
          * authentication method.
          */
-        AUTHENTICATION_ALLOW_ANONYMOUS,
+        AUTHENTICATION_ALLOW_ANONYMOUS = 2,
         /**
          * Require the UID of the
          * peer to be the same as the UID of the server when authenticating. (Since: 2.68)
          */
-        AUTHENTICATION_REQUIRE_SAME_USER,
+        AUTHENTICATION_REQUIRE_SAME_USER = 4,
     }
     /**
      * Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().
@@ -6231,24 +6231,24 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't actually send the AddMatch
          * D-Bus call for this signal subscription.  This gives you more control
          * over which match rules you add (but you must add them manually).
          */
-        NO_MATCH_RULE,
+        NO_MATCH_RULE = 1,
         /**
          * Match first arguments that
          * contain a bus or interface name with the given namespace.
          */
-        MATCH_ARG0_NAMESPACE,
+        MATCH_ARG0_NAMESPACE = 2,
         /**
          * Match first arguments that
          * contain an object path that is either equivalent to the given path,
          * or one of the paths is a subpath of the other.
          */
-        MATCH_ARG0_PATH,
+        MATCH_ARG0_PATH = 4,
     }
     /**
      * Flags passed to g_dbus_connection_register_subtree().
@@ -6265,13 +6265,13 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Method calls to objects not in the enumerated range
          *                                                       will still be dispatched. This is useful if you want
          *                                                       to dynamically spawn objects in the subtree.
          */
-        DISPATCH_TO_UNENUMERATED_NODES,
+        DISPATCH_TO_UNENUMERATED_NODES = 1,
     }
     /**
      * Flags used when starting a drive.
@@ -6288,7 +6288,7 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * Flags specifying the behaviour of an attribute.
@@ -6305,15 +6305,15 @@ export namespace Gio {
         /**
          * no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * copy the attribute values when the file is copied.
          */
-        COPY_WITH_FILE,
+        COPY_WITH_FILE = 1,
         /**
          * copy the attribute values when the file is moved.
          */
-        COPY_WHEN_MOVED,
+        COPY_WHEN_MOVED = 2,
     }
     /**
      * Flags used when copying or moving files.
@@ -6330,36 +6330,36 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Overwrite any existing files
          */
-        OVERWRITE,
+        OVERWRITE = 1,
         /**
          * Make a backup of any existing files.
          */
-        BACKUP,
+        BACKUP = 2,
         /**
          * Don't follow symlinks.
          */
-        NOFOLLOW_SYMLINKS,
+        NOFOLLOW_SYMLINKS = 4,
         /**
          * Copy all file metadata instead of just default set used for copy (see #GFileInfo).
          */
-        ALL_METADATA,
+        ALL_METADATA = 8,
         /**
          * Don't use copy and delete fallback if native move not supported.
          */
-        NO_FALLBACK_FOR_MOVE,
+        NO_FALLBACK_FOR_MOVE = 16,
         /**
          * Leaves target file with default perms, instead of setting the source file perms.
          */
-        TARGET_DEFAULT_PERMS,
+        TARGET_DEFAULT_PERMS = 32,
         /**
          * Use default modification
          *     timestamps instead of copying them from the source file. Since 2.80
          */
-        TARGET_DEFAULT_MODIFIED_TIME,
+        TARGET_DEFAULT_MODIFIED_TIME = 64,
     }
     /**
      * Flags used when an operation may create a file.
@@ -6376,12 +6376,12 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Create a file that can only be
          *    accessed by the current user.
          */
-        PRIVATE,
+        PRIVATE = 1,
         /**
          * Replace the destination
          *    as if it didn't exist before. Don't try to keep any old
@@ -6394,7 +6394,7 @@ export namespace Gio {
          *    g_file_replace() and its variants, including g_file_replace_contents().
          *    Since 2.20
          */
-        REPLACE_DESTINATION,
+        REPLACE_DESTINATION = 2,
     }
     /**
      * Flags that can be used with g_file_measure_disk_usage().
@@ -6411,13 +6411,13 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Report any error encountered
          *   while traversing the directory tree.  Normally errors are only
          *   reported for the toplevel file.
          */
-        REPORT_ANY_ERROR,
+        REPORT_ANY_ERROR = 2,
         /**
          * Tally usage based on apparent file
          *   sizes.  Normally, the block-size is used, if available, as this is a
@@ -6427,12 +6427,12 @@ export namespace Gio {
          *   ignore the sizes of file types other than regular files and links, as the
          *   sizes of other file types are not specified in a standard way.
          */
-        APPARENT_SIZE,
+        APPARENT_SIZE = 4,
         /**
          * Do not cross mount point boundaries.
          *   Compare with `du -x`.
          */
-        NO_XDEV,
+        NO_XDEV = 8,
     }
     /**
      * Flags used to set what a #GFileMonitor will watch for.
@@ -6449,11 +6449,11 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Watch for mount events.
          */
-        WATCH_MOUNTS,
+        WATCH_MOUNTS = 1,
         /**
          * Pair DELETED and CREATED events caused
          *   by file renames (moves) and send a single G_FILE_MONITOR_EVENT_MOVED
@@ -6462,19 +6462,19 @@ export namespace Gio {
          *   and CREATED events).  Deprecated since 2.46: use
          *   %G_FILE_MONITOR_WATCH_MOVES instead.
          */
-        SEND_MOVED,
+        SEND_MOVED = 2,
         /**
          * Watch for changes to the file made
          *   via another hard link. Since 2.36.
          */
-        WATCH_HARD_LINKS,
+        WATCH_HARD_LINKS = 4,
         /**
          * Watch for rename operations on a
          *   monitored directory.  This causes %G_FILE_MONITOR_EVENT_RENAMED,
          *   %G_FILE_MONITOR_EVENT_MOVED_IN and %G_FILE_MONITOR_EVENT_MOVED_OUT
          *   events to be emitted when possible.  Since: 2.46.
          */
-        WATCH_MOVES,
+        WATCH_MOVES = 8,
     }
     /**
      * Flags used when querying a #GFileInfo.
@@ -6491,11 +6491,11 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't follow symlinks.
          */
-        NOFOLLOW_SYMLINKS,
+        NOFOLLOW_SYMLINKS = 1,
     }
     /**
      * GIOStreamSpliceFlags determine how streams should be spliced.
@@ -6512,22 +6512,22 @@ export namespace Gio {
         /**
          * Do not close either stream.
          */
-        NONE,
+        NONE = 0,
         /**
          * Close the first stream after
          *     the splice.
          */
-        CLOSE_STREAM1,
+        CLOSE_STREAM1 = 1,
         /**
          * Close the second stream after
          *     the splice.
          */
-        CLOSE_STREAM2,
+        CLOSE_STREAM2 = 2,
         /**
          * Wait for both splice operations to finish
          *     before calling the callback.
          */
-        WAIT_FOR_BOTH,
+        WAIT_FOR_BOTH = 4,
     }
     /**
      * Flags used when mounting a mount.
@@ -6544,7 +6544,7 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * Flags used when an unmounting a mount.
@@ -6561,12 +6561,12 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Unmount even if there are outstanding
          *  file operations on the mount.
          */
-        FORCE,
+        FORCE = 1,
     }
     /**
      * GOutputStreamSpliceFlags determine how streams should be spliced.
@@ -6583,17 +6583,17 @@ export namespace Gio {
         /**
          * Do not close either stream.
          */
-        NONE,
+        NONE = 0,
         /**
          * Close the source stream after
          *     the splice.
          */
-        CLOSE_SOURCE,
+        CLOSE_SOURCE = 1,
         /**
          * Close the target stream after
          *     the splice.
          */
-        CLOSE_TARGET,
+        CLOSE_TARGET = 2,
     }
     /**
      * Flags to modify lookup behavior.
@@ -6610,15 +6610,15 @@ export namespace Gio {
         /**
          * default behavior (same as g_resolver_lookup_by_name())
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * only resolve ipv4 addresses
          */
-        IPV4_ONLY,
+        IPV4_ONLY = 1,
         /**
          * only resolve ipv6 addresses
          */
-        IPV6_ONLY,
+        IPV6_ONLY = 2,
     }
     /**
      * GResourceFlags give information about a particular file inside a resource
@@ -6637,11 +6637,11 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The file is compressed.
          */
-        COMPRESSED,
+        COMPRESSED = 1,
     }
     /**
      * GResourceLookupFlags determine how resource path lookups are handled.
@@ -6658,7 +6658,7 @@ export namespace Gio {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * Flags used when creating a binding.
@@ -6681,34 +6681,34 @@ export namespace Gio {
         /**
          * Equivalent to `G_SETTINGS_BIND_GET|G_SETTINGS_BIND_SET`
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Update the [class`GObject`.Object] property when the setting changes.
          *   It is an error to use this flag if the property is not writable.
          */
-        GET,
+        GET = 1,
         /**
          * Update the setting when the [class`GObject`.Object] property changes.
          *   It is an error to use this flag if the property is not readable.
          */
-        SET,
+        SET = 2,
         /**
          * Do not try to bind a ‘sensitivity’ property to the writability of the setting
          */
-        NO_SENSITIVITY,
+        NO_SENSITIVITY = 4,
         /**
          * When set in addition to [flags`Gio`.SettingsBindFlags.GET],
          *   set the [class`GObject`.Object] property
          *   value initially from the setting, but do not listen for changes of the setting
          */
-        GET_NO_CHANGES,
+        GET_NO_CHANGES = 8,
         /**
          * When passed to [method`Gio`.Settings.bind],
          *   uses a pair of mapping functions that invert
          *   the boolean value when mapping between the setting and the property.  The setting and property must both
          *   be booleans.  You cannot pass this flag to [method`Gio`.Settings.bind_with_mapping].
          */
-        INVERT_BOOLEAN,
+        INVERT_BOOLEAN = 16,
     }
     /**
      * Flags used in g_socket_receive_message() and g_socket_send_message().
@@ -6733,21 +6733,21 @@ export namespace Gio {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Request to send/receive out of band data.
          */
-        OOB,
+        OOB = 1,
         /**
          * Read data from the socket without removing it from
          *     the queue.
          */
-        PEEK,
+        PEEK = 2,
         /**
          * Don't use a gateway to send out the packet,
          *     only send to hosts on directly connected networks.
          */
-        DONTROUTE,
+        DONTROUTE = 4,
     }
     /**
      * Flags to define the behaviour of a #GSubprocess.
@@ -6780,59 +6780,59 @@ export namespace Gio {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * create a pipe for the stdin of the
          *   spawned process that can be accessed with
          *   g_subprocess_get_stdin_pipe().
          */
-        STDIN_PIPE,
+        STDIN_PIPE = 1,
         /**
          * stdin is inherited from the
          *   calling process.
          */
-        STDIN_INHERIT,
+        STDIN_INHERIT = 2,
         /**
          * create a pipe for the stdout of the
          *   spawned process that can be accessed with
          *   g_subprocess_get_stdout_pipe().
          */
-        STDOUT_PIPE,
+        STDOUT_PIPE = 4,
         /**
          * silence the stdout of the spawned
          *   process (ie: redirect to `/dev/null`).
          */
-        STDOUT_SILENCE,
+        STDOUT_SILENCE = 8,
         /**
          * create a pipe for the stderr of the
          *   spawned process that can be accessed with
          *   g_subprocess_get_stderr_pipe().
          */
-        STDERR_PIPE,
+        STDERR_PIPE = 16,
         /**
          * silence the stderr of the spawned
          *   process (ie: redirect to `/dev/null`).
          */
-        STDERR_SILENCE,
+        STDERR_SILENCE = 32,
         /**
          * merge the stderr of the spawned
          *   process with whatever the stdout happens to be.  This is a good way
          *   of directing both streams to a common log file, for example.
          */
-        STDERR_MERGE,
+        STDERR_MERGE = 64,
         /**
          * spawned processes will inherit the
          *   file descriptors of their parent, unless those descriptors have
          *   been explicitly marked as close-on-exec.  This flag has no effect
          *   over the "standard" file descriptors (stdin, stdout, stderr).
          */
-        INHERIT_FDS,
+        INHERIT_FDS = 128,
         /**
          * if path searching is
          *   needed when spawning the subprocess, use the `PATH` in the launcher
          *   environment. (Since: 2.72)
          */
-        SEARCH_PATH_FROM_ENVP,
+        SEARCH_PATH_FROM_ENVP = 256,
     }
     /**
      * Flags to define future #GTestDBus behaviour.
@@ -6849,7 +6849,7 @@ export namespace Gio {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * A set of flags describing TLS certification validation. This can be
@@ -6886,46 +6886,46 @@ export namespace Gio {
         /**
          * No flags set. Since: 2.74
          */
-        NO_FLAGS,
+        NO_FLAGS = 0,
         /**
          * The signing certificate authority is
          *   not known.
          */
-        UNKNOWN_CA,
+        UNKNOWN_CA = 1,
         /**
          * The certificate does not match the
          *   expected identity of the site that it was retrieved from.
          */
-        BAD_IDENTITY,
+        BAD_IDENTITY = 2,
         /**
          * The certificate's activation time
          *   is still in the future
          */
-        NOT_ACTIVATED,
+        NOT_ACTIVATED = 4,
         /**
          * The certificate has expired
          */
-        EXPIRED,
+        EXPIRED = 8,
         /**
          * The certificate has been revoked
          *   according to the #GTlsConnection's certificate revocation list.
          */
-        REVOKED,
+        REVOKED = 16,
         /**
          * The certificate's algorithm is
          *   considered insecure.
          */
-        INSECURE,
+        INSECURE = 32,
         /**
          * Some other error occurred validating
          *   the certificate
          */
-        GENERIC_ERROR,
+        GENERIC_ERROR = 64,
         /**
          * the combination of all of the above
          *   flags
          */
-        VALIDATE_ALL,
+        VALIDATE_ALL = 127,
     }
     /**
      * Flags for g_tls_database_verify_chain().
@@ -6942,7 +6942,7 @@ export namespace Gio {
         /**
          * No verification flags
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * Various flags for the password.
@@ -6959,36 +6959,36 @@ export namespace Gio {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * The password was wrong, and the user should retry.
          */
-        RETRY,
+        RETRY = 2,
         /**
          * Hint to the user that the password has been
          *    wrong many times, and the user may not have many chances left.
          */
-        MANY_TRIES,
+        MANY_TRIES = 4,
         /**
          * Hint to the user that this is the last try to get
          *    this password right.
          */
-        FINAL_TRY,
+        FINAL_TRY = 8,
         /**
          * For PKCS #11, the user PIN is required.
          *    Since: 2.70.
          */
-        PKCS11_USER,
+        PKCS11_USER = 16,
         /**
          * For PKCS #11, the security officer
          *    PIN is required. Since: 2.70.
          */
-        PKCS11_SECURITY_OFFICER,
+        PKCS11_SECURITY_OFFICER = 32,
         /**
          * For PKCS #11, the context-specific
          *    PIN is required. Since: 2.70.
          */
-        PKCS11_CONTEXT_SPECIFIC,
+        PKCS11_CONTEXT_SPECIFIC = 64,
     }
     namespace AppInfoMonitor {
         // Signal signatures
@@ -15539,7 +15539,7 @@ export namespace Gio {
          * about the UNIX process ID.
          * @returns The UNIX process ID, or `-1` if @error is set.
          */
-        get_unix_pid(): never;
+        get_unix_pid(): number;
         /**
          * Tries to get the UNIX user identifier from `credentials`. This
          * method is only available on UNIX platforms.
@@ -15549,7 +15549,7 @@ export namespace Gio {
          * about the UNIX user.
          * @returns The UNIX user identifier or `-1` if @error is set.
          */
-        get_unix_user(): never;
+        get_unix_user(): number;
         /**
          * Checks if `credentials` and `other_credentials` is the same user.
          *
@@ -15581,7 +15581,7 @@ export namespace Gio {
          * @param uid The UNIX user identifier to set.
          * @returns %TRUE if @uid was set, %FALSE if error is set.
          */
-        set_unix_user(uid: never): boolean;
+        set_unix_user(uid: number): boolean;
         /**
          * Creates a human-readable textual representation of `credentials`
          * that can be used in logging and debug messages. The format of the

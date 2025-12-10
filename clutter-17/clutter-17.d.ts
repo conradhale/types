@@ -56,23 +56,23 @@ export namespace Clutter {
         /**
          * Stretch to cover the whole allocated space
          */
-        FILL,
+        FILL = 0,
         /**
          * Snap to left or top side, leaving space
          *   to the right or bottom. For horizontal layouts, in right-to-left
          *   locales this should be reversed.
          */
-        START,
+        START = 1,
         /**
          * Center the actor inside the allocation
          */
-        CENTER,
+        CENTER = 2,
         /**
          * Snap to right or bottom side, leaving space
          *   to the left or top. For horizontal layouts, in right-to-left locales
          *   this should be reversed.
          */
-        END,
+        END = 3,
     }
     /**
      * Specifies the axis on which #ClutterAlignConstraint should maintain
@@ -91,15 +91,15 @@ export namespace Clutter {
         /**
          * Maintain the alignment on the X axis
          */
-        X_AXIS,
+        X_AXIS = 0,
         /**
          * Maintain the alignment on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 1,
         /**
          * Maintain the alignment on both the X and Y axis
          */
-        BOTH,
+        BOTH = 2,
     }
     /**
      * The animation modes used by [iface`Animatable]`.
@@ -138,196 +138,196 @@ export namespace Clutter {
         /**
          * custom progress function
          */
-        CUSTOM_MODE,
+        CUSTOM_MODE = 0,
         /**
          * linear tweening
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * quadratic tweening
          */
-        EASE_IN_QUAD,
+        EASE_IN_QUAD = 2,
         /**
          * quadratic tweening, inverse of
          *    %CLUTTER_EASE_IN_QUAD
          */
-        EASE_OUT_QUAD,
+        EASE_OUT_QUAD = 3,
         /**
          * quadratic tweening, combininig
          *    %CLUTTER_EASE_IN_QUAD and %CLUTTER_EASE_OUT_QUAD
          */
-        EASE_IN_OUT_QUAD,
+        EASE_IN_OUT_QUAD = 4,
         /**
          * cubic tweening
          */
-        EASE_IN_CUBIC,
+        EASE_IN_CUBIC = 5,
         /**
          * cubic tweening, inverse of
          *    %CLUTTER_EASE_IN_CUBIC
          */
-        EASE_OUT_CUBIC,
+        EASE_OUT_CUBIC = 6,
         /**
          * cubic tweening, combining
          *    %CLUTTER_EASE_IN_CUBIC and %CLUTTER_EASE_OUT_CUBIC
          */
-        EASE_IN_OUT_CUBIC,
+        EASE_IN_OUT_CUBIC = 7,
         /**
          * quartic tweening
          */
-        EASE_IN_QUART,
+        EASE_IN_QUART = 8,
         /**
          * quartic tweening, inverse of
          *    %CLUTTER_EASE_IN_QUART
          */
-        EASE_OUT_QUART,
+        EASE_OUT_QUART = 9,
         /**
          * quartic tweening, combining
          *    %CLUTTER_EASE_IN_QUART and %CLUTTER_EASE_OUT_QUART
          */
-        EASE_IN_OUT_QUART,
+        EASE_IN_OUT_QUART = 10,
         /**
          * quintic tweening
          */
-        EASE_IN_QUINT,
+        EASE_IN_QUINT = 11,
         /**
          * quintic tweening, inverse of
          *    %CLUTTER_EASE_IN_QUINT
          */
-        EASE_OUT_QUINT,
+        EASE_OUT_QUINT = 12,
         /**
          * fifth power tweening, combining
          *    %CLUTTER_EASE_IN_QUINT and %CLUTTER_EASE_OUT_QUINT
          */
-        EASE_IN_OUT_QUINT,
+        EASE_IN_OUT_QUINT = 13,
         /**
          * sinusoidal tweening
          */
-        EASE_IN_SINE,
+        EASE_IN_SINE = 14,
         /**
          * sinusoidal tweening, inverse of
          *    %CLUTTER_EASE_IN_SINE
          */
-        EASE_OUT_SINE,
+        EASE_OUT_SINE = 15,
         /**
          * sine wave tweening, combining
          *    %CLUTTER_EASE_IN_SINE and %CLUTTER_EASE_OUT_SINE
          */
-        EASE_IN_OUT_SINE,
+        EASE_IN_OUT_SINE = 16,
         /**
          * exponential tweening
          */
-        EASE_IN_EXPO,
+        EASE_IN_EXPO = 17,
         /**
          * exponential tweening, inverse of
          *    %CLUTTER_EASE_IN_EXPO
          */
-        EASE_OUT_EXPO,
+        EASE_OUT_EXPO = 18,
         /**
          * exponential tweening, combining
          *    %CLUTTER_EASE_IN_EXPO and %CLUTTER_EASE_OUT_EXPO
          */
-        EASE_IN_OUT_EXPO,
+        EASE_IN_OUT_EXPO = 19,
         /**
          * circular tweening
          */
-        EASE_IN_CIRC,
+        EASE_IN_CIRC = 20,
         /**
          * circular tweening, inverse of
          *    %CLUTTER_EASE_IN_CIRC
          */
-        EASE_OUT_CIRC,
+        EASE_OUT_CIRC = 21,
         /**
          * circular tweening, combining
          *    %CLUTTER_EASE_IN_CIRC and %CLUTTER_EASE_OUT_CIRC
          */
-        EASE_IN_OUT_CIRC,
+        EASE_IN_OUT_CIRC = 22,
         /**
          * elastic tweening, with offshoot on start
          */
-        EASE_IN_ELASTIC,
+        EASE_IN_ELASTIC = 23,
         /**
          * elastic tweening, with offshoot on end
          */
-        EASE_OUT_ELASTIC,
+        EASE_OUT_ELASTIC = 24,
         /**
          * elastic tweening with offshoot on both ends
          */
-        EASE_IN_OUT_ELASTIC,
+        EASE_IN_OUT_ELASTIC = 25,
         /**
          * overshooting cubic tweening, with
          *   backtracking on start
          */
-        EASE_IN_BACK,
+        EASE_IN_BACK = 26,
         /**
          * overshooting cubic tweening, with
          *   backtracking on end
          */
-        EASE_OUT_BACK,
+        EASE_OUT_BACK = 27,
         /**
          * overshooting cubic tweening, with
          *   backtracking on both ends
          */
-        EASE_IN_OUT_BACK,
+        EASE_IN_OUT_BACK = 28,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on start
          */
-        EASE_IN_BOUNCE,
+        EASE_IN_BOUNCE = 29,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on end
          */
-        EASE_OUT_BOUNCE,
+        EASE_OUT_BOUNCE = 30,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on both ends
          */
-        EASE_IN_OUT_BOUNCE,
+        EASE_IN_OUT_BOUNCE = 31,
         /**
          * parametrized step function; see clutter_timeline_set_step_progress()
          *   for further details. (Since 1.12)
          */
-        STEPS,
+        STEPS = 32,
         /**
          * equivalent to %CLUTTER_STEPS with a number of steps
          *   equal to 1, and a step mode of %CLUTTER_STEP_MODE_START. (Since 1.12)
          */
-        STEP_START,
+        STEP_START = 33,
         /**
          * equivalent to %CLUTTER_STEPS with a number of steps
          *   equal to 1, and a step mode of %CLUTTER_STEP_MODE_END. (Since 1.12)
          */
-        STEP_END,
+        STEP_END = 34,
         /**
          * cubic bezier between (0, 0) and (1, 1) with two
          *   control points; see clutter_timeline_set_cubic_bezier_progress(). (Since 1.12)
          */
-        CUBIC_BEZIER,
+        CUBIC_BEZIER = 35,
         /**
          * equivalent to %CLUTTER_CUBIC_BEZIER with control points
          *   in (0.25, 0.1) and (0.25, 1.0). (Since 1.12)
          */
-        EASE,
+        EASE = 36,
         /**
          * equivalent to %CLUTTER_CUBIC_BEZIER with control points
          *   in (0.42, 0) and (1.0, 1.0). (Since 1.12)
          */
-        EASE_IN,
+        EASE_IN = 37,
         /**
          * equivalent to %CLUTTER_CUBIC_BEZIER with control points
          *   in (0, 0) and (0.58, 1.0). (Since 1.12)
          */
-        EASE_OUT,
+        EASE_OUT = 38,
         /**
          * equivalent to %CLUTTER_CUBIC_BEZIER with control points
          *   in (0.42, 0) and (0.58, 1.0). (Since 1.12)
          */
-        EASE_IN_OUT,
+        EASE_IN_OUT = 39,
         /**
          * last animation mode, used as a guard for
          *   registered global alpha functions
          */
-        ANIMATION_LAST,
+        ANIMATION_LAST = 40,
     }
     /**
      * Specifies which property should be used in a binding
@@ -344,34 +344,34 @@ export namespace Clutter {
         /**
          * Bind the X coordinate
          */
-        X,
+        X = 0,
         /**
          * Bind the Y coordinate
          */
-        Y,
+        Y = 1,
         /**
          * Bind the width
          */
-        WIDTH,
+        WIDTH = 2,
         /**
          * Bind the height
          */
-        HEIGHT,
+        HEIGHT = 3,
         /**
          * Equivalent to to %CLUTTER_BIND_X and
          *   %CLUTTER_BIND_Y
          */
-        POSITION,
+        POSITION = 4,
         /**
          * Equivalent to %CLUTTER_BIND_WIDTH and
          *   %CLUTTER_BIND_HEIGHT
          */
-        SIZE,
+        SIZE = 5,
         /**
          * Equivalent to %CLUTTER_BIND_POSITION and
          *   %CLUTTER_BIND_SIZE
          */
-        ALL,
+        ALL = 6,
     }
 
     export namespace ButtonState {
@@ -379,8 +379,8 @@ export namespace Clutter {
     }
 
     enum ButtonState {
-        RELEASED,
-        PRESSED,
+        RELEASED = 0,
+        PRESSED = 1,
     }
 
     export namespace CicpPrimaries {
@@ -388,12 +388,12 @@ export namespace Clutter {
     }
 
     enum CicpPrimaries {
-        SRGB,
-        PAL,
-        NTSC,
-        NTSC_2,
-        BT2020,
-        P3,
+        SRGB = 1,
+        PAL = 5,
+        NTSC = 6,
+        NTSC_2 = 7,
+        BT2020 = 9,
+        P3 = 12,
     }
 
     export namespace CicpTransfer {
@@ -401,16 +401,16 @@ export namespace Clutter {
     }
 
     enum CicpTransfer {
-        BT709,
-        GAMMA22,
-        GAMMA28,
-        BT601,
-        LINEAR,
-        SRGB,
-        BT2020,
-        BT2020_2,
-        PQ,
-        HLG,
+        BT709 = 1,
+        GAMMA22 = 4,
+        GAMMA28 = 5,
+        BT601 = 6,
+        LINEAR = 8,
+        SRGB = 13,
+        BT2020 = 14,
+        BT2020_2 = 15,
+        PQ = 16,
+        HLG = 18,
     }
 
     export namespace ColorimetryType {
@@ -418,8 +418,8 @@ export namespace Clutter {
     }
 
     enum ColorimetryType {
-        COLORSPACE,
-        PRIMARIES,
+        COLORSPACE = 0,
+        PRIMARIES = 1,
     }
 
     export namespace Colorspace {
@@ -427,11 +427,11 @@ export namespace Clutter {
     }
 
     enum Colorspace {
-        SRGB,
-        BT2020,
-        NTSC,
-        PAL,
-        P3,
+        SRGB = 0,
+        BT2020 = 1,
+        NTSC = 2,
+        PAL = 3,
+        P3 = 4,
     }
     /**
      * Controls the alignment of the #ClutterContent inside a #ClutterActor.
@@ -448,48 +448,48 @@ export namespace Clutter {
         /**
          * Align the content to the top left corner
          */
-        TOP_LEFT,
+        TOP_LEFT = 0,
         /**
          * Align the content to the top edge
          */
-        TOP,
+        TOP = 1,
         /**
          * Align the content to the top right corner
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 2,
         /**
          * Align the content to the left edge
          */
-        LEFT,
+        LEFT = 3,
         /**
          * Align the content to the center
          */
-        CENTER,
+        CENTER = 4,
         /**
          * Align the content to the right edge
          */
-        RIGHT,
+        RIGHT = 5,
         /**
          * Align the content to the bottom left corner
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 6,
         /**
          * Align the content to the bottom edge
          */
-        BOTTOM,
+        BOTTOM = 7,
         /**
          * Align the content to the bottom right corner
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 8,
         /**
          * Resize the content to fill the allocation
          */
-        RESIZE_FILL,
+        RESIZE_FILL = 9,
         /**
          * Resize the content to remain within the
          *   allocation, while maintaining the aspect ratio
          */
-        RESIZE_ASPECT,
+        RESIZE_ASPECT = 10,
     }
 
     export namespace EOTFType {
@@ -497,8 +497,8 @@ export namespace Clutter {
     }
 
     enum EOTFType {
-        NAMED,
-        GAMMA,
+        NAMED = 0,
+        GAMMA = 1,
     }
     /**
      * The texture format required to store a specific encoding.
@@ -515,15 +515,15 @@ export namespace Clutter {
         /**
          * 8bpc uint
          */
-        UINT8,
+        UINT8 = 0,
         /**
          * 10bpc uint
          */
-        UINT10,
+        UINT10 = 1,
         /**
          * 16bpc floating point
          */
-        FP16,
+        FP16 = 2,
     }
 
     export namespace EventPhase {
@@ -531,8 +531,8 @@ export namespace Clutter {
     }
 
     enum EventPhase {
-        CAPTURE,
-        BUBBLE,
+        CAPTURE = 0,
+        BUBBLE = 1,
     }
     /**
      * Types of events.
@@ -549,128 +549,128 @@ export namespace Clutter {
         /**
          * Empty event
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * Key press event
          */
-        KEY_PRESS,
+        KEY_PRESS = 1,
         /**
          * Key release event
          */
-        KEY_RELEASE,
+        KEY_RELEASE = 2,
         /**
          * Pointer motion event
          */
-        MOTION,
+        MOTION = 3,
         /**
          * Actor enter event
          */
-        ENTER,
+        ENTER = 4,
         /**
          * Actor leave event
          */
-        LEAVE,
+        LEAVE = 5,
         /**
          * Pointer button press event
          */
-        BUTTON_PRESS,
+        BUTTON_PRESS = 6,
         /**
          * Pointer button release event
          */
-        BUTTON_RELEASE,
+        BUTTON_RELEASE = 7,
         /**
          * Pointer scroll event
          */
-        SCROLL,
+        SCROLL = 8,
         /**
          * A new touch event sequence has started;
          */
-        TOUCH_BEGIN,
+        TOUCH_BEGIN = 9,
         /**
          * A touch event sequence has been updated;
          */
-        TOUCH_UPDATE,
+        TOUCH_UPDATE = 10,
         /**
          * A touch event sequence has finished;
          */
-        TOUCH_END,
+        TOUCH_END = 11,
         /**
          * A touch event sequence has been canceled;
          */
-        TOUCH_CANCEL,
+        TOUCH_CANCEL = 12,
         /**
          * A pinch gesture event, the current state is
          *   determined by its phase field;
          */
-        TOUCHPAD_PINCH,
+        TOUCHPAD_PINCH = 13,
         /**
          * A swipe gesture event, the current state is
          *   determined by its phase field;
          */
-        TOUCHPAD_SWIPE,
+        TOUCHPAD_SWIPE = 14,
         /**
          * A hold gesture event, the current state is
          *   determined by its phase field. A hold gesture starts when the user places a
          *   finger on the touchpad and ends when all fingers are lifted. It is
          *   cancelled when the finger(s) move past a certain threshold.
          */
-        TOUCHPAD_HOLD,
+        TOUCHPAD_HOLD = 15,
         /**
          * A tool entered in proximity to a tablet;
          */
-        PROXIMITY_IN,
+        PROXIMITY_IN = 16,
         /**
          * A tool left from the proximity area of a tablet;
          */
-        PROXIMITY_OUT,
+        PROXIMITY_OUT = 17,
         /**
          * A tablet pad button press
          */
-        PAD_BUTTON_PRESS,
+        PAD_BUTTON_PRESS = 18,
         /**
          * A tablet pad button release
          */
-        PAD_BUTTON_RELEASE,
+        PAD_BUTTON_RELEASE = 19,
         /**
          * A tablet pad tactile strip event
          */
-        PAD_STRIP,
+        PAD_STRIP = 20,
         /**
          * A tablet pad tactile ring event
          */
-        PAD_RING,
+        PAD_RING = 21,
         /**
          * A tablet pad dial event
          */
-        PAD_DIAL,
+        PAD_DIAL = 22,
         /**
          * Notification of an added device
          */
-        DEVICE_ADDED,
+        DEVICE_ADDED = 23,
         /**
          * Notification of a removed device
          */
-        DEVICE_REMOVED,
+        DEVICE_REMOVED = 24,
         /**
          * Input method text commit
          */
-        IM_COMMIT,
+        IM_COMMIT = 25,
         /**
          * Input method text delete action
          */
-        IM_DELETE,
+        IM_DELETE = 26,
         /**
          * Input method pre-edit text notification
          */
-        IM_PREEDIT,
+        IM_PREEDIT = 27,
         /**
          * Keyboard state change
          */
-        KEY_STATE,
+        KEY_STATE = 28,
         /**
          * Marks the end of the #ClutterEventType enumeration;
          */
-        EVENT_LAST,
+        EVENT_LAST = 29,
     }
 
     export namespace FrameClockMode {
@@ -678,9 +678,9 @@ export namespace Clutter {
     }
 
     enum FrameClockMode {
-        FIXED,
-        VARIABLE,
-        PASSIVE,
+        FIXED = 0,
+        VARIABLE = 1,
+        PASSIVE = 2,
     }
 
     export namespace FrameResult {
@@ -688,9 +688,9 @@ export namespace Clutter {
     }
 
     enum FrameResult {
-        PENDING_PRESENTED,
-        IDLE,
-        IGNORED,
+        PENDING_PRESENTED = 0,
+        IDLE = 1,
+        IGNORED = 2,
     }
 
     export namespace GestureState {
@@ -698,12 +698,12 @@ export namespace Clutter {
     }
 
     enum GestureState {
-        WAITING,
-        POSSIBLE,
-        RECOGNIZING,
-        COMPLETED,
-        CANCELLED,
-        CLUTTER_N_GESTURE_STATES,
+        WAITING = 0,
+        POSSIBLE = 1,
+        RECOGNIZING = 2,
+        COMPLETED = 3,
+        CANCELLED = 4,
+        CLUTTER_N_GESTURE_STATES = 5,
     }
     /**
      * Grid position modes.
@@ -720,19 +720,19 @@ export namespace Clutter {
         /**
          * left position
          */
-        LEFT,
+        LEFT = 0,
         /**
          * right position
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * top position
          */
-        TOP,
+        TOP = 2,
         /**
          * bottom position
          */
-        BOTTOM,
+        BOTTOM = 3,
     }
     /**
      * The type of axes Clutter recognizes on a #ClutterInputDevice
@@ -749,48 +749,48 @@ export namespace Clutter {
         /**
          * Unused axis
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * The position on the X axis
          */
-        X,
+        X = 1,
         /**
          * The position of the Y axis
          */
-        Y,
+        Y = 2,
         /**
          * The pressure information
          */
-        PRESSURE,
+        PRESSURE = 3,
         /**
          * The tilt on the X axis
          */
-        XTILT,
+        XTILT = 4,
         /**
          * The tile on the Y axis
          */
-        YTILT,
+        YTILT = 5,
         /**
          * A wheel
          */
-        WHEEL,
+        WHEEL = 6,
         /**
          * Distance (Since 1.12)
          */
-        DISTANCE,
+        DISTANCE = 7,
         /**
          * Rotation along the z-axis (Since 1.28)
          */
-        ROTATION,
+        ROTATION = 8,
         /**
          * A slider (Since 1.28)
          */
-        SLIDER,
+        SLIDER = 9,
         /**
          * Last value of the enumeration; this value is
          *   useful when iterating over the enumeration values (Since 1.12)
          */
-        LAST,
+        LAST = 10,
     }
 
     export namespace InputContentPurpose {
@@ -798,19 +798,19 @@ export namespace Clutter {
     }
 
     enum InputContentPurpose {
-        NORMAL,
-        ALPHA,
-        DIGITS,
-        NUMBER,
-        PHONE,
-        URL,
-        EMAIL,
-        NAME,
-        PASSWORD,
-        DATE,
-        TIME,
-        DATETIME,
-        TERMINAL,
+        NORMAL = 0,
+        ALPHA = 1,
+        DIGITS = 2,
+        NUMBER = 3,
+        PHONE = 4,
+        URL = 5,
+        EMAIL = 6,
+        NAME = 7,
+        PASSWORD = 8,
+        DATE = 9,
+        TIME = 10,
+        DATETIME = 11,
+        TERMINAL = 12,
     }
 
     export namespace InputDevicePadFeature {
@@ -818,10 +818,10 @@ export namespace Clutter {
     }
 
     enum InputDevicePadFeature {
-        BUTTON,
-        RING,
-        STRIP,
-        DIAL,
+        BUTTON = 0,
+        RING = 1,
+        STRIP = 2,
+        DIAL = 3,
     }
 
     export namespace InputDevicePadSource {
@@ -829,8 +829,8 @@ export namespace Clutter {
     }
 
     enum InputDevicePadSource {
-        UNKNOWN,
-        FINGER,
+        UNKNOWN = 0,
+        FINGER = 1,
     }
     /**
      * Defines the type of tool that a #ClutterInputDeviceTool represents.8
@@ -847,35 +847,35 @@ export namespace Clutter {
         /**
          * No tool
          */
-        NONE,
+        NONE = 0,
         /**
          * The tool is a pen
          */
-        PEN,
+        PEN = 1,
         /**
          * The tool is an eraser
          */
-        ERASER,
+        ERASER = 2,
         /**
          * The tool is a brush
          */
-        BRUSH,
+        BRUSH = 3,
         /**
          * The tool is a pencil
          */
-        PENCIL,
+        PENCIL = 4,
         /**
          * The tool is an airbrush
          */
-        AIRBRUSH,
+        AIRBRUSH = 5,
         /**
          * The tool is a mouse
          */
-        MOUSE,
+        MOUSE = 6,
         /**
          * The tool is a lens
          */
-        LENS,
+        LENS = 7,
     }
     /**
      * The types of input devices available.
@@ -898,51 +898,51 @@ export namespace Clutter {
         /**
          * A pointer device
          */
-        POINTER_DEVICE,
+        POINTER_DEVICE = 0,
         /**
          * A keyboard device
          */
-        KEYBOARD_DEVICE,
+        KEYBOARD_DEVICE = 1,
         /**
          * A generic extension device
          */
-        EXTENSION_DEVICE,
+        EXTENSION_DEVICE = 2,
         /**
          * A joystick device
          */
-        JOYSTICK_DEVICE,
+        JOYSTICK_DEVICE = 3,
         /**
          * A tablet device
          */
-        TABLET_DEVICE,
+        TABLET_DEVICE = 4,
         /**
          * A touchpad device
          */
-        TOUCHPAD_DEVICE,
+        TOUCHPAD_DEVICE = 5,
         /**
          * A touch screen device
          */
-        TOUCHSCREEN_DEVICE,
+        TOUCHSCREEN_DEVICE = 6,
         /**
          * A pen device
          */
-        PEN_DEVICE,
+        PEN_DEVICE = 7,
         /**
          * An eraser device
          */
-        ERASER_DEVICE,
+        ERASER_DEVICE = 8,
         /**
          * A cursor device
          */
-        CURSOR_DEVICE,
+        CURSOR_DEVICE = 9,
         /**
          * A tablet pad
          */
-        PAD_DEVICE,
+        PAD_DEVICE = 10,
         /**
          * The number of device types
          */
-        N_DEVICE_TYPES,
+        N_DEVICE_TYPES = 11,
     }
     /**
      * The mode for input devices available.
@@ -959,17 +959,17 @@ export namespace Clutter {
         /**
          * A logical, virtual device
          */
-        LOGICAL,
+        LOGICAL = 0,
         /**
          * A physical device, attached to
          *   a logical device
          */
-        PHYSICAL,
+        PHYSICAL = 1,
         /**
          * A physical device, not attached
          *   to a logical device
          */
-        FLOATING,
+        FLOATING = 2,
     }
 
     export namespace InputPanelState {
@@ -977,9 +977,9 @@ export namespace Clutter {
     }
 
     enum InputPanelState {
-        OFF,
-        ON,
-        TOGGLE,
+        OFF = 0,
+        ON = 1,
+        TOGGLE = 2,
     }
 
     export namespace KeyState {
@@ -987,8 +987,8 @@ export namespace Clutter {
     }
 
     enum KeyState {
-        RELEASED,
-        PRESSED,
+        RELEASED = 0,
+        PRESSED = 1,
     }
 
     export namespace LuminanceType {
@@ -996,8 +996,8 @@ export namespace Clutter {
     }
 
     enum LuminanceType {
-        DERIVED,
-        EXPLICIT,
+        DERIVED = 0,
+        EXPLICIT = 1,
     }
     /**
      * Represents the orientation of actors or layout managers.
@@ -1014,11 +1014,11 @@ export namespace Clutter {
         /**
          * An horizontal orientation
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * A vertical orientation
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
     /**
      * The axis of the constraint that should be applied on the
@@ -1037,15 +1037,15 @@ export namespace Clutter {
         /**
          * No constraint
          */
-        BOTH,
+        BOTH = 0,
         /**
          * Set a constraint on the X axis
          */
-        X,
+        X = 1,
         /**
          * Set a constraint on the Y axis
          */
-        Y,
+        Y = 2,
     }
     /**
      * Controls the paint cycle of the scene graph when in pick mode
@@ -1062,15 +1062,15 @@ export namespace Clutter {
         /**
          * Do not paint any actor
          */
-        NONE,
+        NONE = 0,
         /**
          * Paint only the reactive actors
          */
-        REACTIVE,
+        REACTIVE = 1,
         /**
          * Paint all actors
          */
-        ALL,
+        ALL = 2,
     }
 
     export namespace PipelineCapability {
@@ -1078,7 +1078,7 @@ export namespace Clutter {
     }
 
     enum PipelineCapability {
-        STATE,
+        STATE = 0,
     }
     /**
      * Dwell click types.
@@ -1095,12 +1095,12 @@ export namespace Clutter {
         /**
          * Internal use only
          */
-        NONE,
-        PRIMARY,
-        SECONDARY,
-        MIDDLE,
-        DOUBLE,
-        DRAG,
+        NONE = 0,
+        PRIMARY = 1,
+        SECONDARY = 2,
+        MIDDLE = 3,
+        DOUBLE = 4,
+        DRAG = 5,
     }
     /**
      * Dwell gesture directions.
@@ -1114,11 +1114,11 @@ export namespace Clutter {
     }
 
     enum PointerA11yDwellDirection {
-        NONE,
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
+        NONE = 0,
+        LEFT = 1,
+        RIGHT = 2,
+        UP = 3,
+        DOWN = 4,
     }
     /**
      * Dwell mode.
@@ -1132,8 +1132,8 @@ export namespace Clutter {
     }
 
     enum PointerA11yDwellMode {
-        WINDOW,
-        GESTURE,
+        WINDOW = 0,
+        GESTURE = 1,
     }
     /**
      * Pointer accessibility timeout type.
@@ -1147,9 +1147,9 @@ export namespace Clutter {
     }
 
     enum PointerA11yTimeoutType {
-        SECONDARY_CLICK,
-        DWELL,
-        GESTURE,
+        SECONDARY_CLICK = 0,
+        DWELL = 1,
+        GESTURE = 2,
     }
 
     export namespace PreeditResetMode {
@@ -1157,8 +1157,8 @@ export namespace Clutter {
     }
 
     enum PreeditResetMode {
-        CLEAR,
-        COMMIT,
+        CLEAR = 0,
+        COMMIT = 1,
     }
     /**
      * Specifies the type of requests for a #ClutterActor.
@@ -1175,16 +1175,16 @@ export namespace Clutter {
         /**
          * Height for width requests
          */
-        HEIGHT_FOR_WIDTH,
+        HEIGHT_FOR_WIDTH = 0,
         /**
          * Width for height requests
          */
-        WIDTH_FOR_HEIGHT,
+        WIDTH_FOR_HEIGHT = 1,
         /**
          * Use the preferred size of the
          *   #ClutterContent, if it has any (available since 1.22)
          */
-        CONTENT_SIZE,
+        CONTENT_SIZE = 2,
     }
     /**
      * Axis of a rotation.
@@ -1201,15 +1201,15 @@ export namespace Clutter {
         /**
          * Rotate around the X axis
          */
-        X_AXIS,
+        X_AXIS = 0,
         /**
          * Rotate around the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 1,
         /**
          * Rotate around the Z axis
          */
-        Z_AXIS,
+        Z_AXIS = 2,
     }
     /**
      * The scaling filters to be used with the [property`Actor:`minification-filter]
@@ -1228,17 +1228,17 @@ export namespace Clutter {
         /**
          * Linear interpolation filter
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Nearest neighbor interpolation filter
          */
-        NEAREST,
+        NEAREST = 1,
         /**
          * Trilinear minification filter, with
          *   mipmap generation; this filter linearly interpolates on every axis,
          *   as well as between mipmap levels.
          */
-        TRILINEAR,
+        TRILINEAR = 2,
     }
     /**
      * Direction of a pointer scroll event.
@@ -1261,23 +1261,23 @@ export namespace Clutter {
         /**
          * Scroll up
          */
-        UP,
+        UP = 0,
         /**
          * Scroll down
          */
-        DOWN,
+        DOWN = 1,
         /**
          * Scroll left
          */
-        LEFT,
+        LEFT = 2,
         /**
          * Scroll right
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * Precise scrolling delta (available in 1.10)
          */
-        SMOOTH,
+        SMOOTH = 4,
     }
     /**
      * The scroll source determines the source of the scroll event.
@@ -1300,21 +1300,21 @@ export namespace Clutter {
         /**
          * Source of scroll events is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The scroll event is originated by a mouse wheel.
          */
-        WHEEL,
+        WHEEL = 1,
         /**
          * The scroll event is originated by one or more
          *   fingers on the device (eg. touchpads).
          */
-        FINGER,
+        FINGER = 2,
         /**
          * The scroll event is originated by the
          *   motion of some device (eg. a scroll button is set).
          */
-        CONTINUOUS,
+        CONTINUOUS = 3,
     }
     /**
      * The edge to snap
@@ -1331,19 +1331,19 @@ export namespace Clutter {
         /**
          * the top edge
          */
-        TOP,
+        TOP = 0,
         /**
          * the right edge
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * the bottom edge
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * the left edge
          */
-        LEFT,
+        LEFT = 3,
     }
     /**
      * Change the value transition of a step function.
@@ -1366,13 +1366,13 @@ export namespace Clutter {
          *   %CLUTTER_STEP progress mode should occur at the start of
          *   the transition
          */
-        START,
+        START = 0,
         /**
          * The change in the value of a
          *   %CLUTTER_STEP progress mode should occur at the end of
          *   the transition
          */
-        END,
+        END = 1,
     }
     /**
      * The text direction to be used by [class`Actor]`s
@@ -1390,15 +1390,15 @@ export namespace Clutter {
          * Use the default setting, as returned
          *   by clutter_get_default_text_direction()
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Use left-to-right text direction
          */
-        LTR,
+        LTR = 1,
         /**
          * Use right-to-left text direction
          */
-        RTL,
+        RTL = 2,
     }
     /**
      * The direction of a #ClutterTimeline
@@ -1415,11 +1415,11 @@ export namespace Clutter {
         /**
          * forward direction for a timeline
          */
-        FORWARD,
+        FORWARD = 0,
         /**
          * backward direction for a timeline
          */
-        BACKWARD,
+        BACKWARD = 1,
     }
     /**
      * The phase of a touchpad gesture event.
@@ -1474,21 +1474,21 @@ export namespace Clutter {
         /**
          * The gesture has begun.
          */
-        BEGIN,
+        BEGIN = 0,
         /**
          * The gesture has been updated.
          */
-        UPDATE,
+        UPDATE = 1,
         /**
          * The gesture was finished, changes
          *   should be permanently applied.
          */
-        END,
+        END = 2,
         /**
          * The gesture was cancelled, all
          *   changes should be undone.
          */
-        CANCEL,
+        CANCEL = 3,
     }
 
     export namespace TransferFunction {
@@ -1496,10 +1496,10 @@ export namespace Clutter {
     }
 
     enum TransferFunction {
-        SRGB,
-        PQ,
-        BT709,
-        LINEAR,
+        SRGB = 0,
+        PQ = 1,
+        BT709 = 2,
+        LINEAR = 3,
     }
     /**
      * The middle button of a pointer device.
@@ -4240,7 +4240,7 @@ export namespace Clutter {
     }
 
     enum ColorStateTransformFlags {
-        OPAQUE,
+        OPAQUE = 1,
     }
     /**
      * Content repeat modes.
@@ -4257,19 +4257,19 @@ export namespace Clutter {
         /**
          * No repeat
          */
-        NONE,
+        NONE = 0,
         /**
          * Repeat the content on the X axis
          */
-        X_AXIS,
+        X_AXIS = 1,
         /**
          * Repeat the content on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 2,
         /**
          * Repeat the content on both axis
          */
-        BOTH,
+        BOTH = 3,
     }
 
     export namespace DebugFlag {
@@ -4277,28 +4277,28 @@ export namespace Clutter {
     }
 
     enum DebugFlag {
-        MISC,
-        ACTOR,
-        TEXTURE,
-        EVENT,
-        PAINT,
-        PANGO,
-        BACKEND,
-        SCHEDULER,
-        SCRIPT,
-        SHADER,
-        MULTISTAGE,
-        ANIMATION,
-        LAYOUT,
-        PICK,
-        EVENTLOOP,
-        CLIPPING,
-        OOB_TRANSFORMS,
-        FRAME_TIMINGS,
-        DETAILED_TRACE,
-        GRABS,
-        FRAME_CLOCK,
-        GESTURES,
+        MISC = 1,
+        ACTOR = 2,
+        TEXTURE = 4,
+        EVENT = 8,
+        PAINT = 16,
+        PANGO = 32,
+        BACKEND = 64,
+        SCHEDULER = 128,
+        SCRIPT = 256,
+        SHADER = 512,
+        MULTISTAGE = 1024,
+        ANIMATION = 2048,
+        LAYOUT = 4096,
+        PICK = 8192,
+        EVENTLOOP = 16384,
+        CLIPPING = 32768,
+        OOB_TRANSFORMS = 65536,
+        FRAME_TIMINGS = 131072,
+        DETAILED_TRACE = 262144,
+        GRABS = 524288,
+        FRAME_CLOCK = 1048576,
+        GESTURES = 2097152,
     }
 
     export namespace DrawDebugFlag {
@@ -4306,18 +4306,18 @@ export namespace Clutter {
     }
 
     enum DrawDebugFlag {
-        DISABLE_SWAP_EVENTS,
-        DISABLE_CLIPPED_REDRAWS,
-        REDRAWS,
-        PAINT_VOLUMES,
-        DISABLE_CULLING,
-        DISABLE_OFFSCREEN_REDIRECT,
-        CONTINUOUS_REDRAW,
-        PAINT_DEFORM_TILES,
-        PAINT_DAMAGE_REGION,
-        DISABLE_DYNAMIC_MAX_RENDER_TIME,
-        PAINT_MAX_RENDER_TIME,
-        DISABLE_TRIPLE_BUFFERING,
+        DISABLE_SWAP_EVENTS = 1,
+        DISABLE_CLIPPED_REDRAWS = 2,
+        REDRAWS = 4,
+        PAINT_VOLUMES = 8,
+        DISABLE_CULLING = 16,
+        DISABLE_OFFSCREEN_REDIRECT = 32,
+        CONTINUOUS_REDRAW = 64,
+        PAINT_DEFORM_TILES = 128,
+        PAINT_DAMAGE_REGION = 256,
+        DISABLE_DYNAMIC_MAX_RENDER_TIME = 512,
+        PAINT_MAX_RENDER_TIME = 1024,
+        DISABLE_TRIPLE_BUFFERING = 2048,
     }
     /**
      * Flags passed to the ‘paint’ or ‘pick’ method of #ClutterEffect.
@@ -4337,12 +4337,12 @@ export namespace Clutter {
          *   should call clutter_actor_continue_paint() to chain to the next
          *   effect and can not cache any results from a previous paint.
          */
-        ACTOR_DIRTY,
+        ACTOR_DIRTY = 1,
         /**
          * The effect should not be used
          *   on this frame, but it will be asked to paint the actor still.
          */
-        BYPASS_EFFECT,
+        BYPASS_EFFECT = 2,
     }
     /**
      * Flags for the #ClutterEvent
@@ -4359,20 +4359,20 @@ export namespace Clutter {
         /**
          * No flag set
          */
-        NONE,
+        NONE = 0,
         /**
          * Synthetic event
          */
-        FLAG_SYNTHETIC,
-        FLAG_INPUT_METHOD,
+        FLAG_SYNTHETIC = 1,
+        FLAG_INPUT_METHOD = 2,
         /**
          * Auto-repeated event
          */
-        FLAG_REPEATED,
-        FLAG_RELATIVE_MOTION,
-        FLAG_GRAB_NOTIFY,
-        FLAG_POINTER_EMULATED,
-        FLAG_A11Y_MODIFIER_FIRST_CLICK,
+        FLAG_REPEATED = 4,
+        FLAG_RELATIVE_MOTION = 8,
+        FLAG_GRAB_NOTIFY = 16,
+        FLAG_POINTER_EMULATED = 32,
+        FLAG_A11Y_MODIFIER_FIRST_CLICK = 64,
     }
 
     export namespace FrameInfoFlag {
@@ -4380,10 +4380,10 @@ export namespace Clutter {
     }
 
     enum FrameInfoFlag {
-        NONE,
-        HW_CLOCK,
-        ZERO_COPY,
-        VSYNC,
+        NONE = 0,
+        HW_CLOCK = 1,
+        ZERO_COPY = 2,
+        VSYNC = 4,
     }
 
     export namespace GrabState {
@@ -4391,10 +4391,10 @@ export namespace Clutter {
     }
 
     enum GrabState {
-        NONE,
-        POINTER,
-        KEYBOARD,
-        ALL,
+        NONE = 0,
+        POINTER = 1,
+        KEYBOARD = 2,
+        ALL = 3,
     }
 
     export namespace InputAxisFlags {
@@ -4402,16 +4402,16 @@ export namespace Clutter {
     }
 
     enum InputAxisFlags {
-        NONE,
-        X,
-        Y,
-        PRESSURE,
-        XTILT,
-        YTILT,
-        WHEEL,
-        DISTANCE,
-        ROTATION,
-        SLIDER,
+        NONE = 0,
+        X = 2,
+        Y = 4,
+        PRESSURE = 8,
+        XTILT = 16,
+        YTILT = 32,
+        WHEEL = 64,
+        DISTANCE = 128,
+        ROTATION = 256,
+        SLIDER = 512,
     }
 
     export namespace InputCapabilities {
@@ -4419,15 +4419,15 @@ export namespace Clutter {
     }
 
     enum InputCapabilities {
-        NONE,
-        POINTER,
-        KEYBOARD,
-        TOUCHPAD,
-        TOUCH,
-        TABLET_TOOL,
-        TABLET_PAD,
-        TRACKBALL,
-        TRACKPOINT,
+        NONE = 0,
+        POINTER = 1,
+        KEYBOARD = 2,
+        TOUCHPAD = 4,
+        TOUCH = 8,
+        TABLET_TOOL = 16,
+        TABLET_PAD = 32,
+        TRACKBALL = 64,
+        TRACKPOINT = 128,
     }
 
     export namespace InputContentHintFlags {
@@ -4435,16 +4435,16 @@ export namespace Clutter {
     }
 
     enum InputContentHintFlags {
-        COMPLETION,
-        SPELLCHECK,
-        AUTO_CAPITALIZATION,
-        LOWERCASE,
-        UPPERCASE,
-        TITLECASE,
-        HIDDEN_TEXT,
-        SENSITIVE_DATA,
-        LATIN,
-        MULTILINE,
+        COMPLETION = 1,
+        SPELLCHECK = 2,
+        AUTO_CAPITALIZATION = 4,
+        LOWERCASE = 8,
+        UPPERCASE = 16,
+        TITLECASE = 32,
+        HIDDEN_TEXT = 64,
+        SENSITIVE_DATA = 128,
+        LATIN = 256,
+        MULTILINE = 512,
     }
     /**
      * Masks applied to a #ClutterEvent by modifiers.
@@ -4471,89 +4471,89 @@ export namespace Clutter {
         /**
          * Mask applied by the Shift key
          */
-        SHIFT_MASK,
+        SHIFT_MASK = 1,
         /**
          * Mask applied by the Caps Lock key
          */
-        LOCK_MASK,
+        LOCK_MASK = 2,
         /**
          * Mask applied by the Control key
          */
-        CONTROL_MASK,
+        CONTROL_MASK = 4,
         /**
          * Mask applied by the first Mod key
          */
-        MOD1_MASK,
+        MOD1_MASK = 8,
         /**
          * Mask applied by the second Mod key
          */
-        MOD2_MASK,
+        MOD2_MASK = 16,
         /**
          * Mask applied by the third Mod key
          */
-        MOD3_MASK,
+        MOD3_MASK = 32,
         /**
          * Mask applied by the fourth Mod key
          */
-        MOD4_MASK,
+        MOD4_MASK = 64,
         /**
          * Mask applied by the fifth Mod key
          */
-        MOD5_MASK,
+        MOD5_MASK = 128,
         /**
          * Mask applied by the first pointer button
          */
-        BUTTON1_MASK,
+        BUTTON1_MASK = 256,
         /**
          * Mask applied by the second pointer button
          */
-        BUTTON2_MASK,
+        BUTTON2_MASK = 512,
         /**
          * Mask applied by the third pointer button
          */
-        BUTTON3_MASK,
+        BUTTON3_MASK = 1024,
         /**
          * Mask applied by the fourth pointer button
          */
-        BUTTON4_MASK,
+        BUTTON4_MASK = 2048,
         /**
          * Mask applied by the fifth pointer button
          */
-        BUTTON5_MASK,
-        MODIFIER_RESERVED_13_MASK,
-        MODIFIER_RESERVED_14_MASK,
-        MODIFIER_RESERVED_15_MASK,
-        MODIFIER_RESERVED_16_MASK,
-        MODIFIER_RESERVED_17_MASK,
-        MODIFIER_RESERVED_18_MASK,
-        MODIFIER_RESERVED_19_MASK,
-        MODIFIER_RESERVED_20_MASK,
-        MODIFIER_RESERVED_21_MASK,
-        MODIFIER_RESERVED_22_MASK,
-        MODIFIER_RESERVED_23_MASK,
-        MODIFIER_RESERVED_24_MASK,
-        MODIFIER_RESERVED_25_MASK,
+        BUTTON5_MASK = 4096,
+        MODIFIER_RESERVED_13_MASK = 8192,
+        MODIFIER_RESERVED_14_MASK = 16384,
+        MODIFIER_RESERVED_15_MASK = 32768,
+        MODIFIER_RESERVED_16_MASK = 65536,
+        MODIFIER_RESERVED_17_MASK = 131072,
+        MODIFIER_RESERVED_18_MASK = 262144,
+        MODIFIER_RESERVED_19_MASK = 524288,
+        MODIFIER_RESERVED_20_MASK = 1048576,
+        MODIFIER_RESERVED_21_MASK = 2097152,
+        MODIFIER_RESERVED_22_MASK = 4194304,
+        MODIFIER_RESERVED_23_MASK = 8388608,
+        MODIFIER_RESERVED_24_MASK = 16777216,
+        MODIFIER_RESERVED_25_MASK = 33554432,
         /**
          * Mask applied by the Super key
          */
-        SUPER_MASK,
+        SUPER_MASK = 67108864,
         /**
          * Mask applied by the Hyper key
          */
-        HYPER_MASK,
+        HYPER_MASK = 134217728,
         /**
          * Mask applied by the Meta key
          */
-        META_MASK,
-        MODIFIER_RESERVED_29_MASK,
+        META_MASK = 268435456,
+        MODIFIER_RESERVED_29_MASK = 536870912,
         /**
          * Mask applied during release
          */
-        RELEASE_MASK,
+        RELEASE_MASK = 1073741824,
         /**
          * A mask covering all modifier types
          */
-        MODIFIER_MASK,
+        MODIFIER_MASK = 1543512063,
     }
     /**
      * Possible flags to pass to clutter_actor_set_offscreen_redirect().
@@ -4572,19 +4572,19 @@ export namespace Clutter {
          *   the actor if it is semi-transparent and its has_overlaps()
          *   virtual returns %TRUE.
          */
-        AUTOMATIC_FOR_OPACITY,
+        AUTOMATIC_FOR_OPACITY = 1,
         /**
          * Always redirect the actor to an
          *   offscreen buffer even if it is fully opaque.
          */
-        ALWAYS,
+        ALWAYS = 2,
         /**
          * Only redirect the actor if it is the
          *   most efficient thing to do based on its recent repaint behaviour. That
          *   means when its contents are changing less frequently than it's being used
          *   on stage.
          */
-        ON_IDLE,
+        ON_IDLE = 4,
     }
 
     export namespace PaintFlag {
@@ -4592,10 +4592,10 @@ export namespace Clutter {
     }
 
     enum PaintFlag {
-        NONE,
-        NO_CURSORS,
-        FORCE_CURSORS,
-        CLEAR,
+        NONE = 0,
+        NO_CURSORS = 1,
+        FORCE_CURSORS = 2,
+        CLEAR = 4,
     }
 
     export namespace PickDebugFlag {
@@ -4603,7 +4603,7 @@ export namespace Clutter {
     }
 
     enum PickDebugFlag {
-        PICKING,
+        PICKING = 1,
     }
     /**
      * Pointer accessibility features applied to a ClutterInputDevice pointer.
@@ -4617,8 +4617,8 @@ export namespace Clutter {
     }
 
     enum PointerA11yFlags {
-        SECONDARY_CLICK_ENABLED,
-        DWELL_ENABLED,
+        SECONDARY_CLICK_ENABLED = 1,
+        DWELL_ENABLED = 2,
     }
     /**
      * Flags to pass to [func`Clutter`.threads_add_repaint_func].
@@ -4636,12 +4636,12 @@ export namespace Clutter {
          * Run the repaint function prior to
          *   painting the stages
          */
-        PRE_PAINT,
+        PRE_PAINT = 1,
         /**
          * Run the repaint function after
          *   painting the stages
          */
-        POST_PAINT,
+        POST_PAINT = 2,
     }
     /**
      * Flags used to notify the axes that were stopped in a #ClutterScrollEvent.
@@ -4662,15 +4662,15 @@ export namespace Clutter {
         /**
          * no axis was stopped.
          */
-        NONE,
+        NONE = 0,
         /**
          * The horizontal axis stopped.
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * The vertical axis stopped.
          */
-        VERTICAL,
+        VERTICAL = 2,
     }
     /**
      * Flags used to notify modification on scrolling behavior.
@@ -4687,12 +4687,12 @@ export namespace Clutter {
         /**
          * No additional information.
          */
-        NONE,
+        NONE = 0,
         /**
          * Scroll direction is inverted, relative to the
          *   physical motion on the device.
          */
-        INVERTED,
+        INVERTED = 1,
     }
 
     export namespace VirtualDeviceType {
@@ -4700,10 +4700,10 @@ export namespace Clutter {
     }
 
     enum VirtualDeviceType {
-        NONE,
-        KEYBOARD,
-        POINTER,
-        TOUCHSCREEN,
+        NONE = 0,
+        KEYBOARD = 1,
+        POINTER = 2,
+        TOUCHSCREEN = 4,
     }
     namespace Action {
         // Signal signatures

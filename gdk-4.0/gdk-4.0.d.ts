@@ -49,55 +49,55 @@ export namespace Gdk {
         /**
          * the axis is ignored.
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * the axis is used as the x axis.
          */
-        X,
+        X = 1,
         /**
          * the axis is used as the y axis.
          */
-        Y,
+        Y = 2,
         /**
          * the axis is used as the scroll x delta
          */
-        DELTA_X,
+        DELTA_X = 3,
         /**
          * the axis is used as the scroll y delta
          */
-        DELTA_Y,
+        DELTA_Y = 4,
         /**
          * the axis is used for pressure information.
          */
-        PRESSURE,
+        PRESSURE = 5,
         /**
          * the axis is used for x tilt information.
          */
-        XTILT,
+        XTILT = 6,
         /**
          * the axis is used for y tilt information.
          */
-        YTILT,
+        YTILT = 7,
         /**
          * the axis is used for wheel information.
          */
-        WHEEL,
+        WHEEL = 8,
         /**
          * the axis is used for pen/tablet distance information
          */
-        DISTANCE,
+        DISTANCE = 9,
         /**
          * the axis is used for pen rotation information
          */
-        ROTATION,
+        ROTATION = 10,
         /**
          * the axis is used for pen slider information
          */
-        SLIDER,
+        SLIDER = 11,
         /**
          * a constant equal to the numerically highest axis value.
          */
-        LAST,
+        LAST = 12,
     }
     /**
      * The values of this enumeration describe whether image data uses
@@ -124,11 +124,11 @@ export namespace Gdk {
         /**
          * The values use the range of 16-235 (for Y) and 16-240 for u and v.
          */
-        NARROW,
+        NARROW = 0,
         /**
          * The values use the full range.
          */
-        FULL,
+        FULL = 1,
     }
     /**
      * Specifies the crossing mode for enter and leave events.
@@ -145,44 +145,44 @@ export namespace Gdk {
         /**
          * crossing because of pointer motion.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * crossing because a grab is activated.
          */
-        GRAB,
+        GRAB = 1,
         /**
          * crossing because a grab is deactivated.
          */
-        UNGRAB,
+        UNGRAB = 2,
         /**
          * crossing because a GTK grab is activated.
          */
-        GTK_GRAB,
+        GTK_GRAB = 3,
         /**
          * crossing because a GTK grab is deactivated.
          */
-        GTK_UNGRAB,
+        GTK_UNGRAB = 4,
         /**
          * crossing because a GTK widget changed
          *   state (e.g. sensitivity).
          */
-        STATE_CHANGED,
+        STATE_CHANGED = 5,
         /**
          * crossing because a touch sequence has begun,
          *   this event is synthetic as the pointer might have not left the surface.
          */
-        TOUCH_BEGIN,
+        TOUCH_BEGIN = 6,
         /**
          * crossing because a touch sequence has ended,
          *   this event is synthetic as the pointer might have not left the surface.
          */
-        TOUCH_END,
+        TOUCH_END = 7,
         /**
          * crossing because of a device switch (i.e.
          *   a mouse taking control of the pointer after a touch device), this event
          *   is synthetic as the pointer didn’t leave the surface.
          */
-        DEVICE_SWITCH,
+        DEVICE_SWITCH = 8,
     }
     /**
      * A pad feature.
@@ -199,15 +199,15 @@ export namespace Gdk {
         /**
          * a button
          */
-        BUTTON,
+        BUTTON = 0,
         /**
          * a ring-shaped interactive area
          */
-        RING,
+        RING = 1,
         /**
          * a straight interactive area
          */
-        STRIP,
+        STRIP = 2,
     }
     /**
      * Indicates the specific type of tool being used being a tablet. Such as an
@@ -226,35 +226,35 @@ export namespace Gdk {
         /**
          * Tool is of an unknown type.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Tool is a standard tablet stylus.
          */
-        PEN,
+        PEN = 1,
         /**
          * Tool is standard tablet eraser.
          */
-        ERASER,
+        ERASER = 2,
         /**
          * Tool is a brush stylus.
          */
-        BRUSH,
+        BRUSH = 3,
         /**
          * Tool is a pencil stylus.
          */
-        PENCIL,
+        PENCIL = 4,
         /**
          * Tool is an airbrush stylus.
          */
-        AIRBRUSH,
+        AIRBRUSH = 5,
         /**
          * Tool is a mouse.
          */
-        MOUSE,
+        MOUSE = 6,
         /**
          * Tool is a lens cursor.
          */
-        LENS,
+        LENS = 7,
     }
     /**
      * Error enumeration for `GdkDmabufTexture`.
@@ -307,15 +307,15 @@ export namespace Gdk {
         /**
          * There is no suitable drop target.
          */
-        NO_TARGET,
+        NO_TARGET = 0,
         /**
          * Drag cancelled by the user
          */
-        USER_CANCELLED,
+        USER_CANCELLED = 1,
         /**
          * Unspecified error.
          */
-        ERROR,
+        ERROR = 2,
     }
     /**
      * Specifies the type of the event.
@@ -334,129 +334,129 @@ export namespace Gdk {
          *   hidden or destroyed, usually when the user clicks on a special icon in the
          *   title bar.
          */
-        DELETE,
+        DELETE = 0,
         /**
          * the pointer (usually a mouse) has moved.
          */
-        MOTION_NOTIFY,
+        MOTION_NOTIFY = 1,
         /**
          * a mouse button has been pressed.
          */
-        BUTTON_PRESS,
+        BUTTON_PRESS = 2,
         /**
          * a mouse button has been released.
          */
-        BUTTON_RELEASE,
+        BUTTON_RELEASE = 3,
         /**
          * a key has been pressed.
          */
-        KEY_PRESS,
+        KEY_PRESS = 4,
         /**
          * a key has been released.
          */
-        KEY_RELEASE,
+        KEY_RELEASE = 5,
         /**
          * the pointer has entered the surface.
          */
-        ENTER_NOTIFY,
+        ENTER_NOTIFY = 6,
         /**
          * the pointer has left the surface.
          */
-        LEAVE_NOTIFY,
+        LEAVE_NOTIFY = 7,
         /**
          * the keyboard focus has entered or left the surface.
          */
-        FOCUS_CHANGE,
+        FOCUS_CHANGE = 8,
         /**
          * an input device has moved into contact with a sensing
          *   surface (e.g. a touchscreen or graphics tablet).
          */
-        PROXIMITY_IN,
+        PROXIMITY_IN = 9,
         /**
          * an input device has moved out of contact with a sensing
          *   surface.
          */
-        PROXIMITY_OUT,
+        PROXIMITY_OUT = 10,
         /**
          * the mouse has entered the surface while a drag is in progress.
          */
-        DRAG_ENTER,
+        DRAG_ENTER = 11,
         /**
          * the mouse has left the surface while a drag is in progress.
          */
-        DRAG_LEAVE,
+        DRAG_LEAVE = 12,
         /**
          * the mouse has moved in the surface while a drag is in
          *   progress.
          */
-        DRAG_MOTION,
+        DRAG_MOTION = 13,
         /**
          * a drop operation onto the surface has started.
          */
-        DROP_START,
+        DROP_START = 14,
         /**
          * the scroll wheel was turned
          */
-        SCROLL,
+        SCROLL = 15,
         /**
          * a pointer or keyboard grab was broken.
          */
-        GRAB_BROKEN,
+        GRAB_BROKEN = 16,
         /**
          * A new touch event sequence has just started.
          */
-        TOUCH_BEGIN,
+        TOUCH_BEGIN = 17,
         /**
          * A touch event sequence has been updated.
          */
-        TOUCH_UPDATE,
+        TOUCH_UPDATE = 18,
         /**
          * A touch event sequence has finished.
          */
-        TOUCH_END,
+        TOUCH_END = 19,
         /**
          * A touch event sequence has been canceled.
          */
-        TOUCH_CANCEL,
+        TOUCH_CANCEL = 20,
         /**
          * A touchpad swipe gesture event, the current state
          *   is determined by its phase field.
          */
-        TOUCHPAD_SWIPE,
+        TOUCHPAD_SWIPE = 21,
         /**
          * A touchpad pinch gesture event, the current state
          *   is determined by its phase field.
          */
-        TOUCHPAD_PINCH,
+        TOUCHPAD_PINCH = 22,
         /**
          * A tablet pad button press event.
          */
-        PAD_BUTTON_PRESS,
+        PAD_BUTTON_PRESS = 23,
         /**
          * A tablet pad button release event.
          */
-        PAD_BUTTON_RELEASE,
+        PAD_BUTTON_RELEASE = 24,
         /**
          * A tablet pad axis event from a "ring".
          */
-        PAD_RING,
+        PAD_RING = 25,
         /**
          * A tablet pad axis event from a "strip".
          */
-        PAD_STRIP,
+        PAD_STRIP = 26,
         /**
          * A tablet pad group mode change.
          */
-        PAD_GROUP_MODE,
+        PAD_GROUP_MODE = 27,
         /**
          * A touchpad hold gesture event, the current state is determined by its phase
          * field.
          */
-        TOUCHPAD_HOLD,
+        TOUCHPAD_HOLD = 28,
         /**
          * marks the end of the GdkEventType enumeration.
          */
-        EVENT_LAST,
+        EVENT_LAST = 29,
     }
     /**
      * Indicates which monitor a surface should span over when in fullscreen mode.
@@ -473,11 +473,11 @@ export namespace Gdk {
         /**
          * Fullscreen on current monitor only.
          */
-        CURRENT_MONITOR,
+        CURRENT_MONITOR = 0,
         /**
          * Span across all monitors when fullscreen.
          */
-        ALL_MONITORS,
+        ALL_MONITORS = 1,
     }
     /**
      * Error enumeration for `GdkGLContext`.
@@ -536,44 +536,44 @@ export namespace Gdk {
         /**
          * the reference point is at the top left corner.
          */
-        NORTH_WEST,
+        NORTH_WEST = 1,
         /**
          * the reference point is in the middle of the top edge.
          */
-        NORTH,
+        NORTH = 2,
         /**
          * the reference point is at the top right corner.
          */
-        NORTH_EAST,
+        NORTH_EAST = 3,
         /**
          * the reference point is at the middle of the left edge.
          */
-        WEST,
+        WEST = 4,
         /**
          * the reference point is at the center of the surface.
          */
-        CENTER,
+        CENTER = 5,
         /**
          * the reference point is at the middle of the right edge.
          */
-        EAST,
+        EAST = 6,
         /**
          * the reference point is at the lower left corner.
          */
-        SOUTH_WEST,
+        SOUTH_WEST = 7,
         /**
          * the reference point is at the middle of the lower edge.
          */
-        SOUTH,
+        SOUTH = 8,
         /**
          * the reference point is at the lower right corner.
          */
-        SOUTH_EAST,
+        SOUTH_EAST = 9,
         /**
          * the reference point is at the top left corner of the
          *  surface itself, ignoring window manager decorations.
          */
-        STATIC,
+        STATIC = 10,
     }
     /**
      * An enumeration describing the type of an input device in general terms.
@@ -591,34 +591,34 @@ export namespace Gdk {
          * the device is a mouse. (This will be reported for the core
          *   pointer, even if it is something else, such as a trackball.)
          */
-        MOUSE,
+        MOUSE = 0,
         /**
          * the device is a stylus of a graphics tablet or similar device.
          */
-        PEN,
+        PEN = 1,
         /**
          * the device is a keyboard.
          */
-        KEYBOARD,
+        KEYBOARD = 2,
         /**
          * the device is a direct-input touch device, such
          *   as a touchscreen or tablet
          */
-        TOUCHSCREEN,
+        TOUCHSCREEN = 3,
         /**
          * the device is an indirect touch device, such
          *   as a touchpad
          */
-        TOUCHPAD,
+        TOUCHPAD = 4,
         /**
          * the device is a trackpoint
          */
-        TRACKPOINT,
+        TRACKPOINT = 5,
         /**
          * the device is a "pad", a collection of buttons,
          *   rings and strips found in drawing tablets
          */
-        TABLET_PAD,
+        TABLET_PAD = 6,
     }
     /**
      * Describes how well an event matches a given keyval and modifiers.
@@ -639,16 +639,16 @@ export namespace Gdk {
         /**
          * The key event does not match
          */
-        NONE,
+        NONE = 0,
         /**
          * The key event matches if keyboard state
          *   (specifically, the currently active group) is ignored
          */
-        PARTIAL,
+        PARTIAL = 1,
         /**
          * The key event matches
          */
-        EXACT,
+        EXACT = 2,
     }
     /**
      * Describes formats that image data can have in memory.
@@ -686,148 +686,148 @@ export namespace Gdk {
          * 4 bytes; for blue, green, red, alpha.
          *   The color values are premultiplied with the alpha value.
          */
-        B8G8R8A8_PREMULTIPLIED,
+        B8G8R8A8_PREMULTIPLIED = 0,
         /**
          * 4 bytes; for alpha, red, green, blue.
          *   The color values are premultiplied with the alpha value.
          */
-        A8R8G8B8_PREMULTIPLIED,
+        A8R8G8B8_PREMULTIPLIED = 1,
         /**
          * 4 bytes; for red, green, blue, alpha
          *   The color values are premultiplied with the alpha value.
          */
-        R8G8B8A8_PREMULTIPLIED,
+        R8G8B8A8_PREMULTIPLIED = 2,
         /**
          * 4 bytes; for blue, green, red, alpha.
          */
-        B8G8R8A8,
+        B8G8R8A8 = 3,
         /**
          * 4 bytes; for alpha, red, green, blue.
          */
-        A8R8G8B8,
+        A8R8G8B8 = 4,
         /**
          * 4 bytes; for red, green, blue, alpha.
          */
-        R8G8B8A8,
+        R8G8B8A8 = 5,
         /**
          * 4 bytes; for alpha, blue, green, red.
          */
-        A8B8G8R8,
+        A8B8G8R8 = 6,
         /**
          * 3 bytes; for red, green, blue. The data is opaque.
          */
-        R8G8B8,
+        R8G8B8 = 7,
         /**
          * 3 bytes; for blue, green, red. The data is opaque.
          */
-        B8G8R8,
+        B8G8R8 = 8,
         /**
          * 3 guint16 values; for red, green, blue.
          */
-        R16G16B16,
+        R16G16B16 = 9,
         /**
          * 4 guint16 values; for red, green, blue, alpha. The color values are
          * premultiplied with the alpha value.
          */
-        R16G16B16A16_PREMULTIPLIED,
+        R16G16B16A16_PREMULTIPLIED = 10,
         /**
          * 4 guint16 values; for red, green, blue, alpha.
          */
-        R16G16B16A16,
+        R16G16B16A16 = 11,
         /**
          * 3 half-float values; for red, green, blue. The data is opaque.
          */
-        R16G16B16_FLOAT,
+        R16G16B16_FLOAT = 12,
         /**
          * 4 half-float values; for red, green, blue and alpha. The color values are
          * premultiplied with the alpha value.
          */
-        R16G16B16A16_FLOAT_PREMULTIPLIED,
+        R16G16B16A16_FLOAT_PREMULTIPLIED = 13,
         /**
          * 4 half-float values; for red, green, blue and alpha.
          */
-        R16G16B16A16_FLOAT,
+        R16G16B16A16_FLOAT = 14,
         /**
          * 3 float values; for red, green, blue.
          */
-        R32G32B32_FLOAT,
+        R32G32B32_FLOAT = 15,
         /**
          * 4 float values; for red, green, blue and alpha. The color values are
          * premultiplied with the alpha value.
          */
-        R32G32B32A32_FLOAT_PREMULTIPLIED,
+        R32G32B32A32_FLOAT_PREMULTIPLIED = 16,
         /**
          * 4 float values; for red, green, blue and alpha.
          */
-        R32G32B32A32_FLOAT,
+        R32G32B32A32_FLOAT = 17,
         /**
          * 2 bytes; for grayscale, alpha. The color values are premultiplied with the
          * alpha value.
          */
-        G8A8_PREMULTIPLIED,
+        G8A8_PREMULTIPLIED = 18,
         /**
          * 2 bytes; for grayscale, alpha.
          */
-        G8A8,
+        G8A8 = 19,
         /**
          * One byte; for grayscale. The data is opaque.
          */
-        G8,
+        G8 = 20,
         /**
          * 2 guint16 values; for grayscale, alpha. The color values are premultiplied
          * with the alpha value.
          */
-        G16A16_PREMULTIPLIED,
+        G16A16_PREMULTIPLIED = 21,
         /**
          * 2 guint16 values; for grayscale, alpha.
          */
-        G16A16,
+        G16A16 = 22,
         /**
          * One guint16 value; for grayscale. The data is opaque.
          */
-        G16,
+        G16 = 23,
         /**
          * One byte; for alpha.
          */
-        A8,
+        A8 = 24,
         /**
          * One guint16 value; for alpha.
          */
-        A16,
+        A16 = 25,
         /**
          * One half-float value; for alpha.
          */
-        A16_FLOAT,
+        A16_FLOAT = 26,
         /**
          * One float value; for alpha.
          */
-        A32_FLOAT,
+        A32_FLOAT = 27,
         /**
          * 4 bytes; for alpha, blue, green, red, The color values are premultiplied with
          * the alpha value.
          */
-        A8B8G8R8_PREMULTIPLIED,
+        A8B8G8R8_PREMULTIPLIED = 28,
         /**
          * 4 bytes; for blue, green, red, unused.
          */
-        B8G8R8X8,
+        B8G8R8X8 = 29,
         /**
          * 4 bytes; for unused, red, green, blue.
          */
-        X8R8G8B8,
+        X8R8G8B8 = 30,
         /**
          * 4 bytes; for red, green, blue, unused.
          */
-        R8G8B8X8,
+        R8G8B8X8 = 31,
         /**
          * 4 bytes; for unused, blue, green, red.
          */
-        X8B8G8R8,
+        X8B8G8R8 = 32,
         /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
          */
-        N_FORMATS,
+        N_FORMATS = 33,
     }
     /**
      * Specifies the kind of crossing for enter and leave events.
@@ -851,33 +851,33 @@ export namespace Gdk {
          * the surface is entered from an ancestor or
          *   left towards an ancestor.
          */
-        ANCESTOR,
+        ANCESTOR = 0,
         /**
          * the pointer moves between an ancestor and an
          *   inferior of the surface.
          */
-        VIRTUAL,
+        VIRTUAL = 1,
         /**
          * the surface is entered from an inferior or
          *   left towards an inferior.
          */
-        INFERIOR,
+        INFERIOR = 2,
         /**
          * the surface is entered from or left towards
          *   a surface which is neither an ancestor nor an inferior.
          */
-        NONLINEAR,
+        NONLINEAR = 3,
         /**
          * the pointer moves between two surfaces
          *   which are not ancestors of each other and the surface is part of
          *   the ancestor chain between one of these surfaces and their least
          *   common ancestor.
          */
-        NONLINEAR_VIRTUAL,
+        NONLINEAR_VIRTUAL = 4,
         /**
          * an unknown type of enter/leave event occurred.
          */
-        UNKNOWN,
+        UNKNOWN = 5,
     }
     /**
      * Specifies the direction for scroll events.
@@ -894,24 +894,24 @@ export namespace Gdk {
         /**
          * the surface is scrolled up.
          */
-        UP,
+        UP = 0,
         /**
          * the surface is scrolled down.
          */
-        DOWN,
+        DOWN = 1,
         /**
          * the surface is scrolled to the left.
          */
-        LEFT,
+        LEFT = 2,
         /**
          * the surface is scrolled to the right.
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * the scrolling is determined by the delta values
          *   in scroll events. See gdk_scroll_event_get_deltas()
          */
-        SMOOTH,
+        SMOOTH = 4,
     }
     /**
      * Specifies the unit of scroll deltas.
@@ -958,12 +958,12 @@ export namespace Gdk {
         /**
          * The delta is in number of wheel clicks.
          */
-        WHEEL,
+        WHEEL = 0,
         /**
          * The delta is in surface pixels to scroll directly
          *   on screen.
          */
-        SURFACE,
+        SURFACE = 1,
     }
     /**
      * This enumeration describes how the red, green and blue components
@@ -982,27 +982,27 @@ export namespace Gdk {
         /**
          * The layout is not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Not organized in this way
          */
-        NONE,
+        NONE = 1,
         /**
          * The layout is horizontal, the order is RGB
          */
-        HORIZONTAL_RGB,
+        HORIZONTAL_RGB = 2,
         /**
          * The layout is horizontal, the order is BGR
          */
-        HORIZONTAL_BGR,
+        HORIZONTAL_BGR = 3,
         /**
          * The layout is vertical, the order is RGB
          */
-        VERTICAL_RGB,
+        VERTICAL_RGB = 4,
         /**
          * The layout is vertical, the order is BGR
          */
-        VERTICAL_BGR,
+        VERTICAL_BGR = 5,
     }
     /**
      * Determines a surface edge or corner.
@@ -1019,35 +1019,35 @@ export namespace Gdk {
         /**
          * the top left corner.
          */
-        NORTH_WEST,
+        NORTH_WEST = 0,
         /**
          * the top edge.
          */
-        NORTH,
+        NORTH = 1,
         /**
          * the top right corner.
          */
-        NORTH_EAST,
+        NORTH_EAST = 2,
         /**
          * the left edge.
          */
-        WEST,
+        WEST = 3,
         /**
          * the right edge.
          */
-        EAST,
+        EAST = 4,
         /**
          * the lower left corner.
          */
-        SOUTH_WEST,
+        SOUTH_WEST = 5,
         /**
          * the lower edge.
          */
-        SOUTH,
+        SOUTH = 6,
         /**
          * the lower right corner.
          */
-        SOUTH_EAST,
+        SOUTH_EAST = 7,
     }
     /**
      * Possible errors that can be returned by `GdkTexture` constructors.
@@ -1105,15 +1105,15 @@ export namespace Gdk {
         /**
          * double click gesture
          */
-        DOUBLE_CLICK,
+        DOUBLE_CLICK = 1,
         /**
          * right click gesture
          */
-        RIGHT_CLICK,
+        RIGHT_CLICK = 2,
         /**
          * middle click gesture
          */
-        MIDDLE_CLICK,
+        MIDDLE_CLICK = 3,
     }
     /**
      * Specifies the current state of a touchpad gesture.
@@ -1164,21 +1164,21 @@ export namespace Gdk {
         /**
          * The gesture has begun.
          */
-        BEGIN,
+        BEGIN = 0,
         /**
          * The gesture has been updated.
          */
-        UPDATE,
+        UPDATE = 1,
         /**
          * The gesture was finished, changes
          *   should be permanently applied.
          */
-        END,
+        END = 2,
         /**
          * The gesture was cancelled, all
          *   changes should be undone.
          */
-        CANCEL,
+        CANCEL = 3,
     }
     /**
      * Error enumeration for `GdkVulkanContext`.
@@ -4289,39 +4289,39 @@ export namespace Gdk {
         /**
          * allow flipping anchors horizontally
          */
-        FLIP_X,
+        FLIP_X = 1,
         /**
          * allow flipping anchors vertically
          */
-        FLIP_Y,
+        FLIP_Y = 2,
         /**
          * allow sliding surface horizontally
          */
-        SLIDE_X,
+        SLIDE_X = 4,
         /**
          * allow sliding surface vertically
          */
-        SLIDE_Y,
+        SLIDE_Y = 8,
         /**
          * allow resizing surface horizontally
          */
-        RESIZE_X,
+        RESIZE_X = 16,
         /**
          * allow resizing surface vertically
          */
-        RESIZE_Y,
+        RESIZE_Y = 32,
         /**
          * allow flipping anchors on both axes
          */
-        FLIP,
+        FLIP = 3,
         /**
          * allow sliding surface on both axes
          */
-        SLIDE,
+        SLIDE = 12,
         /**
          * allow resizing surface on both axes
          */
-        RESIZE,
+        RESIZE = 48,
     }
     /**
      * Flags describing the current capabilities of a device/tool.
@@ -4338,47 +4338,47 @@ export namespace Gdk {
         /**
          * X axis is present
          */
-        X,
+        X = 2,
         /**
          * Y axis is present
          */
-        Y,
+        Y = 4,
         /**
          * Scroll X delta axis is present
          */
-        DELTA_X,
+        DELTA_X = 8,
         /**
          * Scroll Y delta axis is present
          */
-        DELTA_Y,
+        DELTA_Y = 16,
         /**
          * Pressure axis is present
          */
-        PRESSURE,
+        PRESSURE = 32,
         /**
          * X tilt axis is present
          */
-        XTILT,
+        XTILT = 64,
         /**
          * Y tilt axis is present
          */
-        YTILT,
+        YTILT = 128,
         /**
          * Wheel axis is present
          */
-        WHEEL,
+        WHEEL = 256,
         /**
          * Distance axis is present
          */
-        DISTANCE,
+        DISTANCE = 512,
         /**
          * Z-axis rotation is present
          */
-        ROTATION,
+        ROTATION = 1024,
         /**
          * Slider axis is present
          */
-        SLIDER,
+        SLIDER = 2048,
     }
     /**
      * Used in `GdkDrop` and `GdkDrag` to indicate the actions that the
@@ -4397,22 +4397,22 @@ export namespace Gdk {
         /**
          * Copy the data.
          */
-        COPY,
+        COPY = 1,
         /**
          * Move the data, i.e. first copy it, then delete
          *   it from the source using the DELETE target of the X selection protocol.
          */
-        MOVE,
+        MOVE = 2,
         /**
          * Add a link to the data. Note that this is only
          *   useful if source and destination agree on what it means, and is not
          *   supported on all platforms.
          */
-        LINK,
+        LINK = 4,
         /**
          * Ask the user what to do with the data.
          */
-        ASK,
+        ASK = 8,
     }
     /**
      * Used to represent the different paint clock phases that can be requested.
@@ -4433,35 +4433,35 @@ export namespace Gdk {
         /**
          * no phase
          */
-        NONE,
+        NONE = 0,
         /**
          * corresponds to GdkFrameClock::flush-events. Should not be handled by applications.
          */
-        FLUSH_EVENTS,
+        FLUSH_EVENTS = 1,
         /**
          * corresponds to GdkFrameClock::before-paint. Should not be handled by applications.
          */
-        BEFORE_PAINT,
+        BEFORE_PAINT = 2,
         /**
          * corresponds to GdkFrameClock::update.
          */
-        UPDATE,
+        UPDATE = 4,
         /**
          * corresponds to GdkFrameClock::layout. Should not be handled by applications.
          */
-        LAYOUT,
+        LAYOUT = 8,
         /**
          * corresponds to GdkFrameClock::paint.
          */
-        PAINT,
+        PAINT = 16,
         /**
          * corresponds to GdkFrameClock::resume-events. Should not be handled by applications.
          */
-        RESUME_EVENTS,
+        RESUME_EVENTS = 32,
         /**
          * corresponds to GdkFrameClock::after-paint. Should not be handled by applications.
          */
-        AFTER_PAINT,
+        AFTER_PAINT = 64,
     }
     /**
      * The list of the different APIs that GdkGLContext can potentially support.
@@ -4478,11 +4478,11 @@ export namespace Gdk {
         /**
          * The OpenGL API
          */
-        GL,
+        GL = 1,
         /**
          * The OpenGL ES API
          */
-        GLES,
+        GLES = 2,
     }
     /**
      * Flags to indicate the state of modifier keys and mouse buttons
@@ -4515,58 +4515,58 @@ export namespace Gdk {
         /**
          * No modifier.
          */
-        NO_MODIFIER_MASK,
+        NO_MODIFIER_MASK = 0,
         /**
          * the Shift key.
          */
-        SHIFT_MASK,
+        SHIFT_MASK = 1,
         /**
          * a Lock key (depending on the Windowing System configuration,
          *    this may either be <kbd>CapsLock</kbd> or <kbd>ShiftLock</kbd>).
          */
-        LOCK_MASK,
+        LOCK_MASK = 2,
         /**
          * the Control key.
          */
-        CONTROL_MASK,
+        CONTROL_MASK = 4,
         /**
          * the fourth modifier key (it depends on the Windowing System
          *    configuration which key is interpreted as this modifier, but normally it
          *    is the <kbd>Alt</kbd> key).
          */
-        ALT_MASK,
+        ALT_MASK = 8,
         /**
          * the first mouse button.
          */
-        BUTTON1_MASK,
+        BUTTON1_MASK = 256,
         /**
          * the second mouse button.
          */
-        BUTTON2_MASK,
+        BUTTON2_MASK = 512,
         /**
          * the third mouse button.
          */
-        BUTTON3_MASK,
+        BUTTON3_MASK = 1024,
         /**
          * the fourth mouse button.
          */
-        BUTTON4_MASK,
+        BUTTON4_MASK = 2048,
         /**
          * the fifth mouse button.
          */
-        BUTTON5_MASK,
+        BUTTON5_MASK = 4096,
         /**
          * the Super modifier.
          */
-        SUPER_MASK,
+        SUPER_MASK = 67108864,
         /**
          * the Hyper modifier.
          */
-        HYPER_MASK,
+        HYPER_MASK = 134217728,
         /**
          * the Meta modifier. Maps to Command on macOS.
          */
-        META_MASK,
+        META_MASK = 268435456,
     }
     /**
      * Flags about a paintable object.
@@ -4589,13 +4589,13 @@ export namespace Gdk {
          *   The [signal`Gdk`.Paintable::invalidate-size] signal will never be
          *   emitted.
          */
-        SIZE,
+        SIZE = 1,
         /**
          * The content is immutable.
          *   The [signal`Gdk`.Paintable::invalidate-contents] signal will never be
          *   emitted.
          */
-        CONTENTS,
+        CONTENTS = 2,
     }
     /**
      * Flags describing the seat capabilities.
@@ -4612,35 +4612,35 @@ export namespace Gdk {
         /**
          * No input capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * The seat has a pointer (e.g. mouse)
          */
-        POINTER,
+        POINTER = 1,
         /**
          * The seat has touchscreen(s) attached
          */
-        TOUCH,
+        TOUCH = 2,
         /**
          * The seat has drawing tablet(s) attached
          */
-        TABLET_STYLUS,
+        TABLET_STYLUS = 4,
         /**
          * The seat has keyboard(s) attached
          */
-        KEYBOARD,
+        KEYBOARD = 8,
         /**
          * The seat has drawing tablet pad(s) attached
          */
-        TABLET_PAD,
+        TABLET_PAD = 16,
         /**
          * The union of all pointing capabilities
          */
-        ALL_POINTING,
+        ALL_POINTING = 7,
         /**
          * The union of all capabilities
          */
-        ALL,
+        ALL = 31,
     }
     /**
      * Specifies the state of a toplevel surface.
@@ -4669,71 +4669,71 @@ export namespace Gdk {
         /**
          * the surface is minimized
          */
-        MINIMIZED,
+        MINIMIZED = 1,
         /**
          * the surface is maximized
          */
-        MAXIMIZED,
+        MAXIMIZED = 2,
         /**
          * the surface is sticky
          */
-        STICKY,
+        STICKY = 4,
         /**
          * the surface is maximized without decorations
          */
-        FULLSCREEN,
+        FULLSCREEN = 8,
         /**
          * the surface is kept above other surfaces
          */
-        ABOVE,
+        ABOVE = 16,
         /**
          * the surface is kept below other surfaces
          */
-        BELOW,
+        BELOW = 32,
         /**
          * the surface is presented as focused (with active decorations)
          */
-        FOCUSED,
+        FOCUSED = 64,
         /**
          * the surface is in a tiled state
          */
-        TILED,
+        TILED = 128,
         /**
          * whether the top edge is tiled
          */
-        TOP_TILED,
+        TOP_TILED = 256,
         /**
          * whether the top edge is resizable
          */
-        TOP_RESIZABLE,
+        TOP_RESIZABLE = 512,
         /**
          * whether the right edge is tiled
          */
-        RIGHT_TILED,
+        RIGHT_TILED = 1024,
         /**
          * whether the right edge is resizable
          */
-        RIGHT_RESIZABLE,
+        RIGHT_RESIZABLE = 2048,
         /**
          * whether the bottom edge is tiled
          */
-        BOTTOM_TILED,
+        BOTTOM_TILED = 4096,
         /**
          * whether the bottom edge is resizable
          */
-        BOTTOM_RESIZABLE,
+        BOTTOM_RESIZABLE = 8192,
         /**
          * whether the left edge is tiled
          */
-        LEFT_TILED,
+        LEFT_TILED = 16384,
         /**
          * whether the left edge is resizable
          */
-        LEFT_RESIZABLE,
+        LEFT_RESIZABLE = 32768,
         /**
          * The surface is not visible to the user.
          */
-        SUSPENDED,
+        SUSPENDED = 65536,
     }
     namespace AppLaunchContext {
         // Signal signatures

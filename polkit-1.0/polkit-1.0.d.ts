@@ -70,31 +70,31 @@ export namespace Polkit {
         /**
          * Unknown whether the subject is authorized, never returned in any public API.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * Subject is not authorized.
          */
-        NOT_AUTHORIZED,
+        NOT_AUTHORIZED = 0,
         /**
          * Authentication is required.
          */
-        AUTHENTICATION_REQUIRED,
+        AUTHENTICATION_REQUIRED = 1,
         /**
          * Authentication as an administrator is required.
          */
-        ADMINISTRATOR_AUTHENTICATION_REQUIRED,
+        ADMINISTRATOR_AUTHENTICATION_REQUIRED = 2,
         /**
          * Authentication is required. If the authorization is obtained, it is retained.
          */
-        AUTHENTICATION_REQUIRED_RETAINED,
+        AUTHENTICATION_REQUIRED_RETAINED = 3,
         /**
          * Authentication as an administrator is required. If the authorization is obtained, it is retained.
          */
-        ADMINISTRATOR_AUTHENTICATION_REQUIRED_RETAINED,
+        ADMINISTRATOR_AUTHENTICATION_REQUIRED_RETAINED = 4,
         /**
          * The subject is authorized
          */
-        AUTHORIZED,
+        AUTHORIZED = 5,
     }
     function error_quark(): GLib.Quark;
     /**
@@ -131,12 +131,12 @@ export namespace Polkit {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The authority supports temporary authorizations
          * that can be obtained through authentication.
          */
-        TEMPORARY_AUTHORIZATION,
+        TEMPORARY_AUTHORIZATION = 1,
     }
     /**
      * Possible flags when checking authorizations.
@@ -153,13 +153,13 @@ export namespace Polkit {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * If the subject can obtain the authorization
          * through authentication, and an authentication agent is available, then attempt to do so. Note, this
          * means that the method used for checking authorization is likely to block for a long time.
          */
-        ALLOW_USER_INTERACTION,
+        ALLOW_USER_INTERACTION = 1,
     }
     namespace ActionDescription {
         // Signal signatures

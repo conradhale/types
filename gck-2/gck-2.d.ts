@@ -35,11 +35,11 @@ export namespace Gck {
         /**
          * no special flags
          */
-        NONE,
+        NONE = 0,
         /**
          * use non-pageable memory for the values of the attributes
          */
-        SECURE_MEMORY,
+        SECURE_MEMORY = 1,
     }
     /**
      * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
@@ -317,19 +317,19 @@ export namespace Gck {
         /**
          * Open session as read only
          */
-        READ_ONLY,
+        READ_ONLY = 0,
         /**
          * Open sessions as read/write
          */
-        READ_WRITE,
+        READ_WRITE = 2,
         /**
          * Login as user on new sessions
          */
-        LOGIN_USER,
+        LOGIN_USER = 4,
         /**
          * Authenticate as necessary
          */
-        AUTHENTICATE,
+        AUTHENTICATE = 8,
     }
     /**
      * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
@@ -348,23 +348,23 @@ export namespace Gck {
         /**
          * the URI will be used to match objects.
          */
-        FOR_OBJECT,
+        FOR_OBJECT = 2,
         /**
          * the URI will be used to match tokens.
          */
-        FOR_TOKEN,
+        FOR_TOKEN = 4,
         /**
          * the URI will be used to match modules.
          */
-        FOR_MODULE,
+        FOR_MODULE = 8,
         /**
          * the URI has specific version numbers for module and/or token
          */
-        WITH_VERSION,
+        WITH_VERSION = 16,
         /**
          * parse all recognized components of the URI.
          */
-        FOR_ANY,
+        FOR_ANY = 65535,
     }
     namespace Enumerator {
         // Signal signatures

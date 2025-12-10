@@ -27,10 +27,10 @@ export namespace GnomeDesktop {
     }
 
     enum DesktopThumbnailSize {
-        NORMAL,
-        LARGE,
-        XLARGE,
-        XXLARGE,
+        NORMAL = 0,
+        LARGE = 1,
+        XLARGE = 2,
+        XXLARGE = 3,
     }
     const DESKTOP_PLATFORM_VERSION: number;
     /**

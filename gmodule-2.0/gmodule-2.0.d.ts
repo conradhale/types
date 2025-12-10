@@ -100,18 +100,18 @@ export namespace GModule {
          *     needed. The default action is to bind all symbols when the module
          *     is loaded.
          */
-        LAZY,
+        LAZY = 1,
         /**
          * specifies that symbols in the module should
          *     not be added to the global name space. The default action on most
          *     platforms is to place symbols in the module in the global name space,
          *     which may cause conflicts with existing symbols.
          */
-        LOCAL,
+        LOCAL = 2,
         /**
          * mask for all flags.
          */
-        MASK,
+        MASK = 3,
     }
     /**
      * The #GModule struct is an opaque data structure to represent a

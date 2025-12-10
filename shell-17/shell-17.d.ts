@@ -48,9 +48,9 @@ export namespace Shell {
     }
 
     enum AppLaunchGpu {
-        APP_PREF,
-        DISCRETE,
-        DEFAULT,
+        APP_PREF = 0,
+        DISCRETE = 1,
+        DEFAULT = 2,
     }
 
     export namespace AppState {
@@ -58,9 +58,9 @@ export namespace Shell {
     }
 
     enum AppState {
-        STOPPED,
-        STARTING,
-        RUNNING,
+        STOPPED = 0,
+        STARTING = 1,
+        RUNNING = 2,
     }
     /**
      * The mode of blurring of the effect.
@@ -77,11 +77,11 @@ export namespace Shell {
         /**
          * blur the actor contents, and its children
          */
-        ACTOR,
+        ACTOR = 0,
         /**
          * blur what's beneath the actor
          */
-        BACKGROUND,
+        BACKGROUND = 1,
     }
 
     export namespace NetworkAgentResponse {
@@ -89,9 +89,9 @@ export namespace Shell {
     }
 
     enum NetworkAgentResponse {
-        CONFIRMED,
-        USER_CANCELED,
-        INTERNAL_ERROR,
+        CONFIRMED = 0,
+        USER_CANCELED = 1,
+        INTERNAL_ERROR = 2,
     }
     const KEYRING_SK_TAG: string;
     const KEYRING_SN_TAG: string;
@@ -372,48 +372,48 @@ export namespace Shell {
         /**
          * block action
          */
-        NONE,
+        NONE = 0,
         /**
          * allow action when in window mode,
          *     e.g. when the focus is in an application window
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * allow action while the overview
          *     is active
          */
-        OVERVIEW,
+        OVERVIEW = 2,
         /**
          * allow action when the screen
          *     is locked, e.g. when the screen shield is shown
          */
-        LOCK_SCREEN,
+        LOCK_SCREEN = 4,
         /**
          * allow action in the unlock
          *     dialog
          */
-        UNLOCK_SCREEN,
+        UNLOCK_SCREEN = 8,
         /**
          * allow action in the login screen
          */
-        LOGIN_SCREEN,
+        LOGIN_SCREEN = 16,
         /**
          * allow action when a system modal
          *     dialog (e.g. authentication or session dialogs) is open
          */
-        SYSTEM_MODAL,
+        SYSTEM_MODAL = 32,
         /**
          * allow action in looking glass
          */
-        LOOKING_GLASS,
+        LOOKING_GLASS = 64,
         /**
          * allow action while a shell menu is open
          */
-        POPUP,
+        POPUP = 128,
         /**
          * always allow action
          */
-        ALL,
+        ALL = -1,
     }
     namespace App {
         // Signal signatures
@@ -5478,7 +5478,7 @@ export namespace Shell {
          * @param event the #ClutterEvent triggering the fake click
          */
         click(event: Clutter.Event): void;
-        get_pid(): never;
+        get_pid(): number;
         get_title(): string;
         get_wm_class(): string;
 

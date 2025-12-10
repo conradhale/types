@@ -41,7 +41,7 @@ export namespace GdkPixbuf {
         /**
          * Indicates a red/green/blue additive color space.
          */
-        RGB,
+        RGB = 0,
     }
     /**
      * Interpolation modes for scaling functions.
@@ -76,7 +76,7 @@ export namespace GdkPixbuf {
          *  and lowest quality mode. Quality is normally unacceptable when scaling
          *  down, but may be OK when scaling up.
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * This is an accurate simulation of the PostScript
          *  image operator without any interpolation enabled.  Each pixel is
@@ -84,7 +84,7 @@ export namespace GdkPixbuf {
          *  are implemented with antialiasing.  It resembles nearest neighbor for
          *  enlargement, and bilinear for reduction.
          */
-        TILES,
+        TILES = 1,
         /**
          * Best quality/speed balance; use this mode by
          *  default. Bilinear interpolation.  For enlargement, it is
@@ -92,7 +92,7 @@ export namespace GdkPixbuf {
          *  For reduction, it is equivalent to laying down small tiles and
          *  integrating over the coverage area.
          */
-        BILINEAR,
+        BILINEAR = 2,
         /**
          * This is the slowest and highest quality
          *  reconstruction function. It is derived from the hyperbolic filters in
@@ -103,7 +103,7 @@ export namespace GdkPixbuf {
          *  it has a lower quality than the `GDK_INTERP_BILINEAR` filter
          *  (Since: 2.38)
          */
-        HYPER,
+        HYPER = 3,
     }
     /**
      * Control the alpha channel for drawables.
@@ -145,12 +145,12 @@ export namespace GdkPixbuf {
          *  will be considered fully transparent, and all others will be
          *  considered fully opaque.
          */
-        BILEVEL,
+        BILEVEL = 0,
         /**
          * For now falls back to #GDK_PIXBUF_ALPHA_BILEVEL.
          *  In the future it will do full alpha compositing.
          */
-        FULL,
+        FULL = 1,
     }
     /**
      * An error code in the `GDK_PIXBUF_ERROR` domain.
@@ -222,19 +222,19 @@ export namespace GdkPixbuf {
         /**
          * No rotation.
          */
-        NONE,
+        NONE = 0,
         /**
          * Rotate by 90 degrees.
          */
-        COUNTERCLOCKWISE,
+        COUNTERCLOCKWISE = 90,
         /**
          * Rotate by 180 degrees.
          */
-        UPSIDEDOWN,
+        UPSIDEDOWN = 180,
         /**
          * Rotate by 270 degrees.
          */
-        CLOCKWISE,
+        CLOCKWISE = 270,
     }
     /**
      * Major version of gdk-pixbuf library, that is the "0" in
@@ -318,16 +318,16 @@ export namespace GdkPixbuf {
         /**
          * the module can write out images in the format.
          */
-        WRITABLE,
+        WRITABLE = 1,
         /**
          * the image format is scalable
          */
-        SCALABLE,
+        SCALABLE = 2,
         /**
          * the module is threadsafe. gdk-pixbuf
          *     ignores modules that are not marked as threadsafe. (Since 2.28).
          */
-        THREADSAFE,
+        THREADSAFE = 4,
     }
     namespace Pixbuf {
         // Signal signatures

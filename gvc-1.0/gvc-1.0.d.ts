@@ -25,10 +25,10 @@ export namespace Gvc {
     }
 
     enum MixerControlState {
-        CLOSED,
-        READY,
-        CONNECTING,
-        FAILED,
+        CLOSED = 0,
+        READY = 1,
+        CONNECTING = 2,
+        FAILED = 3,
     }
 
     export namespace MixerStreamState {
@@ -36,10 +36,10 @@ export namespace Gvc {
     }
 
     enum MixerStreamState {
-        INVALID,
-        RUNNING,
-        IDLE,
-        SUSPENDED,
+        INVALID = 0,
+        RUNNING = 1,
+        IDLE = 2,
+        SUSPENDED = 3,
     }
 
     export namespace MixerUIDeviceDirection {
@@ -47,8 +47,8 @@ export namespace Gvc {
     }
 
     enum MixerUIDeviceDirection {
-        INPUT,
-        OUTPUT,
+        INPUT = 0,
+        OUTPUT = 1,
     }
     const MIXER_UI_DEVICE_INVALID: number;
 
@@ -57,10 +57,10 @@ export namespace Gvc {
     }
 
     enum HeadsetPortChoice {
-        NONE,
-        HEADPHONES,
-        HEADSET,
-        MIC,
+        NONE = 0,
+        HEADPHONES = 1,
+        HEADSET = 2,
+        MIC = 4,
     }
     namespace ChannelMap {
         // Signal signatures

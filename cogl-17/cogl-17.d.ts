@@ -36,25 +36,25 @@ export namespace Cogl {
         /**
          * Data is the same size of a byte
          */
-        BYTE,
+        BYTE = 5120,
         /**
          * Data is the same size of an
          *   unsigned byte
          */
-        UNSIGNED_BYTE,
+        UNSIGNED_BYTE = 5121,
         /**
          * Data is the same size of a short integer
          */
-        SHORT,
+        SHORT = 5122,
         /**
          * Data is the same size of
          *   an unsigned short integer
          */
-        UNSIGNED_SHORT,
+        UNSIGNED_SHORT = 5123,
         /**
          * Data is the same size of a float
          */
-        FLOAT,
+        FLOAT = 5126,
     }
 
     export namespace BufferBindTarget {
@@ -62,11 +62,11 @@ export namespace Cogl {
     }
 
     enum BufferBindTarget {
-        PIXEL_PACK,
-        PIXEL_UNPACK,
-        ATTRIBUTE_BUFFER,
-        INDEX_BUFFER,
-        COUNT,
+        PIXEL_PACK = 0,
+        PIXEL_UNPACK = 1,
+        ATTRIBUTE_BUFFER = 2,
+        INDEX_BUFFER = 3,
+        COUNT = 4,
     }
     /**
      * The update hint on a buffer allows the user to give some detail on how often
@@ -85,16 +85,16 @@ export namespace Cogl {
         /**
          * the buffer will not change over time
          */
-        STATIC,
+        STATIC = 0,
         /**
          * the buffer will change from time to time
          */
-        DYNAMIC,
+        DYNAMIC = 1,
         /**
          * the buffer will be used once or a couple of
          *   times
          */
-        STREAM,
+        STREAM = 2,
     }
     /**
      * When using depth testing one of these functions is used to compare
@@ -123,41 +123,41 @@ export namespace Cogl {
         /**
          * Never passes.
          */
-        NEVER,
+        NEVER = 512,
         /**
          * Passes if the fragment's depth
          * value is less than the value currently in the depth buffer.
          */
-        LESS,
+        LESS = 513,
         /**
          * Passes if the fragment's depth
          * value is equal to the value currently in the depth buffer.
          */
-        EQUAL,
+        EQUAL = 514,
         /**
          * Passes if the fragment's depth
          * value is less or equal to the value currently in the depth buffer.
          */
-        LEQUAL,
+        LEQUAL = 515,
         /**
          * Passes if the fragment's depth
          * value is greater than the value currently in the depth buffer.
          */
-        GREATER,
+        GREATER = 516,
         /**
          * Passes if the fragment's depth
          * value is not equal to the value currently in the depth buffer.
          */
-        NOTEQUAL,
+        NOTEQUAL = 517,
         /**
          * Passes if the fragment's depth
          * value greater than or equal to the value currently in the depth buffer.
          */
-        GEQUAL,
+        GEQUAL = 518,
         /**
          * Always passes.
          */
-        ALWAYS,
+        ALWAYS = 519,
     }
     /**
      * Identifiers for underlying hardware drivers that may be used by
@@ -176,19 +176,19 @@ export namespace Cogl {
         /**
          * Implies no preference for which driver is used
          */
-        ANY,
+        ANY = 0,
         /**
          * A No-Op driver.
          */
-        NOP,
+        NOP = 1,
         /**
          * An OpenGL driver using the core GL 3.1 profile
          */
-        GL3,
+        GL3 = 2,
         /**
          * An OpenGL ES 2.0 driver.
          */
-        GLES2,
+        GLES2 = 3,
     }
     /**
      * All the capabilities that can vary between different GPUs supported
@@ -211,52 +211,52 @@ export namespace Cogl {
          *     %COGL_INDICES_TYPE_UNSIGNED_INT is supported in
          *     cogl_indices_new().
          */
-        OGL_FEATURE_ID_UNSIGNED_INT_INDICES,
+        OGL_FEATURE_ID_UNSIGNED_INT_INDICES = 0,
         /**
          * Whether cogl_buffer_map() is
          *     supported with CoglBufferAccess including read support.
          */
-        OGL_FEATURE_ID_MAP_BUFFER_FOR_READ,
+        OGL_FEATURE_ID_MAP_BUFFER_FOR_READ = 1,
         /**
          * Whether cogl_buffer_map() is
          *     supported with CoglBufferAccess including write support.
          */
-        OGL_FEATURE_ID_MAP_BUFFER_FOR_WRITE,
-        OGL_FEATURE_ID_FENCE,
+        OGL_FEATURE_ID_MAP_BUFFER_FOR_WRITE = 2,
+        OGL_FEATURE_ID_FENCE = 3,
         /**
          * Support for
          *    %COGL_TEXTURE_COMPONENTS_RG as the internal components of a
          *    texture.
          */
-        OGL_FEATURE_ID_TEXTURE_RG,
+        OGL_FEATURE_ID_TEXTURE_RG = 4,
         /**
          * Support for 10bpc RGBA formats
          */
-        OGL_FEATURE_ID_TEXTURE_RGBA1010102,
+        OGL_FEATURE_ID_TEXTURE_RGBA1010102 = 5,
         /**
          * Support for half float formats
          */
-        OGL_FEATURE_ID_TEXTURE_HALF_FLOAT,
+        OGL_FEATURE_ID_TEXTURE_HALF_FLOAT = 6,
         /**
          * Support for 16bpc formats
          */
-        OGL_FEATURE_ID_TEXTURE_NORM16,
+        OGL_FEATURE_ID_TEXTURE_NORM16 = 7,
         /**
          * Available if the age of #CoglOnscreen back
          *    buffers are tracked and so cogl_onscreen_get_buffer_age() can be
          *    expected to return age values other than 0.
          */
-        OGL_FEATURE_ID_BUFFER_AGE,
-        OGL_FEATURE_ID_TEXTURE_EGL_IMAGE_EXTERNAL,
+        OGL_FEATURE_ID_BUFFER_AGE = 8,
+        OGL_FEATURE_ID_TEXTURE_EGL_IMAGE_EXTERNAL = 9,
         /**
          * Whether blitting using
          *    [method`Cogl`.Framebuffer.blit] is supported.
          * `COGL_FEATURE_ID_SYNC_FD`
          *    cogl_context_get_latest_sync_fd() is supported.
          */
-        OGL_FEATURE_ID_BLIT_FRAMEBUFFER,
-        OGL_FEATURE_ID_TIMESTAMP_QUERY,
-        OGL_FEATURE_ID_SYNC_FD,
+        OGL_FEATURE_ID_BLIT_FRAMEBUFFER = 10,
+        OGL_FEATURE_ID_TIMESTAMP_QUERY = 11,
+        OGL_FEATURE_ID_SYNC_FD = 12,
     }
     /**
      * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
@@ -274,11 +274,11 @@ export namespace Cogl {
          * The event was not handled, continues the
          *                        processing
          */
-        CONTINUE,
+        CONTINUE = 0,
         /**
          * Remove the event, stops the processing
          */
-        REMOVE,
+        REMOVE = 1,
     }
     /**
      * Identifiers that are passed to #CoglFrameCallback functions
@@ -323,7 +323,7 @@ export namespace Cogl {
          *                         acknowledged a frame and is ready for a
          *                         new frame to be created.
          */
-        SYNC,
+        SYNC = 1,
         /**
          * Notifies that a frame has ended. This
          *                             is a good time for applications to
@@ -333,7 +333,7 @@ export namespace Cogl {
          *                             events should be expected after a
          *                             `COGL_FRAME_EVENT_COMPLETE` event.
          */
-        COMPLETE,
+        COMPLETE = 2,
     }
 
     export namespace FramebufferError {
@@ -341,7 +341,7 @@ export namespace Cogl {
     }
 
     enum FramebufferError {
-        FRAMEBUFFER_ERROR_ALLOCATE,
+        FRAMEBUFFER_ERROR_ALLOCATE = 0,
     }
     /**
      * All the error values that might be returned by
@@ -361,11 +361,11 @@ export namespace Cogl {
     }
 
     enum GraphicsResetStatus {
-        NO_ERROR,
-        GUILTY_CONTEXT_RESET,
-        INNOCENT_CONTEXT_RESET,
-        UNKNOWN_CONTEXT_RESET,
-        PURGED_CONTEXT_RESET,
+        NO_ERROR = 0,
+        GUILTY_CONTEXT_RESET = 1,
+        INNOCENT_CONTEXT_RESET = 2,
+        UNKNOWN_CONTEXT_RESET = 3,
+        PURGED_CONTEXT_RESET = 4,
     }
     /**
      * You should aim to use the smallest data type that gives you enough
@@ -398,15 +398,15 @@ export namespace Cogl {
         /**
          * Your indices are unsigned bytes
          */
-        BYTE,
+        BYTE = 0,
         /**
          * Your indices are unsigned shorts
          */
-        SHORT,
+        SHORT = 1,
         /**
          * Your indices are unsigned ints
          */
-        INT,
+        INT = 2,
     }
     /**
      * Alpha testing happens before blending primitives with the framebuffer and
@@ -429,41 +429,41 @@ export namespace Cogl {
         /**
          * Never let the fragment through.
          */
-        NEVER,
+        NEVER = 512,
         /**
          * Let the fragment through if the incoming
          *   alpha value is less than the reference alpha value
          */
-        LESS,
+        LESS = 513,
         /**
          * Let the fragment through if the incoming
          *   alpha value equals the reference alpha value
          */
-        EQUAL,
+        EQUAL = 514,
         /**
          * Let the fragment through if the incoming
          *   alpha value is less than or equal to the reference alpha value
          */
-        LEQUAL,
+        LEQUAL = 515,
         /**
          * Let the fragment through if the incoming
          *   alpha value is greater than the reference alpha value
          */
-        GREATER,
+        GREATER = 516,
         /**
          * Let the fragment through if the incoming
          *   alpha value does not equal the reference alpha value
          */
-        NOTEQUAL,
+        NOTEQUAL = 517,
         /**
          * Let the fragment through if the incoming
          *   alpha value is greater than or equal to the reference alpha value.
          */
-        GEQUAL,
+        GEQUAL = 518,
         /**
          * Always let the fragment through.
          */
-        ALWAYS,
+        ALWAYS = 519,
     }
     /**
      * Specifies which faces should be culled. This can be set on a
@@ -483,19 +483,19 @@ export namespace Cogl {
          * Neither face will be
          *  culled. This is the default.
          */
-        NONE,
+        NONE = 0,
         /**
          * Front faces will be culled.
          */
-        FRONT,
+        FRONT = 1,
         /**
          * Back faces will be culled.
          */
-        BACK,
+        BACK = 2,
         /**
          * All faces will be culled.
          */
-        BOTH,
+        BOTH = 3,
     }
     /**
      * Texture filtering is used whenever the current pixel maps either to more
@@ -521,38 +521,38 @@ export namespace Cogl {
          * Measuring in manhatten distance from the,
          *   current pixel center, use the nearest texture texel
          */
-        NEAREST,
+        NEAREST = 9728,
         /**
          * Use the weighted average of the 4 texels
          *   nearest the current pixel center
          */
-        LINEAR,
+        LINEAR = 9729,
         /**
          * Select the mimap level whose
          *   texel size most closely matches the current pixel, and use the
          *   %COGL_PIPELINE_FILTER_NEAREST criterion
          */
-        NEAREST_MIPMAP_NEAREST,
+        NEAREST_MIPMAP_NEAREST = 9984,
         /**
          * Select the mimap level whose
          *   texel size most closely matches the current pixel, and use the
          *   %COGL_PIPELINE_FILTER_LINEAR criterion
          */
-        LINEAR_MIPMAP_NEAREST,
+        LINEAR_MIPMAP_NEAREST = 9985,
         /**
          * Select the two mimap levels
          *   whose texel size most closely matches the current pixel, use
          *   the %COGL_PIPELINE_FILTER_NEAREST criterion on each one and take
          *   their weighted average
          */
-        NEAREST_MIPMAP_LINEAR,
+        NEAREST_MIPMAP_LINEAR = 9986,
         /**
          * Select the two mimap levels
          *   whose texel size most closely matches the current pixel, use
          *   the %COGL_PIPELINE_FILTER_LINEAR criterion on each one and take
          *   their weighted average
          */
-        LINEAR_MIPMAP_LINEAR,
+        LINEAR_MIPMAP_LINEAR = 9987,
     }
     /**
      * The wrap mode specifies what happens when texture coordinates
@@ -584,15 +584,15 @@ export namespace Cogl {
          * The texture will be repeated. This
          *   is useful for example to draw a tiled background.
          */
-        REPEAT,
-        MIRRORED_REPEAT,
+        REPEAT = 10497,
+        MIRRORED_REPEAT = 33648,
         /**
          * The coordinates outside the
          *   range 0→1 will sample copies of the edge pixels of the
          *   texture. This is useful to avoid artifacts if only one copy of
          *   the texture is being rendered.
          */
-        CLAMP_TO_EDGE,
+        CLAMP_TO_EDGE = 33071,
         /**
          * Cogl will try to automatically
          *   decide which of the above two to use. For cogl_rectangle(), it
@@ -603,7 +603,7 @@ export namespace Cogl {
          *   layers that have point sprite coordinate generation enabled. This
          *   is the default value.
          */
-        AUTOMATIC,
+        AUTOMATIC = 519,
     }
     /**
      * Pixel formats used by Cogl. For the formats with a byte per
@@ -654,206 +654,206 @@ export namespace Cogl {
         /**
          * Any format
          */
-        ANY,
+        ANY = 0,
         /**
          * 8 bits alpha mask
          */
-        A_8,
+        A_8 = 17,
         /**
          * RGB, 16 bits
          */
-        RGB_565,
+        RGB_565 = 4,
         /**
          * RGBA, 16 bits
          */
-        RGBA_4444,
+        RGBA_4444 = 21,
         /**
          * RGBA, 16 bits
          */
-        RGBA_5551,
+        RGBA_5551 = 22,
         /**
          * Not currently supported
          */
-        YUV,
+        YUV = 7,
         /**
          * Single luminance component
          */
-        R_8,
+        R_8 = 8,
         /**
          * RG, 16 bits. Note that red-green textures
          *   are only available if %COGL_FEATURE_ID_TEXTURE_RG is advertised.
          *   See cogl_texture_set_components() for details.
          */
-        RG_88,
+        RG_88 = 9,
         /**
          * RGB, 24 bits
          */
-        RGB_888,
+        RGB_888 = 2,
         /**
          * BGR, 24 bits
          */
-        BGR_888,
+        BGR_888 = 34,
         /**
          * RGBX, 32 bits
          */
-        RGBX_8888,
+        RGBX_8888 = 3,
         /**
          * RGBA, 32 bits
          */
-        RGBA_8888,
+        RGBA_8888 = 19,
         /**
          * BGRX, 32 bits
          */
-        BGRX_8888,
+        BGRX_8888 = 35,
         /**
          * BGRA, 32 bits
          */
-        BGRA_8888,
+        BGRA_8888 = 51,
         /**
          * XRGB, 32 bits
          */
-        XRGB_8888,
+        XRGB_8888 = 67,
         /**
          * ARGB, 32 bits
          */
-        ARGB_8888,
+        ARGB_8888 = 83,
         /**
          * XBGR, 32 bits
          */
-        XBGR_8888,
+        XBGR_8888 = 99,
         /**
          * ABGR, 32 bits
          */
-        ABGR_8888,
+        ABGR_8888 = 115,
         /**
          * Premultiplied RGBA, 32 bits
          */
-        RGBA_8888_PRE,
+        RGBA_8888_PRE = 147,
         /**
          * Premultiplied BGRA, 32 bits
          */
-        BGRA_8888_PRE,
+        BGRA_8888_PRE = 179,
         /**
          * Premultiplied ARGB, 32 bits
          */
-        ARGB_8888_PRE,
+        ARGB_8888_PRE = 211,
         /**
          * Premultiplied ABGR, 32 bits
          */
-        ABGR_8888_PRE,
+        ABGR_8888_PRE = 243,
         /**
          * Premultiplied RGBA, 16 bits
          */
-        RGBA_4444_PRE,
+        RGBA_4444_PRE = 149,
         /**
          * Premultiplied RGBA, 16 bits
          */
-        RGBA_5551_PRE,
+        RGBA_5551_PRE = 150,
         /**
          * RGBA, 32 bits, 10 bpc
          */
-        RGBA_1010102,
+        RGBA_1010102 = 29,
         /**
          * BGRA, 32 bits, 10 bpc
          */
-        BGRA_1010102,
+        BGRA_1010102 = 61,
         /**
          * XRGB, 32 bits, 10 bpc
          */
-        XRGB_2101010,
+        XRGB_2101010 = 77,
         /**
          * ARGB, 32 bits, 10 bpc
          */
-        ARGB_2101010,
+        ARGB_2101010 = 93,
         /**
          * XBGR, 32 bits, 10 bpc
          */
-        XBGR_2101010,
+        XBGR_2101010 = 109,
         /**
          * ABGR, 32 bits, 10 bpc
          */
-        ABGR_2101010,
+        ABGR_2101010 = 125,
         /**
          * Premultiplied RGBA, 32 bits, 10 bpc
          */
-        RGBA_1010102_PRE,
+        RGBA_1010102_PRE = 157,
         /**
          * Premultiplied BGRA, 32 bits, 10 bpc
          */
-        BGRA_1010102_PRE,
+        BGRA_1010102_PRE = 189,
         /**
          * Premultiplied ARGB, 32 bits, 10 bpc
          */
-        ARGB_2101010_PRE,
+        ARGB_2101010_PRE = 221,
         /**
          * Premultiplied ABGR, 32 bits, 10 bpc
          */
-        ABGR_2101010_PRE,
+        ABGR_2101010_PRE = 253,
         /**
          * RGBX half floating point, 64 bit
          */
-        RGBX_FP_16161616,
+        RGBX_FP_16161616 = 11,
         /**
          * RGBA half floating point, 64 bit
          */
-        RGBA_FP_16161616,
+        RGBA_FP_16161616 = 27,
         /**
          * BGRX half floating point, 64 bit
          */
-        BGRX_FP_16161616,
+        BGRX_FP_16161616 = 43,
         /**
          * BGRA half floating point, 64 bit
          */
-        BGRA_FP_16161616,
-        XRGB_FP_16161616,
+        BGRA_FP_16161616 = 59,
+        XRGB_FP_16161616 = 75,
         /**
          * ARGB half floating point, 64 bit
          */
-        ARGB_FP_16161616,
-        XBGR_FP_16161616,
+        ARGB_FP_16161616 = 91,
+        XBGR_FP_16161616 = 107,
         /**
          * ABGR half floating point, 64 bit
          */
-        ABGR_FP_16161616,
+        ABGR_FP_16161616 = 123,
         /**
          * Premultiplied RGBA half floating point, 64 bit
          */
-        RGBA_FP_16161616_PRE,
+        RGBA_FP_16161616_PRE = 155,
         /**
          * Premultiplied BGRA half floating point, 64 bit
          */
-        BGRA_FP_16161616_PRE,
+        BGRA_FP_16161616_PRE = 187,
         /**
          * Premultiplied ARGB half floating point, 64 bit
          */
-        ARGB_FP_16161616_PRE,
+        ARGB_FP_16161616_PRE = 219,
         /**
          * Premultiplied ABGR half floating point, 64 bit
          */
-        ABGR_FP_16161616_PRE,
+        ABGR_FP_16161616_PRE = 251,
         /**
          * RGBA floating point, 128 bit
          */
-        RGBA_FP_32323232,
+        RGBA_FP_32323232 = 28,
         /**
          * Premultiplied RGBA floating point, 128 bit
          */
-        RGBA_FP_32323232_PRE,
+        RGBA_FP_32323232_PRE = 156,
         /**
          * Single luminance component, 16 bits
          */
-        R_16,
+        R_16 = 14,
         /**
          * RG, 32 bits
          */
-        RG_1616,
+        RG_1616 = 15,
         /**
          * RGBA, 64 bits, 16bpc
          */
-        RGBA_16161616,
-        RGBA_16161616_PRE,
-        DEPTH_16,
-        DEPTH_24_STENCIL_8,
+        RGBA_16161616 = 26,
+        RGBA_16161616_PRE = 154,
+        DEPTH_16 = 265,
+        DEPTH_24_STENCIL_8 = 771,
     }
 
     export namespace RendererError {
@@ -861,8 +861,8 @@ export namespace Cogl {
     }
 
     enum RendererError {
-        XLIB_DISPLAY_OPEN,
-        BAD_CONSTRAINT,
+        XLIB_DISPLAY_OPEN = 0,
+        BAD_CONSTRAINT = 1,
     }
     class ScanoutError extends GLib.Error {
         static $gtype: GObject.GType<ScanoutError>;
@@ -899,11 +899,11 @@ export namespace Cogl {
         /**
          * A program for processing vertices
          */
-        VERTEX,
+        VERTEX = 0,
         /**
          * A program for processing fragments
          */
-        FRAGMENT,
+        FRAGMENT = 1,
     }
     /**
      * #CoglSnippetHook is used to specify a location within a
@@ -1331,50 +1331,50 @@ export namespace Cogl {
          * A hook for the entire vertex processing
          *   stage of the pipeline.
          */
-        VERTEX,
+        VERTEX = 0,
         /**
          * A hook for the vertex transformation.
          */
-        VERTEX_TRANSFORM,
+        VERTEX_TRANSFORM = 1,
         /**
          * A hook for declaring global data
          *   that can be shared with all other snippets that are on a vertex
          *   hook.
          */
-        VERTEX_GLOBALS,
+        VERTEX_GLOBALS = 2,
         /**
          * A hook for manipulating the point
          *   size of a vertex. This is only used if
          *   cogl_pipeline_set_per_vertex_point_size() is enabled on the
          *   pipeline.
          */
-        POINT_SIZE,
+        POINT_SIZE = 3,
         /**
          * A hook for the entire fragment
          *   processing stage of the pipeline.
          */
-        FRAGMENT,
+        FRAGMENT = 2048,
         /**
          * A hook for declaring global
          *   data wthat can be shared with all other snippets that are on a
          *   fragment hook.
          */
-        FRAGMENT_GLOBALS,
+        FRAGMENT_GLOBALS = 2049,
         /**
          * A hook for applying the
          *   layer matrix to a texture coordinate for a layer.
          */
-        TEXTURE_COORD_TRANSFORM,
+        TEXTURE_COORD_TRANSFORM = 4096,
         /**
          * A hook for the fragment
          *   processing of a particular layer.
          */
-        LAYER_FRAGMENT,
+        LAYER_FRAGMENT = 6144,
         /**
          * A hook for the texture lookup
          *   stage of a given layer in a pipeline.
          */
-        TEXTURE_LOOKUP,
+        TEXTURE_LOOKUP = 6145,
     }
     /**
      * Error enumeration for Cogl
@@ -1418,12 +1418,12 @@ export namespace Cogl {
          * You tried to use a feature or
          *    configuration not currently available.
          */
-        COGL_SYSTEM_ERROR_UNSUPPORTED,
+        COGL_SYSTEM_ERROR_UNSUPPORTED = 0,
         /**
          * You tried to allocate a resource
          *    such as a texture and there wasn't enough memory.
          */
-        COGL_SYSTEM_ERROR_NO_MEMORY,
+        COGL_SYSTEM_ERROR_NO_MEMORY = 1,
     }
     /**
      * See cogl_texture_set_components().
@@ -1440,25 +1440,25 @@ export namespace Cogl {
         /**
          * Only the alpha component
          */
-        A,
+        A = 1,
         /**
          * Red and green components. Note that
          *   this can only be used if the %COGL_FEATURE_ID_TEXTURE_RG feature
          *   is advertised.
          */
-        RG,
+        RG = 2,
         /**
          * Red, green and blue components
          */
-        RGB,
+        RGB = 3,
         /**
          * Red, green, blue and alpha components
          */
-        RGBA,
+        RGBA = 4,
         /**
          * Only a depth component
          */
-        DEPTH,
+        DEPTH = 5,
     }
     /**
      * Error codes that can be thrown when allocating textures.
@@ -1475,17 +1475,17 @@ export namespace Cogl {
         /**
          * Unsupported size
          */
-        SIZE,
+        SIZE = 0,
         /**
          * Unsupported format
          */
-        FORMAT,
-        BAD_PARAMETER,
+        FORMAT = 1,
+        BAD_PARAMETER = 2,
         /**
          * A primitive texture type that is
          *   unsupported by the driver was used
          */
-        TYPE,
+        TYPE = 3,
     }
     /**
      * Different ways of interpreting vertices when drawing.
@@ -1502,31 +1502,31 @@ export namespace Cogl {
         /**
          * FIXME, equivalent to `GL_POINTS`
          */
-        POINTS,
+        POINTS = 0,
         /**
          * FIXME, equivalent to `GL_LINES`
          */
-        LINES,
+        LINES = 1,
         /**
          * FIXME, equivalent to `GL_LINE_LOOP`
          */
-        LINE_LOOP,
+        LINE_LOOP = 2,
         /**
          * FIXME, equivalent to `GL_LINE_STRIP`
          */
-        LINE_STRIP,
+        LINE_STRIP = 3,
         /**
          * FIXME, equivalent to `GL_TRIANGLES`
          */
-        TRIANGLES,
+        TRIANGLES = 4,
         /**
          * FIXME, equivalent to `GL_TRIANGLE_STRIP`
          */
-        TRIANGLE_STRIP,
+        TRIANGLE_STRIP = 5,
         /**
          * FIXME, equivalent to `GL_TRIANGLE_FAN`
          */
-        TRIANGLE_FAN,
+        TRIANGLE_FAN = 6,
     }
     /**
      * Enum used to represent the two directions of rotation. This can be
@@ -1547,11 +1547,11 @@ export namespace Cogl {
         /**
          * Vertices are in a clockwise order
          */
-        CLOCKWISE,
+        CLOCKWISE = 0,
         /**
          * Vertices are in a counter-clockwise order
          */
-        COUNTER_CLOCKWISE,
+        COUNTER_CLOCKWISE = 1,
     }
 
     export namespace WinsysFeature {
@@ -1559,16 +1559,16 @@ export namespace Cogl {
     }
 
     enum WinsysFeature {
-        VBLANK_COUNTER,
-        VBLANK_WAIT,
-        TEXTURE_FROM_PIXMAP,
-        SWAP_BUFFERS_EVENT,
-        SWAP_REGION,
-        SWAP_REGION_THROTTLE,
-        SWAP_REGION_SYNCHRONIZED,
-        BUFFER_AGE,
-        SYNC_AND_COMPLETE_EVENT,
-        N_FEATURES,
+        VBLANK_COUNTER = 0,
+        VBLANK_WAIT = 1,
+        TEXTURE_FROM_PIXMAP = 2,
+        SWAP_BUFFERS_EVENT = 3,
+        SWAP_REGION = 4,
+        SWAP_REGION_THROTTLE = 5,
+        SWAP_REGION_SYNCHRONIZED = 6,
+        BUFFER_AGE = 7,
+        SYNC_AND_COMPLETE_EVENT = 8,
+        N_FEATURES = 9,
     }
     /**
      * Identifies specific window system backends that Cogl supports.
@@ -1591,20 +1591,20 @@ export namespace Cogl {
         /**
          * Implies no preference for which backend is used
          */
-        ANY,
+        ANY = 0,
         /**
          * Use the no-op stub backend
          */
-        STUB,
+        STUB = 1,
         /**
          * Use the GLX window system binding API
          */
-        GLX,
+        GLX = 2,
         /**
          * Use EGL with the X window system via XLib
          */
-        EGL_XLIB,
-        CUSTOM,
+        EGL_XLIB = 3,
+        CUSTOM = 4,
     }
     const AFIRST_BIT: number;
     const A_BIT: number;
@@ -1830,8 +1830,8 @@ export namespace Cogl {
     }
 
     enum AtlasFlags {
-        CLEAR_TEXTURE,
-        DISABLE_MIGRATION,
+        CLEAR_TEXTURE = 1,
+        DISABLE_MIGRATION = 2,
     }
     /**
      * The access hints for [method`Cogl`.Buffer.set_update_hint]
@@ -1848,16 +1848,16 @@ export namespace Cogl {
         /**
          * the buffer will be read
          */
-        READ,
+        READ = 1,
         /**
          * the buffer will written to
          */
-        WRITE,
+        WRITE = 2,
         /**
          * the buffer will be used for both reading and
          *   writing
          */
-        READ_WRITE,
+        READ_WRITE = 3,
     }
     /**
      * Types of auxiliary buffers
@@ -1874,15 +1874,15 @@ export namespace Cogl {
         /**
          * Selects the primary color buffer
          */
-        COLOR,
+        COLOR = 1,
         /**
          * Selects the depth buffer
          */
-        DEPTH,
+        DEPTH = 2,
         /**
          * Selects the stencil buffer
          */
-        STENCIL,
+        STENCIL = 4,
     }
     /**
      * Hints to Cogl about how you are planning to modify the data once it
@@ -1904,14 +1904,14 @@ export namespace Cogl {
          *    buffer, the entire contents of the buffer become undefined, even
          *    if only a subregion of the buffer is mapped.
          */
-        DISCARD,
+        DISCARD = 1,
         /**
          * Tells Cogl that you plan to
          *    replace all the contents of the mapped region. The contents of
          *    the region specified are undefined after this flag is used to
          *    map a buffer.
          */
-        DISCARD_RANGE,
+        DISCARD_RANGE = 2,
     }
 
     export namespace DrmModifierFilter {
@@ -1919,9 +1919,9 @@ export namespace Cogl {
     }
 
     enum DrmModifierFilter {
-        NONE,
-        SINGLE_PLANE,
-        NOT_EXTERNAL_ONLY,
+        NONE = 0,
+        SINGLE_PLANE = 1,
+        NOT_EXTERNAL_ONLY = 2,
     }
 
     export namespace EglImageFlags {
@@ -1929,8 +1929,8 @@ export namespace Cogl {
     }
 
     enum EglImageFlags {
-        NONE,
-        NO_GET_DATA,
+        NONE = 0,
+        NO_GET_DATA = 1,
     }
     /**
      * Flags for cogl_framebuffer_read_pixels_into_bitmap()
@@ -1947,7 +1947,7 @@ export namespace Cogl {
         /**
          * Read from the color buffer
          */
-        COLOR_BUFFER,
+        COLOR_BUFFER = 1,
     }
     namespace Atlas {
         // Signal signatures

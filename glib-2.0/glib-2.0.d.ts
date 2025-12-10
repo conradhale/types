@@ -1224,23 +1224,23 @@ export namespace GLib {
         /**
          * Use the MD5 hashing algorithm
          */
-        MD5,
+        MD5 = 0,
         /**
          * Use the SHA-1 hashing algorithm
          */
-        SHA1,
+        SHA1 = 1,
         /**
          * Use the SHA-256 hashing algorithm
          */
-        SHA256,
+        SHA256 = 2,
         /**
          * Use the SHA-512 hashing algorithm (Since: 2.36)
          */
-        SHA512,
+        SHA512 = 3,
         /**
          * Use the SHA-384 hashing algorithm (Since: 2.51)
          */
-        SHA384,
+        SHA384 = 4,
     }
     /**
      * Error codes returned by character set conversion routines.
@@ -1311,15 +1311,15 @@ export namespace GLib {
         /**
          * a day
          */
-        DAY,
+        DAY = 0,
         /**
          * a month
          */
-        MONTH,
+        MONTH = 1,
         /**
          * a year
          */
-        YEAR,
+        YEAR = 2,
     }
     /**
      * Enumeration representing a month; values are %G_DATE_JANUARY,
@@ -1338,55 +1338,55 @@ export namespace GLib {
         /**
          * invalid value
          */
-        BAD_MONTH,
+        BAD_MONTH = 0,
         /**
          * January
          */
-        JANUARY,
+        JANUARY = 1,
         /**
          * February
          */
-        FEBRUARY,
+        FEBRUARY = 2,
         /**
          * March
          */
-        MARCH,
+        MARCH = 3,
         /**
          * April
          */
-        APRIL,
+        APRIL = 4,
         /**
          * May
          */
-        MAY,
+        MAY = 5,
         /**
          * June
          */
-        JUNE,
+        JUNE = 6,
         /**
          * July
          */
-        JULY,
+        JULY = 7,
         /**
          * August
          */
-        AUGUST,
+        AUGUST = 8,
         /**
          * September
          */
-        SEPTEMBER,
+        SEPTEMBER = 9,
         /**
          * October
          */
-        OCTOBER,
+        OCTOBER = 10,
         /**
          * November
          */
-        NOVEMBER,
+        NOVEMBER = 11,
         /**
          * December
          */
-        DECEMBER,
+        DECEMBER = 12,
     }
     /**
      * Enumeration representing a day of the week; %G_DATE_MONDAY,
@@ -1405,35 +1405,35 @@ export namespace GLib {
         /**
          * invalid value
          */
-        BAD_WEEKDAY,
+        BAD_WEEKDAY = 0,
         /**
          * Monday
          */
-        MONDAY,
+        MONDAY = 1,
         /**
          * Tuesday
          */
-        TUESDAY,
+        TUESDAY = 2,
         /**
          * Wednesday
          */
-        WEDNESDAY,
+        WEDNESDAY = 3,
         /**
          * Thursday
          */
-        THURSDAY,
+        THURSDAY = 4,
         /**
          * Friday
          */
-        FRIDAY,
+        FRIDAY = 5,
         /**
          * Saturday
          */
-        SATURDAY,
+        SATURDAY = 6,
         /**
          * Sunday
          */
-        SUNDAY,
+        SUNDAY = 7,
     }
     /**
      * The possible errors, used in the `v_error` field
@@ -1452,35 +1452,35 @@ export namespace GLib {
         /**
          * unknown error
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * unexpected end of file
          */
-        UNEXP_EOF,
+        UNEXP_EOF = 1,
         /**
          * unterminated string constant
          */
-        UNEXP_EOF_IN_STRING,
+        UNEXP_EOF_IN_STRING = 2,
         /**
          * unterminated comment
          */
-        UNEXP_EOF_IN_COMMENT,
+        UNEXP_EOF_IN_COMMENT = 3,
         /**
          * non-digit character in a number
          */
-        NON_DIGIT_IN_CONST,
+        NON_DIGIT_IN_CONST = 4,
         /**
          * digit beyond radix in a number
          */
-        DIGIT_RADIX,
+        DIGIT_RADIX = 5,
         /**
          * non-decimal floating point number
          */
-        FLOAT_RADIX,
+        FLOAT_RADIX = 6,
         /**
          * malformed floating point number
          */
-        FLOAT_MALFORMED,
+        FLOAT_MALFORMED = 7,
     }
     /**
      * Values corresponding to `errno` codes returned from file operations
@@ -1718,19 +1718,19 @@ export namespace GLib {
         /**
          * no error
          */
-        NONE,
+        NONE = 0,
         /**
          * an EAGAIN error occurred
          */
-        AGAIN,
+        AGAIN = 1,
         /**
          * an EINVAL error occurred
          */
-        INVAL,
+        INVAL = 2,
         /**
          * another error occurred
          */
-        UNKNOWN,
+        UNKNOWN = 3,
     }
     /**
      * Statuses returned by most of the #GIOFuncs functions.
@@ -1747,19 +1747,19 @@ export namespace GLib {
         /**
          * An error occurred.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * Success.
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * End of file.
          */
-        EOF,
+        EOF = 2,
         /**
          * Resource temporarily unavailable.
          */
-        AGAIN,
+        AGAIN = 3,
     }
     /**
      * Error codes returned by key file parsing.
@@ -1826,11 +1826,11 @@ export namespace GLib {
         /**
          * Log writer has handled the log entry.
          */
-        HANDLED,
+        HANDLED = 1,
         /**
          * Log writer could not handle the log entry.
          */
-        UNHANDLED,
+        UNHANDLED = 0,
     }
     /**
      * Error codes returned by markup parsing.
@@ -1903,20 +1903,20 @@ export namespace GLib {
          * standardize differences that do not affect the
          *     text content, such as the above-mentioned accent representation
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * another name for %G_NORMALIZE_DEFAULT
          */
-        NFD,
+        NFD = 0,
         /**
          * like %G_NORMALIZE_DEFAULT, but with
          *     composed forms rather than a maximally decomposed form
          */
-        DEFAULT_COMPOSE,
+        DEFAULT_COMPOSE = 1,
         /**
          * another name for %G_NORMALIZE_DEFAULT_COMPOSE
          */
-        NFC,
+        NFC = 1,
         /**
          * beyond %G_NORMALIZE_DEFAULT also standardize the
          *     "compatibility" characters in Unicode, such as SUPERSCRIPT THREE
@@ -1924,20 +1924,20 @@ export namespace GLib {
          *     information may be lost but for most text operations such
          *     characters should be considered the same
          */
-        ALL,
+        ALL = 2,
         /**
          * another name for %G_NORMALIZE_ALL
          */
-        NFKD,
+        NFKD = 2,
         /**
          * like %G_NORMALIZE_ALL, but with composed
          *     forms rather than a maximally decomposed form
          */
-        ALL_COMPOSE,
+        ALL_COMPOSE = 3,
         /**
          * another name for %G_NORMALIZE_ALL_COMPOSE
          */
-        NFKC,
+        NFKC = 3,
     }
     /**
      * Error codes returned by functions converting a string to a number.
@@ -1979,15 +1979,15 @@ export namespace GLib {
         /**
          * the function has not been called yet.
          */
-        NOTCALLED,
+        NOTCALLED = 0,
         /**
          * the function call is currently in progress.
          */
-        PROGRESS,
+        PROGRESS = 1,
         /**
          * the function has been called.
          */
-        READY,
+        READY = 2,
     }
     /**
      * The #GOptionArg enum values determine which type of extra argument the
@@ -2010,48 +2010,48 @@ export namespace GLib {
         /**
          * No extra argument. This is useful for simple flags or booleans.
          */
-        NONE,
+        NONE = 0,
         /**
          * The option takes a UTF-8 string argument.
          */
-        STRING,
+        STRING = 1,
         /**
          * The option takes an integer argument.
          */
-        INT,
+        INT = 2,
         /**
          * The option provides a callback (of type #GOptionArgFunc)
          *   to parse the extra argument.
          */
-        CALLBACK,
+        CALLBACK = 3,
         /**
          * The option takes a filename as argument, which will
          *      be in the GLib filename encoding rather than UTF-8.
          */
-        FILENAME,
+        FILENAME = 4,
         /**
          * The option takes a string argument, multiple
          *   uses of the option are collected into an array of strings.
          */
-        STRING_ARRAY,
+        STRING_ARRAY = 5,
         /**
          * The option takes a filename as argument,
          *   multiple uses of the option are collected into an array of strings.
          */
-        FILENAME_ARRAY,
+        FILENAME_ARRAY = 6,
         /**
          * The option takes a double argument. The argument
          *   can be formatted either for the user's locale or for the "C" locale.
          *   Since 2.12
          */
-        DOUBLE,
+        DOUBLE = 7,
         /**
          * The option takes a 64-bit integer. Like
          *   %G_OPTION_ARG_INT but for larger numbers. The number can be in
          *   decimal base, or in hexadecimal (when prefixed with `0x`, for
          *   example, `0xffffffff`). Since 2.12
          */
-        INT64,
+        INT64 = 8,
     }
     /**
      * Error codes returned by option parsing.
@@ -2385,15 +2385,15 @@ export namespace GLib {
         /**
          * the current position in the file.
          */
-        CUR,
+        CUR = 0,
         /**
          * the start of the file.
          */
-        SET,
+        SET = 1,
         /**
          * the end of the file.
          */
-        END,
+        END = 2,
     }
     /**
      * Error codes returned by shell functions.
@@ -2427,12 +2427,12 @@ export namespace GLib {
     }
 
     enum SliceConfig {
-        ALWAYS_MALLOC,
-        BYPASS_MAGAZINES,
-        WORKING_SET_MSECS,
-        COLOR_INCREMENT,
-        CHUNK_SIZES,
-        CONTENTION_COUNTER,
+        ALWAYS_MALLOC = 1,
+        BYPASS_MAGAZINES = 2,
+        WORKING_SET_MSECS = 3,
+        COLOR_INCREMENT = 4,
+        CHUNK_SIZES = 5,
+        CONTENTION_COUNTER = 6,
     }
     /**
      * Error codes returned by spawning processes.
@@ -2581,11 +2581,11 @@ export namespace GLib {
         /**
          * a file that was included in the distribution tarball
          */
-        DIST,
+        DIST = 0,
         /**
          * a file that was built on the compiling machine
          */
-        BUILT,
+        BUILT = 1,
     }
 
     export namespace TestLogType {
@@ -2593,18 +2593,18 @@ export namespace GLib {
     }
 
     enum TestLogType {
-        NONE,
-        ERROR,
-        START_BINARY,
-        LIST_CASE,
-        SKIP_CASE,
-        START_CASE,
-        STOP_CASE,
-        MIN_RESULT,
-        MAX_RESULT,
-        MESSAGE,
-        START_SUITE,
-        STOP_SUITE,
+        NONE = 0,
+        ERROR = 1,
+        START_BINARY = 2,
+        LIST_CASE = 3,
+        SKIP_CASE = 4,
+        START_CASE = 5,
+        STOP_CASE = 6,
+        MIN_RESULT = 7,
+        MAX_RESULT = 8,
+        MESSAGE = 9,
+        START_SUITE = 10,
+        STOP_SUITE = 11,
     }
 
     export namespace TestResult {
@@ -2612,10 +2612,10 @@ export namespace GLib {
     }
 
     enum TestResult {
-        SUCCESS,
-        SKIPPED,
-        FAILURE,
-        INCOMPLETE,
+        SUCCESS = 0,
+        SKIPPED = 1,
+        FAILURE = 2,
+        INCOMPLETE = 3,
     }
     /**
      * Possible errors of thread related functions.
@@ -2652,19 +2652,19 @@ export namespace GLib {
         /**
          * a priority lower than normal
          */
-        LOW,
+        LOW = 0,
         /**
          * the default priority
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * a priority higher than normal
          */
-        HIGH,
+        HIGH = 2,
         /**
          * the highest priority
          */
-        URGENT,
+        URGENT = 3,
     }
     /**
      * Disambiguates a given time in two ways.
@@ -2695,15 +2695,15 @@ export namespace GLib {
         /**
          * the time is in local standard time
          */
-        STANDARD,
+        STANDARD = 0,
         /**
          * the time is in local daylight time
          */
-        DAYLIGHT,
+        DAYLIGHT = 1,
         /**
          * the time is in UTC
          */
-        UNIVERSAL,
+        UNIVERSAL = 2,
     }
     /**
      * The possible types of token returned from each
@@ -2722,95 +2722,95 @@ export namespace GLib {
         /**
          * the end of the file
          */
-        EOF,
+        EOF = 0,
         /**
          * a '(' character
          */
-        LEFT_PAREN,
+        LEFT_PAREN = 40,
         /**
          * a ')' character
          */
-        RIGHT_PAREN,
+        RIGHT_PAREN = 41,
         /**
          * a '{' character
          */
-        LEFT_CURLY,
+        LEFT_CURLY = 123,
         /**
          * a '}' character
          */
-        RIGHT_CURLY,
+        RIGHT_CURLY = 125,
         /**
          * a '[' character
          */
-        LEFT_BRACE,
+        LEFT_BRACE = 91,
         /**
          * a ']' character
          */
-        RIGHT_BRACE,
+        RIGHT_BRACE = 93,
         /**
          * a '=' character
          */
-        EQUAL_SIGN,
+        EQUAL_SIGN = 61,
         /**
          * a ',' character
          */
-        COMMA,
+        COMMA = 44,
         /**
          * not a token
          */
-        NONE,
+        NONE = 256,
         /**
          * an error occurred
          */
-        ERROR,
+        ERROR = 257,
         /**
          * a character
          */
-        CHAR,
+        CHAR = 258,
         /**
          * a binary integer
          */
-        BINARY,
+        BINARY = 259,
         /**
          * an octal integer
          */
-        OCTAL,
+        OCTAL = 260,
         /**
          * an integer
          */
-        INT,
+        INT = 261,
         /**
          * a hex integer
          */
-        HEX,
+        HEX = 262,
         /**
          * a floating point number
          */
-        FLOAT,
+        FLOAT = 263,
         /**
          * a string
          */
-        STRING,
+        STRING = 264,
         /**
          * a symbol
          */
-        SYMBOL,
+        SYMBOL = 265,
         /**
          * an identifier
          */
-        IDENTIFIER,
+        IDENTIFIER = 266,
         /**
          * a null identifier
          */
-        IDENTIFIER_NULL,
+        IDENTIFIER_NULL = 267,
         /**
          * one line comment
          */
-        COMMENT_SINGLE,
+        COMMENT_SINGLE = 268,
         /**
          * multi line comment
          */
-        COMMENT_MULTI,
+        COMMENT_MULTI = 269,
     }
     /**
      * Specifies the type of traversal performed by g_tree_traverse(),
@@ -2894,15 +2894,15 @@ export namespace GLib {
          *              want the output sorted according to the compare
          *              function.
          */
-        IN_ORDER,
+        IN_ORDER = 0,
         /**
          * visits a node, then its children.
          */
-        PRE_ORDER,
+        PRE_ORDER = 1,
         /**
          * visits the node's children, then the node itself.
          */
-        POST_ORDER,
+        POST_ORDER = 2,
         /**
          * is not implemented for
          *              [balanced binary trees](data-structures.html#binary-trees).
@@ -2911,7 +2911,7 @@ export namespace GLib {
          *              its grandchildren, and so on. Note that this is less
          *              efficient than the other orders.
          */
-        LEVEL_ORDER,
+        LEVEL_ORDER = 3,
     }
     /**
      * These are the possible line break classifications.
@@ -2938,199 +2938,199 @@ export namespace GLib {
         /**
          * Mandatory Break (BK)
          */
-        MANDATORY,
+        MANDATORY = 0,
         /**
          * Carriage Return (CR)
          */
-        CARRIAGE_RETURN,
+        CARRIAGE_RETURN = 1,
         /**
          * Line Feed (LF)
          */
-        LINE_FEED,
+        LINE_FEED = 2,
         /**
          * Attached Characters and Combining Marks (CM)
          */
-        COMBINING_MARK,
+        COMBINING_MARK = 3,
         /**
          * Surrogates (SG)
          */
-        SURROGATE,
+        SURROGATE = 4,
         /**
          * Zero Width Space (ZW)
          */
-        ZERO_WIDTH_SPACE,
+        ZERO_WIDTH_SPACE = 5,
         /**
          * Inseparable (IN)
          */
-        INSEPARABLE,
+        INSEPARABLE = 6,
         /**
          * Non-breaking ("Glue") (GL)
          */
-        NON_BREAKING_GLUE,
+        NON_BREAKING_GLUE = 7,
         /**
          * Contingent Break Opportunity (CB)
          */
-        CONTINGENT,
+        CONTINGENT = 8,
         /**
          * Space (SP)
          */
-        SPACE,
+        SPACE = 9,
         /**
          * Break Opportunity After (BA)
          */
-        AFTER,
+        AFTER = 10,
         /**
          * Break Opportunity Before (BB)
          */
-        BEFORE,
+        BEFORE = 11,
         /**
          * Break Opportunity Before and After (B2)
          */
-        BEFORE_AND_AFTER,
+        BEFORE_AND_AFTER = 12,
         /**
          * Hyphen (HY)
          */
-        HYPHEN,
+        HYPHEN = 13,
         /**
          * Nonstarter (NS)
          */
-        NON_STARTER,
+        NON_STARTER = 14,
         /**
          * Opening Punctuation (OP)
          */
-        OPEN_PUNCTUATION,
+        OPEN_PUNCTUATION = 15,
         /**
          * Closing Punctuation (CL)
          */
-        CLOSE_PUNCTUATION,
+        CLOSE_PUNCTUATION = 16,
         /**
          * Ambiguous Quotation (QU)
          */
-        QUOTATION,
+        QUOTATION = 17,
         /**
          * Exclamation/Interrogation (EX)
          */
-        EXCLAMATION,
+        EXCLAMATION = 18,
         /**
          * Ideographic (ID)
          */
-        IDEOGRAPHIC,
+        IDEOGRAPHIC = 19,
         /**
          * Numeric (NU)
          */
-        NUMERIC,
+        NUMERIC = 20,
         /**
          * Infix Separator (Numeric) (IS)
          */
-        INFIX_SEPARATOR,
+        INFIX_SEPARATOR = 21,
         /**
          * Symbols Allowing Break After (SY)
          */
-        SYMBOL,
+        SYMBOL = 22,
         /**
          * Ordinary Alphabetic and Symbol Characters (AL)
          */
-        ALPHABETIC,
+        ALPHABETIC = 23,
         /**
          * Prefix (Numeric) (PR)
          */
-        PREFIX,
+        PREFIX = 24,
         /**
          * Postfix (Numeric) (PO)
          */
-        POSTFIX,
+        POSTFIX = 25,
         /**
          * Complex Content Dependent (South East Asian) (SA)
          */
-        COMPLEX_CONTEXT,
+        COMPLEX_CONTEXT = 26,
         /**
          * Ambiguous (Alphabetic or Ideographic) (AI)
          */
-        AMBIGUOUS,
+        AMBIGUOUS = 27,
         /**
          * Unknown (XX)
          */
-        UNKNOWN,
+        UNKNOWN = 28,
         /**
          * Next Line (NL)
          */
-        NEXT_LINE,
+        NEXT_LINE = 29,
         /**
          * Word Joiner (WJ)
          */
-        WORD_JOINER,
+        WORD_JOINER = 30,
         /**
          * Hangul L Jamo (JL)
          */
-        HANGUL_L_JAMO,
+        HANGUL_L_JAMO = 31,
         /**
          * Hangul V Jamo (JV)
          */
-        HANGUL_V_JAMO,
+        HANGUL_V_JAMO = 32,
         /**
          * Hangul T Jamo (JT)
          */
-        HANGUL_T_JAMO,
+        HANGUL_T_JAMO = 33,
         /**
          * Hangul LV Syllable (H2)
          */
-        HANGUL_LV_SYLLABLE,
+        HANGUL_LV_SYLLABLE = 34,
         /**
          * Hangul LVT Syllable (H3)
          */
-        HANGUL_LVT_SYLLABLE,
+        HANGUL_LVT_SYLLABLE = 35,
         /**
          * Closing Parenthesis (CP). Since 2.28. Deprecated: 2.70: Use %G_UNICODE_BREAK_CLOSE_PARENTHESIS instead.
          */
-        CLOSE_PARANTHESIS,
+        CLOSE_PARANTHESIS = 36,
         /**
          * Closing Parenthesis (CP). Since 2.70
          */
-        CLOSE_PARENTHESIS,
+        CLOSE_PARENTHESIS = 36,
         /**
          * Conditional Japanese Starter (CJ). Since: 2.32
          */
-        CONDITIONAL_JAPANESE_STARTER,
+        CONDITIONAL_JAPANESE_STARTER = 37,
         /**
          * Hebrew Letter (HL). Since: 2.32
          */
-        HEBREW_LETTER,
+        HEBREW_LETTER = 38,
         /**
          * Regional Indicator (RI). Since: 2.36
          */
-        REGIONAL_INDICATOR,
+        REGIONAL_INDICATOR = 39,
         /**
          * Emoji Base (EB). Since: 2.50
          */
-        EMOJI_BASE,
+        EMOJI_BASE = 40,
         /**
          * Emoji Modifier (EM). Since: 2.50
          */
-        EMOJI_MODIFIER,
+        EMOJI_MODIFIER = 41,
         /**
          * Zero Width Joiner (ZWJ). Since: 2.50
          */
-        ZERO_WIDTH_JOINER,
+        ZERO_WIDTH_JOINER = 42,
         /**
          * Aksara (AK). Since: 2.80
          */
-        AKSARA,
+        AKSARA = 43,
         /**
          * Aksara Pre-Base (AP). Since: 2.80
          */
-        AKSARA_PRE_BASE,
+        AKSARA_PRE_BASE = 44,
         /**
          * Aksara Start (AS). Since: 2.80
          */
-        AKSARA_START,
+        AKSARA_START = 45,
         /**
          * Virama Final (VF). Since: 2.80
          */
-        VIRAMA_FINAL,
+        VIRAMA_FINAL = 46,
         /**
          * Virama (VI). Since: 2.80
          */
-        VIRAMA,
+        VIRAMA = 47,
     }
     /**
      * The #GUnicodeScript enumeration identifies different writing
@@ -3161,696 +3161,696 @@ export namespace GLib {
         /**
          * a value never returned from g_unichar_get_script()
          */
-        INVALID_CODE,
+        INVALID_CODE = -1,
         /**
          * a character used by multiple different scripts
          */
-        COMMON,
+        COMMON = 0,
         /**
          * a mark glyph that takes its script from the
          *                               base glyph to which it is attached
          */
-        INHERITED,
+        INHERITED = 1,
         /**
          * Arabic
          */
-        ARABIC,
+        ARABIC = 2,
         /**
          * Armenian
          */
-        ARMENIAN,
+        ARMENIAN = 3,
         /**
          * Bengali
          */
-        BENGALI,
+        BENGALI = 4,
         /**
          * Bopomofo
          */
-        BOPOMOFO,
+        BOPOMOFO = 5,
         /**
          * Cherokee
          */
-        CHEROKEE,
+        CHEROKEE = 6,
         /**
          * Coptic
          */
-        COPTIC,
+        COPTIC = 7,
         /**
          * Cyrillic
          */
-        CYRILLIC,
+        CYRILLIC = 8,
         /**
          * Deseret
          */
-        DESERET,
+        DESERET = 9,
         /**
          * Devanagari
          */
-        DEVANAGARI,
+        DEVANAGARI = 10,
         /**
          * Ethiopic
          */
-        ETHIOPIC,
+        ETHIOPIC = 11,
         /**
          * Georgian
          */
-        GEORGIAN,
+        GEORGIAN = 12,
         /**
          * Gothic
          */
-        GOTHIC,
+        GOTHIC = 13,
         /**
          * Greek
          */
-        GREEK,
+        GREEK = 14,
         /**
          * Gujarati
          */
-        GUJARATI,
+        GUJARATI = 15,
         /**
          * Gurmukhi
          */
-        GURMUKHI,
+        GURMUKHI = 16,
         /**
          * Han
          */
-        HAN,
+        HAN = 17,
         /**
          * Hangul
          */
-        HANGUL,
+        HANGUL = 18,
         /**
          * Hebrew
          */
-        HEBREW,
+        HEBREW = 19,
         /**
          * Hiragana
          */
-        HIRAGANA,
+        HIRAGANA = 20,
         /**
          * Kannada
          */
-        KANNADA,
+        KANNADA = 21,
         /**
          * Katakana
          */
-        KATAKANA,
+        KATAKANA = 22,
         /**
          * Khmer
          */
-        KHMER,
+        KHMER = 23,
         /**
          * Lao
          */
-        LAO,
+        LAO = 24,
         /**
          * Latin
          */
-        LATIN,
+        LATIN = 25,
         /**
          * Malayalam
          */
-        MALAYALAM,
+        MALAYALAM = 26,
         /**
          * Mongolian
          */
-        MONGOLIAN,
+        MONGOLIAN = 27,
         /**
          * Myanmar
          */
-        MYANMAR,
+        MYANMAR = 28,
         /**
          * Ogham
          */
-        OGHAM,
+        OGHAM = 29,
         /**
          * Old Italic
          */
-        OLD_ITALIC,
+        OLD_ITALIC = 30,
         /**
          * Oriya
          */
-        ORIYA,
+        ORIYA = 31,
         /**
          * Runic
          */
-        RUNIC,
+        RUNIC = 32,
         /**
          * Sinhala
          */
-        SINHALA,
+        SINHALA = 33,
         /**
          * Syriac
          */
-        SYRIAC,
+        SYRIAC = 34,
         /**
          * Tamil
          */
-        TAMIL,
+        TAMIL = 35,
         /**
          * Telugu
          */
-        TELUGU,
+        TELUGU = 36,
         /**
          * Thaana
          */
-        THAANA,
+        THAANA = 37,
         /**
          * Thai
          */
-        THAI,
+        THAI = 38,
         /**
          * Tibetan
          */
-        TIBETAN,
+        TIBETAN = 39,
         /**
          * Canadian Aboriginal
          */
-        CANADIAN_ABORIGINAL,
+        CANADIAN_ABORIGINAL = 40,
         /**
          * Yi
          */
-        YI,
+        YI = 41,
         /**
          * Tagalog
          */
-        TAGALOG,
+        TAGALOG = 42,
         /**
          * Hanunoo
          */
-        HANUNOO,
+        HANUNOO = 43,
         /**
          * Buhid
          */
-        BUHID,
+        BUHID = 44,
         /**
          * Tagbanwa
          */
-        TAGBANWA,
+        TAGBANWA = 45,
         /**
          * Braille
          */
-        BRAILLE,
+        BRAILLE = 46,
         /**
          * Cypriot
          */
-        CYPRIOT,
+        CYPRIOT = 47,
         /**
          * Limbu
          */
-        LIMBU,
+        LIMBU = 48,
         /**
          * Osmanya
          */
-        OSMANYA,
+        OSMANYA = 49,
         /**
          * Shavian
          */
-        SHAVIAN,
+        SHAVIAN = 50,
         /**
          * Linear B
          */
-        LINEAR_B,
+        LINEAR_B = 51,
         /**
          * Tai Le
          */
-        TAI_LE,
+        TAI_LE = 52,
         /**
          * Ugaritic
          */
-        UGARITIC,
+        UGARITIC = 53,
         /**
          * New Tai Lue
          */
-        NEW_TAI_LUE,
+        NEW_TAI_LUE = 54,
         /**
          * Buginese
          */
-        BUGINESE,
+        BUGINESE = 55,
         /**
          * Glagolitic
          */
-        GLAGOLITIC,
+        GLAGOLITIC = 56,
         /**
          * Tifinagh
          */
-        TIFINAGH,
+        TIFINAGH = 57,
         /**
          * Syloti Nagri
          */
-        SYLOTI_NAGRI,
+        SYLOTI_NAGRI = 58,
         /**
          * Old Persian
          */
-        OLD_PERSIAN,
+        OLD_PERSIAN = 59,
         /**
          * Kharoshthi
          */
-        KHAROSHTHI,
+        KHAROSHTHI = 60,
         /**
          * an unassigned code point
          */
-        UNKNOWN,
+        UNKNOWN = 61,
         /**
          * Balinese
          */
-        BALINESE,
+        BALINESE = 62,
         /**
          * Cuneiform
          */
-        CUNEIFORM,
+        CUNEIFORM = 63,
         /**
          * Phoenician
          */
-        PHOENICIAN,
+        PHOENICIAN = 64,
         /**
          * Phags-pa
          */
-        PHAGS_PA,
+        PHAGS_PA = 65,
         /**
          * N'Ko
          */
-        NKO,
+        NKO = 66,
         /**
          * Kayah Li. Since 2.16.3
          */
-        KAYAH_LI,
+        KAYAH_LI = 67,
         /**
          * Lepcha. Since 2.16.3
          */
-        LEPCHA,
+        LEPCHA = 68,
         /**
          * Rejang. Since 2.16.3
          */
-        REJANG,
+        REJANG = 69,
         /**
          * Sundanese. Since 2.16.3
          */
-        SUNDANESE,
+        SUNDANESE = 70,
         /**
          * Saurashtra. Since 2.16.3
          */
-        SAURASHTRA,
+        SAURASHTRA = 71,
         /**
          * Cham. Since 2.16.3
          */
-        CHAM,
+        CHAM = 72,
         /**
          * Ol Chiki. Since 2.16.3
          */
-        OL_CHIKI,
+        OL_CHIKI = 73,
         /**
          * Vai. Since 2.16.3
          */
-        VAI,
+        VAI = 74,
         /**
          * Carian. Since 2.16.3
          */
-        CARIAN,
+        CARIAN = 75,
         /**
          * Lycian. Since 2.16.3
          */
-        LYCIAN,
+        LYCIAN = 76,
         /**
          * Lydian. Since 2.16.3
          */
-        LYDIAN,
+        LYDIAN = 77,
         /**
          * Avestan. Since 2.26
          */
-        AVESTAN,
+        AVESTAN = 78,
         /**
          * Bamum. Since 2.26
          */
-        BAMUM,
+        BAMUM = 79,
         /**
          * Egyptian Hieroglpyhs. Since 2.26
          */
-        EGYPTIAN_HIEROGLYPHS,
+        EGYPTIAN_HIEROGLYPHS = 80,
         /**
          * Imperial Aramaic. Since 2.26
          */
-        IMPERIAL_ARAMAIC,
+        IMPERIAL_ARAMAIC = 81,
         /**
          * Inscriptional Pahlavi. Since 2.26
          */
-        INSCRIPTIONAL_PAHLAVI,
+        INSCRIPTIONAL_PAHLAVI = 82,
         /**
          * Inscriptional Parthian. Since 2.26
          */
-        INSCRIPTIONAL_PARTHIAN,
+        INSCRIPTIONAL_PARTHIAN = 83,
         /**
          * Javanese. Since 2.26
          */
-        JAVANESE,
+        JAVANESE = 84,
         /**
          * Kaithi. Since 2.26
          */
-        KAITHI,
+        KAITHI = 85,
         /**
          * Lisu. Since 2.26
          */
-        LISU,
+        LISU = 86,
         /**
          * Meetei Mayek. Since 2.26
          */
-        MEETEI_MAYEK,
+        MEETEI_MAYEK = 87,
         /**
          * Old South Arabian. Since 2.26
          */
-        OLD_SOUTH_ARABIAN,
+        OLD_SOUTH_ARABIAN = 88,
         /**
          * Old Turkic. Since 2.28
          */
-        OLD_TURKIC,
+        OLD_TURKIC = 89,
         /**
          * Samaritan. Since 2.26
          */
-        SAMARITAN,
+        SAMARITAN = 90,
         /**
          * Tai Tham. Since 2.26
          */
-        TAI_THAM,
+        TAI_THAM = 91,
         /**
          * Tai Viet. Since 2.26
          */
-        TAI_VIET,
+        TAI_VIET = 92,
         /**
          * Batak. Since 2.28
          */
-        BATAK,
+        BATAK = 93,
         /**
          * Brahmi. Since 2.28
          */
-        BRAHMI,
+        BRAHMI = 94,
         /**
          * Mandaic. Since 2.28
          */
-        MANDAIC,
+        MANDAIC = 95,
         /**
          * Chakma. Since: 2.32
          */
-        CHAKMA,
+        CHAKMA = 96,
         /**
          * Meroitic Cursive. Since: 2.32
          */
-        MEROITIC_CURSIVE,
+        MEROITIC_CURSIVE = 97,
         /**
          * Meroitic Hieroglyphs. Since: 2.32
          */
-        MEROITIC_HIEROGLYPHS,
+        MEROITIC_HIEROGLYPHS = 98,
         /**
          * Miao. Since: 2.32
          */
-        MIAO,
+        MIAO = 99,
         /**
          * Sharada. Since: 2.32
          */
-        SHARADA,
+        SHARADA = 100,
         /**
          * Sora Sompeng. Since: 2.32
          */
-        SORA_SOMPENG,
+        SORA_SOMPENG = 101,
         /**
          * Takri. Since: 2.32
          */
-        TAKRI,
+        TAKRI = 102,
         /**
          * Bassa. Since: 2.42
          */
-        BASSA_VAH,
+        BASSA_VAH = 103,
         /**
          * Caucasian Albanian. Since: 2.42
          */
-        CAUCASIAN_ALBANIAN,
+        CAUCASIAN_ALBANIAN = 104,
         /**
          * Duployan. Since: 2.42
          */
-        DUPLOYAN,
+        DUPLOYAN = 105,
         /**
          * Elbasan. Since: 2.42
          */
-        ELBASAN,
+        ELBASAN = 106,
         /**
          * Grantha. Since: 2.42
          */
-        GRANTHA,
+        GRANTHA = 107,
         /**
          * Kjohki. Since: 2.42
          */
-        KHOJKI,
+        KHOJKI = 108,
         /**
          * Khudawadi, Sindhi. Since: 2.42
          */
-        KHUDAWADI,
+        KHUDAWADI = 109,
         /**
          * Linear A. Since: 2.42
          */
-        LINEAR_A,
+        LINEAR_A = 110,
         /**
          * Mahajani. Since: 2.42
          */
-        MAHAJANI,
+        MAHAJANI = 111,
         /**
          * Manichaean. Since: 2.42
          */
-        MANICHAEAN,
+        MANICHAEAN = 112,
         /**
          * Mende Kikakui. Since: 2.42
          */
-        MENDE_KIKAKUI,
+        MENDE_KIKAKUI = 113,
         /**
          * Modi. Since: 2.42
          */
-        MODI,
+        MODI = 114,
         /**
          * Mro. Since: 2.42
          */
-        MRO,
+        MRO = 115,
         /**
          * Nabataean. Since: 2.42
          */
-        NABATAEAN,
+        NABATAEAN = 116,
         /**
          * Old North Arabian. Since: 2.42
          */
-        OLD_NORTH_ARABIAN,
+        OLD_NORTH_ARABIAN = 117,
         /**
          * Old Permic. Since: 2.42
          */
-        OLD_PERMIC,
+        OLD_PERMIC = 118,
         /**
          * Pahawh Hmong. Since: 2.42
          */
-        PAHAWH_HMONG,
+        PAHAWH_HMONG = 119,
         /**
          * Palmyrene. Since: 2.42
          */
-        PALMYRENE,
+        PALMYRENE = 120,
         /**
          * Pau Cin Hau. Since: 2.42
          */
-        PAU_CIN_HAU,
+        PAU_CIN_HAU = 121,
         /**
          * Psalter Pahlavi. Since: 2.42
          */
-        PSALTER_PAHLAVI,
+        PSALTER_PAHLAVI = 122,
         /**
          * Siddham. Since: 2.42
          */
-        SIDDHAM,
+        SIDDHAM = 123,
         /**
          * Tirhuta. Since: 2.42
          */
-        TIRHUTA,
+        TIRHUTA = 124,
         /**
          * Warang Citi. Since: 2.42
          */
-        WARANG_CITI,
+        WARANG_CITI = 125,
         /**
          * Ahom. Since: 2.48
          */
-        AHOM,
+        AHOM = 126,
         /**
          * Anatolian Hieroglyphs. Since: 2.48
          */
-        ANATOLIAN_HIEROGLYPHS,
+        ANATOLIAN_HIEROGLYPHS = 127,
         /**
          * Hatran. Since: 2.48
          */
-        HATRAN,
+        HATRAN = 128,
         /**
          * Multani. Since: 2.48
          */
-        MULTANI,
+        MULTANI = 129,
         /**
          * Old Hungarian. Since: 2.48
          */
-        OLD_HUNGARIAN,
+        OLD_HUNGARIAN = 130,
         /**
          * Signwriting. Since: 2.48
          */
-        SIGNWRITING,
+        SIGNWRITING = 131,
         /**
          * Adlam. Since: 2.50
          */
-        ADLAM,
+        ADLAM = 132,
         /**
          * Bhaiksuki. Since: 2.50
          */
-        BHAIKSUKI,
+        BHAIKSUKI = 133,
         /**
          * Marchen. Since: 2.50
          */
-        MARCHEN,
+        MARCHEN = 134,
         /**
          * Newa. Since: 2.50
          */
-        NEWA,
+        NEWA = 135,
         /**
          * Osage. Since: 2.50
          */
-        OSAGE,
+        OSAGE = 136,
         /**
          * Tangut. Since: 2.50
          */
-        TANGUT,
+        TANGUT = 137,
         /**
          * Masaram Gondi. Since: 2.54
          */
-        MASARAM_GONDI,
+        MASARAM_GONDI = 138,
         /**
          * Nushu. Since: 2.54
          */
-        NUSHU,
+        NUSHU = 139,
         /**
          * Soyombo. Since: 2.54
          */
-        SOYOMBO,
+        SOYOMBO = 140,
         /**
          * Zanabazar Square. Since: 2.54
          */
-        ZANABAZAR_SQUARE,
+        ZANABAZAR_SQUARE = 141,
         /**
          * Dogra. Since: 2.58
          */
-        DOGRA,
+        DOGRA = 142,
         /**
          * Gunjala Gondi. Since: 2.58
          */
-        GUNJALA_GONDI,
+        GUNJALA_GONDI = 143,
         /**
          * Hanifi Rohingya. Since: 2.58
          */
-        HANIFI_ROHINGYA,
+        HANIFI_ROHINGYA = 144,
         /**
          * Makasar. Since: 2.58
          */
-        MAKASAR,
+        MAKASAR = 145,
         /**
          * Medefaidrin. Since: 2.58
          */
-        MEDEFAIDRIN,
+        MEDEFAIDRIN = 146,
         /**
          * Old Sogdian. Since: 2.58
          */
-        OLD_SOGDIAN,
+        OLD_SOGDIAN = 147,
         /**
          * Sogdian. Since: 2.58
          */
-        SOGDIAN,
+        SOGDIAN = 148,
         /**
          * Elym. Since: 2.62
          */
-        ELYMAIC,
+        ELYMAIC = 149,
         /**
          * Nand. Since: 2.62
          */
-        NANDINAGARI,
+        NANDINAGARI = 150,
         /**
          * Rohg. Since: 2.62
          */
-        NYIAKENG_PUACHUE_HMONG,
+        NYIAKENG_PUACHUE_HMONG = 151,
         /**
          * Wcho. Since: 2.62
          */
-        WANCHO,
+        WANCHO = 152,
         /**
          * Chorasmian. Since: 2.66
          */
-        CHORASMIAN,
+        CHORASMIAN = 153,
         /**
          * Dives Akuru. Since: 2.66
          */
-        DIVES_AKURU,
+        DIVES_AKURU = 154,
         /**
          * Khitan small script. Since: 2.66
          */
-        KHITAN_SMALL_SCRIPT,
+        KHITAN_SMALL_SCRIPT = 155,
         /**
          * Yezidi. Since: 2.66
          */
-        YEZIDI,
+        YEZIDI = 156,
         /**
          * Cypro-Minoan. Since: 2.72
          */
-        CYPRO_MINOAN,
+        CYPRO_MINOAN = 157,
         /**
          * Old Uyghur. Since: 2.72
          */
-        OLD_UYGHUR,
+        OLD_UYGHUR = 158,
         /**
          * Tangsa. Since: 2.72
          */
-        TANGSA,
+        TANGSA = 159,
         /**
          * Toto. Since: 2.72
          */
-        TOTO,
+        TOTO = 160,
         /**
          * Vithkuqi. Since: 2.72
          */
-        VITHKUQI,
+        VITHKUQI = 161,
         /**
          * Mathematical notation. Since: 2.72
          */
-        MATH,
+        MATH = 162,
         /**
          * Kawi. Since 2.74
          */
-        KAWI,
+        KAWI = 163,
         /**
          * Nag Mundari. Since 2.74
          */
-        NAG_MUNDARI,
+        NAG_MUNDARI = 164,
         /**
          * Todhri. Since: 2.84
          */
-        TODHRI,
+        TODHRI = 165,
         /**
          * Garay. Since: 2.84
          */
-        GARAY,
+        GARAY = 166,
         /**
          * Tulu-Tigalari. Since: 2.84
          */
-        TULU_TIGALARI,
+        TULU_TIGALARI = 167,
         /**
          * Sunuwar. Since: 2.84
          */
-        SUNUWAR,
+        SUNUWAR = 168,
         /**
          * Gurung Khema. Since: 2.84
          */
-        GURUNG_KHEMA,
+        GURUNG_KHEMA = 169,
         /**
          * Kirat Rai. Since: 2.84
          */
-        KIRAT_RAI,
+        KIRAT_RAI = 170,
         /**
          * Ol Onal. Since: 2.84
          */
-        OL_ONAL,
+        OL_ONAL = 171,
     }
     /**
      * These are the possible character classifications from the
@@ -3871,123 +3871,123 @@ export namespace GLib {
         /**
          * General category "Other, Control" (Cc)
          */
-        CONTROL,
+        CONTROL = 0,
         /**
          * General category "Other, Format" (Cf)
          */
-        FORMAT,
+        FORMAT = 1,
         /**
          * General category "Other, Not Assigned" (Cn)
          */
-        UNASSIGNED,
+        UNASSIGNED = 2,
         /**
          * General category "Other, Private Use" (Co)
          */
-        PRIVATE_USE,
+        PRIVATE_USE = 3,
         /**
          * General category "Other, Surrogate" (Cs)
          */
-        SURROGATE,
+        SURROGATE = 4,
         /**
          * General category "Letter, Lowercase" (Ll)
          */
-        LOWERCASE_LETTER,
+        LOWERCASE_LETTER = 5,
         /**
          * General category "Letter, Modifier" (Lm)
          */
-        MODIFIER_LETTER,
+        MODIFIER_LETTER = 6,
         /**
          * General category "Letter, Other" (Lo)
          */
-        OTHER_LETTER,
+        OTHER_LETTER = 7,
         /**
          * General category "Letter, Titlecase" (Lt)
          */
-        TITLECASE_LETTER,
+        TITLECASE_LETTER = 8,
         /**
          * General category "Letter, Uppercase" (Lu)
          */
-        UPPERCASE_LETTER,
+        UPPERCASE_LETTER = 9,
         /**
          * General category "Mark, Spacing" (Mc)
          */
-        SPACING_MARK,
+        SPACING_MARK = 10,
         /**
          * General category "Mark, Enclosing" (Me)
          */
-        ENCLOSING_MARK,
+        ENCLOSING_MARK = 11,
         /**
          * General category "Mark, Nonspacing" (Mn)
          */
-        NON_SPACING_MARK,
+        NON_SPACING_MARK = 12,
         /**
          * General category "Number, Decimal Digit" (Nd)
          */
-        DECIMAL_NUMBER,
+        DECIMAL_NUMBER = 13,
         /**
          * General category "Number, Letter" (Nl)
          */
-        LETTER_NUMBER,
+        LETTER_NUMBER = 14,
         /**
          * General category "Number, Other" (No)
          */
-        OTHER_NUMBER,
+        OTHER_NUMBER = 15,
         /**
          * General category "Punctuation, Connector" (Pc)
          */
-        CONNECT_PUNCTUATION,
+        CONNECT_PUNCTUATION = 16,
         /**
          * General category "Punctuation, Dash" (Pd)
          */
-        DASH_PUNCTUATION,
+        DASH_PUNCTUATION = 17,
         /**
          * General category "Punctuation, Close" (Pe)
          */
-        CLOSE_PUNCTUATION,
+        CLOSE_PUNCTUATION = 18,
         /**
          * General category "Punctuation, Final quote" (Pf)
          */
-        FINAL_PUNCTUATION,
+        FINAL_PUNCTUATION = 19,
         /**
          * General category "Punctuation, Initial quote" (Pi)
          */
-        INITIAL_PUNCTUATION,
+        INITIAL_PUNCTUATION = 20,
         /**
          * General category "Punctuation, Other" (Po)
          */
-        OTHER_PUNCTUATION,
+        OTHER_PUNCTUATION = 21,
         /**
          * General category "Punctuation, Open" (Ps)
          */
-        OPEN_PUNCTUATION,
+        OPEN_PUNCTUATION = 22,
         /**
          * General category "Symbol, Currency" (Sc)
          */
-        CURRENCY_SYMBOL,
+        CURRENCY_SYMBOL = 23,
         /**
          * General category "Symbol, Modifier" (Sk)
          */
-        MODIFIER_SYMBOL,
+        MODIFIER_SYMBOL = 24,
         /**
          * General category "Symbol, Math" (Sm)
          */
-        MATH_SYMBOL,
+        MATH_SYMBOL = 25,
         /**
          * General category "Symbol, Other" (So)
          */
-        OTHER_SYMBOL,
+        OTHER_SYMBOL = 26,
         /**
          * General category "Separator, Line" (Zl)
          */
-        LINE_SEPARATOR,
+        LINE_SEPARATOR = 27,
         /**
          * General category "Separator, Paragraph" (Zp)
          */
-        PARAGRAPH_SEPARATOR,
+        PARAGRAPH_SEPARATOR = 28,
         /**
          * General category "Separator, Space" (Zs)
          */
-        SPACE_SEPARATOR,
+        SPACE_SEPARATOR = 29,
     }
     /**
      * Mnemonic constants for the ends of a Unix pipe.
@@ -4004,11 +4004,11 @@ export namespace GLib {
         /**
          * The readable file descriptor 0
          */
-        READ,
+        READ = 0,
         /**
          * The writable file descriptor 1
          */
-        WRITE,
+        WRITE = 1,
     }
     /**
      * Error codes returned by #GUri methods.
@@ -4093,39 +4093,39 @@ export namespace GLib {
         /**
          * the user's Desktop directory
          */
-        DIRECTORY_DESKTOP,
+        DIRECTORY_DESKTOP = 0,
         /**
          * the user's Documents directory
          */
-        DIRECTORY_DOCUMENTS,
+        DIRECTORY_DOCUMENTS = 1,
         /**
          * the user's Downloads directory
          */
-        DIRECTORY_DOWNLOAD,
+        DIRECTORY_DOWNLOAD = 2,
         /**
          * the user's Music directory
          */
-        DIRECTORY_MUSIC,
+        DIRECTORY_MUSIC = 3,
         /**
          * the user's Pictures directory
          */
-        DIRECTORY_PICTURES,
+        DIRECTORY_PICTURES = 4,
         /**
          * the user's shared directory
          */
-        DIRECTORY_PUBLIC_SHARE,
+        DIRECTORY_PUBLIC_SHARE = 5,
         /**
          * the user's Templates directory
          */
-        DIRECTORY_TEMPLATES,
+        DIRECTORY_TEMPLATES = 6,
         /**
          * the user's Movies directory
          */
-        DIRECTORY_VIDEOS,
+        DIRECTORY_VIDEOS = 7,
         /**
          * the number of enum values
          */
-        N_DIRECTORIES,
+        N_DIRECTORIES = 8,
     }
     /**
      * The range of possible top-level types of #GVariant instances.
@@ -4142,77 +4142,77 @@ export namespace GLib {
         /**
          * The #GVariant is a boolean.
          */
-        BOOLEAN,
+        BOOLEAN = 98,
         /**
          * The #GVariant is a byte.
          */
-        BYTE,
+        BYTE = 121,
         /**
          * The #GVariant is a signed 16 bit integer.
          */
-        INT16,
+        INT16 = 110,
         /**
          * The #GVariant is an unsigned 16 bit integer.
          */
-        UINT16,
+        UINT16 = 113,
         /**
          * The #GVariant is a signed 32 bit integer.
          */
-        INT32,
+        INT32 = 105,
         /**
          * The #GVariant is an unsigned 32 bit integer.
          */
-        UINT32,
+        UINT32 = 117,
         /**
          * The #GVariant is a signed 64 bit integer.
          */
-        INT64,
+        INT64 = 120,
         /**
          * The #GVariant is an unsigned 64 bit integer.
          */
-        UINT64,
+        UINT64 = 116,
         /**
          * The #GVariant is a file handle index.
          */
-        HANDLE,
+        HANDLE = 104,
         /**
          * The #GVariant is a double precision floating
          *                          point value.
          */
-        DOUBLE,
+        DOUBLE = 100,
         /**
          * The #GVariant is a normal string.
          */
-        STRING,
+        STRING = 115,
         /**
          * The #GVariant is a D-Bus object path
          *                               string.
          */
-        OBJECT_PATH,
+        OBJECT_PATH = 111,
         /**
          * The #GVariant is a D-Bus signature string.
          */
-        SIGNATURE,
+        SIGNATURE = 103,
         /**
          * The #GVariant is a variant.
          */
-        VARIANT,
+        VARIANT = 118,
         /**
          * The #GVariant is a maybe-typed value.
          */
-        MAYBE,
+        MAYBE = 109,
         /**
          * The #GVariant is an array.
          */
-        ARRAY,
+        ARRAY = 97,
         /**
          * The #GVariant is a tuple.
          */
-        TUPLE,
+        TUPLE = 40,
         /**
          * The #GVariant is a dictionary entry.
          */
-        DICT_ENTRY,
+        DICT_ENTRY = 123,
     }
     /**
      * Error codes returned by parsing text-format GVariants.
@@ -14230,17 +14230,17 @@ export namespace GLib {
     }
 
     enum AsciiType {
-        ALNUM,
-        ALPHA,
-        CNTRL,
-        DIGIT,
-        GRAPH,
-        LOWER,
-        PRINT,
-        PUNCT,
-        SPACE,
-        UPPER,
-        XDIGIT,
+        ALNUM = 1,
+        ALPHA = 2,
+        CNTRL = 4,
+        DIGIT = 8,
+        GRAPH = 16,
+        LOWER = 32,
+        PRINT = 64,
+        PUNCT = 128,
+        SPACE = 256,
+        UPPER = 512,
+        XDIGIT = 1024,
     }
     /**
      * Flags to pass to g_file_set_contents_full() to affect its safety and
@@ -14260,7 +14260,7 @@ export namespace GLib {
          * No guarantees about file consistency or durability.
          *   The most dangerous setting, which is slightly faster than other settings.
          */
-        NONE,
+        NONE = 0,
         /**
          * Guarantee file consistency: after a crash,
          *   either the old version of the file or the new version of the file will be
@@ -14268,7 +14268,7 @@ export namespace GLib {
          *   on the file and use of an atomic `rename()` of the new version of the file
          *   over the old.
          */
-        CONSISTENT,
+        CONSISTENT = 1,
         /**
          * Guarantee file durability: after a crash, the
          *   new version of the file will be available. On Unix systems this equates to
@@ -14276,14 +14276,14 @@ export namespace GLib {
          *   the effects of %G_FILE_SET_CONTENTS_CONSISTENT plus an `fsync()` on the
          *   directory containing the file after calling `rename()`.
          */
-        DURABLE,
+        DURABLE = 2,
         /**
          * Only apply consistency and durability
          *   guarantees if the file already exists. This may speed up file operations
          *   if the file doesn’t currently exist, but may result in a corrupted version
          *   of the new file if the system crashes while writing it.
          */
-        ONLY_EXISTING,
+        ONLY_EXISTING = 4,
     }
     /**
      * A test to perform on a file using g_file_test().
@@ -14302,24 +14302,24 @@ export namespace GLib {
          *     (not a directory). Note that this test will also return %TRUE
          *     if the tested file is a symlink to a regular file.
          */
-        IS_REGULAR,
+        IS_REGULAR = 1,
         /**
          * %TRUE if the file is a symlink.
          */
-        IS_SYMLINK,
+        IS_SYMLINK = 2,
         /**
          * %TRUE if the file is a directory.
          */
-        IS_DIR,
+        IS_DIR = 4,
         /**
          * %TRUE if the file is executable.
          */
-        IS_EXECUTABLE,
+        IS_EXECUTABLE = 8,
         /**
          * %TRUE if the file exists. It may or may not
          *     be a regular file.
          */
-        EXISTS,
+        EXISTS = 16,
     }
     /**
      * Flags to modify the format of the string returned by g_format_size_full().
@@ -14336,36 +14336,36 @@ export namespace GLib {
         /**
          * behave the same as g_format_size()
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * include the exact number of bytes as part
          *     of the returned string.  For example, "45.6 kB (45,612 bytes)".
          */
-        LONG_FORMAT,
+        LONG_FORMAT = 1,
         /**
          * use IEC (base 1024) units with "KiB"-style
          *     suffixes. IEC units should only be used for reporting things with
          *     a strong "power of 2" basis, like RAM sizes or RAID stripe sizes.
          *     Network and storage sizes should be reported in the normal SI units.
          */
-        IEC_UNITS,
+        IEC_UNITS = 2,
         /**
          * set the size as a quantity in bits, rather than
          *     bytes, and return units in bits. For example, ‘Mbit’ rather than ‘MB’.
          */
-        BITS,
+        BITS = 4,
         /**
          * return only value, without unit; this should
          *     not be used together with `G_FORMAT_SIZE_LONG_FORMAT`
          *     nor `G_FORMAT_SIZE_ONLY_UNIT`. Since: 2.74
          */
-        ONLY_VALUE,
+        ONLY_VALUE = 8,
         /**
          * return only unit, without value; this should
          *     not be used together with `G_FORMAT_SIZE_LONG_FORMAT`
          *     nor `G_FORMAT_SIZE_ONLY_VALUE`. Since: 2.74
          */
-        ONLY_UNIT,
+        ONLY_UNIT = 16,
     }
     /**
      * Flags used internally in the #GHook implementation.
@@ -14382,16 +14382,16 @@ export namespace GLib {
         /**
          * set if the hook has not been destroyed
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * set if the hook is currently being run
          */
-        IN_CALL,
+        IN_CALL = 2,
         /**
          * A mask covering all bits reserved for
          *   hook flags; see %G_HOOK_FLAG_USER_SHIFT
          */
-        MASK,
+        MASK = 15,
     }
     /**
      * A bitwise combination representing a condition to watch for on an
@@ -14410,28 +14410,28 @@ export namespace GLib {
         /**
          * There is data to read.
          */
-        IN,
+        IN = 1,
         /**
          * Data can be written (without blocking).
          */
-        OUT,
+        OUT = 4,
         /**
          * There is urgent data to read.
          */
-        PRI,
+        PRI = 2,
         /**
          * Error condition.
          */
-        ERR,
+        ERR = 8,
         /**
          * Hung up (the connection has been broken, usually for
          *            pipes and sockets).
          */
-        HUP,
+        HUP = 16,
         /**
          * Invalid request. The file descriptor is not open.
          */
-        NVAL,
+        NVAL = 32,
     }
     /**
      * Specifies properties of a #GIOChannel. Some of the flags can only be
@@ -14452,54 +14452,54 @@ export namespace GLib {
         /**
          * no special flags set. Since: 2.74
          */
-        NONE,
+        NONE = 0,
         /**
          * turns on append mode, corresponds to %O_APPEND
          *     (see the documentation of the UNIX open() syscall)
          */
-        APPEND,
+        APPEND = 1,
         /**
          * turns on nonblocking mode, corresponds to
          *     %O_NONBLOCK/%O_NDELAY (see the documentation of the UNIX open()
          *     syscall)
          */
-        NONBLOCK,
+        NONBLOCK = 2,
         /**
          * indicates that the io channel is readable.
          *     This flag cannot be changed.
          */
-        IS_READABLE,
+        IS_READABLE = 4,
         /**
          * indicates that the io channel is writable.
          *     This flag cannot be changed.
          */
-        IS_WRITABLE,
+        IS_WRITABLE = 8,
         /**
          * a misspelled version of `G_IO_FLAG_IS_WRITABLE`
          *     that existed before the spelling was fixed in GLib 2.30. It is kept
          *     here for compatibility reasons. Deprecated since 2.30
          */
-        IS_WRITEABLE,
+        IS_WRITEABLE = 8,
         /**
          * indicates that the io channel is seekable,
          *     i.e. that g_io_channel_seek_position() can be used on it.
          *     This flag cannot be changed.
          */
-        IS_SEEKABLE,
+        IS_SEEKABLE = 16,
         /**
          * the mask that specifies all the valid flags.
          */
-        MASK,
+        MASK = 31,
         /**
          * the mask of the flags that are returned from
          *     g_io_channel_get_flags()
          */
-        GET_MASK,
+        GET_MASK = 31,
         /**
          * the mask of the flags that the user can modify
          *     with g_io_channel_set_flags()
          */
-        SET_MASK,
+        SET_MASK = 3,
     }
     /**
      * Flags which influence the parsing.
@@ -14516,21 +14516,21 @@ export namespace GLib {
         /**
          * No flags, default behaviour
          */
-        NONE,
+        NONE = 0,
         /**
          * Use this flag if you plan to write the
          *   (possibly modified) contents of the key file back to a file;
          *   otherwise all comments will be lost when the key file is
          *   written back.
          */
-        KEEP_COMMENTS,
+        KEEP_COMMENTS = 1,
         /**
          * Use this flag if you plan to write the
          *   (possibly modified) contents of the key file back to a file;
          *   otherwise only the translations for the current language will be
          *   written back.
          */
-        KEEP_TRANSLATIONS,
+        KEEP_TRANSLATIONS = 2,
     }
     /**
      * Flags specifying the level of log messages.
@@ -14553,42 +14553,42 @@ export namespace GLib {
         /**
          * internal flag
          */
-        FLAG_RECURSION,
+        FLAG_RECURSION = 1,
         /**
          * internal flag
          */
-        FLAG_FATAL,
+        FLAG_FATAL = 2,
         /**
          * log level for errors, see [func`GLib`.error].
          *   This level is also used for messages produced by [func`GLib`.assert].
          */
-        LEVEL_ERROR,
+        LEVEL_ERROR = 4,
         /**
          * log level for critical warning messages, see
          *   [func`GLib`.critical]. This level is also used for messages produced by
          *   [func`GLib`.return_if_fail] and [func`GLib`.return_val_if_fail].
          */
-        LEVEL_CRITICAL,
+        LEVEL_CRITICAL = 8,
         /**
          * log level for warnings, see [func`GLib`.warning]
          */
-        LEVEL_WARNING,
+        LEVEL_WARNING = 16,
         /**
          * log level for messages, see [func`GLib`.message]
          */
-        LEVEL_MESSAGE,
+        LEVEL_MESSAGE = 32,
         /**
          * log level for informational messages, see [func`GLib`.info]
          */
-        LEVEL_INFO,
+        LEVEL_INFO = 64,
         /**
          * log level for debug messages, see [func`GLib`.debug]
          */
-        LEVEL_DEBUG,
+        LEVEL_DEBUG = 128,
         /**
          * a mask including all log levels
          */
-        LEVEL_MASK,
+        LEVEL_MASK = -4,
     }
     /**
      * Flags to pass to [ctor`GLib`.MainContext.new_with_flags] which affect the
@@ -14607,14 +14607,14 @@ export namespace GLib {
         /**
          * Default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Assume that polling for events will
          * free the thread to process other jobs. That's useful if you're using
          * `g_main_context_{prepare,query,check,dispatch}` to integrate GMainContext in
          * other event loops.
          */
-        OWNERLESS_POLLING,
+        OWNERLESS_POLLING = 1,
     }
     /**
      * A mixed enumerated type and flags field. You must specify one type
@@ -14642,20 +14642,20 @@ export namespace GLib {
          * used to terminate the list of attributes
          *     to collect
          */
-        INVALID,
+        INVALID = 0,
         /**
          * collect the string pointer directly from
          *     the attribute_values[] array. Expects a parameter of type (const
          *     char **). If %G_MARKUP_COLLECT_OPTIONAL is specified and the
          *     attribute isn't present then the pointer will be set to %NULL
          */
-        STRING,
+        STRING = 1,
         /**
          * as with %G_MARKUP_COLLECT_STRING, but
          *     expects a parameter of type (char **) and g_strdup()s the
          *     returned pointer. The pointer must be freed with g_free()
          */
-        STRDUP,
+        STRDUP = 2,
         /**
          * expects a parameter of type (`gboolean *`)
          *     and parses the attribute value as a boolean. Sets %FALSE if the
@@ -14663,20 +14663,20 @@ export namespace GLib {
          *     (case-insensitive) "false", "f", "no", "n", "0" and "true", "t",
          *     "yes", "y", "1"
          */
-        BOOLEAN,
+        BOOLEAN = 3,
         /**
          * as with %G_MARKUP_COLLECT_BOOLEAN, but
          *     in the case of a missing attribute a value is set that compares
          *     equal to neither %FALSE nor %TRUE %G_MARKUP_COLLECT_OPTIONAL is
          *     implied
          */
-        TRISTATE,
+        TRISTATE = 4,
         /**
          * can be bitwise ORed with the other fields.
          *     If present, allows the attribute not to appear. A default value
          *     is set depending on what value type is used
          */
-        OPTIONAL,
+        OPTIONAL = 65536,
     }
     /**
      * Flags that affect the behaviour of the parser.
@@ -14693,11 +14693,11 @@ export namespace GLib {
         /**
          * No special behaviour. Since: 2.74
          */
-        DEFAULT_FLAGS,
+        DEFAULT_FLAGS = 0,
         /**
          * flag you should not use
          */
-        DO_NOT_USE_THIS_UNSUPPORTED_FLAG,
+        DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1,
         /**
          * When this flag is set, CDATA marked
          *     sections are not passed literally to the `passthrough` function of
@@ -14705,7 +14705,7 @@ export namespace GLib {
          *     `<![CDATA[` and `]]>`) is
          *     passed to the `text` function. This flag was added in GLib 2.12
          */
-        TREAT_CDATA_AS_TEXT,
+        TREAT_CDATA_AS_TEXT = 2,
         /**
          * Normally errors caught by GMarkup
          *     itself have line/column information prefixed to them to let the
@@ -14713,14 +14713,14 @@ export namespace GLib {
          *     location information is also prefixed to errors generated by the
          *     #GMarkupParser implementation functions
          */
-        PREFIX_ERROR_POSITION,
+        PREFIX_ERROR_POSITION = 4,
         /**
          * Ignore (don't report) qualified
          *     attributes and tags, along with their contents.  A qualified
          *     attribute or tag is one that contains ':' in its name (ie: is in
          *     another namespace).  Since: 2.40.
          */
-        IGNORE_QUALIFIED,
+        IGNORE_QUALIFIED = 8,
     }
     /**
      * Flags which modify individual options.
@@ -14737,41 +14737,41 @@ export namespace GLib {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * The option doesn't appear in `--help` output.
          */
-        HIDDEN,
+        HIDDEN = 1,
         /**
          * The option appears in the main section of the
          *   `--help` output, even if it is defined in a group.
          */
-        IN_MAIN,
+        IN_MAIN = 2,
         /**
          * For options of the %G_OPTION_ARG_NONE kind, this
          *   flag indicates that the sense of the option is reversed. i.e. %FALSE will
          *   be stored into the argument rather than %TRUE.
          */
-        REVERSE,
+        REVERSE = 4,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK kind,
          *   this flag indicates that the callback does not take any argument
          *   (like a %G_OPTION_ARG_NONE option). Since 2.8
          */
-        NO_ARG,
+        NO_ARG = 8,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK
          *   kind, this flag indicates that the argument should be passed to the
          *   callback in the GLib filename encoding rather than UTF-8. Since 2.8
          */
-        FILENAME,
+        FILENAME = 16,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK
          *   kind, this flag indicates that the argument supply is optional.
          *   If no argument is given then data of %GOptionParseFunc will be
          *   set to NULL. Since 2.8
          */
-        OPTIONAL_ARG,
+        OPTIONAL_ARG = 32,
         /**
          * This flag turns off the automatic conflict
          *   resolution which prefixes long option names with `groupname-` if
@@ -14780,7 +14780,7 @@ export namespace GLib {
          *   It is not safe to use this option, unless all option groups are under
          *   your direct control. Since 2.8.
          */
-        NOALIAS,
+        NOALIAS = 64,
         /**
          * This flag marks the option as deprecated in the `--help`.
          *
@@ -14788,7 +14788,7 @@ export namespace GLib {
          * the user should do in response to the deprecation, for instance:
          * remove the option, or replace it with another one.
          */
-        DEPRECATED,
+        DEPRECATED = 128,
     }
     /**
      * Flags specifying compile-time options.
@@ -14805,13 +14805,13 @@ export namespace GLib {
         /**
          * No special options set. Since: 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Letters in the pattern match both upper- and
          *     lowercase letters. This option can be changed within a pattern
          *     by a "(?i)" option setting.
          */
-        CASELESS,
+        CASELESS = 1,
         /**
          * By default, GRegex treats the strings as consisting
          *     of a single line of characters (even if it actually contains
@@ -14825,13 +14825,13 @@ export namespace GLib {
          *     and end. This can be changed within a pattern by a "(?m)" option
          *     setting.
          */
-        MULTILINE,
+        MULTILINE = 2,
         /**
          * A dot metacharacter (".") in the pattern matches all
          *     characters, including newlines. Without it, newlines are excluded.
          *     This option can be changed within a pattern by a ("?s") option setting.
          */
-        DOTALL,
+        DOTALL = 4,
         /**
          * Whitespace data characters in the pattern are
          *     totally ignored except when escaped or inside a character class.
@@ -14840,7 +14840,7 @@ export namespace GLib {
          *     the next newline character, inclusive, are also ignored. This can
          *     be changed within a pattern by a "(?x)" option setting.
          */
-        EXTENDED,
+        EXTENDED = 8,
         /**
          * The pattern is forced to be "anchored", that is,
          *     it is constrained to match only at the first matching point in the
@@ -14848,7 +14848,7 @@ export namespace GLib {
          *     appropriate constructs in the pattern itself such as the "^"
          *     metacharacter.
          */
-        ANCHORED,
+        ANCHORED = 16,
         /**
          * A dollar metacharacter ("$") in the pattern
          *     matches only at the end of the string. Without this option, a
@@ -14856,18 +14856,18 @@ export namespace GLib {
          *     it is a newline (but not before any other newlines). This option
          *     is ignored if %G_REGEX_MULTILINE is set.
          */
-        DOLLAR_ENDONLY,
+        DOLLAR_ENDONLY = 32,
         /**
          * Inverts the "greediness" of the quantifiers so that
          *     they are not greedy by default, but become greedy if followed by "?".
          *     It can also be set by a "(?U)" option setting within the pattern.
          */
-        UNGREEDY,
+        UNGREEDY = 512,
         /**
          * Usually strings must be valid UTF-8 strings, using this
          *     flag they are considered as a raw sequence of bytes.
          */
-        RAW,
+        RAW = 2048,
         /**
          * Disables the use of numbered capturing
          *     parentheses in the pattern. Any opening parenthesis that is not
@@ -14875,7 +14875,7 @@ export namespace GLib {
          *     parentheses can still be used for capturing (and they acquire numbers
          *     in the usual way).
          */
-        NO_AUTO_CAPTURE,
+        NO_AUTO_CAPTURE = 4096,
         /**
          * Since 2.74 and the port to pcre2, requests JIT
          *     compilation, which, if the just-in-time compiler is available, further
@@ -14885,55 +14885,55 @@ export namespace GLib {
          *     compiled pattern is used for matching many times. Before 2.74 this
          *     option used the built-in non-JIT optimizations in pcre1.
          */
-        OPTIMIZE,
+        OPTIMIZE = 8192,
         /**
          * Limits an unanchored pattern to match before (or at) the
          *     first newline. Since: 2.34
          */
-        FIRSTLINE,
+        FIRSTLINE = 262144,
         /**
          * Names used to identify capturing subpatterns need not
          *     be unique. This can be helpful for certain types of pattern when it
          *     is known that only one instance of the named subpattern can ever be
          *     matched.
          */
-        DUPNAMES,
+        DUPNAMES = 524288,
         /**
          * Usually any newline character or character sequence is
          *     recognized. If this option is set, the only recognized newline character
          *     is '\r'.
          */
-        NEWLINE_CR,
+        NEWLINE_CR = 1048576,
         /**
          * Usually any newline character or character sequence is
          *     recognized. If this option is set, the only recognized newline character
          *     is '\n'.
          */
-        NEWLINE_LF,
+        NEWLINE_LF = 2097152,
         /**
          * Usually any newline character or character sequence is
          *     recognized. If this option is set, the only recognized newline character
          *     sequence is '\r\n'.
          */
-        NEWLINE_CRLF,
+        NEWLINE_CRLF = 3145728,
         /**
          * Usually any newline character or character sequence
          *     is recognized. If this option is set, the only recognized newline character
          *     sequences are '\r', '\n', and '\r\n'. Since: 2.34
          */
-        NEWLINE_ANYCRLF,
+        NEWLINE_ANYCRLF = 5242880,
         /**
          * Usually any newline character or character sequence
          *     is recognised. If this option is set, then "\R" only recognizes the newline
          *    characters '\r', '\n' and '\r\n'. Since: 2.34
          */
-        BSR_ANYCRLF,
+        BSR_ANYCRLF = 8388608,
         /**
          * Changes behaviour so that it is compatible with
          *     JavaScript rather than PCRE. Since GLib 2.74 this is no longer supported,
          *     as libpcre2 does not support it. Since: 2.34 Deprecated: 2.74
          */
-        JAVASCRIPT_COMPAT,
+        JAVASCRIPT_COMPAT = 33554432,
     }
     /**
      * Flags specifying match-time options.
@@ -14950,7 +14950,7 @@ export namespace GLib {
         /**
          * No special options set. Since: 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * The pattern is forced to be "anchored", that is,
          *     it is constrained to match only at the first matching point in the
@@ -14958,7 +14958,7 @@ export namespace GLib {
          *     appropriate constructs in the pattern itself such as the "^"
          *     metacharacter.
          */
-        ANCHORED,
+        ANCHORED = 16,
         /**
          * Specifies that first character of the string is
          *     not the beginning of a line, so the circumflex metacharacter should
@@ -14967,7 +14967,7 @@ export namespace GLib {
          *     only the behaviour of the circumflex metacharacter, it does not
          *     affect "\A".
          */
-        NOTBOL,
+        NOTBOL = 128,
         /**
          * Specifies that the end of the subject string is
          *     not the end of a line, so the dollar metacharacter should not match
@@ -14976,7 +14976,7 @@ export namespace GLib {
          *     dollar never to match. This option affects only the behaviour of
          *     the dollar metacharacter, it does not affect "\Z" or "\z".
          */
-        NOTEOL,
+        NOTEOL = 256,
         /**
          * An empty string is not considered to be a valid
          *     match if this option is set. If there are alternatives in the pattern,
@@ -14987,27 +14987,27 @@ export namespace GLib {
          *     valid, so GRegex searches further into the string for occurrences
          *     of "a" or "b".
          */
-        NOTEMPTY,
+        NOTEMPTY = 1024,
         /**
          * Turns on the partial matching feature, for more
          *     documentation on partial matching see g_match_info_is_partial_match().
          */
-        PARTIAL,
+        PARTIAL = 32768,
         /**
          * Overrides the newline definition set when
          *     creating a new #GRegex, setting the '\r' character as line terminator.
          */
-        NEWLINE_CR,
+        NEWLINE_CR = 1048576,
         /**
          * Overrides the newline definition set when
          *     creating a new #GRegex, setting the '\n' character as line terminator.
          */
-        NEWLINE_LF,
+        NEWLINE_LF = 2097152,
         /**
          * Overrides the newline definition set when
          *     creating a new #GRegex, setting the '\r\n' characters sequence as line terminator.
          */
-        NEWLINE_CRLF,
+        NEWLINE_CRLF = 3145728,
         /**
          * Overrides the newline definition set when
          *     creating a new #GRegex, any Unicode newline sequence
@@ -15016,19 +15016,19 @@ export namespace GLib {
          *     U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
          *     U+2029 PARAGRAPH SEPARATOR.
          */
-        NEWLINE_ANY,
+        NEWLINE_ANY = 4194304,
         /**
          * Overrides the newline definition set when
          *     creating a new #GRegex; any '\r', '\n', or '\r\n' character sequence
          *     is recognized as a newline. Since: 2.34
          */
-        NEWLINE_ANYCRLF,
+        NEWLINE_ANYCRLF = 5242880,
         /**
          * Overrides the newline definition for "\R" set when
          *     creating a new #GRegex; only '\r', '\n', or '\r\n' character sequences
          *     are recognized as a newline by "\R". Since: 2.34
          */
-        BSR_ANYCRLF,
+        BSR_ANYCRLF = 8388608,
         /**
          * Overrides the newline definition for "\R" set when
          *     creating a new #GRegex; any Unicode newline character or character sequence
@@ -15037,24 +15037,24 @@ export namespace GLib {
          *     U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
          *     U+2029 PARAGRAPH SEPARATOR. Since: 2.34
          */
-        BSR_ANY,
+        BSR_ANY = 16777216,
         /**
          * An alias for %G_REGEX_MATCH_PARTIAL. Since: 2.34
          */
-        PARTIAL_SOFT,
+        PARTIAL_SOFT = 32768,
         /**
          * Turns on the partial matching feature. In contrast to
          *     to %G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
          *     is found, without continuing to search for a possible complete match. See
          *     g_match_info_is_partial_match() for more information. Since: 2.34
          */
-        PARTIAL_HARD,
+        PARTIAL_HARD = 134217728,
         /**
          * Like %G_REGEX_MATCH_NOTEMPTY, but only applied to
          *     the start of the matched string. For anchored
          *     patterns this can only happen for pattern containing "\K". Since: 2.34
          */
-        NOTEMPTY_ATSTART,
+        NOTEMPTY_ATSTART = 268435456,
     }
     /**
      * Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().
@@ -15071,68 +15071,68 @@ export namespace GLib {
         /**
          * no flags, default behaviour
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * the parent's open file descriptors will
          *     be inherited by the child; otherwise all descriptors except stdin,
          *     stdout and stderr will be closed before calling exec() in the child.
          */
-        LEAVE_DESCRIPTORS_OPEN,
+        LEAVE_DESCRIPTORS_OPEN = 1,
         /**
          * the child will not be automatically reaped;
          *     you must use g_child_watch_add() yourself (or call waitpid() or handle
          *     `SIGCHLD` yourself), or the child will become a zombie.
          */
-        DO_NOT_REAP_CHILD,
+        DO_NOT_REAP_CHILD = 2,
         /**
          * `argv[0]` need not be an absolute path, it will be
          *     looked for in the user's `PATH`.
          */
-        SEARCH_PATH,
+        SEARCH_PATH = 4,
         /**
          * the child's standard output will be discarded,
          *     instead of going to the same location as the parent's standard output.
          */
-        STDOUT_TO_DEV_NULL,
+        STDOUT_TO_DEV_NULL = 8,
         /**
          * the child's standard error will be discarded.
          */
-        STDERR_TO_DEV_NULL,
+        STDERR_TO_DEV_NULL = 16,
         /**
          * the child will inherit the parent's standard
          *     input (by default, the child's standard input is attached to `/dev/null`).
          */
-        CHILD_INHERITS_STDIN,
+        CHILD_INHERITS_STDIN = 32,
         /**
          * the first element of `argv` is the file to
          *     execute, while the remaining elements are the actual argument vector
          *     to pass to the file. Normally g_spawn_async_with_pipes() uses `argv[0]`
          *     as the file to execute, and passes all of `argv` to the child.
          */
-        FILE_AND_ARGV_ZERO,
+        FILE_AND_ARGV_ZERO = 64,
         /**
          * if `argv[0]` is not an absolute path,
          *     it will be looked for in the `PATH` from the passed child environment.
          *     Since: 2.34
          */
-        SEARCH_PATH_FROM_ENVP,
+        SEARCH_PATH_FROM_ENVP = 128,
         /**
          * create all pipes with the `O_CLOEXEC` flag set.
          *     Since: 2.40
          */
-        CLOEXEC_PIPES,
+        CLOEXEC_PIPES = 256,
         /**
          * The child will inherit the parent's standard output.
          */
-        CHILD_INHERITS_STDOUT,
+        CHILD_INHERITS_STDOUT = 512,
         /**
          * The child will inherit the parent's standard error.
          */
-        CHILD_INHERITS_STDERR,
+        CHILD_INHERITS_STDERR = 1024,
         /**
          * The child's standard input is attached to `/dev/null`.
          */
-        STDIN_FROM_DEV_NULL,
+        STDIN_FROM_DEV_NULL = 2048,
     }
     /**
      * Flags to pass to [func`GLib`.test_trap_subprocess] to control input and output.
@@ -15157,27 +15157,27 @@ export namespace GLib {
         /**
          * Default behaviour. Since: 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * If this flag is given, the child
          *   process will inherit the parent's stdin. Otherwise, the child's
          *   stdin is redirected to `/dev/null`.
          */
-        INHERIT_STDIN,
+        INHERIT_STDIN = 1,
         /**
          * If this flag is given, the child
          *   process will inherit the parent's stdout. Otherwise, the child's
          *   stdout will not be visible, but it will be captured to allow
          *   later tests with [func`GLib`.test_trap_assert_stdout].
          */
-        INHERIT_STDOUT,
+        INHERIT_STDOUT = 2,
         /**
          * If this flag is given, the child
          *   process will inherit the parent's stderr. Otherwise, the child's
          *   stderr will not be visible, but it will be captured to allow
          *   later tests with [func`GLib`.test_trap_assert_stderr].
          */
-        INHERIT_STDERR,
+        INHERIT_STDERR = 4,
     }
     /**
      * Flags to pass to [func`GLib`.test_trap_fork] to control input and output.
@@ -15198,27 +15198,27 @@ export namespace GLib {
         /**
          * Default behaviour. Since: 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Redirect stdout of the test child to
          *     `/dev/null` so it cannot be observed on the console during test
          *     runs. The actual output is still captured though to allow later
          *     tests with g_test_trap_assert_stdout().
          */
-        SILENCE_STDOUT,
+        SILENCE_STDOUT = 128,
         /**
          * Redirect stderr of the test child to
          *     `/dev/null` so it cannot be observed on the console during test
          *     runs. The actual output is still captured though to allow later
          *     tests with g_test_trap_assert_stderr().
          */
-        SILENCE_STDERR,
+        SILENCE_STDERR = 256,
         /**
          * If this flag is given, stdin of the
          *     child process is shared with stdin of its parent process.
          *     It is redirected to `/dev/null` otherwise.
          */
-        INHERIT_STDIN,
+        INHERIT_STDIN = 512,
     }
     /**
      * Specifies which nodes are visited during several of the tree
@@ -15239,29 +15239,29 @@ export namespace GLib {
          *                     been introduced in 2.6, for older version use
          *                     %G_TRAVERSE_LEAFS.
          */
-        LEAVES,
+        LEAVES = 1,
         /**
          * only non-leaf nodes should be visited. This
          *                         name has been introduced in 2.6, for older
          *                         version use %G_TRAVERSE_NON_LEAFS.
          */
-        NON_LEAVES,
+        NON_LEAVES = 2,
         /**
          * all nodes should be visited.
          */
-        ALL,
+        ALL = 3,
         /**
          * a mask of all traverse flags.
          */
-        MASK,
+        MASK = 3,
         /**
          * identical to %G_TRAVERSE_LEAVES.
          */
-        LEAFS,
+        LEAFS = 1,
         /**
          * identical to %G_TRAVERSE_NON_LEAVES.
          */
-        NON_LEAFS,
+        NON_LEAFS = 2,
     }
     /**
      * Flags that describe a URI.
@@ -15288,7 +15288,7 @@ export namespace GLib {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Parse the URI more relaxedly than the
          *     [RFC 3986](https://tools.ietf.org/html/rfc3986) grammar specifies,
@@ -15296,18 +15296,18 @@ export namespace GLib {
          *     sources. This is also needed for some obscure URI schemes where `;`
          *     separates the host from the path. Don’t use this flag unless you need to.
          */
-        PARSE_RELAXED,
+        PARSE_RELAXED = 1,
         /**
          * The userinfo field may contain a password,
          *     which will be separated from the username by `:`.
          */
-        HAS_PASSWORD,
+        HAS_PASSWORD = 2,
         /**
          * The userinfo may contain additional
          *     authentication-related parameters, which will be separated from
          *     the username and/or password by `;`.
          */
-        HAS_AUTH_PARAMS,
+        HAS_AUTH_PARAMS = 4,
         /**
          * When parsing a URI, this indicates that `%`-encoded
          *     characters in the userinfo, path, query, and fragment fields
@@ -15316,34 +15316,34 @@ export namespace GLib {
          *     that you have already `%`-encoded the components, and so #GUri
          *     should not do any encoding itself.
          */
-        ENCODED,
+        ENCODED = 8,
         /**
          * The host component should not be assumed to be a
          *     DNS hostname or IP address (for example, for `smb` URIs with NetBIOS
          *     hostnames).
          */
-        NON_DNS,
+        NON_DNS = 16,
         /**
          * Same as %G_URI_FLAGS_ENCODED, for the query
          *     field only.
          */
-        ENCODED_QUERY,
+        ENCODED_QUERY = 32,
         /**
          * Same as %G_URI_FLAGS_ENCODED, for the path only.
          */
-        ENCODED_PATH,
+        ENCODED_PATH = 64,
         /**
          * Same as %G_URI_FLAGS_ENCODED, for the
          *     fragment only.
          */
-        ENCODED_FRAGMENT,
+        ENCODED_FRAGMENT = 128,
         /**
          * A scheme-based normalization will be applied.
          *     For example, when parsing an HTTP URI changing omitted path to `/` and
          *     omitted port to `80`; and when building a URI, changing empty path to `/`
          *     and default port `80`). This only supports a subset of known schemes. (Since: 2.68)
          */
-        SCHEME_NORMALIZE,
+        SCHEME_NORMALIZE = 256,
     }
     /**
      * Flags describing what parts of the URI to hide in
@@ -15366,27 +15366,27 @@ export namespace GLib {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Hide the userinfo.
          */
-        USERINFO,
+        USERINFO = 1,
         /**
          * Hide the password.
          */
-        PASSWORD,
+        PASSWORD = 2,
         /**
          * Hide the auth_params.
          */
-        AUTH_PARAMS,
+        AUTH_PARAMS = 4,
         /**
          * Hide the query.
          */
-        QUERY,
+        QUERY = 8,
         /**
          * Hide the fragment.
          */
-        FRAGMENT,
+        FRAGMENT = 16,
     }
     /**
      * Flags modifying the way parameters are handled by g_uri_parse_params() and
@@ -15405,20 +15405,20 @@ export namespace GLib {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Parameter names are case insensitive.
          */
-        CASE_INSENSITIVE,
+        CASE_INSENSITIVE = 1,
         /**
          * Replace `+` with space character. Only useful for
          *     URLs on the web, using the `https` or `http` schemas.
          */
-        WWW_FORM,
+        WWW_FORM = 2,
         /**
          * See %G_URI_FLAGS_PARSE_RELAXED.
          */
-        PARSE_RELAXED,
+        PARSE_RELAXED = 4,
     }
     abstract class Allocator {
         static $gtype: GObject.GType<Allocator>;

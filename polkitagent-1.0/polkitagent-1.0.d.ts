@@ -43,11 +43,11 @@ export namespace PolkitAgent {
         /**
          * No flags are set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Run the listener in a dedicated thread.
          */
-        RUN_IN_THREAD,
+        RUN_IN_THREAD = 1,
     }
     namespace Listener {
         // Signal signatures

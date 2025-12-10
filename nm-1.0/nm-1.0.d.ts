@@ -35,29 +35,29 @@ export namespace NM {
         /**
          * the device or access point mode is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * for both devices and access point objects, indicates
          *   the object is part of an Ad-Hoc 802.11 network without a central
          *   coordinating access point.
          */
-        ADHOC,
+        ADHOC = 1,
         /**
          * the device or access point is in infrastructure mode.
          *   For devices, this indicates the device is an 802.11 client/station.  For
          *   access point objects, this indicates the object is an access point that
          *   provides connectivity to clients.
          */
-        INFRA,
+        INFRA = 2,
         /**
          * the device is an access point/hotspot.  Not valid for
          *   access point objects; used only for hotspot mode on the local machine.
          */
-        AP,
+        AP = 3,
         /**
          * the device is a 802.11s mesh point. Since: 1.20.
          */
-        MESH,
+        MESH = 4,
     }
     /**
      * #NMActiveConnectionState values indicate the state of a connection to a
@@ -78,25 +78,25 @@ export namespace NM {
         /**
          * the state of the connection is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a network connection is being prepared
          */
-        ACTIVATING,
+        ACTIVATING = 1,
         /**
          * there is a connection to the network
          */
-        ACTIVATED,
+        ACTIVATED = 2,
         /**
          * the network connection is being
          *   torn down and cleaned up
          */
-        DEACTIVATING,
+        DEACTIVATING = 3,
         /**
          * the network connection is disconnected
          *   and will be removed
          */
-        DEACTIVATED,
+        DEACTIVATED = 4,
     }
     /**
      * Active connection state reasons.
@@ -114,77 +114,77 @@ export namespace NM {
          * The reason for the active connection
          *   state change is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No reason was given for the active
          *   connection state change.
          */
-        NONE,
+        NONE = 1,
         /**
          * The active connection changed
          *   state because the user disconnected it.
          */
-        USER_DISCONNECTED,
+        USER_DISCONNECTED = 2,
         /**
          * The active connection
          *   changed state because the device it was using was disconnected.
          */
-        DEVICE_DISCONNECTED,
+        DEVICE_DISCONNECTED = 3,
         /**
          * The service providing the
          *   VPN connection was stopped.
          */
-        SERVICE_STOPPED,
+        SERVICE_STOPPED = 4,
         /**
          * The IP config of the active
          *   connection was invalid.
          */
-        IP_CONFIG_INVALID,
+        IP_CONFIG_INVALID = 5,
         /**
          * The connection attempt to
          *   the VPN service timed out.
          */
-        CONNECT_TIMEOUT,
+        CONNECT_TIMEOUT = 6,
         /**
          * A timeout occurred
          *   while starting the service providing the VPN connection.
          */
-        SERVICE_START_TIMEOUT,
+        SERVICE_START_TIMEOUT = 7,
         /**
          * Starting the service
          *   providing the VPN connection failed.
          */
-        SERVICE_START_FAILED,
+        SERVICE_START_FAILED = 8,
         /**
          * Necessary secrets for the
          *   connection were not provided.
          */
-        NO_SECRETS,
+        NO_SECRETS = 9,
         /**
          * Authentication to the
          *   server failed.
          */
-        LOGIN_FAILED,
+        LOGIN_FAILED = 10,
         /**
          * The connection was
          *   deleted from settings.
          */
-        CONNECTION_REMOVED,
+        CONNECTION_REMOVED = 11,
         /**
          * Master connection of this
          *   connection failed to activate.
          */
-        DEPENDENCY_FAILED,
+        DEPENDENCY_FAILED = 12,
         /**
          * Could not create the
          *   software device link.
          */
-        DEVICE_REALIZE_FAILED,
+        DEVICE_REALIZE_FAILED = 13,
         /**
          * The device this connection
          *   depended on disappeared.
          */
-        DEVICE_REMOVED,
+        DEVICE_REMOVED = 14,
     }
     /**
      * Errors returned from the secret-agent manager.
@@ -266,12 +266,12 @@ export namespace NM {
          * Teams can be managed. This means the team device plugin
          *   is loaded.
          */
-        TEAM,
+        TEAM = 1,
         /**
          * OpenVSwitch can be managed. This means the OVS device plugin
          *   is loaded. Since: 1.24.
          */
-        OVS,
+        OVS = 2,
     }
     /**
      * Describes errors that may result from operations involving a #NMClient.
@@ -331,93 +331,93 @@ export namespace NM {
         /**
          * unknown or no permission
          */
-        NONE,
+        NONE = 0,
         /**
          * controls whether networking
          *  can be globally enabled or disabled
          */
-        ENABLE_DISABLE_NETWORK,
+        ENABLE_DISABLE_NETWORK = 1,
         /**
          * controls whether Wi-Fi can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WIFI,
+        ENABLE_DISABLE_WIFI = 2,
         /**
          * controls whether WWAN (3G) can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WWAN,
+        ENABLE_DISABLE_WWAN = 3,
         /**
          * controls whether WiMAX can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WIMAX,
+        ENABLE_DISABLE_WIMAX = 4,
         /**
          * controls whether the client can ask
          *  NetworkManager to sleep and wake
          */
-        SLEEP_WAKE,
+        SLEEP_WAKE = 5,
         /**
          * controls whether networking connections
          *  can be started, stopped, and changed
          */
-        NETWORK_CONTROL,
+        NETWORK_CONTROL = 6,
         /**
          * controls whether a password
          *  protected Wi-Fi hotspot can be created
          */
-        WIFI_SHARE_PROTECTED,
+        WIFI_SHARE_PROTECTED = 7,
         /**
          * controls whether an open Wi-Fi hotspot
          *  can be created
          */
-        WIFI_SHARE_OPEN,
+        WIFI_SHARE_OPEN = 8,
         /**
          * controls whether connections
          *  that are available to all users can be modified
          */
-        SETTINGS_MODIFY_SYSTEM,
+        SETTINGS_MODIFY_SYSTEM = 9,
         /**
          * controls whether connections
          *  owned by the current user can be modified
          */
-        SETTINGS_MODIFY_OWN,
+        SETTINGS_MODIFY_OWN = 10,
         /**
          * controls whether the
          *  persistent hostname can be changed
          */
-        SETTINGS_MODIFY_HOSTNAME,
+        SETTINGS_MODIFY_HOSTNAME = 11,
         /**
          * modify persistent global
          *  DNS configuration
          */
-        SETTINGS_MODIFY_GLOBAL_DNS,
+        SETTINGS_MODIFY_GLOBAL_DNS = 12,
         /**
          * controls access to Reload.
          */
-        RELOAD,
+        RELOAD = 13,
         /**
          * permission to create checkpoints.
          */
-        CHECKPOINT_ROLLBACK,
+        CHECKPOINT_ROLLBACK = 14,
         /**
          * controls whether device
          *  statistics can be globally enabled or disabled
          */
-        ENABLE_DISABLE_STATISTICS,
+        ENABLE_DISABLE_STATISTICS = 15,
         /**
          * controls whether
          *  connectivity check can be enabled or disabled
          */
-        ENABLE_DISABLE_CONNECTIVITY_CHECK,
+        ENABLE_DISABLE_CONNECTIVITY_CHECK = 16,
         /**
          * controls whether wifi scans can be performed
          */
-        WIFI_SCAN,
+        WIFI_SCAN = 17,
         /**
          * a reserved boundary value
          */
-        LAST,
+        LAST = 17,
     }
     /**
      * #NMClientPermissionResult values indicate what authorizations and permissions
@@ -436,21 +436,21 @@ export namespace NM {
         /**
          * unknown or no authorization
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the permission is available
          */
-        YES,
+        YES = 1,
         /**
          * authorization is necessary before the
          *  permission is available
          */
-        AUTH,
+        AUTH = 2,
         /**
          * permission to perform the operation is
          *  denied by system policy
          */
-        NO,
+        NO = 3,
     }
     /**
      * Describes errors that may result from operations involving a #NMConnection
@@ -536,25 +536,25 @@ export namespace NM {
          *   setting is unspecified. In this case, it will fallback to the default
          *   value, which is %NM_CONNECTION_MULTI_CONNECT_SINGLE.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * the connection profile can only
          *   be active once at each moment. Activating a profile that is already active,
          *   will first deactivate it.
          */
-        SINGLE,
+        SINGLE = 1,
         /**
          * the profile can
          *   be manually activated multiple times on different devices. However,
          *   regarding autoconnect, the profile will autoconnect only if it is
          *   currently not connected otherwise.
          */
-        MANUAL_MULTIPLE,
+        MANUAL_MULTIPLE = 2,
         /**
          * the profile can autoactivate
          *   and be manually activated multiple times together.
          */
-        MULTIPLE,
+        MULTIPLE = 3,
     }
 
     export namespace ConnectivityState {
@@ -568,14 +568,14 @@ export namespace NM {
          *   not run yet. The graphical shell should assume the Internet connection
          *   might be available and not present a captive portal window.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The host is not connected to any network. There's
          *   no active connection that contains a default route to the internet and
          *   thus it makes no sense to even attempt a connectivity check. The graphical
          *   shell should use this state to indicate the network connection is unavailable.
          */
-        NONE,
+        NONE = 1,
         /**
          * The Internet connection is hijacked by a captive
          *   portal gateway. The graphical shell may open a sandboxed web browser window
@@ -584,18 +584,18 @@ export namespace NM {
          *   and retrigger the connectivity check with CheckConnectivity() when the
          *   browser window is dismissed.
          */
-        PORTAL,
+        PORTAL = 2,
         /**
          * The host is connected to a network, does not appear
          *   to be able to reach the full Internet, but a captive portal has not been
          *   detected.
          */
-        LIMITED,
+        LIMITED = 3,
         /**
          * The host is connected to a network, and
          *   appears to be able to reach the full Internet.
          */
-        FULL,
+        FULL = 4,
     }
     /**
      * Cryptography-related errors that can be returned from some nm-utils methods,
@@ -723,77 +723,77 @@ export namespace NM {
         /**
          * the device's state is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the device is recognized, but not managed by
          *   NetworkManager
          */
-        UNMANAGED,
+        UNMANAGED = 10,
         /**
          * the device is managed by NetworkManager, but
          *   is not available for use.  Reasons may include the wireless switched off,
          *   missing firmware, no ethernet carrier, missing supplicant or modem manager,
          *   etc.
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 20,
         /**
          * the device can be activated, but is currently
          *   idle and not connected to a network.
          */
-        DISCONNECTED,
+        DISCONNECTED = 30,
         /**
          * the device is preparing the connection to the
          *   network.  This may include operations like changing the MAC address,
          *   setting physical link properties, and anything else required to connect
          *   to the requested network.
          */
-        PREPARE,
+        PREPARE = 40,
         /**
          * the device is connecting to the requested network.
          *   This may include operations like associating with the Wi-Fi AP, dialing
          *   the modem, connecting to the remote Bluetooth device, etc.
          */
-        CONFIG,
+        CONFIG = 50,
         /**
          * the device requires more information to continue
          *   connecting to the requested network.  This includes secrets like WiFi
          *   passphrases, login passwords, PIN codes, etc.
          */
-        NEED_AUTH,
+        NEED_AUTH = 60,
         /**
          * the device is requesting IPv4 and/or IPv6
          *   addresses and routing information from the network.
          */
-        IP_CONFIG,
+        IP_CONFIG = 70,
         /**
          * the device is checking whether further action is
          *   required for the requested network connection.  This may include checking
          *   whether only local network access is available, whether a captive portal
          *   is blocking access to the Internet, etc.
          */
-        IP_CHECK,
+        IP_CHECK = 80,
         /**
          * the device is waiting for a secondary
          *   connection (like a VPN) which must activated before the device can be
          *   activated
          */
-        SECONDARIES,
+        SECONDARIES = 90,
         /**
          * the device has a network connection, either local
          *   or global.
          */
-        ACTIVATED,
+        ACTIVATED = 100,
         /**
          * a disconnection from the current network
          *   connection was requested, and the device is cleaning up resources used for
          *   that connection.  The network connection may still be valid.
          */
-        DEACTIVATING,
+        DEACTIVATING = 110,
         /**
          * the device failed to connect to the requested
          *   network and is cleaning up the connection request
          */
-        FAILED,
+        FAILED = 120,
     }
     /**
      * Device state change reason codes
@@ -810,325 +810,325 @@ export namespace NM {
         /**
          * No reason given
          */
-        NONE,
+        NONE = 0,
         /**
          * Unknown error
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * Device is now managed
          */
-        NOW_MANAGED,
+        NOW_MANAGED = 2,
         /**
          * Device is now unmanaged
          */
-        NOW_UNMANAGED,
+        NOW_UNMANAGED = 3,
         /**
          * The device could not be readied for configuration
          */
-        CONFIG_FAILED,
+        CONFIG_FAILED = 4,
         /**
          * IP configuration could not be reserved (no available address, timeout, etc)
          */
-        IP_CONFIG_UNAVAILABLE,
+        IP_CONFIG_UNAVAILABLE = 5,
         /**
          * The IP config is no longer valid
          */
-        IP_CONFIG_EXPIRED,
+        IP_CONFIG_EXPIRED = 6,
         /**
          * Secrets were required, but not provided
          */
-        NO_SECRETS,
+        NO_SECRETS = 7,
         /**
          * 802.1x supplicant disconnected
          */
-        SUPPLICANT_DISCONNECT,
+        SUPPLICANT_DISCONNECT = 8,
         /**
          * 802.1x supplicant configuration failed
          */
-        SUPPLICANT_CONFIG_FAILED,
+        SUPPLICANT_CONFIG_FAILED = 9,
         /**
          * 802.1x supplicant failed
          */
-        SUPPLICANT_FAILED,
+        SUPPLICANT_FAILED = 10,
         /**
          * 802.1x supplicant took too long to authenticate
          */
-        SUPPLICANT_TIMEOUT,
+        SUPPLICANT_TIMEOUT = 11,
         /**
          * PPP service failed to start
          */
-        PPP_START_FAILED,
+        PPP_START_FAILED = 12,
         /**
          * PPP service disconnected
          */
-        PPP_DISCONNECT,
+        PPP_DISCONNECT = 13,
         /**
          * PPP failed
          */
-        PPP_FAILED,
+        PPP_FAILED = 14,
         /**
          * DHCP client failed to start
          */
-        DHCP_START_FAILED,
+        DHCP_START_FAILED = 15,
         /**
          * DHCP client error
          */
-        DHCP_ERROR,
+        DHCP_ERROR = 16,
         /**
          * DHCP client failed
          */
-        DHCP_FAILED,
+        DHCP_FAILED = 17,
         /**
          * Shared connection service failed to start
          */
-        SHARED_START_FAILED,
+        SHARED_START_FAILED = 18,
         /**
          * Shared connection service failed
          */
-        SHARED_FAILED,
+        SHARED_FAILED = 19,
         /**
          * AutoIP service failed to start
          */
-        AUTOIP_START_FAILED,
+        AUTOIP_START_FAILED = 20,
         /**
          * AutoIP service error
          */
-        AUTOIP_ERROR,
+        AUTOIP_ERROR = 21,
         /**
          * AutoIP service failed
          */
-        AUTOIP_FAILED,
+        AUTOIP_FAILED = 22,
         /**
          * The line is busy
          */
-        MODEM_BUSY,
+        MODEM_BUSY = 23,
         /**
          * No dial tone
          */
-        MODEM_NO_DIAL_TONE,
+        MODEM_NO_DIAL_TONE = 24,
         /**
          * No carrier could be established
          */
-        MODEM_NO_CARRIER,
+        MODEM_NO_CARRIER = 25,
         /**
          * The dialing request timed out
          */
-        MODEM_DIAL_TIMEOUT,
+        MODEM_DIAL_TIMEOUT = 26,
         /**
          * The dialing attempt failed
          */
-        MODEM_DIAL_FAILED,
+        MODEM_DIAL_FAILED = 27,
         /**
          * Modem initialization failed
          */
-        MODEM_INIT_FAILED,
+        MODEM_INIT_FAILED = 28,
         /**
          * Failed to select the specified APN
          */
-        GSM_APN_FAILED,
+        GSM_APN_FAILED = 29,
         /**
          * Not searching for networks
          */
-        GSM_REGISTRATION_NOT_SEARCHING,
+        GSM_REGISTRATION_NOT_SEARCHING = 30,
         /**
          * Network registration denied
          */
-        GSM_REGISTRATION_DENIED,
+        GSM_REGISTRATION_DENIED = 31,
         /**
          * Network registration timed out
          */
-        GSM_REGISTRATION_TIMEOUT,
+        GSM_REGISTRATION_TIMEOUT = 32,
         /**
          * Failed to register with the requested network
          */
-        GSM_REGISTRATION_FAILED,
+        GSM_REGISTRATION_FAILED = 33,
         /**
          * PIN check failed
          */
-        GSM_PIN_CHECK_FAILED,
+        GSM_PIN_CHECK_FAILED = 34,
         /**
          * Necessary firmware for the device may be missing
          */
-        FIRMWARE_MISSING,
+        FIRMWARE_MISSING = 35,
         /**
          * The device was removed
          */
-        REMOVED,
+        REMOVED = 36,
         /**
          * NetworkManager went to sleep
          */
-        SLEEPING,
+        SLEEPING = 37,
         /**
          * The device's active connection disappeared
          */
-        CONNECTION_REMOVED,
+        CONNECTION_REMOVED = 38,
         /**
          * Device disconnected by user or client
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 39,
         /**
          * Carrier/link changed
          */
-        CARRIER,
+        CARRIER = 40,
         /**
          * The device's existing connection was assumed
          */
-        CONNECTION_ASSUMED,
+        CONNECTION_ASSUMED = 41,
         /**
          * The supplicant is now available
          */
-        SUPPLICANT_AVAILABLE,
+        SUPPLICANT_AVAILABLE = 42,
         /**
          * The modem could not be found
          */
-        MODEM_NOT_FOUND,
+        MODEM_NOT_FOUND = 43,
         /**
          * The Bluetooth connection failed or timed out
          */
-        BT_FAILED,
+        BT_FAILED = 44,
         /**
          * GSM Modem's SIM Card not inserted
          */
-        GSM_SIM_NOT_INSERTED,
+        GSM_SIM_NOT_INSERTED = 45,
         /**
          * GSM Modem's SIM Pin required
          */
-        GSM_SIM_PIN_REQUIRED,
+        GSM_SIM_PIN_REQUIRED = 46,
         /**
          * GSM Modem's SIM Puk required
          */
-        GSM_SIM_PUK_REQUIRED,
+        GSM_SIM_PUK_REQUIRED = 47,
         /**
          * GSM Modem's SIM wrong
          */
-        GSM_SIM_WRONG,
+        GSM_SIM_WRONG = 48,
         /**
          * InfiniBand device does not support connected mode
          */
-        INFINIBAND_MODE,
+        INFINIBAND_MODE = 49,
         /**
          * A dependency of the connection failed
          */
-        DEPENDENCY_FAILED,
+        DEPENDENCY_FAILED = 50,
         /**
          * Problem with the RFC 2684 Ethernet over ADSL bridge
          */
-        BR2684_FAILED,
+        BR2684_FAILED = 51,
         /**
          * ModemManager not running
          */
-        MODEM_MANAGER_UNAVAILABLE,
+        MODEM_MANAGER_UNAVAILABLE = 52,
         /**
          * The Wi-Fi network could not be found
          */
-        SSID_NOT_FOUND,
+        SSID_NOT_FOUND = 53,
         /**
          * A secondary connection of the base connection failed
          */
-        SECONDARY_CONNECTION_FAILED,
+        SECONDARY_CONNECTION_FAILED = 54,
         /**
          * DCB or FCoE setup failed
          */
-        DCB_FCOE_FAILED,
+        DCB_FCOE_FAILED = 55,
         /**
          * teamd control failed
          */
-        TEAMD_CONTROL_FAILED,
+        TEAMD_CONTROL_FAILED = 56,
         /**
          * Modem failed or no longer available
          */
-        MODEM_FAILED,
+        MODEM_FAILED = 57,
         /**
          * Modem now ready and available
          */
-        MODEM_AVAILABLE,
+        MODEM_AVAILABLE = 58,
         /**
          * SIM PIN was incorrect
          */
-        SIM_PIN_INCORRECT,
+        SIM_PIN_INCORRECT = 59,
         /**
          * New connection activation was enqueued
          */
-        NEW_ACTIVATION,
+        NEW_ACTIVATION = 60,
         /**
          * the device's parent changed
          */
-        PARENT_CHANGED,
+        PARENT_CHANGED = 61,
         /**
          * the device parent's management changed
          */
-        PARENT_MANAGED_CHANGED,
+        PARENT_MANAGED_CHANGED = 62,
         /**
          * problem communicating with Open vSwitch database
          */
-        OVSDB_FAILED,
+        OVSDB_FAILED = 63,
         /**
          * a duplicate IP address was detected
          */
-        IP_ADDRESS_DUPLICATE,
+        IP_ADDRESS_DUPLICATE = 64,
         /**
          * The selected IP method is not supported
          */
-        IP_METHOD_UNSUPPORTED,
+        IP_METHOD_UNSUPPORTED = 65,
         /**
          * configuration of SR-IOV parameters failed
          */
-        SRIOV_CONFIGURATION_FAILED,
+        SRIOV_CONFIGURATION_FAILED = 66,
         /**
          * The Wi-Fi P2P peer could not be found
          */
-        PEER_NOT_FOUND,
+        PEER_NOT_FOUND = 67,
         /**
          * The device handler dispatcher returned an
          *   error. Since: 1.46
          */
-        DEVICE_HANDLER_FAILED,
+        DEVICE_HANDLER_FAILED = 68,
         /**
          * The device is unmanaged because the device type
          *   is unmanaged by default. Since: 1.48
          */
-        UNMANAGED_BY_DEFAULT,
+        UNMANAGED_BY_DEFAULT = 69,
         /**
          * The device is unmanaged because it is an
          *   external device and is unconfigured (down or without addresses). Since: 1.48
          */
-        UNMANAGED_EXTERNAL_DOWN,
+        UNMANAGED_EXTERNAL_DOWN = 70,
         /**
          * The device is unmanaged because the link is
          *   not initialized by udev. Since: 1.48
          */
-        UNMANAGED_LINK_NOT_INIT,
+        UNMANAGED_LINK_NOT_INIT = 71,
         /**
          * The device is unmanaged because NetworkManager is
          *   quitting. Since: 1.48
          */
-        UNMANAGED_QUITTING,
+        UNMANAGED_QUITTING = 72,
         /**
          * The device is unmanaged because networking is
          *   disabled or the system is suspended. Since: 1.48
          */
-        UNMANAGED_SLEEPING,
+        UNMANAGED_SLEEPING = 73,
         /**
          * The device is unmanaged by user decision in
          *   NetworkManager.conf ('unmanaged' in a [device*] section). Since: 1.48
          */
-        UNMANAGED_USER_CONF,
+        UNMANAGED_USER_CONF = 74,
         /**
          * The device is unmanaged by explicit user
          *   decision (e.g. 'nmcli device set $DEV managed no'). Since: 1.48
          */
-        UNMANAGED_USER_EXPLICIT,
+        UNMANAGED_USER_EXPLICIT = 75,
         /**
          * The device is unmanaged by user decision
          *   via settings plugin ('unmanaged-devices' for keyfile or 'NM_CONTROLLED=no' for ifcfg-rh).
          *   Since: 1.48
          */
-        UNMANAGED_USER_SETTINGS,
+        UNMANAGED_USER_SETTINGS = 76,
         /**
          * The device is unmanaged via udev rule. Since: 1.48
          */
-        UNMANAGED_USER_UDEV,
+        UNMANAGED_USER_UDEV = 77,
     }
     /**
      * #NMDeviceType values indicate the type of hardware represented by a
@@ -1147,140 +1147,140 @@ export namespace NM {
         /**
          * unknown device
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a wired ethernet device
          */
-        ETHERNET,
+        ETHERNET = 1,
         /**
          * an 802.11 Wi-Fi device
          */
-        WIFI,
+        WIFI = 2,
         /**
          * not used
          */
-        UNUSED1,
+        UNUSED1 = 3,
         /**
          * not used
          */
-        UNUSED2,
+        UNUSED2 = 4,
         /**
          * a Bluetooth device supporting PAN or DUN access protocols
          */
-        BT,
+        BT = 5,
         /**
          * an OLPC XO mesh networking device
          */
-        OLPC_MESH,
+        OLPC_MESH = 6,
         /**
          * an 802.16e Mobile WiMAX broadband device
          */
-        WIMAX,
+        WIMAX = 7,
         /**
          * a modem supporting analog telephone, CDMA/EVDO,
          * GSM/UMTS, or LTE network access protocols
          */
-        MODEM,
+        MODEM = 8,
         /**
          * an IP-over-InfiniBand device
          */
-        INFINIBAND,
+        INFINIBAND = 9,
         /**
          * a bond controller interface
          */
-        BOND,
+        BOND = 10,
         /**
          * an 802.1Q VLAN interface
          */
-        VLAN,
+        VLAN = 11,
         /**
          * ADSL modem
          */
-        ADSL,
+        ADSL = 12,
         /**
          * a bridge controller interface
          */
-        BRIDGE,
+        BRIDGE = 13,
         /**
          * generic support for unrecognized device types
          */
-        GENERIC,
+        GENERIC = 14,
         /**
          * a team controller interface
          */
-        TEAM,
+        TEAM = 15,
         /**
          * a TUN or TAP interface
          */
-        TUN,
+        TUN = 16,
         /**
          * a IP tunnel interface
          */
-        IP_TUNNEL,
+        IP_TUNNEL = 17,
         /**
          * a MACVLAN interface
          */
-        MACVLAN,
+        MACVLAN = 18,
         /**
          * a VXLAN interface
          */
-        VXLAN,
+        VXLAN = 19,
         /**
          * a VETH interface
          */
-        VETH,
+        VETH = 20,
         /**
          * a MACsec interface
          */
-        MACSEC,
+        MACSEC = 21,
         /**
          * a dummy interface
          */
-        DUMMY,
+        DUMMY = 22,
         /**
          * a PPP interface
          */
-        PPP,
+        PPP = 23,
         /**
          * a Open vSwitch interface
          */
-        OVS_INTERFACE,
+        OVS_INTERFACE = 24,
         /**
          * a Open vSwitch port
          */
-        OVS_PORT,
+        OVS_PORT = 25,
         /**
          * a Open vSwitch bridge
          */
-        OVS_BRIDGE,
+        OVS_BRIDGE = 26,
         /**
          * a IEEE 802.15.4 (WPAN) MAC Layer Device
          */
-        WPAN,
+        WPAN = 27,
         /**
          * 6LoWPAN interface
          */
-        '6LOWPAN',
+        '6LOWPAN' = 28,
         /**
          * a WireGuard interface
          */
-        WIREGUARD,
+        WIREGUARD = 29,
         /**
          * an 802.11 Wi-Fi P2P device. Since: 1.16.
          */
-        WIFI_P2P,
+        WIFI_P2P = 30,
         /**
          * A VRF (Virtual Routing and Forwarding) interface. Since: 1.24.
          */
-        VRF,
+        VRF = 31,
         /**
          * a loopback interface. Since: 1.42.
          */
-        LOOPBACK,
+        LOOPBACK = 32,
         /**
          * A HSR/PRP device. Since: 1.46.
          */
-        HSR,
+        HSR = 33,
     }
     /**
      * The tunneling mode.
@@ -1297,51 +1297,51 @@ export namespace NM {
         /**
          * Unknown/unset tunnel mode
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * IP in IP tunnel
          */
-        IPIP,
+        IPIP = 1,
         /**
          * GRE tunnel
          */
-        GRE,
+        GRE = 2,
         /**
          * SIT tunnel
          */
-        SIT,
+        SIT = 3,
         /**
          * ISATAP tunnel
          */
-        ISATAP,
+        ISATAP = 4,
         /**
          * VTI tunnel
          */
-        VTI,
+        VTI = 5,
         /**
          * IPv6 in IPv6 tunnel
          */
-        IP6IP6,
+        IP6IP6 = 6,
         /**
          * IPv4 in IPv6 tunnel
          */
-        IPIP6,
+        IPIP6 = 7,
         /**
          * IPv6 GRE tunnel
          */
-        IP6GRE,
+        IP6GRE = 8,
         /**
          * IPv6 VTI tunnel
          */
-        VTI6,
+        VTI6 = 9,
         /**
          * GRETAP tunnel
          */
-        GRETAP,
+        GRETAP = 10,
         /**
          * IPv6 GRETAP tunnel
          */
-        IP6GRETAP,
+        IP6GRETAP = 11,
     }
     /**
      * The type of the callback for %NMKeyfileReadHandler and %NMKeyfileWriteHandler.
@@ -1360,12 +1360,12 @@ export namespace NM {
         /**
          * a warning.
          */
-        WARN,
+        WARN = 1,
         /**
          * for handling certificates while writing
          *   a connection to keyfile.
          */
-        WRITE_CERT,
+        WRITE_CERT = 2,
     }
     /**
      * The severity level of %NM_KEYFILE_HANDLER_TYPE_WARN events.
@@ -1382,19 +1382,19 @@ export namespace NM {
         /**
          * debug message
          */
-        DEBUG,
+        DEBUG = 1000,
         /**
          * info message
          */
-        INFO,
+        INFO = 2000,
         /**
          * info message about a missing file
          */
-        INFO_MISSING_FILE,
+        INFO_MISSING_FILE = 2901,
         /**
          * a warning message
          */
-        WARN,
+        WARN = 3000,
     }
     /**
      * Errors related to the main "network management" interface of NetworkManager.
@@ -1546,23 +1546,23 @@ export namespace NM {
         /**
          * The metered status is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Metered, the value was explicitly configured
          */
-        YES,
+        YES = 1,
         /**
          * Not metered, the value was explicitly configured
          */
-        NO,
+        NO = 2,
         /**
          * Metered, the value was guessed
          */
-        GUESS_YES,
+        GUESS_YES = 3,
         /**
          * Not metered, the value was guessed
          */
-        GUESS_NO,
+        GUESS_NO = 4,
     }
     /**
      * The result of a checkpoint Rollback() operation for a specific device.
@@ -1579,19 +1579,19 @@ export namespace NM {
         /**
          * the rollback succeeded.
          */
-        OK,
+        OK = 0,
         /**
          * the device no longer exists.
          */
-        ERR_NO_DEVICE,
+        ERR_NO_DEVICE = 1,
         /**
          * the device is now unmanaged.
          */
-        ERR_DEVICE_UNMANAGED,
+        ERR_DEVICE_UNMANAGED = 2,
         /**
          * other errors during rollback.
          */
-        ERR_FAILED,
+        ERR_FAILED = 3,
     }
     /**
      * #NMSecretAgentError values are passed by secret agents back to NetworkManager
@@ -1664,21 +1664,21 @@ export namespace NM {
         /**
          * unknown file format
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * file contains an X.509 format certificate
          */
-        X509,
+        X509 = 1,
         /**
          * file contains an old-style OpenSSL PEM
          * or DER private key
          */
-        RAW_KEY,
+        RAW_KEY = 2,
         /**
          * file contains a PKCS#<!-- -->12 certificate
          * and private key
          */
-        PKCS12,
+        PKCS12 = 3,
     }
     /**
      * #NMSetting8021xCKScheme values indicate how a certificate or private key is
@@ -1700,22 +1700,22 @@ export namespace NM {
          * unknown certificate or private key
          * scheme
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * certificate or key is stored as the raw
          * item data
          */
-        BLOB,
+        BLOB = 1,
         /**
          * certificate or key is stored as a path
          * to a file containing the certificate or key data
          */
-        PATH,
+        PATH = 2,
         /**
          * certificate or key is stored as a
          * URI of an object on a PKCS#11 token
          */
-        PKCS11,
+        PKCS11 = 3,
     }
     /**
      * These flags modify the comparison behavior when comparing two settings or
@@ -1734,39 +1734,39 @@ export namespace NM {
         /**
          * match all properties exactly
          */
-        EXACT,
+        EXACT = 0,
         /**
          * match only important attributes, like SSID,
          *   type, security settings, etc.  Does not match, for example, connection ID
          *   or UUID.
          */
-        FUZZY,
+        FUZZY = 1,
         /**
          * ignore the connection's ID
          */
-        IGNORE_ID,
+        IGNORE_ID = 2,
         /**
          * ignore all secrets
          */
-        IGNORE_SECRETS,
+        IGNORE_SECRETS = 4,
         /**
          * ignore secrets for which
          *   the secret's flags indicate the secret is owned by a user secret agent
          *   (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_AGENT_OWNED)`
          */
-        IGNORE_AGENT_OWNED_SECRETS,
+        IGNORE_AGENT_OWNED_SECRETS = 8,
         /**
          * ignore secrets for which
          *   the secret's flags indicate the secret should not be saved to persistent
          *   storage (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_NOT_SAVED)`
          */
-        IGNORE_NOT_SAVED_SECRETS,
+        IGNORE_NOT_SAVED_SECRETS = 16,
         /**
          * if this flag is set,
          *   nm_setting_diff() and nm_connection_diff() will also include properties that
          *   are set to their default value. See also `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_NO_DEFAULT`.
          */
-        DIFF_RESULT_WITH_DEFAULT,
+        DIFF_RESULT_WITH_DEFAULT = 32,
         /**
          * if this flag is set,
          *   nm_setting_diff() and nm_connection_diff() will not include properties that
@@ -1780,11 +1780,11 @@ export namespace NM {
          *   is set, nm_setting_diff() will also set the flags `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`
          *   and `NM_SETTING_DIFF_RESULT_IN_B_DEFAULT,` if the values are default values.
          */
-        DIFF_RESULT_NO_DEFAULT,
+        DIFF_RESULT_NO_DEFAULT = 64,
         /**
          * ignore the connection's timestamp
          */
-        IGNORE_TIMESTAMP,
+        IGNORE_TIMESTAMP = 128,
     }
     /**
      * #NMSettingConnectionAutoconnectSlaves values indicate whether slave connections
@@ -1803,17 +1803,17 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * slaves are not brought up when
          *   controller is activated
          */
-        NO,
+        NO = 0,
         /**
          * slaves are brought up when
          *   controller is activated
          */
-        YES,
+        YES = 1,
     }
     /**
      * #NMSettingConnectionDnsOverTls values indicate whether DNSOverTls should be enabled.
@@ -1830,19 +1830,19 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable DNSOverTls
          */
-        NO,
+        NO = 0,
         /**
          * enable opportunistic mode
          */
-        OPPORTUNISTIC,
+        OPPORTUNISTIC = 1,
         /**
          * enable strict mode
          */
-        YES,
+        YES = 2,
     }
     /**
      * #NMSettingConnectionDownOnPoweroff indicates whether the connection will be
@@ -1861,15 +1861,15 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable down-on-poweroff
          */
-        NO,
+        NO = 0,
         /**
          * enable down-on-poweroff
          */
-        YES,
+        YES = 1,
     }
     /**
      * #NMSettingConnectionLldp values indicate whether LLDP should be enabled.
@@ -1886,15 +1886,15 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable LLDP
          */
-        DISABLE,
+        DISABLE = 0,
         /**
          * enable reception of LLDP frames
          */
-        ENABLE_RX,
+        ENABLE_RX = 1,
     }
     /**
      * #NMSettingConnectionLlmnr values indicate whether LLMNR should be enabled.
@@ -1911,19 +1911,19 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable LLMNR
          */
-        NO,
+        NO = 0,
         /**
          * support only resolving, do not register hostname
          */
-        RESOLVE,
+        RESOLVE = 1,
         /**
          * enable LLMNR
          */
-        YES,
+        YES = 2,
     }
     /**
      * #NMSettingConnectionMdns values indicate whether mDNS should be enabled.
@@ -1940,19 +1940,19 @@ export namespace NM {
         /**
          * default value
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable mDNS
          */
-        NO,
+        NO = 0,
         /**
          * support only resolving, do not register hostname
          */
-        RESOLVE,
+        RESOLVE = 1,
         /**
          * enable mDNS
          */
-        YES,
+        YES = 2,
     }
     /**
      * These values indicate the result of a setting difference operation.
@@ -1969,25 +1969,25 @@ export namespace NM {
         /**
          * unknown result
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the property is present in setting A
          */
-        IN_A,
+        IN_A = 1,
         /**
          * the property is present in setting B
          */
-        IN_B,
+        IN_B = 2,
         /**
          * the property is present in
          * setting A but is set to the default value. This flag is only set,
          * if you specify `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_WITH_DEFAULT`.
          */
-        IN_A_DEFAULT,
+        IN_A_DEFAULT = 4,
         /**
          * analog to `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`.
          */
-        IN_B_DEFAULT,
+        IN_B_DEFAULT = 8,
     }
     /**
      * #NMSettingIP4LinkLocal values indicate whether IPv4 link-local address protocol should be enabled.
@@ -2006,21 +2006,21 @@ export namespace NM {
          *   fallback to "auto". Note that if "ipv4.method" is "disabled", this always implies link-local
          *   addresses disabled too.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Special value which enables LL if "ipv4.method" is set to
          *   "link-local".
          */
-        AUTO,
+        AUTO = 1,
         /**
          * Disable IPv4 link-local protocol.
          */
-        DISABLED,
+        DISABLED = 2,
         /**
          * Enable the IPv4 link-local protocol regardless what other protocols
          * such as DHCP or manually assigned IP addresses might be active.
          */
-        ENABLED,
+        ENABLED = 3,
     }
     /**
      * #NMSettingIP6ConfigAddrGenMode controls how the Interface Identifier for
@@ -2040,24 +2040,24 @@ export namespace NM {
          * The Interface Identifier is derived
          * from the interface hardware address.
          */
-        EUI64,
+        EUI64 = 0,
         /**
          * The Interface Identifier
          * is created by using a cryptographically secure hash of a secret host-specific
          * key along with the connection identification and the network address as
          * specified by RFC7217.
          */
-        STABLE_PRIVACY,
+        STABLE_PRIVACY = 1,
         /**
          * Fallback to the global
          *   default, and if unspecified use "eui64". Since: 1.40.
          */
-        DEFAULT_OR_EUI64,
+        DEFAULT_OR_EUI64 = 2,
         /**
          * Fallback to the global
          *   default, and if unspecified use "stable-privacy". Since: 1.40.
          */
-        DEFAULT,
+        DEFAULT = 3,
     }
     /**
      * #NMSettingIP6ConfigPrivacy values indicate if and how IPv6 Privacy
@@ -2076,21 +2076,21 @@ export namespace NM {
         /**
          * unknown or no value specified
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * IPv6 Privacy Extensions are disabled
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * IPv6 Privacy Extensions
          * are enabled, but public addresses are preferred over temporary addresses
          */
-        PREFER_PUBLIC_ADDR,
+        PREFER_PUBLIC_ADDR = 1,
         /**
          * IPv6 Privacy Extensions
          * are enabled and temporary addresses are preferred over public addresses
          */
-        PREFER_TEMP_ADDR,
+        PREFER_TEMP_ADDR = 2,
     }
     /**
      * Controls if and how the MAC address of a device is randomzied.
@@ -2108,15 +2108,15 @@ export namespace NM {
          * the default value, which unless
          * overridden by user-controlled defaults configuration, is "never".
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * the device's MAC address is always used.
          */
-        NEVER,
+        NEVER = 1,
         /**
          * a random MAC address is used.
          */
-        ALWAYS,
+        ALWAYS = 2,
     }
     /**
      * #NMSettingMacsecMode controls how the CAK (Connectivity Association Key) used
@@ -2135,11 +2135,11 @@ export namespace NM {
         /**
          * The CAK is pre-shared
          */
-        PSK,
+        PSK = 0,
         /**
          * The CAK is the result of participation in EAP
          */
-        EAP,
+        EAP = 1,
     }
     /**
      * These flags control the MACsec offload mode.
@@ -2156,19 +2156,19 @@ export namespace NM {
         /**
          * use the global default; disable if not defined
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * disable offload
          */
-        OFF,
+        OFF = 0,
         /**
          * request offload to the PHY
          */
-        PHY,
+        PHY = 1,
         /**
          * request offload to the MAC
          */
-        MAC,
+        MAC = 2,
     }
     /**
      * #NMSettingMacsecValidation specifies a validation mode for incoming frames.
@@ -2186,17 +2186,17 @@ export namespace NM {
          * All incoming frames are accepted if
          *   possible
          */
-        DISABLE,
+        DISABLE = 0,
         /**
          * Non protected, invalid, or impossible to
          *   verify frames are accepted and counted as "invalid"
          */
-        CHECK,
+        CHECK = 1,
         /**
          * Non protected, invalid, or impossible to
          *   verify frames are dropped
          */
-        STRICT,
+        STRICT = 2,
     }
 
     export namespace SettingMacvlanMode {
@@ -2207,27 +2207,27 @@ export namespace NM {
         /**
          * unknown/unset mode
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Virtual Ethernet Port Aggregator mode
          */
-        VEPA,
+        VEPA = 1,
         /**
          * bridge mode
          */
-        BRIDGE,
+        BRIDGE = 2,
         /**
          * private mode
          */
-        PRIVATE,
+        PRIVATE = 3,
         /**
          * passthru mode
          */
-        PASSTHRU,
+        PASSTHRU = 4,
         /**
          * source mode
          */
-        SOURCE,
+        SOURCE = 5,
     }
     /**
      * The Proxy method.
@@ -2244,11 +2244,11 @@ export namespace NM {
         /**
          * No Proxy for the Connection
          */
-        NONE,
+        NONE = 0,
         /**
          * DHCP obtained Proxy/ Manual override
          */
-        AUTO,
+        AUTO = 1,
     }
     /**
      * The parity setting of a serial port.
@@ -2265,15 +2265,15 @@ export namespace NM {
         /**
          * No parity bits (default)
          */
-        NONE,
+        NONE = 0,
         /**
          * Even parity
          */
-        EVEN,
+        EVEN = 1,
         /**
          * Odd parity
          */
-        ODD,
+        ODD = 2,
     }
     /**
      * #NMSettingTunMode values indicate the device type (TUN/TAP)
@@ -2290,15 +2290,15 @@ export namespace NM {
         /**
          * an unknown device type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a TUN device
          */
-        TUN,
+        TUN = 1,
         /**
          * a TAP device
          */
-        TAP,
+        TAP = 2,
     }
     /**
      * Indicates the wireless channel width.
@@ -2315,19 +2315,19 @@ export namespace NM {
         /**
          * automatically determine the width
          */
-        AUTO,
+        AUTO = 0,
         /**
          * use a 20MHz channel width
          */
-        '20MHZ',
+        '20MHZ' = 20,
         /**
          * use a 40MHz channel width
          */
-        '40MHZ',
+        '40MHZ' = 40,
         /**
          * use a 80MHz channel width
          */
-        '80MHZ',
+        '80MHZ' = 80,
     }
     /**
      * These flags indicate whether wireless powersave must be enabled.
@@ -2344,19 +2344,19 @@ export namespace NM {
         /**
          * use the default value
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * don't touch existing setting
          */
-        IGNORE,
+        IGNORE = 1,
         /**
          * disable powersave
          */
-        DISABLE,
+        DISABLE = 2,
         /**
          * enable powersave
          */
-        ENABLE,
+        ENABLE = 3,
     }
     /**
      * These flags indicate whether FILS must be enabled.
@@ -2373,19 +2373,19 @@ export namespace NM {
         /**
          * use the default value
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * disable FILS
          */
-        DISABLE,
+        DISABLE = 1,
         /**
          * enable FILS if the supplicant and the AP support it
          */
-        OPTIONAL,
+        OPTIONAL = 2,
         /**
          * require FILS and fail if not available
          */
-        REQUIRED,
+        REQUIRED = 3,
     }
     /**
      * These flags indicate whether PMF must be enabled.
@@ -2402,19 +2402,19 @@ export namespace NM {
         /**
          * use the default value
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * disable PMF
          */
-        DISABLE,
+        DISABLE = 1,
         /**
          * enable PMF if the supplicant and the AP support it
          */
-        OPTIONAL,
+        OPTIONAL = 2,
         /**
          * require PMF and fail if not available
          */
-        REQUIRED,
+        REQUIRED = 3,
     }
     /**
      * Errors related to the settings/persistent configuration interface of
@@ -2493,15 +2493,15 @@ export namespace NM {
         /**
          * don't modify current encap-mode
          */
-        PRESERVE,
+        PRESERVE = -1,
         /**
          * disable encapsulation mode
          */
-        NONE,
+        NONE = 0,
         /**
          * enable encapsulation mode
          */
-        BASIC,
+        BASIC = 1,
     }
 
     export namespace SriovEswitchInlineMode {
@@ -2512,23 +2512,23 @@ export namespace NM {
         /**
          * don't modify current inline-mode
          */
-        PRESERVE,
+        PRESERVE = -1,
         /**
          * don't use inline mode
          */
-        NONE,
+        NONE = 0,
         /**
          * L2 mode
          */
-        LINK,
+        LINK = 1,
         /**
          * L3 mode
          */
-        NETWORK,
+        NETWORK = 2,
         /**
          * L4 mode
          */
-        TRANSPORT,
+        TRANSPORT = 3,
     }
 
     export namespace SriovEswitchMode {
@@ -2539,15 +2539,15 @@ export namespace NM {
         /**
          * don't modify current eswitch mode
          */
-        PRESERVE,
+        PRESERVE = -1,
         /**
          * use legacy SRIOV
          */
-        LEGACY,
+        LEGACY = 0,
         /**
          * use switchdev mode
          */
-        SWITCHDEV,
+        SWITCHDEV = 1,
     }
     /**
      * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
@@ -2564,11 +2564,11 @@ export namespace NM {
         /**
          * use 802.1Q
          */
-        '1Q',
+        '1Q' = 0,
         /**
          * use 802.1ad
          */
-        '1AD',
+        '1AD' = 1,
     }
     /**
      * #NMState values indicate the current overall networking state.
@@ -2590,48 +2590,48 @@ export namespace NM {
          *    The graphical shells may hide the network accessibility indicator altogether
          *    since no meaningful status indication can be provided.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Networking is not enabled, the system is being suspended or
          *    resumed from suspend.
          */
-        ASLEEP,
+        ASLEEP = 10,
         /**
          * There is no active network connection.
          *    The graphical shell should indicate  no network connectivity and the
          *    applications should not attempt to access the network.
          */
-        DISCONNECTED,
+        DISCONNECTED = 20,
         /**
          * Network connections are being cleaned up.
          *    The applications should tear down their network sessions.
          */
-        DISCONNECTING,
+        DISCONNECTING = 30,
         /**
          * A network connection is being started
          *    The graphical shell should indicate the network is being connected while
          *    the applications should still make no attempts to connect the network.
          */
-        CONNECTING,
+        CONNECTING = 40,
         /**
          * There is only local IPv4 and/or IPv6 connectivity,
          *    but no default route to access the Internet. The graphical shell should
          *    indicate no network connectivity.
          */
-        CONNECTED_LOCAL,
+        CONNECTED_LOCAL = 50,
         /**
          * There is only site-wide IPv4 and/or IPv6 connectivity.
          *    This means a default route is available, but the Internet connectivity check
          *    (see "Connectivity" property) did not succeed. The graphical shell should
          *    indicate limited network connectivity.
          */
-        CONNECTED_SITE,
+        CONNECTED_SITE = 60,
         /**
          * There is global IPv4 and/or IPv6 Internet connectivity
          *    This means the Internet connectivity check succeeded, the graphical shell should
          *    indicate full network connectivity.
          */
-        CONNECTED_GLOBAL,
+        CONNECTED_GLOBAL = 70,
     }
     /**
      * An boolean value that can be overridden by a default.
@@ -2648,15 +2648,15 @@ export namespace NM {
         /**
          * use the globally-configured default value.
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * the option is disabled.
          */
-        FALSE,
+        FALSE = 0,
         /**
          * the option is enabled.
          */
-        TRUE,
+        TRUE = 1,
     }
     /**
      * Describes generic security mechanisms that 802.11 access points may offer.
@@ -2677,53 +2677,53 @@ export namespace NM {
         /**
          * unknown or invalid security, placeholder and not used
          */
-        INVALID,
+        INVALID = 0,
         /**
          * unencrypted and open
          */
-        NONE,
+        NONE = 1,
         /**
          * static WEP keys are used for encryption
          */
-        STATIC_WEP,
+        STATIC_WEP = 2,
         /**
          * Cisco LEAP is used for authentication and for generating the
          * dynamic WEP keys automatically
          */
-        LEAP,
+        LEAP = 3,
         /**
          * standard 802.1x is used for authentication and
          * generating the dynamic WEP keys automatically
          */
-        DYNAMIC_WEP,
+        DYNAMIC_WEP = 4,
         /**
          * WPA1 is used with Pre-Shared Keys (PSK)
          */
-        WPA_PSK,
+        WPA_PSK = 5,
         /**
          * WPA1 is used with 802.1x authentication
          */
-        WPA_ENTERPRISE,
+        WPA_ENTERPRISE = 6,
         /**
          * WPA2/RSN is used with Pre-Shared Keys (PSK)
          */
-        WPA2_PSK,
+        WPA2_PSK = 7,
         /**
          * WPA2 is used with 802.1x authentication
          */
-        WPA2_ENTERPRISE,
+        WPA2_ENTERPRISE = 8,
         /**
          * is used with WPA3 Enterprise
          */
-        SAE,
+        SAE = 9,
         /**
          * is used with Enhanced Open
          */
-        OWE,
+        OWE = 10,
         /**
          * is used with WPA3 Enterprise Suite-B 192 bit mode. Since: 1.30.
          */
-        WPA3_SUITE_B_192,
+        WPA3_SUITE_B_192 = 11,
     }
     /**
      * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
@@ -2743,7 +2743,7 @@ export namespace NM {
     }
 
     enum VersionInfoCapability {
-        UNUSED,
+        UNUSED = 2147483647,
     }
     /**
      * A selector for traffic priority maps; these map Linux SKB priorities
@@ -2762,11 +2762,11 @@ export namespace NM {
         /**
          * map for incoming data
          */
-        INGRESS_MAP,
+        INGRESS_MAP = 0,
         /**
          * map for outgoing data
          */
-        EGRESS_MAP,
+        EGRESS_MAP = 1,
     }
     /**
      * VPN connection states
@@ -2784,38 +2784,38 @@ export namespace NM {
          * The state of the VPN connection is
          *   unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The VPN connection is preparing to
          *   connect.
          */
-        PREPARE,
+        PREPARE = 1,
         /**
          * The VPN connection needs authorization
          *   credentials.
          */
-        NEED_AUTH,
+        NEED_AUTH = 2,
         /**
          * The VPN connection is being established.
          */
-        CONNECT,
+        CONNECT = 3,
         /**
          * The VPN connection is getting an IP
          *   address.
          */
-        IP_CONFIG_GET,
+        IP_CONFIG_GET = 4,
         /**
          * The VPN connection is active.
          */
-        ACTIVATED,
+        ACTIVATED = 5,
         /**
          * The VPN connection failed.
          */
-        FAILED,
+        FAILED = 6,
         /**
          * The VPN connection is disconnected.
          */
-        DISCONNECTED,
+        DISCONNECTED = 7,
     }
     /**
      * VPN connection state reasons
@@ -2833,62 +2833,62 @@ export namespace NM {
          * The reason for the VPN connection
          *   state change is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No reason was given for the VPN
          *   connection state change.
          */
-        NONE,
+        NONE = 1,
         /**
          * The VPN connection changed
          *   state because the user disconnected it.
          */
-        USER_DISCONNECTED,
+        USER_DISCONNECTED = 2,
         /**
          * The VPN connection
          *   changed state because the device it was using was disconnected.
          */
-        DEVICE_DISCONNECTED,
+        DEVICE_DISCONNECTED = 3,
         /**
          * The service providing the
          *   VPN connection was stopped.
          */
-        SERVICE_STOPPED,
+        SERVICE_STOPPED = 4,
         /**
          * The IP config of the VPN
          *   connection was invalid.
          */
-        IP_CONFIG_INVALID,
+        IP_CONFIG_INVALID = 5,
         /**
          * The connection attempt to
          *   the VPN service timed out.
          */
-        CONNECT_TIMEOUT,
+        CONNECT_TIMEOUT = 6,
         /**
          * A timeout occurred
          *   while starting the service providing the VPN connection.
          */
-        SERVICE_START_TIMEOUT,
+        SERVICE_START_TIMEOUT = 7,
         /**
          * Starting the service
          *   starting the service providing the VPN connection failed.
          */
-        SERVICE_START_FAILED,
+        SERVICE_START_FAILED = 8,
         /**
          * Necessary secrets for the VPN
          *   connection were not provided.
          */
-        NO_SECRETS,
+        NO_SECRETS = 9,
         /**
          * Authentication to the VPN
          *   server failed.
          */
-        LOGIN_FAILED,
+        LOGIN_FAILED = 10,
         /**
          * The connection was
          *   deleted from settings.
          */
-        CONNECTION_REMOVED,
+        CONNECTION_REMOVED = 11,
     }
     /**
      * Returned by the VPN service plugin to indicate errors. These codes correspond
@@ -2977,16 +2977,16 @@ export namespace NM {
         /**
          * Login failed.
          */
-        LOGIN_FAILED,
+        LOGIN_FAILED = 0,
         /**
          * Connect failed.
          */
-        CONNECT_FAILED,
+        CONNECT_FAILED = 1,
         /**
          * Invalid IP configuration returned from
          *   the VPN plugin.
          */
-        BAD_IP_CONFIG,
+        BAD_IP_CONFIG = 2,
     }
     /**
      * VPN daemon states
@@ -3003,31 +3003,31 @@ export namespace NM {
         /**
          * The state of the VPN plugin is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The VPN plugin is initialized.
          */
-        INIT,
+        INIT = 1,
         /**
          * Not used.
          */
-        SHUTDOWN,
+        SHUTDOWN = 2,
         /**
          * The plugin is attempting to connect to a VPN server.
          */
-        STARTING,
+        STARTING = 3,
         /**
          * The plugin has connected to a VPN server.
          */
-        STARTED,
+        STARTED = 4,
         /**
          * The plugin is disconnecting from the VPN server.
          */
-        STOPPING,
+        STOPPING = 5,
         /**
          * The plugin has disconnected from the VPN server.
          */
-        STOPPED,
+        STOPPED = 6,
     }
     /**
      * The #NMWepKeyType values specify how any WEP keys present in the setting
@@ -3060,21 +3060,21 @@ export namespace NM {
         /**
          * unknown WEP key type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * indicates a hexadecimal or ASCII formatted WEP key.
          * Hex keys are either 10 or 26 hexadecimal characters (ie "5f782f2f5f" or
          * "732f2d712e4a394a375d366931"), while ASCII keys are either 5 or 13 ASCII
          * characters (ie "abcde" or "blahblah99$*1").
          */
-        KEY,
+        KEY = 1,
         /**
          * indicates a WEP passphrase (ex "I bought a duck
          * on my way back from the market 235Q&^%^*%") instead of a hexadecimal or ASCII
          * key.  Passphrases are between 8 and 64 characters inclusive and are hashed
          * the actual WEP key using the MD5 hash algorithm.
          */
-        PASSPHRASE,
+        PASSPHRASE = 2,
     }
     /**
      * WiMAX network type.
@@ -3091,19 +3091,19 @@ export namespace NM {
         /**
          * unknown network type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * home network
          */
-        HOME,
+        HOME = 1,
         /**
          * partner network
          */
-        PARTNER,
+        PARTNER = 2,
         /**
          * roaming partner network
          */
-        ROAMING_PARTNER,
+        ROAMING_PARTNER = 3,
     }
     const ACCESS_POINT_BANDWIDTH: string;
     const ACCESS_POINT_BSSID: string;
@@ -5293,24 +5293,24 @@ export namespace NM {
         /**
          * access point has no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * access point requires authentication and
          * encryption (usually means WEP)
          */
-        PRIVACY,
+        PRIVACY = 1,
         /**
          * access point supports some WPS method
          */
-        WPS,
+        WPS = 2,
         /**
          * access point supports push-button WPS
          */
-        WPS_PBC,
+        WPS_PBC = 4,
         /**
          * access point supports PIN-based WPS
          */
-        WPS_PIN,
+        WPS_PIN = 8,
     }
     /**
      * 802.11 access point security and authentication flags.  These flags describe
@@ -5331,74 +5331,74 @@ export namespace NM {
         /**
          * the access point has no special security requirements
          */
-        NONE,
+        NONE = 0,
         /**
          * 40/64-bit WEP is supported for
          * pairwise/unicast encryption
          */
-        PAIR_WEP40,
+        PAIR_WEP40 = 1,
         /**
          * 104/128-bit WEP is supported for
          * pairwise/unicast encryption
          */
-        PAIR_WEP104,
+        PAIR_WEP104 = 2,
         /**
          * TKIP is supported for pairwise/unicast encryption
          */
-        PAIR_TKIP,
+        PAIR_TKIP = 4,
         /**
          * AES/CCMP is supported for pairwise/unicast encryption
          */
-        PAIR_CCMP,
+        PAIR_CCMP = 8,
         /**
          * 40/64-bit WEP is supported for group/broadcast
          * encryption
          */
-        GROUP_WEP40,
+        GROUP_WEP40 = 16,
         /**
          * 104/128-bit WEP is supported for
          * group/broadcast encryption
          */
-        GROUP_WEP104,
+        GROUP_WEP104 = 32,
         /**
          * TKIP is supported for group/broadcast encryption
          */
-        GROUP_TKIP,
+        GROUP_TKIP = 64,
         /**
          * AES/CCMP is supported for group/broadcast
          * encryption
          */
-        GROUP_CCMP,
+        GROUP_CCMP = 128,
         /**
          * WPA/RSN Pre-Shared Key encryption is
          * supported
          */
-        KEY_MGMT_PSK,
+        KEY_MGMT_PSK = 256,
         /**
          * 802.1x authentication and key management
          * is supported
          */
-        KEY_MGMT_802_1X,
+        KEY_MGMT_802_1X = 512,
         /**
          * WPA/RSN Simultaneous Authentication of Equals is
          * supported
          */
-        KEY_MGMT_SAE,
+        KEY_MGMT_SAE = 1024,
         /**
          * WPA/RSN Opportunistic Wireless Encryption is
          * supported
          */
-        KEY_MGMT_OWE,
+        KEY_MGMT_OWE = 2048,
         /**
          * WPA/RSN Opportunistic Wireless Encryption
          * transition mode is supported. Since: 1.26.
          */
-        KEY_MGMT_OWE_TM,
+        KEY_MGMT_OWE_TM = 4096,
         /**
          * WPA3 Enterprise Suite-B 192 bit mode
          * is supported. Since: 1.30.
          */
-        KEY_MGMT_EAP_SUITE_B_192,
+        KEY_MGMT_EAP_SUITE_B_192 = 8192,
     }
     /**
      * Flags describing the current activation state.
@@ -5415,44 +5415,44 @@ export namespace NM {
         /**
          * an alias for numeric zero, no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * the device is a controller.
          */
-        IS_CONTROLLER,
+        IS_CONTROLLER = 1,
         /**
          * the device is a port.
          */
-        IS_PORT,
+        IS_PORT = 2,
         /**
          * layer2 is activated and ready.
          */
-        LAYER2_READY,
+        LAYER2_READY = 4,
         /**
          * IPv4 setting is completed.
          */
-        IP4_READY,
+        IP4_READY = 8,
         /**
          * IPv6 setting is completed.
          */
-        IP6_READY,
+        IP6_READY = 16,
         /**
          * The controller has any port devices attached.
          *   This only makes sense if the device is a controller.
          */
-        CONTROLLER_HAS_PORTS,
+        CONTROLLER_HAS_PORTS = 32,
         /**
          * the lifetime
          *   of the activation is bound to the visibility of the connection profile,
          *   which in turn depends on "connection.permissions" and whether a session
          *   for the user exists. Since: 1.16.
          */
-        LIFETIME_BOUND_TO_PROFILE_VISIBILITY,
+        LIFETIME_BOUND_TO_PROFILE_VISIBILITY = 64,
         /**
          * the active connection was generated to
          *  represent an external configuration of a networking device. Since: 1.26.
          */
-        EXTERNAL,
+        EXTERNAL = 128,
     }
     /**
      * #NMBluetoothCapabilities values indicate the usable capabilities of a
@@ -5471,15 +5471,15 @@ export namespace NM {
         /**
          * device has no usable capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * device provides Dial-Up Networking capability
          */
-        DUN,
+        DUN = 1,
         /**
          * device provides Network Access Point capability
          */
-        NAP,
+        NAP = 2,
     }
     /**
      * The flags for CheckpointCreate call
@@ -5496,22 +5496,22 @@ export namespace NM {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * when creating
          *   a new checkpoint, destroy all existing ones.
          */
-        DESTROY_ALL,
+        DESTROY_ALL = 1,
         /**
          * upon rollback,
          *   delete any new connection added after the checkpoint. Since: 1.6.
          */
-        DELETE_NEW_CONNECTIONS,
+        DELETE_NEW_CONNECTIONS = 2,
         /**
          * upon rollback,
          *   disconnect any new device appeared after the checkpoint. Since: 1.6.
          */
-        DISCONNECT_NEW_DEVICES,
+        DISCONNECT_NEW_DEVICES = 4,
         /**
          * by default, creating
          *   a checkpoint fails if there are already existing checkpoints that
@@ -5526,7 +5526,7 @@ export namespace NM {
          *   checkpoint can be automatically destroyed by the rollback
          *   of an older checkpoint. Since: 1.12.
          */
-        ALLOW_OVERLAPPING,
+        ALLOW_OVERLAPPING = 8,
         /**
          * during rollback,
          *   by default externally added ports attached to bridge devices are preserved.
@@ -5534,7 +5534,7 @@ export namespace NM {
          *   This only has an effect for bridge ports. Before 1.38, this was the default
          *   behavior. Since: 1.38.
          */
-        NO_PRESERVE_EXTERNAL_PORTS,
+        NO_PRESERVE_EXTERNAL_PORTS = 16,
         /**
          * during rollback,
          *   by default changes to global DNS via D-BUS interface are preserved.
@@ -5542,7 +5542,7 @@ export namespace NM {
          *   interface. Global DNS defined in [global-dns] section of
          *   NetworkManager.conf is not impacted by this flag. Since: 1.48.
          */
-        TRACK_INTERNAL_GLOBAL_DNS,
+        TRACK_INTERNAL_GLOBAL_DNS = 32,
     }
 
     export namespace ClientInstanceFlags {
@@ -5553,7 +5553,7 @@ export namespace NM {
         /**
          * special value to indicate no flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * by default, NMClient
          *   will fetch the permissions via "GetPermissions" and refetch them when
@@ -5562,20 +5562,20 @@ export namespace NM {
          *   fetching of the permissions. Watch also nm_client_get_permissions_state()
          *   to know whether the permissions are up to date.
          */
-        NO_AUTO_FETCH_PERMISSIONS,
+        NO_AUTO_FETCH_PERMISSIONS = 1,
         /**
          * as #NMClient is an GInitable
          *   and GAsyncInitable, nm_client_get_instance_flags() returns this flag
          *   once initialization completed with success. This flag cannot be set
          *   as NM_CLIENT_INSTANCE_FLAGS property. Since: 1.42.
          */
-        INITIALIZED_GOOD,
+        INITIALIZED_GOOD = 2,
         /**
          * like `NM_CLIENT_INSTANCE_FLAGS_INITIALIZED_GOOD`
          *   indicates that the instance completed initialization with failure. In that
          *   case the instance is unusable. Since: 1.42.
          */
-        INITIALIZED_BAD,
+        INITIALIZED_BAD = 4,
     }
     /**
      * These flags determine which properties are serialized when calling
@@ -5594,44 +5594,44 @@ export namespace NM {
         /**
          * serialize all properties (including secrets)
          */
-        ALL,
+        ALL = 0,
         /**
          * serialize properties that are
          *   not secrets. Since 1.32.
          */
-        WITH_NON_SECRET,
+        WITH_NON_SECRET = 1,
         /**
          * this is a deprecated alias for
          *   `NM_CONNECTION_SERIALIZE_WITH_NON_SECRET`.
          */
-        NO_SECRETS,
+        NO_SECRETS = 1,
         /**
          * serialize all secrets. This flag is
          *   ignored if any of `NM_CONNECTION_SERIALIZE_WITH_SECRETS_AGENT_OWNED,`
          *   `NM_CONNECTION_SERIALIZE_WITH_SECRETS_SYSTEM_OWNED` or
          *   `NM_CONNECTION_SERIALIZE_WITH_SECRETS_NOT_SAVED` is set. Since 1.32.
          */
-        WITH_SECRETS,
+        WITH_SECRETS = 2,
         /**
          * a deprecated alias for
          *   `NM_CONNECTION_SERIALIZE_WITH_SECRETS`.
          */
-        ONLY_SECRETS,
+        ONLY_SECRETS = 2,
         /**
          * serialize agent-owned
          *   secrets. Since: 1.20.
          */
-        WITH_SECRETS_AGENT_OWNED,
+        WITH_SECRETS_AGENT_OWNED = 4,
         /**
          * serialize system-owned
          *   secrets. Since: 1.32.
          */
-        WITH_SECRETS_SYSTEM_OWNED,
+        WITH_SECRETS_SYSTEM_OWNED = 8,
         /**
          * serialize secrets that
          *   are marked as never saved. Since: 1.32.
          */
-        WITH_SECRETS_NOT_SAVED,
+        WITH_SECRETS_NOT_SAVED = 16,
     }
     /**
      * General device capability flags.
@@ -5648,23 +5648,23 @@ export namespace NM {
         /**
          * device has no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * NetworkManager supports this device
          */
-        NM_SUPPORTED,
+        NM_SUPPORTED = 1,
         /**
          * this device can indicate carrier status
          */
-        CARRIER_DETECT,
+        CARRIER_DETECT = 2,
         /**
          * this device is a software device
          */
-        IS_SOFTWARE,
+        IS_SOFTWARE = 4,
         /**
          * this device supports single-root I/O virtualization
          */
-        SRIOV,
+        SRIOV = 8,
     }
     /**
      * Flags for a network interface.
@@ -5682,28 +5682,28 @@ export namespace NM {
          * the interface is enabled from the
          *   administrative point of view. Corresponds to kernel IFF_UP.
          */
-        UP,
+        UP = 1,
         /**
          * the physical link is up. Corresponds
          *   to kernel IFF_LOWER_UP.
          */
-        LOWER_UP,
+        LOWER_UP = 2,
         /**
          * receive all packets. Corresponds to
          *   kernel IFF_PROMISC. Since: 1.32.
          */
-        PROMISC,
+        PROMISC = 4,
         /**
          * the interface has carrier. In most
          *   cases this is equal to the value of `NM_DEVICE_INTERFACE_FLAG_LOWER_UP`.
          *   However some devices have a non-standard carrier detection mechanism.
          */
-        CARRIER,
+        CARRIER = 65536,
         /**
          * the flag to indicate device
          *   LLDP status. Since: 1.32.
          */
-        LLDP_CLIENT_ENABLED,
+        LLDP_CLIENT_ENABLED = 131072,
     }
     /**
      * #NMDeviceModemCapabilities values indicate the generic radio access
@@ -5726,30 +5726,30 @@ export namespace NM {
         /**
          * modem has no usable capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * modem uses the analog wired telephone
          * network and is not a wireless/cellular device
          */
-        POTS,
+        POTS = 1,
         /**
          * modem supports at least one of CDMA
          * 1xRTT, EVDO revision 0, EVDO revision A, or EVDO revision B
          */
-        CDMA_EVDO,
+        CDMA_EVDO = 2,
         /**
          * modem supports at least one of GSM,
          * GPRS, EDGE, UMTS, HSDPA, HSUPA, or HSPA+ packet switched data capability
          */
-        GSM_UMTS,
+        GSM_UMTS = 4,
         /**
          * modem has LTE data capability
          */
-        LTE,
+        LTE = 8,
         /**
          * modem has 5GNR data capability. Since: 1.36.
          */
-        '5GNR',
+        '5GNR' = 64,
     }
     /**
      * Flags for the Reapply() D-Bus call of a device and
@@ -5768,12 +5768,12 @@ export namespace NM {
         /**
          * no flag set.
          */
-        NONE,
+        NONE = 0,
         /**
          * during reapply,
          *   preserve external IP addresses and routes.
          */
-        PRESERVE_EXTERNAL_IP,
+        PRESERVE_EXTERNAL_IP = 1,
     }
     /**
      * 802.11 specific device encryption and authentication capabilities.
@@ -5790,63 +5790,63 @@ export namespace NM {
         /**
          * device has no encryption/authentication capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * device supports 40/64-bit WEP encryption
          */
-        CIPHER_WEP40,
+        CIPHER_WEP40 = 1,
         /**
          * device supports 104/128-bit WEP encryption
          */
-        CIPHER_WEP104,
+        CIPHER_WEP104 = 2,
         /**
          * device supports TKIP encryption
          */
-        CIPHER_TKIP,
+        CIPHER_TKIP = 4,
         /**
          * device supports AES/CCMP encryption
          */
-        CIPHER_CCMP,
+        CIPHER_CCMP = 8,
         /**
          * device supports WPA1 authentication
          */
-        WPA,
+        WPA = 16,
         /**
          * device supports WPA2/RSN authentication
          */
-        RSN,
+        RSN = 32,
         /**
          * device supports Access Point mode
          */
-        AP,
+        AP = 64,
         /**
          * device supports Ad-Hoc mode
          */
-        ADHOC,
+        ADHOC = 128,
         /**
          * device reports frequency capabilities
          */
-        FREQ_VALID,
+        FREQ_VALID = 256,
         /**
          * device supports 2.4GHz frequencies
          */
-        FREQ_2GHZ,
+        FREQ_2GHZ = 512,
         /**
          * device supports 5GHz frequencies
          */
-        FREQ_5GHZ,
+        FREQ_5GHZ = 1024,
         /**
          * device supports 6GHz frequencies. Since: 1.46.
          */
-        FREQ_6GHZ,
+        FREQ_6GHZ = 2048,
         /**
          * device supports acting as a mesh point. Since: 1.20.
          */
-        MESH,
+        MESH = 4096,
         /**
          * device supports WPA2/RSN in an IBSS network. Since: 1.22.
          */
-        IBSS_RSN,
+        IBSS_RSN = 8192,
     }
     /**
      * #NMDhcpHostnameFlags describe flags related to the DHCP hostname and
@@ -5870,18 +5870,18 @@ export namespace NM {
          *   %NM_DHCP_HOSTNAME_FLAG_FQDN_ENCODED for IPv4 and
          *   %NM_DHCP_HOSTNAME_FLAG_FQDN_SERV_UPDATE for IPv6.
          */
-        NONE,
+        NONE = 0,
         /**
          * whether the server should
          *   do the A RR (FQDN-to-address) DNS updates.
          */
-        FQDN_SERV_UPDATE,
+        FQDN_SERV_UPDATE = 1,
         /**
          * if set, the FQDN is encoded
          *   using canonical wire format. Otherwise it uses the deprecated
          *   ASCII encoding. This flag is allowed only for DHCPv4.
          */
-        FQDN_ENCODED,
+        FQDN_ENCODED = 2,
         /**
          * when not set, request the
          *   server to perform updates (the PTR RR and possibly the A RR
@@ -5889,14 +5889,14 @@ export namespace NM {
          *   this is set, the %NM_DHCP_HOSTNAME_FLAG_FQDN_SERV_UPDATE flag
          *   should be cleared.
          */
-        FQDN_NO_UPDATE,
+        FQDN_NO_UPDATE = 4,
         /**
          * when set, no FQDN flags are
          *   sent in the DHCP FQDN option. When cleared and all other FQDN
          *   flags are zero, standard FQDN flags are sent. This flag is
          *   incompatible with any other FQDN flag.
          */
-        FQDN_CLEAR_FLAGS,
+        FQDN_CLEAR_FLAGS = 8,
     }
     /**
      * Compare flags for nm_ip_address_cmp_full().
@@ -5913,7 +5913,7 @@ export namespace NM {
         /**
          * no flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * when comparing two addresses,
          *   also consider their attributes. Warning: note that attributes are GVariants
@@ -5921,7 +5921,7 @@ export namespace NM {
          *   by their attributes, the returned compare order is not total. In that case,
          *   the return value merely indicates equality (zero) or inequality.
          */
-        WITH_ATTRS,
+        WITH_ATTRS = 1,
     }
 
     export namespace IPRoutingRuleAsStringFlags {
@@ -5932,24 +5932,24 @@ export namespace NM {
         /**
          * no flags selected.
          */
-        NONE,
+        NONE = 0,
         /**
          * whether to allow parsing
          *   IPv4 addresses.
          */
-        AF_INET,
+        AF_INET = 1,
         /**
          * whether to allow parsing
          *   IPv6 addresses. If both `NM_IP_ROUTING_RULE_AS_STRING_FLAGS_AF_INET` and
          *   `NM_IP_ROUTING_RULE_AS_STRING_FLAGS_AF_INET6` are unset, it's the same
          *   as setting them both.
          */
-        AF_INET6,
+        AF_INET6 = 2,
         /**
          * if set, ensure that the
          *   rule verfies or fail.
          */
-        VALIDATE,
+        VALIDATE = 4,
     }
     /**
      * IP tunnel flags.
@@ -5966,34 +5966,34 @@ export namespace NM {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * don't add encapsulation limit
          *     if one isn't present in inner packet
          */
-        IP6_IGN_ENCAP_LIMIT,
+        IP6_IGN_ENCAP_LIMIT = 1,
         /**
          * copy the traffic class field
          *     from the inner packet
          */
-        IP6_USE_ORIG_TCLASS,
+        IP6_USE_ORIG_TCLASS = 2,
         /**
          * copy the flowlabel from the
          *     inner packet
          */
-        IP6_USE_ORIG_FLOWLABEL,
+        IP6_USE_ORIG_FLOWLABEL = 4,
         /**
          * used for Mobile IPv6
          */
-        IP6_MIP6_DEV,
+        IP6_MIP6_DEV = 8,
         /**
          * copy DSCP from the outer packet
          */
-        IP6_RCV_DSCP_COPY,
+        IP6_RCV_DSCP_COPY = 16,
         /**
          * copy fwmark from inner packet
          */
-        IP6_USE_ORIG_FWMARK,
+        IP6_USE_ORIG_FWMARK = 32,
     }
     /**
      * Flags for customizing nm_keyfile_read() and nm_keyfile_write().
@@ -6014,7 +6014,7 @@ export namespace NM {
         /**
          * no flags set.
          */
-        NONE,
+        NONE = 0,
     }
     /**
      * Flags for the manager Reload() call.
@@ -6033,12 +6033,12 @@ export namespace NM {
          *   from disk. Note that this does not include connections, which can be
          *   reloaded via Setting's ReloadConnections().
          */
-        CONF,
+        CONF = 1,
         /**
          * update DNS configuration, which usually
          *   involves writing /etc/resolv.conf anew.
          */
-        DNS_RC,
+        DNS_RC = 2,
         /**
          * means to restart the DNS plugin. This
          *   is for example useful when using dnsmasq plugin, which uses additional
@@ -6046,7 +6046,7 @@ export namespace NM {
          *   you can restart the DNS plugin. This action shortly interrupts name
          *   resolution.
          */
-        DNS_FULL,
+        DNS_FULL = 4,
     }
 
     export namespace MptcpFlags {
@@ -6057,11 +6057,11 @@ export namespace NM {
         /**
          * The default, meaning that no MPTCP flags are set.
          */
-        NONE,
+        NONE = 0,
         /**
          * don't configure MPTCP endpoints on the device.
          */
-        DISABLED,
+        DISABLED = 1,
         /**
          * MPTCP is enabled and endpoints will be configured.
          *   This flag is implied if any of the other flags indicate that
@@ -6074,14 +6074,14 @@ export namespace NM {
          *   with the "also-without-default-route" and this affects endpoints
          *   per address family.
          */
-        ENABLED,
+        ENABLED = 2,
         /**
          * even if MPTCP handling is enabled
          *   via the "enabled" flag, it is ignored unless "/proc/sys/net/mptcp/enabled"
          *   is on. With this flag, MPTCP endpoints will be configured regardless
          *   of the sysctl setting.
          */
-        ALSO_WITHOUT_SYSCTL,
+        ALSO_WITHOUT_SYSCTL = 4,
         /**
          * even if MPTCP handling is enabled
          *   via the "enabled" flag, it is ignored per-address family unless NetworkManager
@@ -6089,19 +6089,19 @@ export namespace NM {
          *   MPTCP endpoints if there is no default route. This takes effect per-address
          *   family.
          */
-        ALSO_WITHOUT_DEFAULT_ROUTE,
+        ALSO_WITHOUT_DEFAULT_ROUTE = 8,
         /**
          * Flag for the MPTCP endpoint. The endpoint will be
          *   announced/signaled to each peer via an MPTCP ADD_ADDR sub-option.
          */
-        SIGNAL,
+        SIGNAL = 16,
         /**
          * Flag for the MPTCP endpoint. If additional subflow creation
          *   is allowed by the MPTCP limits, the MPTCP path manager will try to create an
          *   additional subflow using this endpoint as the source address after the MPTCP connection
          *   is established.
          */
-        SUBFLOW,
+        SUBFLOW = 32,
         /**
          * Flag for the MPTCP endpoint. If this is a subflow endpoint, the
          *   subflows created using this endpoint will have the backup flag set during the connection
@@ -6110,7 +6110,7 @@ export namespace NM {
          *   where subflow priority is determined by the backup/non-backup flag received
          *   from the peer
          */
-        BACKUP,
+        BACKUP = 64,
         /**
          * Flag for the MPTCP endpoint. If this is a subflow endpoint and additional
          *   subflow creation is allowed by the MPTCP limits, the MPTCP path manager will try to create an
@@ -6120,7 +6120,7 @@ export namespace NM {
          *   as a plain subflow endpoint. When the peer does announce addresses, each received ADD_ADDR
          *   sub-option will trigger creation of an additional subflow to generate a full mesh topology.
          */
-        FULLMESH,
+        FULLMESH = 128,
     }
     /**
      * Flags related to radio interfaces.
@@ -6137,17 +6137,17 @@ export namespace NM {
         /**
          * an alias for numeric zero, no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * A Wireless LAN device or rfkill switch
          *   is detected in the system.
          */
-        WLAN_AVAILABLE,
+        WLAN_AVAILABLE = 1,
         /**
          * A Wireless WAN device or rfkill switch
          *   is detected in the system.
          */
-        WWAN_AVAILABLE,
+        WWAN_AVAILABLE = 2,
     }
     /**
      * #NMSecretAgentCapabilities indicate various capabilities of the agent.
@@ -6164,16 +6164,16 @@ export namespace NM {
         /**
          * the agent supports no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * the agent supports passing hints to
          * VPN plugin authentication dialogs.
          */
-        VPN_HINTS,
+        VPN_HINTS = 1,
         /**
          * bounds checking value; should not be used.
          */
-        LAST,
+        LAST = 1,
     }
     /**
      * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
@@ -6192,43 +6192,43 @@ export namespace NM {
          *   user interaction is allowed and requests for secrets are fulfilled from
          *   persistent storage, or if no secrets are available an error is returned.
          */
-        NONE,
+        NONE = 0,
         /**
          * allows the request to
          *   interact with the user, possibly prompting via UI for secrets if any are
          *   required, or if none are found in persistent storage.
          */
-        ALLOW_INTERACTION,
+        ALLOW_INTERACTION = 1,
         /**
          * explicitly prompt for new
          *   secrets from the user.  This flag signals that NetworkManager thinks any
          *   existing secrets are invalid or wrong.  This flag implies that interaction
          *   is allowed.
          */
-        REQUEST_NEW,
+        REQUEST_NEW = 2,
         /**
          * set if the request was
          *   initiated by user-requested action via the D-Bus interface, as opposed to
          *   automatically initiated by NetworkManager in response to (for example) scan
          *   results or carrier changes.
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 4,
         /**
          * indicates that WPS enrollment
          *   is active with PBC method. The agent may suggest that the user pushes a button
          *   on the router instead of supplying a PSK.
          */
-        WPS_PBC_ACTIVE,
+        WPS_PBC_ACTIVE = 8,
         /**
          * Internal flag, not part of
          *   the D-Bus API.
          */
-        ONLY_SYSTEM,
+        ONLY_SYSTEM = 2147483648,
         /**
          * Internal flag, not part of
          *   the D-Bus API.
          */
-        NO_ERRORS,
+        NO_ERRORS = 1073741824,
     }
     /**
      * #NMSetting8021xAuthFlags values indicate which authentication settings
@@ -6253,47 +6253,47 @@ export namespace NM {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Disable TLSv1.0
          */
-        TLS_1_0_DISABLE,
+        TLS_1_0_DISABLE = 1,
         /**
          * Disable TLSv1.1
          */
-        TLS_1_1_DISABLE,
+        TLS_1_1_DISABLE = 2,
         /**
          * Disable TLSv1.2
          */
-        TLS_1_2_DISABLE,
+        TLS_1_2_DISABLE = 4,
         /**
          * Disable TLS time checks. Since 1.42.
          */
-        TLS_DISABLE_TIME_CHECKS,
+        TLS_DISABLE_TIME_CHECKS = 8,
         /**
          * Disable TLSv1.3. Since 1.42.
          */
-        TLS_1_3_DISABLE,
+        TLS_1_3_DISABLE = 16,
         /**
          * Enable TLSv1.0. Since 1.42.
          */
-        TLS_1_0_ENABLE,
+        TLS_1_0_ENABLE = 32,
         /**
          * Enable TLSv1.1. Since 1.42.
          */
-        TLS_1_1_ENABLE,
+        TLS_1_1_ENABLE = 64,
         /**
          * Enable TLSv1.2. Since 1.42.
          */
-        TLS_1_2_ENABLE,
+        TLS_1_2_ENABLE = 128,
         /**
          * Enable TLSv1.3. Since 1.42.
          */
-        TLS_1_3_ENABLE,
+        TLS_1_3_ENABLE = 256,
         /**
          * All supported flags
          */
-        ALL,
+        ALL = 511,
     }
     /**
      * DCB feature flags.
@@ -6310,20 +6310,20 @@ export namespace NM {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * the feature is enabled
          */
-        ENABLE,
+        ENABLE = 1,
         /**
          * the feature is advertised
          */
-        ADVERTISE,
+        ADVERTISE = 2,
         /**
          * the feature is willing to change based on
          * peer configuration advertisements
          */
-        WILLING,
+        WILLING = 4,
     }
     /**
      * These flags indicate specific behavior related to handling of a secret.  Each
@@ -6345,25 +6345,25 @@ export namespace NM {
          * the system is responsible for providing and
          * storing this secret (default)
          */
-        NONE,
+        NONE = 0,
         /**
          * a user secret agent is responsible
          * for providing and storing this secret; when it is required agents will be
          * asked to retrieve it
          */
-        AGENT_OWNED,
+        AGENT_OWNED = 1,
         /**
          * this secret should not be saved, but
          * should be requested from the user each time it is needed
          */
-        NOT_SAVED,
+        NOT_SAVED = 2,
         /**
          * in situations where it cannot be
          * automatically determined that the secret is required (some VPNs and PPP
          * providers don't require all secrets) this flag indicates that the specific
          * secret is not required
          */
-        NOT_REQUIRED,
+        NOT_REQUIRED = 4,
     }
     /**
      * Options for #NMSettingWired:wake-on-lan. Note that not all options
@@ -6382,35 +6382,35 @@ export namespace NM {
         /**
          * Wake on PHY activity
          */
-        PHY,
+        PHY = 2,
         /**
          * Wake on unicast messages
          */
-        UNICAST,
+        UNICAST = 4,
         /**
          * Wake on multicast messages
          */
-        MULTICAST,
+        MULTICAST = 8,
         /**
          * Wake on broadcast messages
          */
-        BROADCAST,
+        BROADCAST = 16,
         /**
          * Wake on ARP
          */
-        ARP,
+        ARP = 32,
         /**
          * Wake on magic packet
          */
-        MAGIC,
+        MAGIC = 64,
         /**
          * Use the default value
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Don't change configured settings
          */
-        IGNORE,
+        IGNORE = 32768,
     }
     /**
      * Configure the use of WPS by a connection while it activates.
@@ -6433,23 +6433,23 @@ export namespace NM {
         /**
          * Attempt whichever method AP supports
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * WPS can not be used.
          */
-        DISABLED,
+        DISABLED = 1,
         /**
          * Use WPS, any method
          */
-        AUTO,
+        AUTO = 2,
         /**
          * use WPS push-button method
          */
-        PBC,
+        PBC = 4,
         /**
          * use PIN method
          */
-        PIN,
+        PIN = 8,
     }
     /**
      * Options for #NMSettingWireless:wake-on-wlan. Note that not all options
@@ -6468,46 +6468,46 @@ export namespace NM {
         /**
          * Wake on any activity
          */
-        ANY,
+        ANY = 2,
         /**
          * Wake on disconnect
          */
-        DISCONNECT,
+        DISCONNECT = 4,
         /**
          * Wake on magic packet
          */
-        MAGIC,
+        MAGIC = 8,
         /**
          * Wake on GTK rekey failure
          */
-        GTK_REKEY_FAILURE,
+        GTK_REKEY_FAILURE = 16,
         /**
          * Wake on EAP identity request
          */
-        EAP_IDENTITY_REQUEST,
+        EAP_IDENTITY_REQUEST = 32,
         /**
          * Wake on 4way handshake
          */
-        '4WAY_HANDSHAKE',
+        '4WAY_HANDSHAKE' = 64,
         /**
          * Wake on rfkill release
          */
-        RFKILL_RELEASE,
-        TCP,
+        RFKILL_RELEASE = 128,
+        TCP = 256,
         /**
          * Wake on all events. This does not
          *   include the exclusive flags `NM_SETTING_WIRELESS_WAKE_ON_WLAN_DEFAULT` or
          *   `NM_SETTING_WIRELESS_WAKE_ON_WLAN_IGNORE`.
          */
-        ALL,
+        ALL = 510,
         /**
          * Use the default value
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Don't change configured settings
          */
-        IGNORE,
+        IGNORE = 32768,
     }
     /**
      * Numeric flags for the "flags" argument of AddConnection2() D-Bus API.
@@ -6524,22 +6524,22 @@ export namespace NM {
         /**
          * an alias for numeric zero, no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * to persist the connection to disk.
          */
-        TO_DISK,
+        TO_DISK = 1,
         /**
          * to make the connection in-memory only.
          */
-        IN_MEMORY,
+        IN_MEMORY = 2,
         /**
          * usually, when the connection
          *   has autoconnect enabled and gets added, it becomes eligible to autoconnect
          *   right away. Setting this flag, disables autoconnect until the connection
          *   is manually activated.
          */
-        BLOCK_AUTOCONNECT,
+        BLOCK_AUTOCONNECT = 32,
     }
     /**
      * Flags describing the current activation state.
@@ -6556,21 +6556,21 @@ export namespace NM {
         /**
          * an alias for numeric zero, no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * the connection is not saved to disk.
          *   That either means, that the connection is in-memory only and currently
          *   is not backed by a file. Or, that the connection is backed by a file,
          *   but has modifications in-memory that were not persisted to disk.
          */
-        UNSAVED,
+        UNSAVED = 1,
         /**
          * A connection is "nm-generated" if
          *  it was generated by NetworkManger. If the connection gets modified or saved
          *  by the user, the flag gets cleared. A nm-generated is also unsaved
          *  and has no backing file as it is in-memory only.
          */
-        NM_GENERATED,
+        NM_GENERATED = 2,
         /**
          * The connection will be deleted
          *  when it disconnects. That is for in-memory connections (unsaved), which are
@@ -6578,12 +6578,12 @@ export namespace NM {
          *  always unsaved, but they are also no backing file on disk and are entirely
          *  in-memory only.
          */
-        VOLATILE,
+        VOLATILE = 4,
         /**
          * the profile was generated to represent
          *  an external configuration of a networking device. Since: 1.26.
          */
-        EXTERNAL,
+        EXTERNAL = 8,
     }
 
     export namespace SettingsUpdate2Flags {
@@ -6594,11 +6594,11 @@ export namespace NM {
         /**
          * an alias for numeric zero, no flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * to persist the connection to disk.
          */
-        TO_DISK,
+        TO_DISK = 1,
         /**
          * makes the profile in-memory.
          *   Note that such profiles are stored in keyfile format under /run.
@@ -6612,7 +6612,7 @@ export namespace NM {
          *   and persistent storage are deleted (or if the persistent storage does not
          *   allow deletion, and nmmeta file is written to mark the UUID as deleted).
          */
-        IN_MEMORY,
+        IN_MEMORY = 2,
         /**
          * this is almost the same
          *   as %NM_SETTINGS_UPDATE2_FLAG_IN_MEMORY, with one difference: when later deleting
@@ -6622,14 +6622,14 @@ export namespace NM {
          *   storage, then when re-adding the profile with the same UUID, then the original
          *   storage is taken over again.
          */
-        IN_MEMORY_DETACHED,
+        IN_MEMORY_DETACHED = 4,
         /**
          * this is like %NM_SETTINGS_UPDATE2_FLAG_IN_MEMORY,
          *   but if the connection has a corresponding file on persistent storage, the file
          *   will be deleted right away. If the profile is later again persisted to disk,
          *   a new, unused filename will be chosen.
          */
-        IN_MEMORY_ONLY,
+        IN_MEMORY_ONLY = 8,
         /**
          * This can be specified with either
          *   %NM_SETTINGS_UPDATE2_FLAG_IN_MEMORY, %NM_SETTINGS_UPDATE2_FLAG_IN_MEMORY_DETACHED
@@ -6641,14 +6641,14 @@ export namespace NM {
          *   again (because it's about to be deleted), but a manual activation will
          *   clear the volatile flag.
          */
-        VOLATILE,
+        VOLATILE = 16,
         /**
          * usually, when the connection
          *   has autoconnect enabled and is modified, it becomes eligible to autoconnect
          *   right away. Setting this flag, disables autoconnect until the connection
          *   is manually activated.
          */
-        BLOCK_AUTOCONNECT,
+        BLOCK_AUTOCONNECT = 32,
         /**
          * when a profile gets modified that is
          *   currently active, then these changes don't take effect for the active
@@ -6658,7 +6658,7 @@ export namespace NM {
          *   properties to take effect, so that the change is restricted to modify
          *   the profile. Since: 1.20.
          */
-        NO_REAPPLY,
+        NO_REAPPLY = 64,
     }
 
     export namespace TeamLinkWatcherArpPingFlags {
@@ -6670,17 +6670,17 @@ export namespace NM {
          * the arp_ping link watcher
          *    option 'validate_active' is enabled (set to true).
          */
-        VALIDATE_ACTIVE,
+        VALIDATE_ACTIVE = 2,
         /**
          * the arp_ping link watcher
          *    option 'validate_inactive' is enabled (set to true).
          */
-        VALIDATE_INACTIVE,
+        VALIDATE_INACTIVE = 4,
         /**
          * the arp_ping link watcher option
          *    'send_always' is enabled (set to true).
          */
-        SEND_ALWAYS,
+        SEND_ALWAYS = 8,
     }
     /**
      * #NMVlanFlags values control the behavior of the VLAN interface.
@@ -6698,23 +6698,23 @@ export namespace NM {
          * indicates that this interface should reorder
          *  outgoing packet headers to look more like a non-VLAN Ethernet interface
          */
-        REORDER_HEADERS,
+        REORDER_HEADERS = 1,
         /**
          * indicates that this interface should use GVRP to register
          *  itself with its switch
          */
-        GVRP,
+        GVRP = 2,
         /**
          * indicates that this interface's operating
          *  state is tied to the underlying network interface but other details
          *  (like routing) are not.
          */
-        LOOSE_BINDING,
+        LOOSE_BINDING = 4,
         /**
          * indicates that this interface should use MVRP to register
          *  itself with its switch
          */
-        MVRP,
+        MVRP = 8,
     }
     /**
      * Flags that indicate certain capabilities of the plugin to editor programs.
@@ -6731,19 +6731,19 @@ export namespace NM {
         /**
          * unknown or no capability
          */
-        NONE,
+        NONE = 0,
         /**
          * the plugin can import new connections
          */
-        IMPORT,
+        IMPORT = 1,
         /**
          * the plugin can export connections
          */
-        EXPORT,
+        EXPORT = 2,
         /**
          * the plugin supports IPv6 addressing
          */
-        IPV6,
+        IPV6 = 4,
     }
     namespace AccessPoint {
         // Signal signatures
