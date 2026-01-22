@@ -2026,7 +2026,14 @@ export namespace Meta {
      * It is responsible for creating the correct one, based on the backend that is
      * used (#MetaBackendNative or #MetaBackendX11).
      */
-    abstract class Backend extends GObject.Object implements Gio.Initable {
+    abstract class Backend<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<Backend>;
 
         // Properties
@@ -2041,7 +2048,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2682,7 +2689,11 @@ export namespace Meta {
      * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
      * the background that are obscured by other windows.
      */
-    class Background extends GObject.Object {
+    class Background<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Background>;
 
         // Properties
@@ -2697,7 +2708,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Background.SignalSignatures;
+        $signals: Background.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2850,8 +2861,12 @@ export namespace Meta {
      * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
      * the background that are obscured by other windows.
      */
-    class BackgroundActor
-        extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
+    class BackgroundActor<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<BackgroundActor>;
@@ -2869,7 +2884,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BackgroundActor.SignalSignatures;
+        $signals: BackgroundActor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3503,7 +3518,14 @@ export namespace Meta {
      * texture the size of the screen), and we draw with that, possibly
      * adding the vignette and opacity.
      */
-    class BackgroundContent extends GObject.Object implements Clutter.Content {
+    class BackgroundContent<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Clutter.Content
+    {
         static $gtype: GObject.GType<BackgroundContent>;
 
         // Properties
@@ -3543,7 +3565,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BackgroundContent.SignalSignatures;
+        $signals: BackgroundContent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4202,7 +4224,14 @@ export namespace Meta {
      * See #MetaWindowGroup for more information behind the motivation,
      * and details on implementation.
      */
-    class BackgroundGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    class BackgroundGroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<BackgroundGroup>;
 
         /**
@@ -4212,7 +4241,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BackgroundGroup.SignalSignatures;
+        $signals: BackgroundGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4771,7 +4800,11 @@ export namespace Meta {
     /**
      * Represents a loaded or loading background image.
      */
-    class BackgroundImage extends GObject.Object {
+    class BackgroundImage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BackgroundImage>;
 
         /**
@@ -4781,7 +4814,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BackgroundImage.SignalSignatures;
+        $signals: BackgroundImage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4835,7 +4868,11 @@ export namespace Meta {
      * There's actually nothing background specific about it, other than it is tuned
      * to work well for large images as typically are used for backgrounds.
      */
-    class BackgroundImageCache extends GObject.Object {
+    class BackgroundImageCache<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BackgroundImageCache>;
 
         /**
@@ -4845,7 +4882,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BackgroundImageCache.SignalSignatures;
+        $signals: BackgroundImageCache.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4923,7 +4960,11 @@ export namespace Meta {
         }
     }
 
-    abstract class Backlight extends GObject.Object {
+    abstract class Backlight<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Backlight>;
 
         // Properties
@@ -4944,7 +4985,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Backlight.SignalSignatures;
+        $signals: Backlight.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5020,7 +5061,14 @@ export namespace Meta {
     /**
      * Pointer barriers
      */
-    class Barrier extends GObject.Object implements Gio.Initable {
+    class Barrier<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<Barrier>;
 
         // Properties
@@ -5040,7 +5088,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Barrier.SignalSignatures;
+        $signals: Barrier.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5678,7 +5726,11 @@ export namespace Meta {
      * override-redirect windows (ie. popups and menus) which will be placed in the
      * top window group.
      */
-    abstract class Compositor extends GObject.Object {
+    abstract class Compositor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Compositor>;
 
         // Properties
@@ -5693,7 +5745,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Compositor.SignalSignatures;
+        $signals: Compositor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5759,7 +5811,11 @@ export namespace Meta {
         }
     }
 
-    class Context extends GObject.Object {
+    class Context<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Context>;
 
         // Properties
@@ -5778,7 +5834,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5871,7 +5927,11 @@ export namespace Meta {
      * Mutter cursor tracking helper. Originally only tracking
      * the cursor image, now more of a "core pointer abstraction"
      */
-    class CursorTracker extends GObject.Object {
+    class CursorTracker<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CursorTracker>;
 
         // Properties
@@ -5885,7 +5945,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CursorTracker.SignalSignatures;
+        $signals: CursorTracker.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5954,7 +6014,14 @@ export namespace Meta {
         }
     }
 
-    class DebugControl extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
+    class DebugControl<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Gio.DBusInterfaceSkeleton<Props, Sigs, IFaces>
+        implements Gio.DBusInterface
+    {
         static $gtype: GObject.GType<DebugControl>;
 
         // Properties
@@ -5970,7 +6037,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DebugControl.SignalSignatures;
+        $signals: DebugControl.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6534,7 +6601,11 @@ export namespace Meta {
      *
      * The display is represented as a #MetaDisplay struct.
      */
-    class Display extends GObject.Object {
+    class Display<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Display>;
 
         // Properties
@@ -6551,7 +6622,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6789,7 +6860,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Dnd extends GObject.Object {
+    class Dnd<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Dnd>;
 
         /**
@@ -6799,7 +6874,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Dnd.SignalSignatures;
+        $signals: Dnd.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6838,7 +6913,11 @@ export namespace Meta {
     /**
      * Mutter idle counter (similar to X's IDLETIME)
      */
-    class IdleMonitor extends GObject.Object {
+    class IdleMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IdleMonitor>;
 
         /**
@@ -6848,7 +6927,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IdleMonitor.SignalSignatures;
+        $signals: IdleMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6897,7 +6976,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Laters extends GObject.Object {
+    class Laters<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Laters>;
 
         /**
@@ -6907,7 +6990,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Laters.SignalSignatures;
+        $signals: Laters.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6971,7 +7054,11 @@ export namespace Meta {
         }
     }
 
-    class LaunchContext extends Gio.AppLaunchContext {
+    class LaunchContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gio.AppLaunchContext<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<LaunchContext>;
 
         // Properties
@@ -6989,7 +7076,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: LaunchContext.SignalSignatures;
+        $signals: LaunchContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7046,7 +7133,11 @@ export namespace Meta {
      * the specifics of setting up different [class`Meta`.Monitor]s. It then can
      * be used more easily by #MetaRendererView.
      */
-    class LogicalMonitor extends GObject.Object {
+    class LogicalMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<LogicalMonitor>;
 
         /**
@@ -7056,7 +7147,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: LogicalMonitor.SignalSignatures;
+        $signals: LogicalMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7106,7 +7197,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Monitor extends GObject.Object {
+    class Monitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Monitor>;
 
         /**
@@ -7116,7 +7211,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Monitor.SignalSignatures;
+        $signals: Monitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7236,7 +7331,11 @@ export namespace Meta {
      * The #MetaMonitorManager also provides the "org.gnome.Mutter.DisplayConfig"
      * DBus service, so apps like GNOME Settings can use this functionality.
      */
-    class MonitorManager extends GObject.Object {
+    class MonitorManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MonitorManager>;
 
         // Properties
@@ -7256,7 +7355,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MonitorManager.SignalSignatures;
+        $signals: MonitorManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7337,7 +7436,11 @@ export namespace Meta {
      *   you can use meta_multi_texture_get_width() and its analogous version
      *   for the height to get the correct size of the texture.
      */
-    class MultiTexture extends GObject.Object {
+    class MultiTexture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MultiTexture>;
 
         /**
@@ -7347,7 +7450,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MultiTexture.SignalSignatures;
+        $signals: MultiTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7455,7 +7558,11 @@ export namespace Meta {
      * read the current screen orientation, as well as a signal that is
      * triggered whenever a screen changes its orientation.
      */
-    class OrientationManager extends GObject.Object {
+    class OrientationManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<OrientationManager>;
 
         // Properties
@@ -7470,7 +7577,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: OrientationManager.SignalSignatures;
+        $signals: OrientationManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7515,7 +7622,11 @@ export namespace Meta {
     /**
      * Entry point for plugins
      */
-    abstract class Plugin extends GObject.Object {
+    abstract class Plugin<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Plugin>;
 
         /**
@@ -7525,7 +7636,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7676,7 +7787,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class RemoteAccessController extends GObject.Object {
+    class RemoteAccessController<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<RemoteAccessController>;
 
         /**
@@ -7686,7 +7801,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: RemoteAccessController.SignalSignatures;
+        $signals: RemoteAccessController.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7744,7 +7859,11 @@ export namespace Meta {
         }
     }
 
-    class RemoteAccessHandle extends GObject.Object {
+    class RemoteAccessHandle<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<RemoteAccessHandle>;
 
         // Properties
@@ -7759,7 +7878,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: RemoteAccessHandle.SignalSignatures;
+        $signals: RemoteAccessHandle.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7812,7 +7931,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Selection extends GObject.Object {
+    class Selection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Selection>;
 
         /**
@@ -7822,7 +7945,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Selection.SignalSignatures;
+        $signals: Selection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7944,7 +8067,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class SelectionSource extends GObject.Object {
+    class SelectionSource<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SelectionSource>;
 
         /**
@@ -7954,7 +8081,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SelectionSource.SignalSignatures;
+        $signals: SelectionSource.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8039,7 +8166,11 @@ export namespace Meta {
         interface ConstructorProps extends SelectionSource.ConstructorProps {}
     }
 
-    class SelectionSourceMemory extends SelectionSource {
+    class SelectionSourceMemory<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SelectionSource<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SelectionSourceMemory>;
 
         /**
@@ -8049,7 +8180,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SelectionSourceMemory.SignalSignatures;
+        $signals: SelectionSourceMemory.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8106,7 +8237,14 @@ export namespace Meta {
      * give its final shape, such as a #MtkMonitorTransform, y-invertedness, or a
      * crop-and-scale operation.
      */
-    class ShapedTexture extends GObject.Object implements Clutter.Content {
+    class ShapedTexture<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Clutter.Content
+    {
         static $gtype: GObject.GType<ShapedTexture>;
 
         // Properties
@@ -8123,7 +8261,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ShapedTexture.SignalSignatures;
+        $signals: ShapedTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8683,7 +8821,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class SoundPlayer extends GObject.Object {
+    class SoundPlayer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SoundPlayer>;
 
         /**
@@ -8693,7 +8835,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SoundPlayer.SignalSignatures;
+        $signals: SoundPlayer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8827,7 +8969,14 @@ export namespace Meta {
                 Clutter.Animatable.ConstructorProps {}
     }
 
-    class Stage extends Clutter.Stage implements Atk.ImplementorIface, Clutter.Animatable {
+    class Stage<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Stage<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Stage>;
 
         /**
@@ -8837,7 +8986,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Stage.SignalSignatures;
+        $signals: Stage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9319,7 +9468,11 @@ export namespace Meta {
         }
     }
 
-    class StartupNotification extends GObject.Object {
+    class StartupNotification<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<StartupNotification>;
 
         // Properties
@@ -9333,7 +9486,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: StartupNotification.SignalSignatures;
+        $signals: StartupNotification.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9406,7 +9559,11 @@ export namespace Meta {
         }
     }
 
-    class StartupSequence extends GObject.Object {
+    class StartupSequence<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<StartupSequence>;
 
         // Properties
@@ -9429,7 +9586,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: StartupSequence.SignalSignatures;
+        $signals: StartupSequence.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9495,7 +9652,11 @@ export namespace Meta {
      * A class that allows to launch a trusted client and detect if an specific
      * Wayland window belongs to it.
      */
-    class WaylandClient extends GObject.Object {
+    class WaylandClient<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WaylandClient>;
 
         /**
@@ -9505,7 +9666,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WaylandClient.SignalSignatures;
+        $signals: WaylandClient.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9562,7 +9723,11 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class WaylandCompositor extends GObject.Object {
+    class WaylandCompositor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WaylandCompositor>;
 
         /**
@@ -9572,7 +9737,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WaylandCompositor.SignalSignatures;
+        $signals: WaylandCompositor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9627,7 +9792,11 @@ export namespace Meta {
         }
     }
 
-    class WaylandSurface extends GObject.Object {
+    class WaylandSurface<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WaylandSurface>;
 
         // Properties
@@ -9645,7 +9814,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WaylandSurface.SignalSignatures;
+        $signals: WaylandSurface.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9811,7 +9980,14 @@ export namespace Meta {
      * To integrate within the Clutter scene graph, which deals with the actual
      * rendering, each #MetaWindow will be part of a [class`Meta`.WindowActor].
      */
-    abstract class Window extends GObject.Object implements Gio.Initable {
+    abstract class Window<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<Window>;
 
         // Properties
@@ -9871,7 +10047,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10910,7 +11086,14 @@ export namespace Meta {
      * between events of the window and the actual render loop. See
      * MetaWindowActor::first-frame for an example of the latter.
      */
-    abstract class WindowActor extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    abstract class WindowActor<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<WindowActor>;
 
         // Properties
@@ -10925,7 +11108,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowActor.SignalSignatures;
+        $signals: WindowActor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11527,7 +11710,11 @@ export namespace Meta {
     /**
      * An object representing the configuration of a top-level window
      */
-    class WindowConfig extends GObject.Object {
+    class WindowConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WindowConfig>;
 
         // Properties
@@ -11546,7 +11733,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowConfig.SignalSignatures;
+        $signals: WindowConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11674,7 +11861,14 @@ export namespace Meta {
                 Clutter.Animatable.ConstructorProps {}
     }
 
-    class WindowGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    class WindowGroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<WindowGroup>;
 
         /**
@@ -11684,7 +11878,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowGroup.SignalSignatures;
+        $signals: WindowGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12257,7 +12451,11 @@ export namespace Meta {
      * of a screen may be active at once; all windows on all other workspaces
      * are unmapped.
      */
-    class Workspace extends GObject.Object {
+    class Workspace<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Workspace>;
 
         // Properties
@@ -12275,7 +12473,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Workspace.SignalSignatures;
+        $signals: Workspace.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12386,7 +12584,11 @@ export namespace Meta {
         }
     }
 
-    class WorkspaceManager extends GObject.Object {
+    class WorkspaceManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WorkspaceManager>;
 
         // Properties
@@ -12405,7 +12607,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WorkspaceManager.SignalSignatures;
+        $signals: WorkspaceManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12496,7 +12698,11 @@ export namespace Meta {
      *
      * The X11 display is represented as a #MetaX11Display struct.
      */
-    class X11Display extends GObject.Object {
+    class X11Display<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<X11Display>;
 
         /**
@@ -12506,7 +12712,7 @@ export namespace Meta {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: X11Display.SignalSignatures;
+        $signals: X11Display.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

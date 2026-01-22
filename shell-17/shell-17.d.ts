@@ -447,7 +447,11 @@ export namespace Shell {
      * This object wraps a #GDesktopAppInfo, providing methods and signals
      * primarily useful for running applications.
      */
-    class App extends GObject.Object {
+    class App<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<App>;
 
         // Properties
@@ -496,7 +500,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -706,7 +710,11 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class AppSystem extends GObject.Object {
+    class AppSystem<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AppSystem>;
 
         /**
@@ -716,7 +724,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AppSystem.SignalSignatures;
+        $signals: AppSystem.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -815,7 +823,11 @@ export namespace Shell {
      * GNOME Session "StatusChanged" signal which by default is emitted after 5
      * minutes to signify idle.
      */
-    class AppUsage extends GObject.Object {
+    class AppUsage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AppUsage>;
 
         /**
@@ -825,7 +837,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AppUsage.SignalSignatures;
+        $signals: AppUsage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -903,7 +915,11 @@ export namespace Shell {
      * beneath the actor cannot be cached, so beware of the performance implications
      * of using this blur mode.
      */
-    class BlurEffect extends Clutter.Effect {
+    class BlurEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.Effect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BlurEffect>;
 
         // Properties
@@ -922,7 +938,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BlurEffect.SignalSignatures;
+        $signals: BlurEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -974,7 +990,11 @@ export namespace Shell {
         }
     }
 
-    class CameraMonitor extends GObject.Object {
+    class CameraMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CameraMonitor>;
 
         // Properties
@@ -989,7 +1009,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CameraMonitor.SignalSignatures;
+        $signals: CameraMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1038,7 +1058,11 @@ export namespace Shell {
         }
     }
 
-    class EdgeDragGesture extends Clutter.Gesture {
+    class EdgeDragGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.Gesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<EdgeDragGesture>;
 
         // Properties
@@ -1056,7 +1080,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: EdgeDragGesture.SignalSignatures;
+        $signals: EdgeDragGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1116,7 +1140,11 @@ export namespace Shell {
      * running custom GLSL to the vertex and fragment stages of the
      * graphic pipeline.
      */
-    class GLSLEffect extends Clutter.OffscreenEffect {
+    class GLSLEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GLSLEffect>;
 
         /**
@@ -1126,7 +1154,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GLSLEffect.SignalSignatures;
+        $signals: GLSLEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1249,7 +1277,11 @@ export namespace Shell {
         }
     }
 
-    class Global extends GObject.Object {
+    class Global<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Global>;
 
         // Properties
@@ -1302,7 +1334,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Global.SignalSignatures;
+        $signals: Global.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1504,7 +1536,11 @@ export namespace Shell {
      * of a #ClutterActor (e.g., darker colors become lighter, white becomes black,
      * and white, black).
      */
-    class InvertLightnessEffect extends Clutter.OffscreenEffect {
+    class InvertLightnessEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InvertLightnessEffect>;
 
         /**
@@ -1514,7 +1550,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InvertLightnessEffect.SignalSignatures;
+        $signals: InvertLightnessEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1587,7 +1623,14 @@ export namespace Shell {
         }
     }
 
-    class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
+    class KeyringPrompt<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gcr.Prompt
+    {
         static $gtype: GObject.GType<KeyringPrompt>;
 
         // Properties
@@ -1652,7 +1695,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: KeyringPrompt.SignalSignatures;
+        $signals: KeyringPrompt.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2723,7 +2766,11 @@ export namespace Shell {
         interface ConstructorProps extends Gio.MountOperation.ConstructorProps {}
     }
 
-    class MountOperation extends Gio.MountOperation {
+    class MountOperation<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gio.MountOperation<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MountOperation>;
 
         /**
@@ -2733,7 +2780,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MountOperation.SignalSignatures;
+        $signals: MountOperation.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2792,7 +2839,14 @@ export namespace Shell {
         }
     }
 
-    class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
+    class NetworkAgent<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends NM.SecretAgentOld<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable
+    {
         static $gtype: GObject.GType<NetworkAgent>;
 
         // Properties
@@ -2807,7 +2861,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NetworkAgent.SignalSignatures;
+        $signals: NetworkAgent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3600,7 +3654,11 @@ export namespace Shell {
      * only a limited number of event signatures are supported to
      * simplify the code.
      */
-    class PerfLog extends GObject.Object {
+    class PerfLog<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PerfLog>;
 
         /**
@@ -3610,7 +3668,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PerfLog.SignalSignatures;
+        $signals: PerfLog.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3766,7 +3824,11 @@ export namespace Shell {
         interface ConstructorProps extends PolkitAgent.Listener.ConstructorProps {}
     }
 
-    class PolkitAuthenticationAgent extends PolkitAgent.Listener {
+    class PolkitAuthenticationAgent<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PolkitAgent.Listener<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
 
         /**
@@ -3776,7 +3838,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PolkitAuthenticationAgent.SignalSignatures;
+        $signals: PolkitAuthenticationAgent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3832,7 +3894,11 @@ export namespace Shell {
      * The #ShellScreenshot object is used to take screenshots of screen
      * areas or windows and write them out as png files.
      */
-    class Screenshot extends GObject.Object {
+    class Screenshot<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Screenshot>;
 
         /**
@@ -3842,7 +3908,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Screenshot.SignalSignatures;
+        $signals: Screenshot.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4128,7 +4194,11 @@ export namespace Shell {
         interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {}
     }
 
-    class SecureTextBuffer extends Clutter.TextBuffer {
+    class SecureTextBuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.TextBuffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SecureTextBuffer>;
 
         /**
@@ -4138,7 +4208,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SecureTextBuffer.SignalSignatures;
+        $signals: SecureTextBuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4262,8 +4332,13 @@ export namespace Shell {
                 Clutter.Animatable.ConstructorProps {}
     }
 
-    class SquareBin<A extends Clutter.Actor = Clutter.Actor>
-        extends St.Bin<A>
+    class SquareBin<
+            A extends Clutter.Actor = Clutter.Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends St.Bin<A, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<SquareBin>;
@@ -4275,7 +4350,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SquareBin.SignalSignatures;
+        $signals: SquareBin.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4847,7 +4922,14 @@ export namespace Shell {
      * from #ClutterGroup which allocates its children their natural
      * size, even if that would overflow the size allocated to the stack.
      */
-    class Stack extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class Stack<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends St.Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Stack>;
 
         /**
@@ -4857,7 +4939,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Stack.SignalSignatures;
+        $signals: Stack.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5421,8 +5503,13 @@ export namespace Shell {
         }
     }
 
-    class TrayIcon<A extends Clutter.Actor = Clutter.Actor>
-        extends Clutter.Clone<A>
+    class TrayIcon<
+            A extends Clutter.Actor = Clutter.Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Clone<A, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<TrayIcon>;
@@ -5441,7 +5528,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TrayIcon.SignalSignatures;
+        $signals: TrayIcon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5940,7 +6027,11 @@ export namespace Shell {
         }
     }
 
-    class TrayManager extends GObject.Object {
+    class TrayManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TrayManager>;
 
         // Properties
@@ -5955,7 +6046,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TrayManager.SignalSignatures;
+        $signals: TrayManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6021,7 +6112,11 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class WM extends GObject.Object {
+    class WM<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WM>;
 
         /**
@@ -6031,7 +6126,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WM.SignalSignatures;
+        $signals: WM.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6192,7 +6287,14 @@ export namespace Shell {
         }
     }
 
-    class WindowPreview extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class WindowPreview<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends St.Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<WindowPreview>;
 
         // Properties
@@ -6207,7 +6309,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowPreview.SignalSignatures;
+        $signals: WindowPreview.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6693,7 +6795,11 @@ export namespace Shell {
         }
     }
 
-    class WindowPreviewLayout extends Clutter.LayoutManager {
+    class WindowPreviewLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WindowPreviewLayout>;
 
         // Properties
@@ -6708,7 +6814,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowPreviewLayout.SignalSignatures;
+        $signals: WindowPreviewLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6787,7 +6893,11 @@ export namespace Shell {
      * property (and some static override regexps); in the future, we want to
      * have it also track through startup-notification.
      */
-    class WindowTracker extends GObject.Object {
+    class WindowTracker<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WindowTracker>;
 
         // Properties
@@ -6802,7 +6912,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WindowTracker.SignalSignatures;
+        $signals: WindowTracker.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6946,7 +7056,14 @@ export namespace Shell {
         }
     }
 
-    class WorkspaceBackground extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class WorkspaceBackground<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends St.Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<WorkspaceBackground>;
 
         // Properties
@@ -6965,7 +7082,7 @@ export namespace Shell {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WorkspaceBackground.SignalSignatures;
+        $signals: WorkspaceBackground.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

@@ -1958,7 +1958,11 @@ export namespace Cogl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Atlas extends GObject.Object {
+    class Atlas<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Atlas>;
 
         /**
@@ -1968,7 +1972,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Atlas.SignalSignatures;
+        $signals: Atlas.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2035,7 +2039,11 @@ export namespace Cogl {
      * A #CoglAtlasTexture is a high-level meta texture which has
      * some limitations to be aware of.
      */
-    class AtlasTexture extends Texture {
+    class AtlasTexture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Texture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AtlasTexture>;
 
         /**
@@ -2045,7 +2053,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AtlasTexture.SignalSignatures;
+        $signals: AtlasTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2085,7 +2093,11 @@ export namespace Cogl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Attribute extends GObject.Object {
+    class Attribute<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Attribute>;
 
         /**
@@ -2095,7 +2107,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Attribute.SignalSignatures;
+        $signals: Attribute.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2165,7 +2177,11 @@ export namespace Cogl {
     /**
      * Functions for creating and manipulating attribute buffers
      */
-    class AttributeBuffer extends Buffer {
+    class AttributeBuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Buffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AttributeBuffer>;
 
         /**
@@ -2175,7 +2191,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AttributeBuffer.SignalSignatures;
+        $signals: AttributeBuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2221,7 +2237,11 @@ export namespace Cogl {
      * Cogl allows loading image data into memory as CoglBitmaps without
      * loading them immediately into GPU textures.
      */
-    class Bitmap extends GObject.Object {
+    class Bitmap<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Bitmap>;
 
         /**
@@ -2231,7 +2251,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Bitmap.SignalSignatures;
+        $signals: Bitmap.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2326,7 +2346,11 @@ export namespace Cogl {
      * of loading an image file and unpacking it into the mapped buffer
      * without blocking other Cogl operations.
      */
-    abstract class Buffer extends GObject.Object {
+    abstract class Buffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Buffer>;
 
         // Properties
@@ -2345,7 +2369,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2499,7 +2523,11 @@ export namespace Cogl {
      * framebuffers or textures etc before unrefing and destroying the
      * context.
      */
-    class Context extends GObject.Object {
+    class Context<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Context>;
 
         /**
@@ -2509,7 +2537,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2662,7 +2690,11 @@ export namespace Cogl {
      * onscreen windows before we can choose a suitable fbconfig and
      * create a GLContext.
      */
-    class Display extends GObject.Object {
+    class Display<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Display>;
 
         /**
@@ -2672,7 +2704,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2745,7 +2777,11 @@ export namespace Cogl {
     /**
      * Frame information.
      */
-    class FrameInfo extends GObject.Object {
+    class FrameInfo<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FrameInfo>;
 
         /**
@@ -2755,7 +2791,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FrameInfo.SignalSignatures;
+        $signals: FrameInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2854,7 +2890,11 @@ export namespace Cogl {
         }
     }
 
-    abstract class Framebuffer extends GObject.Object {
+    abstract class Framebuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Framebuffer>;
 
         // Properties
@@ -2874,7 +2914,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Framebuffer.SignalSignatures;
+        $signals: Framebuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3567,7 +3607,11 @@ export namespace Cogl {
     /**
      * Functions for creating and manipulating vertex indices.
      */
-    class IndexBuffer extends Buffer {
+    class IndexBuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Buffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IndexBuffer>;
 
         /**
@@ -3577,7 +3621,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IndexBuffer.SignalSignatures;
+        $signals: IndexBuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3671,7 +3715,11 @@ export namespace Cogl {
      * ([method`Cogl`.Context.get_rectangle_indices]) to get access to re-useable indices
      * for drawing quads as above.
      */
-    class Indices extends GObject.Object {
+    class Indices<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Indices>;
 
         /**
@@ -3681,7 +3729,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Indices.SignalSignatures;
+        $signals: Indices.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3759,7 +3807,11 @@ export namespace Cogl {
      * graph of #CoglMatrixEntry structures which each represent a single
      * immutable transform.
      */
-    class MatrixStack extends GObject.Object {
+    class MatrixStack<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MatrixStack>;
 
         /**
@@ -3769,7 +3821,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MatrixStack.SignalSignatures;
+        $signals: MatrixStack.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3935,7 +3987,11 @@ export namespace Cogl {
     /**
      * Functions for creating and manipulating offscreen framebuffers.
      */
-    class Offscreen extends Framebuffer {
+    class Offscreen<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Framebuffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Offscreen>;
 
         /**
@@ -3945,7 +4001,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Offscreen.SignalSignatures;
+        $signals: Offscreen.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3992,7 +4048,11 @@ export namespace Cogl {
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
     }
 
-    class Onscreen extends Framebuffer {
+    class Onscreen<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Framebuffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Onscreen>;
 
         /**
@@ -4002,7 +4062,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Onscreen.SignalSignatures;
+        $signals: Onscreen.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4339,7 +4399,11 @@ export namespace Cogl {
      * performs fragment processing including depth testing and texture
      * mapping. Finally it blends the result with the framebuffer.
      */
-    class Pipeline extends GObject.Object {
+    class Pipeline<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Pipeline>;
 
         /**
@@ -4349,7 +4413,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Pipeline.SignalSignatures;
+        $signals: Pipeline.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4949,7 +5013,11 @@ export namespace Cogl {
         interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
-    class PixelBuffer extends Buffer {
+    class PixelBuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Buffer<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixelBuffer>;
 
         /**
@@ -4959,7 +5027,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixelBuffer.SignalSignatures;
+        $signals: PixelBuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5000,7 +5068,11 @@ export namespace Cogl {
     /**
      * Functions for creating, manipulating and drawing primitives
      */
-    class Primitive extends GObject.Object {
+    class Primitive<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Primitive>;
 
         /**
@@ -5010,7 +5082,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Primitive.SignalSignatures;
+        $signals: Primitive.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5110,7 +5182,11 @@ export namespace Cogl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Program extends GObject.Object {
+    class Program<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Program>;
 
         /**
@@ -5120,7 +5196,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Program.SignalSignatures;
+        $signals: Program.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5245,7 +5321,11 @@ export namespace Cogl {
      * Once you have a configured #CoglRenderer it can be used to create a
      * #CoglDisplay object using cogl_display_new().
      */
-    class Renderer extends GObject.Object {
+    class Renderer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Renderer>;
 
         /**
@@ -5255,7 +5335,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5352,7 +5432,11 @@ export namespace Cogl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Scanout extends GObject.Object {
+    class Scanout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Scanout>;
 
         /**
@@ -5362,7 +5446,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Scanout.SignalSignatures;
+        $signals: Scanout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5488,7 +5572,11 @@ export namespace Cogl {
      * in the long term and it may be removed in Cogl 2.0. The
      * experimental #CoglShader API is the proposed replacement.
      */
-    class Shader extends GObject.Object {
+    class Shader<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Shader>;
 
         /**
@@ -5498,7 +5586,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Shader.SignalSignatures;
+        $signals: Shader.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5726,7 +5814,11 @@ export namespace Cogl {
      *   cogl_pop_source ();
      * ```
      */
-    class Snippet extends GObject.Object {
+    class Snippet<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Snippet>;
 
         /**
@@ -5736,7 +5828,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Snippet.SignalSignatures;
+        $signals: Snippet.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5844,7 +5936,11 @@ export namespace Cogl {
      * represent a sub-region of another texture. For example these
      * can be used to implement custom texture atlasing schemes.
      */
-    class SubTexture extends Texture {
+    class SubTexture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Texture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SubTexture>;
 
         /**
@@ -5854,7 +5950,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SubTexture.SignalSignatures;
+        $signals: SubTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5918,7 +6014,11 @@ export namespace Cogl {
      * API that tries to hide all the various complexities of creating,
      * loading and manipulating textures.
      */
-    abstract class Texture extends GObject.Object {
+    abstract class Texture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Texture>;
 
         // Properties
@@ -5936,7 +6036,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Texture.SignalSignatures;
+        $signals: Texture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6262,7 +6362,11 @@ export namespace Cogl {
      * internally modify user texture coordinates before they can be used
      * by the GPU.
      */
-    class Texture2D extends Texture {
+    class Texture2D<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Texture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Texture2D>;
 
         /**
@@ -6272,7 +6376,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Texture2D.SignalSignatures;
+        $signals: Texture2D.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6371,7 +6475,11 @@ export namespace Cogl {
      * max-waste threshold. The same logic for slicing from left to right
      * is also applied from top to bottom.
      */
-    class Texture2DSliced extends Texture {
+    class Texture2DSliced<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Texture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Texture2DSliced>;
 
         /**
@@ -6381,7 +6489,7 @@ export namespace Cogl {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Texture2DSliced.SignalSignatures;
+        $signals: Texture2DSliced.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

@@ -71,7 +71,11 @@ export namespace PolkitAgent {
      * polkit_agent_listener_register() or
      * polkit_agent_listener_register_with_options().
      */
-    abstract class Listener extends GObject.Object {
+    abstract class Listener<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Listener>;
 
         /**
@@ -81,7 +85,7 @@ export namespace PolkitAgent {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Listener.SignalSignatures;
+        $signals: Listener.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -370,7 +374,11 @@ export namespace PolkitAgent {
      * If the user is unable to authenticate, the #PolkitAgentSession::completed signal will
      * be emitted with the `gained_authorization` paramter set to %FALSE.
      */
-    class Session extends GObject.Object {
+    class Session<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Session>;
 
         // Properties
@@ -391,7 +399,7 @@ export namespace PolkitAgent {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -457,7 +465,14 @@ export namespace PolkitAgent {
      * #PolkitAgentTextListener is an #PolkitAgentListener implementation
      * that interacts with the user using a textual interface.
      */
-    class TextListener extends Listener implements Gio.Initable {
+    class TextListener<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Listener<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<TextListener>;
 
         /**
@@ -467,7 +482,7 @@ export namespace PolkitAgent {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TextListener.SignalSignatures;
+        $signals: TextListener.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

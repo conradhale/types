@@ -6787,7 +6787,11 @@ export namespace NM {
         }
     }
 
-    class AccessPoint extends Object {
+    class AccessPoint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AccessPoint>;
 
         // Properties
@@ -6874,7 +6878,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AccessPoint.SignalSignatures;
+        $signals: AccessPoint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7039,7 +7043,11 @@ export namespace NM {
         }
     }
 
-    class ActiveConnection extends Object {
+    class ActiveConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ActiveConnection>;
 
         // Properties
@@ -7147,7 +7155,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ActiveConnection.SignalSignatures;
+        $signals: ActiveConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7298,7 +7306,11 @@ export namespace NM {
         }
     }
 
-    class Checkpoint extends Object {
+    class Checkpoint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Checkpoint>;
 
         // Properties
@@ -7327,7 +7339,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Checkpoint.SignalSignatures;
+        $signals: Checkpoint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7500,7 +7512,14 @@ export namespace NM {
      * D-Bus signals gets processed and the #NMClient instance updates and
      * emits #GObject signals.
      */
-    class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
+    class Client<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<Client>, Gio.Initable
+    {
         static $gtype: GObject.GType<Client>;
 
         // Properties
@@ -7835,7 +7854,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10095,7 +10114,11 @@ export namespace NM {
         }
     }
 
-    abstract class Device extends Object {
+    abstract class Device<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Device>;
 
         // Properties
@@ -10339,7 +10362,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10863,7 +10886,11 @@ export namespace NM {
         }
     }
 
-    class Device6Lowpan extends Device {
+    class Device6Lowpan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Device6Lowpan>;
 
         // Properties
@@ -10880,7 +10907,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Device6Lowpan.SignalSignatures;
+        $signals: Device6Lowpan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10958,7 +10985,11 @@ export namespace NM {
         }
     }
 
-    class DeviceAdsl extends Device {
+    class DeviceAdsl<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceAdsl>;
 
         // Properties
@@ -10975,7 +11006,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceAdsl.SignalSignatures;
+        $signals: DeviceAdsl.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11059,7 +11090,11 @@ export namespace NM {
         }
     }
 
-    class DeviceBond extends Device {
+    class DeviceBond<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceBond>;
 
         // Properties
@@ -11080,7 +11115,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceBond.SignalSignatures;
+        $signals: DeviceBond.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11169,7 +11204,11 @@ export namespace NM {
         }
     }
 
-    class DeviceBridge extends Device {
+    class DeviceBridge<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceBridge>;
 
         // Properties
@@ -11190,7 +11229,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceBridge.SignalSignatures;
+        $signals: DeviceBridge.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11280,7 +11319,11 @@ export namespace NM {
         }
     }
 
-    class DeviceBt extends Device {
+    class DeviceBt<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceBt>;
 
         // Properties
@@ -11305,7 +11348,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceBt.SignalSignatures;
+        $signals: DeviceBt.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11391,7 +11434,11 @@ export namespace NM {
         interface ConstructorProps extends Device.ConstructorProps {}
     }
 
-    class DeviceDummy extends Device {
+    class DeviceDummy<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceDummy>;
 
         /**
@@ -11401,7 +11448,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceDummy.SignalSignatures;
+        $signals: DeviceDummy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11483,7 +11530,11 @@ export namespace NM {
         }
     }
 
-    class DeviceEthernet extends Device {
+    class DeviceEthernet<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceEthernet>;
 
         // Properties
@@ -11522,7 +11573,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceEthernet.SignalSignatures;
+        $signals: DeviceEthernet.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11620,7 +11671,11 @@ export namespace NM {
         }
     }
 
-    class DeviceGeneric extends Device {
+    class DeviceGeneric<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceGeneric>;
 
         // Properties
@@ -11643,7 +11698,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceGeneric.SignalSignatures;
+        $signals: DeviceGeneric.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11727,7 +11782,11 @@ export namespace NM {
         }
     }
 
-    class DeviceHsr extends Device {
+    class DeviceHsr<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceHsr>;
 
         // Properties
@@ -11768,7 +11827,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceHsr.SignalSignatures;
+        $signals: DeviceHsr.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11879,7 +11938,11 @@ export namespace NM {
         }
     }
 
-    class DeviceIPTunnel extends Device {
+    class DeviceIPTunnel<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceIPTunnel>;
 
         // Properties
@@ -11973,7 +12036,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceIPTunnel.SignalSignatures;
+        $signals: DeviceIPTunnel.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12063,7 +12126,11 @@ export namespace NM {
         }
     }
 
-    class DeviceInfiniband extends Device {
+    class DeviceInfiniband<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceInfiniband>;
 
         // Properties
@@ -12080,7 +12147,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceInfiniband.SignalSignatures;
+        $signals: DeviceInfiniband.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12159,7 +12226,11 @@ export namespace NM {
         interface ConstructorProps extends Device.ConstructorProps {}
     }
 
-    class DeviceLoopback extends Device {
+    class DeviceLoopback<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceLoopback>;
 
         /**
@@ -12169,7 +12240,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceLoopback.SignalSignatures;
+        $signals: DeviceLoopback.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12272,7 +12343,11 @@ export namespace NM {
         }
     }
 
-    class DeviceMacsec extends Device {
+    class DeviceMacsec<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceMacsec>;
 
         // Properties
@@ -12364,7 +12439,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceMacsec.SignalSignatures;
+        $signals: DeviceMacsec.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12514,7 +12589,11 @@ export namespace NM {
         }
     }
 
-    class DeviceMacvlan extends Device {
+    class DeviceMacvlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceMacvlan>;
 
         // Properties
@@ -12547,7 +12626,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceMacvlan.SignalSignatures;
+        $signals: DeviceMacvlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12652,7 +12731,11 @@ export namespace NM {
         }
     }
 
-    class DeviceModem extends Device {
+    class DeviceModem<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceModem>;
 
         // Properties
@@ -12694,7 +12777,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceModem.SignalSignatures;
+        $signals: DeviceModem.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12805,7 +12888,11 @@ export namespace NM {
         }
     }
 
-    class DeviceOlpcMesh extends Device {
+    class DeviceOlpcMesh<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceOlpcMesh>;
 
         // Properties
@@ -12830,7 +12917,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceOlpcMesh.SignalSignatures;
+        $signals: DeviceOlpcMesh.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12917,7 +13004,11 @@ export namespace NM {
         }
     }
 
-    class DeviceOvsBridge extends Device {
+    class DeviceOvsBridge<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceOvsBridge>;
 
         // Properties
@@ -12934,7 +13025,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceOvsBridge.SignalSignatures;
+        $signals: DeviceOvsBridge.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13013,7 +13104,11 @@ export namespace NM {
         interface ConstructorProps extends Device.ConstructorProps {}
     }
 
-    class DeviceOvsInterface extends Device {
+    class DeviceOvsInterface<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceOvsInterface>;
 
         /**
@@ -13023,7 +13118,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceOvsInterface.SignalSignatures;
+        $signals: DeviceOvsInterface.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13097,7 +13192,11 @@ export namespace NM {
         }
     }
 
-    class DeviceOvsPort extends Device {
+    class DeviceOvsPort<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceOvsPort>;
 
         // Properties
@@ -13114,7 +13213,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceOvsPort.SignalSignatures;
+        $signals: DeviceOvsPort.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13193,7 +13292,11 @@ export namespace NM {
         interface ConstructorProps extends Device.ConstructorProps {}
     }
 
-    class DevicePpp extends Device {
+    class DevicePpp<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DevicePpp>;
 
         /**
@@ -13203,7 +13306,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DevicePpp.SignalSignatures;
+        $signals: DevicePpp.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13281,7 +13384,11 @@ export namespace NM {
         }
     }
 
-    class DeviceTeam extends Device {
+    class DeviceTeam<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceTeam>;
 
         // Properties
@@ -13306,7 +13413,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceTeam.SignalSignatures;
+        $signals: DeviceTeam.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13411,7 +13518,11 @@ export namespace NM {
         }
     }
 
-    class DeviceTun extends Device {
+    class DeviceTun<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceTun>;
 
         // Properties
@@ -13468,7 +13579,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceTun.SignalSignatures;
+        $signals: DeviceTun.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13579,7 +13690,11 @@ export namespace NM {
         }
     }
 
-    class DeviceVeth extends DeviceEthernet {
+    class DeviceVeth<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends DeviceEthernet<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceVeth>;
 
         // Properties
@@ -13596,7 +13711,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceVeth.SignalSignatures;
+        $signals: DeviceVeth.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13679,7 +13794,11 @@ export namespace NM {
         }
     }
 
-    class DeviceVlan extends Device {
+    class DeviceVlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceVlan>;
 
         // Properties
@@ -13708,7 +13827,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceVlan.SignalSignatures;
+        $signals: DeviceVlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13792,7 +13911,11 @@ export namespace NM {
         }
     }
 
-    class DeviceVrf extends Device {
+    class DeviceVrf<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceVrf>;
 
         // Properties
@@ -13809,7 +13932,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceVrf.SignalSignatures;
+        $signals: DeviceVrf.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13922,7 +14045,11 @@ export namespace NM {
         }
     }
 
-    class DeviceVxlan extends Device {
+    class DeviceVxlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceVxlan>;
 
         // Properties
@@ -14026,7 +14153,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceVxlan.SignalSignatures;
+        $signals: DeviceVxlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14143,7 +14270,11 @@ export namespace NM {
         }
     }
 
-    class DeviceWifi extends Device {
+    class DeviceWifi<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceWifi>;
 
         // Properties
@@ -14208,7 +14339,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceWifi.SignalSignatures;
+        $signals: DeviceWifi.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14407,7 +14538,11 @@ export namespace NM {
         }
     }
 
-    class DeviceWifiP2P extends Device {
+    class DeviceWifiP2P<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceWifiP2P>;
 
         // Properties
@@ -14424,7 +14559,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceWifiP2P.SignalSignatures;
+        $signals: DeviceWifiP2P.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14606,7 +14741,11 @@ export namespace NM {
         }
     }
 
-    class DeviceWimax extends Device {
+    class DeviceWimax<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceWimax>;
 
         // Properties
@@ -14681,7 +14820,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceWimax.SignalSignatures;
+        $signals: DeviceWimax.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14819,7 +14958,11 @@ export namespace NM {
         }
     }
 
-    class DeviceWireGuard extends Device {
+    class DeviceWireGuard<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceWireGuard>;
 
         // Properties
@@ -14856,7 +14999,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceWireGuard.SignalSignatures;
+        $signals: DeviceWireGuard.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14947,7 +15090,11 @@ export namespace NM {
         interface ConstructorProps extends Device.ConstructorProps {}
     }
 
-    class DeviceWpan extends Device {
+    class DeviceWpan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Device<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceWpan>;
 
         /**
@@ -14957,7 +15104,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceWpan.SignalSignatures;
+        $signals: DeviceWpan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15001,7 +15148,11 @@ export namespace NM {
         }
     }
 
-    abstract class DhcpConfig extends Object {
+    abstract class DhcpConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DhcpConfig>;
 
         // Properties
@@ -15023,7 +15174,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DhcpConfig.SignalSignatures;
+        $signals: DhcpConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15099,7 +15250,11 @@ export namespace NM {
         }
     }
 
-    abstract class IPConfig extends Object {
+    abstract class IPConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IPConfig>;
 
         // Properties
@@ -15151,7 +15306,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IPConfig.SignalSignatures;
+        $signals: IPConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15236,7 +15391,11 @@ export namespace NM {
         }
     }
 
-    abstract class Object extends GObject.Object {
+    abstract class Object<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Object>;
 
         // Properties
@@ -15266,7 +15425,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15333,7 +15492,14 @@ export namespace NM {
         }
     }
 
-    class RemoteConnection extends Object implements Connection {
+    class RemoteConnection<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Object<Props, Sigs, IFaces>
+        implements Connection
+    {
         static $gtype: GObject.GType<RemoteConnection>;
 
         // Properties
@@ -15381,7 +15547,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: RemoteConnection.SignalSignatures;
+        $signals: RemoteConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16519,7 +16685,14 @@ export namespace NM {
         }
     }
 
-    abstract class SecretAgentOld extends GObject.Object implements Gio.AsyncInitable<SecretAgentOld>, Gio.Initable {
+    abstract class SecretAgentOld<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<SecretAgentOld>, Gio.Initable
+    {
         static $gtype: GObject.GType<SecretAgentOld>;
 
         // Properties
@@ -16608,7 +16781,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SecretAgentOld.SignalSignatures;
+        $signals: SecretAgentOld.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17634,7 +17807,11 @@ export namespace NM {
         }
     }
 
-    abstract class Setting extends GObject.Object {
+    abstract class Setting<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Setting>;
 
         // Properties
@@ -17653,7 +17830,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Setting.SignalSignatures;
+        $signals: Setting.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17847,7 +18024,11 @@ export namespace NM {
     /**
      * 6LoWPAN Settings
      */
-    class Setting6Lowpan extends Setting {
+    class Setting6Lowpan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Setting6Lowpan>;
 
         // Properties
@@ -17866,7 +18047,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Setting6Lowpan.SignalSignatures;
+        $signals: Setting6Lowpan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -18053,7 +18234,11 @@ export namespace NM {
     /**
      * IEEE 802.1x Authentication Settings
      */
-    class Setting8021x extends Setting {
+    class Setting8021x<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Setting8021x>;
 
         // Properties
@@ -18976,7 +19161,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Setting8021x.SignalSignatures;
+        $signals: Setting8021x.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19615,7 +19800,11 @@ export namespace NM {
     /**
      * ADSL Settings
      */
-    class SettingAdsl extends Setting {
+    class SettingAdsl<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingAdsl>;
 
         // Properties
@@ -19668,7 +19857,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingAdsl.SignalSignatures;
+        $signals: SettingAdsl.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19726,7 +19915,11 @@ export namespace NM {
     /**
      * Bluetooth Settings
      */
-    class SettingBluetooth extends Setting {
+    class SettingBluetooth<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingBluetooth>;
 
         // Properties
@@ -19750,7 +19943,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingBluetooth.SignalSignatures;
+        $signals: SettingBluetooth.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19811,7 +20004,11 @@ export namespace NM {
     /**
      * Bonding Settings
      */
-    class SettingBond extends Setting {
+    class SettingBond<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingBond>;
 
         // Properties
@@ -19831,7 +20028,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingBond.SignalSignatures;
+        $signals: SettingBond.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19941,7 +20138,11 @@ export namespace NM {
     /**
      * Bond Port Settings
      */
-    class SettingBondPort extends Setting {
+    class SettingBondPort<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingBondPort>;
 
         // Properties
@@ -19974,7 +20175,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingBondPort.SignalSignatures;
+        $signals: SettingBondPort.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20101,7 +20302,11 @@ export namespace NM {
     /**
      * Bridging Settings
      */
-    class SettingBridge extends Setting {
+    class SettingBridge<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingBridge>;
 
         // Properties
@@ -20459,7 +20664,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingBridge.SignalSignatures;
+        $signals: SettingBridge.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20568,7 +20773,11 @@ export namespace NM {
     /**
      * Bridge Port Settings
      */
-    class SettingBridgePort extends Setting {
+    class SettingBridgePort<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingBridgePort>;
 
         // Properties
@@ -20626,7 +20835,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingBridgePort.SignalSignatures;
+        $signals: SettingBridgePort.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20713,7 +20922,11 @@ export namespace NM {
     /**
      * CDMA-based Mobile Broadband Settings
      */
-    class SettingCdma extends Setting {
+    class SettingCdma<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingCdma>;
 
         // Properties
@@ -20763,7 +20976,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingCdma.SignalSignatures;
+        $signals: SettingCdma.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20897,7 +21110,11 @@ export namespace NM {
     /**
      * General Connection Profile Settings
      */
-    class SettingConnection extends Setting {
+    class SettingConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingConnection>;
 
         // Properties
@@ -21575,7 +21792,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingConnection.SignalSignatures;
+        $signals: SettingConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -21850,7 +22067,11 @@ export namespace NM {
     /**
      * Data Center Bridging Settings
      */
-    class SettingDcb extends Setting {
+    class SettingDcb<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingDcb>;
 
         // Properties
@@ -22083,7 +22304,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingDcb.SignalSignatures;
+        $signals: SettingDcb.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22180,7 +22401,11 @@ export namespace NM {
     /**
      * Dummy Link Settings
      */
-    class SettingDummy extends Setting {
+    class SettingDummy<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingDummy>;
 
         /**
@@ -22190,7 +22415,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingDummy.SignalSignatures;
+        $signals: SettingDummy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22233,7 +22458,11 @@ export namespace NM {
     /**
      * Ethtool Ethernet Settings
      */
-    class SettingEthtool extends Setting {
+    class SettingEthtool<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingEthtool>;
 
         /**
@@ -22243,7 +22472,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingEthtool.SignalSignatures;
+        $signals: SettingEthtool.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22323,7 +22552,11 @@ export namespace NM {
     /**
      * Generic Link Settings
      */
-    class SettingGeneric extends Setting {
+    class SettingGeneric<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingGeneric>;
 
         // Properties
@@ -22366,7 +22599,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingGeneric.SignalSignatures;
+        $signals: SettingGeneric.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22460,7 +22693,11 @@ export namespace NM {
     /**
      * GSM-based Mobile Broadband Settings
      */
-    class SettingGsm extends Setting {
+    class SettingGsm<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingGsm>;
 
         // Properties
@@ -22661,7 +22898,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingGsm.SignalSignatures;
+        $signals: SettingGsm.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22735,7 +22972,11 @@ export namespace NM {
     /**
      * Hostname settings
      */
-    class SettingHostname extends Setting {
+    class SettingHostname<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingHostname>;
 
         // Properties
@@ -22837,7 +23078,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingHostname.SignalSignatures;
+        $signals: SettingHostname.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22917,7 +23158,11 @@ export namespace NM {
     /**
      * HSR/PRP Settings
      */
-    class SettingHsr extends Setting {
+    class SettingHsr<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingHsr>;
 
         // Properties
@@ -22955,7 +23200,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingHsr.SignalSignatures;
+        $signals: SettingHsr.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -23044,7 +23289,11 @@ export namespace NM {
     /**
      * IPv4 Settings
      */
-    class SettingIP4Config extends SettingIPConfig {
+    class SettingIP4Config<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SettingIPConfig<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingIP4Config>;
 
         // Properties
@@ -23197,7 +23446,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingIP4Config.SignalSignatures;
+        $signals: SettingIP4Config.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -23319,7 +23568,11 @@ export namespace NM {
     /**
      * IPv6 Settings
      */
-    class SettingIP6Config extends SettingIPConfig {
+    class SettingIP6Config<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SettingIPConfig<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingIP6Config>;
 
         // Properties
@@ -23618,7 +23871,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingIP6Config.SignalSignatures;
+        $signals: SettingIP6Config.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -23779,7 +24032,11 @@ export namespace NM {
         }
     }
 
-    abstract class SettingIPConfig extends Setting {
+    abstract class SettingIPConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingIPConfig>;
 
         // Properties
@@ -24491,7 +24748,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingIPConfig.SignalSignatures;
+        $signals: SettingIPConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -24833,7 +25090,11 @@ export namespace NM {
     /**
      * IP Tunneling Settings
      */
-    class SettingIPTunnel extends Setting {
+    class SettingIPTunnel<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingIPTunnel>;
 
         // Properties
@@ -24967,7 +25228,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingIPTunnel.SignalSignatures;
+        $signals: SettingIPTunnel.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25097,7 +25358,11 @@ export namespace NM {
     /**
      * Infiniband Settings
      */
-    class SettingInfiniband extends Setting {
+    class SettingInfiniband<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingInfiniband>;
 
         // Properties
@@ -25180,7 +25445,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingInfiniband.SignalSignatures;
+        $signals: SettingInfiniband.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25266,7 +25531,11 @@ export namespace NM {
     /**
      * Link settings
      */
-    class SettingLink extends Setting {
+    class SettingLink<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingLink>;
 
         // Properties
@@ -25333,7 +25602,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingLink.SignalSignatures;
+        $signals: SettingLink.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25406,7 +25675,11 @@ export namespace NM {
     /**
      * Loopback Link Settings
      */
-    class SettingLoopback extends Setting {
+    class SettingLoopback<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingLoopback>;
 
         // Properties
@@ -25425,7 +25698,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingLoopback.SignalSignatures;
+        $signals: SettingLoopback.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25497,7 +25770,11 @@ export namespace NM {
     /**
      * MACSec Settings
      */
-    class SettingMacsec extends Setting {
+    class SettingMacsec<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingMacsec>;
 
         // Properties
@@ -25604,7 +25881,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingMacsec.SignalSignatures;
+        $signals: SettingMacsec.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25669,7 +25946,11 @@ export namespace NM {
     /**
      * MAC VLAN Settings
      */
-    class SettingMacvlan extends Setting {
+    class SettingMacvlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingMacvlan>;
 
         // Properties
@@ -25706,7 +25987,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingMacvlan.SignalSignatures;
+        $signals: SettingMacvlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25767,7 +26048,11 @@ export namespace NM {
     /**
      * Match settings
      */
-    class SettingMatch extends Setting {
+    class SettingMatch<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingMatch>;
 
         // Properties
@@ -25878,7 +26163,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingMatch.SignalSignatures;
+        $signals: SettingMatch.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26060,7 +26345,11 @@ export namespace NM {
     /**
      * OLPC Wireless Mesh Settings
      */
-    class SettingOlpcMesh extends Setting {
+    class SettingOlpcMesh<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOlpcMesh>;
 
         // Properties
@@ -26101,7 +26390,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOlpcMesh.SignalSignatures;
+        $signals: SettingOlpcMesh.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26166,7 +26455,11 @@ export namespace NM {
     /**
      * OvsBridge Link Settings
      */
-    class SettingOvsBridge extends Setting {
+    class SettingOvsBridge<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsBridge>;
 
         // Properties
@@ -26229,7 +26522,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsBridge.SignalSignatures;
+        $signals: SettingOvsBridge.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26292,7 +26585,11 @@ export namespace NM {
     /**
      * OvsDpdk Link Settings
      */
-    class SettingOvsDpdk extends Setting {
+    class SettingOvsDpdk<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsDpdk>;
 
         // Properties
@@ -26360,7 +26657,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsDpdk.SignalSignatures;
+        $signals: SettingOvsDpdk.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26413,7 +26710,11 @@ export namespace NM {
     /**
      * OVS External IDs Settings
      */
-    class SettingOvsExternalIDs extends Setting {
+    class SettingOvsExternalIDs<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsExternalIDs>;
 
         // Properties
@@ -26431,7 +26732,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsExternalIDs.SignalSignatures;
+        $signals: SettingOvsExternalIDs.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26509,7 +26810,11 @@ export namespace NM {
     /**
      * Open vSwitch Interface Settings
      */
-    class SettingOvsInterface extends Setting {
+    class SettingOvsInterface<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsInterface>;
 
         // Properties
@@ -26545,7 +26850,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsInterface.SignalSignatures;
+        $signals: SettingOvsInterface.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26598,7 +26903,11 @@ export namespace NM {
     /**
      * OVS Other Config Settings
      */
-    class SettingOvsOtherConfig extends Setting {
+    class SettingOvsOtherConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsOtherConfig>;
 
         // Properties
@@ -26618,7 +26927,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsOtherConfig.SignalSignatures;
+        $signals: SettingOvsOtherConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26676,7 +26985,11 @@ export namespace NM {
     /**
      * OvsPatch Link Settings
      */
-    class SettingOvsPatch extends Setting {
+    class SettingOvsPatch<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsPatch>;
 
         // Properties
@@ -26695,7 +27008,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsPatch.SignalSignatures;
+        $signals: SettingOvsPatch.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26761,7 +27074,11 @@ export namespace NM {
     /**
      * OvsPort Link Settings
      */
-    class SettingOvsPort extends Setting {
+    class SettingOvsPort<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingOvsPort>;
 
         // Properties
@@ -26835,7 +27152,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingOvsPort.SignalSignatures;
+        $signals: SettingOvsPort.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26960,7 +27277,11 @@ export namespace NM {
     /**
      * Point-to-Point Protocol Settings
      */
-    class SettingPpp extends Setting {
+    class SettingPpp<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingPpp>;
 
         // Properties
@@ -27151,7 +27472,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingPpp.SignalSignatures;
+        $signals: SettingPpp.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27227,7 +27548,11 @@ export namespace NM {
     /**
      * PPP-over-Ethernet Settings
      */
-    class SettingPppoe extends Setting {
+    class SettingPppoe<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingPppoe>;
 
         // Properties
@@ -27276,7 +27601,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingPppoe.SignalSignatures;
+        $signals: SettingPppoe.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27339,7 +27664,11 @@ export namespace NM {
     /**
      * WWW Proxy Settings
      */
-    class SettingProxy extends Setting {
+    class SettingProxy<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingProxy>;
 
         // Properties
@@ -27389,7 +27718,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingProxy.SignalSignatures;
+        $signals: SettingProxy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27457,7 +27786,11 @@ export namespace NM {
     /**
      * Serial Link Settings
      */
-    class SettingSerial extends Setting {
+    class SettingSerial<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingSerial>;
 
         // Properties
@@ -27503,7 +27836,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingSerial.SignalSignatures;
+        $signals: SettingSerial.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27572,7 +27905,11 @@ export namespace NM {
     /**
      * SR-IOV settings
      */
-    class SettingSriov extends Setting {
+    class SettingSriov<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingSriov>;
 
         // Properties
@@ -27736,7 +28073,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingSriov.SignalSignatures;
+        $signals: SettingSriov.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27825,7 +28162,11 @@ export namespace NM {
     /**
      * Linux Traffic Control Settings
      */
-    class SettingTCConfig extends Setting {
+    class SettingTCConfig<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingTCConfig>;
 
         // Properties
@@ -27864,7 +28205,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingTCConfig.SignalSignatures;
+        $signals: SettingTCConfig.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28009,7 +28350,11 @@ export namespace NM {
     /**
      * Teaming Settings
      */
-    class SettingTeam extends Setting {
+    class SettingTeam<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingTeam>;
 
         // Properties
@@ -28191,7 +28536,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingTeam.SignalSignatures;
+        $signals: SettingTeam.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28312,7 +28657,11 @@ export namespace NM {
     /**
      * Team Port Settings
      */
-    class SettingTeamPort extends Setting {
+    class SettingTeamPort<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingTeamPort>;
 
         // Properties
@@ -28399,7 +28748,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingTeamPort.SignalSignatures;
+        $signals: SettingTeamPort.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28489,7 +28838,11 @@ export namespace NM {
     /**
      * Tunnel Settings
      */
-    class SettingTun extends Setting {
+    class SettingTun<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingTun>;
 
         // Properties
@@ -28556,7 +28909,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingTun.SignalSignatures;
+        $signals: SettingTun.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28611,7 +28964,11 @@ export namespace NM {
     /**
      * General User Profile Settings
      */
-    class SettingUser extends Setting {
+    class SettingUser<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingUser>;
 
         // Properties
@@ -28631,7 +28988,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingUser.SignalSignatures;
+        $signals: SettingUser.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28705,7 +29062,11 @@ export namespace NM {
     /**
      * Veth Settings
      */
-    class SettingVeth extends Setting {
+    class SettingVeth<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingVeth>;
 
         // Properties
@@ -28724,7 +29085,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingVeth.SignalSignatures;
+        $signals: SettingVeth.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28786,7 +29147,11 @@ export namespace NM {
     /**
      * VLAN Settings
      */
-    class SettingVlan extends Setting {
+    class SettingVlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingVlan>;
 
         // Properties
@@ -28864,7 +29229,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingVlan.SignalSignatures;
+        $signals: SettingVlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29004,7 +29369,11 @@ export namespace NM {
     /**
      * VPN Settings
      */
-    class SettingVpn extends Setting {
+    class SettingVpn<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingVpn>;
 
         // Properties
@@ -29079,7 +29448,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingVpn.SignalSignatures;
+        $signals: SettingVpn.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29222,7 +29591,11 @@ export namespace NM {
     /**
      * VRF settings
      */
-    class SettingVrf extends Setting {
+    class SettingVrf<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingVrf>;
 
         // Properties
@@ -29240,7 +29613,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingVrf.SignalSignatures;
+        $signals: SettingVrf.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29325,7 +29698,11 @@ export namespace NM {
     /**
      * VXLAN Settings
      */
-    class SettingVxlan extends Setting {
+    class SettingVxlan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingVxlan>;
 
         // Properties
@@ -29454,7 +29831,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingVxlan.SignalSignatures;
+        $signals: SettingVxlan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29525,7 +29902,11 @@ export namespace NM {
     /**
      * Wi-Fi P2P Settings
      */
-    class SettingWifiP2P extends Setting {
+    class SettingWifiP2P<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWifiP2P>;
 
         // Properties
@@ -29580,7 +29961,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWifiP2P.SignalSignatures;
+        $signals: SettingWifiP2P.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29636,7 +30017,11 @@ export namespace NM {
     /**
      * WiMax Settings
      */
-    class SettingWimax extends Setting {
+    class SettingWimax<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWimax>;
 
         // Properties
@@ -29675,7 +30060,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWimax.SignalSignatures;
+        $signals: SettingWimax.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29756,7 +30141,11 @@ export namespace NM {
     /**
      * WireGuard Settings
      */
-    class SettingWireGuard extends Setting {
+    class SettingWireGuard<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWireGuard>;
 
         // Properties
@@ -29904,7 +30293,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWireGuard.SignalSignatures;
+        $signals: SettingWireGuard.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -30031,7 +30420,11 @@ export namespace NM {
     /**
      * Wired Ethernet Settings
      */
-    class SettingWired extends Setting {
+    class SettingWired<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWired>;
 
         // Properties
@@ -30381,7 +30774,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWired.SignalSignatures;
+        $signals: SettingWired.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -30614,7 +31007,11 @@ export namespace NM {
     /**
      * Wi-Fi Settings
      */
-    class SettingWireless extends Setting {
+    class SettingWireless<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWireless>;
 
         // Properties
@@ -31019,7 +31416,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWireless.SignalSignatures;
+        $signals: SettingWireless.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -31230,7 +31627,11 @@ export namespace NM {
     /**
      * Wi-Fi Security Settings
      */
-    class SettingWirelessSecurity extends Setting {
+    class SettingWirelessSecurity<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
 
         // Properties
@@ -31507,7 +31908,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWirelessSecurity.SignalSignatures;
+        $signals: SettingWirelessSecurity.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -31688,7 +32089,11 @@ export namespace NM {
     /**
      * IEEE 802.15.4 (WPAN) MAC Settings
      */
-    class SettingWpan extends Setting {
+    class SettingWpan<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Setting<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingWpan>;
 
         // Properties
@@ -31745,7 +32150,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingWpan.SignalSignatures;
+        $signals: SettingWpan.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -31791,7 +32196,14 @@ export namespace NM {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connection.ConstructorProps {}
     }
 
-    class SimpleConnection extends GObject.Object implements Connection {
+    class SimpleConnection<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Connection
+    {
         static $gtype: GObject.GType<SimpleConnection>;
 
         /**
@@ -31801,7 +32213,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleConnection.SignalSignatures;
+        $signals: SimpleConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -32738,7 +33150,11 @@ export namespace NM {
         }
     }
 
-    class VpnConnection extends ActiveConnection {
+    class VpnConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ActiveConnection<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<VpnConnection>;
 
         // Properties
@@ -32763,7 +33179,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VpnConnection.SignalSignatures;
+        $signals: VpnConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -32820,7 +33236,14 @@ export namespace NM {
         }
     }
 
-    class VpnPluginInfo extends GObject.Object implements Gio.Initable {
+    class VpnPluginInfo<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<VpnPluginInfo>;
 
         // Properties
@@ -32850,7 +33273,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VpnPluginInfo.SignalSignatures;
+        $signals: VpnPluginInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -33495,7 +33918,14 @@ export namespace NM {
         }
     }
 
-    abstract class VpnPluginOld extends GObject.Object implements Gio.Initable {
+    abstract class VpnPluginOld<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<VpnPluginOld>;
 
         // Properties
@@ -33521,7 +33951,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VpnPluginOld.SignalSignatures;
+        $signals: VpnPluginOld.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34153,7 +34583,14 @@ export namespace NM {
         }
     }
 
-    abstract class VpnServicePlugin extends GObject.Object implements Gio.Initable {
+    abstract class VpnServicePlugin<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<VpnServicePlugin>;
 
         // Properties
@@ -34187,7 +34624,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VpnServicePlugin.SignalSignatures;
+        $signals: VpnServicePlugin.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34838,7 +35275,11 @@ export namespace NM {
         }
     }
 
-    class WifiP2PPeer extends Object {
+    class WifiP2PPeer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WifiP2PPeer>;
 
         // Properties
@@ -34909,7 +35350,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WifiP2PPeer.SignalSignatures;
+        $signals: WifiP2PPeer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -35033,7 +35474,11 @@ export namespace NM {
         }
     }
 
-    class WimaxNsp extends Object {
+    class WimaxNsp<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WimaxNsp>;
 
         // Properties
@@ -35066,7 +35511,7 @@ export namespace NM {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WimaxNsp.SignalSignatures;
+        $signals: WimaxNsp.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

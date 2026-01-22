@@ -73,7 +73,11 @@ export namespace Gvc {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class ChannelMap extends GObject.Object {
+    class ChannelMap<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ChannelMap>;
 
         /**
@@ -83,7 +87,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ChannelMap.SignalSignatures;
+        $signals: ChannelMap.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -152,7 +156,11 @@ export namespace Gvc {
         }
     }
 
-    class MixerCard extends GObject.Object {
+    class MixerCard<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerCard>;
 
         // Properties
@@ -179,7 +187,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerCard.SignalSignatures;
+        $signals: MixerCard.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -255,7 +263,11 @@ export namespace Gvc {
         }
     }
 
-    class MixerControl extends GObject.Object {
+    class MixerControl<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerControl>;
 
         // Properties
@@ -269,7 +281,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerControl.SignalSignatures;
+        $signals: MixerControl.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -377,7 +389,11 @@ export namespace Gvc {
         }
     }
 
-    class MixerEventRole extends MixerStream {
+    class MixerEventRole<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MixerStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerEventRole>;
 
         // Properties
@@ -392,7 +408,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerEventRole.SignalSignatures;
+        $signals: MixerEventRole.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -448,7 +464,11 @@ export namespace Gvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
-    class MixerSink extends MixerStream {
+    class MixerSink<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MixerStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerSink>;
 
         /**
@@ -458,7 +478,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerSink.SignalSignatures;
+        $signals: MixerSink.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -514,7 +534,11 @@ export namespace Gvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
-    class MixerSinkInput extends MixerStream {
+    class MixerSinkInput<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MixerStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerSinkInput>;
 
         /**
@@ -524,7 +548,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerSinkInput.SignalSignatures;
+        $signals: MixerSinkInput.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -580,7 +604,11 @@ export namespace Gvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
-    class MixerSource extends MixerStream {
+    class MixerSource<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MixerStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerSource>;
 
         /**
@@ -590,7 +618,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerSource.SignalSignatures;
+        $signals: MixerSource.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -646,7 +674,11 @@ export namespace Gvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
-    class MixerSourceOutput extends MixerStream {
+    class MixerSourceOutput<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MixerStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerSourceOutput>;
 
         /**
@@ -656,7 +688,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerSourceOutput.SignalSignatures;
+        $signals: MixerSourceOutput.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -743,7 +775,11 @@ export namespace Gvc {
         }
     }
 
-    abstract class MixerStream extends GObject.Object {
+    abstract class MixerStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerStream>;
 
         // Properties
@@ -812,7 +848,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerStream.SignalSignatures;
+        $signals: MixerStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -919,7 +955,11 @@ export namespace Gvc {
         }
     }
 
-    class MixerUIDevice extends GObject.Object {
+    class MixerUIDevice<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MixerUIDevice>;
 
         // Properties
@@ -956,7 +996,7 @@ export namespace Gvc {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MixerUIDevice.SignalSignatures;
+        $signals: MixerUIDevice.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

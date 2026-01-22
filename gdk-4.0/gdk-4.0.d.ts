@@ -4769,7 +4769,11 @@ export namespace Gdk {
      * g_object_unref (context);
      * ```
      */
-    class AppLaunchContext extends Gio.AppLaunchContext {
+    class AppLaunchContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gio.AppLaunchContext<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AppLaunchContext>;
 
         // Properties
@@ -4786,7 +4790,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AppLaunchContext.SignalSignatures;
+        $signals: AppLaunchContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4938,7 +4942,11 @@ export namespace Gdk {
      * [method`Gdk`.Surface.create_cairo_context], and the context
      * can then be used to draw on that surface.
      */
-    abstract class CairoContext extends DrawContext {
+    abstract class CairoContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends DrawContext<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CairoContext>;
 
         /**
@@ -4948,7 +4956,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CairoContext.SignalSignatures;
+        $signals: CairoContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5033,7 +5041,11 @@ export namespace Gdk {
      * create a variant of a color state, by changing just one of the cicp
      * parameters, or just to obtain information about the color state.
      */
-    class CicpParams extends GObject.Object {
+    class CicpParams<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CicpParams>;
 
         // Properties
@@ -5133,7 +5145,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CicpParams.SignalSignatures;
+        $signals: CicpParams.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5254,7 +5266,11 @@ export namespace Gdk {
      * [method`Gdk`.Clipboard.read_texture_async]. For other data, use
      * [method`Gdk`.Clipboard.read_async], which provides a `GInputStream` object.
      */
-    class Clipboard extends GObject.Object {
+    class Clipboard<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Clipboard>;
 
         // Properties
@@ -5284,7 +5300,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Clipboard.SignalSignatures;
+        $signals: Clipboard.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5654,7 +5670,14 @@ export namespace Gdk {
      *
      * Also see [class`Gdk`.ContentSerializer].
      */
-    class ContentDeserializer extends GObject.Object implements Gio.AsyncResult {
+    class ContentDeserializer<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncResult
+    {
         static $gtype: GObject.GType<ContentDeserializer>;
 
         /**
@@ -5664,7 +5687,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ContentDeserializer.SignalSignatures;
+        $signals: ContentDeserializer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6269,7 +6292,11 @@ export namespace Gdk {
      * [class`Gdk`.ContentSerializer] and [class`Gdk`.ContentDeserializer] if you want
      * to add support for application-specific data formats.
      */
-    class ContentProvider extends GObject.Object {
+    class ContentProvider<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ContentProvider>;
 
         // Properties
@@ -6294,7 +6321,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ContentProvider.SignalSignatures;
+        $signals: ContentProvider.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6515,7 +6542,14 @@ export namespace Gdk {
      *
      * Also see [class`Gdk`.ContentDeserializer].
      */
-    class ContentSerializer extends GObject.Object implements Gio.AsyncResult {
+    class ContentSerializer<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncResult
+    {
         static $gtype: GObject.GType<ContentSerializer>;
 
         /**
@@ -6525,7 +6559,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ContentSerializer.SignalSignatures;
+        $signals: ContentSerializer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7211,7 +7245,11 @@ export namespace Gdk {
      * easier to support cursors. If none of the provided cursors can be supported,
      * the default cursor will be the ultimate fallback.
      */
-    class Cursor extends GObject.Object {
+    class Cursor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Cursor>;
 
         // Properties
@@ -7256,7 +7294,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Cursor.SignalSignatures;
+        $signals: Cursor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7487,7 +7525,11 @@ export namespace Gdk {
      * See the [class`Gdk`.Seat] documentation for more information
      * about the various kinds of devices, and their relationships.
      */
-    abstract class Device extends GObject.Object {
+    abstract class Device<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Device>;
 
         // Properties
@@ -7669,7 +7711,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7874,7 +7916,11 @@ export namespace Gdk {
     /**
      * A physical tool associated to a `GdkDevice`.
      */
-    class DeviceTool extends GObject.Object {
+    class DeviceTool<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeviceTool>;
 
         // Properties
@@ -7911,7 +7957,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeviceTool.SignalSignatures;
+        $signals: DeviceTool.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8019,7 +8065,11 @@ export namespace Gdk {
      * Output devices are represented by [class`Gdk`.Monitor] objects, which can
      * be accessed with [method`Gdk`.Display.get_monitor_at_surface] and similar APIs.
      */
-    class Display extends GObject.Object {
+    class Display<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Display>;
 
         // Properties
@@ -8064,7 +8114,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8459,7 +8509,11 @@ export namespace Gdk {
      *   g_error ("Unsupported GDK backend");
      * ```
      */
-    class DisplayManager extends GObject.Object {
+    class DisplayManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DisplayManager>;
 
         // Properties
@@ -8482,7 +8536,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DisplayManager.SignalSignatures;
+        $signals: DisplayManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8573,7 +8627,14 @@ export namespace Gdk {
      *
      * Dma-buf textures can only be created on Linux.
      */
-    class DmabufTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+    class DmabufTexture<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Texture<Props, Sigs, IFaces>
+        implements Paintable, Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<DmabufTexture>;
 
         /**
@@ -8583,7 +8644,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DmabufTexture.SignalSignatures;
+        $signals: DmabufTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9480,7 +9541,11 @@ export namespace Gdk {
      *
      * * The header file [drm_fourcc.h](https://gitlab.freedesktop.org/mesa/drm/-/blob/main/include/drm/drm_fourcc.h)
      */
-    class DmabufTextureBuilder extends GObject.Object {
+    class DmabufTextureBuilder<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DmabufTextureBuilder>;
 
         // Properties
@@ -9571,7 +9636,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DmabufTextureBuilder.SignalSignatures;
+        $signals: DmabufTextureBuilder.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9843,7 +9908,11 @@ export namespace Gdk {
      * and so they are not normally needed in GTK applications. See the
      * "Drag and Drop" section of the GTK documentation for more information.
      */
-    abstract class Drag extends GObject.Object {
+    abstract class Drag<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Drag>;
 
         // Properties
@@ -9891,7 +9960,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Drag.SignalSignatures;
+        $signals: Drag.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10050,7 +10119,11 @@ export namespace Gdk {
      *
      * A `GdkDrawContext` is always associated with a single toplevel surface.
      */
-    abstract class DrawContext extends GObject.Object {
+    abstract class DrawContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DrawContext>;
 
         // Properties
@@ -10071,7 +10144,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DrawContext.SignalSignatures;
+        $signals: DrawContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10210,7 +10283,11 @@ export namespace Gdk {
      * and so they are not normally needed in GTK applications. See the
      * "Drag and Drop" section of the GTK documentation for more information.
      */
-    abstract class Drop extends GObject.Object {
+    abstract class Drop<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Drop>;
 
         // Properties
@@ -10247,7 +10324,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Drop.SignalSignatures;
+        $signals: Drop.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10762,7 +10839,11 @@ export namespace Gdk {
      * and the value inside the [signal`Gdk`.FrameClock::update] signal of the clock,
      * they will stay exactly synchronized.
      */
-    abstract class FrameClock extends GObject.Object {
+    abstract class FrameClock<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FrameClock>;
 
         /**
@@ -10772,7 +10853,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FrameClock.SignalSignatures;
+        $signals: FrameClock.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10966,7 +11047,11 @@ export namespace Gdk {
      * [func`Gdk`.GLContext.get_current]; you can also unset any `GdkGLContext`
      * that is currently set by calling [func`Gdk`.GLContext.clear_current].
      */
-    abstract class GLContext extends DrawContext {
+    abstract class GLContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends DrawContext<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GLContext>;
 
         // Properties
@@ -11007,7 +11092,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GLContext.SignalSignatures;
+        $signals: GLContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11249,7 +11334,14 @@ export namespace Gdk {
     /**
      * A `GdkTexture` representing a GL texture object.
      */
-    class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+    class GLTexture<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Texture<Props, Sigs, IFaces>
+        implements Paintable, Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<GLTexture>;
 
         /**
@@ -11259,7 +11351,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GLTexture.SignalSignatures;
+        $signals: GLTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12123,7 +12215,11 @@ export namespace Gdk {
      * `GdkGLTextureBuilder` can be used for quick one-shot construction of
      * textures as well as kept around and reused to construct multiple textures.
      */
-    class GLTextureBuilder extends GObject.Object {
+    class GLTextureBuilder<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GLTextureBuilder>;
 
         // Properties
@@ -12208,7 +12304,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GLTextureBuilder.SignalSignatures;
+        $signals: GLTextureBuilder.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12570,7 +12666,14 @@ export namespace Gdk {
     /**
      * A `GdkTexture` representing image data in memory.
      */
-    class MemoryTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+    class MemoryTexture<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Texture<Props, Sigs, IFaces>
+        implements Paintable, Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<MemoryTexture>;
 
         /**
@@ -12580,7 +12683,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MemoryTexture.SignalSignatures;
+        $signals: MemoryTexture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13435,7 +13538,11 @@ export namespace Gdk {
      * `GdkMemoryTextureBuilder` can be used for quick one-shot construction of
      * textures as well as kept around and reused to construct multiple textures.
      */
-    class MemoryTextureBuilder extends GObject.Object {
+    class MemoryTextureBuilder<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MemoryTextureBuilder>;
 
         // Properties
@@ -13506,7 +13613,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MemoryTextureBuilder.SignalSignatures;
+        $signals: MemoryTextureBuilder.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13712,7 +13819,11 @@ export namespace Gdk {
      * [method`Gdk`.Display.get_monitor_at_surface] to find a particular
      * monitor.
      */
-    class Monitor extends GObject.Object {
+    class Monitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Monitor>;
 
         // Properties
@@ -13803,7 +13914,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Monitor.SignalSignatures;
+        $signals: Monitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14146,7 +14257,11 @@ export namespace Gdk {
     /**
      * Represents a collection of input devices that belong to a user.
      */
-    abstract class Seat extends GObject.Object {
+    abstract class Seat<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Seat>;
 
         // Properties
@@ -14163,7 +14278,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Seat.SignalSignatures;
+        $signals: Seat.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14238,7 +14353,11 @@ export namespace Gdk {
      *
      * The subclass of `GdkSnapshot` used by GTK is [GtkSnapshot](../gtk4/class.Snapshot.html).
      */
-    abstract class Snapshot extends GObject.Object {
+    abstract class Snapshot<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Snapshot>;
 
         /**
@@ -14248,7 +14367,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Snapshot.SignalSignatures;
+        $signals: Snapshot.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14320,7 +14439,11 @@ export namespace Gdk {
      * API to interact with these surfaces. Other, more specialized surface
      * types exist, but you will rarely interact with them directly.
      */
-    abstract class Surface extends GObject.Object {
+    abstract class Surface<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Surface>;
 
         // Properties
@@ -14380,7 +14503,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Surface.SignalSignatures;
+        $signals: Surface.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14724,7 +14847,14 @@ export namespace Gdk {
      * [glycin](https://lib.rs/crates/glycin), if you need to load untrusted image
      * data.
      */
-    abstract class Texture extends GObject.Object implements Paintable, Gio.Icon, Gio.LoadableIcon {
+    abstract class Texture<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Paintable, Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<Texture>;
 
         // Properties
@@ -14753,7 +14883,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Texture.SignalSignatures;
+        $signals: Texture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15810,7 +15940,14 @@ export namespace Gdk {
      * Support for `GdkVulkanContext` is platform-specific and context creation
      * can fail, returning %NULL context.
      */
-    abstract class VulkanContext extends DrawContext implements Gio.Initable {
+    abstract class VulkanContext<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends DrawContext<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<VulkanContext>;
 
         /**
@@ -15820,7 +15957,7 @@ export namespace Gdk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VulkanContext.SignalSignatures;
+        $signals: VulkanContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

@@ -3138,7 +3138,11 @@ export namespace Pango {
      *
      * To obtain a `PangoContext`, use [method`Pango`.FontMap.create_context].
      */
-    class Context extends GObject.Object {
+    class Context<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Context>;
 
         /**
@@ -3148,7 +3152,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3397,7 +3401,11 @@ export namespace Pango {
      * structure that is used to represent that information. It is an
      * opaque structure with no public fields.
      */
-    class Coverage extends GObject.Object {
+    class Coverage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Coverage>;
 
         /**
@@ -3407,7 +3415,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Coverage.SignalSignatures;
+        $signals: Coverage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3502,7 +3510,11 @@ export namespace Pango {
      * A `PangoFont` is used to represent a font in a
      * rendering-system-independent manner.
      */
-    abstract class Font extends GObject.Object {
+    abstract class Font<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Font>;
 
         /**
@@ -3512,7 +3524,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Font.SignalSignatures;
+        $signals: Font.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3759,7 +3771,11 @@ export namespace Pango {
      * A `PangoFontFace` is used to represent a group of fonts with
      * the same family, slant, weight, and width, but varying sizes.
      */
-    abstract class FontFace extends GObject.Object {
+    abstract class FontFace<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FontFace>;
 
         /**
@@ -3769,7 +3785,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FontFace.SignalSignatures;
+        $signals: FontFace.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3914,8 +3930,13 @@ export namespace Pango {
      * The font faces in a family share a common design, but differ in
      * slant, weight, width or other aspects.
      */
-    abstract class FontFamily<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
+    abstract class FontFamily<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontFamily>;
@@ -3966,7 +3987,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FontFamily.SignalSignatures;
+        $signals: FontFamily.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4639,8 +4660,13 @@ export namespace Pango {
      * This is a virtual object with implementations being specific to
      * particular rendering systems.
      */
-    abstract class FontMap<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
+    abstract class FontMap<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
@@ -4671,7 +4697,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FontMap.SignalSignatures;
+        $signals: FontMap.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5404,7 +5430,11 @@ export namespace Pango {
      * component font for a particular Unicode character, and for finding a
      * composite set of metrics for the entire fontset.
      */
-    abstract class Fontset extends GObject.Object {
+    abstract class Fontset<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Fontset>;
 
         /**
@@ -5414,7 +5444,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Fontset.SignalSignatures;
+        $signals: Fontset.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5505,7 +5535,11 @@ export namespace Pango {
      * When creating a `PangoFontsetSimple`, you have to provide
      * the array of fonts that make up the fontset.
      */
-    class FontsetSimple extends Fontset {
+    class FontsetSimple<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Fontset<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FontsetSimple>;
 
         /**
@@ -5515,7 +5549,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FontsetSimple.SignalSignatures;
+        $signals: FontsetSimple.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5608,7 +5642,11 @@ export namespace Pango {
      * It is possible, as well, to ignore the 2-D setup,
      * and simply treat the results of a `PangoLayout` as a list of lines.
      */
-    class Layout extends GObject.Object {
+    class Layout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Layout>;
 
         /**
@@ -5618,7 +5656,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Layout.SignalSignatures;
+        $signals: Layout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6389,7 +6427,11 @@ export namespace Pango {
      * `draw_glyphs` and `draw_rectangle,` renderers for particular font
      * backends and destinations can be created.
      */
-    abstract class Renderer extends GObject.Object {
+    abstract class Renderer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Renderer>;
 
         /**
@@ -6399,7 +6441,7 @@ export namespace Pango {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 

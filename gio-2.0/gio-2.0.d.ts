@@ -7042,7 +7042,11 @@ export namespace Gio {
      * often come in groups (like during system updates) and rescanning the list
      * on every change is pointless and expensive.
      */
-    class AppInfoMonitor extends GObject.Object {
+    class AppInfoMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AppInfoMonitor>;
 
         /**
@@ -7052,7 +7056,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AppInfoMonitor.SignalSignatures;
+        $signals: AppInfoMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7116,7 +7120,11 @@ export namespace Gio {
      * handle for instance startup notification and launching the new application
      * on the same screen as the launching window.
      */
-    class AppLaunchContext extends GObject.Object {
+    class AppLaunchContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AppLaunchContext>;
 
         /**
@@ -7126,7 +7134,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AppLaunchContext.SignalSignatures;
+        $signals: AppLaunchContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7427,7 +7435,14 @@ export namespace Gio {
      * For an example of using extra D-Bus hooks with `GApplication`, see
      * [gapplication-example-dbushooks.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-dbushooks.c).
      */
-    class Application extends GObject.Object implements ActionGroup, ActionMap {
+    class Application<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements ActionGroup, ActionMap
+    {
         static $gtype: GObject.GType<Application>;
 
         // Properties
@@ -7514,7 +7529,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9492,7 +9507,11 @@ export namespace Gio {
      * The complete example can be found here:
      * [gapplication-example-cmdline3.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline3.c)
      */
-    class ApplicationCommandLine extends GObject.Object {
+    class ApplicationCommandLine<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ApplicationCommandLine>;
 
         // Properties
@@ -9530,7 +9549,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ApplicationCommandLine.SignalSignatures;
+        $signals: ApplicationCommandLine.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9838,7 +9857,14 @@ export namespace Gio {
      * buffered input stream's buffer, use [method`Gio`.BufferedInputStream.set_buffer_size].
      * Note that the buffer's size cannot be reduced below the size of the data within the buffer.
      */
-    class BufferedInputStream extends FilterInputStream implements Seekable {
+    class BufferedInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends FilterInputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<BufferedInputStream>;
 
         // Properties
@@ -9861,7 +9887,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BufferedInputStream.SignalSignatures;
+        $signals: BufferedInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10662,7 +10688,14 @@ export namespace Gio {
      * buffered output stream's buffer, use [method`Gio`.BufferedOutputStream.set_buffer_size].
      * Note that the buffer's size cannot be reduced below the size of the data within the buffer.
      */
-    class BufferedOutputStream extends FilterOutputStream implements Seekable {
+    class BufferedOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends FilterOutputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<BufferedOutputStream>;
 
         // Properties
@@ -10695,7 +10728,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BufferedOutputStream.SignalSignatures;
+        $signals: BufferedOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11314,7 +11347,14 @@ export namespace Gio {
      * `GBytesIcon` specifies an image held in memory in a common format (usually
      * PNG) to be used as icon.
      */
-    class BytesIcon extends GObject.Object implements Icon, LoadableIcon {
+    class BytesIcon<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Icon, LoadableIcon
+    {
         static $gtype: GObject.GType<BytesIcon>;
 
         // Properties
@@ -11331,7 +11371,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BytesIcon.SignalSignatures;
+        $signals: BytesIcon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11958,7 +11998,11 @@ export namespace Gio {
      * throughout GIO to allow for cancellation of synchronous and
      * asynchronous operations.
      */
-    class Cancellable extends GObject.Object {
+    class Cancellable<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Cancellable>;
 
         /**
@@ -11968,7 +12012,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Cancellable.SignalSignatures;
+        $signals: Cancellable.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12241,7 +12285,14 @@ export namespace Gio {
      * `GCharsetConverter` is an implementation of [iface`Gio`.Converter] based on
      * [struct`GLib`.IConv].
      */
-    class CharsetConverter extends GObject.Object implements Converter, Initable {
+    class CharsetConverter<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Converter, Initable
+    {
         static $gtype: GObject.GType<CharsetConverter>;
 
         // Properties
@@ -12280,7 +12331,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CharsetConverter.SignalSignatures;
+        $signals: CharsetConverter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13078,7 +13129,14 @@ export namespace Gio {
      * As of GLib 2.34, `GConverterInputStream` implements
      * [iface`Gio`.PollableInputStream].
      */
-    class ConverterInputStream extends FilterInputStream implements PollableInputStream {
+    class ConverterInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends FilterInputStream<Props, Sigs, IFaces>
+        implements PollableInputStream
+    {
         static $gtype: GObject.GType<ConverterInputStream>;
 
         // Properties
@@ -13095,7 +13153,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ConverterInputStream.SignalSignatures;
+        $signals: ConverterInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14030,7 +14088,14 @@ export namespace Gio {
      * As of GLib 2.34, `GConverterOutputStream` implements
      * [iface`Gio`.PollableOutputStream].
      */
-    class ConverterOutputStream extends FilterOutputStream implements PollableOutputStream {
+    class ConverterOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends FilterOutputStream<Props, Sigs, IFaces>
+        implements PollableOutputStream
+    {
         static $gtype: GObject.GType<ConverterOutputStream>;
 
         // Properties
@@ -14047,7 +14112,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ConverterOutputStream.SignalSignatures;
+        $signals: ConverterOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15490,7 +15555,11 @@ export namespace Gio {
      * Since GLib 2.72, on Windows, the native credentials may contain the PID of a
      * process. This corresponds to `G_CREDENTIALS_TYPE_WIN32_PID`.
      */
-    class Credentials extends GObject.Object {
+    class Credentials<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Credentials>;
 
         /**
@@ -15500,7 +15569,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Credentials.SignalSignatures;
+        $signals: Credentials.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15610,7 +15679,14 @@ export namespace Gio {
      * `GDBusActionGroup` can be used as a proxy for an action group
      * that is exported over D-Bus with [method`Gio`.DBusConnection.export_action_group].
      */
-    class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
+    class DBusActionGroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements ActionGroup, RemoteActionGroup
+    {
         static $gtype: GObject.GType<DBusActionGroup>;
 
         /**
@@ -15620,7 +15696,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusActionGroup.SignalSignatures;
+        $signals: DBusActionGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16689,7 +16765,11 @@ export namespace Gio {
      * }
      * ```
      */
-    class DBusAuthObserver extends GObject.Object {
+    class DBusAuthObserver<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DBusAuthObserver>;
 
         /**
@@ -16699,7 +16779,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusAuthObserver.SignalSignatures;
+        $signals: DBusAuthObserver.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16834,7 +16914,14 @@ export namespace Gio {
      * Here is an example for exporting a #GObject:
      * [gdbus-example-export.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-export.c)
      */
-    class DBusConnection extends GObject.Object implements AsyncInitable<DBusConnection>, Initable {
+    class DBusConnection<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements AsyncInitable<DBusConnection>, Initable
+    {
         static $gtype: GObject.GType<DBusConnection>;
 
         // Properties
@@ -16939,7 +17026,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusConnection.SignalSignatures;
+        $signals: DBusConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19133,7 +19220,14 @@ export namespace Gio {
     /**
      * Abstract base class for D-Bus interfaces on the service side.
      */
-    abstract class DBusInterfaceSkeleton extends GObject.Object implements DBusInterface {
+    abstract class DBusInterfaceSkeleton<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DBusInterface
+    {
         static $gtype: GObject.GType<DBusInterfaceSkeleton>;
 
         // Properties
@@ -19156,7 +19250,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusInterfaceSkeleton.SignalSignatures;
+        $signals: DBusInterfaceSkeleton.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19789,7 +19883,11 @@ export namespace Gio {
      * used as a proxy for a menu model that is exported over D-Bus with
      * [method`Gio`.DBusConnection.export_menu_model].
      */
-    class DBusMenuModel extends MenuModel {
+    class DBusMenuModel<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MenuModel<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DBusMenuModel>;
 
         /**
@@ -19799,7 +19897,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusMenuModel.SignalSignatures;
+        $signals: DBusMenuModel.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19860,7 +19958,11 @@ export namespace Gio {
      * A type for representing D-Bus messages that can be sent or received
      * on a [class`Gio`.DBusConnection].
      */
-    class DBusMessage extends GObject.Object {
+    class DBusMessage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DBusMessage>;
 
         // Properties
@@ -19874,7 +19976,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusMessage.SignalSignatures;
+        $signals: DBusMessage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20247,7 +20349,11 @@ export namespace Gio {
      * [type`Gio`.DBusInterfaceVTable] that was passed to
      * [method`Gio`.DBusConnection.register_object].
      */
-    class DBusMethodInvocation extends GObject.Object {
+    class DBusMethodInvocation<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DBusMethodInvocation>;
 
         /**
@@ -20257,7 +20363,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusMethodInvocation.SignalSignatures;
+        $signals: DBusMethodInvocation.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20584,8 +20690,12 @@ export namespace Gio {
      * the same context and, consequently, will deliver signals in the
      * same main loop.
      */
-    class DBusObjectManagerClient
-        extends GObject.Object
+    class DBusObjectManagerClient<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
         implements AsyncInitable<DBusObjectManagerClient>, DBusObjectManager, Initable
     {
         static $gtype: GObject.GType<DBusObjectManagerClient>;
@@ -20672,7 +20782,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusObjectManagerClient.SignalSignatures;
+        $signals: DBusObjectManagerClient.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -21676,7 +21786,14 @@ export namespace Gio {
      * intended to be used with `GDBusObjectManagerServer` or any D-Bus
      * object implementing the `org.freedesktop.DBus.ObjectManager` interface.
      */
-    class DBusObjectManagerServer extends GObject.Object implements DBusObjectManager {
+    class DBusObjectManagerServer<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DBusObjectManager
+    {
         static $gtype: GObject.GType<DBusObjectManagerServer>;
 
         // Properties
@@ -21702,7 +21819,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusObjectManagerServer.SignalSignatures;
+        $signals: DBusObjectManagerServer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22315,7 +22432,14 @@ export namespace Gio {
      * a `GDBusObjectProxy` yourself — typically [class`Gio`.DBusObjectManagerClient]
      * is used to obtain it.
      */
-    class DBusObjectProxy extends GObject.Object implements DBusObject {
+    class DBusObjectProxy<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DBusObject
+    {
         static $gtype: GObject.GType<DBusObjectProxy>;
 
         // Properties
@@ -22344,7 +22468,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusObjectProxy.SignalSignatures;
+        $signals: DBusObjectProxy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22885,7 +23009,14 @@ export namespace Gio {
      *
      * This type is intended to be used with [iface`Gio`.DBusObjectManager].
      */
-    class DBusObjectSkeleton extends GObject.Object implements DBusObject {
+    class DBusObjectSkeleton<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DBusObject
+    {
         static $gtype: GObject.GType<DBusObjectSkeleton>;
 
         // Properties
@@ -22908,7 +23039,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusObjectSkeleton.SignalSignatures;
+        $signals: DBusObjectSkeleton.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -23569,7 +23700,14 @@ export namespace Gio {
      * An example using a proxy for a well-known name can be found in
      * [`gdbus-example-watch-proxy.c`](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-watch-proxy.c).
      */
-    class DBusProxy extends GObject.Object implements AsyncInitable<DBusProxy>, DBusInterface, Initable {
+    class DBusProxy<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements AsyncInitable<DBusProxy>, DBusInterface, Initable
+    {
         static $gtype: GObject.GType<DBusProxy>;
 
         [key: string]: any;
@@ -23730,7 +23868,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusProxy.SignalSignatures;
+        $signals: DBusProxy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25150,7 +25288,14 @@ export namespace Gio {
      * the `G_DBUS_SERVER_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER` flag to the
      * server.
      */
-    class DBusServer extends GObject.Object implements Initable {
+    class DBusServer<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Initable
+    {
         static $gtype: GObject.GType<DBusServer>;
 
         // Properties
@@ -25197,7 +25342,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusServer.SignalSignatures;
+        $signals: DBusServer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -25817,7 +25962,14 @@ export namespace Gio {
      * Data input stream implements [class`Gio`.InputStream] and includes functions
      * for reading structured data directly from a binary input stream.
      */
-    class DataInputStream extends BufferedInputStream implements Seekable {
+    class DataInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends BufferedInputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<DataInputStream>;
 
         // Properties
@@ -25856,7 +26008,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DataInputStream.SignalSignatures;
+        $signals: DataInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -26850,7 +27002,14 @@ export namespace Gio {
      * Data output stream implements [class`Gio`.OutputStream] and includes functions
      * for writing data directly to an output stream.
      */
-    class DataOutputStream extends FilterOutputStream implements Seekable {
+    class DataOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends FilterOutputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<DataOutputStream>;
 
         // Properties
@@ -26875,7 +27034,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DataOutputStream.SignalSignatures;
+        $signals: DataOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -27643,7 +27802,14 @@ export namespace Gio {
      *   }
      * ```
      */
-    class DebugControllerDBus extends GObject.Object implements DebugController, Initable {
+    class DebugControllerDBus<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DebugController, Initable
+    {
         static $gtype: GObject.GType<DebugControllerDBus>;
 
         // Properties
@@ -27664,7 +27830,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DebugControllerDBus.SignalSignatures;
+        $signals: DebugControllerDBus.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -28296,7 +28462,14 @@ export namespace Gio {
      * GIO interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class DesktopAppInfo extends GObject.Object implements AppInfo {
+    class DesktopAppInfo<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements AppInfo
+    {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
         // Properties
@@ -28313,7 +28486,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DesktopAppInfo.SignalSignatures;
+        $signals: DesktopAppInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -29502,7 +29675,14 @@ export namespace Gio {
      * Currently, only metainformation about the emblem's origin is
      * supported. More may be added in the future.
      */
-    class Emblem extends GObject.Object implements Icon {
+    class Emblem<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Icon
+    {
         static $gtype: GObject.GType<Emblem>;
 
         // Properties
@@ -29523,7 +29703,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Emblem.SignalSignatures;
+        $signals: Emblem.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -30091,7 +30271,14 @@ export namespace Gio {
      * Note that `GEmblemedIcon` allows no control over the position
      * of the emblems. See also [class`Gio`.Emblem] for more information.
      */
-    class EmblemedIcon extends GObject.Object implements Icon {
+    class EmblemedIcon<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Icon
+    {
         static $gtype: GObject.GType<EmblemedIcon>;
 
         // Properties
@@ -30108,7 +30295,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: EmblemedIcon.SignalSignatures;
+        $signals: EmblemedIcon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -30703,7 +30890,11 @@ export namespace Gio {
      * a `GFileEnumerator` is closed, no further actions may be performed
      * on it, and it should be freed with [method`GObject`.Object.unref].
      */
-    class FileEnumerator extends GObject.Object {
+    class FileEnumerator<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FileEnumerator>;
 
         // Properties
@@ -30720,7 +30911,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileEnumerator.SignalSignatures;
+        $signals: FileEnumerator.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -31368,7 +31559,14 @@ export namespace Gio {
      * and the implementation of [iface`Gio`.Seekable] just call into the same
      * operations on the output stream.
      */
-    class FileIOStream extends IOStream implements Seekable {
+    class FileIOStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends IOStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<FileIOStream>;
 
         /**
@@ -31378,7 +31576,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileIOStream.SignalSignatures;
+        $signals: FileIOStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -32072,7 +32270,14 @@ export namespace Gio {
      *
      * It implements [iface`Gio`.LoadableIcon].
      */
-    class FileIcon extends GObject.Object implements Icon, LoadableIcon {
+    class FileIcon<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Icon, LoadableIcon
+    {
         static $gtype: GObject.GType<FileIcon>;
 
         // Properties
@@ -32089,7 +32294,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileIcon.SignalSignatures;
+        $signals: FileIcon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -32745,7 +32950,11 @@ export namespace Gio {
      * [struct`Gio`.FileAttributeMatcher] allows for searching through a `GFileInfo`
      * for attributes.
      */
-    class FileInfo extends GObject.Object {
+    class FileInfo<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FileInfo>;
 
         /**
@@ -32755,7 +32964,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileInfo.SignalSignatures;
+        $signals: FileInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -33353,7 +33562,14 @@ export namespace Gio {
      * stream supports seeking, use [vfunc`Gio`.Seekable.can_seek].
      * To position a file input stream, use [vfunc`Gio`.Seekable.seek].
      */
-    class FileInputStream extends InputStream implements Seekable {
+    class FileInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends InputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<FileInputStream>;
 
         /**
@@ -33363,7 +33579,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileInputStream.SignalSignatures;
+        $signals: FileInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34065,7 +34281,11 @@ export namespace Gio {
      * may cause notifications to be blocked even if the thread-default
      * context is still running).
      */
-    abstract class FileMonitor extends GObject.Object {
+    abstract class FileMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FileMonitor>;
 
         // Properties
@@ -34092,7 +34312,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileMonitor.SignalSignatures;
+        $signals: FileMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34184,7 +34404,14 @@ export namespace Gio {
      * truncating, use [method`Gio`.Seekable.can_truncate]. To truncate a file output
      * stream, use [method`Gio`.Seekable.truncate].
      */
-    class FileOutputStream extends OutputStream implements Seekable {
+    class FileOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends OutputStream<Props, Sigs, IFaces>
+        implements Seekable
+    {
         static $gtype: GObject.GType<FileOutputStream>;
 
         /**
@@ -34194,7 +34421,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FileOutputStream.SignalSignatures;
+        $signals: FileOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34882,7 +35109,11 @@ export namespace Gio {
      * looking in the file system for clues. Can return a list of possible
      * completion strings for widget implementations.
      */
-    class FilenameCompleter extends GObject.Object {
+    class FilenameCompleter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FilenameCompleter>;
 
         /**
@@ -34892,7 +35123,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FilenameCompleter.SignalSignatures;
+        $signals: FilenameCompleter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -34969,7 +35200,11 @@ export namespace Gio {
      * of filtering operations are character set conversion, compression
      * and byte order flipping.
      */
-    abstract class FilterInputStream extends InputStream {
+    abstract class FilterInputStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends InputStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FilterInputStream>;
 
         // Properties
@@ -35000,7 +35235,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FilterInputStream.SignalSignatures;
+        $signals: FilterInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -35069,7 +35304,11 @@ export namespace Gio {
      * of filtering operations are character set conversion, compression
      * and byte order flipping.
      */
-    abstract class FilterOutputStream extends OutputStream {
+    abstract class FilterOutputStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OutputStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FilterOutputStream>;
 
         // Properties
@@ -35098,7 +35337,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FilterOutputStream.SignalSignatures;
+        $signals: FilterOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -35158,7 +35397,14 @@ export namespace Gio {
      * modules. This is used internally to make GIO extensible, but can also
      * be used by others to implement module loading.
      */
-    class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
+    class IOModule<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.TypeModule<Props, Sigs, IFaces>
+        implements GObject.TypePlugin
+    {
         static $gtype: GObject.GType<IOModule>;
 
         /**
@@ -35168,7 +35414,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IOModule.SignalSignatures;
+        $signals: IOModule.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -35780,7 +36026,11 @@ export namespace Gio {
      * operations may not be well-defined due to the state the wrapper stream leaves
      * the base stream in (though they are guaranteed not to crash).
      */
-    abstract class IOStream extends GObject.Object {
+    abstract class IOStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IOStream>;
 
         // Properties
@@ -35813,7 +36063,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IOStream.SignalSignatures;
+        $signals: IOStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -36100,7 +36350,11 @@ export namespace Gio {
      * [class`Gio`.InetSocketAddress] (which includes a `GInetAddress` as well as a
      * port number).
      */
-    class InetAddress extends GObject.Object {
+    class InetAddress<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InetAddress>;
 
         // Properties
@@ -36221,7 +36475,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InetAddress.SignalSignatures;
+        $signals: InetAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -36366,7 +36620,14 @@ export namespace Gio {
      * of the base address are relevant for matching purposes. These are
      * often given in string form. For example, `10.0.0.0/8`, or `fe80::/10`.
      */
-    class InetAddressMask extends GObject.Object implements Initable {
+    class InetAddressMask<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Initable
+    {
         static $gtype: GObject.GType<InetAddressMask>;
 
         // Properties
@@ -36393,7 +36654,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InetAddressMask.SignalSignatures;
+        $signals: InetAddressMask.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -37013,7 +37274,14 @@ export namespace Gio {
      * In UNIX terms, `GInetSocketAddress` corresponds to a
      * [`struct sockaddr_in` or `struct sockaddr_in6`](man:sockaddr(3type)).
      */
-    class InetSocketAddress extends SocketAddress implements SocketConnectable {
+    class InetSocketAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends SocketAddress<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<InetSocketAddress>;
 
         // Properties
@@ -37046,7 +37314,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InetSocketAddress.SignalSignatures;
+        $signals: InetSocketAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -37618,7 +37886,11 @@ export namespace Gio {
      *
      * All of these functions have async variants too.
      */
-    abstract class InputStream extends GObject.Object {
+    abstract class InputStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InputStream>;
 
         /**
@@ -37628,7 +37900,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -38442,7 +38714,15 @@ export namespace Gio {
      * It provides insertions, deletions, and lookups in logarithmic time
      * with a fast path for the common case of iterating the list linearly.
      */
-    class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements ListModel<A> {
+    class ListStore<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements ListModel<A>
+    {
         static $gtype: GObject.GType<ListStore>;
 
         // Properties
@@ -38473,7 +38753,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ListStore.SignalSignatures;
+        $signals: ListStore.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -39174,7 +39454,14 @@ export namespace Gio {
      * As of GLib 2.34, `GMemoryInputStream` implements
      * [iface`Gio`.PollableInputStream].
      */
-    class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
+    class MemoryInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends InputStream<Props, Sigs, IFaces>
+        implements PollableInputStream, Seekable
+    {
         static $gtype: GObject.GType<MemoryInputStream>;
 
         /**
@@ -39184,7 +39471,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MemoryInputStream.SignalSignatures;
+        $signals: MemoryInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -40671,7 +40958,14 @@ export namespace Gio {
      * As of GLib 2.34, `GMemoryOutputStream` trivially implements
      * [iface`Gio`.PollableOutputStream]: it always polls as ready.
      */
-    class MemoryOutputStream extends OutputStream implements PollableOutputStream, Seekable {
+    class MemoryOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends OutputStream<Props, Sigs, IFaces>
+        implements PollableOutputStream, Seekable
+    {
         static $gtype: GObject.GType<MemoryOutputStream>;
 
         // Properties
@@ -40700,7 +40994,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MemoryOutputStream.SignalSignatures;
+        $signals: MemoryOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -42683,7 +42977,11 @@ export namespace Gio {
      * [method`Gio`.Menu.insert_section]. To add a submenu, use
      * [method`Gio`.Menu.insert_submenu].
      */
-    class Menu extends MenuModel {
+    class Menu<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends MenuModel<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Menu>;
 
         /**
@@ -42693,7 +42991,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -42878,7 +43176,11 @@ export namespace Gio {
      * #GMenuAttributeIter is an opaque structure type.  You must access it
      * using the functions below.
      */
-    abstract class MenuAttributeIter extends GObject.Object {
+    abstract class MenuAttributeIter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MenuAttributeIter>;
 
         /**
@@ -42888,7 +43190,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MenuAttributeIter.SignalSignatures;
+        $signals: MenuAttributeIter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -42999,7 +43301,11 @@ export namespace Gio {
      * #GMenuItem is an opaque structure type.  You must access it using the
      * functions below.
      */
-    class MenuItem extends GObject.Object {
+    class MenuItem<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MenuItem>;
 
         /**
@@ -43009,7 +43315,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -43218,7 +43524,11 @@ export namespace Gio {
      * #GMenuLinkIter is an opaque structure type.  You must access it using
      * the functions below.
      */
-    abstract class MenuLinkIter extends GObject.Object {
+    abstract class MenuLinkIter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MenuLinkIter>;
 
         /**
@@ -43228,7 +43538,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MenuLinkIter.SignalSignatures;
+        $signals: MenuLinkIter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -43454,7 +43764,11 @@ export namespace Gio {
      * be rendered as ‘selected’ when the state of the action is equal to the
      * target value of the menu item.
      */
-    abstract class MenuModel extends GObject.Object {
+    abstract class MenuModel<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MenuModel>;
 
         /**
@@ -43464,7 +43778,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MenuModel.SignalSignatures;
+        $signals: MenuModel.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -43712,7 +44026,11 @@ export namespace Gio {
      * [VeraCrypt](https://www.veracrypt.fr/) is a maintained fork of TrueCrypt with various
      * improvements and auditing fixes.
      */
-    class MountOperation extends GObject.Object {
+    class MountOperation<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MountOperation>;
 
         // Properties
@@ -43799,7 +44117,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MountOperation.SignalSignatures;
+        $signals: MountOperation.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -43975,7 +44293,14 @@ export namespace Gio {
      * This corresponds to a general `struct sockaddr` of a type not otherwise
      * handled by GLib.
      */
-    class NativeSocketAddress extends SocketAddress implements SocketConnectable {
+    class NativeSocketAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends SocketAddress<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<NativeSocketAddress>;
 
         /**
@@ -43985,7 +44310,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NativeSocketAddress.SignalSignatures;
+        $signals: NativeSocketAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -44517,7 +44842,11 @@ export namespace Gio {
         interface ConstructorProps extends VolumeMonitor.ConstructorProps {}
     }
 
-    abstract class NativeVolumeMonitor extends VolumeMonitor {
+    abstract class NativeVolumeMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends VolumeMonitor<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<NativeVolumeMonitor>;
 
         /**
@@ -44527,7 +44856,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NativeVolumeMonitor.SignalSignatures;
+        $signals: NativeVolumeMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -44585,7 +44914,14 @@ export namespace Gio {
      * See [iface`Gio`.SocketConnectable] for an example of using the connectable
      * interface.
      */
-    class NetworkAddress extends GObject.Object implements SocketConnectable {
+    class NetworkAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<NetworkAddress>;
 
         // Properties
@@ -44610,7 +44946,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NetworkAddress.SignalSignatures;
+        $signals: NetworkAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -45222,7 +45558,14 @@ export namespace Gio {
      * [iface`Gio`.SocketConnectable] for an example of using the connectable
      * interface.
      */
-    class NetworkService extends GObject.Object implements SocketConnectable {
+    class NetworkService<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<NetworkService>;
 
         // Properties
@@ -45252,7 +45595,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NetworkService.SignalSignatures;
+        $signals: NetworkService.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -45860,7 +46203,11 @@ export namespace Gio {
      *
      * A notification can be sent with [method`Gio`.Application.send_notification].
      */
-    class Notification extends GObject.Object {
+    class Notification<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Notification>;
 
         /**
@@ -45870,7 +46217,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Notification.SignalSignatures;
+        $signals: Notification.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -46019,7 +46366,11 @@ export namespace Gio {
      * writing, splicing, flushing and closing streams, but *may* implement
      * asynchronous versions.
      */
-    abstract class OutputStream extends GObject.Object {
+    abstract class OutputStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<OutputStream>;
 
         /**
@@ -46029,7 +46380,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -47279,7 +47630,11 @@ export namespace Gio {
      * unlock” button in a dialog and to provide the mechanism to invoke
      * when that button is clicked.
      */
-    abstract class Permission extends GObject.Object {
+    abstract class Permission<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Permission>;
 
         // Properties
@@ -47317,7 +47672,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Permission.SignalSignatures;
+        $signals: Permission.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -47659,7 +48014,14 @@ export namespace Gio {
      * see [method`Gio`.Settings.create_action] instead, and possibly combine its
      * use with [method`Gio`.Settings.bind].
      */
-    class PropertyAction extends GObject.Object implements Action {
+    class PropertyAction<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Action
+    {
         static $gtype: GObject.GType<PropertyAction>;
 
         // Properties
@@ -47738,7 +48100,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PropertyAction.SignalSignatures;
+        $signals: PropertyAction.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -48440,7 +48802,14 @@ export namespace Gio {
     /**
      * A [class`Gio`.InetSocketAddress] representing a connection via a proxy server.
      */
-    class ProxyAddress extends InetSocketAddress implements SocketConnectable {
+    class ProxyAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends InetSocketAddress<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<ProxyAddress>;
 
         // Properties
@@ -48496,7 +48865,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ProxyAddress.SignalSignatures;
+        $signals: ProxyAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -49053,7 +49422,11 @@ export namespace Gio {
      * configured; there should be no need to manually wrap a
      * [class`Gio`.SocketAddressEnumerator] instance with one.
      */
-    class ProxyAddressEnumerator extends SocketAddressEnumerator {
+    class ProxyAddressEnumerator<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketAddressEnumerator<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ProxyAddressEnumerator>;
 
         // Properties
@@ -49094,7 +49467,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ProxyAddressEnumerator.SignalSignatures;
+        $signals: ProxyAddressEnumerator.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -49158,7 +49531,11 @@ export namespace Gio {
      * This is an abstract type; subclasses of it implement different resolvers for
      * different platforms and situations.
      */
-    abstract class Resolver extends GObject.Object {
+    abstract class Resolver<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Resolver>;
 
         // Properties
@@ -49185,7 +49562,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Resolver.SignalSignatures;
+        $signals: Resolver.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -50259,7 +50636,11 @@ export namespace Gio {
      * Translations **must not** be included in the `.gschema.xml` file by the build
      * system, for example by using a rule to generate the XML file from a template.
      */
-    class Settings extends GObject.Object {
+    class Settings<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
@@ -50346,7 +50727,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -51020,7 +51401,11 @@ export namespace Gio {
      * C preprocessor symbol `G_SETTINGS_ENABLE_BACKEND` before including
      * `gio/gsettingsbackend.h`.
      */
-    abstract class SettingsBackend extends GObject.Object {
+    abstract class SettingsBackend<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SettingsBackend>;
 
         /**
@@ -51030,7 +51415,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SettingsBackend.SignalSignatures;
+        $signals: SettingsBackend.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -51271,7 +51656,14 @@ export namespace Gio {
      * [iface`Gio`.Action] interface. This is the easiest way to create an action for
      * purposes of adding it to a [class`Gio`.SimpleActionGroup].
      */
-    class SimpleAction extends GObject.Object implements Action {
+    class SimpleAction<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Action
+    {
         static $gtype: GObject.GType<SimpleAction>;
 
         // Properties
@@ -51322,7 +51714,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleAction.SignalSignatures;
+        $signals: SimpleAction.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -52043,7 +52435,14 @@ export namespace Gio {
      * implementing the [iface`Gio`.ActionGroup] and [iface`Gio`.ActionMap]
      * interfaces.
      */
-    class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
+    class SimpleActionGroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements ActionGroup, ActionMap
+    {
         static $gtype: GObject.GType<SimpleActionGroup>;
 
         /**
@@ -52053,7 +52452,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleActionGroup.SignalSignatures;
+        $signals: SimpleActionGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -53254,7 +53653,14 @@ export namespace Gio {
      * }
      * ```
      */
-    class SimpleAsyncResult extends GObject.Object implements AsyncResult {
+    class SimpleAsyncResult<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements AsyncResult
+    {
         static $gtype: GObject.GType<SimpleAsyncResult>;
 
         /**
@@ -53264,7 +53670,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleAsyncResult.SignalSignatures;
+        $signals: SimpleAsyncResult.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -53927,7 +54333,11 @@ export namespace Gio {
      * (from `gio-unix-2.0.pc` / `GioUnix-2.0`), and you want to
      * take advantage of the methods provided by [class`Gio`.IOStream].
      */
-    class SimpleIOStream extends IOStream {
+    class SimpleIOStream<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends IOStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SimpleIOStream>;
 
         // Properties
@@ -53956,7 +54366,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleIOStream.SignalSignatures;
+        $signals: SimpleIOStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -54006,7 +54416,11 @@ export namespace Gio {
      * Calling [method`Gio`.Permission.acquire] or [method`Gio`.Permission.release]
      * on a `GSimplePermission` will result in errors.
      */
-    class SimplePermission extends Permission {
+    class SimplePermission<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Permission<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SimplePermission>;
 
         /**
@@ -54016,7 +54430,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimplePermission.SignalSignatures;
+        $signals: SimplePermission.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -54072,7 +54486,14 @@ export namespace Gio {
      * implementation, or it can be created and used manually, such as
      * with [method`Gio`.SocketClient.set_proxy_resolver].
      */
-    class SimpleProxyResolver extends GObject.Object implements ProxyResolver {
+    class SimpleProxyResolver<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements ProxyResolver
+    {
         static $gtype: GObject.GType<SimpleProxyResolver>;
 
         // Properties
@@ -54183,7 +54604,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleProxyResolver.SignalSignatures;
+        $signals: SimpleProxyResolver.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -54927,7 +55348,14 @@ export namespace Gio {
      *   }
      * ```
      */
-    class Socket extends GObject.Object implements DatagramBased, Initable {
+    class Socket<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements DatagramBased, Initable
+    {
         static $gtype: GObject.GType<Socket>;
 
         // Properties
@@ -55027,7 +55455,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Socket.SignalSignatures;
+        $signals: Socket.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -56772,7 +57200,14 @@ export namespace Gio {
      * API. This is an abstract class; use [class`Gio`.InetSocketAddress] for
      * internet sockets, or [class`Gio`.UnixSocketAddress] for UNIX domain sockets.
      */
-    abstract class SocketAddress extends GObject.Object implements SocketConnectable {
+    abstract class SocketAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<SocketAddress>;
 
         // Properties
@@ -56789,7 +57224,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketAddress.SignalSignatures;
+        $signals: SocketAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -57387,7 +57822,11 @@ export namespace Gio {
      * enumeration with that `GSocketAddressEnumerator` is not possible, and it can
      * be unreffed.
      */
-    abstract class SocketAddressEnumerator extends GObject.Object {
+    abstract class SocketAddressEnumerator<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketAddressEnumerator>;
 
         /**
@@ -57397,7 +57836,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketAddressEnumerator.SignalSignatures;
+        $signals: SocketAddressEnumerator.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -57575,7 +58014,11 @@ export namespace Gio {
      * As `GSocketClient` is a lightweight object, you don't need to cache it. You
      * can just create a new one any time you need one.
      */
-    class SocketClient extends GObject.Object {
+    class SocketClient<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketClient>;
 
         // Properties
@@ -57683,7 +58126,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketClient.SignalSignatures;
+        $signals: SocketClient.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -58292,7 +58735,11 @@ export namespace Gio {
      * substreams of the [class`Gio`.IOStream] separately will not close the
      * underlying [class`Gio`.Socket].
      */
-    class SocketConnection extends IOStream {
+    class SocketConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends IOStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketConnection>;
 
         // Properties
@@ -58309,7 +58756,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketConnection.SignalSignatures;
+        $signals: SocketConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -58498,7 +58945,11 @@ export namespace Gio {
      * class is registered with the [type`GObject`.Type] type system before calling
      * [method`Gio`.Socket.receive_message] to read such a message.
      */
-    abstract class SocketControlMessage extends GObject.Object {
+    abstract class SocketControlMessage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketControlMessage>;
 
         /**
@@ -58508,7 +58959,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketControlMessage.SignalSignatures;
+        $signals: SocketControlMessage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -58643,7 +59094,11 @@ export namespace Gio {
      * [class`Gio`.SocketService] and [class`Gio`.ThreadedSocketService] which are
      * subclasses of `GSocketListener` that make this even easier.
      */
-    class SocketListener extends GObject.Object {
+    class SocketListener<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketListener>;
 
         // Properties
@@ -58666,7 +59121,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketListener.SignalSignatures;
+        $signals: SocketListener.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -58961,7 +59416,11 @@ export namespace Gio {
      * stop the service are thread-safe so these can be used from threads that
      * handle incoming clients.
      */
-    class SocketService extends SocketListener {
+    class SocketService<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketListener<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SocketService>;
 
         // Properties
@@ -58979,7 +59438,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SocketService.SignalSignatures;
+        $signals: SocketService.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -59136,7 +59595,14 @@ export namespace Gio {
      * account the fact that your program will not automatically be killed
      * if it tries to write to `stdout` after it has been closed.
      */
-    class Subprocess extends GObject.Object implements Initable {
+    class Subprocess<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Initable
+    {
         static $gtype: GObject.GType<Subprocess>;
 
         // Properties
@@ -59157,7 +59623,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Subprocess.SignalSignatures;
+        $signals: Subprocess.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -60088,7 +60554,11 @@ export namespace Gio {
      * options.  It can also be used to launch multiple subprocesses with
      * a similar configuration.
      */
-    class SubprocessLauncher extends GObject.Object {
+    class SubprocessLauncher<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SubprocessLauncher>;
 
         // Properties
@@ -60105,7 +60575,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SubprocessLauncher.SignalSignatures;
+        $signals: SubprocessLauncher.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -60899,7 +61369,14 @@ export namespace Gio {
      *   dropping the reference to the source object to that main
      *   context when the task is finalized
      */
-    class Task extends GObject.Object implements AsyncResult {
+    class Task<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements AsyncResult
+    {
         static $gtype: GObject.GType<Task>;
 
         // Properties
@@ -60933,7 +61410,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -61851,7 +62328,11 @@ export namespace Gio {
      * This is the subclass of [class`Gio`.SocketConnection] that is created
      * for TCP/IP sockets.
      */
-    class TcpConnection extends SocketConnection {
+    class TcpConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketConnection<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TcpConnection>;
 
         // Properties
@@ -61874,7 +62355,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TcpConnection.SignalSignatures;
+        $signals: TcpConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -61945,7 +62426,11 @@ export namespace Gio {
      * connection it has actually created is not directly a
      * [class`Gio`.SocketConnection].
      */
-    class TcpWrapperConnection extends TcpConnection {
+    class TcpWrapperConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends TcpConnection<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TcpWrapperConnection>;
 
         // Properties
@@ -61966,7 +62451,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TcpWrapperConnection.SignalSignatures;
+        $signals: TcpWrapperConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -62094,7 +62579,11 @@ export namespace Gio {
      *     CLEANFILES += gschemas.compiled
      * ```
      */
-    class TestDBus extends GObject.Object {
+    class TestDBus<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TestDBus>;
 
         // Properties
@@ -62111,7 +62600,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TestDBus.SignalSignatures;
+        $signals: TestDBus.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -62230,7 +62719,14 @@ export namespace Gio {
      * resolve the list of names so that fallback icons work nicely with
      * themes that inherit other themes.
      */
-    class ThemedIcon extends GObject.Object implements Icon {
+    class ThemedIcon<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Icon
+    {
         static $gtype: GObject.GType<ThemedIcon>;
 
         // Properties
@@ -62291,7 +62787,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ThemedIcon.SignalSignatures;
+        $signals: ThemedIcon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -62866,7 +63362,11 @@ export namespace Gio {
      * #GThreadedResolver is an implementation of #GResolver which calls the libc
      * lookup functions in threads to allow them to run asynchronously.
      */
-    class ThreadedResolver extends Resolver {
+    class ThreadedResolver<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Resolver<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ThreadedResolver>;
 
         /**
@@ -62876,7 +63376,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ThreadedResolver.SignalSignatures;
+        $signals: ThreadedResolver.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -62938,7 +63438,11 @@ export namespace Gio {
      * [signal`Gio`.ThreadedSocketService::run], or subclass and override the default
      * handler.
      */
-    class ThreadedSocketService extends SocketService {
+    class ThreadedSocketService<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketService<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ThreadedSocketService>;
 
         // Properties
@@ -62959,7 +63463,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ThreadedSocketService.SignalSignatures;
+        $signals: ThreadedSocketService.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -63057,7 +63561,11 @@ export namespace Gio {
      * a certificate and a private key (which is needed when acting as a
      * [iface`Gio`.TlsServerConnection]).
      */
-    abstract class TlsCertificate extends GObject.Object {
+    abstract class TlsCertificate<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TlsCertificate>;
 
         // Properties
@@ -63291,7 +63799,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TlsCertificate.SignalSignatures;
+        $signals: TlsCertificate.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -63530,7 +64038,11 @@ export namespace Gio {
      *
      * For DTLS (Datagram TLS) support, see [iface`Gio`.DtlsConnection].
      */
-    abstract class TlsConnection extends IOStream {
+    abstract class TlsConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends IOStream<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TlsConnection>;
 
         // Properties
@@ -63722,7 +64234,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TlsConnection.SignalSignatures;
+        $signals: TlsConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -64146,7 +64658,11 @@ export namespace Gio {
      * Most common client applications will not directly interact with
      * `GTlsDatabase`. It is used internally by [class`Gio`.TlsConnection].
      */
-    abstract class TlsDatabase extends GObject.Object {
+    abstract class TlsDatabase<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TlsDatabase>;
 
         /**
@@ -64156,7 +64672,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TlsDatabase.SignalSignatures;
+        $signals: TlsDatabase.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -64905,7 +65421,11 @@ export namespace Gio {
      * `G_TLS_INTERACTION_UNHANDLED`. If a derived class implements an async method,
      * it must also implement the corresponding finish method.
      */
-    class TlsInteraction extends GObject.Object {
+    class TlsInteraction<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TlsInteraction>;
 
         /**
@@ -64915,7 +65435,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TlsInteraction.SignalSignatures;
+        $signals: TlsInteraction.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -65347,7 +65867,11 @@ export namespace Gio {
      * An abstract interface representing a password used in TLS. Often used in
      * user interaction such as unlocking a key storage token.
      */
-    class TlsPassword extends GObject.Object {
+    class TlsPassword<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TlsPassword>;
 
         // Properties
@@ -65375,7 +65899,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TlsPassword.SignalSignatures;
+        $signals: TlsPassword.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -65533,7 +66057,11 @@ export namespace Gio {
      * interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file when
      * using it. This is no longer necessary since GLib 2.72.
      */
-    class UnixConnection extends SocketConnection {
+    class UnixConnection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketConnection<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<UnixConnection>;
 
         /**
@@ -65543,7 +66071,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixConnection.SignalSignatures;
+        $signals: UnixConnection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -65764,7 +66292,11 @@ export namespace Gio {
      * GIO interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file
      * when using it. This is no longer necessary since GLib 2.72.
      */
-    class UnixCredentialsMessage extends SocketControlMessage {
+    class UnixCredentialsMessage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketControlMessage<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<UnixCredentialsMessage>;
 
         // Properties
@@ -65781,7 +66313,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixCredentialsMessage.SignalSignatures;
+        $signals: UnixCredentialsMessage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -65854,7 +66386,11 @@ export namespace Gio {
      *
      * Since 2.74, the API is available for Windows.
      */
-    class UnixFDList extends GObject.Object {
+    class UnixFDList<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<UnixFDList>;
 
         /**
@@ -65864,7 +66400,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixFDList.SignalSignatures;
+        $signals: UnixFDList.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -66006,7 +66542,11 @@ export namespace Gio {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class UnixFDMessage extends SocketControlMessage {
+    class UnixFDMessage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends SocketControlMessage<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<UnixFDMessage>;
 
         // Properties
@@ -66027,7 +66567,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixFDMessage.SignalSignatures;
+        $signals: UnixFDMessage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -66132,7 +66672,14 @@ export namespace Gio {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
+    class UnixInputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends InputStream<Props, Sigs, IFaces>
+        implements FileDescriptorBased, PollableInputStream
+    {
         static $gtype: GObject.GType<UnixInputStream>;
 
         // Properties
@@ -66159,7 +66706,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixInputStream.SignalSignatures;
+        $signals: UnixInputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -67547,7 +68094,11 @@ export namespace Gio {
      * Connect to the [signal`GioUnix`.MountMonitor::mountpoints-changed] signal to
      * be notified of changes to the [struct`GioUnix`.MountPoint] list.
      */
-    class UnixMountMonitor extends GObject.Object {
+    class UnixMountMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<UnixMountMonitor>;
 
         /**
@@ -67557,7 +68108,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixMountMonitor.SignalSignatures;
+        $signals: UnixMountMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -67645,7 +68196,14 @@ export namespace Gio {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config file
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
+    class UnixOutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends OutputStream<Props, Sigs, IFaces>
+        implements FileDescriptorBased, PollableOutputStream
+    {
         static $gtype: GObject.GType<UnixOutputStream>;
 
         // Properties
@@ -67672,7 +68230,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixOutputStream.SignalSignatures;
+        $signals: UnixOutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -69565,7 +70123,14 @@ export namespace Gio {
      * GIO interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file
      * when using it. This is no longer necessary since GLib 2.72.
      */
-    class UnixSocketAddress extends SocketAddress implements SocketConnectable {
+    class UnixSocketAddress<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends SocketAddress<Props, Sigs, IFaces>
+        implements SocketConnectable
+    {
         static $gtype: GObject.GType<UnixSocketAddress>;
 
         // Properties
@@ -69602,7 +70167,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixSocketAddress.SignalSignatures;
+        $signals: UnixSocketAddress.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -70176,7 +70741,11 @@ export namespace Gio {
     /**
      * Entry point for using GIO functionality.
      */
-    class Vfs extends GObject.Object {
+    class Vfs<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Vfs>;
 
         /**
@@ -70186,7 +70755,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Vfs.SignalSignatures;
+        $signals: Vfs.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -70387,7 +70956,11 @@ export namespace Gio {
      * In order to receive updates about volumes and mounts monitored through GVFS,
      * a main loop must be running.
      */
-    class VolumeMonitor extends GObject.Object {
+    class VolumeMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<VolumeMonitor>;
 
         /**
@@ -70397,7 +70970,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VolumeMonitor.SignalSignatures;
+        $signals: VolumeMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -70570,7 +71143,14 @@ export namespace Gio {
      * `GZlibCompressor` is an implementation of [iface`Gio`.Converter] that
      * compresses data using zlib.
      */
-    class ZlibCompressor extends GObject.Object implements Converter {
+    class ZlibCompressor<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Converter
+    {
         static $gtype: GObject.GType<ZlibCompressor>;
 
         // Properties
@@ -70606,7 +71186,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ZlibCompressor.SignalSignatures;
+        $signals: ZlibCompressor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -71319,7 +71899,14 @@ export namespace Gio {
      * `GZlibDecompressor` is an implementation of [iface`Gio`.Converter] that
      * decompresses data compressed with zlib.
      */
-    class ZlibDecompressor extends GObject.Object implements Converter {
+    class ZlibDecompressor<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Converter
+    {
         static $gtype: GObject.GType<ZlibDecompressor>;
 
         // Properties
@@ -71350,7 +71937,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ZlibDecompressor.SignalSignatures;
+        $signals: ZlibDecompressor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -87703,7 +88290,11 @@ export namespace Gio {
         interface ConstructorProps extends DBusInterfaceSkeleton.ConstructorProps {}
     }
 
-    class DBusExportedObject extends DBusInterfaceSkeleton {
+    class DBusExportedObject<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends DBusInterfaceSkeleton<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DBusExportedObject>;
 
         /**
@@ -87713,7 +88304,7 @@ export namespace Gio {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DBusExportedObject.SignalSignatures;
+        $signals: DBusExportedObject.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

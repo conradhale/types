@@ -41,7 +41,11 @@ export namespace GnomeBG {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class BG extends GObject.Object {
+    class BG<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BG>;
 
         /**
@@ -51,7 +55,7 @@ export namespace GnomeBG {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BG.SignalSignatures;
+        $signals: BG.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -156,7 +160,11 @@ export namespace GnomeBG {
         }
     }
 
-    class BGSlideShow extends GObject.Object {
+    class BGSlideShow<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BGSlideShow>;
 
         // Properties
@@ -176,7 +184,7 @@ export namespace GnomeBG {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BGSlideShow.SignalSignatures;
+        $signals: BGSlideShow.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 

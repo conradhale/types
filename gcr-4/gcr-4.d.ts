@@ -1127,7 +1127,11 @@ export namespace Gcr {
      * This object is usually part of a
      * [class`Gcr`.CertificateExtensionAuthorityInfoAccess] object.
      */
-    class AccessDescription extends GObject.Object {
+    class AccessDescription<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AccessDescription>;
 
         /**
@@ -1137,7 +1141,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AccessDescription.SignalSignatures;
+        $signals: AccessDescription.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1227,7 +1231,11 @@ export namespace Gcr {
      * It's important to understand that the building of a certificate chain is
      * merely the first step towards verifying trust in a certificate.
      */
-    class CertificateChain extends GObject.Object {
+    class CertificateChain<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateChain>;
 
         // Properties
@@ -1244,7 +1252,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateChain.SignalSignatures;
+        $signals: CertificateChain.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1532,7 +1540,11 @@ export namespace Gcr {
      *
      * See also [method`Certificate`.list_extensions].
      */
-    class CertificateExtension extends GObject.Object {
+    class CertificateExtension<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtension>;
 
         // Properties
@@ -1557,7 +1569,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtension.SignalSignatures;
+        $signals: CertificateExtension.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1638,8 +1650,13 @@ export namespace Gcr {
      *
      * Each access point is exposed as a [class`Gcr`.AccessDescription] object.
      */
-    class CertificateExtensionAuthorityInfoAccess<A extends GObject.Object = GObject.Object>
-        extends CertificateExtension
+    class CertificateExtensionAuthorityInfoAccess<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends CertificateExtension<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionAuthorityInfoAccess>;
@@ -1662,7 +1679,8 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
+        $signals: CertificateExtensionAuthorityInfoAccess.SignalSignatures &
+            GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2262,7 +2280,11 @@ export namespace Gcr {
      * It _may_ also expose a combination of issuer name and serial number of the
      * used certificate instead. This is rare however.
      */
-    class CertificateExtensionAuthorityKeyIdentifier extends CertificateExtension {
+    class CertificateExtensionAuthorityKeyIdentifier<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends CertificateExtension<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtensionAuthorityKeyIdentifier>;
 
         /**
@@ -2272,7 +2294,8 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
+        $signals: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures &
+            GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2340,7 +2363,11 @@ export namespace Gcr {
      * A certificate extension that can be used to identify the type of the
      * certificate subject (whether it is a certificate authority or not).
      */
-    class CertificateExtensionBasicConstraints extends CertificateExtension {
+    class CertificateExtensionBasicConstraints<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends CertificateExtension<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtensionBasicConstraints>;
 
         /**
@@ -2350,7 +2377,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionBasicConstraints.SignalSignatures;
+        $signals: CertificateExtensionBasicConstraints.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2427,8 +2454,13 @@ export namespace Gcr {
      * Each certificate policy is exposed as a [class`Gcr`.CertificatePolicy]
      * object.
      */
-    class CertificateExtensionCertificatePolicies<A extends GObject.Object = GObject.Object>
-        extends CertificateExtension
+    class CertificateExtensionCertificatePolicies<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends CertificateExtension<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCertificatePolicies>;
@@ -2451,7 +2483,8 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionCertificatePolicies.SignalSignatures;
+        $signals: CertificateExtensionCertificatePolicies.SignalSignatures &
+            GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3052,8 +3085,13 @@ export namespace Gcr {
      * Each distribution point is exposed as a [class`Gcr`.DistributionPoint]
      * object.
      */
-    class CertificateExtensionCrlDistributionPoints<A extends GObject.Object = GObject.Object>
-        extends CertificateExtension
+    class CertificateExtensionCrlDistributionPoints<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends CertificateExtension<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCrlDistributionPoints>;
@@ -3076,7 +3114,8 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionCrlDistributionPoints.SignalSignatures;
+        $signals: CertificateExtensionCrlDistributionPoints.SignalSignatures &
+            GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3674,7 +3713,11 @@ export namespace Gcr {
      * Similar to [class`Gcr`.CertificateExtensionKeyUsage], this extension defined
      * an additional set of purposes for which this certificate may be used.
      */
-    class CertificateExtensionExtendedKeyUsage extends CertificateExtension {
+    class CertificateExtensionExtendedKeyUsage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends CertificateExtension<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtensionExtendedKeyUsage>;
 
         /**
@@ -3684,7 +3727,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionExtendedKeyUsage.SignalSignatures;
+        $signals: CertificateExtensionExtendedKeyUsage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3749,7 +3792,11 @@ export namespace Gcr {
      * See also [class`Gcr`.CertificateExtensionExtendedKeyUsage] for an additional
      * set of usages.
      */
-    class CertificateExtensionKeyUsage extends CertificateExtension {
+    class CertificateExtensionKeyUsage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends CertificateExtension<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtensionKeyUsage>;
 
         /**
@@ -3759,7 +3806,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionKeyUsage.SignalSignatures;
+        $signals: CertificateExtensionKeyUsage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3819,8 +3866,13 @@ export namespace Gcr {
     /**
      * A wrapper type for a list of [class`CertificateExtension]`s.
      */
-    class CertificateExtensionList<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
+    class CertificateExtensionList<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionList>;
@@ -3837,7 +3889,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionList.SignalSignatures;
+        $signals: CertificateExtensionList.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4441,8 +4493,13 @@ export namespace Gcr {
      *
      * The object exposes the different names with the [iface`Gio`.ListModel] API.
      */
-    class CertificateExtensionSubjectAltName<A extends GObject.Object = GObject.Object>
-        extends CertificateExtension
+    class CertificateExtensionSubjectAltName<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends CertificateExtension<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionSubjectAltName>;
@@ -4454,7 +4511,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionSubjectAltName.SignalSignatures;
+        $signals: CertificateExtensionSubjectAltName.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5046,7 +5103,11 @@ export namespace Gcr {
     /**
      * A certificate extension that contains the subject key identifier (SKI).
      */
-    class CertificateExtensionSubjectKeyIdentifier extends CertificateExtension {
+    class CertificateExtensionSubjectKeyIdentifier<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends CertificateExtension<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateExtensionSubjectKeyIdentifier>;
 
         /**
@@ -5056,7 +5117,8 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
+        $signals: CertificateExtensionSubjectKeyIdentifier.SignalSignatures &
+            GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5113,7 +5175,11 @@ export namespace Gcr {
         }
     }
 
-    class CertificateField extends GObject.Object {
+    class CertificateField<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateField>;
 
         // Properties
@@ -5129,7 +5195,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateField.SignalSignatures;
+        $signals: CertificateField.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5202,8 +5268,13 @@ export namespace Gcr {
      * A policy can optionally also include qualifiers, which are exposed through
      * the [iface`Gio`.ListModel] API.
      */
-    class CertificatePolicy<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
+    class CertificatePolicy<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificatePolicy>;
@@ -5215,7 +5286,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificatePolicy.SignalSignatures;
+        $signals: CertificatePolicy.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5805,7 +5876,11 @@ export namespace Gcr {
      * These policies are (optionally) part of a [class`Gcr`.CertificatePolicy]
      * object.
      */
-    class CertificatePolicyQualifier extends GObject.Object {
+    class CertificatePolicyQualifier<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificatePolicyQualifier>;
 
         /**
@@ -5815,7 +5890,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificatePolicyQualifier.SignalSignatures;
+        $signals: CertificatePolicyQualifier.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5880,7 +5955,11 @@ export namespace Gcr {
      * request with [method`CertificateRequest`.set_cn], and then sign the request
      * with [method`CertificateRequest`.complete_async].
      */
-    class CertificateRequest extends GObject.Object {
+    class CertificateRequest<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateRequest>;
 
         // Properties
@@ -5901,7 +5980,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateRequest.SignalSignatures;
+        $signals: CertificateRequest.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6053,7 +6132,11 @@ export namespace Gcr {
         }
     }
 
-    class CertificateSection extends GObject.Object {
+    class CertificateSection<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<CertificateSection>;
 
         // Properties
@@ -6068,7 +6151,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: CertificateSection.SignalSignatures;
+        $signals: CertificateSection.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6131,7 +6214,11 @@ export namespace Gcr {
      * These distribution poitns are for example listed as part of a
      * [class`Gcr`.CertificateExtensionCrlDistributionPoints] object.
      */
-    class DistributionPoint extends GObject.Object {
+    class DistributionPoint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DistributionPoint>;
 
         /**
@@ -6141,7 +6228,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DistributionPoint.SignalSignatures;
+        $signals: DistributionPoint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6200,7 +6287,11 @@ export namespace Gcr {
      * An object describing a name as part of the Subject Alternative Name (SAN)
      * extension.
      */
-    class GeneralName extends GObject.Object {
+    class GeneralName<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GeneralName>;
 
         /**
@@ -6210,7 +6301,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GeneralName.SignalSignatures;
+        $signals: GeneralName.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6266,7 +6357,15 @@ export namespace Gcr {
     /**
      * A list of [class`Gcr`.GeneralName]s.
      */
-    class GeneralNames<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+    class GeneralNames<
+            A extends GObject.Object = GObject.Object,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.ListModel<A>
+    {
         static $gtype: GObject.GType<GeneralNames>;
 
         /**
@@ -6276,7 +6375,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GeneralNames.SignalSignatures;
+        $signals: GeneralNames.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6888,7 +6987,11 @@ export namespace Gcr {
      * currently parsed item can be retrieved using the
      * [method`Parser`.get_parsed_attributes] function.
      */
-    class Parser extends GObject.Object {
+    class Parser<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Parser>;
 
         // Properties
@@ -6931,7 +7034,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7157,7 +7260,14 @@ export namespace Gcr {
      * Various common PKCS#11 certificate attributes are automatically loaded and
      * are available via [method`Gcr`.Pkcs11Certificate.get_attributes].
      */
-    class Pkcs11Certificate extends Gck.Object implements Certificate {
+    class Pkcs11Certificate<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Gck.Object<Props, Sigs, IFaces>
+        implements Certificate
+    {
         static $gtype: GObject.GType<Pkcs11Certificate>;
 
         // Properties
@@ -7174,7 +7284,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Pkcs11Certificate.SignalSignatures;
+        $signals: Pkcs11Certificate.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7992,7 +8102,11 @@ export namespace Gcr {
      * 16 bytes) may be leaked. If this is considered inacceptable, do not use
      * [class`SecretExchange]`.
      */
-    class SecretExchange extends GObject.Object {
+    class SecretExchange<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SecretExchange>;
 
         // Properties
@@ -8013,7 +8127,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SecretExchange.SignalSignatures;
+        $signals: SecretExchange.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8122,7 +8236,14 @@ export namespace Gcr {
      * To create an object, use the [ctor`SimpleCertificate`.new] or
      * [ctor`SimpleCertificate`.new_static] functions.
      */
-    class SimpleCertificate extends GObject.Object implements Certificate {
+    class SimpleCertificate<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Certificate
+    {
         static $gtype: GObject.GType<SimpleCertificate>;
 
         /**
@@ -8132,7 +8253,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SimpleCertificate.SignalSignatures;
+        $signals: SimpleCertificate.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8841,7 +8962,11 @@ export namespace Gcr {
      * When used as the setup function while spawning an ssh command like ssh-add
      * or ssh, this allows callbacks for passwords on the provided interaction.
      */
-    class SshAskpass extends GObject.Object {
+    class SshAskpass<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SshAskpass>;
 
         // Properties
@@ -8858,7 +8983,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SshAskpass.SignalSignatures;
+        $signals: SshAskpass.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8952,7 +9077,14 @@ export namespace Gcr {
      *
      * Use [method`SystemPrompt`.close] to close the prompt when you're done with it.
      */
-    class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
+    class SystemPrompt<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable
+    {
         static $gtype: GObject.GType<SystemPrompt>;
 
         // Properties
@@ -8995,7 +9127,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SystemPrompt.SignalSignatures;
+        $signals: SystemPrompt.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10456,7 +10588,11 @@ export namespace Gcr {
      * Pass the GType of the implementation of [iface`Prompt]` to
      * [ctor`SystemPrompter`.new].
      */
-    class SystemPrompter extends GObject.Object {
+    class SystemPrompter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SystemPrompter>;
 
         // Properties
@@ -10483,7 +10619,7 @@ export namespace Gcr {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SystemPrompter.SignalSignatures;
+        $signals: SystemPrompter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

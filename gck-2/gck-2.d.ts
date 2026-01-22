@@ -389,7 +389,11 @@ export namespace Gck {
      * create an enumerator. To get the objects, use [method`Enumerator`.next] or
      * [method`Enumerator`.next_async] functions.
      */
-    class Enumerator extends GObject.Object {
+    class Enumerator<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Enumerator>;
 
         // Properties
@@ -415,7 +419,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Enumerator.SignalSignatures;
+        $signals: Enumerator.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -574,7 +578,11 @@ export namespace Gck {
      * initialized module that you'd like to use with the various Gck functions,
      * then you can use [ctor`Module`.new].
      */
-    class Module extends GObject.Object {
+    class Module<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Module>;
 
         // Properties
@@ -600,7 +608,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Module.SignalSignatures;
+        $signals: Module.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -721,7 +729,11 @@ export namespace Gck {
      * objects are stored on the token persistently. Others are transient and are
      * called session objects.
      */
-    class Object extends GObject.Object {
+    class Object<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Object>;
 
         // Properties
@@ -750,7 +762,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1258,7 +1270,11 @@ export namespace Gck {
      * a [class`Gio`.TlsPassword] which contains additional information about which
      * PKCS#11 token or key the password is being requested for.
      */
-    class Password extends Gio.TlsPassword {
+    class Password<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gio.TlsPassword<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Password>;
 
         // Properties
@@ -1285,7 +1301,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Password.SignalSignatures;
+        $signals: Password.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1369,7 +1385,14 @@ export namespace Gck {
      * Before performing any PKCS11 operations, a session must be opened. This is
      * analogous to an open database handle, or a file handle.
      */
-    class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
+    class Session<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<Session>, Gio.Initable
+    {
         static $gtype: GObject.GType<Session>;
 
         // Properties
@@ -1421,7 +1444,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3409,7 +3432,11 @@ export namespace Gck {
      * reader, and the token the card. If the PKCS#11 module is not a hardware
      * driver, often the slot and token are equivalent.
      */
-    class Slot extends GObject.Object {
+    class Slot<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Slot>;
 
         // Properties
@@ -3430,7 +3457,7 @@ export namespace Gck {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Slot.SignalSignatures;
+        $signals: Slot.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

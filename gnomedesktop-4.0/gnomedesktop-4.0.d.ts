@@ -257,7 +257,11 @@ export namespace GnomeDesktop {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class DesktopThumbnailFactory extends GObject.Object {
+    class DesktopThumbnailFactory<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
 
         /**
@@ -267,7 +271,7 @@ export namespace GnomeDesktop {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DesktopThumbnailFactory.SignalSignatures;
+        $signals: DesktopThumbnailFactory.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -518,7 +522,14 @@ export namespace GnomeDesktop {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
-    class IdleMonitor extends GObject.Object implements Gio.Initable {
+    class IdleMonitor<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Initable
+    {
         static $gtype: GObject.GType<IdleMonitor>;
 
         /**
@@ -528,7 +539,7 @@ export namespace GnomeDesktop {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IdleMonitor.SignalSignatures;
+        $signals: IdleMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1105,7 +1116,11 @@ export namespace GnomeDesktop {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class PnpIds extends GObject.Object {
+    class PnpIds<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PnpIds>;
 
         /**
@@ -1115,7 +1130,7 @@ export namespace GnomeDesktop {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PnpIds.SignalSignatures;
+        $signals: PnpIds.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1174,7 +1189,11 @@ export namespace GnomeDesktop {
         }
     }
 
-    class WallClock extends GObject.Object {
+    class WallClock<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<WallClock>;
 
         // Properties
@@ -1221,7 +1240,7 @@ export namespace GnomeDesktop {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WallClock.SignalSignatures;
+        $signals: WallClock.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -1286,7 +1305,11 @@ export namespace GnomeDesktop {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class XkbInfo extends GObject.Object {
+    class XkbInfo<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<XkbInfo>;
 
         /**
@@ -1296,7 +1319,7 @@ export namespace GnomeDesktop {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: XkbInfo.SignalSignatures;
+        $signals: XkbInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 

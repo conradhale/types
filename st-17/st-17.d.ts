@@ -469,7 +469,14 @@ export namespace St {
      * The #StAdjustment object represents a range of values bounded between a
      * minimum and maximum, together with step and page increments and a page size.
      */
-    class Adjustment extends GObject.Object implements Clutter.Animatable {
+    class Adjustment<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Clutter.Animatable
+    {
         static $gtype: GObject.GType<Adjustment>;
 
         // Properties
@@ -543,7 +550,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Adjustment.SignalSignatures;
+        $signals: Adjustment.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1356,8 +1363,13 @@ export namespace St {
      * #StBin is a simple container capable of having only one
      * #ClutterActor as a child.
      */
-    class Bin<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
+    class Bin<
+            A extends Clutter.Actor = Clutter.Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<Bin>;
@@ -1377,7 +1389,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Bin.SignalSignatures;
+        $signals: Bin.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1871,7 +1883,11 @@ export namespace St {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class BorderImage extends GObject.Object {
+    class BorderImage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BorderImage>;
 
         /**
@@ -1881,7 +1897,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BorderImage.SignalSignatures;
+        $signals: BorderImage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2045,8 +2061,12 @@ export namespace St {
      * is enabled, then the position of the actor within the available space can
      * be determined by the alignment child property.
      */
-    class BoxLayout
-        extends Viewport<Clutter.BoxLayout>
+    class BoxLayout<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Viewport<Clutter.BoxLayout, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable, Scrollable
     {
         static $gtype: GObject.GType<BoxLayout>;
@@ -2073,7 +2093,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BoxLayout.SignalSignatures;
+        $signals: BoxLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2753,8 +2773,13 @@ export namespace St {
      * A button widget with support for either a text label or icon, toggle mode
      * and transitions effects between states.
      */
-    class Button<A extends Clutter.Actor = Clutter.Actor>
-        extends Bin<A>
+    class Button<
+            A extends Clutter.Actor = Clutter.Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Bin<A, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<Button>;
@@ -2818,7 +2843,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Button.SignalSignatures;
+        $signals: Button.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3387,7 +3412,11 @@ export namespace St {
      * available to applications. Text is always assumed to be UTF-8 and non-text
      * items are not handled.
      */
-    class Clipboard extends GObject.Object {
+    class Clipboard<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Clipboard>;
 
         /**
@@ -3397,7 +3426,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Clipboard.SignalSignatures;
+        $signals: Clipboard.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3491,7 +3520,11 @@ export namespace St {
         }
     }
 
-    class DndStartGesture extends Clutter.Gesture {
+    class DndStartGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.Gesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DndStartGesture>;
 
         // Properties
@@ -3512,7 +3545,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DndStartGesture.SignalSignatures;
+        $signals: DndStartGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3665,7 +3698,14 @@ export namespace St {
      * resized or the CSS style changes; you can use the
      * [method`St`.DrawingArea.queue_repaint] as well.
      */
-    class DrawingArea extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class DrawingArea<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<DrawingArea>;
 
         /**
@@ -3675,7 +3715,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DrawingArea.SignalSignatures;
+        $signals: DrawingArea.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4322,7 +4362,14 @@ export namespace St {
      * - `focus`: the widget has focus
      * - `indeterminate`: the widget is showing the hint text or actor
      */
-    class Entry extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class Entry<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Entry>;
 
         // Properties
@@ -4418,7 +4465,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4999,7 +5046,11 @@ export namespace St {
      *
      * #StFocusManager handles keyboard focus for all actors on the stage.
      */
-    class FocusManager extends GObject.Object {
+    class FocusManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FocusManager>;
 
         /**
@@ -5009,7 +5060,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FocusManager.SignalSignatures;
+        $signals: FocusManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5120,7 +5171,14 @@ export namespace St {
      *
      * #StGenericAccessible is an #StWidgetAccessible
      */
-    class GenericAccessible extends WidgetAccessible implements Atk.Component, Atk.Value {
+    class GenericAccessible<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends WidgetAccessible<Props, Sigs, IFaces>
+        implements Atk.Component, Atk.Value
+    {
         static $gtype: GObject.GType<GenericAccessible>;
 
         /**
@@ -5130,7 +5188,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GenericAccessible.SignalSignatures;
+        $signals: GenericAccessible.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5848,7 +5906,14 @@ export namespace St {
      * #StIcon is a simple styled texture actor that displays an image from
      * a stylesheet.
      */
-    class Icon extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class Icon<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Icon>;
 
         // Properties
@@ -5912,7 +5977,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Icon.SignalSignatures;
+        $signals: Icon.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6457,7 +6522,11 @@ export namespace St {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class IconInfo extends GObject.Object {
+    class IconInfo<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IconInfo>;
 
         /**
@@ -6467,7 +6536,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IconInfo.SignalSignatures;
+        $signals: IconInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6691,7 +6760,11 @@ export namespace St {
      * The #StIconTheme object acts as a database of all the icons in the
      * current theme.
      */
-    class IconTheme extends GObject.Object {
+    class IconTheme<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<IconTheme>;
 
         /**
@@ -6701,7 +6774,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: IconTheme.SignalSignatures;
+        $signals: IconTheme.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6998,7 +7071,14 @@ export namespace St {
         }
     }
 
-    class ImageContent extends GObject.Object implements Clutter.Content, Gio.Icon, Gio.LoadableIcon {
+    class ImageContent<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Clutter.Content, Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<ImageContent>;
 
         // Properties
@@ -7015,7 +7095,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ImageContent.SignalSignatures;
+        $signals: ImageContent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7880,7 +7960,14 @@ export namespace St {
      * #ClutterText. The internal #ClutterText is publicly accessibly to allow
      * applications to set further properties.
      */
-    class Label extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class Label<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<Label>;
 
         // Properties
@@ -7906,7 +7993,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Label.SignalSignatures;
+        $signals: Label.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8507,7 +8594,14 @@ export namespace St {
         }
     }
 
-    class PasswordEntry extends Entry implements Atk.ImplementorIface, Clutter.Animatable {
+    class PasswordEntry<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Entry<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<PasswordEntry>;
 
         // Properties
@@ -8542,7 +8636,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PasswordEntry.SignalSignatures;
+        $signals: PasswordEntry.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9144,7 +9238,14 @@ export namespace St {
      * The #StScrollBar allows users to scroll scrollable actors, either by
      * the step or page amount, or by manually dragging the handle.
      */
-    class ScrollBar extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
+    class ScrollBar<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<ScrollBar>;
 
         // Properties
@@ -9167,7 +9268,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ScrollBar.SignalSignatures;
+        $signals: ScrollBar.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -9782,8 +9883,13 @@ export namespace St {
      * #StScrollable. It provides scrollbars around the edge of the child to
      * allow the user to move around the scrollable area.
      */
-    class ScrollView<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
+    class ScrollView<
+            A extends Clutter.Actor = Clutter.Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<ScrollView>;
@@ -9867,7 +9973,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ScrollView.SignalSignatures;
+        $signals: ScrollView.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10440,7 +10546,11 @@ export namespace St {
         }
     }
 
-    class ScrollViewFade extends Clutter.ShaderEffect {
+    class ScrollViewFade<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Clutter.ShaderEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ScrollViewFade>;
 
         // Properties
@@ -10483,7 +10593,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ScrollViewFade.SignalSignatures;
+        $signals: ScrollViewFade.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10565,7 +10675,11 @@ export namespace St {
         }
     }
 
-    class Settings extends GObject.Object {
+    class Settings<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
@@ -10670,7 +10784,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10741,7 +10855,14 @@ export namespace St {
      * If the attached actor is a [class`Widget]`, its style information will
      * be used, similar to symbolic icons.
      */
-    class SpinnerContent extends GObject.Object implements Clutter.Content {
+    class SpinnerContent<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Clutter.Content
+    {
         static $gtype: GObject.GType<SpinnerContent>;
 
         /**
@@ -10751,7 +10872,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SpinnerContent.SignalSignatures;
+        $signals: SpinnerContent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11304,7 +11425,11 @@ export namespace St {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class TextureCache extends GObject.Object {
+    class TextureCache<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TextureCache>;
 
         /**
@@ -11314,7 +11439,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TextureCache.SignalSignatures;
+        $signals: TextureCache.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11427,7 +11552,11 @@ export namespace St {
      * Cascading Stylesheets.) A #StTheme can be set to apply to all the actors
      * in a stage using st_theme_context_set_theme().
      */
-    class Theme extends GObject.Object {
+    class Theme<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Theme>;
 
         // Properties
@@ -11470,7 +11599,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Theme.SignalSignatures;
+        $signals: Theme.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11549,7 +11678,11 @@ export namespace St {
      * is bound to a #ClutterStage; a singleton #StThemeContext can be obtained for a #ClutterStage
      * by using st_theme_context_get_for_stage().
      */
-    class ThemeContext extends GObject.Object {
+    class ThemeContext<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ThemeContext>;
 
         // Properties
@@ -11572,7 +11705,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ThemeContext.SignalSignatures;
+        $signals: ThemeContext.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11692,7 +11825,11 @@ export namespace St {
      * Physical pixels correspond to actor sizes, not necessarily to pixels on
      * display devices (eg. when `scale-monitor-framebuffer` is enabled).
      */
-    class ThemeNode extends GObject.Object {
+    class ThemeNode<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ThemeNode>;
 
         /**
@@ -11702,7 +11839,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ThemeNode.SignalSignatures;
+        $signals: ThemeNode.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12275,8 +12412,14 @@ export namespace St {
      *
      * The #StViewport is a generic #StScrollable implementation.
      */
-    class Viewport<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
-        extends Widget<A, B>
+    class Viewport<
+            A extends Clutter.LayoutManager = Clutter.LayoutManager,
+            B extends Clutter.Content = Clutter.Content,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Widget<A, B, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable, Scrollable
     {
         static $gtype: GObject.GType<Viewport>;
@@ -12295,7 +12438,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Viewport.SignalSignatures;
+        $signals: Viewport.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12957,8 +13100,14 @@ export namespace St {
      * Actors in the St library should subclass #StWidget if they plan
      * to obey to a certain #StStyle.
      */
-    class Widget<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
-        extends Clutter.Actor<A, B>
+    class Widget<
+            A extends Clutter.LayoutManager = Clutter.LayoutManager,
+            B extends Clutter.Content = Clutter.Content,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.Actor<A, B, Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<Widget>;
@@ -13046,7 +13195,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13855,7 +14004,14 @@ export namespace St {
         interface ConstructorProps extends Clutter.ActorAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
-    class WidgetAccessible extends Clutter.ActorAccessible implements Atk.Component {
+    class WidgetAccessible<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Clutter.ActorAccessible<Props, Sigs, IFaces>
+        implements Atk.Component
+    {
         static $gtype: GObject.GType<WidgetAccessible>;
 
         /**
@@ -13865,7 +14021,7 @@ export namespace St {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: WidgetAccessible.SignalSignatures;
+        $signals: WidgetAccessible.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

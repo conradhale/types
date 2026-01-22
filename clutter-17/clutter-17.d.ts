@@ -4731,7 +4731,11 @@ export namespace Clutter {
      * drag and drop capabilities, or scrolling, or panning - by using the
      * various event-related signals provided by [class`Actor]` itself.
      */
-    abstract class Action extends ActorMeta {
+    abstract class Action<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ActorMeta<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Action>;
 
         /**
@@ -4741,7 +4745,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Action.SignalSignatures;
+        $signals: Action.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5699,8 +5703,14 @@ export namespace Clutter {
      * }
      * ```
      */
-    class Actor<A extends LayoutManager = LayoutManager, B extends Content = Content>
-        extends GObject.InitiallyUnowned
+    class Actor<
+            A extends LayoutManager = LayoutManager,
+            B extends Content = Content,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.InitiallyUnowned<Props, Sigs, IFaces>
         implements Atk.ImplementorIface, Animatable
     {
         static $gtype: GObject.GType<Actor>;
@@ -6770,7 +6780,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Actor.SignalSignatures;
+        $signals: Actor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -9843,7 +9853,14 @@ export namespace Clutter {
      * #ClutterActorAccessible implements the required ATK interfaces of [class`Clutter`.Actor]
      * exposing the common elements on each actor (position, extents, etc).
      */
-    class ActorAccessible extends Atk.GObjectAccessible implements Atk.Component {
+    class ActorAccessible<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Atk.GObjectAccessible<Props, Sigs, IFaces>
+        implements Atk.Component
+    {
         static $gtype: GObject.GType<ActorAccessible>;
 
         /**
@@ -9853,7 +9870,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ActorAccessible.SignalSignatures;
+        $signals: ActorAccessible.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10585,7 +10602,11 @@ export namespace Clutter {
      * [property`ActorMeta:`enabled] property is set to %TRUE before applying
      * any kind of modification.
      */
-    abstract class ActorMeta extends GObject.InitiallyUnowned {
+    abstract class ActorMeta<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.InitiallyUnowned<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ActorMeta>;
 
         // Properties
@@ -10612,7 +10633,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ActorMeta.SignalSignatures;
+        $signals: ActorMeta.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10747,7 +10768,11 @@ export namespace Clutter {
      * of the [class`Actor]` to which it is applied to the size of another
      * [class`Actor]` using an alignment factor
      */
-    class AlignConstraint extends Constraint {
+    class AlignConstraint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Constraint<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AlignConstraint>;
 
         // Properties
@@ -10820,7 +10845,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AlignConstraint.SignalSignatures;
+        $signals: AlignConstraint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -10935,7 +10960,11 @@ export namespace Clutter {
      * it provides a basic API to query the backend for generic information
      * and settings.
      */
-    abstract class Backend extends GObject.Object {
+    abstract class Backend<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Backend>;
 
         // Properties
@@ -10949,7 +10978,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11064,7 +11093,11 @@ export namespace Clutter {
      *   - for each layer there are horizontal and vertical
      *   alignment policies.
      */
-    class BinLayout extends LayoutManager {
+    class BinLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BinLayout>;
 
         /**
@@ -11074,7 +11107,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BinLayout.SignalSignatures;
+        $signals: BinLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11179,7 +11212,11 @@ export namespace Clutter {
      *                        NULL);
      * ```
      */
-    class BindConstraint extends Constraint {
+    class BindConstraint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Constraint<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BindConstraint>;
 
         // Properties
@@ -11210,7 +11247,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BindConstraint.SignalSignatures;
+        $signals: BindConstraint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11354,7 +11391,11 @@ export namespace Clutter {
      * blocked (using [method`BindingPool`.block_action]) or if the
      * key binding handler returned %FALSE.
      */
-    class BindingPool extends GObject.Object {
+    class BindingPool<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BindingPool>;
 
         // Properties
@@ -11371,7 +11412,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BindingPool.SignalSignatures;
+        $signals: BindingPool.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11636,7 +11677,11 @@ export namespace Clutter {
      * #ClutterBlurEffect is a sub-class of #ClutterEffect that allows blurring a
      * actor and its contents.
      */
-    class BlurEffect extends OffscreenEffect {
+    class BlurEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BlurEffect>;
 
         /**
@@ -11646,7 +11691,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BlurEffect.SignalSignatures;
+        $signals: BlurEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11743,7 +11788,11 @@ export namespace Clutter {
      * It is possible to control the spacing between children of a
      * #ClutterBoxLayout by using [method`Clutter`.BoxLayout.set_spacing].
      */
-    class BoxLayout extends LayoutManager {
+    class BoxLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BoxLayout>;
 
         // Properties
@@ -11773,7 +11822,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BoxLayout.SignalSignatures;
+        $signals: BoxLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11860,7 +11909,11 @@ export namespace Clutter {
      * #ClutterBrightnessContrastEffect is a sub-class of #ClutterEffect that
      * changes the overall brightness of a #ClutterActor.
      */
-    class BrightnessContrastEffect extends OffscreenEffect {
+    class BrightnessContrastEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<BrightnessContrastEffect>;
 
         // Properties
@@ -11895,7 +11948,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: BrightnessContrastEffect.SignalSignatures;
+        $signals: BrightnessContrastEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -11997,7 +12050,11 @@ export namespace Clutter {
     /**
      * A #ClutterPressGesture subclass for recognizing click gestures
      */
-    class ClickGesture extends PressGesture {
+    class ClickGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PressGesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ClickGesture>;
 
         // Properties
@@ -12046,7 +12103,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ClickGesture.SignalSignatures;
+        $signals: ClickGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12238,7 +12295,15 @@ export namespace Clutter {
      * #ClutterClone does not require the presence of support for FBOs
      * in the underlying GL or GLES implementation.
      */
-    class Clone<A extends Actor = Actor> extends Actor implements Atk.ImplementorIface, Animatable {
+    class Clone<
+            A extends Actor = Actor,
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Animatable
+    {
         static $gtype: GObject.GType<Clone>;
 
         // Properties
@@ -12256,7 +12321,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Clone.SignalSignatures;
+        $signals: Clone.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12826,7 +12891,11 @@ export namespace Clutter {
         }
     }
 
-    class ColorManager extends GObject.Object {
+    class ColorManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ColorManager>;
 
         // Properties
@@ -12843,7 +12912,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ColorManager.SignalSignatures;
+        $signals: ColorManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -12937,7 +13006,11 @@ export namespace Clutter {
      * The #ClutterColorState would have API to get the colorspace, whether the
      * actor content is in pq or not, and things like that
      */
-    class ColorState extends GObject.Object {
+    class ColorState<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ColorState>;
 
         // Properties
@@ -12954,7 +13027,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ColorState.SignalSignatures;
+        $signals: ColorState.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13062,7 +13135,11 @@ export namespace Clutter {
         interface ConstructorProps extends ColorState.ConstructorProps {}
     }
 
-    class ColorStateIcc extends ColorState {
+    class ColorStateIcc<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ColorState<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ColorStateIcc>;
 
         /**
@@ -13072,7 +13149,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ColorStateIcc.SignalSignatures;
+        $signals: ColorStateIcc.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13116,7 +13193,11 @@ export namespace Clutter {
         interface ConstructorProps extends ColorState.ConstructorProps {}
     }
 
-    class ColorStateParams extends ColorState {
+    class ColorStateParams<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ColorState<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ColorStateParams>;
 
         /**
@@ -13126,7 +13207,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ColorStateParams.SignalSignatures;
+        $signals: ColorStateParams.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13204,7 +13285,11 @@ export namespace Clutter {
      * #ClutterColorizeEffect is a sub-class of #ClutterEffect that
      * colorizes an actor with the given tint.
      */
-    class ColorizeEffect extends OffscreenEffect {
+    class ColorizeEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ColorizeEffect>;
 
         // Properties
@@ -13222,7 +13307,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ColorizeEffect.SignalSignatures;
+        $signals: ColorizeEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13347,7 +13432,11 @@ export namespace Clutter {
      * to whenever any parameter is changed. The actor to which it is attached
      * can be recovered at any point using clutter_actor_meta_get_actor().
      */
-    abstract class Constraint extends ActorMeta {
+    abstract class Constraint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ActorMeta<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Constraint>;
 
         /**
@@ -13357,7 +13446,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Constraint.SignalSignatures;
+        $signals: Constraint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13436,7 +13525,11 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class Context extends GObject.Object {
+    class Context<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Context>;
 
         /**
@@ -13446,7 +13539,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13523,7 +13616,11 @@ export namespace Clutter {
      * position of the vertex and should be modified according to a specific
      * deformation algorithm.
      */
-    abstract class DeformEffect extends OffscreenEffect {
+    abstract class DeformEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DeformEffect>;
 
         // Properties
@@ -13576,7 +13673,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DeformEffect.SignalSignatures;
+        $signals: DeformEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13675,7 +13772,11 @@ export namespace Clutter {
      * of the desaturation effect is controllable and animatable through
      * the #ClutterDesaturateEffect:factor property.
      */
-    class DesaturateEffect extends OffscreenEffect {
+    class DesaturateEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<DesaturateEffect>;
 
         // Properties
@@ -13694,7 +13795,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DesaturateEffect.SignalSignatures;
+        $signals: DesaturateEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -13887,7 +13988,11 @@ export namespace Clutter {
      *  }
      * ```
      */
-    abstract class Effect extends ActorMeta {
+    abstract class Effect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ActorMeta<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Effect>;
 
         /**
@@ -13897,7 +14002,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Effect.SignalSignatures;
+        $signals: Effect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14013,7 +14118,11 @@ export namespace Clutter {
      * #ClutterFixedLayout is a layout manager implementing the same
      * layout policies as #ClutterGroup.
      */
-    class FixedLayout extends LayoutManager {
+    class FixedLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FixedLayout>;
 
         /**
@@ -14023,7 +14132,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FixedLayout.SignalSignatures;
+        $signals: FixedLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14111,7 +14220,11 @@ export namespace Clutter {
      *   for both minimum and maximum; the spacing can also be controlled
      *   in both columns and rows.
      */
-    class FlowLayout extends LayoutManager {
+    class FlowLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FlowLayout>;
 
         // Properties
@@ -14222,7 +14335,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FlowLayout.SignalSignatures;
+        $signals: FlowLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14342,7 +14455,11 @@ export namespace Clutter {
         }
     }
 
-    class Focus extends GObject.Object {
+    class Focus<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Focus>;
 
         // Properties
@@ -14356,7 +14473,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Focus.SignalSignatures;
+        $signals: Focus.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14401,7 +14518,11 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class FrameClock extends GObject.Object {
+    class FrameClock<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FrameClock>;
 
         /**
@@ -14411,7 +14532,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FrameClock.SignalSignatures;
+        $signals: FrameClock.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14468,7 +14589,11 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    abstract class FrameClockDriver extends GObject.Object {
+    abstract class FrameClockDriver<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FrameClockDriver>;
 
         /**
@@ -14478,7 +14603,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FrameClockDriver.SignalSignatures;
+        $signals: FrameClockDriver.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14593,7 +14718,11 @@ export namespace Clutter {
      * implementing the should_influence() or should_be_influenced_by() vfuncs
      * in your #ClutterGesture subclass.
      */
-    abstract class Gesture extends Action {
+    abstract class Gesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Action<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Gesture>;
 
         // Properties
@@ -14610,7 +14739,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Gesture.SignalSignatures;
+        $signals: Gesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14706,7 +14835,11 @@ export namespace Clutter {
         }
     }
 
-    class Grab extends GObject.Object {
+    class Grab<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Grab>;
 
         // Properties
@@ -14720,7 +14853,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Grab.SignalSignatures;
+        $signals: Grab.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -14817,7 +14950,11 @@ export namespace Clutter {
      * [method`Clutter`.Actor.add_child], which will place children next to each other in
      * the direction determined by the [property`Clutter`.GridLayout:orientation] property.
      */
-    class GridLayout extends LayoutManager {
+    class GridLayout<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends LayoutManager<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GridLayout>;
 
         // Properties
@@ -14875,7 +15012,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GridLayout.SignalSignatures;
+        $signals: GridLayout.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15097,7 +15234,11 @@ export namespace Clutter {
      * The #ClutterInputDevice class holds the state of the device, but
      * its contents are usually defined by the Clutter backend in use.
      */
-    class InputDevice extends GObject.Object {
+    class InputDevice<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InputDevice>;
 
         // Properties
@@ -15176,7 +15317,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputDevice.SignalSignatures;
+        $signals: InputDevice.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15293,7 +15434,11 @@ export namespace Clutter {
         }
     }
 
-    abstract class InputDeviceTool extends GObject.Object {
+    abstract class InputDeviceTool<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InputDeviceTool>;
 
         // Properties
@@ -15310,7 +15455,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputDeviceTool.SignalSignatures;
+        $signals: InputDeviceTool.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15367,7 +15512,11 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    abstract class InputFocus extends GObject.Object {
+    abstract class InputFocus<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InputFocus>;
 
         /**
@@ -15377,7 +15526,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputFocus.SignalSignatures;
+        $signals: InputFocus.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15451,7 +15600,11 @@ export namespace Clutter {
         }
     }
 
-    abstract class InputMethod extends GObject.Object {
+    abstract class InputMethod<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<InputMethod>;
 
         // Properties
@@ -15476,7 +15629,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputMethod.SignalSignatures;
+        $signals: InputMethod.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15568,7 +15721,11 @@ export namespace Clutter {
      * #ClutterInterval can be subclassed to override the validation
      * and value computation.
      */
-    class Interval extends GObject.InitiallyUnowned {
+    class Interval<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.InitiallyUnowned<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Interval>;
 
         // Properties
@@ -15599,7 +15756,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Interval.SignalSignatures;
+        $signals: Interval.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15742,7 +15899,11 @@ export namespace Clutter {
         interface ConstructorProps extends Focus.ConstructorProps {}
     }
 
-    class KeyFocus extends Focus {
+    class KeyFocus<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Focus<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<KeyFocus>;
 
         /**
@@ -15752,7 +15913,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: KeyFocus.SignalSignatures;
+        $signals: KeyFocus.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15837,7 +15998,11 @@ export namespace Clutter {
      * and the 1.0 value, to interpolate to the final value of the transition's
      * interval..
      */
-    class KeyframeTransition extends PropertyTransition {
+    class KeyframeTransition<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PropertyTransition<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<KeyframeTransition>;
 
         /**
@@ -15847,7 +16012,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: KeyframeTransition.SignalSignatures;
+        $signals: KeyframeTransition.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -15955,7 +16120,11 @@ export namespace Clutter {
         }
     }
 
-    abstract class Keymap extends GObject.Object {
+    abstract class Keymap<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Keymap>;
 
         // Properties
@@ -15972,7 +16141,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Keymap.SignalSignatures;
+        $signals: Keymap.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16116,7 +16285,11 @@ export namespace Clutter {
      * [class`Clutter`.Actor] using the #ClutterLayoutManager, and `actor` is
      * the [class`Clutter`.Actor] child of the [class`Clutter`.Actor].
      */
-    abstract class LayoutManager extends GObject.InitiallyUnowned {
+    abstract class LayoutManager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.InitiallyUnowned<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<LayoutManager>;
 
         /**
@@ -16126,7 +16299,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: LayoutManager.SignalSignatures;
+        $signals: LayoutManager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16321,7 +16494,11 @@ export namespace Clutter {
      * A [type`Clutter`.LayoutMeta] wraps a [class`Actor]` inside a container
      * [class`Actor]` using a [class`LayoutManager]`.
      */
-    abstract class LayoutMeta extends GObject.Object {
+    abstract class LayoutMeta<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<LayoutMeta>;
 
         // Properties
@@ -16346,7 +16523,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: LayoutMeta.SignalSignatures;
+        $signals: LayoutMeta.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16413,7 +16590,11 @@ export namespace Clutter {
     /**
      * A #ClutterPressGesture subclass for recognizing long-press gestures
      */
-    class LongPressGesture extends PressGesture {
+    class LongPressGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PressGesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<LongPressGesture>;
 
         /**
@@ -16423,7 +16604,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: LongPressGesture.SignalSignatures;
+        $signals: LongPressGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16524,7 +16705,11 @@ export namespace Clutter {
      * In both cases, the "Pipeline" node is created with the return value
      * of [vfunc`OffscreenEffect`.create_pipeline].
      */
-    abstract class OffscreenEffect extends Effect {
+    abstract class OffscreenEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Effect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<OffscreenEffect>;
 
         /**
@@ -16534,7 +16719,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: OffscreenEffect.SignalSignatures;
+        $signals: OffscreenEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16654,7 +16839,11 @@ export namespace Clutter {
      *
      * A simple page turning effect
      */
-    class PageTurnEffect extends DeformEffect {
+    class PageTurnEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends DeformEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PageTurnEffect>;
 
         // Properties
@@ -16683,7 +16872,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PageTurnEffect.SignalSignatures;
+        $signals: PageTurnEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -16914,7 +17103,11 @@ export namespace Clutter {
     /**
      * A #ClutterGesture subclass for recognizing pan gestures
      */
-    class PanGesture extends Gesture {
+    class PanGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PanGesture>;
 
         // Properties
@@ -16969,7 +17162,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PanGesture.SignalSignatures;
+        $signals: PanGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17101,7 +17294,11 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    class PipelineCache extends GObject.Object {
+    class PipelineCache<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PipelineCache>;
 
         /**
@@ -17111,7 +17308,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PipelineCache.SignalSignatures;
+        $signals: PipelineCache.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17212,7 +17409,11 @@ export namespace Clutter {
      * An abstract #ClutterGesture subclass building the base for recognizing press
      * gestures
      */
-    abstract class PressGesture extends Gesture {
+    abstract class PressGesture<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gesture<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PressGesture>;
 
         // Properties
@@ -17272,7 +17473,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PressGesture.SignalSignatures;
+        $signals: PressGesture.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17407,7 +17608,11 @@ export namespace Clutter {
      * #ClutterPropertyTransition is a specialized [class`Transition]` that
      * can be used to tween a property of a [iface`Animatable]` instance.
      */
-    class PropertyTransition extends Transition {
+    class PropertyTransition<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Transition<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PropertyTransition>;
 
         // Properties
@@ -17430,7 +17635,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PropertyTransition.SignalSignatures;
+        $signals: PropertyTransition.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17542,7 +17747,11 @@ export namespace Clutter {
         }
     }
 
-    abstract class Seat extends GObject.Object {
+    abstract class Seat<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Seat>;
 
         // Properties
@@ -17567,7 +17776,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Seat.SignalSignatures;
+        $signals: Seat.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17732,7 +17941,11 @@ export namespace Clutter {
      * the #ClutterSettings properties when implementing new UI elements,
      * for instance the default font name.
      */
-    class Settings extends GObject.Object {
+    class Settings<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
@@ -17827,7 +18040,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -17963,7 +18176,11 @@ export namespace Clutter {
      *  }
      * ```
      */
-    class ShaderEffect extends OffscreenEffect {
+    class ShaderEffect<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends OffscreenEffect<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ShaderEffect>;
 
         // Properties
@@ -17988,7 +18205,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ShaderEffect.SignalSignatures;
+        $signals: ShaderEffect.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -18193,7 +18410,11 @@ export namespace Clutter {
      *
      * An offset can be applied to the constraint, to provide spacing.
      */
-    class SnapConstraint extends Constraint {
+    class SnapConstraint<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Constraint<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<SnapConstraint>;
 
         // Properties
@@ -18237,7 +18458,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SnapConstraint.SignalSignatures;
+        $signals: SnapConstraint.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -18319,7 +18540,11 @@ export namespace Clutter {
         }
     }
 
-    class Sprite extends Focus {
+    class Sprite<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Focus<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Sprite>;
 
         // Properties
@@ -18334,7 +18559,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Sprite.SignalSignatures;
+        $signals: Sprite.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -18477,7 +18702,14 @@ export namespace Clutter {
      * #ClutterStage, as long as every overridden virtual function chains up to the
      * parent class corresponding function.
      */
-    class Stage extends Actor implements Atk.ImplementorIface, Animatable {
+    class Stage<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Animatable
+    {
         static $gtype: GObject.GType<Stage>;
 
         // Properties
@@ -18519,7 +18751,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Stage.SignalSignatures;
+        $signals: Stage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19258,7 +19490,11 @@ export namespace Clutter {
         }
     }
 
-    class StageView extends GObject.Object {
+    class StageView<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<StageView>;
 
         // Properties
@@ -19296,7 +19532,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: StageView.SignalSignatures;
+        $signals: StageView.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -19537,7 +19773,14 @@ export namespace Clutter {
      * Selection using keyboard or pointers can be enabled using
      * [method`Text`.set_selectable].
      */
-    class Text extends Actor implements Atk.ImplementorIface, Animatable {
+    class Text<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Actor<Props, Sigs, IFaces>
+        implements Atk.ImplementorIface, Animatable
+    {
         static $gtype: GObject.GType<Text>;
 
         // Properties
@@ -19861,7 +20104,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Text.SignalSignatures;
+        $signals: Text.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -20984,7 +21227,11 @@ export namespace Clutter {
      * useful in the case of important passwords. Or a derived class could
      * integrate with an application's concept of undo/redo.
      */
-    class TextBuffer extends GObject.Object {
+    class TextBuffer<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TextBuffer>;
 
         // Properties
@@ -21015,7 +21262,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TextBuffer.SignalSignatures;
+        $signals: TextBuffer.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -21235,7 +21482,14 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
     }
 
-    class TextureContent extends GObject.Object implements Content {
+    class TextureContent<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Content
+    {
         static $gtype: GObject.GType<TextureContent>;
 
         /**
@@ -21245,7 +21499,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TextureContent.SignalSignatures;
+        $signals: TextureContent.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -21943,7 +22197,11 @@ export namespace Clutter {
      * Timelines are used in the Clutter animation framework by classes like
      * [class`Transition]`.
      */
-    class Timeline extends GObject.Object {
+    class Timeline<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Timeline>;
 
         // Properties
@@ -22028,7 +22286,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Timeline.SignalSignatures;
+        $signals: Timeline.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22464,7 +22722,11 @@ export namespace Clutter {
      * #ClutterTransition is an abstract subclass of [class`Timeline]` that
      * computes the interpolation between two values, stored by a [class`Interval]`.
      */
-    abstract class Transition extends Timeline {
+    abstract class Transition<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Timeline<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Transition>;
 
         // Properties
@@ -22512,7 +22774,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Transition.SignalSignatures;
+        $signals: Transition.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22675,7 +22937,11 @@ export namespace Clutter {
      * the group that contains it has a duration of 5 seconds, only the first
      * 5 seconds of the transition will be played.
      */
-    class TransitionGroup extends Transition {
+    class TransitionGroup<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Transition<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TransitionGroup>;
 
         /**
@@ -22685,7 +22951,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TransitionGroup.SignalSignatures;
+        $signals: TransitionGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -22756,7 +23022,11 @@ export namespace Clutter {
         }
     }
 
-    class VirtualInputDevice extends GObject.Object {
+    class VirtualInputDevice<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<VirtualInputDevice>;
 
         // Properties
@@ -22772,7 +23042,7 @@ export namespace Clutter {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: VirtualInputDevice.SignalSignatures;
+        $signals: VirtualInputDevice.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

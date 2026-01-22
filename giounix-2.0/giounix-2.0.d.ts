@@ -604,7 +604,14 @@ export namespace GioUnix {
      * GIO interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
+    class DesktopAppInfo<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AppInfo
+    {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
         // Properties
@@ -621,7 +628,7 @@ export namespace GioUnix {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: DesktopAppInfo.SignalSignatures;
+        $signals: DesktopAppInfo.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1820,7 +1827,11 @@ export namespace GioUnix {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class FDMessage extends Gio.SocketControlMessage {
+    class FDMessage<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Gio.SocketControlMessage<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<FDMessage>;
 
         // Properties
@@ -1841,7 +1852,7 @@ export namespace GioUnix {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: FDMessage.SignalSignatures;
+        $signals: FDMessage.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1946,7 +1957,14 @@ export namespace GioUnix {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class InputStream extends Gio.InputStream implements Gio.PollableInputStream, FileDescriptorBased {
+    class InputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Gio.InputStream<Props, Sigs, IFaces>
+        implements Gio.PollableInputStream, FileDescriptorBased
+    {
         static $gtype: GObject.GType<InputStream>;
 
         // Properties
@@ -1973,7 +1991,7 @@ export namespace GioUnix {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3365,7 +3383,11 @@ export namespace GioUnix {
      * Connect to the [signal`GioUnix`.MountMonitor::mountpoints-changed] signal to
      * be notified of changes to the [struct`GioUnix`.MountPoint] list.
      */
-    class MountMonitor extends GObject.Object {
+    class MountMonitor<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<MountMonitor>;
 
         /**
@@ -3375,7 +3397,7 @@ export namespace GioUnix {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: MountMonitor.SignalSignatures;
+        $signals: MountMonitor.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3461,7 +3483,14 @@ export namespace GioUnix {
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config file
      * file or the `GioUnix-2.0` GIR namespace when using it.
      */
-    class OutputStream extends Gio.OutputStream implements Gio.PollableOutputStream, FileDescriptorBased {
+    class OutputStream<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Gio.OutputStream<Props, Sigs, IFaces>
+        implements Gio.PollableOutputStream, FileDescriptorBased
+    {
         static $gtype: GObject.GType<OutputStream>;
 
         // Properties
@@ -3488,7 +3517,7 @@ export namespace GioUnix {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

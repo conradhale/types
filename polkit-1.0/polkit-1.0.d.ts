@@ -173,7 +173,11 @@ export namespace Polkit {
     /**
      * Object used to encapsulate a registered action.
      */
-    class ActionDescription extends GObject.Object {
+    class ActionDescription<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ActionDescription>;
 
         /**
@@ -183,7 +187,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ActionDescription.SignalSignatures;
+        $signals: ActionDescription.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -310,7 +314,14 @@ export namespace Polkit {
      * proving he is the user or the administrator) a given action. See
      * #PolkitAgentListener and #PolkitAgentSession for details.
      */
-    class Authority extends GObject.Object implements Gio.AsyncInitable<Authority>, Gio.Initable {
+    class Authority<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<Authority>, Gio.Initable
+    {
         static $gtype: GObject.GType<Authority>;
 
         // Properties
@@ -347,7 +358,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Authority.SignalSignatures;
+        $signals: Authority.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1987,7 +1998,11 @@ export namespace Polkit {
     /**
      * This class represents the result you get when checking for an authorization.
      */
-    class AuthorizationResult extends GObject.Object {
+    class AuthorizationResult<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<AuthorizationResult>;
 
         /**
@@ -1997,7 +2012,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: AuthorizationResult.SignalSignatures;
+        $signals: AuthorizationResult.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2101,7 +2116,11 @@ export namespace Polkit {
     /**
      * An object used for passing details around.
      */
-    class Details extends GObject.Object {
+    class Details<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Details>;
 
         /**
@@ -2111,7 +2130,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Details.SignalSignatures;
+        $signals: Details.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2189,7 +2208,14 @@ export namespace Polkit {
      * with e.g. #GtkLockButton. See the #GPermission documentation for
      * more information.
      */
-    class Permission extends Gio.Permission implements Gio.AsyncInitable<Permission>, Gio.Initable {
+    class Permission<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Gio.Permission<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<Permission>, Gio.Initable
+    {
         static $gtype: GObject.GType<Permission>;
 
         // Properties
@@ -2215,7 +2241,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Permission.SignalSignatures;
+        $signals: Permission.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3027,7 +3053,14 @@ export namespace Polkit {
     /**
      * An object that represents a process owning a unique name on the system bus.
      */
-    class SystemBusName extends GObject.Object implements Subject {
+    class SystemBusName<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Subject
+    {
         static $gtype: GObject.GType<SystemBusName>;
 
         // Properties
@@ -3045,7 +3078,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: SystemBusName.SignalSignatures;
+        $signals: SystemBusName.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3679,7 +3712,11 @@ export namespace Polkit {
     /**
      * Object used to describe a temporary authorization.
      */
-    class TemporaryAuthorization extends GObject.Object {
+    class TemporaryAuthorization<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<TemporaryAuthorization>;
 
         /**
@@ -3689,7 +3726,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: TemporaryAuthorization.SignalSignatures;
+        $signals: TemporaryAuthorization.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -3768,7 +3805,14 @@ export namespace Polkit {
     /**
      * An object representing a group identity on a UNIX system.
      */
-    class UnixGroup extends GObject.Object implements Identity {
+    class UnixGroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Identity
+    {
         static $gtype: GObject.GType<UnixGroup>;
 
         // Properties
@@ -3786,7 +3830,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixGroup.SignalSignatures;
+        $signals: UnixGroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4332,7 +4376,14 @@ export namespace Polkit {
     /**
      * An object representing a netgroup identity on a UNIX system.
      */
-    class UnixNetgroup extends GObject.Object implements Identity {
+    class UnixNetgroup<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Identity
+    {
         static $gtype: GObject.GType<UnixNetgroup>;
 
         // Properties
@@ -4350,7 +4401,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixNetgroup.SignalSignatures;
+        $signals: UnixNetgroup.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -4910,7 +4961,14 @@ export namespace Polkit {
      * was initiated).  That is usually done by initializing this with
      * polkit_unix_process_new_for_owner() with trusted data.
      */
-    class UnixProcess extends GObject.Object implements Subject {
+    class UnixProcess<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Subject
+    {
         static $gtype: GObject.GType<UnixProcess>;
 
         // Properties
@@ -4945,7 +5003,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixProcess.SignalSignatures;
+        $signals: UnixProcess.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5630,7 +5688,14 @@ export namespace Polkit {
      *
      * The session id is an opaque string obtained from ConsoleKit.
      */
-    class UnixSession extends GObject.Object implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject {
+    class UnixSession<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject
+    {
         static $gtype: GObject.GType<UnixSession>;
 
         // Properties
@@ -5657,7 +5722,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixSession.SignalSignatures;
+        $signals: UnixSession.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6602,7 +6667,14 @@ export namespace Polkit {
     /**
      * An object representing a user identity on a UNIX system.
      */
-    class UnixUser extends GObject.Object implements Identity {
+    class UnixUser<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Identity
+    {
         static $gtype: GObject.GType<UnixUser>;
 
         // Properties
@@ -6620,7 +6692,7 @@ export namespace Polkit {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: UnixUser.SignalSignatures;
+        $signals: UnixUser.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

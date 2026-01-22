@@ -502,7 +502,14 @@ export namespace GdkPixbuf {
      * callback on the data, which allows to e.g. write the image
      * to a socket or store it in a database.
      */
-    class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon {
+    class Pixbuf<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Gio.Icon, Gio.LoadableIcon
+    {
         static $gtype: GObject.GType<Pixbuf>;
 
         // Properties
@@ -575,7 +582,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Pixbuf.SignalSignatures;
+        $signals: Pixbuf.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1926,7 +1933,11 @@ export namespace GdkPixbuf {
      * representation, however; you just ask `GdkPixbuf` what should
      * be displayed at a given point in time.
      */
-    class PixbufAnimation extends GObject.Object {
+    class PixbufAnimation<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufAnimation>;
 
         /**
@@ -1936,7 +1947,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufAnimation.SignalSignatures;
+        $signals: PixbufAnimation.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2152,7 +2163,11 @@ export namespace GdkPixbuf {
      * An opaque object representing an iterator which points to a
      * certain position in an animation.
      */
-    class PixbufAnimationIter extends GObject.Object {
+    class PixbufAnimationIter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufAnimationIter>;
 
         /**
@@ -2162,7 +2177,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufAnimationIter.SignalSignatures;
+        $signals: PixbufAnimationIter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2390,7 +2405,11 @@ export namespace GdkPixbuf {
      * [class`GdkPixbuf`.PixbufAnimationIter] to retrieve the pixbuf for the
      * desired time stamp.
      */
-    class PixbufLoader extends GObject.Object {
+    class PixbufLoader<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufLoader>;
 
         /**
@@ -2400,7 +2419,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufLoader.SignalSignatures;
+        $signals: PixbufLoader.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2533,7 +2552,11 @@ export namespace GdkPixbuf {
         interface ConstructorProps extends PixbufAnimation.ConstructorProps {}
     }
 
-    class PixbufNonAnim extends PixbufAnimation {
+    class PixbufNonAnim<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PixbufAnimation<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufNonAnim>;
 
         /**
@@ -2543,7 +2566,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufNonAnim.SignalSignatures;
+        $signals: PixbufNonAnim.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2588,7 +2611,11 @@ export namespace GdkPixbuf {
     /**
      * An opaque struct representing a simple animation.
      */
-    class PixbufSimpleAnim extends PixbufAnimation {
+    class PixbufSimpleAnim<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PixbufAnimation<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufSimpleAnim>;
 
         // Properties
@@ -2606,7 +2633,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufSimpleAnim.SignalSignatures;
+        $signals: PixbufSimpleAnim.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2664,7 +2691,11 @@ export namespace GdkPixbuf {
         interface ConstructorProps extends PixbufAnimationIter.ConstructorProps {}
     }
 
-    class PixbufSimpleAnimIter extends PixbufAnimationIter {
+    class PixbufSimpleAnimIter<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends PixbufAnimationIter<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<PixbufSimpleAnimIter>;
 
         /**
@@ -2674,7 +2705,7 @@ export namespace GdkPixbuf {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: PixbufSimpleAnimIter.SignalSignatures;
+        $signals: PixbufSimpleAnimIter.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

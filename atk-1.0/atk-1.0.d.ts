@@ -1846,7 +1846,11 @@ export namespace Atk {
      * not derived from GtkWidget. One example of its use is in providing
      * an accessible object for GnomeCanvasItem in the GAIL library.
      */
-    class GObjectAccessible extends Object {
+    class GObjectAccessible<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<GObjectAccessible>;
 
         /**
@@ -1856,7 +1860,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: GObjectAccessible.SignalSignatures;
+        $signals: GObjectAccessible.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -1933,7 +1937,14 @@ export namespace Atk {
      * allows specification of a start and end offset within the host
      * AtkHypertext object.
      */
-    class Hyperlink extends GObject.Object implements Action {
+    class Hyperlink<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends GObject.Object<Props, Sigs, IFaces>
+        implements Action
+    {
         static $gtype: GObject.GType<Hyperlink>;
 
         // Properties
@@ -1960,7 +1971,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Hyperlink.SignalSignatures;
+        $signals: Hyperlink.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2695,7 +2706,11 @@ export namespace Atk {
      * A set of utility functions for thread locking. This interface and
      * all his related methods are deprecated since 2.12.
      */
-    class Misc extends GObject.Object {
+    class Misc<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Misc>;
 
         /**
@@ -2705,7 +2720,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Misc.SignalSignatures;
+        $signals: Misc.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -2831,8 +2846,12 @@ export namespace Atk {
      * accessible object is requested for an object type for which no
      * factory type is specified.
      */
-    class NoOpObject
-        extends Object
+    class NoOpObject<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Object<Props, Sigs, IFaces>
         implements
             Action,
             Component,
@@ -2856,7 +2875,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NoOpObject.SignalSignatures;
+        $signals: NoOpObject.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5492,7 +5511,11 @@ export namespace Atk {
      * this is created by an AtkRegistry if no factory type has not been
      * specified to create an accessible object of a particular type.
      */
-    class NoOpObjectFactory extends ObjectFactory {
+    class NoOpObjectFactory<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends ObjectFactory<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<NoOpObjectFactory>;
 
         /**
@@ -5502,7 +5525,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: NoOpObjectFactory.SignalSignatures;
+        $signals: NoOpObjectFactory.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -5694,7 +5717,11 @@ export namespace Atk {
      * See [class`AtkObjectFactory]`, [class`AtkRegistry]`.  (GTK+ users see also
      * #GtkAccessible).
      */
-    class Object extends GObject.Object {
+    class Object<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Object>;
 
         // Properties
@@ -5805,7 +5832,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -6159,7 +6186,11 @@ export namespace Atk {
      * registry the factory type to be used to create an accessible of a
      * particular GType.
      */
-    class ObjectFactory extends GObject.Object {
+    class ObjectFactory<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<ObjectFactory>;
 
         /**
@@ -6169,7 +6200,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ObjectFactory.SignalSignatures;
+        $signals: ObjectFactory.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -6262,7 +6293,14 @@ export namespace Atk {
      *
      * See [class`AtkSocket]`
      */
-    class Plug extends Object implements Component {
+    class Plug<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Object<Props, Sigs, IFaces>
+        implements Component
+    {
         static $gtype: GObject.GType<Plug>;
 
         /**
@@ -6272,7 +6310,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Plug.SignalSignatures;
+        $signals: Plug.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7029,7 +7067,11 @@ export namespace Atk {
      * atk_registry_set_factory_type call, passing the appropriate GType
      * for application custom widget classes.
      */
-    class Registry extends GObject.Object {
+    class Registry<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Registry>;
 
         /**
@@ -7039,7 +7081,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Registry.SignalSignatures;
+        $signals: Registry.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -7117,7 +7159,11 @@ export namespace Atk {
      * other objects are defined as an AtkRelationSet, which is a set of
      * AtkRelations.
      */
-    class Relation extends GObject.Object {
+    class Relation<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Relation>;
 
         // Properties
@@ -7136,7 +7182,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Relation.SignalSignatures;
+        $signals: Relation.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -7216,7 +7262,11 @@ export namespace Atk {
      * content which "flows" between them, among other types of possible
      * relationships.
      */
-    class RelationSet extends GObject.Object {
+    class RelationSet<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<RelationSet>;
 
         /**
@@ -7226,7 +7276,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: RelationSet.SignalSignatures;
+        $signals: RelationSet.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Fields
 
@@ -7375,7 +7425,14 @@ export namespace Atk {
      *
      * See [class`AtkPlug]`
      */
-    class Socket extends Object implements Component {
+    class Socket<
+            Props extends GObject.Properties = {},
+            Sigs extends GObject.Signals = {},
+            IFaces extends GObject.Interfaces = [],
+        >
+        extends Object<Props, Sigs, IFaces>
+        implements Component
+    {
         static $gtype: GObject.GType<Socket>;
 
         /**
@@ -7385,7 +7442,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Socket.SignalSignatures;
+        $signals: Socket.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8144,7 +8201,11 @@ export namespace Atk {
      * that apply to an object at a given time. This set is not meant to be
      * modified, but rather created when #atk_object_ref_state_set() is called.
      */
-    class StateSet extends GObject.Object {
+    class StateSet<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<StateSet>;
 
         /**
@@ -8154,7 +8215,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: StateSet.SignalSignatures;
+        $signals: StateSet.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
@@ -8279,7 +8340,11 @@ export namespace Atk {
      * of a process and information about the current ATK implementation
      * and toolkit version.
      */
-    class Util extends GObject.Object {
+    class Util<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Util>;
 
         /**
@@ -8289,7 +8354,7 @@ export namespace Atk {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Util.SignalSignatures;
+        $signals: Util.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 

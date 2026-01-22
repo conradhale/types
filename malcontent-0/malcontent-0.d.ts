@@ -236,7 +236,11 @@ export namespace Malcontent {
      * #MctManager is a top-level management object which is used to query and
      * monitor #MctAppFilters for different users.
      */
-    class Manager extends GObject.Object {
+    class Manager<
+        Props extends GObject.Properties = {},
+        Sigs extends GObject.Signals = {},
+        IFaces extends GObject.Interfaces = [],
+    > extends GObject.Object<Props, Sigs, IFaces> {
         static $gtype: GObject.GType<Manager>;
 
         // Properties
@@ -255,7 +259,7 @@ export namespace Malcontent {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Manager.SignalSignatures;
+        $signals: Manager.SignalSignatures & GObject.RegisteredClassSignals<Props, Sigs>;
 
         // Constructors
 
