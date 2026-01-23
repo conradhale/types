@@ -324,7 +324,7 @@ export namespace GObject {
     // TODO: What about the generated class Closure
     export type TClosure<R = any, P = any> = (...args: P[]) => R;
 
-    type ObjectConstructor<Opts extends RegisterClassOptions = {}> = Opts['GTypeFlags'] &
+    export type ObjectConstructor<Opts extends RegisterClassOptions = {}> = Opts['GTypeFlags'] &
         GObject.TypeFlags.ABSTRACT extends never
         ? new (...args: any[]) => Object
         : abstract new (...args: any[]) => Object;
