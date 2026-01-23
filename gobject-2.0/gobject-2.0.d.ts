@@ -118,14 +118,6 @@ export namespace GObject {
 
     export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
 
-    // Advanced type inference for GObject class registration
-    // Advanced utility types for class registration
-
-    export type SignalDefinitionType = {
-        param_types?: readonly GType[];
-        [key: string]: any;
-    };
-
     // Correctly types interface checks.
     export function type_is_a<T extends Object>(obj: Object, is_a_type: { $gtype: GType<T> }): obj is T;
 
@@ -332,24 +324,30 @@ export namespace GObject {
     // TODO: What about the generated class Closure
     export type TClosure<R = any, P = any> = (...args: P[]) => R;
 
-    type ObjectConstructor = { new (...args: any[]): Object };
+    type ObjectConstructor<Opts extends RegisterClassOptions = {}> = Opts['GTypeFlags'] &
+        GObject.TypeFlags.ABSTRACT extends never
+        ? new (...args: any[]) => Object
+        : abstract new (...args: any[]) => Object;
+
+    export interface RegisterClassOptions {
+        GTypeName?: string;
+        GTypeFlags?: TypeFlags;
+        Properties?: Properties;
+        Signals?: Signals;
+        Implements?: Interfaces;
+        CssName?: string;
+        Template?: string;
+        Children?: string[];
+        InternalChildren?: string[];
+    }
 
     // Standard registerClass overloads
-    export function registerClass<T extends ObjectConstructor>(cls: T): T;
+    export function registerClass<Class extends ObjectConstructor>(cls: Class): Class;
 
-    export function registerClass<
-        T extends ObjectConstructor,
-        Props extends { [key: string]: ParamSpec },
-        Interfaces extends { $gtype: GType }[],
-        Sigs extends {
-            [key: string]: {
-                param_types?: readonly GType[];
-                [key: string]: any;
-            };
-        },
-    >(options: MetaInfo<Props, Interfaces, Sigs>, cls: T): T;
-
-    // Enhanced registerClass overloads with advanced type inference
+    export function registerClass<Opts extends RegisterClassOptions, Class extends ObjectConstructor<Opts>>(
+        options: Opts,
+        cls: Class,
+    ): Class;
 
     /**
      * GObject-2.0
