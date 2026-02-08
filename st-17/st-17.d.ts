@@ -540,7 +540,7 @@ export namespace St {
     }
     type Bin<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.Bin<A>)['prototype'];
     const Bin: typeof classes.Bin &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Bin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Bin.SignalSignatures> & classes.Bin<A>);
@@ -813,7 +813,7 @@ export namespace St {
     }
     type Button<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.Button<A>)['prototype'];
     const Button: typeof classes.Button &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Button.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Button.SignalSignatures> & classes.Button<A>);
@@ -1886,7 +1886,7 @@ export namespace St {
     }
     type ScrollView<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.ScrollView<A>)['prototype'];
     const ScrollView: typeof classes.ScrollView &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ScrollView.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ScrollView.SignalSignatures> & classes.ScrollView<A>);
@@ -2266,11 +2266,7 @@ export namespace St {
         B extends Clutter.Content = Clutter.Content,
     > = (typeof classes.Viewport<A, B>)['prototype'];
     const Viewport: typeof classes.Viewport &
-        (new <
-            A extends Clutter.LayoutManager = Clutter.LayoutManager,
-            B extends Clutter.Content = Clutter.Content,
-            Opts extends GObject.MetaInfo,
-        >(
+        (new <A extends Clutter.LayoutManager, B extends Clutter.Content, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Viewport.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Viewport.SignalSignatures> & classes.Viewport<A, B>);
@@ -2436,11 +2432,7 @@ export namespace St {
         B extends Clutter.Content = Clutter.Content,
     > = (typeof classes.Widget<A, B>)['prototype'];
     const Widget: typeof classes.Widget &
-        (new <
-            A extends Clutter.LayoutManager = Clutter.LayoutManager,
-            B extends Clutter.Content = Clutter.Content,
-            Opts extends GObject.MetaInfo,
-        >(
+        (new <A extends Clutter.LayoutManager, B extends Clutter.Content, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Widget.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Widget.SignalSignatures> & classes.Widget<A, B>);

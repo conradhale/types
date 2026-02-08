@@ -957,7 +957,7 @@ export namespace Shell {
     }
     type SquareBin<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.SquareBin<A>)['prototype'];
     const SquareBin: typeof classes.SquareBin &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.SquareBin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SquareBin.SignalSignatures> & classes.SquareBin<A>);
@@ -1153,7 +1153,7 @@ export namespace Shell {
     }
     type TrayIcon<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.TrayIcon<A>)['prototype'];
     const TrayIcon: typeof classes.TrayIcon &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.TrayIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TrayIcon.SignalSignatures> & classes.TrayIcon<A>);

@@ -8367,7 +8367,7 @@ export namespace Gio {
     }
     type ListStore<A extends GObject.Object = GObject.Object> = (typeof classes.ListStore<A>)['prototype'];
     const ListStore: typeof classes.ListStore &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
+        (new <A extends GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ListStore.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ListStore.SignalSignatures> & classes.ListStore<A>);

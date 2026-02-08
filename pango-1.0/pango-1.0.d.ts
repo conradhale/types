@@ -3196,7 +3196,7 @@ export namespace Pango {
     }
     type FontFamily<A extends GObject.Object = GObject.Object> = (typeof classes.FontFamily<A>)['prototype'];
     const FontFamily: typeof classes.FontFamily &
-        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
+        (abstract new <A extends GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontFamily.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontFamily.SignalSignatures> & classes.FontFamily<A>);
@@ -3230,7 +3230,7 @@ export namespace Pango {
     }
     type FontMap<A extends GObject.Object = GObject.Object> = (typeof classes.FontMap<A>)['prototype'];
     const FontMap: typeof classes.FontMap &
-        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
+        (abstract new <A extends GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontMap.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontMap.SignalSignatures> & classes.FontMap<A>);

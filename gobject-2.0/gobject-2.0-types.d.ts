@@ -89,7 +89,7 @@ declare module './gobject-2.0.d.ts' {
                 [name: string]: boolean | number | string | object | { param_type: string; type: any };
             };
             Signals?: {
-                [name: string]: [...args: object[]] | ((...args: any) => object | void);
+                [name: string]: [...args: any[]] | ((...args: any[]) => any);
             };
         }
 
@@ -364,7 +364,10 @@ declare module './gobject-2.0.d.ts' {
         type PropertyCasings<T> = SnakeToCamel<T> & SnakeToUnderscore<T> & T;
 
         type TypeOnlyProperties<T> = PropertyCasings<{
-            [K in keyof T]: T[K] extends { param_type: string; type: infer P } ? P : T[K];
+            // Remove index signature
+            [K in keyof T as string extends K ? never : K]: T[K] extends { param_type: string; type: infer P }
+                ? P
+                : T[K];
         }>;
 
         type ParamSpecsToProps<T> = PropertyCasings<{

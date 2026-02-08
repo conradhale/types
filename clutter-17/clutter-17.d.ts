@@ -5746,7 +5746,7 @@ export namespace Clutter {
         B
     >)['prototype'];
     const Actor: typeof classes.Actor &
-        (new <A extends LayoutManager = LayoutManager, B extends Content = Content, Opts extends GObject.MetaInfo>(
+        (new <A extends LayoutManager, B extends Content, Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Actor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Actor.SignalSignatures> & classes.Actor<A, B>);
@@ -6328,7 +6328,7 @@ export namespace Clutter {
     }
     type Clone<A extends Actor = Actor> = (typeof classes.Clone<A>)['prototype'];
     const Clone: typeof classes.Clone &
-        (new <A extends Actor = Actor, Opts extends GObject.MetaInfo>(
+        (new <A extends Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Clone.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Clone.SignalSignatures> & classes.Clone<A>);
