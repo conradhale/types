@@ -2,28 +2,23 @@
  * Type Definitions for Gjs (https://gjs.guide/)
  *
  * These type definitions are automatically generated, do not edit them by hand.
+ *
  * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
  *
- * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
+ * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-
-import '@girs/gjs';
-
-// Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-
+import '@girs/gjs';
 export namespace cairo {
     /**
      * cairo-1.0
      */
-
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
-
     enum Status {
-        SUCCESS = 0,
+        SUCCESS,
         NO_MEMORY = 1,
         INVALID_RESTORE = 2,
         INVALID_POP_GROUP = 3,
@@ -61,25 +56,21 @@ export namespace cairo {
         DEVICE_ERROR = 35,
         INVALID_MESH_CONSTRUCTION = 36,
         DEVICE_FINISHED = 37,
-        JBIG2_GLOBAL_MISSING = 38,
+        'JBIG2_GLOBAL_MISSING' = 38,
     }
-
     export namespace Content {
         export const $gtype: GObject.GType<Content>;
     }
-
     enum Content {
         COLOR = 4096,
         ALPHA = 8192,
         COLOR_ALPHA = 12288,
     }
-
     export namespace Operator {
         export const $gtype: GObject.GType<Operator>;
     }
-
     enum Operator {
-        CLEAR = 0,
+        CLEAR,
         SOURCE = 1,
         OVER = 2,
         IN = 3,
@@ -109,13 +100,11 @@ export namespace cairo {
         HSL_COLOR = 27,
         HSL_LUMINOSITY = 28,
     }
-
     export namespace Antialias {
         export const $gtype: GObject.GType<Antialias>;
     }
-
     enum Antialias {
-        DEFAULT = 0,
+        DEFAULT,
         NONE = 1,
         GRAY = 2,
         SUBPIXEL = 3,
@@ -123,154 +112,128 @@ export namespace cairo {
         GOOD = 5,
         BEST = 6,
     }
-
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
-
     enum FillRule {
-        WINDING = 0,
+        WINDING,
         EVEN_ODD = 1,
     }
-
     export namespace LineCap {
         export const $gtype: GObject.GType<LineCap>;
     }
-
     enum LineCap {
-        BUTT = 0,
+        BUTT,
         ROUND = 1,
         SQUARE = 2,
     }
-
     export namespace LineJoin {
         export const $gtype: GObject.GType<LineJoin>;
     }
-
     enum LineJoin {
-        MITER = 0,
+        MITER,
         ROUND = 1,
         BEVEL = 2,
     }
-
     export namespace TextClusterFlags {
         export const $gtype: GObject.GType<TextClusterFlags>;
     }
-
     enum TextClusterFlags {
         BACKWARD = 1,
     }
-
     export namespace FontSlant {
         export const $gtype: GObject.GType<FontSlant>;
     }
-
     enum FontSlant {
-        NORMAL = 0,
+        NORMAL,
         ITALIC = 1,
         OBLIQUE = 2,
     }
-
     export namespace FontWeight {
         export const $gtype: GObject.GType<FontWeight>;
     }
-
     enum FontWeight {
-        NORMAL = 0,
+        NORMAL,
         BOLD = 1,
     }
-
     export namespace SubpixelOrder {
         export const $gtype: GObject.GType<SubpixelOrder>;
     }
-
     enum SubpixelOrder {
-        DEFAULT = 0,
+        DEFAULT,
         RGB = 1,
         BGR = 2,
         VRGB = 3,
         VBGR = 4,
     }
-
     export namespace HintStyle {
         export const $gtype: GObject.GType<HintStyle>;
     }
-
     enum HintStyle {
-        DEFAULT = 0,
+        DEFAULT,
         NONE = 1,
         SLIGHT = 2,
         MEDIUM = 3,
         FULL = 4,
     }
-
     export namespace HintMetrics {
         export const $gtype: GObject.GType<HintMetrics>;
     }
-
     enum HintMetrics {
-        DEFAULT = 0,
+        DEFAULT,
         OFF = 1,
         ON = 2,
     }
-
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
-
     enum FontType {
-        TOY = 0,
+        TOY,
         FT = 1,
-        WIN32 = 2,
+        'WIN32' = 2,
         QUARTZ = 3,
         USER = 4,
     }
-
     export namespace PathDataType {
         export const $gtype: GObject.GType<PathDataType>;
     }
-
     enum PathDataType {
-        MOVE_TO = 0,
+        MOVE_TO,
         LINE_TO = 1,
         CURVE_TO = 2,
         CLOSE_PATH = 3,
     }
-
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
-
     enum DeviceType {
-        DRM = 0,
+        DRM,
         GL = 1,
         SCRIPT = 2,
         XCB = 3,
         XLIB = 4,
         XML = 5,
         COGL = 6,
-        WIN32 = 7,
+        'WIN32' = 7,
         INVALID = -1,
     }
-
     export namespace SurfaceType {
         export const $gtype: GObject.GType<SurfaceType>;
     }
-
     enum SurfaceType {
-        IMAGE = 0,
+        IMAGE,
         PDF = 1,
         PS = 2,
         XLIB = 3,
         XCB = 4,
         GLITZ = 5,
         QUARTZ = 6,
-        WIN32 = 7,
+        'WIN32' = 7,
         BEOS = 8,
         DIRECTFB = 9,
         SVG = 10,
-        OS2 = 11,
-        WIN32_PRINTING = 12,
+        'OS2' = 11,
+        'WIN32_PRINTING' = 12,
         QUARTZ_IMAGE = 13,
         SCRIPT = 14,
         QT = 15,
@@ -284,160 +247,116 @@ export namespace cairo {
         SUBSURFACE = 23,
         COGL = 24,
     }
-
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
-
     enum Format {
         INVALID = -1,
-        ARGB32 = 0,
-        RGB24 = 1,
-        A8 = 2,
-        A1 = 3,
-        RGB16_565 = 4,
-        RGB30 = 5,
+        'ARGB32',
+        'RGB24' = 1,
+        'A8' = 2,
+        'A1' = 3,
+        'RGB16_565' = 4,
+        'RGB30' = 5,
     }
-
     export namespace PatternType {
         export const $gtype: GObject.GType<PatternType>;
     }
-
     enum PatternType {
-        SOLID = 0,
+        SOLID,
         SURFACE = 1,
         LINEAR = 2,
         RADIAL = 3,
         MESH = 4,
         RASTER_SOURCE = 5,
     }
-
     export namespace Extend {
         export const $gtype: GObject.GType<Extend>;
     }
-
     enum Extend {
-        NONE = 0,
+        NONE,
         REPEAT = 1,
         REFLECT = 2,
         PAD = 3,
     }
-
     export namespace Filter {
         export const $gtype: GObject.GType<Filter>;
     }
-
     enum Filter {
-        FAST = 0,
+        FAST,
         GOOD = 1,
         BEST = 2,
         NEAREST = 3,
         BILINEAR = 4,
         GAUSSIAN = 5,
     }
-
     export namespace RegionOverlap {
         export const $gtype: GObject.GType<RegionOverlap>;
     }
-
     enum RegionOverlap {
-        IN = 0,
+        IN,
         OUT = 1,
         PART = 2,
     }
     function image_surface_create(): void;
     class Context {
-        static $gtype: GObject.GType<Context>;
-
+        static '$gtype': GObject.GType<Context>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Device {
-        static $gtype: GObject.GType<Device>;
-
+        static '$gtype': GObject.GType<Device>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Surface {
-        static $gtype: GObject.GType<Surface>;
-
+        static '$gtype': GObject.GType<Surface>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Matrix {
-        static $gtype: GObject.GType<Matrix>;
-
+        static '$gtype': GObject.GType<Matrix>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Pattern {
-        static $gtype: GObject.GType<Pattern>;
-
+        static '$gtype': GObject.GType<Pattern>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Region {
-        static $gtype: GObject.GType<Region>;
-
+        static '$gtype': GObject.GType<Region>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class FontOptions {
-        static $gtype: GObject.GType<FontOptions>;
-
+        static '$gtype': GObject.GType<FontOptions>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class FontFace {
-        static $gtype: GObject.GType<FontFace>;
-
+        static '$gtype': GObject.GType<FontFace>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class ScaledFont {
-        static $gtype: GObject.GType<ScaledFont>;
-
+        static '$gtype': GObject.GType<ScaledFont>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Path {
-        static $gtype: GObject.GType<Path>;
-
+        static '$gtype': GObject.GType<Path>;
         // Constructors
-
         _init(...args: any[]): void;
     }
-
     class Rectangle {
-        static $gtype: GObject.GType<Rectangle>;
-
+        static '$gtype': GObject.GType<Rectangle>;
         // Fields
-
         x: number;
         y: number;
         width: number;
         height: number;
-
         // Constructors
-
         constructor(
             properties?: Partial<{
                 x: number;
@@ -448,19 +367,14 @@ export namespace cairo {
         );
         _init(...args: any[]): void;
     }
-
     class RectangleInt {
-        static $gtype: GObject.GType<RectangleInt>;
-
+        static '$gtype': GObject.GType<RectangleInt>;
         // Fields
-
         x: number;
         y: number;
         width: number;
         height: number;
-
         // Constructors
-
         constructor(
             properties?: Partial<{
                 x: number;
@@ -471,18 +385,13 @@ export namespace cairo {
         );
         _init(...args: any[]): void;
     }
-
     class Glyph {
-        static $gtype: GObject.GType<Glyph>;
-
+        static '$gtype': GObject.GType<Glyph>;
         // Fields
-
         index: number;
         x: number;
         y: number;
-
         // Constructors
-
         constructor(
             properties?: Partial<{
                 index: number;
@@ -492,17 +401,12 @@ export namespace cairo {
         );
         _init(...args: any[]): void;
     }
-
     class TextCluster {
-        static $gtype: GObject.GType<TextCluster>;
-
+        static '$gtype': GObject.GType<TextCluster>;
         // Fields
-
         num_bytes: number;
         num_glyphs: number;
-
         // Constructors
-
         constructor(
             properties?: Partial<{
                 num_bytes: number;
@@ -511,19 +415,17 @@ export namespace cairo {
         );
         _init(...args: any[]): void;
     }
-
     /**
      * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     *
+     * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
     /**
      * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     *
+     * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
      */
     const __version__: string;
 }
-
 export default cairo;
-
-// END
