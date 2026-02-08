@@ -1525,7 +1525,7 @@ export namespace Cogl {
     }
     type Atlas = (typeof classes.Atlas)['prototype'];
     const Atlas: typeof classes.Atlas &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Atlas.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Atlas.SignalSignatures> & classes.Atlas);
@@ -1543,7 +1543,7 @@ export namespace Cogl {
     }
     type AtlasTexture = (typeof classes.AtlasTexture)['prototype'];
     const AtlasTexture: typeof classes.AtlasTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.AtlasTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AtlasTexture.SignalSignatures> & classes.AtlasTexture);
@@ -1555,7 +1555,7 @@ export namespace Cogl {
     }
     type Attribute = (typeof classes.Attribute)['prototype'];
     const Attribute: typeof classes.Attribute &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Attribute.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Attribute.SignalSignatures> & classes.Attribute);
@@ -1572,7 +1572,7 @@ export namespace Cogl {
     }
     type AttributeBuffer = (typeof classes.AttributeBuffer)['prototype'];
     const AttributeBuffer: typeof classes.AttributeBuffer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.AttributeBuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AttributeBuffer.SignalSignatures> & classes.AttributeBuffer);
@@ -1584,7 +1584,7 @@ export namespace Cogl {
     }
     type Bitmap = (typeof classes.Bitmap)['prototype'];
     const Bitmap: typeof classes.Bitmap &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Bitmap.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Bitmap.SignalSignatures> & classes.Bitmap);
@@ -1608,7 +1608,7 @@ export namespace Cogl {
     }
     type Buffer = (typeof classes.Buffer)['prototype'];
     const Buffer: typeof classes.Buffer &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Buffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Buffer.SignalSignatures> & classes.Buffer);
@@ -1620,7 +1620,7 @@ export namespace Cogl {
     }
     type Context = (typeof classes.Context)['prototype'];
     const Context: typeof classes.Context &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Context.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Context.SignalSignatures> & classes.Context);
@@ -1632,7 +1632,7 @@ export namespace Cogl {
     }
     type Display = (typeof classes.Display)['prototype'];
     const Display: typeof classes.Display &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Display.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Display.SignalSignatures> & classes.Display);
@@ -1644,7 +1644,7 @@ export namespace Cogl {
     }
     type FrameInfo = (typeof classes.FrameInfo)['prototype'];
     const FrameInfo: typeof classes.FrameInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.FrameInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FrameInfo.SignalSignatures> & classes.FrameInfo);
@@ -1668,7 +1668,7 @@ export namespace Cogl {
     }
     type Framebuffer = (typeof classes.Framebuffer)['prototype'];
     const Framebuffer: typeof classes.Framebuffer &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Framebuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Framebuffer.SignalSignatures> & classes.Framebuffer);
@@ -1685,7 +1685,7 @@ export namespace Cogl {
     }
     type IndexBuffer = (typeof classes.IndexBuffer)['prototype'];
     const IndexBuffer: typeof classes.IndexBuffer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.IndexBuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IndexBuffer.SignalSignatures> & classes.IndexBuffer);
@@ -1697,7 +1697,7 @@ export namespace Cogl {
     }
     type Indices = (typeof classes.Indices)['prototype'];
     const Indices: typeof classes.Indices &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Indices.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Indices.SignalSignatures> & classes.Indices);
@@ -1709,7 +1709,7 @@ export namespace Cogl {
     }
     type MatrixStack = (typeof classes.MatrixStack)['prototype'];
     const MatrixStack: typeof classes.MatrixStack &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.MatrixStack.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MatrixStack.SignalSignatures> & classes.MatrixStack);
@@ -1726,7 +1726,7 @@ export namespace Cogl {
     }
     type Offscreen = (typeof classes.Offscreen)['prototype'];
     const Offscreen: typeof classes.Offscreen &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Offscreen.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Offscreen.SignalSignatures> & classes.Offscreen);
@@ -1743,7 +1743,7 @@ export namespace Cogl {
     }
     type Onscreen = (typeof classes.Onscreen)['prototype'];
     const Onscreen: typeof classes.Onscreen &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Onscreen.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Onscreen.SignalSignatures> & classes.Onscreen);
@@ -1755,7 +1755,7 @@ export namespace Cogl {
     }
     type Pipeline = (typeof classes.Pipeline)['prototype'];
     const Pipeline: typeof classes.Pipeline &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Pipeline.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Pipeline.SignalSignatures> & classes.Pipeline);
@@ -1772,7 +1772,7 @@ export namespace Cogl {
     }
     type PixelBuffer = (typeof classes.PixelBuffer)['prototype'];
     const PixelBuffer: typeof classes.PixelBuffer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.PixelBuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixelBuffer.SignalSignatures> & classes.PixelBuffer);
@@ -1784,7 +1784,7 @@ export namespace Cogl {
     }
     type Primitive = (typeof classes.Primitive)['prototype'];
     const Primitive: typeof classes.Primitive &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Primitive.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Primitive.SignalSignatures> & classes.Primitive);
@@ -1796,7 +1796,7 @@ export namespace Cogl {
     }
     type Program = (typeof classes.Program)['prototype'];
     const Program: typeof classes.Program &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Program.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Program.SignalSignatures> & classes.Program);
@@ -1808,7 +1808,7 @@ export namespace Cogl {
     }
     type Renderer = (typeof classes.Renderer)['prototype'];
     const Renderer: typeof classes.Renderer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Renderer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Renderer.SignalSignatures> & classes.Renderer);
@@ -1822,7 +1822,7 @@ export namespace Cogl {
     }
     type Scanout = (typeof classes.Scanout)['prototype'];
     const Scanout: typeof classes.Scanout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Scanout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Scanout.SignalSignatures> & classes.Scanout);
@@ -1834,7 +1834,7 @@ export namespace Cogl {
     }
     type Shader = (typeof classes.Shader)['prototype'];
     const Shader: typeof classes.Shader &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Shader.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Shader.SignalSignatures> & classes.Shader);
@@ -1846,7 +1846,7 @@ export namespace Cogl {
     }
     type Snippet = (typeof classes.Snippet)['prototype'];
     const Snippet: typeof classes.Snippet &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Snippet.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Snippet.SignalSignatures> & classes.Snippet);
@@ -1864,7 +1864,7 @@ export namespace Cogl {
     }
     type SubTexture = (typeof classes.SubTexture)['prototype'];
     const SubTexture: typeof classes.SubTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.SubTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SubTexture.SignalSignatures> & classes.SubTexture);
@@ -1888,7 +1888,7 @@ export namespace Cogl {
     }
     type Texture = (typeof classes.Texture)['prototype'];
     const Texture: typeof classes.Texture &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Texture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Texture.SignalSignatures> & classes.Texture);
@@ -1906,7 +1906,7 @@ export namespace Cogl {
     }
     type Texture2D = (typeof classes.Texture2D)['prototype'];
     const Texture2D: typeof classes.Texture2D &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Texture2D.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Texture2D.SignalSignatures> & classes.Texture2D);
@@ -1924,7 +1924,7 @@ export namespace Cogl {
     }
     type Texture2DSliced = (typeof classes.Texture2DSliced)['prototype'];
     const Texture2DSliced: typeof classes.Texture2DSliced &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Cogl.Texture2DSliced.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Texture2DSliced.SignalSignatures> & classes.Texture2DSliced);

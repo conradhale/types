@@ -51,7 +51,7 @@ export namespace PolkitAgent {
     }
     type Listener = (typeof classes.Listener)['prototype'];
     const Listener: typeof classes.Listener &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<PolkitAgent.Listener.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Listener.SignalSignatures> & classes.Listener);
@@ -79,7 +79,7 @@ export namespace PolkitAgent {
     }
     type Session = (typeof classes.Session)['prototype'];
     const Session: typeof classes.Session &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<PolkitAgent.Session.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Session.SignalSignatures> & classes.Session);
@@ -91,7 +91,7 @@ export namespace PolkitAgent {
     }
     type TextListener = (typeof classes.TextListener)['prototype'];
     const TextListener: typeof classes.TextListener &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<PolkitAgent.TextListener.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TextListener.SignalSignatures> & classes.TextListener);

@@ -277,7 +277,7 @@ export namespace GnomeDesktop {
     }
     type DesktopThumbnailFactory = (typeof classes.DesktopThumbnailFactory)['prototype'];
     const DesktopThumbnailFactory: typeof classes.DesktopThumbnailFactory &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeDesktop.DesktopThumbnailFactory.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DesktopThumbnailFactory.SignalSignatures> & classes.DesktopThumbnailFactory);
@@ -289,7 +289,7 @@ export namespace GnomeDesktop {
     }
     type IdleMonitor = (typeof classes.IdleMonitor)['prototype'];
     const IdleMonitor: typeof classes.IdleMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeDesktop.IdleMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IdleMonitor.SignalSignatures> & classes.IdleMonitor);
@@ -301,7 +301,7 @@ export namespace GnomeDesktop {
     }
     type PnpIds = (typeof classes.PnpIds)['prototype'];
     const PnpIds: typeof classes.PnpIds &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeDesktop.PnpIds.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PnpIds.SignalSignatures> & classes.PnpIds);
@@ -349,7 +349,7 @@ export namespace GnomeDesktop {
     }
     type WallClock = (typeof classes.WallClock)['prototype'];
     const WallClock: typeof classes.WallClock &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeDesktop.WallClock.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WallClock.SignalSignatures> & classes.WallClock);
@@ -363,7 +363,7 @@ export namespace GnomeDesktop {
     }
     type XkbInfo = (typeof classes.XkbInfo)['prototype'];
     const XkbInfo: typeof classes.XkbInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeDesktop.XkbInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, XkbInfo.SignalSignatures> & classes.XkbInfo);

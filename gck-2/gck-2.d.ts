@@ -385,7 +385,7 @@ export namespace Gck {
     }
     type Enumerator = (typeof classes.Enumerator)['prototype'];
     const Enumerator: typeof classes.Enumerator &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Enumerator.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Enumerator.SignalSignatures> & classes.Enumerator);
@@ -414,7 +414,7 @@ export namespace Gck {
     }
     type Module = (typeof classes.Module)['prototype'];
     const Module: typeof classes.Module &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Module.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Module.SignalSignatures> & classes.Module);
@@ -447,7 +447,7 @@ export namespace Gck {
     }
     type Object = (typeof classes.Object)['prototype'];
     const Object: typeof classes.Object &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Object.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Object.SignalSignatures> & classes.Object);
@@ -481,7 +481,7 @@ export namespace Gck {
     }
     type Password = (typeof classes.Password)['prototype'];
     const Password: typeof classes.Password &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Password.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Password.SignalSignatures> & classes.Password);
@@ -544,7 +544,7 @@ export namespace Gck {
     }
     type Session = (typeof classes.Session)['prototype'];
     const Session: typeof classes.Session &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Session.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Session.SignalSignatures> & classes.Session);
@@ -568,7 +568,7 @@ export namespace Gck {
     }
     type Slot = (typeof classes.Slot)['prototype'];
     const Slot: typeof classes.Slot &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gck.Slot.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Slot.SignalSignatures> & classes.Slot);

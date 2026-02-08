@@ -4546,7 +4546,7 @@ export namespace Gdk {
     }
     type AppLaunchContext = (typeof classes.AppLaunchContext)['prototype'];
     const AppLaunchContext: typeof classes.AppLaunchContext &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.AppLaunchContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AppLaunchContext.SignalSignatures> & classes.AppLaunchContext);
@@ -4596,7 +4596,7 @@ export namespace Gdk {
     }
     type CairoContext = (typeof classes.CairoContext)['prototype'];
     const CairoContext: typeof classes.CairoContext &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.CairoContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CairoContext.SignalSignatures> & classes.CairoContext);
@@ -4694,7 +4694,7 @@ export namespace Gdk {
     }
     type CicpParams = (typeof classes.CicpParams)['prototype'];
     const CicpParams: typeof classes.CicpParams &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.CicpParams.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CicpParams.SignalSignatures> & classes.CicpParams);
@@ -4730,7 +4730,7 @@ export namespace Gdk {
     }
     type Clipboard = (typeof classes.Clipboard)['prototype'];
     const Clipboard: typeof classes.Clipboard &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Clipboard.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Clipboard.SignalSignatures> & classes.Clipboard);
@@ -4742,7 +4742,7 @@ export namespace Gdk {
     }
     type ContentDeserializer = (typeof classes.ContentDeserializer)['prototype'];
     const ContentDeserializer: typeof classes.ContentDeserializer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.ContentDeserializer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ContentDeserializer.SignalSignatures> & classes.ContentDeserializer);
@@ -4771,7 +4771,7 @@ export namespace Gdk {
     }
     type ContentProvider = (typeof classes.ContentProvider)['prototype'];
     const ContentProvider: typeof classes.ContentProvider &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.ContentProvider.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ContentProvider.SignalSignatures> & classes.ContentProvider);
@@ -4783,7 +4783,7 @@ export namespace Gdk {
     }
     type ContentSerializer = (typeof classes.ContentSerializer)['prototype'];
     const ContentSerializer: typeof classes.ContentSerializer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.ContentSerializer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ContentSerializer.SignalSignatures> & classes.ContentSerializer);
@@ -4881,7 +4881,7 @@ export namespace Gdk {
     }
     type Cursor = (typeof classes.Cursor)['prototype'];
     const Cursor: typeof classes.Cursor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Cursor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Cursor.SignalSignatures> & classes.Cursor);
@@ -5146,7 +5146,7 @@ export namespace Gdk {
     }
     type Device = (typeof classes.Device)['prototype'];
     const Device: typeof classes.Device &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Device.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Device.SignalSignatures> & classes.Device);
@@ -5188,7 +5188,7 @@ export namespace Gdk {
     }
     type DeviceTool = (typeof classes.DeviceTool)['prototype'];
     const DeviceTool: typeof classes.DeviceTool &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.DeviceTool.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceTool.SignalSignatures> & classes.DeviceTool);
@@ -5244,7 +5244,7 @@ export namespace Gdk {
     }
     type Display = (typeof classes.Display)['prototype'];
     const Display: typeof classes.Display &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Display.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Display.SignalSignatures> & classes.Display);
@@ -5268,7 +5268,7 @@ export namespace Gdk {
     }
     type DisplayManager = (typeof classes.DisplayManager)['prototype'];
     const DisplayManager: typeof classes.DisplayManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.DisplayManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DisplayManager.SignalSignatures> & classes.DisplayManager);
@@ -5288,7 +5288,7 @@ export namespace Gdk {
     }
     type DmabufTexture = (typeof classes.DmabufTexture)['prototype'];
     const DmabufTexture: typeof classes.DmabufTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.DmabufTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DmabufTexture.SignalSignatures> & classes.DmabufTexture);
@@ -5376,7 +5376,7 @@ export namespace Gdk {
     }
     type DmabufTextureBuilder = (typeof classes.DmabufTextureBuilder)['prototype'];
     const DmabufTextureBuilder: typeof classes.DmabufTextureBuilder &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.DmabufTextureBuilder.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DmabufTextureBuilder.SignalSignatures> & classes.DmabufTextureBuilder);
@@ -5432,7 +5432,7 @@ export namespace Gdk {
     }
     type Drag = (typeof classes.Drag)['prototype'];
     const Drag: typeof classes.Drag &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Drag.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Drag.SignalSignatures> & classes.Drag);
@@ -5456,7 +5456,7 @@ export namespace Gdk {
     }
     type DrawContext = (typeof classes.DrawContext)['prototype'];
     const DrawContext: typeof classes.DrawContext &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.DrawContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DrawContext.SignalSignatures> & classes.DrawContext);
@@ -5500,7 +5500,7 @@ export namespace Gdk {
     }
     type Drop = (typeof classes.Drop)['prototype'];
     const Drop: typeof classes.Drop &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Drop.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Drop.SignalSignatures> & classes.Drop);
@@ -5773,7 +5773,7 @@ export namespace Gdk {
     }
     type FrameClock = (typeof classes.FrameClock)['prototype'];
     const FrameClock: typeof classes.FrameClock &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.FrameClock.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FrameClock.SignalSignatures> & classes.FrameClock);
@@ -5818,7 +5818,7 @@ export namespace Gdk {
     }
     type GLContext = (typeof classes.GLContext)['prototype'];
     const GLContext: typeof classes.GLContext &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.GLContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GLContext.SignalSignatures> & classes.GLContext);
@@ -5838,7 +5838,7 @@ export namespace Gdk {
     }
     type GLTexture = (typeof classes.GLTexture)['prototype'];
     const GLTexture: typeof classes.GLTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.GLTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GLTexture.SignalSignatures> & classes.GLTexture);
@@ -5920,7 +5920,7 @@ export namespace Gdk {
     }
     type GLTextureBuilder = (typeof classes.GLTextureBuilder)['prototype'];
     const GLTextureBuilder: typeof classes.GLTextureBuilder &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.GLTextureBuilder.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GLTextureBuilder.SignalSignatures> & classes.GLTextureBuilder);
@@ -6070,7 +6070,7 @@ export namespace Gdk {
     }
     type MemoryTexture = (typeof classes.MemoryTexture)['prototype'];
     const MemoryTexture: typeof classes.MemoryTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.MemoryTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MemoryTexture.SignalSignatures> & classes.MemoryTexture);
@@ -6139,7 +6139,7 @@ export namespace Gdk {
     }
     type MemoryTextureBuilder = (typeof classes.MemoryTextureBuilder)['prototype'];
     const MemoryTextureBuilder: typeof classes.MemoryTextureBuilder &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.MemoryTextureBuilder.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MemoryTextureBuilder.SignalSignatures> & classes.MemoryTextureBuilder);
@@ -6245,7 +6245,7 @@ export namespace Gdk {
     }
     type Monitor = (typeof classes.Monitor)['prototype'];
     const Monitor: typeof classes.Monitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Monitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Monitor.SignalSignatures> & classes.Monitor);
@@ -6436,7 +6436,7 @@ export namespace Gdk {
     }
     type Seat = (typeof classes.Seat)['prototype'];
     const Seat: typeof classes.Seat &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Seat.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Seat.SignalSignatures> & classes.Seat);
@@ -6448,7 +6448,7 @@ export namespace Gdk {
     }
     type Snapshot = (typeof classes.Snapshot)['prototype'];
     const Snapshot: typeof classes.Snapshot &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Snapshot.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Snapshot.SignalSignatures> & classes.Snapshot);
@@ -6521,7 +6521,7 @@ export namespace Gdk {
     }
     type Surface = (typeof classes.Surface)['prototype'];
     const Surface: typeof classes.Surface &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Surface.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Surface.SignalSignatures> & classes.Surface);
@@ -6558,7 +6558,7 @@ export namespace Gdk {
     }
     type Texture = (typeof classes.Texture)['prototype'];
     const Texture: typeof classes.Texture &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.Texture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Texture.SignalSignatures> & classes.Texture);
@@ -6671,7 +6671,7 @@ export namespace Gdk {
     }
     type VulkanContext = (typeof classes.VulkanContext)['prototype'];
     const VulkanContext: typeof classes.VulkanContext &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gdk.VulkanContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VulkanContext.SignalSignatures> & classes.VulkanContext);

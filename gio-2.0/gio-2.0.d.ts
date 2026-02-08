@@ -6717,7 +6717,7 @@ export namespace Gio {
     }
     type AppInfoMonitor = (typeof classes.AppInfoMonitor)['prototype'];
     const AppInfoMonitor: typeof classes.AppInfoMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.AppInfoMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AppInfoMonitor.SignalSignatures> & classes.AppInfoMonitor);
@@ -6733,7 +6733,7 @@ export namespace Gio {
     }
     type AppLaunchContext = (typeof classes.AppLaunchContext)['prototype'];
     const AppLaunchContext: typeof classes.AppLaunchContext &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.AppLaunchContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AppLaunchContext.SignalSignatures> & classes.AppLaunchContext);
@@ -6832,7 +6832,7 @@ export namespace Gio {
     }
     type Application = (typeof classes.Application)['prototype'];
     const Application: typeof classes.Application &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Application.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Application.SignalSignatures> & classes.Application);
@@ -6875,7 +6875,7 @@ export namespace Gio {
     }
     type ApplicationCommandLine = (typeof classes.ApplicationCommandLine)['prototype'];
     const ApplicationCommandLine: typeof classes.ApplicationCommandLine &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ApplicationCommandLine.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ApplicationCommandLine.SignalSignatures> & classes.ApplicationCommandLine);
@@ -6900,7 +6900,7 @@ export namespace Gio {
     }
     type BufferedInputStream = (typeof classes.BufferedInputStream)['prototype'];
     const BufferedInputStream: typeof classes.BufferedInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.BufferedInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BufferedInputStream.SignalSignatures> & classes.BufferedInputStream);
@@ -6934,7 +6934,7 @@ export namespace Gio {
     }
     type BufferedOutputStream = (typeof classes.BufferedOutputStream)['prototype'];
     const BufferedOutputStream: typeof classes.BufferedOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.BufferedOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BufferedOutputStream.SignalSignatures> & classes.BufferedOutputStream);
@@ -6956,7 +6956,7 @@ export namespace Gio {
     }
     type BytesIcon = (typeof classes.BytesIcon)['prototype'];
     const BytesIcon: typeof classes.BytesIcon &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.BytesIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BytesIcon.SignalSignatures> & classes.BytesIcon);
@@ -6970,7 +6970,7 @@ export namespace Gio {
     }
     type Cancellable = (typeof classes.Cancellable)['prototype'];
     const Cancellable: typeof classes.Cancellable &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Cancellable.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Cancellable.SignalSignatures> & classes.Cancellable);
@@ -7014,7 +7014,7 @@ export namespace Gio {
     }
     type CharsetConverter = (typeof classes.CharsetConverter)['prototype'];
     const CharsetConverter: typeof classes.CharsetConverter &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.CharsetConverter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CharsetConverter.SignalSignatures> & classes.CharsetConverter);
@@ -7035,7 +7035,7 @@ export namespace Gio {
     }
     type ConverterInputStream = (typeof classes.ConverterInputStream)['prototype'];
     const ConverterInputStream: typeof classes.ConverterInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ConverterInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ConverterInputStream.SignalSignatures> & classes.ConverterInputStream);
@@ -7056,7 +7056,7 @@ export namespace Gio {
     }
     type ConverterOutputStream = (typeof classes.ConverterOutputStream)['prototype'];
     const ConverterOutputStream: typeof classes.ConverterOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ConverterOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ConverterOutputStream.SignalSignatures> & classes.ConverterOutputStream);
@@ -7068,7 +7068,7 @@ export namespace Gio {
     }
     type Credentials = (typeof classes.Credentials)['prototype'];
     const Credentials: typeof classes.Credentials &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Credentials.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Credentials.SignalSignatures> & classes.Credentials);
@@ -7083,7 +7083,7 @@ export namespace Gio {
     }
     type DBusActionGroup = (typeof classes.DBusActionGroup)['prototype'];
     const DBusActionGroup: typeof classes.DBusActionGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusActionGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusActionGroup.SignalSignatures> & classes.DBusActionGroup);
@@ -7098,7 +7098,7 @@ export namespace Gio {
     }
     type DBusAuthObserver = (typeof classes.DBusAuthObserver)['prototype'];
     const DBusAuthObserver: typeof classes.DBusAuthObserver &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusAuthObserver.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusAuthObserver.SignalSignatures> & classes.DBusAuthObserver);
@@ -7215,7 +7215,7 @@ export namespace Gio {
     }
     type DBusConnection = (typeof classes.DBusConnection)['prototype'];
     const DBusConnection: typeof classes.DBusConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusConnection.SignalSignatures> & classes.DBusConnection);
@@ -7239,7 +7239,7 @@ export namespace Gio {
     }
     type DBusInterfaceSkeleton = (typeof classes.DBusInterfaceSkeleton)['prototype'];
     const DBusInterfaceSkeleton: typeof classes.DBusInterfaceSkeleton &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusInterfaceSkeleton.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusInterfaceSkeleton.SignalSignatures> & classes.DBusInterfaceSkeleton);
@@ -7251,7 +7251,7 @@ export namespace Gio {
     }
     type DBusMenuModel = (typeof classes.DBusMenuModel)['prototype'];
     const DBusMenuModel: typeof classes.DBusMenuModel &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusMenuModel.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusMenuModel.SignalSignatures> & classes.DBusMenuModel);
@@ -7267,7 +7267,7 @@ export namespace Gio {
     }
     type DBusMessage = (typeof classes.DBusMessage)['prototype'];
     const DBusMessage: typeof classes.DBusMessage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusMessage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusMessage.SignalSignatures> & classes.DBusMessage);
@@ -7279,7 +7279,7 @@ export namespace Gio {
     }
     type DBusMethodInvocation = (typeof classes.DBusMethodInvocation)['prototype'];
     const DBusMethodInvocation: typeof classes.DBusMethodInvocation &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusMethodInvocation.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusMethodInvocation.SignalSignatures> & classes.DBusMethodInvocation);
@@ -7391,7 +7391,7 @@ export namespace Gio {
     }
     type DBusObjectManagerClient = (typeof classes.DBusObjectManagerClient)['prototype'];
     const DBusObjectManagerClient: typeof classes.DBusObjectManagerClient &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusObjectManagerClient.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusObjectManagerClient.SignalSignatures> & classes.DBusObjectManagerClient);
@@ -7419,7 +7419,7 @@ export namespace Gio {
     }
     type DBusObjectManagerServer = (typeof classes.DBusObjectManagerServer)['prototype'];
     const DBusObjectManagerServer: typeof classes.DBusObjectManagerServer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusObjectManagerServer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusObjectManagerServer.SignalSignatures> & classes.DBusObjectManagerServer);
@@ -7451,7 +7451,7 @@ export namespace Gio {
     }
     type DBusObjectProxy = (typeof classes.DBusObjectProxy)['prototype'];
     const DBusObjectProxy: typeof classes.DBusObjectProxy &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusObjectProxy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusObjectProxy.SignalSignatures> & classes.DBusObjectProxy);
@@ -7475,7 +7475,7 @@ export namespace Gio {
     }
     type DBusObjectSkeleton = (typeof classes.DBusObjectSkeleton)['prototype'];
     const DBusObjectSkeleton: typeof classes.DBusObjectSkeleton &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusObjectSkeleton.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusObjectSkeleton.SignalSignatures> & classes.DBusObjectSkeleton);
@@ -7655,7 +7655,7 @@ export namespace Gio {
     }
     type DBusProxy = (typeof classes.DBusProxy)['prototype'];
     const DBusProxy: typeof classes.DBusProxy &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusProxy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusProxy.SignalSignatures> & classes.DBusProxy);
@@ -7710,7 +7710,7 @@ export namespace Gio {
     }
     type DBusServer = (typeof classes.DBusServer)['prototype'];
     const DBusServer: typeof classes.DBusServer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusServer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusServer.SignalSignatures> & classes.DBusServer);
@@ -7751,7 +7751,7 @@ export namespace Gio {
     }
     type DataInputStream = (typeof classes.DataInputStream)['prototype'];
     const DataInputStream: typeof classes.DataInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DataInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DataInputStream.SignalSignatures> & classes.DataInputStream);
@@ -7778,7 +7778,7 @@ export namespace Gio {
     }
     type DataOutputStream = (typeof classes.DataOutputStream)['prototype'];
     const DataOutputStream: typeof classes.DataOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DataOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DataOutputStream.SignalSignatures> & classes.DataOutputStream);
@@ -7806,7 +7806,7 @@ export namespace Gio {
     }
     type DebugControllerDBus = (typeof classes.DebugControllerDBus)['prototype'];
     const DebugControllerDBus: typeof classes.DebugControllerDBus &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DebugControllerDBus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DebugControllerDBus.SignalSignatures> & classes.DebugControllerDBus);
@@ -7825,7 +7825,7 @@ export namespace Gio {
     }
     type DesktopAppInfo = (typeof classes.DesktopAppInfo)['prototype'];
     const DesktopAppInfo: typeof classes.DesktopAppInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DesktopAppInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DesktopAppInfo.SignalSignatures> & classes.DesktopAppInfo);
@@ -7849,7 +7849,7 @@ export namespace Gio {
     }
     type Emblem = (typeof classes.Emblem)['prototype'];
     const Emblem: typeof classes.Emblem &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Emblem.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Emblem.SignalSignatures> & classes.Emblem);
@@ -7868,7 +7868,7 @@ export namespace Gio {
     }
     type EmblemedIcon = (typeof classes.EmblemedIcon)['prototype'];
     const EmblemedIcon: typeof classes.EmblemedIcon &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.EmblemedIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, EmblemedIcon.SignalSignatures> & classes.EmblemedIcon);
@@ -7887,7 +7887,7 @@ export namespace Gio {
     }
     type FileEnumerator = (typeof classes.FileEnumerator)['prototype'];
     const FileEnumerator: typeof classes.FileEnumerator &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileEnumerator.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileEnumerator.SignalSignatures> & classes.FileEnumerator);
@@ -7903,7 +7903,7 @@ export namespace Gio {
     }
     type FileIOStream = (typeof classes.FileIOStream)['prototype'];
     const FileIOStream: typeof classes.FileIOStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileIOStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileIOStream.SignalSignatures> & classes.FileIOStream);
@@ -7925,7 +7925,7 @@ export namespace Gio {
     }
     type FileIcon = (typeof classes.FileIcon)['prototype'];
     const FileIcon: typeof classes.FileIcon &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileIcon.SignalSignatures> & classes.FileIcon);
@@ -7937,7 +7937,7 @@ export namespace Gio {
     }
     type FileInfo = (typeof classes.FileInfo)['prototype'];
     const FileInfo: typeof classes.FileInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileInfo.SignalSignatures> & classes.FileInfo);
@@ -7949,7 +7949,7 @@ export namespace Gio {
     }
     type FileInputStream = (typeof classes.FileInputStream)['prototype'];
     const FileInputStream: typeof classes.FileInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileInputStream.SignalSignatures> & classes.FileInputStream);
@@ -7978,7 +7978,7 @@ export namespace Gio {
     }
     type FileMonitor = (typeof classes.FileMonitor)['prototype'];
     const FileMonitor: typeof classes.FileMonitor &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileMonitor.SignalSignatures> & classes.FileMonitor);
@@ -7990,7 +7990,7 @@ export namespace Gio {
     }
     type FileOutputStream = (typeof classes.FileOutputStream)['prototype'];
     const FileOutputStream: typeof classes.FileOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FileOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FileOutputStream.SignalSignatures> & classes.FileOutputStream);
@@ -8004,7 +8004,7 @@ export namespace Gio {
     }
     type FilenameCompleter = (typeof classes.FilenameCompleter)['prototype'];
     const FilenameCompleter: typeof classes.FilenameCompleter &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FilenameCompleter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FilenameCompleter.SignalSignatures> & classes.FilenameCompleter);
@@ -8036,7 +8036,7 @@ export namespace Gio {
     }
     type FilterInputStream = (typeof classes.FilterInputStream)['prototype'];
     const FilterInputStream: typeof classes.FilterInputStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FilterInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FilterInputStream.SignalSignatures> & classes.FilterInputStream);
@@ -8068,7 +8068,7 @@ export namespace Gio {
     }
     type FilterOutputStream = (typeof classes.FilterOutputStream)['prototype'];
     const FilterOutputStream: typeof classes.FilterOutputStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.FilterOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FilterOutputStream.SignalSignatures> & classes.FilterOutputStream);
@@ -8080,7 +8080,7 @@ export namespace Gio {
     }
     type IOModule = (typeof classes.IOModule)['prototype'];
     const IOModule: typeof classes.IOModule &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.IOModule.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IOModule.SignalSignatures> & classes.IOModule);
@@ -8117,7 +8117,7 @@ export namespace Gio {
     }
     type IOStream = (typeof classes.IOStream)['prototype'];
     const IOStream: typeof classes.IOStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.IOStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IOStream.SignalSignatures> & classes.IOStream);
@@ -8251,7 +8251,7 @@ export namespace Gio {
     }
     type InetAddress = (typeof classes.InetAddress)['prototype'];
     const InetAddress: typeof classes.InetAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.InetAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InetAddress.SignalSignatures> & classes.InetAddress);
@@ -8280,7 +8280,7 @@ export namespace Gio {
     }
     type InetAddressMask = (typeof classes.InetAddressMask)['prototype'];
     const InetAddressMask: typeof classes.InetAddressMask &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.InetAddressMask.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InetAddressMask.SignalSignatures> & classes.InetAddressMask);
@@ -8319,7 +8319,7 @@ export namespace Gio {
     }
     type InetSocketAddress = (typeof classes.InetSocketAddress)['prototype'];
     const InetSocketAddress: typeof classes.InetSocketAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.InetSocketAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InetSocketAddress.SignalSignatures> & classes.InetSocketAddress);
@@ -8331,7 +8331,7 @@ export namespace Gio {
     }
     type InputStream = (typeof classes.InputStream)['prototype'];
     const InputStream: typeof classes.InputStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.InputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputStream.SignalSignatures> & classes.InputStream);
@@ -8367,7 +8367,7 @@ export namespace Gio {
     }
     type ListStore<A extends GObject.Object = GObject.Object> = (typeof classes.ListStore<A>)['prototype'];
     const ListStore: typeof classes.ListStore &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ListStore.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ListStore.SignalSignatures> & classes.ListStore<A>);
@@ -8382,7 +8382,7 @@ export namespace Gio {
     }
     type MemoryInputStream = (typeof classes.MemoryInputStream)['prototype'];
     const MemoryInputStream: typeof classes.MemoryInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MemoryInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MemoryInputStream.SignalSignatures> & classes.MemoryInputStream);
@@ -8418,7 +8418,7 @@ export namespace Gio {
     }
     type MemoryOutputStream = (typeof classes.MemoryOutputStream)['prototype'];
     const MemoryOutputStream: typeof classes.MemoryOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MemoryOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MemoryOutputStream.SignalSignatures> & classes.MemoryOutputStream);
@@ -8430,7 +8430,7 @@ export namespace Gio {
     }
     type Menu = (typeof classes.Menu)['prototype'];
     const Menu: typeof classes.Menu &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Menu.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Menu.SignalSignatures> & classes.Menu);
@@ -8442,7 +8442,7 @@ export namespace Gio {
     }
     type MenuAttributeIter = (typeof classes.MenuAttributeIter)['prototype'];
     const MenuAttributeIter: typeof classes.MenuAttributeIter &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MenuAttributeIter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MenuAttributeIter.SignalSignatures> & classes.MenuAttributeIter);
@@ -8454,7 +8454,7 @@ export namespace Gio {
     }
     type MenuItem = (typeof classes.MenuItem)['prototype'];
     const MenuItem: typeof classes.MenuItem &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MenuItem.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MenuItem.SignalSignatures> & classes.MenuItem);
@@ -8466,7 +8466,7 @@ export namespace Gio {
     }
     type MenuLinkIter = (typeof classes.MenuLinkIter)['prototype'];
     const MenuLinkIter: typeof classes.MenuLinkIter &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MenuLinkIter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MenuLinkIter.SignalSignatures> & classes.MenuLinkIter);
@@ -8480,7 +8480,7 @@ export namespace Gio {
     }
     type MenuModel = (typeof classes.MenuModel)['prototype'];
     const MenuModel: typeof classes.MenuModel &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MenuModel.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MenuModel.SignalSignatures> & classes.MenuModel);
@@ -8571,7 +8571,7 @@ export namespace Gio {
     }
     type MountOperation = (typeof classes.MountOperation)['prototype'];
     const MountOperation: typeof classes.MountOperation &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.MountOperation.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MountOperation.SignalSignatures> & classes.MountOperation);
@@ -8585,7 +8585,7 @@ export namespace Gio {
     }
     type NativeSocketAddress = (typeof classes.NativeSocketAddress)['prototype'];
     const NativeSocketAddress: typeof classes.NativeSocketAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.NativeSocketAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NativeSocketAddress.SignalSignatures> & classes.NativeSocketAddress);
@@ -8597,7 +8597,7 @@ export namespace Gio {
     }
     type NativeVolumeMonitor = (typeof classes.NativeVolumeMonitor)['prototype'];
     const NativeVolumeMonitor: typeof classes.NativeVolumeMonitor &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.NativeVolumeMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NativeVolumeMonitor.SignalSignatures> & classes.NativeVolumeMonitor);
@@ -8626,7 +8626,7 @@ export namespace Gio {
     }
     type NetworkAddress = (typeof classes.NetworkAddress)['prototype'];
     const NetworkAddress: typeof classes.NetworkAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.NetworkAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NetworkAddress.SignalSignatures> & classes.NetworkAddress);
@@ -8660,7 +8660,7 @@ export namespace Gio {
     }
     type NetworkService = (typeof classes.NetworkService)['prototype'];
     const NetworkService: typeof classes.NetworkService &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.NetworkService.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NetworkService.SignalSignatures> & classes.NetworkService);
@@ -8672,7 +8672,7 @@ export namespace Gio {
     }
     type Notification = (typeof classes.Notification)['prototype'];
     const Notification: typeof classes.Notification &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Notification.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Notification.SignalSignatures> & classes.Notification);
@@ -8684,7 +8684,7 @@ export namespace Gio {
     }
     type OutputStream = (typeof classes.OutputStream)['prototype'];
     const OutputStream: typeof classes.OutputStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.OutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, OutputStream.SignalSignatures> & classes.OutputStream);
@@ -8726,7 +8726,7 @@ export namespace Gio {
     }
     type Permission = (typeof classes.Permission)['prototype'];
     const Permission: typeof classes.Permission &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Permission.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Permission.SignalSignatures> & classes.Permission);
@@ -8814,7 +8814,7 @@ export namespace Gio {
     }
     type PropertyAction = (typeof classes.PropertyAction)['prototype'];
     const PropertyAction: typeof classes.PropertyAction &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.PropertyAction.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PropertyAction.SignalSignatures> & classes.PropertyAction);
@@ -8883,7 +8883,7 @@ export namespace Gio {
     }
     type ProxyAddress = (typeof classes.ProxyAddress)['prototype'];
     const ProxyAddress: typeof classes.ProxyAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ProxyAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ProxyAddress.SignalSignatures> & classes.ProxyAddress);
@@ -8927,7 +8927,7 @@ export namespace Gio {
     }
     type ProxyAddressEnumerator = (typeof classes.ProxyAddressEnumerator)['prototype'];
     const ProxyAddressEnumerator: typeof classes.ProxyAddressEnumerator &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ProxyAddressEnumerator.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ProxyAddressEnumerator.SignalSignatures> & classes.ProxyAddressEnumerator);
@@ -8956,7 +8956,7 @@ export namespace Gio {
     }
     type Resolver = (typeof classes.Resolver)['prototype'];
     const Resolver: typeof classes.Resolver &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Resolver.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Resolver.SignalSignatures> & classes.Resolver);
@@ -9069,7 +9069,7 @@ export namespace Gio {
     }
     type Settings = (typeof classes.Settings)['prototype'];
     const Settings: typeof classes.Settings &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Settings.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Settings.SignalSignatures> & classes.Settings);
@@ -9081,7 +9081,7 @@ export namespace Gio {
     }
     type SettingsBackend = (typeof classes.SettingsBackend)['prototype'];
     const SettingsBackend: typeof classes.SettingsBackend &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SettingsBackend.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingsBackend.SignalSignatures> & classes.SettingsBackend);
@@ -9138,7 +9138,7 @@ export namespace Gio {
     }
     type SimpleAction = (typeof classes.SimpleAction)['prototype'];
     const SimpleAction: typeof classes.SimpleAction &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimpleAction.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleAction.SignalSignatures> & classes.SimpleAction);
@@ -9153,7 +9153,7 @@ export namespace Gio {
     }
     type SimpleActionGroup = (typeof classes.SimpleActionGroup)['prototype'];
     const SimpleActionGroup: typeof classes.SimpleActionGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimpleActionGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleActionGroup.SignalSignatures> & classes.SimpleActionGroup);
@@ -9165,7 +9165,7 @@ export namespace Gio {
     }
     type SimpleAsyncResult = (typeof classes.SimpleAsyncResult)['prototype'];
     const SimpleAsyncResult: typeof classes.SimpleAsyncResult &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimpleAsyncResult.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleAsyncResult.SignalSignatures> & classes.SimpleAsyncResult);
@@ -9198,7 +9198,7 @@ export namespace Gio {
     }
     type SimpleIOStream = (typeof classes.SimpleIOStream)['prototype'];
     const SimpleIOStream: typeof classes.SimpleIOStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimpleIOStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleIOStream.SignalSignatures> & classes.SimpleIOStream);
@@ -9214,7 +9214,7 @@ export namespace Gio {
     }
     type SimplePermission = (typeof classes.SimplePermission)['prototype'];
     const SimplePermission: typeof classes.SimplePermission &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimplePermission.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimplePermission.SignalSignatures> & classes.SimplePermission);
@@ -9324,7 +9324,7 @@ export namespace Gio {
     }
     type SimpleProxyResolver = (typeof classes.SimpleProxyResolver)['prototype'];
     const SimpleProxyResolver: typeof classes.SimpleProxyResolver &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SimpleProxyResolver.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleProxyResolver.SignalSignatures> & classes.SimpleProxyResolver);
@@ -9431,7 +9431,7 @@ export namespace Gio {
     }
     type Socket = (typeof classes.Socket)['prototype'];
     const Socket: typeof classes.Socket &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Socket.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Socket.SignalSignatures> & classes.Socket);
@@ -9450,7 +9450,7 @@ export namespace Gio {
     }
     type SocketAddress = (typeof classes.SocketAddress)['prototype'];
     const SocketAddress: typeof classes.SocketAddress &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketAddress.SignalSignatures> & classes.SocketAddress);
@@ -9462,7 +9462,7 @@ export namespace Gio {
     }
     type SocketAddressEnumerator = (typeof classes.SocketAddressEnumerator)['prototype'];
     const SocketAddressEnumerator: typeof classes.SocketAddressEnumerator &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketAddressEnumerator.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketAddressEnumerator.SignalSignatures> & classes.SocketAddressEnumerator);
@@ -9568,7 +9568,7 @@ export namespace Gio {
     }
     type SocketClient = (typeof classes.SocketClient)['prototype'];
     const SocketClient: typeof classes.SocketClient &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketClient.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketClient.SignalSignatures> & classes.SocketClient);
@@ -9590,7 +9590,7 @@ export namespace Gio {
     }
     type SocketConnection = (typeof classes.SocketConnection)['prototype'];
     const SocketConnection: typeof classes.SocketConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketConnection.SignalSignatures> & classes.SocketConnection);
@@ -9602,7 +9602,7 @@ export namespace Gio {
     }
     type SocketControlMessage = (typeof classes.SocketControlMessage)['prototype'];
     const SocketControlMessage: typeof classes.SocketControlMessage &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketControlMessage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketControlMessage.SignalSignatures> & classes.SocketControlMessage);
@@ -9626,7 +9626,7 @@ export namespace Gio {
     }
     type SocketListener = (typeof classes.SocketListener)['prototype'];
     const SocketListener: typeof classes.SocketListener &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketListener.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketListener.SignalSignatures> & classes.SocketListener);
@@ -9647,7 +9647,7 @@ export namespace Gio {
     }
     type SocketService = (typeof classes.SocketService)['prototype'];
     const SocketService: typeof classes.SocketService &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SocketService.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SocketService.SignalSignatures> & classes.SocketService);
@@ -9671,7 +9671,7 @@ export namespace Gio {
     }
     type Subprocess = (typeof classes.Subprocess)['prototype'];
     const Subprocess: typeof classes.Subprocess &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Subprocess.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Subprocess.SignalSignatures> & classes.Subprocess);
@@ -9690,7 +9690,7 @@ export namespace Gio {
     }
     type SubprocessLauncher = (typeof classes.SubprocessLauncher)['prototype'];
     const SubprocessLauncher: typeof classes.SubprocessLauncher &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.SubprocessLauncher.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SubprocessLauncher.SignalSignatures> & classes.SubprocessLauncher);
@@ -9726,7 +9726,7 @@ export namespace Gio {
     }
     type Task = (typeof classes.Task)['prototype'];
     const Task: typeof classes.Task &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Task.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Task.SignalSignatures> & classes.Task);
@@ -9753,7 +9753,7 @@ export namespace Gio {
     }
     type TcpConnection = (typeof classes.TcpConnection)['prototype'];
     const TcpConnection: typeof classes.TcpConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TcpConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TcpConnection.SignalSignatures> & classes.TcpConnection);
@@ -9781,7 +9781,7 @@ export namespace Gio {
     }
     type TcpWrapperConnection = (typeof classes.TcpWrapperConnection)['prototype'];
     const TcpWrapperConnection: typeof classes.TcpWrapperConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TcpWrapperConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TcpWrapperConnection.SignalSignatures> & classes.TcpWrapperConnection);
@@ -9800,7 +9800,7 @@ export namespace Gio {
     }
     type TestDBus = (typeof classes.TestDBus)['prototype'];
     const TestDBus: typeof classes.TestDBus &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TestDBus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TestDBus.SignalSignatures> & classes.TestDBus);
@@ -9865,7 +9865,7 @@ export namespace Gio {
     }
     type ThemedIcon = (typeof classes.ThemedIcon)['prototype'];
     const ThemedIcon: typeof classes.ThemedIcon &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ThemedIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ThemedIcon.SignalSignatures> & classes.ThemedIcon);
@@ -9879,7 +9879,7 @@ export namespace Gio {
     }
     type ThreadedResolver = (typeof classes.ThreadedResolver)['prototype'];
     const ThreadedResolver: typeof classes.ThreadedResolver &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ThreadedResolver.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ThreadedResolver.SignalSignatures> & classes.ThreadedResolver);
@@ -9905,7 +9905,7 @@ export namespace Gio {
     }
     type ThreadedSocketService = (typeof classes.ThreadedSocketService)['prototype'];
     const ThreadedSocketService: typeof classes.ThreadedSocketService &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ThreadedSocketService.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ThreadedSocketService.SignalSignatures> & classes.ThreadedSocketService);
@@ -10155,7 +10155,7 @@ export namespace Gio {
     }
     type TlsCertificate = (typeof classes.TlsCertificate)['prototype'];
     const TlsCertificate: typeof classes.TlsCertificate &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TlsCertificate.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TlsCertificate.SignalSignatures> & classes.TlsCertificate);
@@ -10354,7 +10354,7 @@ export namespace Gio {
     }
     type TlsConnection = (typeof classes.TlsConnection)['prototype'];
     const TlsConnection: typeof classes.TlsConnection &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TlsConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TlsConnection.SignalSignatures> & classes.TlsConnection);
@@ -10366,7 +10366,7 @@ export namespace Gio {
     }
     type TlsDatabase = (typeof classes.TlsDatabase)['prototype'];
     const TlsDatabase: typeof classes.TlsDatabase &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TlsDatabase.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TlsDatabase.SignalSignatures> & classes.TlsDatabase);
@@ -10378,7 +10378,7 @@ export namespace Gio {
     }
     type TlsInteraction = (typeof classes.TlsInteraction)['prototype'];
     const TlsInteraction: typeof classes.TlsInteraction &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TlsInteraction.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TlsInteraction.SignalSignatures> & classes.TlsInteraction);
@@ -10407,7 +10407,7 @@ export namespace Gio {
     }
     type TlsPassword = (typeof classes.TlsPassword)['prototype'];
     const TlsPassword: typeof classes.TlsPassword &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.TlsPassword.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TlsPassword.SignalSignatures> & classes.TlsPassword);
@@ -10424,7 +10424,7 @@ export namespace Gio {
     }
     type UnixConnection = (typeof classes.UnixConnection)['prototype'];
     const UnixConnection: typeof classes.UnixConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixConnection.SignalSignatures> & classes.UnixConnection);
@@ -10443,7 +10443,7 @@ export namespace Gio {
     }
     type UnixCredentialsMessage = (typeof classes.UnixCredentialsMessage)['prototype'];
     const UnixCredentialsMessage: typeof classes.UnixCredentialsMessage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixCredentialsMessage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixCredentialsMessage.SignalSignatures> & classes.UnixCredentialsMessage);
@@ -10455,7 +10455,7 @@ export namespace Gio {
     }
     type UnixFDList = (typeof classes.UnixFDList)['prototype'];
     const UnixFDList: typeof classes.UnixFDList &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixFDList.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixFDList.SignalSignatures> & classes.UnixFDList);
@@ -10478,7 +10478,7 @@ export namespace Gio {
     }
     type UnixFDMessage = (typeof classes.UnixFDMessage)['prototype'];
     const UnixFDMessage: typeof classes.UnixFDMessage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixFDMessage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixFDMessage.SignalSignatures> & classes.UnixFDMessage);
@@ -10509,7 +10509,7 @@ export namespace Gio {
     }
     type UnixInputStream = (typeof classes.UnixInputStream)['prototype'];
     const UnixInputStream: typeof classes.UnixInputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixInputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixInputStream.SignalSignatures> & classes.UnixInputStream);
@@ -10524,7 +10524,7 @@ export namespace Gio {
     }
     type UnixMountMonitor = (typeof classes.UnixMountMonitor)['prototype'];
     const UnixMountMonitor: typeof classes.UnixMountMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixMountMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixMountMonitor.SignalSignatures> & classes.UnixMountMonitor);
@@ -10555,7 +10555,7 @@ export namespace Gio {
     }
     type UnixOutputStream = (typeof classes.UnixOutputStream)['prototype'];
     const UnixOutputStream: typeof classes.UnixOutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixOutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixOutputStream.SignalSignatures> & classes.UnixOutputStream);
@@ -10598,7 +10598,7 @@ export namespace Gio {
     }
     type UnixSocketAddress = (typeof classes.UnixSocketAddress)['prototype'];
     const UnixSocketAddress: typeof classes.UnixSocketAddress &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.UnixSocketAddress.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixSocketAddress.SignalSignatures> & classes.UnixSocketAddress);
@@ -10610,7 +10610,7 @@ export namespace Gio {
     }
     type Vfs = (typeof classes.Vfs)['prototype'];
     const Vfs: typeof classes.Vfs &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.Vfs.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Vfs.SignalSignatures> & classes.Vfs);
@@ -10635,7 +10635,7 @@ export namespace Gio {
     }
     type VolumeMonitor = (typeof classes.VolumeMonitor)['prototype'];
     const VolumeMonitor: typeof classes.VolumeMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.VolumeMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VolumeMonitor.SignalSignatures> & classes.VolumeMonitor);
@@ -10673,7 +10673,7 @@ export namespace Gio {
     }
     type ZlibCompressor = (typeof classes.ZlibCompressor)['prototype'];
     const ZlibCompressor: typeof classes.ZlibCompressor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ZlibCompressor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ZlibCompressor.SignalSignatures> & classes.ZlibCompressor);
@@ -10707,7 +10707,7 @@ export namespace Gio {
     }
     type ZlibDecompressor = (typeof classes.ZlibDecompressor)['prototype'];
     const ZlibDecompressor: typeof classes.ZlibDecompressor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.ZlibDecompressor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ZlibDecompressor.SignalSignatures> & classes.ZlibDecompressor);
@@ -27512,7 +27512,7 @@ export namespace Gio {
     }
     type DBusExportedObject = (typeof classes.DBusExportedObject)['prototype'];
     const DBusExportedObject: typeof classes.DBusExportedObject &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gio.DBusExportedObject.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DBusExportedObject.SignalSignatures> & classes.DBusExportedObject);

@@ -199,7 +199,7 @@ export namespace Malcontent {
     }
     type Manager = (typeof classes.Manager)['prototype'];
     const Manager: typeof classes.Manager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Malcontent.Manager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Manager.SignalSignatures> & classes.Manager);

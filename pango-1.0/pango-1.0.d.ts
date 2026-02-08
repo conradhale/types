@@ -3103,7 +3103,7 @@ export namespace Pango {
     }
     type Context = (typeof classes.Context)['prototype'];
     const Context: typeof classes.Context &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Context.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Context.SignalSignatures> & classes.Context);
@@ -3115,7 +3115,7 @@ export namespace Pango {
     }
     type Coverage = (typeof classes.Coverage)['prototype'];
     const Coverage: typeof classes.Coverage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Coverage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Coverage.SignalSignatures> & classes.Coverage);
@@ -3127,7 +3127,7 @@ export namespace Pango {
     }
     type Font = (typeof classes.Font)['prototype'];
     const Font: typeof classes.Font &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Font.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Font.SignalSignatures> & classes.Font);
@@ -3139,7 +3139,7 @@ export namespace Pango {
     }
     type FontFace = (typeof classes.FontFace)['prototype'];
     const FontFace: typeof classes.FontFace &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontFace.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontFace.SignalSignatures> & classes.FontFace);
@@ -3196,7 +3196,7 @@ export namespace Pango {
     }
     type FontFamily<A extends GObject.Object = GObject.Object> = (typeof classes.FontFamily<A>)['prototype'];
     const FontFamily: typeof classes.FontFamily &
-        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontFamily.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontFamily.SignalSignatures> & classes.FontFamily<A>);
@@ -3230,7 +3230,7 @@ export namespace Pango {
     }
     type FontMap<A extends GObject.Object = GObject.Object> = (typeof classes.FontMap<A>)['prototype'];
     const FontMap: typeof classes.FontMap &
-        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (abstract new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontMap.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontMap.SignalSignatures> & classes.FontMap<A>);
@@ -3242,7 +3242,7 @@ export namespace Pango {
     }
     type Fontset = (typeof classes.Fontset)['prototype'];
     const Fontset: typeof classes.Fontset &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Fontset.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Fontset.SignalSignatures> & classes.Fontset);
@@ -3254,7 +3254,7 @@ export namespace Pango {
     }
     type FontsetSimple = (typeof classes.FontsetSimple)['prototype'];
     const FontsetSimple: typeof classes.FontsetSimple &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.FontsetSimple.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FontsetSimple.SignalSignatures> & classes.FontsetSimple);
@@ -3266,7 +3266,7 @@ export namespace Pango {
     }
     type Layout = (typeof classes.Layout)['prototype'];
     const Layout: typeof classes.Layout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Layout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Layout.SignalSignatures> & classes.Layout);
@@ -3278,7 +3278,7 @@ export namespace Pango {
     }
     type Renderer = (typeof classes.Renderer)['prototype'];
     const Renderer: typeof classes.Renderer &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Pango.Renderer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Renderer.SignalSignatures> & classes.Renderer);

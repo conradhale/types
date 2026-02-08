@@ -3014,7 +3014,7 @@ export namespace GObject {
     }
     type Binding = (typeof classes.Binding)['prototype'];
     const Binding: typeof classes.Binding &
-        (new <Opts extends MetaInfo = {}>(
+        (new <Opts extends MetaInfo>(
             properties?: Partial<GObject.Binding.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, Binding.SignalSignatures> & classes.Binding);
@@ -3033,7 +3033,7 @@ export namespace GObject {
     }
     type BindingGroup = (typeof classes.BindingGroup)['prototype'];
     const BindingGroup: typeof classes.BindingGroup &
-        (new <Opts extends MetaInfo = {}>(
+        (new <Opts extends MetaInfo>(
             properties?: Partial<GObject.BindingGroup.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, BindingGroup.SignalSignatures> & classes.BindingGroup);
@@ -3045,7 +3045,7 @@ export namespace GObject {
     }
     type InitiallyUnowned = (typeof classes.InitiallyUnowned)['prototype'];
     const InitiallyUnowned: typeof classes.InitiallyUnowned &
-        (new <Opts extends MetaInfo = {}>(
+        (new <Opts extends MetaInfo>(
             properties?: Partial<GObject.InitiallyUnowned.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, InitiallyUnowned.SignalSignatures> & classes.InitiallyUnowned);
@@ -3059,7 +3059,7 @@ export namespace GObject {
     }
     type Object = (typeof classes.Object)['prototype'];
     const Object: typeof classes.Object &
-        (new <Opts extends MetaInfo = {}>(
+        (new <Opts extends MetaInfo>(
             properties?: Partial<GObject.Object.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, Object.SignalSignatures> & classes.Object);
@@ -3581,7 +3581,7 @@ export namespace GObject {
     }
     type SignalGroup = (typeof classes.SignalGroup)['prototype'];
     const SignalGroup: typeof classes.SignalGroup &
-        (new <Opts extends MetaInfo = {}>(
+        (new <Opts extends MetaInfo>(
             properties?: Partial<GObject.SignalGroup.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, SignalGroup.SignalSignatures> & classes.SignalGroup);
@@ -3593,7 +3593,7 @@ export namespace GObject {
     }
     type TypeModule = (typeof classes.TypeModule)['prototype'];
     const TypeModule: typeof classes.TypeModule &
-        (abstract new <Opts extends MetaInfo = {}>(
+        (abstract new <Opts extends MetaInfo>(
             properties?: Partial<GObject.TypeModule.ConstructorProps>,
             ...args: any[]
         ) => RegisteredClass<Opts, TypeModule.SignalSignatures> & classes.TypeModule);

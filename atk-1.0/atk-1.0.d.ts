@@ -1792,7 +1792,7 @@ export namespace Atk {
     }
     type GObjectAccessible = (typeof classes.GObjectAccessible)['prototype'];
     const GObjectAccessible: typeof classes.GObjectAccessible &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.GObjectAccessible.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GObjectAccessible.SignalSignatures> & classes.GObjectAccessible);
@@ -1825,7 +1825,7 @@ export namespace Atk {
     }
     type Hyperlink = (typeof classes.Hyperlink)['prototype'];
     const Hyperlink: typeof classes.Hyperlink &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Hyperlink.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Hyperlink.SignalSignatures> & classes.Hyperlink);
@@ -1837,7 +1837,7 @@ export namespace Atk {
     }
     type Misc = (typeof classes.Misc)['prototype'];
     const Misc: typeof classes.Misc &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Misc.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Misc.SignalSignatures> & classes.Misc);
@@ -1880,7 +1880,7 @@ export namespace Atk {
     }
     type NoOpObject = (typeof classes.NoOpObject)['prototype'];
     const NoOpObject: typeof classes.NoOpObject &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.NoOpObject.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NoOpObject.SignalSignatures> & classes.NoOpObject);
@@ -1892,7 +1892,7 @@ export namespace Atk {
     }
     type NoOpObjectFactory = (typeof classes.NoOpObjectFactory)['prototype'];
     const NoOpObjectFactory: typeof classes.NoOpObjectFactory &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.NoOpObjectFactory.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NoOpObjectFactory.SignalSignatures> & classes.NoOpObjectFactory);
@@ -2070,7 +2070,7 @@ export namespace Atk {
     }
     type Object = (typeof classes.Object)['prototype'];
     const Object: typeof classes.Object &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Object.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Object.SignalSignatures> & classes.Object);
@@ -2082,7 +2082,7 @@ export namespace Atk {
     }
     type ObjectFactory = (typeof classes.ObjectFactory)['prototype'];
     const ObjectFactory: typeof classes.ObjectFactory &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.ObjectFactory.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ObjectFactory.SignalSignatures> & classes.ObjectFactory);
@@ -2112,7 +2112,7 @@ export namespace Atk {
     }
     type Plug = (typeof classes.Plug)['prototype'];
     const Plug: typeof classes.Plug &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Plug.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Plug.SignalSignatures> & classes.Plug);
@@ -2124,7 +2124,7 @@ export namespace Atk {
     }
     type Registry = (typeof classes.Registry)['prototype'];
     const Registry: typeof classes.Registry &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Registry.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Registry.SignalSignatures> & classes.Registry);
@@ -2143,7 +2143,7 @@ export namespace Atk {
     }
     type Relation = (typeof classes.Relation)['prototype'];
     const Relation: typeof classes.Relation &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Relation.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Relation.SignalSignatures> & classes.Relation);
@@ -2155,7 +2155,7 @@ export namespace Atk {
     }
     type RelationSet = (typeof classes.RelationSet)['prototype'];
     const RelationSet: typeof classes.RelationSet &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.RelationSet.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, RelationSet.SignalSignatures> & classes.RelationSet);
@@ -2185,7 +2185,7 @@ export namespace Atk {
     }
     type Socket = (typeof classes.Socket)['prototype'];
     const Socket: typeof classes.Socket &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Socket.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Socket.SignalSignatures> & classes.Socket);
@@ -2197,7 +2197,7 @@ export namespace Atk {
     }
     type StateSet = (typeof classes.StateSet)['prototype'];
     const StateSet: typeof classes.StateSet &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.StateSet.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, StateSet.SignalSignatures> & classes.StateSet);
@@ -2209,7 +2209,7 @@ export namespace Atk {
     }
     type Util = (typeof classes.Util)['prototype'];
     const Util: typeof classes.Util &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Atk.Util.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Util.SignalSignatures> & classes.Util);

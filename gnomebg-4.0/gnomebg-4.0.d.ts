@@ -38,7 +38,7 @@ export namespace GnomeBG {
     }
     type BG = (typeof classes.BG)['prototype'];
     const BG: typeof classes.BG &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeBG.BG.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BG.SignalSignatures> & classes.BG);
@@ -63,7 +63,7 @@ export namespace GnomeBG {
     }
     type BGSlideShow = (typeof classes.BGSlideShow)['prototype'];
     const BGSlideShow: typeof classes.BGSlideShow &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GnomeBG.BGSlideShow.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BGSlideShow.SignalSignatures> & classes.BGSlideShow);

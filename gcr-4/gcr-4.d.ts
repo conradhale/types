@@ -1129,7 +1129,7 @@ export namespace Gcr {
     }
     type AccessDescription = (typeof classes.AccessDescription)['prototype'];
     const AccessDescription: typeof classes.AccessDescription &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.AccessDescription.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AccessDescription.SignalSignatures> & classes.AccessDescription);
@@ -1148,7 +1148,7 @@ export namespace Gcr {
     }
     type CertificateChain = (typeof classes.CertificateChain)['prototype'];
     const CertificateChain: typeof classes.CertificateChain &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateChain.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateChain.SignalSignatures> & classes.CertificateChain);
@@ -1177,7 +1177,7 @@ export namespace Gcr {
     }
     type CertificateExtension = (typeof classes.CertificateExtension)['prototype'];
     const CertificateExtension: typeof classes.CertificateExtension &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtension.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtension.SignalSignatures> & classes.CertificateExtension);
@@ -1206,7 +1206,7 @@ export namespace Gcr {
     type CertificateExtensionAuthorityInfoAccess<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificateExtensionAuthorityInfoAccess<A>)['prototype'];
     const CertificateExtensionAuthorityInfoAccess: typeof classes.CertificateExtensionAuthorityInfoAccess &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionAuthorityInfoAccess.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionAuthorityInfoAccess.SignalSignatures> &
@@ -1224,7 +1224,7 @@ export namespace Gcr {
     type CertificateExtensionAuthorityKeyIdentifier =
         (typeof classes.CertificateExtensionAuthorityKeyIdentifier)['prototype'];
     const CertificateExtensionAuthorityKeyIdentifier: typeof classes.CertificateExtensionAuthorityKeyIdentifier &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionAuthorityKeyIdentifier.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionAuthorityKeyIdentifier.SignalSignatures> &
@@ -1241,7 +1241,7 @@ export namespace Gcr {
     }
     type CertificateExtensionBasicConstraints = (typeof classes.CertificateExtensionBasicConstraints)['prototype'];
     const CertificateExtensionBasicConstraints: typeof classes.CertificateExtensionBasicConstraints &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionBasicConstraints.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionBasicConstraints.SignalSignatures> &
@@ -1271,7 +1271,7 @@ export namespace Gcr {
     type CertificateExtensionCertificatePolicies<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificateExtensionCertificatePolicies<A>)['prototype'];
     const CertificateExtensionCertificatePolicies: typeof classes.CertificateExtensionCertificatePolicies &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionCertificatePolicies.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionCertificatePolicies.SignalSignatures> &
@@ -1301,7 +1301,7 @@ export namespace Gcr {
     type CertificateExtensionCrlDistributionPoints<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificateExtensionCrlDistributionPoints<A>)['prototype'];
     const CertificateExtensionCrlDistributionPoints: typeof classes.CertificateExtensionCrlDistributionPoints &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionCrlDistributionPoints.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionCrlDistributionPoints.SignalSignatures> &
@@ -1318,7 +1318,7 @@ export namespace Gcr {
     }
     type CertificateExtensionExtendedKeyUsage = (typeof classes.CertificateExtensionExtendedKeyUsage)['prototype'];
     const CertificateExtensionExtendedKeyUsage: typeof classes.CertificateExtensionExtendedKeyUsage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionExtendedKeyUsage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionExtendedKeyUsage.SignalSignatures> &
@@ -1335,7 +1335,7 @@ export namespace Gcr {
     }
     type CertificateExtensionKeyUsage = (typeof classes.CertificateExtensionKeyUsage)['prototype'];
     const CertificateExtensionKeyUsage: typeof classes.CertificateExtensionKeyUsage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionKeyUsage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionKeyUsage.SignalSignatures> &
@@ -1356,7 +1356,7 @@ export namespace Gcr {
     type CertificateExtensionList<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificateExtensionList<A>)['prototype'];
     const CertificateExtensionList: typeof classes.CertificateExtensionList &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionList.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionList.SignalSignatures> &
@@ -1376,7 +1376,7 @@ export namespace Gcr {
     type CertificateExtensionSubjectAltName<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificateExtensionSubjectAltName<A>)['prototype'];
     const CertificateExtensionSubjectAltName: typeof classes.CertificateExtensionSubjectAltName &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionSubjectAltName.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionSubjectAltName.SignalSignatures> &
@@ -1394,7 +1394,7 @@ export namespace Gcr {
     type CertificateExtensionSubjectKeyIdentifier =
         (typeof classes.CertificateExtensionSubjectKeyIdentifier)['prototype'];
     const CertificateExtensionSubjectKeyIdentifier: typeof classes.CertificateExtensionSubjectKeyIdentifier &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateExtensionSubjectKeyIdentifier.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateExtensionSubjectKeyIdentifier.SignalSignatures> &
@@ -1415,7 +1415,7 @@ export namespace Gcr {
     }
     type CertificateField = (typeof classes.CertificateField)['prototype'];
     const CertificateField: typeof classes.CertificateField &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateField.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateField.SignalSignatures> & classes.CertificateField);
@@ -1430,7 +1430,7 @@ export namespace Gcr {
     type CertificatePolicy<A extends GObject.Object = GObject.Object> =
         (typeof classes.CertificatePolicy<A>)['prototype'];
     const CertificatePolicy: typeof classes.CertificatePolicy &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificatePolicy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificatePolicy.SignalSignatures> & classes.CertificatePolicy<A>);
@@ -1442,7 +1442,7 @@ export namespace Gcr {
     }
     type CertificatePolicyQualifier = (typeof classes.CertificatePolicyQualifier)['prototype'];
     const CertificatePolicyQualifier: typeof classes.CertificatePolicyQualifier &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificatePolicyQualifier.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificatePolicyQualifier.SignalSignatures> &
@@ -1466,7 +1466,7 @@ export namespace Gcr {
     }
     type CertificateRequest = (typeof classes.CertificateRequest)['prototype'];
     const CertificateRequest: typeof classes.CertificateRequest &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateRequest.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateRequest.SignalSignatures> & classes.CertificateRequest);
@@ -1484,7 +1484,7 @@ export namespace Gcr {
     }
     type CertificateSection = (typeof classes.CertificateSection)['prototype'];
     const CertificateSection: typeof classes.CertificateSection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.CertificateSection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CertificateSection.SignalSignatures> & classes.CertificateSection);
@@ -1496,7 +1496,7 @@ export namespace Gcr {
     }
     type DistributionPoint = (typeof classes.DistributionPoint)['prototype'];
     const DistributionPoint: typeof classes.DistributionPoint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.DistributionPoint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DistributionPoint.SignalSignatures> & classes.DistributionPoint);
@@ -1508,7 +1508,7 @@ export namespace Gcr {
     }
     type GeneralName = (typeof classes.GeneralName)['prototype'];
     const GeneralName: typeof classes.GeneralName &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.GeneralName.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GeneralName.SignalSignatures> & classes.GeneralName);
@@ -1522,7 +1522,7 @@ export namespace Gcr {
     }
     type GeneralNames<A extends GObject.Object = GObject.Object> = (typeof classes.GeneralNames<A>)['prototype'];
     const GeneralNames: typeof classes.GeneralNames &
-        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends GObject.Object = GObject.Object, Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.GeneralNames.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GeneralNames.SignalSignatures> & classes.GeneralNames<A>);
@@ -1571,7 +1571,7 @@ export namespace Gcr {
     }
     type Parser = (typeof classes.Parser)['prototype'];
     const Parser: typeof classes.Parser &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.Parser.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Parser.SignalSignatures> & classes.Parser);
@@ -1598,7 +1598,7 @@ export namespace Gcr {
     }
     type Pkcs11Certificate = (typeof classes.Pkcs11Certificate)['prototype'];
     const Pkcs11Certificate: typeof classes.Pkcs11Certificate &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.Pkcs11Certificate.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Pkcs11Certificate.SignalSignatures> & classes.Pkcs11Certificate);
@@ -1621,7 +1621,7 @@ export namespace Gcr {
     }
     type SecretExchange = (typeof classes.SecretExchange)['prototype'];
     const SecretExchange: typeof classes.SecretExchange &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.SecretExchange.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SecretExchange.SignalSignatures> & classes.SecretExchange);
@@ -1639,7 +1639,7 @@ export namespace Gcr {
     }
     type SimpleCertificate = (typeof classes.SimpleCertificate)['prototype'];
     const SimpleCertificate: typeof classes.SimpleCertificate &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.SimpleCertificate.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleCertificate.SignalSignatures> & classes.SimpleCertificate);
@@ -1658,7 +1658,7 @@ export namespace Gcr {
     }
     type SshAskpass = (typeof classes.SshAskpass)['prototype'];
     const SshAskpass: typeof classes.SshAskpass &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.SshAskpass.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SshAskpass.SignalSignatures> & classes.SshAskpass);
@@ -1718,7 +1718,7 @@ export namespace Gcr {
     }
     type SystemPrompt = (typeof classes.SystemPrompt)['prototype'];
     const SystemPrompt: typeof classes.SystemPrompt &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.SystemPrompt.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SystemPrompt.SignalSignatures> & classes.SystemPrompt);
@@ -1749,7 +1749,7 @@ export namespace Gcr {
     }
     type SystemPrompter = (typeof classes.SystemPrompter)['prototype'];
     const SystemPrompter: typeof classes.SystemPrompter &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gcr.SystemPrompter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SystemPrompter.SignalSignatures> & classes.SystemPrompter);

@@ -6439,7 +6439,7 @@ export namespace NM {
     }
     type AccessPoint = (typeof classes.AccessPoint)['prototype'];
     const AccessPoint: typeof classes.AccessPoint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.AccessPoint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AccessPoint.SignalSignatures> & classes.AccessPoint);
@@ -6568,7 +6568,7 @@ export namespace NM {
     }
     type ActiveConnection = (typeof classes.ActiveConnection)['prototype'];
     const ActiveConnection: typeof classes.ActiveConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.ActiveConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ActiveConnection.SignalSignatures> & classes.ActiveConnection);
@@ -6603,7 +6603,7 @@ export namespace NM {
     }
     type Checkpoint = (typeof classes.Checkpoint)['prototype'];
     const Checkpoint: typeof classes.Checkpoint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Checkpoint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Checkpoint.SignalSignatures> & classes.Checkpoint);
@@ -6974,7 +6974,7 @@ export namespace NM {
     }
     type Client = (typeof classes.Client)['prototype'];
     const Client: typeof classes.Client &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Client.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Client.SignalSignatures> & classes.Client);
@@ -7253,7 +7253,7 @@ export namespace NM {
     }
     type Device = (typeof classes.Device)['prototype'];
     const Device: typeof classes.Device &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Device.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Device.SignalSignatures> & classes.Device);
@@ -7306,7 +7306,7 @@ export namespace NM {
     }
     type Device6Lowpan = (typeof classes.Device6Lowpan)['prototype'];
     const Device6Lowpan: typeof classes.Device6Lowpan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Device6Lowpan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Device6Lowpan.SignalSignatures> & classes.Device6Lowpan);
@@ -7359,7 +7359,7 @@ export namespace NM {
     }
     type DeviceAdsl = (typeof classes.DeviceAdsl)['prototype'];
     const DeviceAdsl: typeof classes.DeviceAdsl &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceAdsl.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceAdsl.SignalSignatures> & classes.DeviceAdsl);
@@ -7417,7 +7417,7 @@ export namespace NM {
     }
     type DeviceBond = (typeof classes.DeviceBond)['prototype'];
     const DeviceBond: typeof classes.DeviceBond &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceBond.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceBond.SignalSignatures> & classes.DeviceBond);
@@ -7475,7 +7475,7 @@ export namespace NM {
     }
     type DeviceBridge = (typeof classes.DeviceBridge)['prototype'];
     const DeviceBridge: typeof classes.DeviceBridge &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceBridge.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceBridge.SignalSignatures> & classes.DeviceBridge);
@@ -7537,7 +7537,7 @@ export namespace NM {
     }
     type DeviceBt = (typeof classes.DeviceBt)['prototype'];
     const DeviceBt: typeof classes.DeviceBt &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceBt.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceBt.SignalSignatures> & classes.DeviceBt);
@@ -7584,7 +7584,7 @@ export namespace NM {
     }
     type DeviceDummy = (typeof classes.DeviceDummy)['prototype'];
     const DeviceDummy: typeof classes.DeviceDummy &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceDummy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceDummy.SignalSignatures> & classes.DeviceDummy);
@@ -7662,7 +7662,7 @@ export namespace NM {
     }
     type DeviceEthernet = (typeof classes.DeviceEthernet)['prototype'];
     const DeviceEthernet: typeof classes.DeviceEthernet &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceEthernet.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceEthernet.SignalSignatures> & classes.DeviceEthernet);
@@ -7721,7 +7721,7 @@ export namespace NM {
     }
     type DeviceGeneric = (typeof classes.DeviceGeneric)['prototype'];
     const DeviceGeneric: typeof classes.DeviceGeneric &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceGeneric.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceGeneric.SignalSignatures> & classes.DeviceGeneric);
@@ -7802,7 +7802,7 @@ export namespace NM {
     }
     type DeviceHsr = (typeof classes.DeviceHsr)['prototype'];
     const DeviceHsr: typeof classes.DeviceHsr &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceHsr.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceHsr.SignalSignatures> & classes.DeviceHsr);
@@ -7944,7 +7944,7 @@ export namespace NM {
     }
     type DeviceIPTunnel = (typeof classes.DeviceIPTunnel)['prototype'];
     const DeviceIPTunnel: typeof classes.DeviceIPTunnel &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceIPTunnel.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceIPTunnel.SignalSignatures> & classes.DeviceIPTunnel);
@@ -7997,7 +7997,7 @@ export namespace NM {
     }
     type DeviceInfiniband = (typeof classes.DeviceInfiniband)['prototype'];
     const DeviceInfiniband: typeof classes.DeviceInfiniband &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceInfiniband.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceInfiniband.SignalSignatures> & classes.DeviceInfiniband);
@@ -8044,7 +8044,7 @@ export namespace NM {
     }
     type DeviceLoopback = (typeof classes.DeviceLoopback)['prototype'];
     const DeviceLoopback: typeof classes.DeviceLoopback &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceLoopback.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceLoopback.SignalSignatures> & classes.DeviceLoopback);
@@ -8184,7 +8184,7 @@ export namespace NM {
     }
     type DeviceMacsec = (typeof classes.DeviceMacsec)['prototype'];
     const DeviceMacsec: typeof classes.DeviceMacsec &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceMacsec.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceMacsec.SignalSignatures> & classes.DeviceMacsec);
@@ -8256,7 +8256,7 @@ export namespace NM {
     }
     type DeviceMacvlan = (typeof classes.DeviceMacvlan)['prototype'];
     const DeviceMacvlan: typeof classes.DeviceMacvlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceMacvlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceMacvlan.SignalSignatures> & classes.DeviceMacvlan);
@@ -8338,7 +8338,7 @@ export namespace NM {
     }
     type DeviceModem = (typeof classes.DeviceModem)['prototype'];
     const DeviceModem: typeof classes.DeviceModem &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceModem.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceModem.SignalSignatures> & classes.DeviceModem);
@@ -8400,7 +8400,7 @@ export namespace NM {
     }
     type DeviceOlpcMesh = (typeof classes.DeviceOlpcMesh)['prototype'];
     const DeviceOlpcMesh: typeof classes.DeviceOlpcMesh &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceOlpcMesh.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceOlpcMesh.SignalSignatures> & classes.DeviceOlpcMesh);
@@ -8453,7 +8453,7 @@ export namespace NM {
     }
     type DeviceOvsBridge = (typeof classes.DeviceOvsBridge)['prototype'];
     const DeviceOvsBridge: typeof classes.DeviceOvsBridge &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceOvsBridge.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceOvsBridge.SignalSignatures> & classes.DeviceOvsBridge);
@@ -8500,7 +8500,7 @@ export namespace NM {
     }
     type DeviceOvsInterface = (typeof classes.DeviceOvsInterface)['prototype'];
     const DeviceOvsInterface: typeof classes.DeviceOvsInterface &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceOvsInterface.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceOvsInterface.SignalSignatures> & classes.DeviceOvsInterface);
@@ -8553,7 +8553,7 @@ export namespace NM {
     }
     type DeviceOvsPort = (typeof classes.DeviceOvsPort)['prototype'];
     const DeviceOvsPort: typeof classes.DeviceOvsPort &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceOvsPort.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceOvsPort.SignalSignatures> & classes.DeviceOvsPort);
@@ -8600,7 +8600,7 @@ export namespace NM {
     }
     type DevicePpp = (typeof classes.DevicePpp)['prototype'];
     const DevicePpp: typeof classes.DevicePpp &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DevicePpp.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DevicePpp.SignalSignatures> & classes.DevicePpp);
@@ -8663,7 +8663,7 @@ export namespace NM {
     }
     type DeviceTeam = (typeof classes.DeviceTeam)['prototype'];
     const DeviceTeam: typeof classes.DeviceTeam &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceTeam.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceTeam.SignalSignatures> & classes.DeviceTeam);
@@ -8761,7 +8761,7 @@ export namespace NM {
     }
     type DeviceTun = (typeof classes.DeviceTun)['prototype'];
     const DeviceTun: typeof classes.DeviceTun &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceTun.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceTun.SignalSignatures> & classes.DeviceTun);
@@ -8818,7 +8818,7 @@ export namespace NM {
     }
     type DeviceVeth = (typeof classes.DeviceVeth)['prototype'];
     const DeviceVeth: typeof classes.DeviceVeth &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceVeth.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceVeth.SignalSignatures> & classes.DeviceVeth);
@@ -8885,7 +8885,7 @@ export namespace NM {
     }
     type DeviceVlan = (typeof classes.DeviceVlan)['prototype'];
     const DeviceVlan: typeof classes.DeviceVlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceVlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceVlan.SignalSignatures> & classes.DeviceVlan);
@@ -8938,7 +8938,7 @@ export namespace NM {
     }
     type DeviceVrf = (typeof classes.DeviceVrf)['prototype'];
     const DeviceVrf: typeof classes.DeviceVrf &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceVrf.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceVrf.SignalSignatures> & classes.DeviceVrf);
@@ -9094,7 +9094,7 @@ export namespace NM {
     }
     type DeviceVxlan = (typeof classes.DeviceVxlan)['prototype'];
     const DeviceVxlan: typeof classes.DeviceVxlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceVxlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceVxlan.SignalSignatures> & classes.DeviceVxlan);
@@ -9203,7 +9203,7 @@ export namespace NM {
     }
     type DeviceWifi = (typeof classes.DeviceWifi)['prototype'];
     const DeviceWifi: typeof classes.DeviceWifi &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceWifi.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceWifi.SignalSignatures> & classes.DeviceWifi);
@@ -9258,7 +9258,7 @@ export namespace NM {
     }
     type DeviceWifiP2P = (typeof classes.DeviceWifiP2P)['prototype'];
     const DeviceWifiP2P: typeof classes.DeviceWifiP2P &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceWifiP2P.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceWifiP2P.SignalSignatures> & classes.DeviceWifiP2P);
@@ -9377,7 +9377,7 @@ export namespace NM {
     }
     type DeviceWimax = (typeof classes.DeviceWimax)['prototype'];
     const DeviceWimax: typeof classes.DeviceWimax &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceWimax.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceWimax.SignalSignatures> & classes.DeviceWimax);
@@ -9452,7 +9452,7 @@ export namespace NM {
     }
     type DeviceWireGuard = (typeof classes.DeviceWireGuard)['prototype'];
     const DeviceWireGuard: typeof classes.DeviceWireGuard &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceWireGuard.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceWireGuard.SignalSignatures> & classes.DeviceWireGuard);
@@ -9499,7 +9499,7 @@ export namespace NM {
     }
     type DeviceWpan = (typeof classes.DeviceWpan)['prototype'];
     const DeviceWpan: typeof classes.DeviceWpan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DeviceWpan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceWpan.SignalSignatures> & classes.DeviceWpan);
@@ -9526,7 +9526,7 @@ export namespace NM {
     }
     type DhcpConfig = (typeof classes.DhcpConfig)['prototype'];
     const DhcpConfig: typeof classes.DhcpConfig &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.DhcpConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DhcpConfig.SignalSignatures> & classes.DhcpConfig);
@@ -9589,7 +9589,7 @@ export namespace NM {
     }
     type IPConfig = (typeof classes.IPConfig)['prototype'];
     const IPConfig: typeof classes.IPConfig &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.IPConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IPConfig.SignalSignatures> & classes.IPConfig);
@@ -9622,7 +9622,7 @@ export namespace NM {
     }
     type Object = (typeof classes.Object)['prototype'];
     const Object: typeof classes.Object &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Object.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Object.SignalSignatures> & classes.Object);
@@ -9678,7 +9678,7 @@ export namespace NM {
     }
     type RemoteConnection = (typeof classes.RemoteConnection)['prototype'];
     const RemoteConnection: typeof classes.RemoteConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.RemoteConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, RemoteConnection.SignalSignatures> & classes.RemoteConnection);
@@ -9773,7 +9773,7 @@ export namespace NM {
     }
     type SecretAgentOld = (typeof classes.SecretAgentOld)['prototype'];
     const SecretAgentOld: typeof classes.SecretAgentOld &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SecretAgentOld.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SecretAgentOld.SignalSignatures> & classes.SecretAgentOld);
@@ -9794,7 +9794,7 @@ export namespace NM {
     }
     type Setting = (typeof classes.Setting)['prototype'];
     const Setting: typeof classes.Setting &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Setting.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Setting.SignalSignatures> & classes.Setting);
@@ -9815,7 +9815,7 @@ export namespace NM {
     }
     type Setting6Lowpan = (typeof classes.Setting6Lowpan)['prototype'];
     const Setting6Lowpan: typeof classes.Setting6Lowpan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Setting6Lowpan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Setting6Lowpan.SignalSignatures> & classes.Setting6Lowpan);
@@ -10697,7 +10697,7 @@ export namespace NM {
     }
     type Setting8021x = (typeof classes.Setting8021x)['prototype'];
     const Setting8021x: typeof classes.Setting8021x &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.Setting8021x.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Setting8021x.SignalSignatures> & classes.Setting8021x);
@@ -10751,7 +10751,7 @@ export namespace NM {
     }
     type SettingAdsl = (typeof classes.SettingAdsl)['prototype'];
     const SettingAdsl: typeof classes.SettingAdsl &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingAdsl.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingAdsl.SignalSignatures> & classes.SettingAdsl);
@@ -10777,7 +10777,7 @@ export namespace NM {
     }
     type SettingBluetooth = (typeof classes.SettingBluetooth)['prototype'];
     const SettingBluetooth: typeof classes.SettingBluetooth &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingBluetooth.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingBluetooth.SignalSignatures> & classes.SettingBluetooth);
@@ -10799,7 +10799,7 @@ export namespace NM {
     }
     type SettingBond = (typeof classes.SettingBond)['prototype'];
     const SettingBond: typeof classes.SettingBond &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingBond.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingBond.SignalSignatures> & classes.SettingBond);
@@ -10833,7 +10833,7 @@ export namespace NM {
     }
     type SettingBondPort = (typeof classes.SettingBondPort)['prototype'];
     const SettingBondPort: typeof classes.SettingBondPort &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingBondPort.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingBondPort.SignalSignatures> & classes.SettingBondPort);
@@ -11169,7 +11169,7 @@ export namespace NM {
     }
     type SettingBridge = (typeof classes.SettingBridge)['prototype'];
     const SettingBridge: typeof classes.SettingBridge &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingBridge.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingBridge.SignalSignatures> & classes.SettingBridge);
@@ -11227,7 +11227,7 @@ export namespace NM {
     }
     type SettingBridgePort = (typeof classes.SettingBridgePort)['prototype'];
     const SettingBridgePort: typeof classes.SettingBridgePort &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingBridgePort.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingBridgePort.SignalSignatures> & classes.SettingBridgePort);
@@ -11278,7 +11278,7 @@ export namespace NM {
     }
     type SettingCdma = (typeof classes.SettingCdma)['prototype'];
     const SettingCdma: typeof classes.SettingCdma &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingCdma.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingCdma.SignalSignatures> & classes.SettingCdma);
@@ -11940,7 +11940,7 @@ export namespace NM {
     }
     type SettingConnection = (typeof classes.SettingConnection)['prototype'];
     const SettingConnection: typeof classes.SettingConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingConnection.SignalSignatures> & classes.SettingConnection);
@@ -12160,7 +12160,7 @@ export namespace NM {
     }
     type SettingDcb = (typeof classes.SettingDcb)['prototype'];
     const SettingDcb: typeof classes.SettingDcb &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingDcb.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingDcb.SignalSignatures> & classes.SettingDcb);
@@ -12174,7 +12174,7 @@ export namespace NM {
     }
     type SettingDummy = (typeof classes.SettingDummy)['prototype'];
     const SettingDummy: typeof classes.SettingDummy &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingDummy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingDummy.SignalSignatures> & classes.SettingDummy);
@@ -12188,7 +12188,7 @@ export namespace NM {
     }
     type SettingEthtool = (typeof classes.SettingEthtool)['prototype'];
     const SettingEthtool: typeof classes.SettingEthtool &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingEthtool.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingEthtool.SignalSignatures> & classes.SettingEthtool);
@@ -12232,7 +12232,7 @@ export namespace NM {
     }
     type SettingGeneric = (typeof classes.SettingGeneric)['prototype'];
     const SettingGeneric: typeof classes.SettingGeneric &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingGeneric.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingGeneric.SignalSignatures> & classes.SettingGeneric);
@@ -12425,7 +12425,7 @@ export namespace NM {
     }
     type SettingGsm = (typeof classes.SettingGsm)['prototype'];
     const SettingGsm: typeof classes.SettingGsm &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingGsm.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingGsm.SignalSignatures> & classes.SettingGsm);
@@ -12526,7 +12526,7 @@ export namespace NM {
     }
     type SettingHostname = (typeof classes.SettingHostname)['prototype'];
     const SettingHostname: typeof classes.SettingHostname &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingHostname.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingHostname.SignalSignatures> & classes.SettingHostname);
@@ -12565,7 +12565,7 @@ export namespace NM {
     }
     type SettingHsr = (typeof classes.SettingHsr)['prototype'];
     const SettingHsr: typeof classes.SettingHsr &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingHsr.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingHsr.SignalSignatures> & classes.SettingHsr);
@@ -12742,7 +12742,7 @@ export namespace NM {
     }
     type SettingIP4Config = (typeof classes.SettingIP4Config)['prototype'];
     const SettingIP4Config: typeof classes.SettingIP4Config &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingIP4Config.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingIP4Config.SignalSignatures> & classes.SettingIP4Config);
@@ -13062,7 +13062,7 @@ export namespace NM {
     }
     type SettingIP6Config = (typeof classes.SettingIP6Config)['prototype'];
     const SettingIP6Config: typeof classes.SettingIP6Config &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingIP6Config.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingIP6Config.SignalSignatures> & classes.SettingIP6Config);
@@ -13755,7 +13755,7 @@ export namespace NM {
     }
     type SettingIPConfig = (typeof classes.SettingIPConfig)['prototype'];
     const SettingIPConfig: typeof classes.SettingIPConfig &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingIPConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingIPConfig.SignalSignatures> & classes.SettingIPConfig);
@@ -13886,7 +13886,7 @@ export namespace NM {
     }
     type SettingIPTunnel = (typeof classes.SettingIPTunnel)['prototype'];
     const SettingIPTunnel: typeof classes.SettingIPTunnel &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingIPTunnel.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingIPTunnel.SignalSignatures> & classes.SettingIPTunnel);
@@ -13968,7 +13968,7 @@ export namespace NM {
     }
     type SettingInfiniband = (typeof classes.SettingInfiniband)['prototype'];
     const SettingInfiniband: typeof classes.SettingInfiniband &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingInfiniband.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingInfiniband.SignalSignatures> & classes.SettingInfiniband);
@@ -14033,7 +14033,7 @@ export namespace NM {
     }
     type SettingLink = (typeof classes.SettingLink)['prototype'];
     const SettingLink: typeof classes.SettingLink &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingLink.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingLink.SignalSignatures> & classes.SettingLink);
@@ -14054,7 +14054,7 @@ export namespace NM {
     }
     type SettingLoopback = (typeof classes.SettingLoopback)['prototype'];
     const SettingLoopback: typeof classes.SettingLoopback &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingLoopback.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingLoopback.SignalSignatures> & classes.SettingLoopback);
@@ -14159,7 +14159,7 @@ export namespace NM {
     }
     type SettingMacsec = (typeof classes.SettingMacsec)['prototype'];
     const SettingMacsec: typeof classes.SettingMacsec &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingMacsec.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingMacsec.SignalSignatures> & classes.SettingMacsec);
@@ -14198,7 +14198,7 @@ export namespace NM {
     }
     type SettingMacvlan = (typeof classes.SettingMacvlan)['prototype'];
     const SettingMacvlan: typeof classes.SettingMacvlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingMacvlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingMacvlan.SignalSignatures> & classes.SettingMacvlan);
@@ -14309,7 +14309,7 @@ export namespace NM {
     }
     type SettingMatch = (typeof classes.SettingMatch)['prototype'];
     const SettingMatch: typeof classes.SettingMatch &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingMatch.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingMatch.SignalSignatures> & classes.SettingMatch);
@@ -14351,7 +14351,7 @@ export namespace NM {
     }
     type SettingOlpcMesh = (typeof classes.SettingOlpcMesh)['prototype'];
     const SettingOlpcMesh: typeof classes.SettingOlpcMesh &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOlpcMesh.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOlpcMesh.SignalSignatures> & classes.SettingOlpcMesh);
@@ -14411,7 +14411,7 @@ export namespace NM {
     }
     type SettingOvsBridge = (typeof classes.SettingOvsBridge)['prototype'];
     const SettingOvsBridge: typeof classes.SettingOvsBridge &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsBridge.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsBridge.SignalSignatures> & classes.SettingOvsBridge);
@@ -14478,7 +14478,7 @@ export namespace NM {
     }
     type SettingOvsDpdk = (typeof classes.SettingOvsDpdk)['prototype'];
     const SettingOvsDpdk: typeof classes.SettingOvsDpdk &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsDpdk.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsDpdk.SignalSignatures> & classes.SettingOvsDpdk);
@@ -14498,7 +14498,7 @@ export namespace NM {
     }
     type SettingOvsExternalIDs = (typeof classes.SettingOvsExternalIDs)['prototype'];
     const SettingOvsExternalIDs: typeof classes.SettingOvsExternalIDs &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsExternalIDs.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsExternalIDs.SignalSignatures> & classes.SettingOvsExternalIDs);
@@ -14535,7 +14535,7 @@ export namespace NM {
     }
     type SettingOvsInterface = (typeof classes.SettingOvsInterface)['prototype'];
     const SettingOvsInterface: typeof classes.SettingOvsInterface &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsInterface.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsInterface.SignalSignatures> & classes.SettingOvsInterface);
@@ -14557,7 +14557,7 @@ export namespace NM {
     }
     type SettingOvsOtherConfig = (typeof classes.SettingOvsOtherConfig)['prototype'];
     const SettingOvsOtherConfig: typeof classes.SettingOvsOtherConfig &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsOtherConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsOtherConfig.SignalSignatures> & classes.SettingOvsOtherConfig);
@@ -14578,7 +14578,7 @@ export namespace NM {
     }
     type SettingOvsPatch = (typeof classes.SettingOvsPatch)['prototype'];
     const SettingOvsPatch: typeof classes.SettingOvsPatch &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsPatch.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsPatch.SignalSignatures> & classes.SettingOvsPatch);
@@ -14650,7 +14650,7 @@ export namespace NM {
     }
     type SettingOvsPort = (typeof classes.SettingOvsPort)['prototype'];
     const SettingOvsPort: typeof classes.SettingOvsPort &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingOvsPort.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingOvsPort.SignalSignatures> & classes.SettingOvsPort);
@@ -14833,7 +14833,7 @@ export namespace NM {
     }
     type SettingPpp = (typeof classes.SettingPpp)['prototype'];
     const SettingPpp: typeof classes.SettingPpp &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingPpp.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingPpp.SignalSignatures> & classes.SettingPpp);
@@ -14883,7 +14883,7 @@ export namespace NM {
     }
     type SettingPppoe = (typeof classes.SettingPppoe)['prototype'];
     const SettingPppoe: typeof classes.SettingPppoe &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingPppoe.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingPppoe.SignalSignatures> & classes.SettingPppoe);
@@ -14932,7 +14932,7 @@ export namespace NM {
     }
     type SettingProxy = (typeof classes.SettingProxy)['prototype'];
     const SettingProxy: typeof classes.SettingProxy &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingProxy.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingProxy.SignalSignatures> & classes.SettingProxy);
@@ -14979,7 +14979,7 @@ export namespace NM {
     }
     type SettingSerial = (typeof classes.SettingSerial)['prototype'];
     const SettingSerial: typeof classes.SettingSerial &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingSerial.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingSerial.SignalSignatures> & classes.SettingSerial);
@@ -15140,7 +15140,7 @@ export namespace NM {
     }
     type SettingSriov = (typeof classes.SettingSriov)['prototype'];
     const SettingSriov: typeof classes.SettingSriov &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingSriov.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingSriov.SignalSignatures> & classes.SettingSriov);
@@ -15181,7 +15181,7 @@ export namespace NM {
     }
     type SettingTCConfig = (typeof classes.SettingTCConfig)['prototype'];
     const SettingTCConfig: typeof classes.SettingTCConfig &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingTCConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingTCConfig.SignalSignatures> & classes.SettingTCConfig);
@@ -15351,7 +15351,7 @@ export namespace NM {
     }
     type SettingTeam = (typeof classes.SettingTeam)['prototype'];
     const SettingTeam: typeof classes.SettingTeam &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingTeam.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingTeam.SignalSignatures> & classes.SettingTeam);
@@ -15436,7 +15436,7 @@ export namespace NM {
     }
     type SettingTeamPort = (typeof classes.SettingTeamPort)['prototype'];
     const SettingTeamPort: typeof classes.SettingTeamPort &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingTeamPort.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingTeamPort.SignalSignatures> & classes.SettingTeamPort);
@@ -15503,7 +15503,7 @@ export namespace NM {
     }
     type SettingTun = (typeof classes.SettingTun)['prototype'];
     const SettingTun: typeof classes.SettingTun &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingTun.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingTun.SignalSignatures> & classes.SettingTun);
@@ -15525,7 +15525,7 @@ export namespace NM {
     }
     type SettingUser = (typeof classes.SettingUser)['prototype'];
     const SettingUser: typeof classes.SettingUser &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingUser.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingUser.SignalSignatures> & classes.SettingUser);
@@ -15546,7 +15546,7 @@ export namespace NM {
     }
     type SettingVeth = (typeof classes.SettingVeth)['prototype'];
     const SettingVeth: typeof classes.SettingVeth &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingVeth.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingVeth.SignalSignatures> & classes.SettingVeth);
@@ -15624,7 +15624,7 @@ export namespace NM {
     }
     type SettingVlan = (typeof classes.SettingVlan)['prototype'];
     const SettingVlan: typeof classes.SettingVlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingVlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingVlan.SignalSignatures> & classes.SettingVlan);
@@ -15699,7 +15699,7 @@ export namespace NM {
     }
     type SettingVpn = (typeof classes.SettingVpn)['prototype'];
     const SettingVpn: typeof classes.SettingVpn &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingVpn.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingVpn.SignalSignatures> & classes.SettingVpn);
@@ -15719,7 +15719,7 @@ export namespace NM {
     }
     type SettingVrf = (typeof classes.SettingVrf)['prototype'];
     const SettingVrf: typeof classes.SettingVrf &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingVrf.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingVrf.SignalSignatures> & classes.SettingVrf);
@@ -15845,7 +15845,7 @@ export namespace NM {
     }
     type SettingVxlan = (typeof classes.SettingVxlan)['prototype'];
     const SettingVxlan: typeof classes.SettingVxlan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingVxlan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingVxlan.SignalSignatures> & classes.SettingVxlan);
@@ -15900,7 +15900,7 @@ export namespace NM {
     }
     type SettingWifiP2P = (typeof classes.SettingWifiP2P)['prototype'];
     const SettingWifiP2P: typeof classes.SettingWifiP2P &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWifiP2P.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWifiP2P.SignalSignatures> & classes.SettingWifiP2P);
@@ -15939,7 +15939,7 @@ export namespace NM {
     }
     type SettingWimax = (typeof classes.SettingWimax)['prototype'];
     const SettingWimax: typeof classes.SettingWimax &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWimax.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWimax.SignalSignatures> & classes.SettingWimax);
@@ -16083,7 +16083,7 @@ export namespace NM {
     }
     type SettingWireGuard = (typeof classes.SettingWireGuard)['prototype'];
     const SettingWireGuard: typeof classes.SettingWireGuard &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWireGuard.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWireGuard.SignalSignatures> & classes.SettingWireGuard);
@@ -16423,7 +16423,7 @@ export namespace NM {
     }
     type SettingWired = (typeof classes.SettingWired)['prototype'];
     const SettingWired: typeof classes.SettingWired &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWired.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWired.SignalSignatures> & classes.SettingWired);
@@ -16819,7 +16819,7 @@ export namespace NM {
     }
     type SettingWireless = (typeof classes.SettingWireless)['prototype'];
     const SettingWireless: typeof classes.SettingWireless &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWireless.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWireless.SignalSignatures> & classes.SettingWireless);
@@ -17084,7 +17084,7 @@ export namespace NM {
     }
     type SettingWirelessSecurity = (typeof classes.SettingWirelessSecurity)['prototype'];
     const SettingWirelessSecurity: typeof classes.SettingWirelessSecurity &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWirelessSecurity.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWirelessSecurity.SignalSignatures> & classes.SettingWirelessSecurity);
@@ -17140,7 +17140,7 @@ export namespace NM {
     }
     type SettingWpan = (typeof classes.SettingWpan)['prototype'];
     const SettingWpan: typeof classes.SettingWpan &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SettingWpan.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingWpan.SignalSignatures> & classes.SettingWpan);
@@ -17152,7 +17152,7 @@ export namespace NM {
     }
     type SimpleConnection = (typeof classes.SimpleConnection)['prototype'];
     const SimpleConnection: typeof classes.SimpleConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.SimpleConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SimpleConnection.SignalSignatures> & classes.SimpleConnection);
@@ -17200,7 +17200,7 @@ export namespace NM {
     }
     type VpnConnection = (typeof classes.VpnConnection)['prototype'];
     const VpnConnection: typeof classes.VpnConnection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.VpnConnection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VpnConnection.SignalSignatures> & classes.VpnConnection);
@@ -17234,7 +17234,7 @@ export namespace NM {
     }
     type VpnPluginInfo = (typeof classes.VpnPluginInfo)['prototype'];
     const VpnPluginInfo: typeof classes.VpnPluginInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.VpnPluginInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VpnPluginInfo.SignalSignatures> & classes.VpnPluginInfo);
@@ -17270,7 +17270,7 @@ export namespace NM {
     }
     type VpnPluginOld = (typeof classes.VpnPluginOld)['prototype'];
     const VpnPluginOld: typeof classes.VpnPluginOld &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.VpnPluginOld.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VpnPluginOld.SignalSignatures> & classes.VpnPluginOld);
@@ -17315,7 +17315,7 @@ export namespace NM {
     }
     type VpnServicePlugin = (typeof classes.VpnServicePlugin)['prototype'];
     const VpnServicePlugin: typeof classes.VpnServicePlugin &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.VpnServicePlugin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VpnServicePlugin.SignalSignatures> & classes.VpnServicePlugin);
@@ -17399,7 +17399,7 @@ export namespace NM {
     }
     type WifiP2PPeer = (typeof classes.WifiP2PPeer)['prototype'];
     const WifiP2PPeer: typeof classes.WifiP2PPeer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.WifiP2PPeer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WifiP2PPeer.SignalSignatures> & classes.WifiP2PPeer);
@@ -17438,7 +17438,7 @@ export namespace NM {
     }
     type WimaxNsp = (typeof classes.WimaxNsp)['prototype'];
     const WimaxNsp: typeof classes.WimaxNsp &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<NM.WimaxNsp.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WimaxNsp.SignalSignatures> & classes.WimaxNsp);

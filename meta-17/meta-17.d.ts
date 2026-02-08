@@ -1890,7 +1890,7 @@ export namespace Meta {
     }
     type Backend = (typeof classes.Backend)['prototype'];
     const Backend: typeof classes.Backend &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Backend.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Backend.SignalSignatures> & classes.Backend);
@@ -1908,7 +1908,7 @@ export namespace Meta {
     }
     type Background = (typeof classes.Background)['prototype'];
     const Background: typeof classes.Background &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Background.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Background.SignalSignatures> & classes.Background);
@@ -2004,7 +2004,7 @@ export namespace Meta {
     }
     type BackgroundActor = (typeof classes.BackgroundActor)['prototype'];
     const BackgroundActor: typeof classes.BackgroundActor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.BackgroundActor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BackgroundActor.SignalSignatures> & classes.BackgroundActor);
@@ -2043,7 +2043,7 @@ export namespace Meta {
     }
     type BackgroundContent = (typeof classes.BackgroundContent)['prototype'];
     const BackgroundContent: typeof classes.BackgroundContent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.BackgroundContent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BackgroundContent.SignalSignatures> & classes.BackgroundContent);
@@ -2133,7 +2133,7 @@ export namespace Meta {
     }
     type BackgroundGroup = (typeof classes.BackgroundGroup)['prototype'];
     const BackgroundGroup: typeof classes.BackgroundGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.BackgroundGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BackgroundGroup.SignalSignatures> & classes.BackgroundGroup);
@@ -2147,7 +2147,7 @@ export namespace Meta {
     }
     type BackgroundImage = (typeof classes.BackgroundImage)['prototype'];
     const BackgroundImage: typeof classes.BackgroundImage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.BackgroundImage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BackgroundImage.SignalSignatures> & classes.BackgroundImage);
@@ -2159,7 +2159,7 @@ export namespace Meta {
     }
     type BackgroundImageCache = (typeof classes.BackgroundImageCache)['prototype'];
     const BackgroundImageCache: typeof classes.BackgroundImageCache &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.BackgroundImageCache.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BackgroundImageCache.SignalSignatures> & classes.BackgroundImageCache);
@@ -2185,7 +2185,7 @@ export namespace Meta {
     }
     type Backlight = (typeof classes.Backlight)['prototype'];
     const Backlight: typeof classes.Backlight &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Backlight.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Backlight.SignalSignatures> & classes.Backlight);
@@ -2215,7 +2215,7 @@ export namespace Meta {
     }
     type Barrier = (typeof classes.Barrier)['prototype'];
     const Barrier: typeof classes.Barrier &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Barrier.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Barrier.SignalSignatures> & classes.Barrier);
@@ -2233,7 +2233,7 @@ export namespace Meta {
     }
     type Compositor = (typeof classes.Compositor)['prototype'];
     const Compositor: typeof classes.Compositor &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Compositor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Compositor.SignalSignatures> & classes.Compositor);
@@ -2256,7 +2256,7 @@ export namespace Meta {
     }
     type Context = (typeof classes.Context)['prototype'];
     const Context: typeof classes.Context &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Context.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Context.SignalSignatures> & classes.Context);
@@ -2276,7 +2276,7 @@ export namespace Meta {
     }
     type CursorTracker = (typeof classes.CursorTracker)['prototype'];
     const CursorTracker: typeof classes.CursorTracker &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.CursorTracker.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CursorTracker.SignalSignatures> & classes.CursorTracker);
@@ -2297,7 +2297,7 @@ export namespace Meta {
     }
     type DebugControl = (typeof classes.DebugControl)['prototype'];
     const DebugControl: typeof classes.DebugControl &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.DebugControl.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DebugControl.SignalSignatures> & classes.DebugControl);
@@ -2353,7 +2353,7 @@ export namespace Meta {
     }
     type Display = (typeof classes.Display)['prototype'];
     const Display: typeof classes.Display &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Display.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Display.SignalSignatures> & classes.Display);
@@ -2369,7 +2369,7 @@ export namespace Meta {
     }
     type Dnd = (typeof classes.Dnd)['prototype'];
     const Dnd: typeof classes.Dnd &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Dnd.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Dnd.SignalSignatures> & classes.Dnd);
@@ -2381,7 +2381,7 @@ export namespace Meta {
     }
     type IdleMonitor = (typeof classes.IdleMonitor)['prototype'];
     const IdleMonitor: typeof classes.IdleMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.IdleMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IdleMonitor.SignalSignatures> & classes.IdleMonitor);
@@ -2393,7 +2393,7 @@ export namespace Meta {
     }
     type Laters = (typeof classes.Laters)['prototype'];
     const Laters: typeof classes.Laters &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Laters.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Laters.SignalSignatures> & classes.Laters);
@@ -2413,7 +2413,7 @@ export namespace Meta {
     }
     type LaunchContext = (typeof classes.LaunchContext)['prototype'];
     const LaunchContext: typeof classes.LaunchContext &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.LaunchContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, LaunchContext.SignalSignatures> & classes.LaunchContext);
@@ -2425,7 +2425,7 @@ export namespace Meta {
     }
     type LogicalMonitor = (typeof classes.LogicalMonitor)['prototype'];
     const LogicalMonitor: typeof classes.LogicalMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.LogicalMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, LogicalMonitor.SignalSignatures> & classes.LogicalMonitor);
@@ -2437,7 +2437,7 @@ export namespace Meta {
     }
     type Monitor = (typeof classes.Monitor)['prototype'];
     const Monitor: typeof classes.Monitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Monitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Monitor.SignalSignatures> & classes.Monitor);
@@ -2468,7 +2468,7 @@ export namespace Meta {
     }
     type MonitorManager = (typeof classes.MonitorManager)['prototype'];
     const MonitorManager: typeof classes.MonitorManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.MonitorManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MonitorManager.SignalSignatures> & classes.MonitorManager);
@@ -2480,7 +2480,7 @@ export namespace Meta {
     }
     type MultiTexture = (typeof classes.MultiTexture)['prototype'];
     const MultiTexture: typeof classes.MultiTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.MultiTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MultiTexture.SignalSignatures> & classes.MultiTexture);
@@ -2499,7 +2499,7 @@ export namespace Meta {
     }
     type OrientationManager = (typeof classes.OrientationManager)['prototype'];
     const OrientationManager: typeof classes.OrientationManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.OrientationManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, OrientationManager.SignalSignatures> & classes.OrientationManager);
@@ -2511,7 +2511,7 @@ export namespace Meta {
     }
     type Plugin = (typeof classes.Plugin)['prototype'];
     const Plugin: typeof classes.Plugin &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Plugin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Plugin.SignalSignatures> & classes.Plugin);
@@ -2525,7 +2525,7 @@ export namespace Meta {
     }
     type RemoteAccessController = (typeof classes.RemoteAccessController)['prototype'];
     const RemoteAccessController: typeof classes.RemoteAccessController &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.RemoteAccessController.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, RemoteAccessController.SignalSignatures> & classes.RemoteAccessController);
@@ -2543,7 +2543,7 @@ export namespace Meta {
     }
     type RemoteAccessHandle = (typeof classes.RemoteAccessHandle)['prototype'];
     const RemoteAccessHandle: typeof classes.RemoteAccessHandle &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.RemoteAccessHandle.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, RemoteAccessHandle.SignalSignatures> & classes.RemoteAccessHandle);
@@ -2557,7 +2557,7 @@ export namespace Meta {
     }
     type Selection = (typeof classes.Selection)['prototype'];
     const Selection: typeof classes.Selection &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Selection.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Selection.SignalSignatures> & classes.Selection);
@@ -2572,7 +2572,7 @@ export namespace Meta {
     }
     type SelectionSource = (typeof classes.SelectionSource)['prototype'];
     const SelectionSource: typeof classes.SelectionSource &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.SelectionSource.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SelectionSource.SignalSignatures> & classes.SelectionSource);
@@ -2584,7 +2584,7 @@ export namespace Meta {
     }
     type SelectionSourceMemory = (typeof classes.SelectionSourceMemory)['prototype'];
     const SelectionSourceMemory: typeof classes.SelectionSourceMemory &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.SelectionSourceMemory.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SelectionSourceMemory.SignalSignatures> & classes.SelectionSourceMemory);
@@ -2605,7 +2605,7 @@ export namespace Meta {
     }
     type ShapedTexture = (typeof classes.ShapedTexture)['prototype'];
     const ShapedTexture: typeof classes.ShapedTexture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.ShapedTexture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ShapedTexture.SignalSignatures> & classes.ShapedTexture);
@@ -2617,7 +2617,7 @@ export namespace Meta {
     }
     type SoundPlayer = (typeof classes.SoundPlayer)['prototype'];
     const SoundPlayer: typeof classes.SoundPlayer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.SoundPlayer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SoundPlayer.SignalSignatures> & classes.SoundPlayer);
@@ -2710,7 +2710,7 @@ export namespace Meta {
     }
     type Stage = (typeof classes.Stage)['prototype'];
     const Stage: typeof classes.Stage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Stage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Stage.SignalSignatures> & classes.Stage);
@@ -2727,7 +2727,7 @@ export namespace Meta {
     }
     type StartupNotification = (typeof classes.StartupNotification)['prototype'];
     const StartupNotification: typeof classes.StartupNotification &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.StartupNotification.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, StartupNotification.SignalSignatures> & classes.StartupNotification);
@@ -2761,7 +2761,7 @@ export namespace Meta {
     }
     type StartupSequence = (typeof classes.StartupSequence)['prototype'];
     const StartupSequence: typeof classes.StartupSequence &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.StartupSequence.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, StartupSequence.SignalSignatures> & classes.StartupSequence);
@@ -2775,7 +2775,7 @@ export namespace Meta {
     }
     type WaylandClient = (typeof classes.WaylandClient)['prototype'];
     const WaylandClient: typeof classes.WaylandClient &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WaylandClient.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WaylandClient.SignalSignatures> & classes.WaylandClient);
@@ -2789,7 +2789,7 @@ export namespace Meta {
     }
     type WaylandCompositor = (typeof classes.WaylandCompositor)['prototype'];
     const WaylandCompositor: typeof classes.WaylandCompositor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WaylandCompositor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WaylandCompositor.SignalSignatures> & classes.WaylandCompositor);
@@ -2816,7 +2816,7 @@ export namespace Meta {
     }
     type WaylandSurface = (typeof classes.WaylandSurface)['prototype'];
     const WaylandSurface: typeof classes.WaylandSurface &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WaylandSurface.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WaylandSurface.SignalSignatures> & classes.WaylandSurface);
@@ -2916,7 +2916,7 @@ export namespace Meta {
     }
     type Window = (typeof classes.Window)['prototype'];
     const Window: typeof classes.Window &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Window.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Window.SignalSignatures> & classes.Window);
@@ -3014,7 +3014,7 @@ export namespace Meta {
     }
     type WindowActor = (typeof classes.WindowActor)['prototype'];
     const WindowActor: typeof classes.WindowActor &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WindowActor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowActor.SignalSignatures> & classes.WindowActor);
@@ -3033,7 +3033,7 @@ export namespace Meta {
     }
     type WindowConfig = (typeof classes.WindowConfig)['prototype'];
     const WindowConfig: typeof classes.WindowConfig &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WindowConfig.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowConfig.SignalSignatures> & classes.WindowConfig);
@@ -3123,7 +3123,7 @@ export namespace Meta {
     }
     type WindowGroup = (typeof classes.WindowGroup)['prototype'];
     const WindowGroup: typeof classes.WindowGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WindowGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowGroup.SignalSignatures> & classes.WindowGroup);
@@ -3147,7 +3147,7 @@ export namespace Meta {
     }
     type Workspace = (typeof classes.Workspace)['prototype'];
     const Workspace: typeof classes.Workspace &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.Workspace.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Workspace.SignalSignatures> & classes.Workspace);
@@ -3176,7 +3176,7 @@ export namespace Meta {
     }
     type WorkspaceManager = (typeof classes.WorkspaceManager)['prototype'];
     const WorkspaceManager: typeof classes.WorkspaceManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.WorkspaceManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WorkspaceManager.SignalSignatures> & classes.WorkspaceManager);
@@ -3188,7 +3188,7 @@ export namespace Meta {
     }
     type X11Display = (typeof classes.X11Display)['prototype'];
     const X11Display: typeof classes.X11Display &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Meta.X11Display.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, X11Display.SignalSignatures> & classes.X11Display);

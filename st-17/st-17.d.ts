@@ -437,7 +437,7 @@ export namespace St {
     }
     type Adjustment = (typeof classes.Adjustment)['prototype'];
     const Adjustment: typeof classes.Adjustment &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Adjustment.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Adjustment.SignalSignatures> & classes.Adjustment);
@@ -540,7 +540,7 @@ export namespace St {
     }
     type Bin<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.Bin<A>)['prototype'];
     const Bin: typeof classes.Bin &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Bin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Bin.SignalSignatures> & classes.Bin<A>);
@@ -552,7 +552,7 @@ export namespace St {
     }
     type BorderImage = (typeof classes.BorderImage)['prototype'];
     const BorderImage: typeof classes.BorderImage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.BorderImage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BorderImage.SignalSignatures> & classes.BorderImage);
@@ -666,7 +666,7 @@ export namespace St {
     }
     type BoxLayout = (typeof classes.BoxLayout)['prototype'];
     const BoxLayout: typeof classes.BoxLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.BoxLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BoxLayout.SignalSignatures> & classes.BoxLayout);
@@ -813,7 +813,7 @@ export namespace St {
     }
     type Button<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.Button<A>)['prototype'];
     const Button: typeof classes.Button &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Button.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Button.SignalSignatures> & classes.Button<A>);
@@ -825,7 +825,7 @@ export namespace St {
     }
     type Clipboard = (typeof classes.Clipboard)['prototype'];
     const Clipboard: typeof classes.Clipboard &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Clipboard.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Clipboard.SignalSignatures> & classes.Clipboard);
@@ -849,7 +849,7 @@ export namespace St {
     }
     type DndStartGesture = (typeof classes.DndStartGesture)['prototype'];
     const DndStartGesture: typeof classes.DndStartGesture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.DndStartGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DndStartGesture.SignalSignatures> & classes.DndStartGesture);
@@ -947,7 +947,7 @@ export namespace St {
     }
     type DrawingArea = (typeof classes.DrawingArea)['prototype'];
     const DrawingArea: typeof classes.DrawingArea &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.DrawingArea.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DrawingArea.SignalSignatures> & classes.DrawingArea);
@@ -1125,7 +1125,7 @@ export namespace St {
     }
     type Entry = (typeof classes.Entry)['prototype'];
     const Entry: typeof classes.Entry &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Entry.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Entry.SignalSignatures> & classes.Entry);
@@ -1137,7 +1137,7 @@ export namespace St {
     }
     type FocusManager = (typeof classes.FocusManager)['prototype'];
     const FocusManager: typeof classes.FocusManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.FocusManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FocusManager.SignalSignatures> & classes.FocusManager);
@@ -1175,7 +1175,7 @@ export namespace St {
     }
     type GenericAccessible = (typeof classes.GenericAccessible)['prototype'];
     const GenericAccessible: typeof classes.GenericAccessible &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.GenericAccessible.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GenericAccessible.SignalSignatures> & classes.GenericAccessible);
@@ -1321,7 +1321,7 @@ export namespace St {
     }
     type Icon = (typeof classes.Icon)['prototype'];
     const Icon: typeof classes.Icon &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Icon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Icon.SignalSignatures> & classes.Icon);
@@ -1333,7 +1333,7 @@ export namespace St {
     }
     type IconInfo = (typeof classes.IconInfo)['prototype'];
     const IconInfo: typeof classes.IconInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.IconInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IconInfo.SignalSignatures> & classes.IconInfo);
@@ -1347,7 +1347,7 @@ export namespace St {
     }
     type IconTheme = (typeof classes.IconTheme)['prototype'];
     const IconTheme: typeof classes.IconTheme &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.IconTheme.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, IconTheme.SignalSignatures> & classes.IconTheme);
@@ -1371,7 +1371,7 @@ export namespace St {
     }
     type ImageContent = (typeof classes.ImageContent)['prototype'];
     const ImageContent: typeof classes.ImageContent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ImageContent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ImageContent.SignalSignatures> & classes.ImageContent);
@@ -1483,7 +1483,7 @@ export namespace St {
     }
     type Label = (typeof classes.Label)['prototype'];
     const Label: typeof classes.Label &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Label.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Label.SignalSignatures> & classes.Label);
@@ -1609,7 +1609,7 @@ export namespace St {
     }
     type PasswordEntry = (typeof classes.PasswordEntry)['prototype'];
     const PasswordEntry: typeof classes.PasswordEntry &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.PasswordEntry.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PasswordEntry.SignalSignatures> & classes.PasswordEntry);
@@ -1719,7 +1719,7 @@ export namespace St {
     }
     type ScrollBar = (typeof classes.ScrollBar)['prototype'];
     const ScrollBar: typeof classes.ScrollBar &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ScrollBar.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ScrollBar.SignalSignatures> & classes.ScrollBar);
@@ -1886,7 +1886,7 @@ export namespace St {
     }
     type ScrollView<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.ScrollView<A>)['prototype'];
     const ScrollView: typeof classes.ScrollView &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ScrollView.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ScrollView.SignalSignatures> & classes.ScrollView<A>);
@@ -1931,7 +1931,7 @@ export namespace St {
     }
     type ScrollViewFade = (typeof classes.ScrollViewFade)['prototype'];
     const ScrollViewFade: typeof classes.ScrollViewFade &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ScrollViewFade.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ScrollViewFade.SignalSignatures> & classes.ScrollViewFade);
@@ -2046,7 +2046,7 @@ export namespace St {
     }
     type Settings = (typeof classes.Settings)['prototype'];
     const Settings: typeof classes.Settings &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Settings.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Settings.SignalSignatures> & classes.Settings);
@@ -2058,7 +2058,7 @@ export namespace St {
     }
     type SpinnerContent = (typeof classes.SpinnerContent)['prototype'];
     const SpinnerContent: typeof classes.SpinnerContent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.SpinnerContent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SpinnerContent.SignalSignatures> & classes.SpinnerContent);
@@ -2073,7 +2073,7 @@ export namespace St {
     }
     type TextureCache = (typeof classes.TextureCache)['prototype'];
     const TextureCache: typeof classes.TextureCache &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.TextureCache.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TextureCache.SignalSignatures> & classes.TextureCache);
@@ -2121,7 +2121,7 @@ export namespace St {
     }
     type Theme = (typeof classes.Theme)['prototype'];
     const Theme: typeof classes.Theme &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.Theme.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Theme.SignalSignatures> & classes.Theme);
@@ -2145,7 +2145,7 @@ export namespace St {
     }
     type ThemeContext = (typeof classes.ThemeContext)['prototype'];
     const ThemeContext: typeof classes.ThemeContext &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ThemeContext.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ThemeContext.SignalSignatures> & classes.ThemeContext);
@@ -2157,7 +2157,7 @@ export namespace St {
     }
     type ThemeNode = (typeof classes.ThemeNode)['prototype'];
     const ThemeNode: typeof classes.ThemeNode &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.ThemeNode.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ThemeNode.SignalSignatures> & classes.ThemeNode);
@@ -2269,7 +2269,7 @@ export namespace St {
         (new <
             A extends Clutter.LayoutManager = Clutter.LayoutManager,
             B extends Clutter.Content = Clutter.Content,
-            Opts extends GObject.MetaInfo = {},
+            Opts extends GObject.MetaInfo,
         >(
             properties?: Partial<St.Viewport.ConstructorProps>,
             ...args: any[]
@@ -2439,7 +2439,7 @@ export namespace St {
         (new <
             A extends Clutter.LayoutManager = Clutter.LayoutManager,
             B extends Clutter.Content = Clutter.Content,
-            Opts extends GObject.MetaInfo = {},
+            Opts extends GObject.MetaInfo,
         >(
             properties?: Partial<St.Widget.ConstructorProps>,
             ...args: any[]
@@ -2470,7 +2470,7 @@ export namespace St {
     }
     type WidgetAccessible = (typeof classes.WidgetAccessible)['prototype'];
     const WidgetAccessible: typeof classes.WidgetAccessible &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<St.WidgetAccessible.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WidgetAccessible.SignalSignatures> & classes.WidgetAccessible);

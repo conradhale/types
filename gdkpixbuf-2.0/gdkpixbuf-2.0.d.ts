@@ -352,7 +352,7 @@ export namespace GdkPixbuf {
     }
     type Pixbuf = (typeof classes.Pixbuf)['prototype'];
     const Pixbuf: typeof classes.Pixbuf &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.Pixbuf.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Pixbuf.SignalSignatures> & classes.Pixbuf);
@@ -364,7 +364,7 @@ export namespace GdkPixbuf {
     }
     type PixbufAnimation = (typeof classes.PixbufAnimation)['prototype'];
     const PixbufAnimation: typeof classes.PixbufAnimation &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufAnimation.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufAnimation.SignalSignatures> & classes.PixbufAnimation);
@@ -376,7 +376,7 @@ export namespace GdkPixbuf {
     }
     type PixbufAnimationIter = (typeof classes.PixbufAnimationIter)['prototype'];
     const PixbufAnimationIter: typeof classes.PixbufAnimationIter &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufAnimationIter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufAnimationIter.SignalSignatures> & classes.PixbufAnimationIter);
@@ -393,7 +393,7 @@ export namespace GdkPixbuf {
     }
     type PixbufLoader = (typeof classes.PixbufLoader)['prototype'];
     const PixbufLoader: typeof classes.PixbufLoader &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufLoader.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufLoader.SignalSignatures> & classes.PixbufLoader);
@@ -405,7 +405,7 @@ export namespace GdkPixbuf {
     }
     type PixbufNonAnim = (typeof classes.PixbufNonAnim)['prototype'];
     const PixbufNonAnim: typeof classes.PixbufNonAnim &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufNonAnim.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufNonAnim.SignalSignatures> & classes.PixbufNonAnim);
@@ -424,7 +424,7 @@ export namespace GdkPixbuf {
     }
     type PixbufSimpleAnim = (typeof classes.PixbufSimpleAnim)['prototype'];
     const PixbufSimpleAnim: typeof classes.PixbufSimpleAnim &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufSimpleAnim.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufSimpleAnim.SignalSignatures> & classes.PixbufSimpleAnim);
@@ -436,7 +436,7 @@ export namespace GdkPixbuf {
     }
     type PixbufSimpleAnimIter = (typeof classes.PixbufSimpleAnimIter)['prototype'];
     const PixbufSimpleAnimIter: typeof classes.PixbufSimpleAnimIter &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GdkPixbuf.PixbufSimpleAnimIter.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PixbufSimpleAnimIter.SignalSignatures> & classes.PixbufSimpleAnimIter);

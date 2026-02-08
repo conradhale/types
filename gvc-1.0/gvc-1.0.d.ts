@@ -63,7 +63,7 @@ export namespace Gvc {
     }
     type ChannelMap = (typeof classes.ChannelMap)['prototype'];
     const ChannelMap: typeof classes.ChannelMap &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.ChannelMap.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ChannelMap.SignalSignatures> & classes.ChannelMap);
@@ -94,7 +94,7 @@ export namespace Gvc {
     }
     type MixerCard = (typeof classes.MixerCard)['prototype'];
     const MixerCard: typeof classes.MixerCard &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerCard.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerCard.SignalSignatures> & classes.MixerCard);
@@ -125,7 +125,7 @@ export namespace Gvc {
     }
     type MixerControl = (typeof classes.MixerControl)['prototype'];
     const MixerControl: typeof classes.MixerControl &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerControl.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerControl.SignalSignatures> & classes.MixerControl);
@@ -160,7 +160,7 @@ export namespace Gvc {
     }
     type MixerEventRole = (typeof classes.MixerEventRole)['prototype'];
     const MixerEventRole: typeof classes.MixerEventRole &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerEventRole.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerEventRole.SignalSignatures> & classes.MixerEventRole);
@@ -192,7 +192,7 @@ export namespace Gvc {
     }
     type MixerSink = (typeof classes.MixerSink)['prototype'];
     const MixerSink: typeof classes.MixerSink &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerSink.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerSink.SignalSignatures> & classes.MixerSink);
@@ -224,7 +224,7 @@ export namespace Gvc {
     }
     type MixerSinkInput = (typeof classes.MixerSinkInput)['prototype'];
     const MixerSinkInput: typeof classes.MixerSinkInput &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerSinkInput.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerSinkInput.SignalSignatures> & classes.MixerSinkInput);
@@ -256,7 +256,7 @@ export namespace Gvc {
     }
     type MixerSource = (typeof classes.MixerSource)['prototype'];
     const MixerSource: typeof classes.MixerSource &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerSource.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerSource.SignalSignatures> & classes.MixerSource);
@@ -288,7 +288,7 @@ export namespace Gvc {
     }
     type MixerSourceOutput = (typeof classes.MixerSourceOutput)['prototype'];
     const MixerSourceOutput: typeof classes.MixerSourceOutput &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerSourceOutput.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerSourceOutput.SignalSignatures> & classes.MixerSourceOutput);
@@ -351,7 +351,7 @@ export namespace Gvc {
     }
     type MixerStream = (typeof classes.MixerStream)['prototype'];
     const MixerStream: typeof classes.MixerStream &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerStream.SignalSignatures> & classes.MixerStream);
@@ -385,7 +385,7 @@ export namespace Gvc {
     }
     type MixerUIDevice = (typeof classes.MixerUIDevice)['prototype'];
     const MixerUIDevice: typeof classes.MixerUIDevice &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Gvc.MixerUIDevice.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MixerUIDevice.SignalSignatures> & classes.MixerUIDevice);

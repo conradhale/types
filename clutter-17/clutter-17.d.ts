@@ -4452,7 +4452,7 @@ export namespace Clutter {
     }
     type Action = (typeof classes.Action)['prototype'];
     const Action: typeof classes.Action &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Action.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Action.SignalSignatures> & classes.Action);
@@ -5746,7 +5746,7 @@ export namespace Clutter {
         B
     >)['prototype'];
     const Actor: typeof classes.Actor &
-        (new <A extends LayoutManager = LayoutManager, B extends Content = Content, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends LayoutManager = LayoutManager, B extends Content = Content, Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Actor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Actor.SignalSignatures> & classes.Actor<A, B>);
@@ -5776,7 +5776,7 @@ export namespace Clutter {
     }
     type ActorAccessible = (typeof classes.ActorAccessible)['prototype'];
     const ActorAccessible: typeof classes.ActorAccessible &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ActorAccessible.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ActorAccessible.SignalSignatures> & classes.ActorAccessible);
@@ -5805,7 +5805,7 @@ export namespace Clutter {
     }
     type ActorMeta = (typeof classes.ActorMeta)['prototype'];
     const ActorMeta: typeof classes.ActorMeta &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ActorMeta.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ActorMeta.SignalSignatures> & classes.ActorMeta);
@@ -5906,7 +5906,7 @@ export namespace Clutter {
     }
     type AlignConstraint = (typeof classes.AlignConstraint)['prototype'];
     const AlignConstraint: typeof classes.AlignConstraint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.AlignConstraint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AlignConstraint.SignalSignatures> & classes.AlignConstraint);
@@ -5925,7 +5925,7 @@ export namespace Clutter {
     }
     type Backend = (typeof classes.Backend)['prototype'];
     const Backend: typeof classes.Backend &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Backend.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Backend.SignalSignatures> & classes.Backend);
@@ -5937,7 +5937,7 @@ export namespace Clutter {
     }
     type BinLayout = (typeof classes.BinLayout)['prototype'];
     const BinLayout: typeof classes.BinLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BinLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BinLayout.SignalSignatures> & classes.BinLayout);
@@ -5972,7 +5972,7 @@ export namespace Clutter {
     }
     type BindConstraint = (typeof classes.BindConstraint)['prototype'];
     const BindConstraint: typeof classes.BindConstraint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BindConstraint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BindConstraint.SignalSignatures> & classes.BindConstraint);
@@ -5991,7 +5991,7 @@ export namespace Clutter {
     }
     type BindingPool = (typeof classes.BindingPool)['prototype'];
     const BindingPool: typeof classes.BindingPool &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BindingPool.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BindingPool.SignalSignatures> & classes.BindingPool);
@@ -6053,7 +6053,7 @@ export namespace Clutter {
     }
     type BlurEffect = (typeof classes.BlurEffect)['prototype'];
     const BlurEffect: typeof classes.BlurEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BlurEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BlurEffect.SignalSignatures> & classes.BlurEffect);
@@ -6110,7 +6110,7 @@ export namespace Clutter {
     }
     type BoxLayout = (typeof classes.BoxLayout)['prototype'];
     const BoxLayout: typeof classes.BoxLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BoxLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BoxLayout.SignalSignatures> & classes.BoxLayout);
@@ -6149,7 +6149,7 @@ export namespace Clutter {
     }
     type BrightnessContrastEffect = (typeof classes.BrightnessContrastEffect)['prototype'];
     const BrightnessContrastEffect: typeof classes.BrightnessContrastEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.BrightnessContrastEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BrightnessContrastEffect.SignalSignatures> &
@@ -6206,7 +6206,7 @@ export namespace Clutter {
     }
     type ClickGesture = (typeof classes.ClickGesture)['prototype'];
     const ClickGesture: typeof classes.ClickGesture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ClickGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ClickGesture.SignalSignatures> & classes.ClickGesture);
@@ -6328,7 +6328,7 @@ export namespace Clutter {
     }
     type Clone<A extends Actor = Actor> = (typeof classes.Clone<A>)['prototype'];
     const Clone: typeof classes.Clone &
-        (new <A extends Actor = Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Actor = Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Clone.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Clone.SignalSignatures> & classes.Clone<A>);
@@ -6347,7 +6347,7 @@ export namespace Clutter {
     }
     type ColorManager = (typeof classes.ColorManager)['prototype'];
     const ColorManager: typeof classes.ColorManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ColorManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ColorManager.SignalSignatures> & classes.ColorManager);
@@ -6394,7 +6394,7 @@ export namespace Clutter {
     }
     type ColorState = (typeof classes.ColorState)['prototype'];
     const ColorState: typeof classes.ColorState &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ColorState.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ColorState.SignalSignatures> & classes.ColorState);
@@ -6408,7 +6408,7 @@ export namespace Clutter {
     }
     type ColorStateIcc = (typeof classes.ColorStateIcc)['prototype'];
     const ColorStateIcc: typeof classes.ColorStateIcc &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ColorStateIcc.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ColorStateIcc.SignalSignatures> & classes.ColorStateIcc);
@@ -6422,7 +6422,7 @@ export namespace Clutter {
     }
     type ColorStateParams = (typeof classes.ColorStateParams)['prototype'];
     const ColorStateParams: typeof classes.ColorStateParams &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ColorStateParams.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ColorStateParams.SignalSignatures> & classes.ColorStateParams);
@@ -6444,7 +6444,7 @@ export namespace Clutter {
     }
     type ColorizeEffect = (typeof classes.ColorizeEffect)['prototype'];
     const ColorizeEffect: typeof classes.ColorizeEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ColorizeEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ColorizeEffect.SignalSignatures> & classes.ColorizeEffect);
@@ -6460,7 +6460,7 @@ export namespace Clutter {
     }
     type Constraint = (typeof classes.Constraint)['prototype'];
     const Constraint: typeof classes.Constraint &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Constraint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Constraint.SignalSignatures> & classes.Constraint);
@@ -6472,7 +6472,7 @@ export namespace Clutter {
     }
     type Context = (typeof classes.Context)['prototype'];
     const Context: typeof classes.Context &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Context.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Context.SignalSignatures> & classes.Context);
@@ -6526,7 +6526,7 @@ export namespace Clutter {
     }
     type DeformEffect = (typeof classes.DeformEffect)['prototype'];
     const DeformEffect: typeof classes.DeformEffect &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.DeformEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeformEffect.SignalSignatures> & classes.DeformEffect);
@@ -6549,7 +6549,7 @@ export namespace Clutter {
     }
     type DesaturateEffect = (typeof classes.DesaturateEffect)['prototype'];
     const DesaturateEffect: typeof classes.DesaturateEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.DesaturateEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DesaturateEffect.SignalSignatures> & classes.DesaturateEffect);
@@ -6565,7 +6565,7 @@ export namespace Clutter {
     }
     type Effect = (typeof classes.Effect)['prototype'];
     const Effect: typeof classes.Effect &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Effect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Effect.SignalSignatures> & classes.Effect);
@@ -6577,7 +6577,7 @@ export namespace Clutter {
     }
     type FixedLayout = (typeof classes.FixedLayout)['prototype'];
     const FixedLayout: typeof classes.FixedLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.FixedLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FixedLayout.SignalSignatures> & classes.FixedLayout);
@@ -6682,7 +6682,7 @@ export namespace Clutter {
     }
     type FlowLayout = (typeof classes.FlowLayout)['prototype'];
     const FlowLayout: typeof classes.FlowLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.FlowLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FlowLayout.SignalSignatures> & classes.FlowLayout);
@@ -6698,7 +6698,7 @@ export namespace Clutter {
     }
     type Focus = (typeof classes.Focus)['prototype'];
     const Focus: typeof classes.Focus &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Focus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Focus.SignalSignatures> & classes.Focus);
@@ -6712,7 +6712,7 @@ export namespace Clutter {
     }
     type FrameClock = (typeof classes.FrameClock)['prototype'];
     const FrameClock: typeof classes.FrameClock &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.FrameClock.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FrameClock.SignalSignatures> & classes.FrameClock);
@@ -6724,7 +6724,7 @@ export namespace Clutter {
     }
     type FrameClockDriver = (typeof classes.FrameClockDriver)['prototype'];
     const FrameClockDriver: typeof classes.FrameClockDriver &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.FrameClockDriver.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FrameClockDriver.SignalSignatures> & classes.FrameClockDriver);
@@ -6751,7 +6751,7 @@ export namespace Clutter {
     }
     type Gesture = (typeof classes.Gesture)['prototype'];
     const Gesture: typeof classes.Gesture &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Gesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Gesture.SignalSignatures> & classes.Gesture);
@@ -6767,7 +6767,7 @@ export namespace Clutter {
     }
     type Grab = (typeof classes.Grab)['prototype'];
     const Grab: typeof classes.Grab &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Grab.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Grab.SignalSignatures> & classes.Grab);
@@ -6822,7 +6822,7 @@ export namespace Clutter {
     }
     type GridLayout = (typeof classes.GridLayout)['prototype'];
     const GridLayout: typeof classes.GridLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.GridLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GridLayout.SignalSignatures> & classes.GridLayout);
@@ -6917,7 +6917,7 @@ export namespace Clutter {
     }
     type InputDevice = (typeof classes.InputDevice)['prototype'];
     const InputDevice: typeof classes.InputDevice &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.InputDevice.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputDevice.SignalSignatures> & classes.InputDevice);
@@ -6939,7 +6939,7 @@ export namespace Clutter {
     }
     type InputDeviceTool = (typeof classes.InputDeviceTool)['prototype'];
     const InputDeviceTool: typeof classes.InputDeviceTool &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.InputDeviceTool.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputDeviceTool.SignalSignatures> & classes.InputDeviceTool);
@@ -6951,7 +6951,7 @@ export namespace Clutter {
     }
     type InputFocus = (typeof classes.InputFocus)['prototype'];
     const InputFocus: typeof classes.InputFocus &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.InputFocus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputFocus.SignalSignatures> & classes.InputFocus);
@@ -6979,7 +6979,7 @@ export namespace Clutter {
     }
     type InputMethod = (typeof classes.InputMethod)['prototype'];
     const InputMethod: typeof classes.InputMethod &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.InputMethod.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputMethod.SignalSignatures> & classes.InputMethod);
@@ -7012,7 +7012,7 @@ export namespace Clutter {
     }
     type Interval = (typeof classes.Interval)['prototype'];
     const Interval: typeof classes.Interval &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Interval.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Interval.SignalSignatures> & classes.Interval);
@@ -7026,7 +7026,7 @@ export namespace Clutter {
     }
     type KeyFocus = (typeof classes.KeyFocus)['prototype'];
     const KeyFocus: typeof classes.KeyFocus &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.KeyFocus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, KeyFocus.SignalSignatures> & classes.KeyFocus);
@@ -7051,7 +7051,7 @@ export namespace Clutter {
     }
     type KeyframeTransition = (typeof classes.KeyframeTransition)['prototype'];
     const KeyframeTransition: typeof classes.KeyframeTransition &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.KeyframeTransition.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, KeyframeTransition.SignalSignatures> & classes.KeyframeTransition);
@@ -7072,7 +7072,7 @@ export namespace Clutter {
     }
     type Keymap = (typeof classes.Keymap)['prototype'];
     const Keymap: typeof classes.Keymap &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Keymap.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Keymap.SignalSignatures> & classes.Keymap);
@@ -7112,7 +7112,7 @@ export namespace Clutter {
     }
     type LayoutManager = (typeof classes.LayoutManager)['prototype'];
     const LayoutManager: typeof classes.LayoutManager &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.LayoutManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, LayoutManager.SignalSignatures> & classes.LayoutManager);
@@ -7141,7 +7141,7 @@ export namespace Clutter {
     }
     type LayoutMeta = (typeof classes.LayoutMeta)['prototype'];
     const LayoutMeta: typeof classes.LayoutMeta &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.LayoutMeta.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, LayoutMeta.SignalSignatures> & classes.LayoutMeta);
@@ -7162,7 +7162,7 @@ export namespace Clutter {
     }
     type LongPressGesture = (typeof classes.LongPressGesture)['prototype'];
     const LongPressGesture: typeof classes.LongPressGesture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.LongPressGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, LongPressGesture.SignalSignatures> & classes.LongPressGesture);
@@ -7178,7 +7178,7 @@ export namespace Clutter {
     }
     type OffscreenEffect = (typeof classes.OffscreenEffect)['prototype'];
     const OffscreenEffect: typeof classes.OffscreenEffect &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.OffscreenEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, OffscreenEffect.SignalSignatures> & classes.OffscreenEffect);
@@ -7214,7 +7214,7 @@ export namespace Clutter {
     }
     type PageTurnEffect = (typeof classes.PageTurnEffect)['prototype'];
     const PageTurnEffect: typeof classes.PageTurnEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.PageTurnEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PageTurnEffect.SignalSignatures> & classes.PageTurnEffect);
@@ -7418,7 +7418,7 @@ export namespace Clutter {
     }
     type PanGesture = (typeof classes.PanGesture)['prototype'];
     const PanGesture: typeof classes.PanGesture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.PanGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PanGesture.SignalSignatures> & classes.PanGesture);
@@ -7430,7 +7430,7 @@ export namespace Clutter {
     }
     type PipelineCache = (typeof classes.PipelineCache)['prototype'];
     const PipelineCache: typeof classes.PipelineCache &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.PipelineCache.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PipelineCache.SignalSignatures> & classes.PipelineCache);
@@ -7518,7 +7518,7 @@ export namespace Clutter {
     }
     type PressGesture = (typeof classes.PressGesture)['prototype'];
     const PressGesture: typeof classes.PressGesture &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.PressGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PressGesture.SignalSignatures> & classes.PressGesture);
@@ -7552,7 +7552,7 @@ export namespace Clutter {
     }
     type PropertyTransition = (typeof classes.PropertyTransition)['prototype'];
     const PropertyTransition: typeof classes.PropertyTransition &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.PropertyTransition.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PropertyTransition.SignalSignatures> & classes.PropertyTransition);
@@ -7620,7 +7620,7 @@ export namespace Clutter {
     }
     type Seat = (typeof classes.Seat)['prototype'];
     const Seat: typeof classes.Seat &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Seat.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Seat.SignalSignatures> & classes.Seat);
@@ -7709,7 +7709,7 @@ export namespace Clutter {
     }
     type Settings = (typeof classes.Settings)['prototype'];
     const Settings: typeof classes.Settings &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Settings.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Settings.SignalSignatures> & classes.Settings);
@@ -7739,7 +7739,7 @@ export namespace Clutter {
     }
     type ShaderEffect = (typeof classes.ShaderEffect)['prototype'];
     const ShaderEffect: typeof classes.ShaderEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.ShaderEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ShaderEffect.SignalSignatures> & classes.ShaderEffect);
@@ -7860,7 +7860,7 @@ export namespace Clutter {
     }
     type SnapConstraint = (typeof classes.SnapConstraint)['prototype'];
     const SnapConstraint: typeof classes.SnapConstraint &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.SnapConstraint.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SnapConstraint.SignalSignatures> & classes.SnapConstraint);
@@ -7879,7 +7879,7 @@ export namespace Clutter {
     }
     type Sprite = (typeof classes.Sprite)['prototype'];
     const Sprite: typeof classes.Sprite &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Sprite.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Sprite.SignalSignatures> & classes.Sprite);
@@ -8009,7 +8009,7 @@ export namespace Clutter {
     }
     type Stage = (typeof classes.Stage)['prototype'];
     const Stage: typeof classes.Stage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Stage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Stage.SignalSignatures> & classes.Stage);
@@ -8051,7 +8051,7 @@ export namespace Clutter {
     }
     type StageView = (typeof classes.StageView)['prototype'];
     const StageView: typeof classes.StageView &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.StageView.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, StageView.SignalSignatures> & classes.StageView);
@@ -8443,7 +8443,7 @@ export namespace Clutter {
     }
     type Text = (typeof classes.Text)['prototype'];
     const Text: typeof classes.Text &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Text.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Text.SignalSignatures> & classes.Text);
@@ -8478,7 +8478,7 @@ export namespace Clutter {
     }
     type TextBuffer = (typeof classes.TextBuffer)['prototype'];
     const TextBuffer: typeof classes.TextBuffer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.TextBuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TextBuffer.SignalSignatures> & classes.TextBuffer);
@@ -8516,7 +8516,7 @@ export namespace Clutter {
     }
     type TextureContent = (typeof classes.TextureContent)['prototype'];
     const TextureContent: typeof classes.TextureContent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.TextureContent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TextureContent.SignalSignatures> & classes.TextureContent);
@@ -8645,7 +8645,7 @@ export namespace Clutter {
     }
     type Timeline = (typeof classes.Timeline)['prototype'];
     const Timeline: typeof classes.Timeline &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Timeline.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Timeline.SignalSignatures> & classes.Timeline);
@@ -8727,7 +8727,7 @@ export namespace Clutter {
     }
     type Transition = (typeof classes.Transition)['prototype'];
     const Transition: typeof classes.Transition &
-        (abstract new <Opts extends GObject.MetaInfo = {}>(
+        (abstract new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.Transition.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Transition.SignalSignatures> & classes.Transition);
@@ -8751,7 +8751,7 @@ export namespace Clutter {
     }
     type TransitionGroup = (typeof classes.TransitionGroup)['prototype'];
     const TransitionGroup: typeof classes.TransitionGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.TransitionGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TransitionGroup.SignalSignatures> & classes.TransitionGroup);
@@ -8770,7 +8770,7 @@ export namespace Clutter {
     }
     type VirtualInputDevice = (typeof classes.VirtualInputDevice)['prototype'];
     const VirtualInputDevice: typeof classes.VirtualInputDevice &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Clutter.VirtualInputDevice.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, VirtualInputDevice.SignalSignatures> & classes.VirtualInputDevice);

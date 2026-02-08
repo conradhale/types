@@ -676,7 +676,7 @@ export namespace GioUnix {
     }
     type DesktopAppInfo = (typeof classes.DesktopAppInfo)['prototype'];
     const DesktopAppInfo: typeof classes.DesktopAppInfo &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GioUnix.DesktopAppInfo.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DesktopAppInfo.SignalSignatures> & classes.DesktopAppInfo);
@@ -699,7 +699,7 @@ export namespace GioUnix {
     }
     type FDMessage = (typeof classes.FDMessage)['prototype'];
     const FDMessage: typeof classes.FDMessage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GioUnix.FDMessage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, FDMessage.SignalSignatures> & classes.FDMessage);
@@ -730,7 +730,7 @@ export namespace GioUnix {
     }
     type InputStream = (typeof classes.InputStream)['prototype'];
     const InputStream: typeof classes.InputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GioUnix.InputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InputStream.SignalSignatures> & classes.InputStream);
@@ -745,7 +745,7 @@ export namespace GioUnix {
     }
     type MountMonitor = (typeof classes.MountMonitor)['prototype'];
     const MountMonitor: typeof classes.MountMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GioUnix.MountMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MountMonitor.SignalSignatures> & classes.MountMonitor);
@@ -776,7 +776,7 @@ export namespace GioUnix {
     }
     type OutputStream = (typeof classes.OutputStream)['prototype'];
     const OutputStream: typeof classes.OutputStream &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<GioUnix.OutputStream.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, OutputStream.SignalSignatures> & classes.OutputStream);

@@ -475,7 +475,7 @@ export namespace Shell {
     }
     type App = (typeof classes.App)['prototype'];
     const App: typeof classes.App &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.App.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, App.SignalSignatures> & classes.App);
@@ -490,7 +490,7 @@ export namespace Shell {
     }
     type AppSystem = (typeof classes.AppSystem)['prototype'];
     const AppSystem: typeof classes.AppSystem &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.AppSystem.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AppSystem.SignalSignatures> & classes.AppSystem);
@@ -502,7 +502,7 @@ export namespace Shell {
     }
     type AppUsage = (typeof classes.AppUsage)['prototype'];
     const AppUsage: typeof classes.AppUsage &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.AppUsage.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AppUsage.SignalSignatures> & classes.AppUsage);
@@ -525,7 +525,7 @@ export namespace Shell {
     }
     type BlurEffect = (typeof classes.BlurEffect)['prototype'];
     const BlurEffect: typeof classes.BlurEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.BlurEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, BlurEffect.SignalSignatures> & classes.BlurEffect);
@@ -542,7 +542,7 @@ export namespace Shell {
     }
     type CameraMonitor = (typeof classes.CameraMonitor)['prototype'];
     const CameraMonitor: typeof classes.CameraMonitor &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.CameraMonitor.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, CameraMonitor.SignalSignatures> & classes.CameraMonitor);
@@ -566,7 +566,7 @@ export namespace Shell {
     }
     type EdgeDragGesture = (typeof classes.EdgeDragGesture)['prototype'];
     const EdgeDragGesture: typeof classes.EdgeDragGesture &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.EdgeDragGesture.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, EdgeDragGesture.SignalSignatures> & classes.EdgeDragGesture);
@@ -582,7 +582,7 @@ export namespace Shell {
     }
     type GLSLEffect = (typeof classes.GLSLEffect)['prototype'];
     const GLSLEffect: typeof classes.GLSLEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.GLSLEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, GLSLEffect.SignalSignatures> & classes.GLSLEffect);
@@ -654,7 +654,7 @@ export namespace Shell {
     }
     type Global = (typeof classes.Global)['prototype'];
     const Global: typeof classes.Global &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.Global.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Global.SignalSignatures> & classes.Global);
@@ -670,7 +670,7 @@ export namespace Shell {
     }
     type InvertLightnessEffect = (typeof classes.InvertLightnessEffect)['prototype'];
     const InvertLightnessEffect: typeof classes.InvertLightnessEffect &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.InvertLightnessEffect.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, InvertLightnessEffect.SignalSignatures> & classes.InvertLightnessEffect);
@@ -751,7 +751,7 @@ export namespace Shell {
     }
     type KeyringPrompt = (typeof classes.KeyringPrompt)['prototype'];
     const KeyringPrompt: typeof classes.KeyringPrompt &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.KeyringPrompt.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, KeyringPrompt.SignalSignatures> & classes.KeyringPrompt);
@@ -774,7 +774,7 @@ export namespace Shell {
     }
     type MountOperation = (typeof classes.MountOperation)['prototype'];
     const MountOperation: typeof classes.MountOperation &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.MountOperation.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, MountOperation.SignalSignatures> & classes.MountOperation);
@@ -801,7 +801,7 @@ export namespace Shell {
     }
     type NetworkAgent = (typeof classes.NetworkAgent)['prototype'];
     const NetworkAgent: typeof classes.NetworkAgent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.NetworkAgent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, NetworkAgent.SignalSignatures> & classes.NetworkAgent);
@@ -813,7 +813,7 @@ export namespace Shell {
     }
     type PerfLog = (typeof classes.PerfLog)['prototype'];
     const PerfLog: typeof classes.PerfLog &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.PerfLog.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PerfLog.SignalSignatures> & classes.PerfLog);
@@ -828,7 +828,7 @@ export namespace Shell {
     }
     type PolkitAuthenticationAgent = (typeof classes.PolkitAuthenticationAgent)['prototype'];
     const PolkitAuthenticationAgent: typeof classes.PolkitAuthenticationAgent &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.PolkitAuthenticationAgent.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, PolkitAuthenticationAgent.SignalSignatures> &
@@ -843,7 +843,7 @@ export namespace Shell {
     }
     type Screenshot = (typeof classes.Screenshot)['prototype'];
     const Screenshot: typeof classes.Screenshot &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.Screenshot.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Screenshot.SignalSignatures> & classes.Screenshot);
@@ -859,7 +859,7 @@ export namespace Shell {
     }
     type SecureTextBuffer = (typeof classes.SecureTextBuffer)['prototype'];
     const SecureTextBuffer: typeof classes.SecureTextBuffer &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.SecureTextBuffer.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SecureTextBuffer.SignalSignatures> & classes.SecureTextBuffer);
@@ -957,7 +957,7 @@ export namespace Shell {
     }
     type SquareBin<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.SquareBin<A>)['prototype'];
     const SquareBin: typeof classes.SquareBin &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.SquareBin.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SquareBin.SignalSignatures> & classes.SquareBin<A>);
@@ -1054,7 +1054,7 @@ export namespace Shell {
     }
     type Stack = (typeof classes.Stack)['prototype'];
     const Stack: typeof classes.Stack &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.Stack.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Stack.SignalSignatures> & classes.Stack);
@@ -1153,7 +1153,7 @@ export namespace Shell {
     }
     type TrayIcon<A extends Clutter.Actor = Clutter.Actor> = (typeof classes.TrayIcon<A>)['prototype'];
     const TrayIcon: typeof classes.TrayIcon &
-        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo = {}>(
+        (new <A extends Clutter.Actor = Clutter.Actor, Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.TrayIcon.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TrayIcon.SignalSignatures> & classes.TrayIcon<A>);
@@ -1172,7 +1172,7 @@ export namespace Shell {
     }
     type TrayManager = (typeof classes.TrayManager)['prototype'];
     const TrayManager: typeof classes.TrayManager &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.TrayManager.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TrayManager.SignalSignatures> & classes.TrayManager);
@@ -1206,7 +1206,7 @@ export namespace Shell {
     }
     type WM = (typeof classes.WM)['prototype'];
     const WM: typeof classes.WM &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.WM.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WM.SignalSignatures> & classes.WM);
@@ -1307,7 +1307,7 @@ export namespace Shell {
     }
     type WindowPreview = (typeof classes.WindowPreview)['prototype'];
     const WindowPreview: typeof classes.WindowPreview &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.WindowPreview.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowPreview.SignalSignatures> & classes.WindowPreview);
@@ -1324,7 +1324,7 @@ export namespace Shell {
     }
     type WindowPreviewLayout = (typeof classes.WindowPreviewLayout)['prototype'];
     const WindowPreviewLayout: typeof classes.WindowPreviewLayout &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.WindowPreviewLayout.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowPreviewLayout.SignalSignatures> & classes.WindowPreviewLayout);
@@ -1343,7 +1343,7 @@ export namespace Shell {
     }
     type WindowTracker = (typeof classes.WindowTracker)['prototype'];
     const WindowTracker: typeof classes.WindowTracker &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.WindowTracker.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WindowTracker.SignalSignatures> & classes.WindowTracker);
@@ -1447,7 +1447,7 @@ export namespace Shell {
     }
     type WorkspaceBackground = (typeof classes.WorkspaceBackground)['prototype'];
     const WorkspaceBackground: typeof classes.WorkspaceBackground &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Shell.WorkspaceBackground.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WorkspaceBackground.SignalSignatures> & classes.WorkspaceBackground);

@@ -149,7 +149,7 @@ export namespace Polkit {
     }
     type ActionDescription = (typeof classes.ActionDescription)['prototype'];
     const ActionDescription: typeof classes.ActionDescription &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.ActionDescription.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, ActionDescription.SignalSignatures> & classes.ActionDescription);
@@ -195,7 +195,7 @@ export namespace Polkit {
     }
     type Authority = (typeof classes.Authority)['prototype'];
     const Authority: typeof classes.Authority &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.Authority.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Authority.SignalSignatures> & classes.Authority);
@@ -207,7 +207,7 @@ export namespace Polkit {
     }
     type AuthorizationResult = (typeof classes.AuthorizationResult)['prototype'];
     const AuthorizationResult: typeof classes.AuthorizationResult &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.AuthorizationResult.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, AuthorizationResult.SignalSignatures> & classes.AuthorizationResult);
@@ -219,7 +219,7 @@ export namespace Polkit {
     }
     type Details = (typeof classes.Details)['prototype'];
     const Details: typeof classes.Details &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.Details.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Details.SignalSignatures> & classes.Details);
@@ -254,7 +254,7 @@ export namespace Polkit {
     }
     type Permission = (typeof classes.Permission)['prototype'];
     const Permission: typeof classes.Permission &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.Permission.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, Permission.SignalSignatures> & classes.Permission);
@@ -273,7 +273,7 @@ export namespace Polkit {
     }
     type SystemBusName = (typeof classes.SystemBusName)['prototype'];
     const SystemBusName: typeof classes.SystemBusName &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.SystemBusName.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SystemBusName.SignalSignatures> & classes.SystemBusName);
@@ -285,7 +285,7 @@ export namespace Polkit {
     }
     type TemporaryAuthorization = (typeof classes.TemporaryAuthorization)['prototype'];
     const TemporaryAuthorization: typeof classes.TemporaryAuthorization &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.TemporaryAuthorization.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, TemporaryAuthorization.SignalSignatures> & classes.TemporaryAuthorization);
@@ -304,7 +304,7 @@ export namespace Polkit {
     }
     type UnixGroup = (typeof classes.UnixGroup)['prototype'];
     const UnixGroup: typeof classes.UnixGroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.UnixGroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixGroup.SignalSignatures> & classes.UnixGroup);
@@ -323,7 +323,7 @@ export namespace Polkit {
     }
     type UnixNetgroup = (typeof classes.UnixNetgroup)['prototype'];
     const UnixNetgroup: typeof classes.UnixNetgroup &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.UnixNetgroup.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixNetgroup.SignalSignatures> & classes.UnixNetgroup);
@@ -358,7 +358,7 @@ export namespace Polkit {
     }
     type UnixProcess = (typeof classes.UnixProcess)['prototype'];
     const UnixProcess: typeof classes.UnixProcess &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.UnixProcess.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixProcess.SignalSignatures> & classes.UnixProcess);
@@ -390,7 +390,7 @@ export namespace Polkit {
     }
     type UnixSession = (typeof classes.UnixSession)['prototype'];
     const UnixSession: typeof classes.UnixSession &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.UnixSession.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixSession.SignalSignatures> & classes.UnixSession);
@@ -409,7 +409,7 @@ export namespace Polkit {
     }
     type UnixUser = (typeof classes.UnixUser)['prototype'];
     const UnixUser: typeof classes.UnixUser &
-        (new <Opts extends GObject.MetaInfo = {}>(
+        (new <Opts extends GObject.MetaInfo>(
             properties?: Partial<Polkit.UnixUser.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixUser.SignalSignatures> & classes.UnixUser);
