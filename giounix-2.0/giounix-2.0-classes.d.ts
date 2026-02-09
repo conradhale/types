@@ -10,7 +10,7 @@ declare namespace classes {
         static '$gtype': GObject.GType<DesktopAppInfo>;
         // Properties
         /**
-         * The origin filename of this [class`Gio`.DesktopAppInfo]
+         * The origin filename of this [class`GioUnix`.DesktopAppInfo]
          */
         get filename(): string;
         /**
@@ -44,48 +44,6 @@ declare namespace classes {
         emit(signal: string, ...args: any[]): void;
         // Static methods
         /**
-         * Gets the user-visible display name of the
-         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-         * specified by `action_name`.
-         *
-         * This corresponds to the `Name` key within the keyfile group for the
-         * action.
-         *
-         * @param info a [class`Gio`.DesktopAppInfo]
-         * @param action_name the name of the action as from
-         *   [method`Gio`.DesktopAppInfo.list_actions]
-         */
-        static get_action_name(info: Gio.DesktopAppInfo, action_name: string): string;
-        /**
-         * Looks up a boolean value in the keyfile backing `info`.
-         *
-         * The `key` is looked up in the `Desktop Entry` group.
-         *
-         * @param info a [class`Gio`.DesktopAppInfo]
-         * @param key the key to look up
-         */
-        static get_boolean(info: Gio.DesktopAppInfo, key: string): boolean;
-        /**
-         * Gets the categories from the desktop file.
-         *
-         * @param info a [class`Gio`.DesktopAppInfo]
-         */
-        static get_categories(info: Gio.DesktopAppInfo): string | null;
-        /**
-         * When `info` was created from a known filename, return it.  In some
-         * situations such as a [class`Gio`.DesktopAppInfo] returned from
-         * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
-         *
-         * @param info a [class`Gio`.DesktopAppInfo]
-         */
-        static get_filename(info: Gio.DesktopAppInfo): string | null;
-        /**
-         * Gets the generic name from the desktop file.
-         *
-         * @param info a [class`Gio`.DesktopAppInfo]
-         */
-        static get_generic_name(info: Gio.DesktopAppInfo): string | null;
-        /**
          * Gets all applications that implement `interface`.
          *
          * An application implements an interface if that interface is listed in
@@ -93,40 +51,127 @@ declare namespace classes {
          *
          * @param _interface the name of the interface
          */
-        static get_implementations(_interface: string): Gio.DesktopAppInfo[];
+        static get_implementations(_interface: string): GioUnix.DesktopAppInfo[];
+        /**
+         * Searches desktop files for ones that match `search_string`.
+         *
+         * The return value is an array of strvs.  Each strv contains a list of
+         * applications that matched `search_string` with an equal score.  The
+         * outer list is sorted by score so that the first strv contains the
+         * best-matching applications, and so on.
+         * The algorithm for determining matches is undefined and may change at
+         * any time.
+         *
+         * None of the search results are subjected to the normal validation
+         * checks performed by [ctor`GioUnix`.DesktopAppInfo.new] (for example,
+         * checking that the executable referenced by a result exists), and so it is
+         * possible for [ctor`GioUnix`.DesktopAppInfo.new] to return `NULL` when passed
+         * an app ID returned by this function. It is expected that calling code will
+         * do this when subsequently creating a [class`GioUnix`.DesktopAppInfo] for
+         * each result.
+         *
+         * @param search_string the search string to use
+         */
+        static search(search_string: string): string[];
+        /**
+         * Sets the name of the desktop that the application is running in.
+         *
+         * This is used by [method`Gio`.AppInfo.should_show] and
+         * [method`GioUnix`.DesktopAppInfo.get_show_in] to evaluate the
+         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
+         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
+         * keys.
+         *
+         * Should be called only once; subsequent calls are ignored.
+         *
+         * @param desktop_env a string specifying what desktop this is
+         */
+        static set_desktop_env(desktop_env: string): void;
+        // Methods
+        /**
+         * Gets the user-visible display name of the
+         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
+         * specified by `action_name`.
+         *
+         * This corresponds to the `Name` key within the keyfile group for the
+         * action.
+         *
+         * @returns the locale-specific action name
+         * @param action_name the name of the action as from
+         *   [method`GioUnix`.DesktopAppInfo.list_actions]
+         */
+        get_action_name(action_name: string): string;
+        /**
+         * Looks up a boolean value in the keyfile backing `info`.
+         *
+         * The `key` is looked up in the `Desktop Entry` group.
+         *
+         * @returns the boolean value, or `FALSE` if the key is not found
+         * @param key the key to look up
+         */
+        get_boolean(key: string): boolean;
+        /**
+         * Gets the categories from the desktop file.
+         *
+         * @returns The unparsed
+         *   [`Categories` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-categories)
+         *   from the desktop file;
+         *   i.e. no attempt is made to split it by `;` or validate it.
+         */
+        get_categories(): string | null;
+        /**
+         * When `info` was created from a known filename, return it.
+         *
+         * In some situations such as a [class`GioUnix`.DesktopAppInfo] returned
+         * from [ctor`GioUnix`.DesktopAppInfo.new_from_keyfile], this function
+         * will return `NULL`.
+         *
+         * @returns The full path to the file for `info,`
+         *   or `NULL` if not known.
+         */
+        get_filename(): string | null;
+        /**
+         * Gets the generic name from the desktop file.
+         *
+         * @returns The value of the
+         *   [`GenericName` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-genericname)
+         */
+        get_generic_name(): string | null;
         /**
          * A desktop file is hidden if the
          * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
          * in it is set to `True`.
          *
-         * @param info a [class`Gio`.DesktopAppInfo].
+         * @returns `TRUE` if hidden, `FALSE` otherwise.
          */
-        static get_is_hidden(info: Gio.DesktopAppInfo): boolean;
+        get_is_hidden(): boolean;
         /**
          * Gets the keywords from the desktop file.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns The value of the
+         *   [`Keywords` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-keywords)
          */
-        static get_keywords(info: Gio.DesktopAppInfo): string[];
+        get_keywords(): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
          *
          * The `key` is looked up in the `Desktop Entry` group.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns a newly allocated string, or `NULL` if the key is not
+         *   found
          * @param key the key to look up
          */
-        static get_locale_string(info: Gio.DesktopAppInfo, key: string): string | null;
+        get_locale_string(key: string): string | null;
         /**
          * Gets the value of the
          * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
          *  which helps determine if the application info should be shown in menus. See
          * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns The value of the `NoDisplay` key
          */
-        static get_nodisplay(info: Gio.DesktopAppInfo): boolean;
+        get_nodisplay(): boolean;
         /**
          * Checks if the application info should be shown in menus that list available
          * applications for a specific name of the desktop, based on the
@@ -142,49 +187,53 @@ declare namespace classes {
          * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
          * (with `NULL` for `desktop_env)` as well as additional checks.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns `TRUE` if the `info` should be shown in `desktop_env` according to the
+         * `OnlyShowIn` and `NotShowIn` keys, `FALSE` otherwise.
          * @param desktop_env a string specifying a desktop name
          */
-        static get_show_in(info: Gio.DesktopAppInfo, desktop_env?: string | null): boolean;
+        get_show_in(desktop_env?: string | null): boolean;
         /**
          * Retrieves the `StartupWMClass` field from `info`. This represents the
          * `WM_CLASS` property of the main window of the application, if launched
          * through `info`.
          *
-         * @param info a [class`Gio`.DesktopAppInfo] that supports startup notify
+         * @returns the startup WM class, or `NULL` if none
+         *   is set in the desktop file.
          */
-        static get_startup_wm_class(info: Gio.DesktopAppInfo): string | null;
+        get_startup_wm_class(): string | null;
         /**
          * Looks up a string value in the keyfile backing `info`.
          *
          * The `key` is looked up in the `Desktop Entry` group.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns a newly allocated string, or `NULL` if the key is not
+         *   found
          * @param key the key to look up
          */
-        static get_string(info: Gio.DesktopAppInfo, key: string): string | null;
+        get_string(key: string): string | null;
         /**
          * Looks up a string list value in the keyfile backing `info`.
          *
          * The `key` is looked up in the `Desktop Entry` group.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns a `NULL`-terminated string array or `NULL` if the specified
+         *   key cannot be found. The array should be freed with [func`GLib`.strfreev].
          * @param key the key to look up
          */
-        static get_string_list(info: Gio.DesktopAppInfo, key: string): string[];
+        get_string_list(key: string): string[];
         /**
          * Returns whether `key` exists in the `Desktop Entry` group
          * of the keyfile backing `info`.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns `TRUE` if the `key` exists
          * @param key the key to look up
          */
-        static has_key(info: Gio.DesktopAppInfo, key: string): boolean;
+        has_key(key: string): boolean;
         /**
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from [method`Gio`.DesktopAppInfo.list_actions].
+         * returned from [method`GioUnix`.DesktopAppInfo.list_actions].
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
@@ -198,16 +247,11 @@ declare namespace classes {
          * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
          * occur while using this function.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
          * @param action_name the name of the action as from
-         *   [method`Gio`.DesktopAppInfo.list_actions]
+         *   [method`GioUnix`.DesktopAppInfo.list_actions]
          * @param launch_context a [class`Gio`.AppLaunchContext]
          */
-        static launch_action(
-            info: Gio.DesktopAppInfo,
-            action_name: string,
-            launch_context?: Gio.AppLaunchContext | null,
-        ): void;
+        launch_action(action_name: string, launch_context?: Gio.AppLaunchContext | null): void;
         /**
          * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
          * but is intended primarily for operating system components that
@@ -226,7 +270,7 @@ declare namespace classes {
          * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
          * `pid_callback` and `pid_callback_data` are ignored.
          *
-         * @param appinfo a [class`Gio`.DesktopAppInfo]
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          * @param uris List of URIs
          * @param launch_context a [class`Gio`.AppLaunchContext]
          * @param spawn_flags [flags`GLib`.SpawnFlags], used for each process
@@ -234,23 +278,22 @@ declare namespace classes {
          *   used once  for each process.
          * @param pid_callback Callback for child processes
          */
-        static launch_uris_as_manager(
-            appinfo: Gio.DesktopAppInfo,
+        launch_uris_as_manager(
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             user_setup?: GLib.SpawnChildSetupFunc | null,
-            pid_callback?: Gio.DesktopAppLaunchCallback | null,
+            pid_callback?: GioUnix.DesktopAppLaunchCallback | null,
         ): boolean;
         /**
-         * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
-         * you to pass in file descriptors for the stdin, stdout and stderr streams
-         * of the launched process.
+         * Equivalent to [method`GioUnix`.DesktopAppInfo.launch_uris_as_manager] but
+         * allows you to pass in file descriptors for the stdin, stdout and stderr
+         * streams of the launched process.
          *
          * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
          * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
          *
-         * @param appinfo a [class`Gio`.DesktopAppInfo]
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          * @param uris List of URIs
          * @param launch_context a [class`Gio`.AppLaunchContext]
          * @param spawn_flags [flags`GLib`.SpawnFlags], used for each process
@@ -261,13 +304,12 @@ declare namespace classes {
          * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
          * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
          */
-        static launch_uris_as_manager_with_fds(
-            appinfo: Gio.DesktopAppInfo,
+        launch_uris_as_manager_with_fds(
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             user_setup: GLib.SpawnChildSetupFunc | null,
-            pid_callback: Gio.DesktopAppLaunchCallback | null,
+            pid_callback: GioUnix.DesktopAppLaunchCallback | null,
             stdin_fd: number,
             stdout_fd: number,
             stderr_fd: number,
@@ -280,43 +322,10 @@ declare namespace classes {
          * As per the specification, this is the list of actions that are
          * explicitly listed in the `Actions` key of the `Desktop Entry` group.
          *
-         * @param info a [class`Gio`.DesktopAppInfo]
+         * @returns a
+         *   list of strings, always non-`NULL`
          */
-        static list_actions(info: Gio.DesktopAppInfo): string[];
-        /**
-         * Searches desktop files for ones that match `search_string`.
-         *
-         * The return value is an array of strvs.  Each strv contains a list of
-         * applications that matched `search_string` with an equal score.  The
-         * outer list is sorted by score so that the first strv contains the
-         * best-matching applications, and so on.
-         * The algorithm for determining matches is undefined and may change at
-         * any time.
-         *
-         * None of the search results are subjected to the normal validation
-         * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
-         * the executable referenced by a result exists), and so it is possible for
-         * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
-         * by this function. It is expected that calling code will do this when
-         * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
-         *
-         * @param search_string the search string to use
-         */
-        static search(search_string: string): string[];
-        /**
-         * Sets the name of the desktop that the application is running in.
-         *
-         * This is used by [method`Gio`.AppInfo.should_show] and
-         * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-         * keys.
-         *
-         * Should be called only once; subsequent calls are ignored.
-         *
-         * @param desktop_env a string specifying what desktop this is
-         */
-        static set_desktop_env(desktop_env: string): void;
+        list_actions(): string[];
         // Inherited methods
         /**
          * Adds a content type to the application information to indicate the
@@ -1323,7 +1332,7 @@ declare namespace classes {
             ...args: GObject.GjsParameters<GioUnix.FDMessage.SignalSignatures[K]>
         ): void;
         emit(signal: string, ...args: any[]): void;
-        // Static methods
+        // Methods
         /**
          * Adds a file descriptor to `message`.
          *
@@ -1334,18 +1343,18 @@ declare namespace classes {
          * A possible cause of failure is exceeding the per-process or
          * system-wide file descriptor limit.
          *
-         * @param message a #GUnixFDMessage
+         * @returns %TRUE in case of success, else %FALSE (and `error` is set)
          * @param fd a valid open file descriptor
          */
-        static append_fd(message: Gio.UnixFDMessage, fd: number): boolean;
+        append_fd(fd: number): boolean;
         /**
          * Gets the #GUnixFDList contained in `message`.  This function does not
          * return a reference to the caller, but the returned list is valid for
          * the lifetime of `message`.
          *
-         * @param message a #GUnixFDMessage
+         * @returns the #GUnixFDList from `message`
          */
-        static get_fd_list(message: Gio.UnixFDMessage): Gio.UnixFDList;
+        get_fd_list(): Gio.UnixFDList;
         /**
          * Returns the array of file descriptors that is contained in this
          * object.
@@ -1365,9 +1374,10 @@ declare namespace classes {
          * This function never returns %NULL. In case there are no file
          * descriptors contained in `message,` an empty array is returned.
          *
-         * @param message a #GUnixFDMessage
+         * @returns an array of file
+         *     descriptors
          */
-        static steal_fds(message: Gio.UnixFDMessage): number[];
+        steal_fds(): number[];
     }
     class InputStream extends GioClasses.InputStream implements Gio.PollableInputStream, GioUnix.FileDescriptorBased {
         static '$gtype': GObject.GType<InputStream>;
@@ -1413,28 +1423,27 @@ declare namespace classes {
             ...args: GObject.GjsParameters<GioUnix.InputStream.SignalSignatures[K]>
         ): void;
         emit(signal: string, ...args: any[]): void;
-        // Static methods
+        // Methods
         /**
          * Returns whether the file descriptor of `stream` will be
          * closed when the stream is closed.
          *
-         * @param stream a #GUnixInputStream
+         * @returns %TRUE if the file descriptor is closed when done
          */
-        static get_close_fd(stream: Gio.UnixInputStream): boolean;
+        get_close_fd(): boolean;
         /**
          * Return the UNIX file descriptor that the stream reads from.
          *
-         * @param stream a #GUnixInputStream
+         * @returns The file descriptor of `stream`
          */
-        static get_fd(stream: Gio.UnixInputStream): number;
+        get_fd(): number;
         /**
          * Sets whether the file descriptor of `stream` shall be closed
          * when the stream is closed.
          *
-         * @param stream a #GUnixInputStream
          * @param close_fd %TRUE to close the file descriptor when done
          */
-        static set_close_fd(stream: Gio.UnixInputStream, close_fd: boolean): void;
+        set_close_fd(close_fd: boolean): void;
         // Inherited methods
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -1562,6 +1571,10 @@ declare namespace classes {
          * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
          */
         vfunc_read_nonblocking(): [number, Uint8Array[] | null];
+        /**
+         * Gets the underlying file descriptor.
+         */
+        vfunc_get_fd(): number;
         /**
          * Clears the pending flag on `stream`.
          */
@@ -2897,7 +2910,8 @@ declare namespace classes {
          * You must only call [method`GObject`.Object.unref] on the return value from
          * under the same main context as you called this function.
          */
-        static get(): Gio.UnixMountMonitor;
+        static get(): GioUnix.MountMonitor;
+        // Methods
         /**
          * This function does nothing.
          *
@@ -2907,10 +2921,9 @@ declare namespace classes {
          * that calling this function would have side effects for other users of
          * the monitor.
          *
-         * @param mount_monitor a [class`GioUnix`.MountMonitor]
          * @param limit_msec a integer with the limit (in milliseconds) to poll for changes
          */
-        static set_rate_limit(mount_monitor: Gio.UnixMountMonitor, limit_msec: number): void;
+        set_rate_limit(limit_msec: number): void;
     }
     class OutputStream
         extends GioClasses.OutputStream
@@ -2959,28 +2972,27 @@ declare namespace classes {
             ...args: GObject.GjsParameters<GioUnix.OutputStream.SignalSignatures[K]>
         ): void;
         emit(signal: string, ...args: any[]): void;
-        // Static methods
+        // Methods
         /**
          * Returns whether the file descriptor of `stream` will be
          * closed when the stream is closed.
          *
-         * @param stream a #GUnixOutputStream
+         * @returns %TRUE if the file descriptor is closed when done
          */
-        static get_close_fd(stream: Gio.UnixOutputStream): boolean;
+        get_close_fd(): boolean;
         /**
          * Return the UNIX file descriptor that the stream writes to.
          *
-         * @param stream a #GUnixOutputStream
+         * @returns The file descriptor of `stream`
          */
-        static get_fd(stream: Gio.UnixOutputStream): number;
+        get_fd(): number;
         /**
          * Sets whether the file descriptor of `stream` shall be closed
          * when the stream is closed.
          *
-         * @param stream a #GUnixOutputStream
          * @param close_fd %TRUE to close the file descriptor when done
          */
-        static set_close_fd(stream: Gio.UnixOutputStream, close_fd: boolean): void;
+        set_close_fd(close_fd: boolean): void;
         // Inherited methods
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -3177,6 +3189,10 @@ declare namespace classes {
          * @param vectors the buffer containing the #GOutputVectors to write.
          */
         vfunc_writev_nonblocking(vectors: Gio.OutputVector[]): [Gio.PollableReturn, number];
+        /**
+         * Gets the underlying file descriptor.
+         */
+        vfunc_get_fd(): number;
         /**
          * Clears the pending flag on `stream`.
          */

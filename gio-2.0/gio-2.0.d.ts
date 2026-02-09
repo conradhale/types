@@ -307,93 +307,102 @@ export namespace Gio {
         _init(...args: any[]): void;
         // Static methods
         /**
-         * Creates a D-Bus error name to use for `error`. If `error` matches
-         * a registered error (cf. g_dbus_error_register_error()), the corresponding
-         * D-Bus error name will be returned.
+         * Creates a D-Bus error name to use for `error`.
+         *
+         * If `error` matches a registered error (see
+         * [func`Gio`.DBusError.register_error]), the corresponding D-Bus error name
+         * will be returned.
          *
          * Otherwise the a name of the form
          * `org.gtk.GDBus.UnmappedGError.Quark._ESCAPED_QUARK_NAME.Code_ERROR_CODE`
          * will be used. This allows other GDBus applications to map the error
-         * on the wire back to a #GError using g_dbus_error_new_for_dbus_error().
+         * on the wire back to a [type`GLib`.Error] using
+         * [func`Gio`.DBusError.new_for_dbus_error].
          *
          * This function is typically only used in object mappings to put a
-         * #GError on the wire. Regular applications should not use it.
+         * [type`GLib`.Error] on the wire. Regular applications should not use it.
          *
-         * @param error A #GError.
+         * @param error an error
          */
         static encode_gerror(error: GLib.Error): string;
         /**
          * Gets the D-Bus error name used for `error,` if any.
          *
          * This function is guaranteed to return a D-Bus error name for all
-         * #GErrors returned from functions handling remote method calls
-         * (e.g. g_dbus_connection_call_finish()) unless
-         * g_dbus_error_strip_remote_error() has been used on `error`.
+         * [type`GLib`.Error]s returned from functions handling remote method calls
+         * (for example, [method`Gio`.DBusConnection.call_finish]) unless
+         * [func`Gio`.DBusError.strip_remote_error] has already been used on `error`.
          *
-         * @param error a #GError
+         * @param error an error
          */
         static get_remote_error(error: GLib.Error): string | null;
         /**
-         * Checks if `error` represents an error received via D-Bus from a remote peer. If so,
-         * use g_dbus_error_get_remote_error() to get the name of the error.
+         * Checks if `error` represents an error received via D-Bus from a remote peer.
          *
-         * @param error A #GError.
+         * If so, use [func`Gio`.DBusError.get_remote_error] to get the name of the error.
+         *
+         * @param error an error
          */
         static is_remote_error(error: GLib.Error): boolean;
         /**
-         * Creates a #GError based on the contents of `dbus_error_name` and
+         * Creates a [type`GLib`.Error] based on the contents of `dbus_error_name` and
          * `dbus_error_message`.
          *
-         * Errors registered with g_dbus_error_register_error() will be looked
+         * Errors registered with [func`Gio`.DBusError.register_error] will be looked
          * up using `dbus_error_name` and if a match is found, the error domain
-         * and code is used. Applications can use g_dbus_error_get_remote_error()
+         * and code is used. Applications can use [func`Gio`.DBusError.get_remote_error]
          * to recover `dbus_error_name`.
          *
          * If a match against a registered error is not found and the D-Bus
-         * error name is in a form as returned by g_dbus_error_encode_gerror()
+         * error name is in a form as returned by [func`Gio`.DBusError.encode_gerror]
          * the error domain and code encoded in the name is used to
-         * create the #GError. Also, `dbus_error_name` is added to the error message
-         * such that it can be recovered with g_dbus_error_get_remote_error().
+         * create the [type`GLib`.Error]. Also, `dbus_error_name` is added to the error
+         * message such that it can be recovered with
+         * [func`Gio`.DBusError.get_remote_error].
          *
-         * Otherwise, a #GError with the error code %G_IO_ERROR_DBUS_ERROR
-         * in the %G_IO_ERROR error domain is returned. Also, `dbus_error_name` is
+         * Otherwise, a [type`GLib`.Error] with the error code
+         * [error`Gio`.IOErrorEnum.DBUS_ERROR]
+         * in the [error`Gio`.IOErrorEnum] error domain is returned. Also, `dbus_error_name` is
          * added to the error message such that it can be recovered with
-         * g_dbus_error_get_remote_error().
+         * [func`Gio`.DBusError.get_remote_error].
          *
          * In all three cases, `dbus_error_name` can always be recovered from the
-         * returned #GError using the g_dbus_error_get_remote_error() function
-         * (unless g_dbus_error_strip_remote_error() hasn't been used on the returned error).
+         * returned [type`GLib`.Error] using the [func`Gio`.DBusError.get_remote_error]
+         * function (unless [func`Gio`.DBusError.strip_remote_error] hasn’t been used on
+         * the returned error).
          *
          * This function is typically only used in object mappings to prepare
-         * #GError instances for applications. Regular applications should not use
-         * it.
+         * [type`GLib`.Error] instances for applications. Regular applications should not
+         * use it.
          *
-         * @param dbus_error_name D-Bus error name.
-         * @param dbus_error_message D-Bus error message.
+         * @param dbus_error_name D-Bus error name
+         * @param dbus_error_message D-Bus error message
          */
         static new_for_dbus_error(dbus_error_name: string, dbus_error_message: string): GLib.Error;
         static quark(): GLib.Quark;
         /**
-         * Creates an association to map between `dbus_error_name` and
-         * #GErrors specified by `error_domain` and `error_code`.
+         * Creates an association mapping between `dbus_error_name` and
+         * [type`GLib`.Error]s specified by `error_domain` and `error_code`.
          *
-         * This is typically done in the routine that returns the #GQuark for
+         * This is typically done in the function that returns the [type`GLib`.Quark] for
          * an error domain.
          *
-         * @param error_domain A #GQuark for an error domain.
-         * @param error_code An error code.
-         * @param dbus_error_name A D-Bus error name.
+         * @param error_domain a [type`GLib`.Quark] for an error domain
+         * @param error_code an error code
+         * @param dbus_error_name a D-Bus error name
          */
         static register_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
         /**
-         * Helper function for associating a #GError error domain with D-Bus error names.
+         * Helper function for associating a [type`GLib`.Error] error domain with D-Bus
+         * error names.
          *
          * While `quark_volatile` has a `volatile` qualifier, this is a historical
          * artifact and the argument passed to it should not be `volatile`.
          *
-         * @param error_domain_quark_name The error domain name.
-         * @param quark_volatile A pointer where to store the #GQuark.
-         * @param entries A pointer to `num_entries` #GDBusErrorEntry struct items.
+         * @param error_domain_quark_name the error domain name
+         * @param quark_volatile return location for the [type`GLib`.Quark] representing the
+         *   error domain
+         * @param entries items to register
          */
         static register_error_domain(
             error_domain_quark_name: string,
@@ -401,56 +410,61 @@ export namespace Gio {
             entries: DBusErrorEntry[],
         ): void;
         /**
-         * Does nothing if `error` is %NULL. Otherwise sets `*error` to
-         * a new #GError created with g_dbus_error_new_for_dbus_error()
-         * with `dbus_error_message` prepend with `format` (unless %NULL).
+         * Sets `*error` to a new [type`GLib`.Error] created with
+         * [func`Gio`.DBusError.new_for_dbus_error].
          *
-         * @param error A pointer to a #GError or %NULL.
-         * @param dbus_error_name D-Bus error name.
-         * @param dbus_error_message D-Bus error message.
-         * @param format printf()-style format to prepend to `dbus_error_message` or %NULL.
-         * @param ___ Arguments for `format`.
+         * If `format` is non-`NULL` then it is prepended to `dbus_error_message`.
+         * Otherwise `dbus_error_message` is used unmodified.
+         *
+         * This function does nothing if `error` is `NULL`.
+         *
+         * @param dbus_error_name D-Bus error name
+         * @param dbus_error_message D-Bus error message
+         * @param format `printf()`-style format to prepend to
+         *   `dbus_error_message,` or `NULL` to not modify the message
+         * @param ___ arguments for `format`
          */
         static set_dbus_error(
-            error: GLib.Error,
             dbus_error_name: string,
             dbus_error_message: string,
             format: string | null,
             ___: any[],
-        ): void;
+        ): [GLib.Error | null];
         /**
-         * Like g_dbus_error_set_dbus_error() but intended for language bindings.
+         * Like [func`Gio`.DBusError.set_dbus_error] but intended for language bindings.
          *
-         * @param error A pointer to a #GError or %NULL.
-         * @param dbus_error_name D-Bus error name.
-         * @param dbus_error_message D-Bus error message.
-         * @param format printf()-style format to prepend to `dbus_error_message` or %NULL.
-         * @param var_args Arguments for `format`.
+         * @param dbus_error_name D-Bus error name
+         * @param dbus_error_message D-Bus error message
+         * @param format `printf()`-style format to prepend to
+         *   `dbus_error_message,` or `NULL` to not modify the message
+         * @param var_args arguments for `format`
          */
         static set_dbus_error_valist(
-            error: GLib.Error,
             dbus_error_name: string,
             dbus_error_message: string,
             format: string | null,
             var_args: any,
-        ): void;
+        ): [GLib.Error | null];
         /**
          * Looks for extra information in the error message used to recover
-         * the D-Bus error name and strips it if found. If stripped, the
+         * the D-Bus error name and strips it if found.
+         *
+         * If stripped, the
          * message field in `error` will correspond exactly to what was
          * received on the wire.
          *
          * This is typically used when presenting errors to the end user.
          *
-         * @param error A #GError.
+         * @param error an error
          */
         static strip_remote_error(error: GLib.Error): boolean;
         /**
-         * Destroys an association previously set up with g_dbus_error_register_error().
+         * Destroys an association previously set up with
+         * [func`Gio`.DBusError.register_error].
          *
-         * @param error_domain A #GQuark for an error domain.
-         * @param error_code An error code.
-         * @param dbus_error_name A D-Bus error name.
+         * @param error_domain a [type`GLib`.Quark] for an error domain
+         * @param error_code an error code
+         * @param dbus_error_name a D-Bus error name
          */
         static unregister_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
     }
@@ -1936,11 +1950,6 @@ export namespace Gio {
      * See [Extending GIO](overview.html#extending-gio).
      */
     const DEBUG_CONTROLLER_EXTENSION_POINT_NAME: string;
-    /**
-     * Extension point for default handler to URI association. See
-     * [Extending GIO](overview.html#extending-gio).
-     */
-    const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
     /**
      * The string used to obtain a Unix device path with g_drive_get_identifier().
      */
@@ -3871,102 +3880,109 @@ export namespace Gio {
      */
     function dbus_annotation_info_lookup(annotations: DBusAnnotationInfo[] | null, name: string): string | null;
     /**
-     * Creates a D-Bus error name to use for `error`. If `error` matches
-     * a registered error (cf. g_dbus_error_register_error()), the corresponding
-     * D-Bus error name will be returned.
+     * Creates a D-Bus error name to use for `error`.
+     *
+     * If `error` matches a registered error (see
+     * [func`Gio`.DBusError.register_error]), the corresponding D-Bus error name
+     * will be returned.
      *
      * Otherwise the a name of the form
      * `org.gtk.GDBus.UnmappedGError.Quark._ESCAPED_QUARK_NAME.Code_ERROR_CODE`
      * will be used. This allows other GDBus applications to map the error
-     * on the wire back to a #GError using g_dbus_error_new_for_dbus_error().
+     * on the wire back to a [type`GLib`.Error] using
+     * [func`Gio`.DBusError.new_for_dbus_error].
      *
      * This function is typically only used in object mappings to put a
-     * #GError on the wire. Regular applications should not use it.
+     * [type`GLib`.Error] on the wire. Regular applications should not use it.
      *
-     * @returns A D-Bus error name (never %NULL).
-     *     Free with g_free().
-     * @param error A #GError.
+     * @returns a D-Bus error name
+     * @param error an error
      */
     function dbus_error_encode_gerror(error: GLib.Error): string;
     /**
      * Gets the D-Bus error name used for `error,` if any.
      *
      * This function is guaranteed to return a D-Bus error name for all
-     * #GErrors returned from functions handling remote method calls
-     * (e.g. g_dbus_connection_call_finish()) unless
-     * g_dbus_error_strip_remote_error() has been used on `error`.
+     * [type`GLib`.Error]s returned from functions handling remote method calls
+     * (for example, [method`Gio`.DBusConnection.call_finish]) unless
+     * [func`Gio`.DBusError.strip_remote_error] has already been used on `error`.
      *
-     * @returns an allocated string or %NULL if the
-     *     D-Bus error name could not be found. Free with g_free().
-     * @param error a #GError
+     * @returns an allocated string, or `NULL` if the
+     *   D-Bus error name could not be found
+     * @param error an error
      */
     function dbus_error_get_remote_error(error: GLib.Error): string | null;
     /**
-     * Checks if `error` represents an error received via D-Bus from a remote peer. If so,
-     * use g_dbus_error_get_remote_error() to get the name of the error.
+     * Checks if `error` represents an error received via D-Bus from a remote peer.
      *
-     * @returns %TRUE if `error` represents an error from a remote peer,
-     * %FALSE otherwise.
-     * @param error A #GError.
+     * If so, use [func`Gio`.DBusError.get_remote_error] to get the name of the error.
+     *
+     * @returns true if `error` represents an error from a remote peer; false otherwise
+     * @param error an error
      */
     function dbus_error_is_remote_error(error: GLib.Error): boolean;
     /**
-     * Creates a #GError based on the contents of `dbus_error_name` and
+     * Creates a [type`GLib`.Error] based on the contents of `dbus_error_name` and
      * `dbus_error_message`.
      *
-     * Errors registered with g_dbus_error_register_error() will be looked
+     * Errors registered with [func`Gio`.DBusError.register_error] will be looked
      * up using `dbus_error_name` and if a match is found, the error domain
-     * and code is used. Applications can use g_dbus_error_get_remote_error()
+     * and code is used. Applications can use [func`Gio`.DBusError.get_remote_error]
      * to recover `dbus_error_name`.
      *
      * If a match against a registered error is not found and the D-Bus
-     * error name is in a form as returned by g_dbus_error_encode_gerror()
+     * error name is in a form as returned by [func`Gio`.DBusError.encode_gerror]
      * the error domain and code encoded in the name is used to
-     * create the #GError. Also, `dbus_error_name` is added to the error message
-     * such that it can be recovered with g_dbus_error_get_remote_error().
+     * create the [type`GLib`.Error]. Also, `dbus_error_name` is added to the error
+     * message such that it can be recovered with
+     * [func`Gio`.DBusError.get_remote_error].
      *
-     * Otherwise, a #GError with the error code %G_IO_ERROR_DBUS_ERROR
-     * in the %G_IO_ERROR error domain is returned. Also, `dbus_error_name` is
+     * Otherwise, a [type`GLib`.Error] with the error code
+     * [error`Gio`.IOErrorEnum.DBUS_ERROR]
+     * in the [error`Gio`.IOErrorEnum] error domain is returned. Also, `dbus_error_name` is
      * added to the error message such that it can be recovered with
-     * g_dbus_error_get_remote_error().
+     * [func`Gio`.DBusError.get_remote_error].
      *
      * In all three cases, `dbus_error_name` can always be recovered from the
-     * returned #GError using the g_dbus_error_get_remote_error() function
-     * (unless g_dbus_error_strip_remote_error() hasn't been used on the returned error).
+     * returned [type`GLib`.Error] using the [func`Gio`.DBusError.get_remote_error]
+     * function (unless [func`Gio`.DBusError.strip_remote_error] hasn’t been used on
+     * the returned error).
      *
      * This function is typically only used in object mappings to prepare
-     * #GError instances for applications. Regular applications should not use
-     * it.
+     * [type`GLib`.Error] instances for applications. Regular applications should not
+     * use it.
      *
-     * @returns An allocated #GError. Free with g_error_free().
-     * @param dbus_error_name D-Bus error name.
-     * @param dbus_error_message D-Bus error message.
+     * @returns an allocated [type`GLib`.Error]
+     * @param dbus_error_name D-Bus error name
+     * @param dbus_error_message D-Bus error message
      */
     function dbus_error_new_for_dbus_error(dbus_error_name: string, dbus_error_message: string): GLib.Error;
     function dbus_error_quark(): GLib.Quark;
     /**
-     * Creates an association to map between `dbus_error_name` and
-     * #GErrors specified by `error_domain` and `error_code`.
+     * Creates an association mapping between `dbus_error_name` and
+     * [type`GLib`.Error]s specified by `error_domain` and `error_code`.
      *
-     * This is typically done in the routine that returns the #GQuark for
+     * This is typically done in the function that returns the [type`GLib`.Quark] for
      * an error domain.
      *
-     * @returns %TRUE if the association was created, %FALSE if it already
-     * exists.
-     * @param error_domain A #GQuark for an error domain.
-     * @param error_code An error code.
-     * @param dbus_error_name A D-Bus error name.
+     * @returns true if the association was created, false if it already
+     *   exists
+     * @param error_domain a [type`GLib`.Quark] for an error domain
+     * @param error_code an error code
+     * @param dbus_error_name a D-Bus error name
      */
     function dbus_error_register_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
     /**
-     * Helper function for associating a #GError error domain with D-Bus error names.
+     * Helper function for associating a [type`GLib`.Error] error domain with D-Bus
+     * error names.
      *
      * While `quark_volatile` has a `volatile` qualifier, this is a historical
      * artifact and the argument passed to it should not be `volatile`.
      *
-     * @param error_domain_quark_name The error domain name.
-     * @param quark_volatile A pointer where to store the #GQuark.
-     * @param entries A pointer to `num_entries` #GDBusErrorEntry struct items.
+     * @param error_domain_quark_name the error domain name
+     * @param quark_volatile return location for the [type`GLib`.Quark] representing the
+     *   error domain
+     * @param entries items to register
      */
     function dbus_error_register_error_domain(
         error_domain_quark_name: string,
@@ -3975,23 +3991,26 @@ export namespace Gio {
     ): void;
     /**
      * Looks for extra information in the error message used to recover
-     * the D-Bus error name and strips it if found. If stripped, the
+     * the D-Bus error name and strips it if found.
+     *
+     * If stripped, the
      * message field in `error` will correspond exactly to what was
      * received on the wire.
      *
      * This is typically used when presenting errors to the end user.
      *
-     * @returns %TRUE if information was stripped, %FALSE otherwise.
-     * @param error A #GError.
+     * @returns true if information was stripped; false otherwise
+     * @param error an error
      */
     function dbus_error_strip_remote_error(error: GLib.Error): boolean;
     /**
-     * Destroys an association previously set up with g_dbus_error_register_error().
+     * Destroys an association previously set up with
+     * [func`Gio`.DBusError.register_error].
      *
-     * @returns %TRUE if the association was destroyed, %FALSE if it wasn't found.
-     * @param error_domain A #GQuark for an error domain.
-     * @param error_code An error code.
-     * @param dbus_error_name A D-Bus error name.
+     * @returns true if the association was destroyed, false if it wasn’t found
+     * @param error_domain a [type`GLib`.Quark] for an error domain
+     * @param error_code an error code
+     * @param dbus_error_name a D-Bus error name
      */
     function dbus_error_unregister_error(
         error_domain: GLib.Quark,
@@ -5093,387 +5112,6 @@ export namespace Gio {
         base_io_stream: IOStream,
         certificate?: TlsCertificate | null,
     ): TlsServerConnection;
-    /**
-     * Determines if `mount_path` is considered an implementation of the
-     * OS.
-     *
-     * This is primarily used for hiding mountable and mounted volumes
-     * that only are used in the OS and has little to no relevance to the
-     * casual user.
-     *
-     * @returns true if `mount_path` is considered an implementation detail
-     *    of the OS; false otherwise
-     * @param mount_path a mount path, e.g. `/media/disk` or `/usr`
-     */
-    function unix_is_mount_path_system_internal(mount_path: string): boolean;
-    /**
-     * Determines if `device_path` is considered a block device path which is only
-     * used in implementation of the OS.
-     *
-     * This is primarily used for hiding mounted volumes that are intended as APIs
-     * for programs to read, and system administrators at a shell; rather than
-     * something that should, for example, appear in a GUI. For example, the Linux
-     * `/proc` filesystem.
-     *
-     * The list of device paths considered ‘system’ ones may change over time.
-     *
-     * @returns true if `device_path` is considered an implementation detail of
-     *    the OS; false otherwise
-     * @param device_path a device path, e.g. `/dev/loop0` or `nfsd`
-     */
-    function unix_is_system_device_path(device_path: string): boolean;
-    /**
-     * Determines if `fs_type` is considered a type of file system which is only
-     * used in implementation of the OS.
-     *
-     * This is primarily used for hiding mounted volumes that are intended as APIs
-     * for programs to read, and system administrators at a shell; rather than
-     * something that should, for example, appear in a GUI. For example, the Linux
-     * `/proc` filesystem.
-     *
-     * The list of file system types considered ‘system’ ones may change over time.
-     *
-     * @returns true if `fs_type` is considered an implementation detail of the OS;
-     *    false otherwise
-     * @param fs_type a file system type, e.g. `procfs` or `tmpfs`
-     */
-    function unix_is_system_fs_type(fs_type: string): boolean;
-    /**
-     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-     *
-     * If `time_read` is set, it will be filled with a Unix timestamp for checking
-     * if the mounts have changed since with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * If more mounts have the same mount path, the last matching mount
-     * is returned.
-     *
-     * This will return `NULL` if there is no mount point at `mount_path`.
-     *
-     * @returns a [struct`GioUnix`.MountEntry]
-     * @param mount_path path for a possible Unix mount
-     */
-    function unix_mount_at(mount_path: string): [UnixMountEntry | null, number];
-    /**
-     * Compares two Unix mounts.
-     *
-     * @returns `1`, `0` or `-1` if `mount1` is greater than, equal to,
-     *    or less than `mount2`, respectively
-     * @param _mount1 first [struct`GioUnix`.MountEntry] to compare
-     * @param _mount2 second [struct`GioUnix`.MountEntry] to compare
-     */
-    function unix_mount_compare(_mount1: UnixMountEntry, _mount2: UnixMountEntry): number;
-    /**
-     * Makes a copy of `mount_entry`.
-     *
-     * @returns a new [struct`GioUnix`.MountEntry]
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_copy(mount_entry: UnixMountEntry): UnixMountEntry;
-    /**
-     * Checks if the Unix mounts have changed since a given Unix time.
-     *
-     * This can only work reliably if a [class`GioUnix`.MountMonitor] is running in
-     * the process, otherwise changes in the mount entries file (such as
-     * `/proc/self/mountinfo` on Linux) cannot be detected and, as a result, this
-     * function has to conservatively always return `TRUE`.
-     *
-     * It is more efficient to use [signal`GioUnix`.MountMonitor::mounts-changed] to
-     * be signalled of changes to the mount entries, rather than polling using this
-     * function. This function is more appropriate for infrequently determining
-     * cache validity.
-     *
-     * @returns true if the mounts have changed since `time;` false otherwise
-     * Since 2.84
-     * @param time a timestamp
-     */
-    function unix_mount_entries_changed_since(time: number): boolean;
-    /**
-     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
-     * mounts.
-     *
-     * If `time_read` is set, it will be filled with the mount timestamp, allowing
-     * for checking if the mounts have changed with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * @returns a list of the
-     *    Unix mounts
-     */
-    function unix_mount_entries_get(): [UnixMountEntry[], number];
-    /**
-     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-     * listed in `table_path`.
-     *
-     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
-     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
-     * may parse multiple hierarchical table files, so this function is not a direct
-     * superset of its functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     *
-     * @returns mount
-     *   entries, or `NULL` if there was an error loading them
-     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-     */
-    function unix_mount_entries_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
-    /**
-     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-     *
-     * If `time_read` is set, it will be filled with a Unix timestamp for checking
-     * if the mounts have changed since with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * If more mounts have the same mount path, the last matching mount
-     * is returned.
-     *
-     * This will return `NULL` if there is no mount point at `mount_path`.
-     *
-     * @returns a [struct`GioUnix`.MountEntry]
-     * @param mount_path path for a possible Unix mount
-     */
-    function unix_mount_entry_at(mount_path: string): [UnixMountEntry | null, number];
-    /**
-     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-     *
-     * If `time_read` is set, it will be filled with a Unix timestamp for checking
-     * if the mounts have changed since with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * If more mounts have the same mount path, the last matching mount
-     * is returned.
-     *
-     * This will return `NULL` if looking up the mount entry fails, if
-     * `file_path` doesn’t exist or there is an I/O error.
-     *
-     * @returns a [struct`GioUnix`.MountEntry]
-     * @param file_path file path on some Unix mount
-     */
-    function unix_mount_entry_for(file_path: string): [UnixMountEntry | null, number];
-    /**
-     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-     *
-     * If `time_read` is set, it will be filled with a Unix timestamp for checking
-     * if the mounts have changed since with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * If more mounts have the same mount path, the last matching mount
-     * is returned.
-     *
-     * This will return `NULL` if looking up the mount entry fails, if
-     * `file_path` doesn’t exist or there is an I/O error.
-     *
-     * @returns a [struct`GioUnix`.MountEntry]
-     * @param file_path file path on some Unix mount
-     */
-    function unix_mount_for(file_path: string): [UnixMountEntry | null, number];
-    /**
-     * Frees a Unix mount.
-     *
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_free(mount_entry: UnixMountEntry): void;
-    /**
-     * Gets the device path for a Unix mount.
-     *
-     * @returns a string containing the device path
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_get_device_path(mount_entry: UnixMountEntry): string;
-    /**
-     * Gets the filesystem type for the Unix mount.
-     *
-     * @returns a string containing the file system type
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_get_fs_type(mount_entry: UnixMountEntry): string;
-    /**
-     * Gets the mount path for a Unix mount.
-     *
-     * @returns the mount path for `mount_entry`
-     * @param mount_entry a [struct`GioUnix`.MountEntry] to get the mount path for
-     */
-    function unix_mount_get_mount_path(mount_entry: UnixMountEntry): string;
-    /**
-     * Gets a comma separated list of mount options for the Unix mount.
-     *
-     * For example: `rw,relatime,seclabel,data=ordered`.
-     *
-     * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
-     * a [struct`GioUnix`.MountEntry] as an argument.
-     *
-     * @returns a string containing the options, or `NULL` if not
-     *    available.
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_get_options(mount_entry: UnixMountEntry): string | null;
-    /**
-     * Gets the root of the mount within the filesystem. This is useful e.g. for
-     * mounts created by bind operation, or btrfs subvolumes.
-     *
-     * For example, the root path is equal to `/` for a mount created by
-     * `mount /dev/sda1 /mnt/foo` and `/bar` for
-     * `mount --bind /mnt/foo/bar /mnt/bar`.
-     *
-     * @returns a string containing the root, or `NULL` if not supported
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_get_root_path(mount_entry: UnixMountEntry): string | null;
-    /**
-     * Guesses whether a Unix mount entry can be ejected.
-     *
-     * @returns true if `mount_entry` is deemed to be ejectable; false otherwise
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_guess_can_eject(mount_entry: UnixMountEntry): boolean;
-    /**
-     * Guesses the icon of a Unix mount entry.
-     *
-     * @returns a [iface`Gio`.Icon]
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_guess_icon(mount_entry: UnixMountEntry): Icon;
-    /**
-     * Guesses the name of a Unix mount entry.
-     *
-     * The result is a translated string.
-     *
-     * @returns a newly allocated translated string
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_guess_name(mount_entry: UnixMountEntry): string;
-    /**
-     * Guesses whether a Unix mount entry should be displayed in the UI.
-     *
-     * @returns true if `mount_entry` is deemed to be displayable; false otherwise
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_guess_should_display(mount_entry: UnixMountEntry): boolean;
-    /**
-     * Guesses the symbolic icon of a Unix mount entry.
-     *
-     * @returns a [iface`Gio`.Icon]
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_guess_symbolic_icon(mount_entry: UnixMountEntry): Icon;
-    /**
-     * Checks if a Unix mount is mounted read only.
-     *
-     * @returns true if `mount_entry` is read only; false otherwise
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_is_readonly(mount_entry: UnixMountEntry): boolean;
-    /**
-     * Checks if a Unix mount is a system mount.
-     *
-     * This is the Boolean OR of
-     * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
-     * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
-     *
-     * The definition of what a ‘system’ mount entry is may change over time as new
-     * file system types and device paths are ignored.
-     *
-     * @returns true if the Unix mount is for a system path; false otherwise
-     * @param mount_entry a [struct`GioUnix`.MountEntry]
-     */
-    function unix_mount_is_system_internal(mount_entry: UnixMountEntry): boolean;
-    /**
-     * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
-     *
-     * If `time_read` is set, it will be filled with a Unix timestamp for checking if
-     * the mount points have changed since with
-     * [func`GioUnix`.mount_points_changed_since].
-     *
-     * If more mount points have the same mount path, the last matching mount point
-     * is returned.
-     *
-     * @returns a [struct`GioUnix`.MountPoint], or `NULL`
-     *    if no match is found
-     * @param mount_path path for a possible Unix mount point
-     */
-    function unix_mount_point_at(mount_path: string): [UnixMountPoint | null, number];
-    /**
-     * Checks if the Unix mount points have changed since a given Unix time.
-     *
-     * Unlike [func`GioUnix`.mount_entries_changed_since], this function can work
-     * reliably without a [class`GioUnix`.MountMonitor] running, as it accesses the
-     * static mount point information (such as `/etc/fstab` on Linux), which has a
-     * valid modification time.
-     *
-     * It is more efficient to use [signal`GioUnix`.MountMonitor::mountpoints-changed]
-     * to be signalled of changes to the mount points, rather than polling using
-     * this function. This function is more appropriate for infrequently determining
-     * cache validity.
-     *
-     * @returns true if the mount points have changed since `time;` false otherwise
-     * @param time a timestamp
-     */
-    function unix_mount_points_changed_since(time: number): boolean;
-    /**
-     * Gets a list of [struct`GioUnix`.MountPoint] instances representing the Unix
-     * mount points.
-     *
-     * If `time_read` is set, it will be filled with the mount timestamp, allowing
-     * for checking if the mounts have changed with
-     * [func`GioUnix`.mount_points_changed_since].
-     *
-     * @returns a list of the Unix
-     *    mount points
-     */
-    function unix_mount_points_get(): [UnixMountPoint[], number];
-    /**
-     * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
-     * points listed in `table_path`.
-     *
-     * This is a generalized version of [func`GioUnix`.mount_points_get], mainly
-     * intended for internal testing use. Note that [func`GioUnix`.mount_points_get]
-     * may parse multiple hierarchical table files, so this function is not a direct
-     * superset of its functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     *
-     * @returns mount
-     *   points, or `NULL` if there was an error loading them
-     * @param table_path path to the mount points table file (for example `/etc/fstab`)
-     */
-    function unix_mount_points_get_from_file(table_path: string): [UnixMountPoint[] | null, number];
-    /**
-     * Checks if the Unix mounts have changed since a given Unix time.
-     *
-     * @returns true if the mounts have changed since `time;` false otherwise
-     * @param time a timestamp
-     */
-    function unix_mounts_changed_since(time: number): boolean;
-    /**
-     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
-     * mounts.
-     *
-     * If `time_read` is set, it will be filled with the mount timestamp, allowing
-     * for checking if the mounts have changed with
-     * [func`GioUnix`.mount_entries_changed_since].
-     *
-     * @returns a list of the
-     *    Unix mounts
-     */
-    function unix_mounts_get(): [UnixMountEntry[], number];
-    /**
-     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-     * listed in `table_path`.
-     *
-     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
-     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
-     * may parse multiple hierarchical table files, so this function is not a direct
-     * superset of its functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     *
-     * @returns mount
-     *   entries, or `NULL` if there was an error loading them
-     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-     */
-    function unix_mounts_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
     interface AsyncReadyCallback<A = GObject.Object> {
         (source_object: A | null, res: AsyncResult, data?: any | null): void;
     }
@@ -5566,9 +5204,6 @@ export namespace Gio {
     }
     interface DatagramBasedSourceFunc {
         (datagram_based: DatagramBased, condition: GLib.IOCondition, data?: any | null): boolean;
-    }
-    interface DesktopAppLaunchCallback {
-        (appinfo: DesktopAppInfo, pid: GLib.Pid): void;
     }
     interface FileMeasureProgressCallback {
         (reporting: boolean, current_size: number, num_dirs: number, num_files: number, data?: any | null): void;
@@ -5767,8 +5402,9 @@ export namespace Gio {
          */
         REPLACE = 2,
         /**
-         * If another message bus connection owns the name, immediately
-         * return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)
+         * If another message bus connection owns the name, immediately return an error
+         * from [func`Gio`.bus_own_name] rather than entering the waiting queue for that
+         * name.
          */
         DO_NOT_QUEUE = 4,
     }
@@ -7810,25 +7446,6 @@ export namespace Gio {
             properties?: Partial<Gio.DebugControllerDBus.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DebugControllerDBus.SignalSignatures> & classes.DebugControllerDBus);
-    namespace DesktopAppInfo {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename'(pspec: GObject.ParamSpec): void;
-        }
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, AppInfo.ConstructorProps {
-            /**
-             * The origin filename of this [class`Gio`.DesktopAppInfo]
-             */
-            filename: string;
-        }
-    }
-    type DesktopAppInfo = (typeof classes.DesktopAppInfo)['prototype'];
-    const DesktopAppInfo: typeof classes.DesktopAppInfo &
-        (new <Opts extends GObject.MetaInfo>(
-            properties?: Partial<Gio.DesktopAppInfo.ConstructorProps>,
-            ...args: any[]
-        ) => GObject.RegisteredClass<Opts, DesktopAppInfo.SignalSignatures> & classes.DesktopAppInfo);
     namespace Emblem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -8126,6 +7743,7 @@ export namespace Gio {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::bytes'(pspec: GObject.ParamSpec): void;
             'notify::family'(pspec: GObject.ParamSpec): void;
+            'notify::flowinfo'(pspec: GObject.ParamSpec): void;
             'notify::is-any'(pspec: GObject.ParamSpec): void;
             'notify::is-link-local'(pspec: GObject.ParamSpec): void;
             'notify::is-loopback'(pspec: GObject.ParamSpec): void;
@@ -8136,6 +7754,7 @@ export namespace Gio {
             'notify::is-mc-site-local'(pspec: GObject.ParamSpec): void;
             'notify::is-multicast'(pspec: GObject.ParamSpec): void;
             'notify::is-site-local'(pspec: GObject.ParamSpec): void;
+            'notify::scope-id'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8147,6 +7766,11 @@ export namespace Gio {
              * The address family (IPv4 or IPv6).
              */
             family: SocketFamily;
+            /**
+             * The flowinfo for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_flowinfo].
+             */
+            flowinfo: number;
             /**
              * Whether this is the "any" address for its family.
              * See g_inet_address_get_is_any().
@@ -8247,6 +7871,16 @@ export namespace Gio {
              * See g_inet_address_get_is_loopback().
              */
             isSiteLocal: boolean;
+            /**
+             * The scope-id for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_scope_id].
+             */
+            scope_id: number;
+            /**
+             * The scope-id for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_scope_id].
+             */
+            scopeId: number;
         }
     }
     type InetAddress = (typeof classes.InetAddress)['prototype'];
@@ -8301,6 +7935,8 @@ export namespace Gio {
             address: InetAddress;
             /**
              * The `sin6_flowinfo` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             flowinfo: number;
             /**
@@ -8309,10 +7945,14 @@ export namespace Gio {
             port: number;
             /**
              * The `sin6_scope_id` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             scope_id: number;
             /**
              * The `sin6_scope_id` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             scopeId: number;
         }
@@ -10459,106 +10099,6 @@ export namespace Gio {
             properties?: Partial<Gio.UnixFDList.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, UnixFDList.SignalSignatures> & classes.UnixFDList);
-    namespace UnixFDMessage {
-        // Signal signatures
-        interface SignalSignatures extends SocketControlMessage.SignalSignatures {
-            'notify::fd-list'(pspec: GObject.ParamSpec): void;
-        }
-        // Constructor properties interface
-        interface ConstructorProps extends SocketControlMessage.ConstructorProps {
-            /**
-             * The [class`Gio`.UnixFDList] object to send with the message.
-             */
-            fd_list: UnixFDList;
-            /**
-             * The [class`Gio`.UnixFDList] object to send with the message.
-             */
-            fdList: UnixFDList;
-        }
-    }
-    type UnixFDMessage = (typeof classes.UnixFDMessage)['prototype'];
-    const UnixFDMessage: typeof classes.UnixFDMessage &
-        (new <Opts extends GObject.MetaInfo>(
-            properties?: Partial<Gio.UnixFDMessage.ConstructorProps>,
-            ...args: any[]
-        ) => GObject.RegisteredClass<Opts, UnixFDMessage.SignalSignatures> & classes.UnixFDMessage);
-    namespace UnixInputStream {
-        // Signal signatures
-        interface SignalSignatures extends InputStream.SignalSignatures {
-            'notify::close-fd'(pspec: GObject.ParamSpec): void;
-            'notify::fd'(pspec: GObject.ParamSpec): void;
-        }
-        // Constructor properties interface
-        interface ConstructorProps
-            extends InputStream.ConstructorProps,
-                FileDescriptorBased.ConstructorProps,
-                PollableInputStream.ConstructorProps {
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            close_fd: boolean;
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            closeFd: boolean;
-            /**
-             * The file descriptor that the stream reads from.
-             */
-            fd: number;
-        }
-    }
-    type UnixInputStream = (typeof classes.UnixInputStream)['prototype'];
-    const UnixInputStream: typeof classes.UnixInputStream &
-        (new <Opts extends GObject.MetaInfo>(
-            properties?: Partial<Gio.UnixInputStream.ConstructorProps>,
-            ...args: any[]
-        ) => GObject.RegisteredClass<Opts, UnixInputStream.SignalSignatures> & classes.UnixInputStream);
-    namespace UnixMountMonitor {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'mountpoints-changed'(): void;
-            'mounts-changed'(): void;
-        }
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-    type UnixMountMonitor = (typeof classes.UnixMountMonitor)['prototype'];
-    const UnixMountMonitor: typeof classes.UnixMountMonitor &
-        (new <Opts extends GObject.MetaInfo>(
-            properties?: Partial<Gio.UnixMountMonitor.ConstructorProps>,
-            ...args: any[]
-        ) => GObject.RegisteredClass<Opts, UnixMountMonitor.SignalSignatures> & classes.UnixMountMonitor);
-    namespace UnixOutputStream {
-        // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {
-            'notify::close-fd'(pspec: GObject.ParamSpec): void;
-            'notify::fd'(pspec: GObject.ParamSpec): void;
-        }
-        // Constructor properties interface
-        interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                FileDescriptorBased.ConstructorProps,
-                PollableOutputStream.ConstructorProps {
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            close_fd: boolean;
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            closeFd: boolean;
-            /**
-             * The file descriptor that the stream writes to.
-             */
-            fd: number;
-        }
-    }
-    type UnixOutputStream = (typeof classes.UnixOutputStream)['prototype'];
-    const UnixOutputStream: typeof classes.UnixOutputStream &
-        (new <Opts extends GObject.MetaInfo>(
-            properties?: Partial<Gio.UnixOutputStream.ConstructorProps>,
-            ...args: any[]
-        ) => GObject.RegisteredClass<Opts, UnixOutputStream.SignalSignatures> & classes.UnixOutputStream);
     namespace UnixSocketAddress {
         // Signal signatures
         interface SignalSignatures extends SocketAddress.SignalSignatures {
@@ -10645,19 +10185,30 @@ export namespace Gio {
             'notify::file-info'(pspec: GObject.ParamSpec): void;
             'notify::format'(pspec: GObject.ParamSpec): void;
             'notify::level'(pspec: GObject.ParamSpec): void;
+            'notify::os'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
             /**
-             * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-             * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-             * and modification time from the file info to the GZIP header.
+             * A [class`Gio`.FileInfo] containing file information to put into the gzip
+             * header.
+             *
+             * The file name and modification time from the file info will be used.
+             *
+             * This will only be used if non-`NULL` and
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             file_info: FileInfo;
             /**
-             * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-             * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-             * and modification time from the file info to the GZIP header.
+             * A [class`Gio`.FileInfo] containing file information to put into the gzip
+             * header.
+             *
+             * The file name and modification time from the file info will be used.
+             *
+             * This will only be used if non-`NULL` and
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             fileInfo: FileInfo;
             /**
@@ -10666,9 +10217,24 @@ export namespace Gio {
             format: ZlibCompressorFormat;
             /**
              * The level of compression from `0` (no compression) to `9` (most
-             * compression). `-1` for the default level.
+             * compression).
+             *
+             * `-1` for the default level.
              */
             level: number;
+            /**
+             * The OS code of the gzip header.
+             *
+             * This will be used if set to a non-negative value, and if
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP], the compressor will set the OS code of
+             * the gzip header to this value.
+             *
+             * If the value is unset, zlib will set the OS code depending on the platform.
+             * This may be undesirable when reproducible output is desired. In that case setting
+             * the OS code to `3` (for Unix) is recommended.
+             */
+            os: number;
         }
     }
     type ZlibCompressor = (typeof classes.ZlibCompressor)['prototype'];
@@ -10686,17 +10252,21 @@ export namespace Gio {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
             /**
-             * A #GFileInfo containing the information found in the GZIP header
-             * of the data stream processed, or %NULL if the header was not yet
-             * fully processed, is not present at all, or the compressor's
-             * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+             * A [class`Gio`.FileInfo] containing the information found in the gzip header
+             * of the data stream processed.
+             *
+             * This will be `NULL` if the header was not yet fully processed, is not
+             * present at all, or the compressor’s [property`Gio`.ZlibDecompressor:format]
+             * property is not [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             file_info: FileInfo;
             /**
-             * A #GFileInfo containing the information found in the GZIP header
-             * of the data stream processed, or %NULL if the header was not yet
-             * fully processed, is not present at all, or the compressor's
-             * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+             * A [class`Gio`.FileInfo] containing the information found in the gzip header
+             * of the data stream processed.
+             *
+             * This will be `NULL` if the header was not yet fully processed, is not
+             * present at all, or the compressor’s [property`Gio`.ZlibDecompressor:format]
+             * property is not [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             fileInfo: FileInfo;
             /**
@@ -10877,7 +10447,7 @@ export namespace Gio {
         unref(): void;
     }
     /**
-     * Struct used in g_dbus_error_register_error_domain().
+     * Struct used in [func`Gio`.DBusError.register_error_domain].
      */
     class DBusErrorEntry {
         static '$gtype': GObject.GType<DBusErrorEntry>;
@@ -11249,8 +10819,6 @@ export namespace Gio {
     export type DatagramBasedInterface = typeof DatagramBased;
     export type DebugControllerDBusClass = typeof DebugControllerDBus;
     export type DebugControllerInterface = typeof DebugController;
-    export type DesktopAppInfoClass = typeof DesktopAppInfo;
-    export type DesktopAppInfoLookupIface = typeof DesktopAppInfoLookup;
     export type DriveIface = typeof Drive;
     export type DtlsClientConnectionInterface = typeof DtlsClientConnection;
     export type DtlsConnectionInterface = typeof DtlsConnection;
@@ -11410,7 +10978,6 @@ export namespace Gio {
          */
         unref(): void;
     }
-    export type FileDescriptorBasedIface = typeof FileDescriptorBased;
     export type FileEnumeratorClass = typeof FileEnumerator;
     abstract class FileEnumeratorPrivate {
         static '$gtype': GObject.GType<FileEnumeratorPrivate>;
@@ -12795,287 +12362,6 @@ export namespace Gio {
     export type UnixFDListClass = typeof UnixFDList;
     abstract class UnixFDListPrivate {
         static '$gtype': GObject.GType<UnixFDListPrivate>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    export type UnixFDMessageClass = typeof UnixFDMessage;
-    abstract class UnixFDMessagePrivate {
-        static '$gtype': GObject.GType<UnixFDMessagePrivate>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    export type UnixInputStreamClass = typeof UnixInputStream;
-    abstract class UnixInputStreamPrivate {
-        static '$gtype': GObject.GType<UnixInputStreamPrivate>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    /**
-     * Defines a Unix mount entry (e.g. `/media/cdrom`).
-     * This corresponds roughly to a mtab entry.
-     */
-    abstract class UnixMountEntry {
-        static '$gtype': GObject.GType<UnixMountEntry>;
-        // Constructors
-        _init(...args: any[]): void;
-        // Static methods
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if there is no mount point at `mount_path`.
-         *
-         * @param mount_path path for a possible Unix mount
-         */
-        static at(mount_path: string): [UnixMountEntry | null, number];
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if looking up the mount entry fails, if
-         * `file_path` doesn’t exist or there is an I/O error.
-         *
-         * @param file_path file path on some Unix mount
-         */
-        static for(file_path: string): [UnixMountEntry | null, number];
-        // Methods
-        /**
-         * Compares two Unix mounts.
-         *
-         * @returns `1`, `0` or `-1` if `mount1` is greater than, equal to,
-         *    or less than `mount2`, respectively
-         * @param _mount2 second [struct`GioUnix`.MountEntry] to compare
-         */
-        compare(_mount2: UnixMountEntry): number;
-        /**
-         * Makes a copy of `mount_entry`.
-         *
-         * @returns a new [struct`GioUnix`.MountEntry]
-         */
-        copy(): UnixMountEntry;
-        /**
-         * Frees a Unix mount.
-         */
-        free(): void;
-        /**
-         * Gets the device path for a Unix mount.
-         *
-         * @returns a string containing the device path
-         */
-        get_device_path(): string;
-        /**
-         * Gets the filesystem type for the Unix mount.
-         *
-         * @returns a string containing the file system type
-         */
-        get_fs_type(): string;
-        /**
-         * Gets the mount path for a Unix mount.
-         *
-         * @returns the mount path for `mount_entry`
-         */
-        get_mount_path(): string;
-        /**
-         * Gets a comma separated list of mount options for the Unix mount.
-         *
-         * For example: `rw,relatime,seclabel,data=ordered`.
-         *
-         * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
-         * a [struct`GioUnix`.MountEntry] as an argument.
-         *
-         * @returns a string containing the options, or `NULL` if not
-         *    available.
-         */
-        get_options(): string | null;
-        /**
-         * Gets the root of the mount within the filesystem. This is useful e.g. for
-         * mounts created by bind operation, or btrfs subvolumes.
-         *
-         * For example, the root path is equal to `/` for a mount created by
-         * `mount /dev/sda1 /mnt/foo` and `/bar` for
-         * `mount --bind /mnt/foo/bar /mnt/bar`.
-         *
-         * @returns a string containing the root, or `NULL` if not supported
-         */
-        get_root_path(): string | null;
-        /**
-         * Guesses whether a Unix mount entry can be ejected.
-         *
-         * @returns true if `mount_entry` is deemed to be ejectable; false otherwise
-         */
-        guess_can_eject(): boolean;
-        /**
-         * Guesses the icon of a Unix mount entry.
-         *
-         * @returns a [iface`Gio`.Icon]
-         */
-        guess_icon(): Icon;
-        /**
-         * Guesses the name of a Unix mount entry.
-         *
-         * The result is a translated string.
-         *
-         * @returns a newly allocated translated string
-         */
-        guess_name(): string;
-        /**
-         * Guesses whether a Unix mount entry should be displayed in the UI.
-         *
-         * @returns true if `mount_entry` is deemed to be displayable; false otherwise
-         */
-        guess_should_display(): boolean;
-        /**
-         * Guesses the symbolic icon of a Unix mount entry.
-         *
-         * @returns a [iface`Gio`.Icon]
-         */
-        guess_symbolic_icon(): Icon;
-        /**
-         * Checks if a Unix mount is mounted read only.
-         *
-         * @returns true if `mount_entry` is read only; false otherwise
-         */
-        is_readonly(): boolean;
-        /**
-         * Checks if a Unix mount is a system mount.
-         *
-         * This is the Boolean OR of
-         * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
-         * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
-         *
-         * The definition of what a ‘system’ mount entry is may change over time as new
-         * file system types and device paths are ignored.
-         *
-         * @returns true if the Unix mount is for a system path; false otherwise
-         */
-        is_system_internal(): boolean;
-    }
-    export type UnixMountMonitorClass = typeof UnixMountMonitor;
-    /**
-     * Defines a Unix mount point (e.g. `/dev`).
-     * This corresponds roughly to a fstab entry.
-     */
-    abstract class UnixMountPoint {
-        static '$gtype': GObject.GType<UnixMountPoint>;
-        // Constructors
-        _init(...args: any[]): void;
-        // Static methods
-        /**
-         * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking if
-         * the mount points have changed since with
-         * [func`GioUnix`.mount_points_changed_since].
-         *
-         * If more mount points have the same mount path, the last matching mount point
-         * is returned.
-         *
-         * @param mount_path path for a possible Unix mount point
-         */
-        static at(mount_path: string): [UnixMountPoint | null, number];
-        // Methods
-        /**
-         * Compares two Unix mount points.
-         *
-         * @returns `1`, `0` or `-1` if `mount1` is greater than, equal to,
-         *    or less than `mount2`, respectively
-         * @param _mount2 a [struct`GioUnix`.MountPoint]
-         */
-        compare(_mount2: UnixMountPoint): number;
-        /**
-         * Makes a copy of `mount_point`.
-         *
-         * @returns a new [struct`GioUnix`.MountPoint]
-         */
-        copy(): UnixMountPoint;
-        /**
-         * Frees a Unix mount point.
-         */
-        free(): void;
-        /**
-         * Gets the device path for a Unix mount point.
-         *
-         * @returns a string containing the device path
-         */
-        get_device_path(): string;
-        /**
-         * Gets the file system type for the mount point.
-         *
-         * @returns a string containing the file system type
-         */
-        get_fs_type(): string;
-        /**
-         * Gets the mount path for a Unix mount point.
-         *
-         * @returns a string containing the mount path
-         */
-        get_mount_path(): string;
-        /**
-         * Gets the options for the mount point.
-         *
-         * @returns a string containing the options
-         */
-        get_options(): string | null;
-        /**
-         * Guesses whether a Unix mount point can be ejected.
-         *
-         * @returns true if `mount_point` is deemed to be ejectable; false otherwise
-         */
-        guess_can_eject(): boolean;
-        /**
-         * Guesses the icon of a Unix mount point.
-         *
-         * @returns a [iface`Gio`.Icon]
-         */
-        guess_icon(): Icon;
-        /**
-         * Guesses the name of a Unix mount point.
-         *
-         * The result is a translated string.
-         *
-         * @returns a newly allocated translated string
-         */
-        guess_name(): string;
-        /**
-         * Guesses the symbolic icon of a Unix mount point.
-         *
-         * @returns a [iface`Gio`.Icon]
-         */
-        guess_symbolic_icon(): Icon;
-        /**
-         * Checks if a Unix mount point is a loopback device.
-         *
-         * @returns true if the mount point is a loopback device; false otherwise
-         */
-        is_loopback(): boolean;
-        /**
-         * Checks if a Unix mount point is read only.
-         *
-         * @returns true if a mount point is read only; false otherwise
-         */
-        is_readonly(): boolean;
-        /**
-         * Checks if a Unix mount point is mountable by the user.
-         *
-         * @returns true if the mount point is user mountable; false otherwise
-         */
-        is_user_mountable(): boolean;
-    }
-    export type UnixOutputStreamClass = typeof UnixOutputStream;
-    abstract class UnixOutputStreamPrivate {
-        static '$gtype': GObject.GType<UnixOutputStreamPrivate>;
         // Constructors
         _init(...args: any[]): void;
     }
@@ -16000,55 +15286,6 @@ export namespace Gio {
         set_debug_enabled(debug_enabled: boolean): void;
     }
     export const DebugController: DebugControllerNamespace & (new () => DebugController);
-    namespace DesktopAppInfoLookup {
-        /**
-         * Interface for implementing DesktopAppInfoLookup.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-            /**
-             * Gets the default application for launching applications
-             * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
-             * implementation.
-             *
-             * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-             * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
-             * in a GIO module. There is no reason for applications to use it
-             * directly. Applications should use
-             * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-             *
-             * @param uri_scheme a string containing a URI scheme.
-             */
-            vfunc_get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
-        }
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-    export interface DesktopAppInfoLookupNamespace {
-        $gtype: GObject.GType<DesktopAppInfoLookup>;
-        prototype: DesktopAppInfoLookup;
-    }
-    interface DesktopAppInfoLookup extends GObject.Object, DesktopAppInfoLookup.Interface {
-        // Methods
-        /**
-         * Gets the default application for launching applications
-         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
-         * implementation.
-         *
-         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
-         * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use
-         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-         *
-         * @returns [iface`Gio`.AppInfo] for given
-         *   `uri_scheme` or `NULL` on error.
-         * @param uri_scheme a string containing a URI scheme.
-         */
-        get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
-    }
-    export const DesktopAppInfoLookup: DesktopAppInfoLookupNamespace & (new () => DesktopAppInfoLookup);
     namespace Drive {
         /**
          * Interface for implementing Drive.
@@ -19035,40 +18272,52 @@ export namespace Gio {
             vfunc_query_filesystem_info_finish(res: AsyncResult): FileInfo;
             /**
              * Gets the requested information about specified `file`.
-             * The result is a #GFileInfo object that contains key-value
+             *
+             * The result is a [class`Gio`.FileInfo] object that contains key-value
              * attributes (such as the type or size of the file).
              *
              * The `attributes` value is a string that specifies the file
              * attributes that should be gathered. It is not an error if
-             * it's not possible to read a particular requested attribute
-             * from a file - it just won't be set. `attributes` should be a
-             * comma-separated list of attributes or attribute wildcards.
-             * The wildcard "*" means all attributes, and a wildcard like
-             * "standard::*" means all attributes in the standard namespace.
-             * An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * %G_FILE_ATTRIBUTE_STANDARD_NAME.
+             * it’s not possible to read a particular requested attribute
+             * from a file — it just won't be set. In particular this means that if a file
+             * is inaccessible (due to being in a folder with restrictive permissions), for
+             * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+             * attributes set. You should check whether an attribute is set using
+             * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
              *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
+             * It is guaranteed that if any of the following attributes are listed in
+             * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+             * even if the user doesn’t have permissions to access the file:
+             *
+             *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+             *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+             *
+             * `attributes` should be a comma-separated list of attributes or attribute
+             * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+             * `"standard::*"` means all attributes in the standard namespace.
+             * An example attribute query might be `"standard::*,owner::user"`.
+             * The standard attributes are available as defines, like
+             * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+             *
+             * If `cancellable` is not `NULL`, then the operation can be cancelled
              * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+             * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
              * returned.
              *
              * For symlinks, normally the information about the target of the
              * symlink is returned, rather than information about the symlink
-             * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+             * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
              * in `flags` the information about the symlink itself will be returned.
              * Also, for symlinks that point to non-existing files the information
              * about the symlink itself will be returned.
              *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+             * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
              * returned. Other errors are possible too, and depend on what kind of
-             * filesystem the file is on.
+             * file system the file is on.
              *
              * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,
-             *   %NULL to ignore
+             * @param flags flags to affect the query operation
+             * @param cancellable optional cancellable object
              */
             vfunc_query_info(attributes: string, flags: FileQueryInfoFlags, cancellable?: Cancellable | null): FileInfo;
             /**
@@ -22162,42 +21411,53 @@ export namespace Gio {
         query_filesystem_info_finish(res: AsyncResult): FileInfo;
         /**
          * Gets the requested information about specified `file`.
-         * The result is a #GFileInfo object that contains key-value
+         *
+         * The result is a [class`Gio`.FileInfo] object that contains key-value
          * attributes (such as the type or size of the file).
          *
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
-         * it's not possible to read a particular requested attribute
-         * from a file - it just won't be set. `attributes` should be a
-         * comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
-         * The standard attributes are available as defines, like
-         * %G_FILE_ATTRIBUTE_STANDARD_NAME.
+         * it’s not possible to read a particular requested attribute
+         * from a file — it just won't be set. In particular this means that if a file
+         * is inaccessible (due to being in a folder with restrictive permissions), for
+         * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+         * attributes set. You should check whether an attribute is set using
+         * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled
+         * It is guaranteed that if any of the following attributes are listed in
+         * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+         * even if the user doesn’t have permissions to access the file:
+         *
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+         *
+         * `attributes` should be a comma-separated list of attributes or attribute
+         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query might be `"standard::*,owner::user"`.
+         * The standard attributes are available as defines, like
+         * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+         *
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
-         * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+         * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
          * returned.
          *
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
-         * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+         * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
          *
-         * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+         * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
          * returned. Other errors are possible too, and depend on what kind of
-         * filesystem the file is on.
+         * file system the file is on.
          *
-         * @returns a #GFileInfo for the given `file,` or %NULL
-         *   on error. Free the returned object with g_object_unref().
+         * @returns a [class`Gio`.FileInfo] for the given `file`
          * @param attributes an attribute query string
-         * @param flags a set of #GFileQueryInfoFlags
-         * @param cancellable optional #GCancellable object,
-         *   %NULL to ignore
+         * @param flags flags to affect the query operation
+         * @param cancellable optional cancellable object
          */
         query_info(attributes: string, flags: FileQueryInfoFlags | null, cancellable?: Cancellable | null): FileInfo;
         /**
@@ -23630,35 +22890,6 @@ export namespace Gio {
         ): void;
     }
     export const File: FileNamespace & (new () => File);
-    namespace FileDescriptorBased {
-        /**
-         * Interface for implementing FileDescriptorBased.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-            /**
-             * Gets the underlying file descriptor.
-             */
-            vfunc_get_fd(): number;
-        }
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-    export interface FileDescriptorBasedNamespace {
-        $gtype: GObject.GType<FileDescriptorBased>;
-        prototype: FileDescriptorBased;
-    }
-    interface FileDescriptorBased extends GObject.Object, FileDescriptorBased.Interface {
-        // Methods
-        /**
-         * Gets the underlying file descriptor.
-         *
-         * @returns The file descriptor
-         */
-        get_fd(): number;
-    }
-    export const FileDescriptorBased: FileDescriptorBasedNamespace & (new () => FileDescriptorBased);
     namespace Icon {
         /**
          * Interface for implementing Icon.

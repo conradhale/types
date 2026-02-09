@@ -448,11 +448,11 @@ export namespace Shell {
             /**
              * The #GDesktopAppInfo associated with this ShellApp, if any.
              */
-            app_info: Gio.DesktopAppInfo;
+            app_info: never;
             /**
              * The #GDesktopAppInfo associated with this ShellApp, if any.
              */
-            appInfo: Gio.DesktopAppInfo;
+            appInfo: never;
             /**
              * Whether the application has marked itself as busy.
              */

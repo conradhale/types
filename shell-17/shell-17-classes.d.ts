@@ -49,11 +49,11 @@ declare namespace classes {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get app_info(): Gio.DesktopAppInfo;
+        get app_info(): never;
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get appInfo(): Gio.DesktopAppInfo;
+        get appInfo(): never;
         /**
          * Whether the application has marked itself as busy.
          */
@@ -232,7 +232,7 @@ declare namespace classes {
          */
         create_icon_texture(size: number): Clutter.Actor;
         get_action_group(): Gio.ActionGroup | null;
-        get_app_info(): Gio.DesktopAppInfo;
+        get_app_info(): never;
         get_busy(): boolean;
         get_description(): string;
         /**
