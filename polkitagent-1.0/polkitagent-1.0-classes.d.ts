@@ -325,6 +325,12 @@ declare namespace classes {
     }
     class TextListener extends Listener implements Gio.Initable {
         static '$gtype': GObject.GType<TextListener>;
+        // Properties
+        get delay(): number;
+        get use_alternate_buffer(): boolean;
+        get useAlternateBuffer(): boolean;
+        get use_color(): boolean;
+        get useColor(): boolean;
         /**
          * Compile-time signal type information.
          *

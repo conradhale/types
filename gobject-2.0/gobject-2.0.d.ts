@@ -87,15 +87,29 @@ export namespace GObject {
      */
     const VALUE_COLLECT_FORMAT_MAX_LENGTH: number;
     /**
-     * For string values, indicates that the string contained is canonical and will
-     * exist for the duration of the process. See g_value_set_interned_string().
+     * Flag to indicate that a string in a [struct`GObject`.Value] is canonical and
+     * will exist for the duration of the process.
+     *
+     * See [method`GObject`.Value.set_interned_string].
+     *
+     * This flag should be checked by implementations of
+     * [callback`GObject`.TypeValueFreeFunc], [callback`GObject`.TypeValueCollectFunc]
+     * and [callback`GObject`.TypeValueLCopyFunc].
      */
     const VALUE_INTERNED_STRING: number;
     /**
-     * If passed to G_VALUE_COLLECT(), allocated data won't be copied
-     * but used verbatim. This does not affect ref-counted types like
-     * objects. This does not affect usage of g_value_copy(), the data will
+     * Flag to indicate that allocated data in a [struct`GObject`.Value] shouldn’t be
+     * copied.
+     *
+     * If passed to [func`GObject`.VALUE_COLLECT], allocated data won’t be copied
+     * but used verbatim. This does not affect ref-counted types like objects.
+     *
+     * This does not affect usage of [method`GObject`.Value.copy]: the data will
      * be copied if it is not ref-counted.
+     *
+     * This flag should be checked by implementations of
+     * [callback`GObject`.TypeValueFreeFunc], [callback`GObject`.TypeValueCollectFunc]
+     * and [callback`GObject`.TypeValueLCopyFunc].
      */
     const VALUE_NOCOPY_CONTENTS: number;
     /**
@@ -734,11 +748,11 @@ export namespace GObject {
      *
      *
      * @param g_enum_type the type identifier of the type being completed
-     * @param const_values An array of #GEnumValue structs for the possible
-     *  enumeration values. The array is terminated by a struct with all
-     *  members being 0.
+     * @param const_values An array of #GEnumValue
+     *  structs for the possible enumeration values. The array is terminated
+     *  by a struct with all members being 0.
      */
-    function enum_complete_type_info(g_enum_type: GType, const_values: EnumValue): [TypeInfo];
+    function enum_complete_type_info(g_enum_type: GType, const_values: EnumValue[]): [TypeInfo];
     /**
      * Returns the #GEnumValue for a value.
      *
@@ -800,11 +814,11 @@ export namespace GObject {
      * g_enum_complete_type_info() above.
      *
      * @param g_flags_type the type identifier of the type being completed
-     * @param const_values An array of #GFlagsValue structs for the possible
-     *  enumeration values. The array is terminated by a struct with all
-     *  members being 0.
+     * @param const_values An array of #GFlagsValue
+     *  structs for the possible enumeration values. The array is terminated
+     *  by a struct with all members being 0.
      */
-    function flags_complete_type_info(g_flags_type: GType, const_values: FlagsValue): [TypeInfo];
+    function flags_complete_type_info(g_flags_type: GType, const_values: FlagsValue[]): [TypeInfo];
     /**
      * Returns the first #GFlagsValue which is set in `value`.
      *
@@ -2453,23 +2467,25 @@ export namespace GObject {
     function type_set_qdata(type: GType, quark: GLib.Quark, data?: any | null): void;
     function type_test_flags(type: GType, flags: number): boolean;
     /**
-     * Returns whether a #GValue of type `src_type` can be copied into
-     * a #GValue of type `dest_type`.
+     * Checks whether a [method`GObject`.Value.copy] is able to copy values of type
+     * `src_type` into values of type `dest_type`.
      *
-     * @returns %TRUE if g_value_copy() is possible with `src_type` and `dest_type`.
-     * @param src_type source type to be copied.
-     * @param dest_type destination type for copying.
+     * @returns true if the copy is possible; false otherwise
+     * @param src_type source type to be copied
+     * @param dest_type destination type for copying
      */
     function value_type_compatible(src_type: GType, dest_type: GType): boolean;
     /**
-     * Check whether g_value_transform() is able to transform values
-     * of type `src_type` into values of type `dest_type`. Note that for
-     * the types to be transformable, they must be compatible or a
-     * transformation function must be registered.
+     * Checks whether [method`GObject`.Value.transform] is able to transform values
+     * of type `src_type` into values of type `dest_type`.
      *
-     * @returns %TRUE if the transformation is possible, %FALSE otherwise.
-     * @param src_type Source type.
-     * @param dest_type Target type.
+     * Note that for the types to be transformable, they must be compatible or a
+     * transformation function must be registered using
+     * [func`GObject`.Value.register_transform_func].
+     *
+     * @returns true if the transformation is possible; false otherwise
+     * @param src_type source type
+     * @param dest_type target type
      */
     function value_type_transformable(src_type: GType, dest_type: GType): boolean;
     function variant_get_gtype(): GType;
@@ -4716,14 +4732,23 @@ export namespace GObject {
     /**
      * An opaque structure used to hold different types of values.
      *
-     * The data within the structure has protected scope: it is accessible only
-     * to functions within a #GTypeValueTable structure, or implementations of
-     * the g_value_*() API. That is, code portions which implement new fundamental
-     * types.
+     * Before it can be used, a `GValue` has to be initialized to a specific type by
+     * calling [method`GObject`.Value.init] on it.
      *
-     * #GValue users cannot make any assumptions about how data is stored
+     * Many types which are stored within a `GValue` need to allocate data on the
+     * heap, so [method`GObject`.Value.unset] must always be called on a `GValue` to
+     * free any such data once you’re finished with the `GValue`, even if the
+     * `GValue` itself is stored on the stack.
+     *
+     * The data within the structure has protected scope: it is accessible only
+     * to functions within a [struct`GObject`.TypeValueTable] structure, or
+     * implementations of the `g_value_*()` API. That is, code which implements new
+     * fundamental types.
+     *
+     * `GValue` users cannot make any assumptions about how data is stored
      * within the 2 element `data` union, and the `g_type` member should
-     * only be accessed through the G_VALUE_TYPE() macro.
+     * only be accessed through the [func`GObject`.VALUE_TYPE] macro and related
+     * macros.
      */
     class Value {
         static '$gtype': GType<Value>;
@@ -4731,28 +4756,31 @@ export namespace GObject {
         _init(...args: any[]): void;
         // Static methods
         /**
-         * Returns whether a #GValue of type `src_type` can be copied into
-         * a #GValue of type `dest_type`.
+         * Checks whether a [method`GObject`.Value.copy] is able to copy values of type
+         * `src_type` into values of type `dest_type`.
          *
-         * @param src_type source type to be copied.
-         * @param dest_type destination type for copying.
+         * @param src_type source type to be copied
+         * @param dest_type destination type for copying
          */
         static type_compatible(src_type: GType, dest_type: GType): boolean;
         /**
-         * Check whether g_value_transform() is able to transform values
-         * of type `src_type` into values of type `dest_type`. Note that for
-         * the types to be transformable, they must be compatible or a
-         * transformation function must be registered.
+         * Checks whether [method`GObject`.Value.transform] is able to transform values
+         * of type `src_type` into values of type `dest_type`.
          *
-         * @param src_type Source type.
-         * @param dest_type Target type.
+         * Note that for the types to be transformable, they must be compatible or a
+         * transformation function must be registered using
+         * [func`GObject`.Value.register_transform_func].
+         *
+         * @param src_type source type
+         * @param dest_type target type
          */
         static type_transformable(src_type: GType, dest_type: GType): boolean;
         // Methods
         /**
          * Copies the value of `src_value` into `dest_value`.
          *
-         * @param dest_value An initialized #GValue structure of the same type as `src_value`.
+         * @param dest_value an initialized [struct`GObject`.Value] structure of the same type
+         *   as `src_value`
          */
         copy(dest_value: Value | any): void;
         /**
@@ -4780,9 +4808,10 @@ export namespace GObject {
         dup_variant(): GLib.Variant | null;
         /**
          * Determines if `value` will fit inside the size of a pointer value.
+         *
          * This is an internal function introduced mainly for C marshallers.
          *
-         * @returns %TRUE if `value` will fit inside a pointer value.
+         * @returns true if `value` will fit inside a pointer value; false otherwise
          */
         fits_pointer(): boolean;
         /**
@@ -4915,37 +4944,56 @@ export namespace GObject {
          */
         get_variant(): GLib.Variant | null;
         /**
-         * Initializes `value` with the default value of `type`.
+         * Initializes `value` to store values of the given `type,` and sets its value
+         * to the default for `type`.
          *
-         * @returns the #GValue structure that has been passed in
-         * @param g_type Type the #GValue should hold values of.
+         * This must be called before any other methods on a [struct`GObject`.Value], so
+         * the value knows what type it’s meant to store.
+         *
+         * ```c
+         *   GValue value = G_VALUE_INIT;
+         *
+         *   g_value_init (&value, SOME_G_TYPE);
+         *   …
+         *   g_value_unset (&value);
+         * ```
+         *
+         * @returns the [struct`GObject`.Value] structure that has been
+         *   passed in
+         * @param g_type type the [struct`GObject`.Value] should hold values of
          */
         init(g_type: GType): unknown;
         /**
-         * Initializes and sets `value` from an instantiatable type via the
-         * value_table's collect_value() function.
+         * Initializes and sets `value` from an instantiatable type.
+         *
+         * This calls the [callback`GObject`.TypeValueCollectFunc] function for the type
+         * the [struct`GObject`.Value] contains.
          *
          * Note: The `value` will be initialised with the exact type of
-         * `instance`.  If you wish to set the `value'`s type to a different GType
-         * (such as a parent class GType), you need to manually call
-         * g_value_init() and g_value_set_instance().
+         * `instance`.  If you wish to set the `value’`s type to a different
+         * [type`GObject`.Type] (such as a parent class type), you need to manually call
+         * [method`GObject`.Value.init] and [method`GObject`.Value.set_instance].
          *
          * @param instance the instance
          */
         init_from_instance(instance: TypeInstance): void;
         /**
-         * Returns the value contents as pointer. This function asserts that
-         * g_value_fits_pointer() returned %TRUE for the passed in value.
+         * Returns the value contents as a pointer.
+         *
+         * This function asserts that [method`GObject`.Value.fits_pointer] returned true
+         * for the passed in value.
+         *
          * This is an internal function introduced mainly for C marshallers.
          *
-         * @returns the value contents as pointer
+         * @returns the value contents as a pointer
          */
         peek_pointer(): any | null;
         /**
          * Clears the current value in `value` and resets it to the default value
-         * (as if the value had just been initialized).
+         * (as if the value had just been initialized using
+         * [method`GObject`.Value.init]).
          *
-         * @returns the #GValue structure that has been passed in
+         * @returns the [struct`GObject`.Value] structure that has been passed in
          */
         reset(): unknown;
         /**
@@ -4957,7 +5005,7 @@ export namespace GObject {
         /**
          * Set the contents of a %G_TYPE_BOXED derived #GValue to `v_boxed`.
          *
-         * @param v_boxed boxed value to be set
+         * @param v_boxed caller-owned boxed object to be duplicated for the #GValue
          */
         set_boxed(v_boxed?: any | null): void;
         /**
@@ -5003,8 +5051,10 @@ export namespace GObject {
          */
         set_gtype(v_gtype: GType): void;
         /**
-         * Sets `value` from an instantiatable type via the
-         * value_table's collect_value() function.
+         * Sets `value` from an instantiatable type.
+         *
+         * This calls the [callback`GObject`.TypeValueCollectFunc] function for the type
+         * the [struct`GObject`.Value] contains.
          *
          * @param instance the instance
          */
@@ -5180,23 +5230,28 @@ export namespace GObject {
         take_variant(variant?: GLib.Variant | null): void;
         /**
          * Tries to cast the contents of `src_value` into a type appropriate
-         * to store in `dest_value,` e.g. to transform a %G_TYPE_INT value
-         * into a %G_TYPE_FLOAT value. Performing transformations between
-         * value types might incur precision lossage. Especially
-         * transformations into strings might reveal seemingly arbitrary
-         * results and shouldn't be relied upon for production code (such
-         * as rcfile value or object property serialization).
+         * to store in `dest_value`.
          *
-         * @returns Whether a transformation rule was found and could be applied.
-         *  Upon failing transformations, `dest_value` is left untouched.
-         * @param dest_value Target value.
+         * If a transformation is not possible, `dest_value` is not modified.
+         *
+         * For example, this could transform a `G_TYPE_INT` value into a `G_TYPE_FLOAT`
+         * value.
+         *
+         * Performing transformations between value types might incur precision loss.
+         * Especially transformations into strings might reveal seemingly arbitrary
+         * results and the format of particular transformations to strings is not
+         * guaranteed over time.
+         *
+         * @returns true on success; false otherwise
+         * @param dest_value target value
          */
         transform(dest_value: Value | any): boolean;
         /**
-         * Clears the current value in `value` (if any) and "unsets" the type,
-         * this releases all resources associated with this GValue. An unset
-         * value is the same as an uninitialized (zero-filled) #GValue
-         * structure.
+         * Clears the current value in `value` (if any) and ‘unsets’ the type.
+         *
+         * This releases all resources associated with this [struct`GObject`.Value]. An
+         * unset value is the same as a cleared (zero-filled)
+         * [struct`GObject`.Value] structure set to `G_VALUE_INIT`.
          */
         unset(): void;
     }

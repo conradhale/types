@@ -3674,7 +3674,7 @@ declare namespace classes {
          *
          * @param name A UNIX group name.
          */
-        static new_for_name(name: string): Polkit.Identity;
+        static new_for_name(name: string): Polkit.Identity | null;
         // Methods
         /**
          * Gets the UNIX group id for `group`.
@@ -4774,10 +4774,22 @@ declare namespace classes {
         static '$gtype': GObject.GType<UnixProcess>;
         // Properties
         /**
+         * The UNIX group ids of the process.
+         */
+        get gids(): any[];
+        set gids(val: any[]);
+        /**
          * The UNIX process id.
          */
         get pid(): number;
         set pid(val: number);
+        /**
+         * The UNIX process id file descriptor.
+         */
+        get pidfd(): number;
+        set pidfd(val: number);
+        get pidfd_is_safe(): boolean;
+        get pidfdIsSafe(): boolean;
         /**
          * The start time of the process.
          */
@@ -4851,7 +4863,24 @@ declare namespace classes {
          * @param start_time The start time for `pid`.
          */
         static new_full(pid: number, start_time: number): Polkit.Subject;
+        /**
+         * Creates a new #PolkitUnixProcess object for `pidfd` and `uid`.
+         *
+         * @param pidfd The process id file descriptor.
+         * @param uid The (real, not effective) uid of the owner of `pid` or -1 to look it up in e.g. <filename>/proc</filename>.
+         * @param gids The (real, not effective) gids of the owner of `pid` or %NULL.
+         */
+        static new_pidfd(pidfd: number, uid: number, gids?: number[] | null): Polkit.Subject;
         // Methods
+        /**
+         * Gets the group ids for `process`. Note that this is the real group-ids,
+         * not the effective group-ids.
+         *
+         * @returns a #GArray
+         *          of #gid_t containing the group ids for `process` or NULL if unknown,
+         *          as a new reference to the array, caller must deref it when done.
+         */
+        get_gids(): any[] | null;
         /**
          * (deprecated)
          */
@@ -4862,6 +4891,19 @@ declare namespace classes {
          * @returns The process id for `process`.
          */
         get_pid(): number;
+        /**
+         * Gets the process id file descriptor for `process`.
+         *
+         * @returns The process id file descriptor for `process`.
+         */
+        get_pidfd(): number;
+        /**
+         * Checks if the process id file descriptor for `process` is safe
+         * or if it was opened locally and thus vulnerable to reuse.
+         *
+         * @returns TRUE or FALSE.
+         */
+        get_pidfd_is_safe(): boolean;
         /**
          * Gets the start time of `process`.
          *
@@ -4882,11 +4924,25 @@ declare namespace classes {
          */
         get_uid(): number;
         /**
+         * Sets the (real, not effective) group ids for `process`.
+         *
+         * @param gids A #GList of #gid_t containing the group
+         *        ids to set for `process` or NULL to unset them.
+         *        A reference to `gids` is taken.
+         */
+        set_gids(gids: any[]): void;
+        /**
          * Sets `pid` for `process`.
          *
          * @param pid A process id.
          */
         set_pid(pid: number): void;
+        /**
+         * Sets `pidfd` for `process`.
+         *
+         * @param pidfd A process id file descriptor.
+         */
+        set_pidfd(pidfd: number): void;
         /**
          * Set the start time of `process`.
          *

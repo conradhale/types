@@ -26,7 +26,6 @@ export namespace GDesktopEnums {
         PINK = 6,
         PURPLE = 7,
         SLATE = 8,
-        BROWN = 108,
     }
     export namespace BackgroundShading {
         export const $gtype: GObject.GType<BackgroundShading>;

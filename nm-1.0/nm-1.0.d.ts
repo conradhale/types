@@ -1019,10 +1019,15 @@ export namespace NM {
          */
         UNMANAGED_QUITTING = 72,
         /**
-         * The device is unmanaged because networking is
-         *   disabled or the system is suspended. Since: 1.48
+         * Since: 1.48. Deprecated: 1.56: Use
+         *   %NM_DEVICE_STATE_REASON_UNMANAGED_MANAGER_DISABLED instead.
          */
         UNMANAGED_SLEEPING = 73,
+        /**
+         * The device is unmanaged because networking is
+         *   disabled or the system is suspended. Since: 1.56
+         */
+        UNMANAGED_MANAGER_DISABLED = 73,
         /**
          * The device is unmanaged by user decision in
          *   NetworkManager.conf ('unmanaged' in a [device*] section). Since: 1.48
@@ -1043,6 +1048,10 @@ export namespace NM {
          * The device is unmanaged via udev rule. Since: 1.48
          */
         UNMANAGED_USER_UDEV = 77,
+        /**
+         * NetworkManager was disabled (networking off). Since: 1.56
+         */
+        NETWORKING_OFF = 78,
     }
     /**
      * #NMDeviceType values indicate the type of hardware represented by a
@@ -1189,6 +1198,10 @@ export namespace NM {
          * A HSR/PRP device. Since: 1.46.
          */
         HSR = 33,
+        /**
+         * A IPVLAN device. Since: 1.52.
+         */
+        IPVLAN = 34,
     }
     /**
      * The tunneling mode.
@@ -1777,6 +1790,47 @@ export namespace NM {
         IN_B_DEFAULT = 8,
     }
     /**
+     * #NMSettingHsrProtocolVersion values indicate the HSR protocol version.
+     */
+    export namespace SettingHsrProtocolVersion {
+        export const $gtype: GObject.GType<SettingHsrProtocolVersion>;
+    }
+    enum SettingHsrProtocolVersion {
+        /**
+         * Default version for the protocol
+         */
+        DEFAULT = -1,
+        /**
+         * HSRv0, IEC 62439-3:2010
+         */
+        'HSR_2010',
+        /**
+         * HSRv1, IEC 62439-3:2012
+         */
+        'HSR_2012' = 1,
+    }
+    /**
+     * #NMSettingIP4DhcpIpv6OnlyPreferred values specify if the "IPv6-Only Preferred"
+     * option (RFC 8925) for DHCPv4 is enabled.
+     */
+    export namespace SettingIP4DhcpIpv6OnlyPreferred {
+        export const $gtype: GObject.GType<SettingIP4DhcpIpv6OnlyPreferred>;
+    }
+    enum SettingIP4DhcpIpv6OnlyPreferred {
+        /**
+         * use the global default value
+         */
+        DEFAULT = -1,
+        /**
+         * the option is disabled
+         */
+        NO,
+        /**
+         * the option is enabled
+         */
+        YES = 1,
+    }
+    /**
      * #NMSettingIP4LinkLocal values indicate whether IPv4 link-local address protocol should be enabled.
      */
     export namespace SettingIP4LinkLocal {
@@ -1800,9 +1854,14 @@ export namespace NM {
         DISABLED = 2,
         /**
          * Enable the IPv4 link-local protocol regardless what other protocols
-         * such as DHCP or manually assigned IP addresses might be active.
+         *   such as DHCP or manually assigned IP addresses might be active.
          */
         ENABLED = 3,
+        /**
+         * Since 1.52. This sets an IPv4 link-local address if no other IPv4
+         *   address is set, dynamically removing/re-adding it depending on DHCP leases.
+         */
+        FALLBACK = 4,
     }
     /**
      * #NMSettingIP6ConfigAddrGenMode controls how the Interface Identifier for
@@ -1861,6 +1920,76 @@ export namespace NM {
          * are enabled and temporary addresses are preferred over public addresses
          */
         PREFER_TEMP_ADDR = 2,
+    }
+    /**
+     * #NMSettingIPConfigForwarding indicates whether to configure sysctl
+     * interface-specific forwarding. When enabled, the interface will act
+     * as a router to forward the packet from one interface to another.
+     */
+    export namespace SettingIPConfigForwarding {
+        export const $gtype: GObject.GType<SettingIPConfigForwarding>;
+    }
+    enum SettingIPConfigForwarding {
+        /**
+         * use the global default value
+         */
+        DEFAULT = -1,
+        /**
+         * disable forwarding
+         */
+        NO,
+        /**
+         * enable forwarding
+         */
+        YES = 1,
+        /**
+         * enable forwarding if any shared
+         *  connection is active, use kernel default otherwise
+         */
+        AUTO = 2,
+    }
+    /**
+     * #NMSettingIPConfigRoutedDns indicates whether routes are added
+     * automatically for each DNS that is associated with this connection.
+     */
+    export namespace SettingIPConfigRoutedDns {
+        export const $gtype: GObject.GType<SettingIPConfigRoutedDns>;
+    }
+    enum SettingIPConfigRoutedDns {
+        /**
+         * use the global default value
+         */
+        DEFAULT = -1,
+        /**
+         * do not add DNS routes
+         */
+        NO,
+        /**
+         * do add DNS routes
+         */
+        YES = 1,
+    }
+    export namespace SettingIpvlanMode {
+        export const $gtype: GObject.GType<SettingIpvlanMode>;
+    }
+    enum SettingIpvlanMode {
+        /**
+         * unknown/unset mode
+         */
+        UNKNOWN,
+        /**
+         * L2 mode, device receives and responds to ARP.
+         */
+        'L2' = 1,
+        /**
+         * L3 mode, device process only L3 traffic and above.
+         */
+        'L3' = 2,
+        /**
+         * L3S mode, same way as L3 mode but egress and ingress
+         * lands on netfilter chain.
+         */
+        'L3S' = 3,
     }
     /**
      * Controls if and how the MAC address of a device is randomzied.
@@ -1975,6 +2104,27 @@ export namespace NM {
          * source mode
          */
         SOURCE = 5,
+    }
+    /**
+     * #NMSettingOvsDpdkLscInterrupt indicates whether the interface uses interrupts
+     * or poll mode for Link State Change (LSC) detection on the OVS DPDK interface.
+     */
+    export namespace SettingOvsDpdkLscInterrupt {
+        export const $gtype: GObject.GType<SettingOvsDpdkLscInterrupt>;
+    }
+    enum SettingOvsDpdkLscInterrupt {
+        /**
+         * leave the value set to Open vSwitch default
+         */
+        IGNORE = -1,
+        /**
+         * interrupt disabled (poll mode)
+         */
+        DISABLED,
+        /**
+         * interrupt enabled
+         */
+        ENABLED = 1,
     }
     /**
      * The Proxy method.
@@ -2249,6 +2399,25 @@ export namespace NM {
          */
         SWITCHDEV = 1,
     }
+    export namespace SriovPreserveOnDown {
+        export const $gtype: GObject.GType<SriovPreserveOnDown>;
+    }
+    enum SriovPreserveOnDown {
+        /**
+         * use the default value
+         */
+        DEFAULT = -1,
+        /**
+         * reset the SR-IOV parameters when the
+         *     connection is deactivated
+         */
+        NO,
+        /**
+         * preserve the SR-IOV parameters set on
+         * the device when the connection is deactivated
+         */
+        YES = 1,
+    }
     /**
      * #NMSriovVFVlanProtocol indicates the VLAN protocol to use.
      */
@@ -2282,10 +2451,15 @@ export namespace NM {
          */
         UNKNOWN,
         /**
-         * Networking is not enabled, the system is being suspended or
-         *    resumed from suspend.
+         * Deprecated: 1.56: Use %NM_STATE_DISABLED instead.
          */
         ASLEEP = 10,
+        /**
+         * NetworkManager is disabled, either because the user requested
+         *    to disable networking or because the system is suspended or resuming from suspend.
+         *    Since: 1.56.
+         */
+        DISABLED = 10,
         /**
          * There is no active network connection.
          *    The graphical shell should indicate  no network connectivity and the
@@ -2404,16 +2578,31 @@ export namespace NM {
         'WPA3_SUITE_B_192' = 11,
     }
     /**
-     * %_NM_VERSION_INFO_CAPABILITY_UNUSED: a dummy capability. It has no meaning,
-     *   don't use it.
-     * Currently no enum values are defined. These capabilities are exposed
-     * on D-Bus in the "VersionInfo" bit field.
+     * The numeric values represent the bit index of the capability. These capabilities
+     * can be queried in the "VersionInfo" D-Bus property.
      */
     export namespace VersionInfoCapability {
         export const $gtype: GObject.GType<VersionInfoCapability>;
     }
     enum VersionInfoCapability {
-        UNUSED = 2147483647,
+        /**
+         * Contains the fix to a bug that
+         *   caused that routes in table other than main were not removed on reapply nor
+         *   on connection down.
+         *   https://issues.redhat.com/browse/RHEL-66262
+         *   https://issues.redhat.com/browse/RHEL-67324
+         */
+        SYNC_ROUTE_WITH_TABLE,
+        /**
+         * Indicates that NetworkManager supports
+         * configuring per-device IPv4 sysctl forwarding setting. Since: 1.54.
+         */
+        'IP4_FORWARDING' = 1,
+        /**
+         * NetworkManager supports the
+         *   "sriov.preserve-on-down" property. Since: 1.54
+         */
+        SRIOV_PRESERVE_ON_DOWN = 2,
     }
     /**
      * A selector for traffic priority maps; these map Linux SKB priorities
@@ -2887,6 +3076,10 @@ export namespace NM {
     const DEVICE_IP4_CONNECTIVITY: string;
     const DEVICE_IP6_CONFIG: string;
     const DEVICE_IP6_CONNECTIVITY: string;
+    const DEVICE_IPVLAN_MODE: string;
+    const DEVICE_IPVLAN_PARENT: string;
+    const DEVICE_IPVLAN_PRIVATE: string;
+    const DEVICE_IPVLAN_VEPA: string;
     const DEVICE_IP_INTERFACE: string;
     const DEVICE_IP_TUNNEL_ENCAPSULATION_LIMIT: string;
     const DEVICE_IP_TUNNEL_FLAGS: string;
@@ -3089,6 +3282,7 @@ export namespace NM {
     const ETHTOOL_OPTNAME_FEATURE_TX_UDP_TNL_CSUM_SEGMENTATION: string;
     const ETHTOOL_OPTNAME_FEATURE_TX_UDP_TNL_SEGMENTATION: string;
     const ETHTOOL_OPTNAME_FEATURE_TX_VLAN_STAG_HW_INSERT: string;
+    const ETHTOOL_OPTNAME_FEC_MODE: string;
     const ETHTOOL_OPTNAME_PAUSE_AUTONEG: string;
     const ETHTOOL_OPTNAME_PAUSE_RX: string;
     const ETHTOOL_OPTNAME_PAUSE_TX: string;
@@ -3359,6 +3553,9 @@ export namespace NM {
     const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
     const SETTING_CONNECTION_ID: string;
     const SETTING_CONNECTION_INTERFACE_NAME: string;
+    const SETTING_CONNECTION_IP_PING_ADDRESSES: string;
+    const SETTING_CONNECTION_IP_PING_ADDRESSES_REQUIRE_ALL: string;
+    const SETTING_CONNECTION_IP_PING_TIMEOUT: string;
     const SETTING_CONNECTION_LLDP: string;
     const SETTING_CONNECTION_LLMNR: string;
     const SETTING_CONNECTION_MASTER: string;
@@ -3434,6 +3631,15 @@ export namespace NM {
     const SETTING_GSM_HOME_ONLY: string;
     const SETTING_GSM_INITIAL_EPS_BEARER_APN: string;
     const SETTING_GSM_INITIAL_EPS_BEARER_CONFIGURE: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_NOAUTH: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_PASSWORD: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_PASSWORD_FLAGS: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_REFUSE_CHAP: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_REFUSE_EAP: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_REFUSE_MSCHAP: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_REFUSE_MSCHAPV2: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_REFUSE_PAP: string;
+    const SETTING_GSM_INITIAL_EPS_BEARER_USERNAME: string;
     const SETTING_GSM_MTU: string;
     const SETTING_GSM_NETWORK_ID: string;
     const SETTING_GSM_NUMBER: string;
@@ -3450,9 +3656,11 @@ export namespace NM {
     const SETTING_HOSTNAME_ONLY_FROM_DEFAULT: string;
     const SETTING_HOSTNAME_PRIORITY: string;
     const SETTING_HOSTNAME_SETTING_NAME: string;
+    const SETTING_HSR_INTERLINK: string;
     const SETTING_HSR_MULTICAST_SPEC: string;
     const SETTING_HSR_PORT1: string;
     const SETTING_HSR_PORT2: string;
+    const SETTING_HSR_PROTOCOL_VERSION: string;
     const SETTING_HSR_PRP: string;
     const SETTING_HSR_SETTING_NAME: string;
     const SETTING_INFINIBAND_MAC_ADDRESS: string;
@@ -3463,6 +3671,7 @@ export namespace NM {
     const SETTING_INFINIBAND_TRANSPORT_MODE: string;
     const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string;
     const SETTING_IP4_CONFIG_DHCP_FQDN: string;
+    const SETTING_IP4_CONFIG_DHCP_IPV6_ONLY_PREFERRED: string;
     const SETTING_IP4_CONFIG_DHCP_VENDOR_CLASS_IDENTIFIER: string;
     const SETTING_IP4_CONFIG_LINK_LOCAL: string;
     /**
@@ -3545,6 +3754,11 @@ export namespace NM {
     const SETTING_IP6_CONFIG_TEMP_PREFERRED_LIFETIME: string;
     const SETTING_IP6_CONFIG_TEMP_VALID_LIFETIME: string;
     const SETTING_IP6_CONFIG_TOKEN: string;
+    const SETTING_IPVLAN_MODE: string;
+    const SETTING_IPVLAN_PARENT: string;
+    const SETTING_IPVLAN_PRIVATE: string;
+    const SETTING_IPVLAN_SETTING_NAME: string;
+    const SETTING_IPVLAN_VEPA: string;
     const SETTING_IP_CONFIG_ADDRESSES: string;
     const SETTING_IP_CONFIG_AUTO_ROUTE_EXT_GW: string;
     const SETTING_IP_CONFIG_DAD_TIMEOUT: string;
@@ -3555,12 +3769,14 @@ export namespace NM {
     const SETTING_IP_CONFIG_DHCP_IAID: string;
     const SETTING_IP_CONFIG_DHCP_REJECT_SERVERS: string;
     const SETTING_IP_CONFIG_DHCP_SEND_HOSTNAME: string;
+    const SETTING_IP_CONFIG_DHCP_SEND_HOSTNAME_V2: string;
     const SETTING_IP_CONFIG_DHCP_SEND_RELEASE: string;
     const SETTING_IP_CONFIG_DHCP_TIMEOUT: string;
     const SETTING_IP_CONFIG_DNS: string;
     const SETTING_IP_CONFIG_DNS_OPTIONS: string;
     const SETTING_IP_CONFIG_DNS_PRIORITY: string;
     const SETTING_IP_CONFIG_DNS_SEARCH: string;
+    const SETTING_IP_CONFIG_FORWARDING: string;
     const SETTING_IP_CONFIG_GATEWAY: string;
     const SETTING_IP_CONFIG_IGNORE_AUTO_DNS: string;
     const SETTING_IP_CONFIG_IGNORE_AUTO_ROUTES: string;
@@ -3569,10 +3785,13 @@ export namespace NM {
     const SETTING_IP_CONFIG_NEVER_DEFAULT: string;
     const SETTING_IP_CONFIG_REPLACE_LOCAL_RULE: string;
     const SETTING_IP_CONFIG_REQUIRED_TIMEOUT: string;
+    const SETTING_IP_CONFIG_ROUTED_DNS: string;
     const SETTING_IP_CONFIG_ROUTES: string;
     const SETTING_IP_CONFIG_ROUTE_METRIC: string;
     const SETTING_IP_CONFIG_ROUTE_TABLE: string;
     const SETTING_IP_CONFIG_ROUTING_RULES: string;
+    const SETTING_IP_CONFIG_SHARED_DHCP_LEASE_TIME: string;
+    const SETTING_IP_CONFIG_SHARED_DHCP_RANGE: string;
     const SETTING_IP_TUNNEL_ENCAPSULATION_LIMIT: string;
     const SETTING_IP_TUNNEL_FLAGS: string;
     const SETTING_IP_TUNNEL_FLOW_LABEL: string;
@@ -3630,6 +3849,7 @@ export namespace NM {
     const SETTING_OVS_BRIDGE_SETTING_NAME: string;
     const SETTING_OVS_BRIDGE_STP_ENABLE: string;
     const SETTING_OVS_DPDK_DEVARGS: string;
+    const SETTING_OVS_DPDK_LSC_INTERRUPT: string;
     const SETTING_OVS_DPDK_N_RXQ: string;
     const SETTING_OVS_DPDK_N_RXQ_DESC: string;
     const SETTING_OVS_DPDK_N_TXQ_DESC: string;
@@ -3679,6 +3899,8 @@ export namespace NM {
     const SETTING_PPP_REQUIRE_MPPE: string;
     const SETTING_PPP_REQUIRE_MPPE_128: string;
     const SETTING_PPP_SETTING_NAME: string;
+    const SETTING_PREFIX_DELEGATION_SETTING_NAME: string;
+    const SETTING_PREFIX_DELEGATION_SUBNET_ID: string;
     const SETTING_PROXY_BROWSER_ONLY: string;
     const SETTING_PROXY_METHOD: string;
     const SETTING_PROXY_PAC_SCRIPT: string;
@@ -3694,6 +3916,7 @@ export namespace NM {
     const SETTING_SRIOV_ESWITCH_ENCAP_MODE: string;
     const SETTING_SRIOV_ESWITCH_INLINE_MODE: string;
     const SETTING_SRIOV_ESWITCH_MODE: string;
+    const SETTING_SRIOV_PRESERVE_ON_DOWN: string;
     const SETTING_SRIOV_SETTING_NAME: string;
     const SETTING_SRIOV_TOTAL_VFS: string;
     const SETTING_SRIOV_VFS: string;
@@ -4030,6 +4253,13 @@ export namespace NM {
      */
     function ethtool_optname_is_feature(optname?: string | null): boolean;
     /**
+     * Checks whether `optname` is a valid option name for a fec setting.
+     *
+     * @returns %TRUE, if `optname` is valid
+     * @param optname the option name to check
+     */
+    function ethtool_optname_is_fec(optname?: string | null): boolean;
+    /**
      * Checks whether `optname` is a valid option name for a pause setting.
      *
      * @returns %TRUE, if `optname` is valid
@@ -4182,6 +4412,22 @@ export namespace NM {
      * @param other_type a connection type to test against `virtual_type`
      */
     function utils_check_virtual_device_compatibility(virtual_type: GObject.GType, other_type: GObject.GType): boolean;
+    /**
+     * Reads `filename` on behalf of user `user` and writes the
+     * content to a new file in /run/NetworkManager/cert/.
+     * The new file has permission 600 and is owned by root.
+     *
+     * This function is useful for VPN plugins that run as root and need
+     * to verify that the user owning the connection (the one listed in the
+     * connection.permissions property) can access the file.
+     *
+     * @returns the name of the new temporary file. Or %NULL
+     *   if an error occurred, including when the given user can't access the
+     *   file.
+     * @param filename the file name of the certificate or key to copy
+     * @param user the user to impersonate when reading the file
+     */
+    function utils_copy_cert_as_user(filename: string, user: string): string;
     /**
      * This ensures that all NMSetting GTypes are created. For example,
      * after this call, g_type_from_name("NMSettingConnection") will work.
@@ -5025,13 +5271,13 @@ export namespace NM {
         ): boolean;
     }
     interface SecretAgentOldDeleteSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error: GLib.Error): void;
+        (agent: SecretAgentOld, connection: Connection, error?: GLib.Error | null): void;
     }
     interface SecretAgentOldGetSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, secrets: GLib.Variant, error: GLib.Error): void;
+        (agent: SecretAgentOld, connection: Connection, secrets?: GLib.Variant | null, error?: GLib.Error | null): void;
     }
     interface SecretAgentOldSaveSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error: GLib.Error): void;
+        (agent: SecretAgentOld, connection: Connection, error?: GLib.Error | null): void;
     }
     interface SettingClearSecretsWithFlagsFn {
         (setting: Setting, secret: string, flags: SettingSecretFlags): boolean;
@@ -5264,7 +5510,7 @@ export namespace NM {
          *   checkpoints is allowed, however, if an older checkpoint
          *   that references overlapping devices gets rolled back, it will
          *   automatically destroy this checkpoint during rollback. This
-         *   allows to create several overlapping checkpoints in parallel,
+         *   allows one to create several overlapping checkpoints in parallel,
          *   and rollback to them at will. With the special case that
          *   rolling back to an older checkpoint will invalidate all
          *   overlapping younger checkpoints. This opts-in that the
@@ -5973,6 +6219,34 @@ export namespace NM {
         WILLING = 4,
     }
     /**
+     * These flags modify the ethtool FEC(Forward Error Correction) mode.
+     */
+    export namespace SettingEthtoolFecMode {
+        export const $gtype: GObject.GType<SettingEthtoolFecMode>;
+    }
+    enum SettingEthtoolFecMode {
+        /**
+         * Select default/best FEC mode automatically.
+         */
+        AUTO = 2,
+        /**
+         * No FEC mode.
+         */
+        OFF = 4,
+        /**
+         * Reed-Solomon FEC Mode.
+         */
+        RS = 8,
+        /**
+         * Base-R/Reed-Solomon FEC Mode.
+         */
+        BASER = 16,
+        /**
+         * Low Latency Reed Solomon FEC Mode.
+         */
+        LLRS = 32,
+    }
+    /**
      * These flags indicate specific behavior related to handling of a secret.  Each
      * secret has a corresponding set of these flags which indicate how the secret
      * is to be stored and/or requested when it is needed.
@@ -6325,21 +6599,25 @@ export namespace NM {
     }
     enum VpnEditorPluginCapability {
         /**
-         * unknown or no capability
+         * Unknown or no capability.
          */
         NONE,
         /**
-         * the plugin can import new connections
+         * The plugin can import new connections.
          */
         IMPORT = 1,
         /**
-         * the plugin can export connections
+         * The plugin can export connections.
          */
         EXPORT = 2,
         /**
-         * the plugin supports IPv6 addressing
+         * The plugin supports IPv6 addressing.
          */
         'IPV6' = 4,
+        /**
+         * The GUI editor plugin is not available. Since: 1.52.
+         */
+        NO_EDITOR = 8,
     }
     namespace AccessPoint {
         // Signal signatures
@@ -6902,7 +7180,7 @@ export namespace NM {
              * Expose version info and capabilities of NetworkManager. If non-empty,
              * the first element is NM_VERSION, which encodes the version of the
              * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-             * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+             * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
              * the running NetworkManager has the respective capability.
              */
             version_info: number[];
@@ -6910,7 +7188,7 @@ export namespace NM {
              * Expose version info and capabilities of NetworkManager. If non-empty,
              * the first element is NM_VERSION, which encodes the version of the
              * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-             * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+             * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
              * the running NetworkManager has the respective capability.
              */
             versionInfo: number[];
@@ -8001,6 +8279,74 @@ export namespace NM {
             properties?: Partial<NM.DeviceInfiniband.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, DeviceInfiniband.SignalSignatures> & classes.DeviceInfiniband);
+    namespace DeviceIpvlan {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::mode'(pspec: GObject.ParamSpec): void;
+            'notify::parent'(pspec: GObject.ParamSpec): void;
+            'notify::private'(pspec: GObject.ParamSpec): void;
+            'notify::vepa'(pspec: GObject.ParamSpec): void;
+            'notify::active-connection'(pspec: GObject.ParamSpec): void;
+            'notify::autoconnect'(pspec: GObject.ParamSpec): void;
+            'notify::available-connections'(pspec: GObject.ParamSpec): void;
+            'notify::capabilities'(pspec: GObject.ParamSpec): void;
+            'notify::device-type'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp4-config'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp6-config'(pspec: GObject.ParamSpec): void;
+            'notify::driver'(pspec: GObject.ParamSpec): void;
+            'notify::driver-version'(pspec: GObject.ParamSpec): void;
+            'notify::firmware-missing'(pspec: GObject.ParamSpec): void;
+            'notify::firmware-version'(pspec: GObject.ParamSpec): void;
+            'notify::hw-address'(pspec: GObject.ParamSpec): void;
+            'notify::interface'(pspec: GObject.ParamSpec): void;
+            'notify::interface-flags'(pspec: GObject.ParamSpec): void;
+            'notify::ip-interface'(pspec: GObject.ParamSpec): void;
+            'notify::ip4-config'(pspec: GObject.ParamSpec): void;
+            'notify::ip4-connectivity'(pspec: GObject.ParamSpec): void;
+            'notify::ip6-config'(pspec: GObject.ParamSpec): void;
+            'notify::ip6-connectivity'(pspec: GObject.ParamSpec): void;
+            'notify::lldp-neighbors'(pspec: GObject.ParamSpec): void;
+            'notify::managed'(pspec: GObject.ParamSpec): void;
+            'notify::metered'(pspec: GObject.ParamSpec): void;
+            'notify::mtu'(pspec: GObject.ParamSpec): void;
+            'notify::nm-plugin-missing'(pspec: GObject.ParamSpec): void;
+            'notify::path'(pspec: GObject.ParamSpec): void;
+            'notify::physical-port-id'(pspec: GObject.ParamSpec): void;
+            'notify::ports'(pspec: GObject.ParamSpec): void;
+            'notify::product'(pspec: GObject.ParamSpec): void;
+            'notify::real'(pspec: GObject.ParamSpec): void;
+            'notify::state'(pspec: GObject.ParamSpec): void;
+            'notify::state-reason'(pspec: GObject.ParamSpec): void;
+            'notify::udi'(pspec: GObject.ParamSpec): void;
+            'notify::vendor'(pspec: GObject.ParamSpec): void;
+            'notify::client'(pspec: GObject.ParamSpec): void;
+        }
+        // Constructor properties interface
+        interface ConstructorProps extends Device.ConstructorProps {
+            /**
+             * The IPVLAN mode.
+             */
+            mode: string;
+            /**
+             * The devices's parent device.
+             */
+            parent: Device;
+            /**
+             * Whether the device has the private flag.
+             */
+            private: boolean;
+            /**
+             * Whether the device has the VEPA flag.
+             */
+            vepa: boolean;
+        }
+    }
+    type DeviceIpvlan = (typeof classes.DeviceIpvlan)['prototype'];
+    const DeviceIpvlan: typeof classes.DeviceIpvlan &
+        (new <Opts extends GObject.MetaInfo>(
+            properties?: Partial<NM.DeviceIpvlan.ConstructorProps>,
+            ...args: any[]
+        ) => GObject.RegisteredClass<Opts, DeviceIpvlan.SignalSignatures> & classes.DeviceIpvlan);
     namespace DeviceLoopback {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
@@ -11297,6 +11643,9 @@ export namespace NM {
             'notify::gateway-ping-timeout'(pspec: GObject.ParamSpec): void;
             'notify::id'(pspec: GObject.ParamSpec): void;
             'notify::interface-name'(pspec: GObject.ParamSpec): void;
+            'notify::ip-ping-addresses'(pspec: GObject.ParamSpec): void;
+            'notify::ip-ping-addresses-require-all'(pspec: GObject.ParamSpec): void;
+            'notify::ip-ping-timeout'(pspec: GObject.ParamSpec): void;
             'notify::lldp'(pspec: GObject.ParamSpec): void;
             'notify::llmnr'(pspec: GObject.ParamSpec): void;
             'notify::master'(pspec: GObject.ParamSpec): void;
@@ -11539,6 +11888,54 @@ export namespace NM {
              */
             interfaceName: string;
             /**
+             * The property specifies a list of target IP addresses for pinging.
+             * When multiple targets are set, NetworkManager will start multiple ping processes
+             * in parallel. This property can only be set if connection.ip-ping-timeout is
+             * set. The ip-ping-timeout is used to delay the success of IP addressing until
+             * either the specified timeout (in seconds) is reached, or an target IP address replies
+             * to a ping. Configuring #NMSettingConnection:ip-ping-addresses may delay reaching the
+             * systemd's network-online.target due to waiting for the ping operations to complete or timeout.
+             */
+            ip_ping_addresses: string[];
+            /**
+             * The property specifies a list of target IP addresses for pinging.
+             * When multiple targets are set, NetworkManager will start multiple ping processes
+             * in parallel. This property can only be set if connection.ip-ping-timeout is
+             * set. The ip-ping-timeout is used to delay the success of IP addressing until
+             * either the specified timeout (in seconds) is reached, or an target IP address replies
+             * to a ping. Configuring #NMSettingConnection:ip-ping-addresses may delay reaching the
+             * systemd's network-online.target due to waiting for the ping operations to complete or timeout.
+             */
+            ipPingAddresses: string[];
+            /**
+             * The property determines whether it is sufficient for any ping check
+             * to succeed among #NMSettingConnection:ip-ping-addresses, or if all
+             * ping checks must succeed for #NMSettingConnection:ip-ping-addresses.
+             */
+            ip_ping_addresses_require_all: number;
+            /**
+             * The property determines whether it is sufficient for any ping check
+             * to succeed among #NMSettingConnection:ip-ping-addresses, or if all
+             * ping checks must succeed for #NMSettingConnection:ip-ping-addresses.
+             */
+            ipPingAddressesRequireAll: number;
+            /**
+             * If greater than zero, delay success of IP addressing until either the specified
+             * timeout (in seconds) is reached, or a target IP address replies to a ping. The
+             * property specifies the timeout for the #NMSettingConnection:ip-ping-addresses.
+             * This property is incompatible with #NMSettingConnection:gateway-ping-timeout,
+             * you cannot set these two properties at the same time.
+             */
+            ip_ping_timeout: number;
+            /**
+             * If greater than zero, delay success of IP addressing until either the specified
+             * timeout (in seconds) is reached, or a target IP address replies to a ping. The
+             * property specifies the timeout for the #NMSettingConnection:ip-ping-addresses.
+             * This property is incompatible with #NMSettingConnection:gateway-ping-timeout,
+             * you cannot set these two properties at the same time.
+             */
+            ipPingTimeout: number;
+            /**
              * Whether LLDP is enabled for the connection.
              */
             lldp: number;
@@ -11773,7 +12170,7 @@ export namespace NM {
             slaveType: string;
             /**
              * This represents the identity of the connection used for various purposes.
-             * It allows to configure multiple profiles to share the identity. Also,
+             * It allows configuring multiple profiles to share the identity. Also,
              * the stable-id can contain placeholders that are substituted dynamically and
              * deterministically depending on the context.
              *
@@ -11814,7 +12211,7 @@ export namespace NM {
             stable_id: string;
             /**
              * This represents the identity of the connection used for various purposes.
-             * It allows to configure multiple profiles to share the identity. Also,
+             * It allows configuring multiple profiles to share the identity. Also,
              * the stable-id can contain placeholders that are substituted dynamically and
              * deterministically depending on the context.
              *
@@ -12245,6 +12642,15 @@ export namespace NM {
             'notify::home-only'(pspec: GObject.ParamSpec): void;
             'notify::initial-eps-bearer-apn'(pspec: GObject.ParamSpec): void;
             'notify::initial-eps-bearer-configure'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-noauth'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-password'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-password-flags'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-refuse-chap'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-refuse-eap'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-refuse-mschap'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-refuse-mschapv2'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-refuse-pap'(pspec: GObject.ParamSpec): void;
+            'notify::initial-eps-bearer-username'(pspec: GObject.ParamSpec): void;
             'notify::mtu'(pspec: GObject.ParamSpec): void;
             'notify::network-id'(pspec: GObject.ParamSpec): void;
             'notify::number'(pspec: GObject.ParamSpec): void;
@@ -12331,6 +12737,104 @@ export namespace NM {
              * if initial-eps-bearer-apn is set.
              */
             initialEpsBearerConfigure: boolean;
+            /**
+             * For LTE modems, this sets NOAUTH authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             * If %TRUE, do not require the other side to authenticate itself to the client.
+             * If %FALSE, require authentication from the remote side.  In almost all cases,
+             * this should be %TRUE.
+             */
+            initial_eps_bearer_noauth: boolean;
+            /**
+             * For LTE modems, this sets NOAUTH authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             * If %TRUE, do not require the other side to authenticate itself to the client.
+             * If %FALSE, require authentication from the remote side.  In almost all cases,
+             * this should be %TRUE.
+             */
+            initialEpsBearerNoauth: boolean;
+            /**
+             * For LTE modems, this sets the password for the initial EPS bearer that is set
+             * up when attaching to the network.  Setting this parameter implies
+             * initial-eps-bearer-configure to be TRUE.
+             */
+            initial_eps_bearer_password: string;
+            /**
+             * For LTE modems, this sets the password for the initial EPS bearer that is set
+             * up when attaching to the network.  Setting this parameter implies
+             * initial-eps-bearer-configure to be TRUE.
+             */
+            initialEpsBearerPassword: string;
+            /**
+             * Flags indicating how to handle the #NMSettingGsm:initial-eps-bearer-password property.
+             */
+            initial_eps_bearer_password_flags: SettingSecretFlags;
+            /**
+             * Flags indicating how to handle the #NMSettingGsm:initial-eps-bearer-password property.
+             */
+            initialEpsBearerPasswordFlags: SettingSecretFlags;
+            /**
+             * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initial_eps_bearer_refuse_chap: boolean;
+            /**
+             * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initialEpsBearerRefuseChap: boolean;
+            /**
+             * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initial_eps_bearer_refuse_eap: boolean;
+            /**
+             * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initialEpsBearerRefuseEap: boolean;
+            /**
+             * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initial_eps_bearer_refuse_mschap: boolean;
+            /**
+             * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initialEpsBearerRefuseMschap: boolean;
+            /**
+             * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initial_eps_bearer_refuse_mschapv2: boolean;
+            /**
+             * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initialEpsBearerRefuseMschapv2: boolean;
+            /**
+             * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initial_eps_bearer_refuse_pap: boolean;
+            /**
+             * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
+             * up when attaching to the network.
+             */
+            initialEpsBearerRefusePap: boolean;
+            /**
+             * For LTE modems, this sets the username for the initial EPS bearer that is set
+             * up when attaching to the network.  Setting this parameter implies
+             * initial-eps-bearer-configure to be TRUE.
+             */
+            initial_eps_bearer_username: string;
+            /**
+             * For LTE modems, this sets the username for the initial EPS bearer that is set
+             * up when attaching to the network.  Setting this parameter implies
+             * initial-eps-bearer-configure to be TRUE.
+             */
+            initialEpsBearerUsername: string;
             /**
              * If non-zero, only transmit packets of the specified size or smaller,
              * breaking larger packets up into multiple frames.
@@ -12533,14 +13037,20 @@ export namespace NM {
     namespace SettingHsr {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::interlink'(pspec: GObject.ParamSpec): void;
             'notify::multicast-spec'(pspec: GObject.ParamSpec): void;
             'notify::port1'(pspec: GObject.ParamSpec): void;
             'notify::port2'(pspec: GObject.ParamSpec): void;
+            'notify::protocol-version'(pspec: GObject.ParamSpec): void;
             'notify::prp'(pspec: GObject.ParamSpec): void;
             'notify::name'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
+            /**
+             * The optional interlink port name of the HSR interface.
+             */
+            interlink: string;
             /**
              * The last byte of supervision address.
              */
@@ -12558,6 +13068,20 @@ export namespace NM {
              */
             port2: string;
             /**
+             * Configures the protocol version to be used for the HSR/PRP interface.
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_DEFAULT sets the protocol version to the default version for the protocol.
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2010 sets the protocol version to HSRv0 (IEC 62439-3:2010).
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2012 sets the protocol version to HSRv1 (IEC 62439-3:2012).
+             */
+            protocol_version: number;
+            /**
+             * Configures the protocol version to be used for the HSR/PRP interface.
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_DEFAULT sets the protocol version to the default version for the protocol.
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2010 sets the protocol version to HSRv0 (IEC 62439-3:2010).
+             * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2012 sets the protocol version to HSRv1 (IEC 62439-3:2012).
+             */
+            protocolVersion: number;
+            /**
              * The protocol used by the interface, whether it is PRP or HSR.
              */
             prp: boolean;
@@ -12574,6 +13098,7 @@ export namespace NM {
         interface SignalSignatures extends SettingIPConfig.SignalSignatures {
             'notify::dhcp-client-id'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-fqdn'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp-ipv6-only-preferred'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-vendor-class-identifier'(pspec: GObject.ParamSpec): void;
             'notify::link-local'(pspec: GObject.ParamSpec): void;
             'notify::addresses'(pspec: GObject.ParamSpec): void;
@@ -12585,12 +13110,14 @@ export namespace NM {
             'notify::dhcp-iaid'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-reject-servers'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-hostname'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp-send-hostname-v2'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-release'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-timeout'(pspec: GObject.ParamSpec): void;
             'notify::dns'(pspec: GObject.ParamSpec): void;
             'notify::dns-options'(pspec: GObject.ParamSpec): void;
             'notify::dns-priority'(pspec: GObject.ParamSpec): void;
             'notify::dns-search'(pspec: GObject.ParamSpec): void;
+            'notify::forwarding'(pspec: GObject.ParamSpec): void;
             'notify::gateway'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-dns'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-routes'(pspec: GObject.ParamSpec): void;
@@ -12601,7 +13128,10 @@ export namespace NM {
             'notify::required-timeout'(pspec: GObject.ParamSpec): void;
             'notify::route-metric'(pspec: GObject.ParamSpec): void;
             'notify::route-table'(pspec: GObject.ParamSpec): void;
+            'notify::routed-dns'(pspec: GObject.ParamSpec): void;
             'notify::routes'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-lease-time'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-range'(pspec: GObject.ParamSpec): void;
             'notify::name'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
@@ -12697,6 +13227,42 @@ export namespace NM {
              */
             dhcpFqdn: string;
             /**
+             * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+             *
+             * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_YES, the host adds the
+             * option to the parameter request list; if the DHCP server sends the option back,
+             * the host stops the DHCP client for the time interval specified in the option.
+             *
+             * Enable this feature if the host supports an IPv6-only mode, i.e. either all
+             * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+             *
+             * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_DEFAULT, the actual value
+             * is looked up in the global configuration; if not specified, it defaults to
+             * %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_NO.
+             *
+             * If the connection has IPv6 method set to "disabled", this property does not
+             * have effect and the "IPv6-Only Preferred" option is always disabled.
+             */
+            dhcp_ipv6_only_preferred: number;
+            /**
+             * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+             *
+             * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_YES, the host adds the
+             * option to the parameter request list; if the DHCP server sends the option back,
+             * the host stops the DHCP client for the time interval specified in the option.
+             *
+             * Enable this feature if the host supports an IPv6-only mode, i.e. either all
+             * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+             *
+             * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_DEFAULT, the actual value
+             * is looked up in the global configuration; if not specified, it defaults to
+             * %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_NO.
+             *
+             * If the connection has IPv6 method set to "disabled", this property does not
+             * have effect and the "IPv6-Only Preferred" option is always disabled.
+             */
+            dhcpIpv6OnlyPreferred: number;
+            /**
              * The Vendor Class Identifier DHCP option (60).
              * Special characters in the data string may be escaped using C-style escapes,
              * nevertheless this property cannot contain nul bytes.
@@ -12724,6 +13290,8 @@ export namespace NM {
              * When set to "default", it honors the global connection default, before
              * falling back to "auto". Note that if "ipv4.method" is "disabled", then
              * link local addressing is always disabled too. The default is "default".
+             * Since 1.52, when set to "fallback", a link-local address is obtained
+             * if no other IPv4 address is set.
              */
             link_local: number;
             /**
@@ -12736,6 +13304,8 @@ export namespace NM {
              * When set to "default", it honors the global connection default, before
              * falling back to "auto". Note that if "ipv4.method" is "disabled", then
              * link local addressing is always disabled too. The default is "default".
+             * Since 1.52, when set to "fallback", a link-local address is obtained
+             * if no other IPv4 address is set.
              */
             linkLocal: number;
         }
@@ -12767,12 +13337,14 @@ export namespace NM {
             'notify::dhcp-iaid'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-reject-servers'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-hostname'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp-send-hostname-v2'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-release'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-timeout'(pspec: GObject.ParamSpec): void;
             'notify::dns'(pspec: GObject.ParamSpec): void;
             'notify::dns-options'(pspec: GObject.ParamSpec): void;
             'notify::dns-priority'(pspec: GObject.ParamSpec): void;
             'notify::dns-search'(pspec: GObject.ParamSpec): void;
+            'notify::forwarding'(pspec: GObject.ParamSpec): void;
             'notify::gateway'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-dns'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-routes'(pspec: GObject.ParamSpec): void;
@@ -12783,7 +13355,10 @@ export namespace NM {
             'notify::required-timeout'(pspec: GObject.ParamSpec): void;
             'notify::route-metric'(pspec: GObject.ParamSpec): void;
             'notify::route-table'(pspec: GObject.ParamSpec): void;
+            'notify::routed-dns'(pspec: GObject.ParamSpec): void;
             'notify::routes'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-lease-time'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-range'(pspec: GObject.ParamSpec): void;
             'notify::name'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
@@ -13078,12 +13653,14 @@ export namespace NM {
             'notify::dhcp-iaid'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-reject-servers'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-hostname'(pspec: GObject.ParamSpec): void;
+            'notify::dhcp-send-hostname-v2'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-send-release'(pspec: GObject.ParamSpec): void;
             'notify::dhcp-timeout'(pspec: GObject.ParamSpec): void;
             'notify::dns'(pspec: GObject.ParamSpec): void;
             'notify::dns-options'(pspec: GObject.ParamSpec): void;
             'notify::dns-priority'(pspec: GObject.ParamSpec): void;
             'notify::dns-search'(pspec: GObject.ParamSpec): void;
+            'notify::forwarding'(pspec: GObject.ParamSpec): void;
             'notify::gateway'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-dns'(pspec: GObject.ParamSpec): void;
             'notify::ignore-auto-routes'(pspec: GObject.ParamSpec): void;
@@ -13094,7 +13671,10 @@ export namespace NM {
             'notify::required-timeout'(pspec: GObject.ParamSpec): void;
             'notify::route-metric'(pspec: GObject.ParamSpec): void;
             'notify::route-table'(pspec: GObject.ParamSpec): void;
+            'notify::routed-dns'(pspec: GObject.ParamSpec): void;
             'notify::routes'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-lease-time'(pspec: GObject.ParamSpec): void;
+            'notify::shared-dhcp-range'(pspec: GObject.ParamSpec): void;
             'notify::name'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
@@ -13292,21 +13872,47 @@ export namespace NM {
              */
             dhcpRejectServers: string[];
             /**
-             * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
-             * Some DHCP servers use this hostname to update DNS databases, essentially
-             * providing a static hostname for the computer.  If the
-             * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
-             * %TRUE, the current persistent hostname of the computer is sent.
+             * Since 1.52 this property is deprecated and is only used as fallback value
+             * for #NMSettingIPConfig:dhcp-send-hostname-v2 if it's set to 'default'.
+             * This is only done to avoid breaking existing configurations, the new
+             * property should be used from now on.
              */
             dhcp_send_hostname: boolean;
+            /**
+             * Since 1.52 this property is deprecated and is only used as fallback value
+             * for #NMSettingIPConfig:dhcp-send-hostname-v2 if it's set to 'default'.
+             * This is only done to avoid breaking existing configurations, the new
+             * property should be used from now on.
+             */
+            dhcpSendHostname: boolean;
             /**
              * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
              * Some DHCP servers use this hostname to update DNS databases, essentially
              * providing a static hostname for the computer.  If the
              * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
              * %TRUE, the current persistent hostname of the computer is sent.
+             *
+             * The default value is %NM_TERNARY_DEFAULT. In this case the global value
+             * from NetworkManager configuration is looked up. If it's not set, the value
+             * from #NMSettingIPConfig:dhcp-send-hostname, which defaults to %TRUE, is
+             * used for backwards compatibility. In the future this will change and, in
+             * absence of a global default, it will always fallback to %TRUE.
              */
-            dhcpSendHostname: boolean;
+            dhcp_send_hostname_v2: number;
+            /**
+             * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
+             * Some DHCP servers use this hostname to update DNS databases, essentially
+             * providing a static hostname for the computer.  If the
+             * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
+             * %TRUE, the current persistent hostname of the computer is sent.
+             *
+             * The default value is %NM_TERNARY_DEFAULT. In this case the global value
+             * from NetworkManager configuration is looked up. If it's not set, the value
+             * from #NMSettingIPConfig:dhcp-send-hostname, which defaults to %TRUE, is
+             * used for backwards compatibility. In the future this will change and, in
+             * absence of a global default, it will always fallback to %TRUE.
+             */
+            dhcpSendHostnameV2: number;
             /**
              * Whether the DHCP client will send RELEASE message when
              * bringing the connection down. The default value is %NM_TERNARY_DEFAULT.
@@ -13338,11 +13944,16 @@ export namespace NM {
              */
             dhcpTimeout: number;
             /**
-             * Array of IP addresses of DNS servers.
+             * Array of DNS servers.
              *
-             * For DoT (DNS over TLS), the SNI server name can be specified by appending
-             * "#example.com" to the IP address of the DNS server. This currently only has
-             * effect when using systemd-resolved.
+             * Each server can be specified either as a plain IP address (optionally followed
+             * by a "#" and the SNI server name for DNS over TLS) or with a URI syntax.
+             *
+             * When it is specified as an URI, the following forms are supported:
+             * dns+udp://ADDRESS[:PORT], dns+tls://ADDRESS[:PORT][#SERVERNAME] .
+             *
+             * When using the URI syntax, IPv6 addresses must be enclosed in square
+             * brackets ('[', ']').
              */
             dns: string[];
             /**
@@ -13539,6 +14150,21 @@ export namespace NM {
              * fallback will be derived from the domain from DHCP (option 15).
              */
             dnsSearch: string[];
+            /**
+             * Whether to configure sysctl interface-specific forwarding. When enabled, the interface
+             * will act as a router to forward the packet from one interface to another. When set to
+             * %NM_SETTING_IP_CONFIG_FORWARDING_DEFAULT, the value from global configuration is used;
+             * if no global default is defined, %NM_SETTING_IP_CONFIG_FORWARDING_AUTO will be used.
+             * The #NMSettingIPConfig:forwarding property is ignored when #NMSettingIPConfig:method
+             * is set to "shared", because forwarding is always enabled in this case.
+             * The accepted values are:
+             *   %NM_SETTING_IP_CONFIG_FORWARDING_DEFAULT: use global default.
+             *   %NM_SETTING_IP_CONFIG_FORWARDING_NO: disabled.
+             *   %NM_SETTING_IP_CONFIG_FORWARDING_YES: enabled.
+             *   %NM_SETTING_IP_CONFIG_FORWARDING_AUTO: enable if any shared connection is active,
+             *        use kernel default otherwise.
+             */
+            forwarding: number;
             /**
              * The gateway associated with this configuration. This is only meaningful
              * if #NMSettingIPConfig:addresses is also set.
@@ -13748,9 +14374,67 @@ export namespace NM {
              */
             routeTable: number;
             /**
+             * Whether to add routes for DNS servers. When enabled, NetworkManager adds a route
+             * for each DNS server that is associated with this connection either statically
+             * (defined in the connection profile) or dynamically (for example, retrieved via
+             * DHCP). The route guarantees that the DNS server is reached via this interface. When
+             * set to %NM_SETTING_IP_CONFIG_ROUTED_DNS_DEFAULT, the value from global
+             * configuration is used; if no global default is defined, this feature is disabled.
+             */
+            routed_dns: number;
+            /**
+             * Whether to add routes for DNS servers. When enabled, NetworkManager adds a route
+             * for each DNS server that is associated with this connection either statically
+             * (defined in the connection profile) or dynamically (for example, retrieved via
+             * DHCP). The route guarantees that the DNS server is reached via this interface. When
+             * set to %NM_SETTING_IP_CONFIG_ROUTED_DNS_DEFAULT, the value from global
+             * configuration is used; if no global default is defined, this feature is disabled.
+             */
+            routedDns: number;
+            /**
              * Array of IP routes.
              */
             routes: IPRoute[];
+            /**
+             * This option allows you to specify a custom DHCP lease time for the shared connection
+             * method in seconds. The value should be either a number between 120 and 31536000 (one year)
+             * If this option is not specified, 3600 (one hour) is used.
+             *
+             * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
+             */
+            shared_dhcp_lease_time: number;
+            /**
+             * This option allows you to specify a custom DHCP lease time for the shared connection
+             * method in seconds. The value should be either a number between 120 and 31536000 (one year)
+             * If this option is not specified, 3600 (one hour) is used.
+             *
+             * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
+             */
+            sharedDhcpLeaseTime: number;
+            /**
+             * This option allows you to specify a custom DHCP range for the shared connection
+             * method. The value is expected to be in `<START_ADDRESS>,<END_ADDRESS>` format.
+             * The range should be part of network set by ipv4.address option and it should
+             * not contain network address or broadcast address. If this option is not specified,
+             * the DHCP range will be automatically determined based on the interface address.
+             * The range will be selected to be adjacent to the interface address, either before
+             * or after it, with the larger possible range being preferred. The range will be
+             * adjusted to fill the available address space, except for networks with a prefix
+             * length greater than 24, which will be treated as if they have a prefix length of 24.
+             */
+            shared_dhcp_range: string;
+            /**
+             * This option allows you to specify a custom DHCP range for the shared connection
+             * method. The value is expected to be in `<START_ADDRESS>,<END_ADDRESS>` format.
+             * The range should be part of network set by ipv4.address option and it should
+             * not contain network address or broadcast address. If this option is not specified,
+             * the DHCP range will be automatically determined based on the interface address.
+             * The range will be selected to be adjacent to the interface address, either before
+             * or after it, with the larger possible range being preferred. The range will be
+             * adjusted to fill the available address space, except for networks with a prefix
+             * length greater than 24, which will be treated as if they have a prefix length of 24.
+             */
+            sharedDhcpRange: string;
         }
     }
     type SettingIPConfig = (typeof classes.SettingIPConfig)['prototype'];
@@ -13972,6 +14656,45 @@ export namespace NM {
             properties?: Partial<NM.SettingInfiniband.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingInfiniband.SignalSignatures> & classes.SettingInfiniband);
+    namespace SettingIpvlan {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::mode'(pspec: GObject.ParamSpec): void;
+            'notify::parent'(pspec: GObject.ParamSpec): void;
+            'notify::private'(pspec: GObject.ParamSpec): void;
+            'notify::vepa'(pspec: GObject.ParamSpec): void;
+            'notify::name'(pspec: GObject.ParamSpec): void;
+        }
+        // Constructor properties interface
+        interface ConstructorProps extends Setting.ConstructorProps {
+            /**
+             * The IPVLAN mode. Valid values: %NM_SETTING_IPVLAN_MODE_L2,
+             * %NM_SETTING_IPVLAN_MODE_L3 and %NM_SETTING_IPVLAN_MODE_L3S.
+             */
+            mode: number;
+            /**
+             * If given, specifies the parent interface name or parent connection UUID
+             * from which this IPVLAN interface should be created. If this property is
+             * not specified, the connection must contain an #NMSettingWired setting
+             * with a #NMSettingWired:mac-address property.
+             */
+            parent: string;
+            /**
+             * Whether the interface should be put in private mode.
+             */
+            private: boolean;
+            /**
+             * Whether the interface should be put in VEPA mode.
+             */
+            vepa: boolean;
+        }
+    }
+    type SettingIpvlan = (typeof classes.SettingIpvlan)['prototype'];
+    const SettingIpvlan: typeof classes.SettingIpvlan &
+        (new <Opts extends GObject.MetaInfo>(
+            properties?: Partial<NM.SettingIpvlan.ConstructorProps>,
+            ...args: any[]
+        ) => GObject.RegisteredClass<Opts, SettingIpvlan.SignalSignatures> & classes.SettingIpvlan);
     namespace SettingLink {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
@@ -14187,7 +14910,7 @@ export namespace NM {
              */
             parent: string;
             /**
-             * Whether the interface should be put in promiscuous mode.
+             * Whether the parent interface should be put in promiscuous mode (true by default).
              */
             promiscuous: boolean;
             /**
@@ -14419,6 +15142,7 @@ export namespace NM {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
             'notify::devargs'(pspec: GObject.ParamSpec): void;
+            'notify::lsc-interrupt'(pspec: GObject.ParamSpec): void;
             'notify::n-rxq'(pspec: GObject.ParamSpec): void;
             'notify::n-rxq-desc'(pspec: GObject.ParamSpec): void;
             'notify::n-txq-desc'(pspec: GObject.ParamSpec): void;
@@ -14430,6 +15154,24 @@ export namespace NM {
              * Open vSwitch DPDK device arguments.
              */
             devargs: string;
+            /**
+             * Configures the Link State Change (LSC) detection mode for the OVS DPDK interface.
+             * When set to %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_IGNORE, NetworkManager doesn't
+             * change the default value configured by Open vSwitch.
+             * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_ENABLED enables interrupts.
+             * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_DISABLED disables interrupts, thus setting the
+             * interface in poll mode.
+             */
+            lsc_interrupt: number;
+            /**
+             * Configures the Link State Change (LSC) detection mode for the OVS DPDK interface.
+             * When set to %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_IGNORE, NetworkManager doesn't
+             * change the default value configured by Open vSwitch.
+             * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_ENABLED enables interrupts.
+             * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_DISABLED disables interrupts, thus setting the
+             * interface in poll mode.
+             */
+            lscInterrupt: number;
             /**
              * Open vSwitch DPDK number of rx queues.
              * Defaults to zero which means to leave the parameter in OVS unspecified
@@ -14887,6 +15629,36 @@ export namespace NM {
             properties?: Partial<NM.SettingPppoe.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, SettingPppoe.SignalSignatures> & classes.SettingPppoe);
+    namespace SettingPrefixDelegation {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::subnet-id'(pspec: GObject.ParamSpec): void;
+            'notify::name'(pspec: GObject.ParamSpec): void;
+        }
+        // Constructor properties interface
+        interface ConstructorProps extends Setting.ConstructorProps {
+            /**
+             * The subnet ID to use on the interface from the prefix delegation received via
+             * an upstream interface. Set to a value between 0 and 0xffffffff (2^32 - 1)
+             * to indicate a specific subnet ID; or set to -1 to automatically choose
+             * an available subnet ID.
+             */
+            subnet_id: number;
+            /**
+             * The subnet ID to use on the interface from the prefix delegation received via
+             * an upstream interface. Set to a value between 0 and 0xffffffff (2^32 - 1)
+             * to indicate a specific subnet ID; or set to -1 to automatically choose
+             * an available subnet ID.
+             */
+            subnetId: number;
+        }
+    }
+    type SettingPrefixDelegation = (typeof classes.SettingPrefixDelegation)['prototype'];
+    const SettingPrefixDelegation: typeof classes.SettingPrefixDelegation &
+        (new <Opts extends GObject.MetaInfo>(
+            properties?: Partial<NM.SettingPrefixDelegation.ConstructorProps>,
+            ...args: any[]
+        ) => GObject.RegisteredClass<Opts, SettingPrefixDelegation.SignalSignatures> & classes.SettingPrefixDelegation);
     namespace SettingProxy {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
@@ -14990,6 +15762,7 @@ export namespace NM {
             'notify::eswitch-encap-mode'(pspec: GObject.ParamSpec): void;
             'notify::eswitch-inline-mode'(pspec: GObject.ParamSpec): void;
             'notify::eswitch-mode'(pspec: GObject.ParamSpec): void;
+            'notify::preserve-on-down'(pspec: GObject.ParamSpec): void;
             'notify::total-vfs'(pspec: GObject.ParamSpec): void;
             'notify::vfs'(pspec: GObject.ParamSpec): void;
             'notify::name'(pspec: GObject.ParamSpec): void;
@@ -15088,6 +15861,36 @@ export namespace NM {
              * modified by NetworkManager.
              */
             eswitchMode: number;
+            /**
+             * This controls whether NetworkManager preserves the SR-IOV parameters set on
+             * the device when the connection is deactivated, or whether it resets them to
+             * their default value. The SR-IOV parameters are those specified in this setting
+             * (the "sriov" setting), like the number of VFs to create, the eswitch
+             * configuration, etc.
+             *
+             * If set to %NM_SRIOV_PRESERVE_ON_DOWN_NO, NetworkManager resets the SR-IOV
+             * parameters when the connection is deactivated. When set to
+             * %NM_SRIOV_PRESERVE_ON_DOWN_YES, NetworkManager preserves those parameters
+             * on the device. If the value is %NM_SRIOV_PRESERVE_ON_DOWN_DEFAULT, NetworkManager
+             * looks up a global default value in the configuration; in case no such value is
+             * defined, it uses %NM_SRIOV_PRESERVE_ON_DOWN_NO as fallback.
+             */
+            preserve_on_down: number;
+            /**
+             * This controls whether NetworkManager preserves the SR-IOV parameters set on
+             * the device when the connection is deactivated, or whether it resets them to
+             * their default value. The SR-IOV parameters are those specified in this setting
+             * (the "sriov" setting), like the number of VFs to create, the eswitch
+             * configuration, etc.
+             *
+             * If set to %NM_SRIOV_PRESERVE_ON_DOWN_NO, NetworkManager resets the SR-IOV
+             * parameters when the connection is deactivated. When set to
+             * %NM_SRIOV_PRESERVE_ON_DOWN_YES, NetworkManager preserves those parameters
+             * on the device. If the value is %NM_SRIOV_PRESERVE_ON_DOWN_DEFAULT, NetworkManager
+             * looks up a global default value in the configuration; in case no such value is
+             * defined, it uses %NM_SRIOV_PRESERVE_ON_DOWN_NO as fallback.
+             */
+            preserveOnDown: number;
             /**
              * The total number of virtual functions to create.
              *
@@ -16206,7 +17009,7 @@ export namespace NM {
             /**
              * With #NMSettingWired:cloned-mac-address setting "random" or "stable",
              * by default all bits of the MAC address are scrambled and a locally-administered,
-             * unicast MAC address is created. This property allows to specify that certain bits
+             * unicast MAC address is created. This property allows one to specify that certain bits
              * are fixed. Note that the least significant bit of the first MAC address will
              * always be unset to create a unicast MAC address.
              *
@@ -16237,7 +17040,7 @@ export namespace NM {
             /**
              * With #NMSettingWired:cloned-mac-address setting "random" or "stable",
              * by default all bits of the MAC address are scrambled and a locally-administered,
-             * unicast MAC address is created. This property allows to specify that certain bits
+             * unicast MAC address is created. This property allows one to specify that certain bits
              * are fixed. Note that the least significant bit of the first MAC address will
              * always be unset to create a unicast MAC address.
              *
@@ -16598,7 +17401,7 @@ export namespace NM {
             /**
              * With #NMSettingWireless:cloned-mac-address setting "random" or "stable",
              * by default all bits of the MAC address are scrambled and a locally-administered,
-             * unicast MAC address is created. This property allows to specify that certain bits
+             * unicast MAC address is created. This property allows one to specify that certain bits
              * are fixed. Note that the least significant bit of the first MAC address will
              * always be unset to create a unicast MAC address.
              *
@@ -16629,7 +17432,7 @@ export namespace NM {
             /**
              * With #NMSettingWireless:cloned-mac-address setting "random" or "stable",
              * by default all bits of the MAC address are scrambled and a locally-administered,
-             * unicast MAC address is created. This property allows to specify that certain bits
+             * unicast MAC address is created. This property allows one to specify that certain bits
              * are fixed. Note that the least significant bit of the first MAC address will
              * always be unset to create a unicast MAC address.
              *
@@ -17548,6 +18351,7 @@ export namespace NM {
     export type DeviceHsrClass = typeof DeviceHsr;
     export type DeviceIPTunnelClass = typeof DeviceIPTunnel;
     export type DeviceInfinibandClass = typeof DeviceInfiniband;
+    export type DeviceIpvlanClass = typeof DeviceIpvlan;
     export type DeviceLoopbackClass = typeof DeviceLoopback;
     export type DeviceMacsecClass = typeof DeviceMacsec;
     export type DeviceMacvlanClass = typeof DeviceMacvlan;
@@ -18228,6 +19032,7 @@ export namespace NM {
     export type SettingIPConfigClass = typeof SettingIPConfig;
     export type SettingIPTunnelClass = typeof SettingIPTunnel;
     export type SettingInfinibandClass = typeof SettingInfiniband;
+    export type SettingIpvlanClass = typeof SettingIpvlan;
     export type SettingLinkClass = typeof SettingLink;
     export type SettingLoopbackClass = typeof SettingLoopback;
     export type SettingMacsecClass = typeof SettingMacsec;
@@ -18243,6 +19048,7 @@ export namespace NM {
     export type SettingOvsPortClass = typeof SettingOvsPort;
     export type SettingPppClass = typeof SettingPpp;
     export type SettingPppoeClass = typeof SettingPppoe;
+    export type SettingPrefixDelegationClass = typeof SettingPrefixDelegation;
     export type SettingProxyClass = typeof SettingProxy;
     export type SettingSerialClass = typeof SettingSerial;
     export type SettingSriovClass = typeof SettingSriov;

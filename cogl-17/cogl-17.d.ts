@@ -1203,6 +1203,16 @@ export namespace Cogl {
     const STENCIL_BIT: number;
     const TEXTURE_MAX_WASTE: number;
     /**
+     * Checks whether the preconditions for blitting between the formats are met.
+     * This does not imply that blitting will definitely succeed.
+     *
+     * `return` TRUE if the preconditions for blitting between the formats are met.
+     *
+     * @param src_format The #CoglPixelFormat to blit from
+     * @param dst_format The #CoglPixelFormat to blit to
+     */
+    function can_blit_between_formats(src_format: PixelFormat | null, dst_format: PixelFormat | null): boolean;
+    /**
      * Parses a string definition of a color, filling the #CoglColor.red,
      * #CoglColor.green, #CoglColor.blue and #CoglColor.alpha fields
      * of `color`.

@@ -7,17 +7,17 @@ declare module './gobject-2.0.d.ts' {
          * Obtain the parameters of a function type in a tuple.
          * Note: This is a copy of the Parameters type from the TypeScript standard library to avoid name conflicts, as some GIR types define `Parameters` as a namespace.
          */
-        export type GjsParameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+        type GjsParameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
 
         // __type__ forces all GTypes to not match structurally.
-        export type GType<T = unknown> = {
+        type GType<T = unknown> = {
             __type__(arg: never): T;
             name: string;
         };
 
         // Extra interfaces used to help define GObject classes in js; these
         // aren't part of gi.
-        export interface SignalDefinition {
+        interface SignalDefinition {
             flags?: SignalFlags;
             accumulator?: AccumulatorType;
             return_type?: GType;
@@ -84,16 +84,19 @@ declare module './gobject-2.0.d.ts' {
             };
         }
 
+        type TypesWithGType = boolean | number | string | globalThis.Object | Object | GType;
+        type TypeFromGType<T extends TypesWithGType> = T extends GType<infer A> ? A : T;
+
         interface TypeOnlyRegisterClassOptions {
             Properties?: {
-                [name: string]: boolean | number | string | object | { param_type: string; type: any };
+                [name: string]: TypesWithGType | { param_type: string; type: any };
             };
             Signals?: {
-                [name: string]: [...args: any[]] | ((...args: any[]) => any);
+                [name: string]: [...args: TypesWithGType[]] | ((...args: TypesWithGType[]) => TypesWithGType | void);
             };
         }
 
-        export interface RegisterClassOptions {
+        interface RegisterClassOptions {
             GTypeName?: string;
             GTypeFlags?: TypeFlags;
             Properties?: { [key: string]: ParamSpec };
@@ -106,14 +109,14 @@ declare module './gobject-2.0.d.ts' {
             Requires?: Object[];
         }
 
-        export type MetaInfo = RegisterClassOptions | TypeOnlyRegisterClassOptions;
+        type MetaInfo = RegisterClassOptions | TypeOnlyRegisterClassOptions;
 
-        export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
+        type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
 
         // Correctly types interface checks.
-        export function type_is_a<T extends Object>(obj: Object, is_a_type: { $gtype: GType<T> }): obj is T;
+        function type_is_a<T extends Object>(obj: Object, is_a_type: { $gtype: GType<T> }): obj is T;
 
-        export class Interface<T = unknown> {
+        class Interface<T = unknown> {
             static _classInit: (cls: any) => any;
             __name__: string;
             _construct: (params: any, ...otherArgs: any[]) => any;
@@ -121,62 +124,81 @@ declare module './gobject-2.0.d.ts' {
             $gtype?: GType<T>;
         }
 
-        export namespace Object {
+        namespace Object {
             // Interface for virtual method implementations
-            export interface Interface extends GObject.Interface {}
+            interface Interface extends GObject.Interface {}
         }
 
         /**
          * Use this to signify a function that must be overridden in an
          * implementation of the interface.
          */
-        export class NotImplementedError extends Error {
+        class NotImplementedError extends Error {
             get name(): 'NotImplementedError';
         }
 
-        export const __gtkCssName__: unique symbol;
-        export const __gtkTemplate__: unique symbol;
-        export const __gtkChildren__: unique symbol;
-        export const __gtkInternalChildren__: unique symbol;
+        const __gtkCssName__: unique symbol;
+        const __gtkTemplate__: unique symbol;
+        const __gtkChildren__: unique symbol;
+        const __gtkInternalChildren__: unique symbol;
 
         // Expose GObject static properties for ES6 classes
 
-        export const GTypeName: unique symbol;
-        export const requires: unique symbol;
-        export const interfaces: unique symbol;
-        export const properties: unique symbol;
-        export const signals: unique symbol;
+        const GTypeName: unique symbol;
+        const requires: unique symbol;
+        const interfaces: unique symbol;
+        const properties: unique symbol;
+        const signals: unique symbol;
 
-        export let gtypeNameBasedOnJSPath: boolean;
+        let gtypeNameBasedOnJSPath: boolean;
 
-        export let TYPE_BOOLEAN: GType<boolean>;
-        export let Boolean: BooleanConstructor;
+        type TYPE_BOOLEAN = GType<boolean>;
+        type TYPE_ENUM = GType<number>;
+        type TYPE_FLAGS = GType<number>;
+        type TYPE_DOUBLE = GType<number>;
+        type TYPE_STRING = GType<string>;
+        type TYPE_NONE = GType<undefined>;
+        type TYPE_POINTER = GType<undefined>;
+        type TYPE_BOXED = GType<unknown>;
+        type TYPE_PARAM = GType<unknown>;
+        type TYPE_INTERFACE = GType<unknown>;
+        type TYPE_OBJECT = GType<Object>;
+        type TYPE_JSOBJECT = GType<globalThis.Object>;
+        type TYPE_VARIANT = GType<GLib.Variant>;
+        type TYPE_INT = GType<number>;
+        type TYPE_UINT = GType<number>;
+        type TYPE_INT64 = GType<number>;
+        type TYPE_UINT64 = GType<number>;
+        type TYPE_FLOAT = GType<number>;
 
-        export let TYPE_ENUM: GType<number>;
-        export let TYPE_FLAGS: GType<number>;
+        let TYPE_BOOLEAN: GType<boolean>;
+        let Boolean: BooleanConstructor;
 
-        export let TYPE_DOUBLE: GType<number>;
-        export let Double: NumberConstructor;
+        let TYPE_ENUM: GType<number>;
+        let TYPE_FLAGS: GType<number>;
 
-        export let TYPE_STRING: GType<string>;
-        export let String: StringConstructor;
+        let TYPE_DOUBLE: GType<number>;
+        let Double: NumberConstructor;
 
-        export let TYPE_NONE: GType<undefined>;
-        export let TYPE_POINTER: GType<undefined>;
-        export let TYPE_BOXED: GType<unknown>;
-        export let TYPE_PARAM: GType<unknown>;
-        export let TYPE_INTERFACE: GType<unknown>;
-        export let TYPE_OBJECT: GType<object>;
-        export let TYPE_JSOBJECT: GType<Object>;
-        export let TYPE_VARIANT: GType<GLib.Variant>;
-        export let TYPE_INT: GType<number>;
-        export let TYPE_UINT: GType<number>;
-        export let TYPE_INT64: GType<number>;
-        export let TYPE_UINT64: GType<number>;
-        export let TYPE_FLOAT: GType<number>;
+        let TYPE_STRING: GType<string>;
+        let String: StringConstructor;
+
+        let TYPE_NONE: GType<undefined>;
+        let TYPE_POINTER: GType<undefined>;
+        let TYPE_BOXED: GType<unknown>;
+        let TYPE_PARAM: GType<unknown>;
+        let TYPE_INTERFACE: GType<unknown>;
+        let TYPE_OBJECT: GType<Object>;
+        let TYPE_JSOBJECT: GType<globalThis.Object>;
+        let TYPE_VARIANT: GType<GLib.Variant>;
+        let TYPE_INT: GType<number>;
+        let TYPE_UINT: GType<number>;
+        let TYPE_INT64: GType<number>;
+        let TYPE_UINT64: GType<number>;
+        let TYPE_FLOAT: GType<number>;
 
         // fake enum for signal accumulators, keep in sync with gi/object.c
-        export enum AccumulatorType {
+        enum AccumulatorType {
             NONE = 0,
             FIRST_WINS = 1,
             TRUE_HANDLED = 2,
@@ -186,9 +208,9 @@ declare module './gobject-2.0.d.ts' {
         // methods (such as Gio.Socket.connect or NMClient.Device.disconnect)
         // The original g_signal_* functions are not introspectable anyway, because
         // we need our own handling of signal argument marshalling
-        export function signal_connect(object: Object, name: string, handler: (...args: any[]) => any): number;
-        export function signal_connect_after(object: Object, name: string, handler: (...args: any[]) => any): number;
-        export function signal_emit_by_name(object: Object, name: string, ...args: any[]): void;
+        function signal_connect(object: Object, name: string, handler: (...args: any[]) => any): number;
+        function signal_connect_after(object: Object, name: string, handler: (...args: any[]) => any): number;
+        function signal_emit_by_name(object: Object, name: string, ...args: any[]): void;
 
         /**
          * Finds the first signal handler that matches certain selection criteria.
@@ -203,7 +225,7 @@ declare module './gobject-2.0.d.ts' {
          * @param match.func the callback function the handler will invoke.
          * @returns A valid non-0 signal handler ID for a successful match.
          */
-        export function signal_handler_find(
+        function signal_handler_find(
             instance: Object,
             match: { signalId: string; detail: string; func: (...args: any[]) => any },
         ): number | bigint | object | null;
@@ -222,7 +244,7 @@ declare module './gobject-2.0.d.ts' {
          * @param match.func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_block_matched(
+        function signal_handlers_block_matched(
             instance: Object,
             match: { signalId: string; detail: string; func: (...args: any[]) => any },
         ): number;
@@ -243,7 +265,7 @@ declare module './gobject-2.0.d.ts' {
          * @param match.func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_unblock_matched(
+        function signal_handlers_unblock_matched(
             instance: Object,
             match: { signalId: string; detail: string; func: (...args: any[]) => any },
         ): number;
@@ -264,7 +286,7 @@ declare module './gobject-2.0.d.ts' {
          * @param match.func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_disconnect_matched(
+        function signal_handlers_disconnect_matched(
             instance: Object,
             match: { signalId: string; detail: string; func: (...args: any[]) => any },
         ): number;
@@ -278,7 +300,7 @@ declare module './gobject-2.0.d.ts' {
          * @param func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_block_by_func(instance: Object, func: (...args: any[]) => any): number;
+        function signal_handlers_block_by_func(instance: Object, func: (...args: any[]) => any): number;
 
         /**
          * Unblocks all handlers on an instance that match `func`.
@@ -288,7 +310,7 @@ declare module './gobject-2.0.d.ts' {
          * @param func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_unblock_by_func(instance: Object, func: (...args: any[]) => any): number;
+        function signal_handlers_unblock_by_func(instance: Object, func: (...args: any[]) => any): number;
 
         /**
          * Disconnects all handlers on an instance that match `func`.
@@ -297,11 +319,11 @@ declare module './gobject-2.0.d.ts' {
          * @param func the callback function the handler will invoke.
          * @returns The number of handlers that matched.
          */
-        export function signal_handlers_disconnect_by_func(instance: Object, func: (...args: any[]) => any): number;
-        export function signal_handlers_disconnect_by_data(): void;
+        function signal_handlers_disconnect_by_func(instance: Object, func: (...args: any[]) => any): number;
+        function signal_handlers_disconnect_by_data(): void;
 
         // Helper types for type-safe signal handling
-        export interface SignalSignatures {
+        interface SignalSignatures {
             /** Fallback for dynamic signals and type compatibility */
             [signal: string]: (...args: any[]) => any;
         }
@@ -309,12 +331,12 @@ declare module './gobject-2.0.d.ts' {
         /**
          * Helper to prepend the emitter (`source`) to an existing callback type.
          */
-        export type SignalCallback<Emitter, Fn> = Fn extends (...args: infer P) => infer R
+        type SignalCallback<Emitter, Fn> = Fn extends (...args: infer P) => infer R
             ? (source: Emitter, ...args: P) => R
             : never;
 
         // TODO: What about the generated class Closure
-        export type TClosure<R = any, P = any> = (...args: P[]) => R;
+        type TClosure<R = any, P = any> = (...args: P[]) => R;
 
         // String conversion utilities for property names
         type SnakeToUnderscoreCase<S extends string> = S extends `${infer T}-${infer U}`
@@ -340,7 +362,7 @@ declare module './gobject-2.0.d.ts' {
             [key in keyof IFaces]: IFaces[key] extends { $gtype: GType<infer I> } ? I : never;
         };
 
-        export type ParamsToSignalCallback<ParamTypes extends readonly GType[]> = (
+        type ParamsToSignalCallback<ParamTypes extends readonly GType[]> = (
             ...args: [
                 {
                     [index in keyof ParamTypes as index extends number
@@ -350,13 +372,13 @@ declare module './gobject-2.0.d.ts' {
             ]
         ) => void;
 
-        export type SigsToSignalSignatures<Sigs extends { [key: string]: SignalDefinition }> = {
+        type SigsToSignalSignatures<Sigs extends { [key: string]: SignalDefinition }> = {
             [signal in keyof Sigs]: Sigs[signal]['param_types'] extends GType[]
                 ? ParamsToSignalCallback<Sigs[signal]['param_types']>
                 : () => void;
         };
 
-        export type PropsToSignalSignatures<Props extends RegisterClassOptions['Properties']> = {
+        type PropsToSignalSignatures<Props extends RegisterClassOptions['Properties']> = {
             [prop in keyof Props as `notify::${prop extends string ? prop : never}`]: (pspec: Props[prop]) => void;
         };
 
@@ -365,9 +387,11 @@ declare module './gobject-2.0.d.ts' {
 
         type TypeOnlyProperties<T> = PropertyCasings<{
             // Remove index signature
-            [K in keyof T as string extends K ? never : K]: T[K] extends { param_type: string; type: infer P }
-                ? P
-                : T[K];
+            [K in keyof T as string extends K ? never : K]: T[K] extends { param_type: string; type: infer A }
+                ? A
+                : T[K] extends GType<infer B>
+                  ? B
+                  : T[K];
         }>;
 
         type ParamSpecsToProps<T> = PropertyCasings<{
@@ -397,10 +421,8 @@ declare module './gobject-2.0.d.ts' {
              */
             $signals: S & ParentSigs;
 
-            connect<K extends keyof S, T>(this: T, signal: K, callback: GObject.SignalCallback<T, S[K]>): number;
-            connect(signal: string, callback: any): number;
-            connect_after<K extends keyof S, T>(this: T, signal: K, callback: GObject.SignalCallback<T, S[K]>): number;
-            connect_after(signal: string, callback: any): number;
+            connect<K extends keyof S, T>(this: T, signal: K, callback: SignalCallback<T, S[K]>): number;
+            connect_after<K extends keyof S, T>(this: T, signal: K, callback: SignalCallback<T, S[K]>): number;
             emit<K extends keyof S>(
                 signal: K,
                 ...args: S[K] extends (...args: any[]) => any ? Parameters<S[K]> : any[]
@@ -412,15 +434,21 @@ declare module './gobject-2.0.d.ts' {
         > &
             SignalFuncs<TypeOnlySignals<Opts['Signals']>, ParentSigs>;
 
+        type ParametersToGType<T extends TypesWithGType[]> = [
+            ...{
+                [K in keyof T]: TypeFromGType<T[K]>;
+            },
+        ];
+
         type TypeOnlySignals<T extends TypeOnlyRegisterClassOptions['Signals']> = {
-            [K in keyof T]: T[K] extends (...args: object[]) => object | void
-                ? T[K]
-                : T[K] extends [...args: object[]]
-                  ? (...args: T[K]) => void
+            [K in keyof T]: T[K] extends (...args: infer P) => infer R
+                ? (...args: ParametersToGType<P>) => R extends TypesWithGType ? TypeFromGType<R> : R
+                : T[K] extends [...args: TypesWithGType[]]
+                  ? (...args: TypeFromGType<T[K]>) => void
                   : never;
         };
 
-        export type RegisteredClass<
+        type RegisteredClass<
             Opts extends RegisterClassOptions | TypeOnlyRegisterClassOptions,
             ParentSigs = {},
         > = Opts extends TypeOnlyRegisterClassOptions
@@ -429,20 +457,21 @@ declare module './gobject-2.0.d.ts' {
               ? RegisteredClassFromOptions<Opts, ParentSigs>
               : never;
 
-        export type ObjectConstructor = new (...args: any[]) => Object;
+        type ObjectConstructor = new (...args: any[]) => Object;
 
         // Standard registerClass overloads
-        export function registerClass<Class extends ObjectConstructor>(
+        function registerClass<Class extends ObjectConstructor>(
             options: RegisterClassOptions,
             cls: Class,
         ): new <Opts extends MetaInfo = {}>(
             ...args: ConstructorParameters<Class>
         ) => InstanceType<Class> & RegisteredClass<Opts>;
 
-        export function registerClass<Class extends ObjectConstructor>(
-            cls: Class,
-        ): new <Opts extends MetaInfo = {}>(
-            ...args: ConstructorParameters<Class>
-        ) => InstanceType<Class> & RegisteredClass<Opts>;
+        function registerClass<T extends ObjectConstructor>(
+            cls: T,
+        ): (new <Opts extends MetaInfo = {}>(
+            ...args: ConstructorParameters<T>
+        ) => InstanceType<T> & RegisteredClass<Opts>) &
+            T;
     }
 }

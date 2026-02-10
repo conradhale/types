@@ -203,6 +203,7 @@ export namespace Mtk {
         contains_rectangle(rect: Rectangle): RegionOverlap;
         copy(): Region;
         crop_and_scale(src_rect: Graphene.Rect, dst_width: number, dst_height: number): Region;
+        downscale(scale: number): Region;
         equal(other: Region): boolean;
         get_box(nth: number, _x1: number, _y1: number, _x2: number, _y2: number): void;
         get_extents(): Rectangle;

@@ -1265,6 +1265,7 @@ export namespace Clutter {
         PQ = 1,
         'BT709' = 2,
         LINEAR = 3,
+        'BT1886' = 2,
     }
     /**
      * The middle button of a pointer device.

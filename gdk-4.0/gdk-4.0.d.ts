@@ -400,9 +400,13 @@ export namespace Gdk {
          */
         TOUCHPAD_HOLD = 28,
         /**
+         * A tablet pad axis event from a "dial".
+         */
+        PAD_DIAL = 29,
+        /**
          * marks the end of the GdkEventType enumeration.
          */
-        EVENT_LAST = 29,
+        EVENT_LAST = 30,
     }
     /**
      * Indicates which monitor a surface should span over when in fullscreen mode.
@@ -726,10 +730,522 @@ export namespace Gdk {
          */
         'X8B8G8R8' = 32,
         /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * Subsampled in both the X and Y direction.
+         *
+         * Commonly known by the fourcc "NV12".
+         */
+        'G8_B8R8_420' = 33,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * Subsampled in both the X and Y direction.
+         *
+         * Commonly known by the fourcc "NV21".
+         */
+        'G8_R8B8_420' = 34,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * Subsampled in the X direction.
+         *
+         * Commonly known by the fourcc "NV16".
+         */
+        'G8_B8R8_422' = 35,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * Subsampled in the X direction.
+         *
+         * Commonly known by the fourcc "NV61".
+         */
+        'G8_R8B8_422' = 36,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "NV24".
+         */
+        'G8_B8R8_444' = 37,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "NV42".
+         */
+        'G8_R8B8_444' = 38,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P010".
+         */
+        'G10X6_B10X6R10X6_420' = 39,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P012".
+         */
+        'G12X4_B12X4R12X4_420' = 40,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P016".
+         */
+        'G16_B16R16_420' = 41,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV410".
+         */
+        'G8_B8_R8_410' = 42,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU410".
+         */
+        'G8_R8_B8_410' = 43,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV411".
+         */
+        'G8_B8_R8_411' = 44,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU411".
+         */
+        'G8_R8_B8_411' = 45,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "YUV420".
+         */
+        'G8_B8_R8_420' = 46,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU420".
+         */
+        'G8_R8_B8_420' = 47,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV422".
+         */
+        'G8_B8_R8_422' = 48,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU422".
+         */
+        'G8_R8_B8_422' = 49,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV444".
+         */
+        'G8_B8_R8_444' = 50,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU444".
+         */
+        'G8_R8_B8_444' = 51,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "YUYV".
+         */
+        'G8B8G8R8_422' = 52,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "YVYU".
+         */
+        'G8R8G8B8_422' = 53,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "VYUY".
+         */
+        'R8G8B8G8_422' = 54,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "UYVY".
+         */
+        'B8G8R8G8_422' = 55,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S010".
+         */
+        'X6G10_X6B10_X6R10_420' = 56,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S210".
+         */
+        'X6G10_X6B10_X6R10_422' = 57,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S410".
+         */
+        'X6G10_X6B10_X6R10_444' = 58,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S012".
+         */
+        'X4G12_X4B12_X4R12_420' = 59,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S212".
+         */
+        'X4G12_X4B12_X4R12_422' = 60,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S412".
+         */
+        'X4G12_X4B12_X4R12_444' = 61,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S016".
+         */
+        'G16_B16_R16_420' = 62,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S216".
+         */
+        'G16_B16_R16_422' = 63,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S416".
+         */
+        'G16_B16_R16_444' = 64,
+        /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
          */
-        N_FORMATS = 33,
+        N_FORMATS = 65,
     }
     /**
      * Specifies the kind of crossing for enter and leave events.
@@ -801,6 +1317,27 @@ export namespace Gdk {
          *   in scroll events. See gdk_scroll_event_get_deltas()
          */
         SMOOTH = 4,
+    }
+    /**
+     * Used in scroll events, to announce the direction relative
+     * to physical motion.
+     */
+    export namespace ScrollRelativeDirection {
+        export const $gtype: GObject.GType<ScrollRelativeDirection>;
+    }
+    enum ScrollRelativeDirection {
+        /**
+         * Physical motion and event motion are the same
+         */
+        IDENTICAL,
+        /**
+         * Physical motion is inverted relative to event motion
+         */
+        INVERTED = 1,
+        /**
+         * Relative motion is unknown on this device or backend
+         */
+        UNKNOWN = 2,
     }
     /**
      * Specifies the unit of scroll deltas.
@@ -3770,6 +4307,10 @@ export namespace Gdk {
     /**
      * Registers a function to deserialize object of a given type.
      *
+     * Since 4.20, when looking up a deserializer to use, GTK will
+     * use the last registered deserializer for a given mime type,
+     * so applications can override the built-in deserializers.
+     *
      * @param mime_type the mime type which the function can deserialize from
      * @param type the type of objects that the function creates
      * @param deserialize the callback
@@ -3781,6 +4322,10 @@ export namespace Gdk {
     ): void;
     /**
      * Registers a function to serialize objects of a given type.
+     *
+     * Since 4.20, when looking up a serializer to use, GTK will
+     * use the last registered serializer for a given mime type,
+     * so applications can override the built-in serializers.
      *
      * @param type the type of objects that the function can serialize
      * @param mime_type the mime type to serialize to
@@ -3866,7 +4411,7 @@ export namespace Gdk {
      * Checks if `action` represents a single action or includes
      * multiple actions.
      *
-     * When `action` is 0 - ie no action was given, %TRUE
+     * When `action` is `GDK_ACTION_NONE` - ie no action was given, `TRUE`
      * is returned.
      *
      * @returns %TRUE if exactly one action was given
@@ -4239,6 +4784,10 @@ export namespace Gdk {
     }
     enum DragAction {
         /**
+         * No action.
+         */
+        NONE,
+        /**
          * Copy the data.
          */
         COPY = 1,
@@ -4450,6 +4999,51 @@ export namespace Gdk {
         ALL = 31,
     }
     /**
+     * Reflects what features a `GdkToplevel` supports.
+     */
+    export namespace ToplevelCapabilities {
+        export const $gtype: GObject.GType<ToplevelCapabilities>;
+    }
+    enum ToplevelCapabilities {
+        /**
+         * Whether tiled window states are supported.
+         */
+        EDGE_CONSTRAINTS = 1,
+        /**
+         * Whether inhibiting system shortcuts is supported.
+         * See [method`Gdk`.Toplevel.inhibit_system_shortcuts].
+         */
+        INHIBIT_SHORTCUTS = 2,
+        /**
+         * Whether titlebar gestures are supported.
+         * See [method`Gdk`.Toplevel.titlebar_gesture].
+         */
+        TITLEBAR_GESTURES = 4,
+        /**
+         * Whether showing the window menu is supported.
+         * See [method`Gdk`.Toplevel.show_window_menu].
+         */
+        WINDOW_MENU = 8,
+        /**
+         * Whether the toplevel can be maximized.
+         */
+        MAXIMIZE = 16,
+        /**
+         * Whether the toplevel can be made fullscreen.
+         */
+        FULLSCREEN = 32,
+        /**
+         * Whether the toplevel can be minimized.
+         * See [method`Gdk`.Toplevel.minimize].
+         */
+        MINIMIZE = 64,
+        /**
+         * Whether the toplevel can be lowered.
+         * See [method`Gdk`.Toplevel.lower].
+         */
+        LOWER = 128,
+    }
+    /**
      * Specifies the state of a toplevel surface.
      *
      * On platforms that support information about individual edges, the
@@ -4642,7 +5236,10 @@ export namespace Gdk {
              * Supported values:
              *
              * - 0: RGB
+             * - 1: BT.709
              * - 2: unspecified
+             * - 5,6: BT.601
+             * - 9: BT.2020
              */
             matrix_coefficients: number;
             /**
@@ -4651,7 +5248,10 @@ export namespace Gdk {
              * Supported values:
              *
              * - 0: RGB
+             * - 1: BT.709
              * - 2: unspecified
+             * - 5,6: BT.601
+             * - 9: BT.2020
              */
             matrixCoefficients: number;
             /**
@@ -6376,6 +6976,8 @@ export namespace Gdk {
             ...args: GObject.GjsParameters<Gdk.ScrollEvent.SignalSignatures[K]>
         ): void;
         emit(signal: string, ...args: any[]): void;
+        // Static methods
+        static get_relative_direction(event: Event): ScrollRelativeDirection;
         // Methods
         /**
          * Extracts the scroll deltas of a scroll event.
@@ -6667,7 +7269,7 @@ export namespace Gdk {
             'notify::surface'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
-        interface ConstructorProps extends DrawContext.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends DrawContext.ConstructorProps {}
     }
     type VulkanContext = (typeof classes.VulkanContext)['prototype'];
     const VulkanContext: typeof classes.VulkanContext &
@@ -6774,6 +7376,16 @@ export namespace Gdk {
          * @param other another `GdkColorStatee`
          */
         equal(other: ColorState): boolean;
+        /**
+         * Compares two `GdkColorStates` for equivalence.
+         *
+         * Two objects that represent the same color state should be equivalent,
+         * even though they may not be equal in the sense of [method`Gdk`.ColorState.equal].
+         *
+         * @returns %TRUE if the two color states are equivalent
+         * @param other another `GdkColorStatee`
+         */
+        equivalent(other: ColorState): boolean;
         /**
          * Increase the reference count of `self`.
          *
@@ -7346,15 +7958,15 @@ export namespace Gdk {
         /**
          * Check whether `layout` and `other` has identical layout properties.
          *
-         * @returns %TRUE if `layout` and `other` have identical layout properties,
-         *   otherwise %FALSE.
-         * @param other another `GdkPopupLayout`
+         * @returns true if `layout` and `other` have identical layout properties,
+         *   otherwise false.
+         * @param other another popup layout
          */
         equal(other: PopupLayout): boolean;
         /**
-         * Get the `GdkAnchorHints`.
+         * Get the anchor hints.
          *
-         * @returns the `GdkAnchorHints`
+         * @returns the anchor hints
          */
         get_anchor_hints(): AnchorHints;
         /**
@@ -7394,11 +8006,11 @@ export namespace Gdk {
          *
          * The set `anchor_hints` determines how `surface` will be moved
          * if the anchor points cause it to move off-screen. For example,
-         * %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
-         * %GDK_GRAVITY_NORTH_EAST and vice versa if `surface` extends
+         * `GDK_ANCHOR_FLIP_X` will replace `GDK_GRAVITY_NORTH_WEST` with
+         * `GDK_GRAVITY_NORTH_EAST` and vice versa if `surface` extends
          * beyond the left or right edges of the monitor.
          *
-         * @param anchor_hints the new `GdkAnchorHints`
+         * @param anchor_hints the new anchor hints
          */
         set_anchor_hints(anchor_hints: AnchorHints | null): void;
         /**
@@ -7675,11 +8287,26 @@ export namespace Gdk {
          * memory allocation yourself and use [method`Gdk`.TextureDownloader.download_into]
          * once allocation succeeded.
          *
+         * This function cannot be used with a multiplanar format. Use
+         * [method`Gdk`.TextureDownloader.download_bytes_with_planes] for that purpose.
+         *
          * @returns The downloaded pixels
          */
         download_bytes(): [GLib.Bytes, number];
         /**
+         * Downloads the given texture pixels into a `GBytes`. The offsets and
+         * strides of the resulting buffer will be stored in the respective values.
+         *
+         * If the format does have less than 4 planes, the remaining offsets and strides will be
+         * set to `0`.
+         *
+         * @returns The downloaded pixels
+         */
+        download_bytes_with_planes(): [GLib.Bytes, number[], number[]];
+        /**
          * Downloads the `texture` into local memory.
+         *
+         * This function cannot be used with a multiplanar format.
          *
          * @param data pointer to enough memory to be filled with the
          *   downloaded data of the texture
@@ -7777,15 +8404,15 @@ export namespace Gdk {
         /**
          * Check whether `layout` and `other` has identical layout properties.
          *
-         * @returns %TRUE if `layout` and `other` have identical layout properties,
-         *   otherwise %FALSE.
-         * @param other another `GdkToplevelLayout`
+         * @returns true if `layout` and `other` have identical layout properties,
+         *   otherwise false.
+         * @param other another toplevel layout
          */
         equal(other: ToplevelLayout): boolean;
         /**
          * If the layout specifies whether to the toplevel should go fullscreen,
-         * the value pointed to by `fullscreen` is set to %TRUE if it should go
-         * fullscreen, or %FALSE, if it should go unfullscreen.
+         * the value pointed to by `fullscreen` is set to true if it should go
+         * fullscreen, or false, if it should go unfullscreen.
          *
          * @returns whether the `layout` specifies the fullscreen state for the toplevel
          */
@@ -7799,8 +8426,8 @@ export namespace Gdk {
         get_fullscreen_monitor(): Monitor | null;
         /**
          * If the layout specifies whether to the toplevel should go maximized,
-         * the value pointed to by `maximized` is set to %TRUE if it should go
-         * fullscreen, or %FALSE, if it should go unmaximized.
+         * the value pointed to by `maximized` is set to true if it should go
+         * maximized, or false, if it should go unmaximized.
          *
          * @returns whether the `layout` specifies the maximized state for the toplevel
          */
@@ -7809,7 +8436,7 @@ export namespace Gdk {
          * Returns whether the layout should allow the user
          * to resize the surface.
          *
-         * @returns %TRUE if the layout is resizable
+         * @returns true if the layout is resizable
          */
         get_resizable(): boolean;
         /**
@@ -7822,7 +8449,7 @@ export namespace Gdk {
          * Sets whether the layout should cause the surface
          * to be fullscreen when presented.
          *
-         * @param fullscreen %TRUE to fullscreen the surface
+         * @param fullscreen true to fullscreen the surface
          * @param monitor the monitor to fullscreen on
          */
         set_fullscreen(fullscreen: boolean, monitor?: Monitor | null): void;
@@ -7830,14 +8457,14 @@ export namespace Gdk {
          * Sets whether the layout should cause the surface
          * to be maximized when presented.
          *
-         * @param maximized %TRUE to maximize
+         * @param maximized true to maximize
          */
         set_maximized(maximized: boolean): void;
         /**
          * Sets whether the layout should allow the user
          * to resize the surface after it has been presented.
          *
-         * @param resizable %TRUE to allow resizing
+         * @param resizable true to allow resizing
          */
         set_resizable(resizable: boolean): void;
         /**
@@ -8318,6 +8945,10 @@ export namespace Gdk {
         // Constructor properties interface
         interface ConstructorProps extends Surface.ConstructorProps {
             /**
+             * The capabilities that are available for this toplevel.
+             */
+            capabilities: ToplevelCapabilities;
+            /**
              * Whether the window manager should add decorations.
              */
             decorated: boolean;
@@ -8333,6 +8964,19 @@ export namespace Gdk {
              * The fullscreen mode of the surface.
              */
             fullscreenMode: FullscreenMode;
+            /**
+             * The gravity to use when resizing a surface programmatically.
+             *
+             * Gravity describes which point of the surface we want to keep
+             * fixed (meaning that the surface will grow in the opposite direction).
+             * For example, a gravity of `GDK_GRAVITY_NORTH_EAST` means that we
+             * want to fix top right corner of the surface.
+             *
+             * This property is just a hint that may affect the result when negotiating
+             * toplevel sizes with the windowing system. It does not affect interactive
+             * resizes started with [method`Gdk`.Toplevel.begin_resize].
+             */
+            gravity: Gravity;
             /**
              * A list of textures to use as icon.
              */
@@ -8392,6 +9036,10 @@ export namespace Gdk {
     interface Toplevel extends Surface {
         // Properties
         /**
+         * The capabilities that are available for this toplevel.
+         */
+        capabilities: ToplevelCapabilities;
+        /**
          * Whether the window manager should add decorations.
          */
         decorated: boolean;
@@ -8407,6 +9055,19 @@ export namespace Gdk {
          * The fullscreen mode of the surface.
          */
         fullscreenMode: FullscreenMode;
+        /**
+         * The gravity to use when resizing a surface programmatically.
+         *
+         * Gravity describes which point of the surface we want to keep
+         * fixed (meaning that the surface will grow in the opposite direction).
+         * For example, a gravity of `GDK_GRAVITY_NORTH_EAST` means that we
+         * want to fix top right corner of the surface.
+         *
+         * This property is just a hint that may affect the result when negotiating
+         * toplevel sizes with the windowing system. It does not affect interactive
+         * resizes started with [method`Gdk`.Toplevel.begin_resize].
+         */
+        gravity: Gravity;
         /**
          * A list of textures to use as icon.
          */
@@ -8503,6 +9164,17 @@ export namespace Gdk {
          */
         focus(timestamp: number): void;
         /**
+         * The capabilities that are available for this toplevel.
+         */
+        get_capabilities(): ToplevelCapabilities;
+        /**
+         * Returns the gravity that is used when changing the toplevel
+         * size programmatically.
+         *
+         * @returns the gravity
+         */
+        get_gravity(): Gravity;
+        /**
          * Gets the bitwise or of the currently active surface state flags,
          * from the `GdkToplevelState` enumeration.
          *
@@ -8594,6 +9266,13 @@ export namespace Gdk {
          * @param deletable %TRUE to request a delete button
          */
         set_deletable(deletable: boolean): void;
+        /**
+         * Sets the gravity that is used when changing the toplevel
+         * size programmatically.
+         *
+         * @param gravity the new gravity
+         */
+        set_gravity(gravity: Gravity | null): void;
         /**
          * Sets a list of icons for the surface.
          *

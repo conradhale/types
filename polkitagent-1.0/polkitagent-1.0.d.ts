@@ -85,9 +85,20 @@ export namespace PolkitAgent {
         ) => GObject.RegisteredClass<Opts, Session.SignalSignatures> & classes.Session);
     namespace TextListener {
         // Signal signatures
-        interface SignalSignatures extends Listener.SignalSignatures {}
+        interface SignalSignatures extends Listener.SignalSignatures {
+            'tty-attrs-changed'(arg0: boolean): void;
+            'notify::delay'(pspec: GObject.ParamSpec): void;
+            'notify::use-alternate-buffer'(pspec: GObject.ParamSpec): void;
+            'notify::use-color'(pspec: GObject.ParamSpec): void;
+        }
         // Constructor properties interface
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
+            delay: number;
+            use_alternate_buffer: boolean;
+            useAlternateBuffer: boolean;
+            use_color: boolean;
+            useColor: boolean;
+        }
     }
     type TextListener = (typeof classes.TextListener)['prototype'];
     const TextListener: typeof classes.TextListener &

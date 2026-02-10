@@ -1,76 +1,48 @@
 import type Shell from './shell-17.d.ts';
-import type St from '@girs/st-17';
-import { type StClasses } from '@girs/st-17/st-17';
-import type Meta from '@girs/meta-17';
-import type xlib from '@girs/xlib-2.0';
-import type xfixes from '@girs/xfixes-4.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GObject from '@girs/gobject-2.0';
-import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gio from '@girs/gio-2.0';
-import { type GioClasses } from '@girs/gio-2.0/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type Cogl from '@girs/cogl-17';
-import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-17';
 import { type ClutterClasses } from '@girs/clutter-17/clutter-17';
 import type Pango from '@girs/pango-1.0';
 import type cairo from '@girs/cairo-1.0';
+import type GObject from '@girs/gobject-2.0';
+import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
+import type Gio from '@girs/gio-2.0';
+import { type GioClasses } from '@girs/gio-2.0/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type Mtk from '@girs/mtk-17';
+import type Graphene from '@girs/graphene-1.0';
+import type GL from '@girs/gl-1.0';
+import type Cogl from '@girs/cogl-17';
 import type Atk from '@girs/atk-1.0';
+import type Gcr from '@girs/gcr-4';
+import type Gck from '@girs/gck-2';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GioUnix from '@girs/giounix-2.0';
+import type Gvc from '@girs/gvc-1.0';
+import type Meta from '@girs/meta-17';
+import type xlib from '@girs/xlib-2.0';
+import type xfixes from '@girs/xfixes-4.0';
+import type GDesktopEnums from '@girs/gdesktopenums-3.0';
+import type NM from '@girs/nm-1.0';
+import { type NMClasses } from '@girs/nm-1.0/nm-1.0';
 import type PolkitAgent from '@girs/polkitagent-1.0';
 import { type PolkitAgentClasses } from '@girs/polkitagent-1.0/polkitagent-1.0';
 import type Polkit from '@girs/polkit-1.0';
-import type NM from '@girs/nm-1.0';
-import { type NMClasses } from '@girs/nm-1.0/nm-1.0';
-import type Gvc from '@girs/gvc-1.0';
-import type GioUnix from '@girs/giounix-2.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
+import type St from '@girs/st-17';
+import { type StClasses } from '@girs/st-17/st-17';
 declare namespace classes {
     class App extends GObjectClasses.Object {
         static '$gtype': GObject.GType<App>;
         // Properties
-        /**
-         * The #GDBusActionGroup associated with this ShellApp, if any. See the
-         * documentation of #GApplication and #GActionGroup for details.
-         */
         get action_group(): Gio.ActionGroup;
-        /**
-         * The #GDBusActionGroup associated with this ShellApp, if any. See the
-         * documentation of #GApplication and #GActionGroup for details.
-         */
         get actionGroup(): Gio.ActionGroup;
-        /**
-         * The #GDesktopAppInfo associated with this ShellApp, if any.
-         */
-        get app_info(): never;
-        /**
-         * The #GDesktopAppInfo associated with this ShellApp, if any.
-         */
-        get appInfo(): never;
-        /**
-         * Whether the application has marked itself as busy.
-         */
+        get app_info(): GioUnix.DesktopAppInfo;
+        get appInfo(): GioUnix.DesktopAppInfo;
         get busy(): boolean;
-        /**
-         * The #GIcon representing this ShellApp
-         */
         get icon(): Gio.Icon;
-        /**
-         * The id of this application (a desktop filename, or a special string
-         * like window:0xabcd1234)
-         */
         get id(): string;
-        /**
-         * The high-level state of the application, effectively whether it's
-         * running or not, or transitioning between those states.
-         */
         get state(): Shell.AppState;
         /**
          * Compile-time signal type information.
@@ -99,186 +71,53 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * Like shell_app_activate_full(), but using the default workspace and
-         * event timestamp.
-         */
         activate(): void;
-        /**
-         * This activates an action using 'org.freedesktop.Application' DBus interface.
-         *
-         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
-         * with a valid id.
-         *
-         * @param action_name the name of an action to activate
-         * @param parameter the parameter to the activation
-         * @param timestamp Event timestamp, or 0 for current event timestamp
-         * @param workspace Start on this workspace, or -1 for default
-         * @param cancellable a #GCancellable or %NULL
-         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant | null,
+            parameter: GLib.Variant,
             timestamp: number,
             workspace: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable,
         ): globalThis.Promise<boolean>;
-        /**
-         * This activates an action using 'org.freedesktop.Application' DBus interface.
-         *
-         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
-         * with a valid id.
-         *
-         * @param action_name the name of an action to activate
-         * @param parameter the parameter to the activation
-         * @param timestamp Event timestamp, or 0 for current event timestamp
-         * @param workspace Start on this workspace, or -1 for default
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
-         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant | null,
+            parameter: GLib.Variant,
             timestamp: number,
             workspace: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable,
+            callback: Gio.AsyncReadyCallback<this>,
         ): void;
-        /**
-         * This activates an action using 'org.freedesktop.Application' DBus interface.
-         *
-         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
-         * with a valid id.
-         *
-         * @param action_name the name of an action to activate
-         * @param parameter the parameter to the activation
-         * @param timestamp Event timestamp, or 0 for current event timestamp
-         * @param workspace Start on this workspace, or -1 for default
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
-         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant | null,
+            parameter: GLib.Variant,
             timestamp: number,
             workspace: number,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            cancellable: Gio.Cancellable,
+            callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<boolean> | void;
-        /**
-         * Finish the asynchronous operation started by shell_app_activate_action()
-         * and obtain its result.
-         *
-         * @returns whether the operation was successful
-         * @param result
-         */
         activate_action_finish(result: Gio.AsyncResult): boolean;
-        /**
-         * Perform an appropriate default action for operating on this application,
-         * dependent on its current state.  For example, if the application is not
-         * currently running, launch it.  If it is running, activate the most
-         * recently used NORMAL window (or if that window has a transient, the most
-         * recently used transient for that window).
-         *
-         * @param workspace launch on this workspace, or -1 for default. Ignored if
-         *   activating an existing window
-         * @param timestamp Event timestamp
-         */
         activate_full(workspace: number, timestamp: number): void;
-        /**
-         * Bring all windows for the given app to the foreground,
-         * but ensure that `window` is on top.  If `window` is %NULL,
-         * the window with the most recent user time for the app
-         * will be used.
-         *
-         * This function has no effect if `app` is not currently running.
-         *
-         * @param window Window to be focused
-         * @param timestamp Event timestamp
-         */
-        activate_window(window: Meta.Window | null, timestamp: number): void;
-        /**
-         * Returns %TRUE if the app supports opening a new window through
-         * shell_app_open_new_window() (ie, if calling that function will
-         * result in actually opening a new window and not something else,
-         * like presenting the most recently active one)
-         */
+        activate_window(window: Meta.Window, timestamp: number): void;
         can_open_new_window(): boolean;
-        /**
-         * Compare one #ShellApp instance to another, in the following way:
-         *   - Running applications sort before not-running applications.
-         *   - If one of them has non-minimized windows and the other does not,
-         *     the one with visible windows is first.
-         *   - Finally, the application which the user interacted with most recently
-         *     compares earlier.
-         *
-         * @param other A #ShellApp
-         */
         compare(other: Shell.App): number;
-        /**
-         * Order two applications by name.
-         *
-         * @returns -1, 0, or 1; suitable for use as a comparison function
-         * for e.g. g_slist_sort()
-         * @param other The other app
-         */
         compare_by_name(other: Shell.App): number;
-        /**
-         * Look up the icon for this application, and create a #ClutterActor
-         * for it at the given size.
-         *
-         * @returns A floating #ClutterActor
-         * @param size
-         */
         create_icon_texture(size: number): Clutter.Actor;
-        get_action_group(): Gio.ActionGroup | null;
-        get_app_info(): never;
+        get_action_group(): Gio.ActionGroup;
+        get_app_info(): GioUnix.DesktopAppInfo;
         get_busy(): boolean;
         get_description(): string;
-        /**
-         * Look up the icon for this application
-         *
-         * @returns A #GIcon
-         */
         get_icon(): Gio.Icon;
         get_id(): string;
         get_n_windows(): number;
         get_name(): string;
         get_pids(): number[];
         get_state(): Shell.AppState;
-        /**
-         * Get the windows which are associated with this application. The
-         * returned list will be sorted first by whether they're on the
-         * active workspace, then by whether they're visible, and finally
-         * by the time the user last interacted with them.
-         *
-         * @returns List of windows
-         */
         get_windows(): Meta.Window[];
         is_on_workspace(workspace: Meta.Workspace): boolean;
-        /**
-         * A window backed application is one which represents just an open
-         * window, i.e. there's no .desktop file association, so we don't know
-         * how to launch it again.
-         */
         is_window_backed(): boolean;
         launch(timestamp: number, workspace: number, gpu_pref: Shell.AppLaunchGpu | null): boolean;
         launch_action(action_name: string, timestamp: number, workspace: number): void;
-        /**
-         * Request that the application create a new window.
-         *
-         * @param workspace open on this workspace, or -1 for default
-         */
         open_new_window(workspace: number): void;
-        /**
-         * Initiate an asynchronous request to quit this application.
-         * The application may interact with the user, and the user
-         * might cancel the quit request from the application UI.
-         *
-         * This operation may not be supported for all applications.
-         *
-         * @returns %TRUE if a quit request is supported for this application
-         */
         request_quit(): boolean;
         update_app_actions(window: Meta.Window): void;
         update_window_actions(window: Meta.Window): void;
@@ -313,61 +152,14 @@ declare namespace classes {
         emit(signal: string, ...args: any[]): void;
         // Static methods
         static get_default(): Shell.AppSystem;
-        /**
-         * Wrapper around g_desktop_app_info_search() that replaces results that
-         * don't validate as UTF-8 with the empty string.
-         *
-         * @param search_string the search string to use
-         */
         static search(search_string: string): string[];
         // Methods
-        /**
-         * Returns all installed apps, as a list of #GAppInfo
-         *
-         * @returns a list of #GAppInfo
-         *   describing all known applications. This memory is owned by the
-         *   #ShellAppSystem and should not be freed.
-         */
         get_installed(): Gio.AppInfo[];
-        /**
-         * Returns the set of applications which currently have at least one
-         * open window.  The returned list will be sorted by shell_app_compare().
-         *
-         * @returns Active applications
-         */
         get_running(): Shell.App[];
-        /**
-         * Find a #ShellApp corresponding to an id.
-         *
-         * @returns The #ShellApp for id, or %NULL if none
-         * @param id
-         */
         lookup_app(id: string): Shell.App;
-        /**
-         * Find a valid application whose .desktop file, without the extension
-         * and properly canonicalized, matches `wmclass`.
-         *
-         * @returns A #ShellApp for `wmclass`
-         * @param wmclass A WM_CLASS value
-         */
-        lookup_desktop_wmclass(wmclass?: string | null): Shell.App;
-        /**
-         * Find a valid application corresponding to a given
-         * heuristically determined application identifier
-         * string, or %NULL if none.
-         *
-         * @returns A #ShellApp for `name`
-         * @param id Probable application identifier
-         */
+        lookup_desktop_wmclass(wmclass: string): Shell.App;
         lookup_heuristic_basename(id: string): Shell.App;
-        /**
-         * Find a valid application whose .desktop file contains a
-         * StartupWMClass entry matching `wmclass`.
-         *
-         * @returns A #ShellApp for `wmclass`
-         * @param wmclass A WM_CLASS value
-         */
-        lookup_startup_wmclass(wmclass?: string | null): Shell.App;
+        lookup_startup_wmclass(wmclass: string): Shell.App;
     }
     class AppUsage extends GObjectClasses.Object {
         static '$gtype': GObject.GType<AppUsage>;
@@ -400,14 +192,6 @@ declare namespace classes {
         // Static methods
         static get_default(): Shell.AppUsage;
         // Methods
-        /**
-         * Compare `id_a` and `id_b` based on frequency of use.
-         *
-         * @returns -1 if `id_a` ranks higher than `id_b,` 1 if `id_b` ranks higher
-         *          than `id_a,` and 0 if both rank equally.
-         * @param id_a ID of first app
-         * @param id_b ID of second app
-         */
         compare(id_a: string, id_b: string): number;
         get_most_used(): Shell.App[];
     }
@@ -492,9 +276,6 @@ declare namespace classes {
     class EdgeDragGesture extends ClutterClasses.Gesture {
         static '$gtype': GObject.GType<EdgeDragGesture>;
         // Properties
-        /**
-         * Edge that the gesture may start at. Defaults to the top edge.
-         */
         get side(): Clutter.GestureState;
         set side(val: Clutter.GestureState);
         /**
@@ -524,17 +305,7 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * Gets the edge of the monitor that the edge drag may start at.
-         *
-         * @returns the side that the edge drag may start at
-         */
         get_side(): St.Side;
-        /**
-         * Sets the edge of the monitor that the edge drag may start at.
-         *
-         * @param side the side
-         */
         set_side(side: St.Side | null): void;
     }
     class GLSLEffect extends ClutterClasses.OffscreenEffect {
@@ -568,18 +339,6 @@ declare namespace classes {
         // Virtual methods
         vfunc_build_pipeline(): void;
         // Methods
-        /**
-         * Adds a GLSL snippet to the pipeline used for drawing the effect texture.
-         * See #CoglSnippet for details.
-         *
-         * This is only valid inside the a call to the build_pipeline() virtual
-         * function.
-         *
-         * @param hook where to insert the code
-         * @param declarations GLSL declarations
-         * @param code GLSL code
-         * @param is_replace whether Cogl code should be replaced by the custom shader
-         */
         add_glsl_snippet(
             hook: (never | Cogl.SnippetHook) | null,
             declarations: string,
@@ -660,45 +419,12 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Static methods
-        /**
-         * Gets the singleton global object that represents the desktop.
-         */
         static get(): Shell.Global;
         // Methods
-        /**
-         * Marks that we are currently doing work. This is used to to track
-         * whether we are busy for the purposes of shell_global_run_at_leisure().
-         * A count is kept and shell_global_end_work() must be called exactly
-         * as many times as shell_global_begin_work().
-         */
         begin_work(): void;
-        /**
-         * Create a #GAppLaunchContext set up with the correct timestamp, and
-         * targeted to activate on `workspace`.
-         *
-         * @returns A new #GAppLaunchContext
-         * @param timestamp the timestamp for the launch (or 0 for current time)
-         * @param workspace a workspace index, or -1 to indicate no specific one
-         */
         create_app_launch_context(timestamp: number, workspace: number): Gio.AppLaunchContext;
-        /**
-         * Marks the end of work that we started with shell_global_begin_work().
-         * If no other work is ongoing and functions have been added with
-         * shell_global_run_at_leisure(), they will be run at the next
-         * opportunity.
-         */
         end_work(): void;
-        /**
-         * Gets app system.
-         *
-         * @returns the app system
-         */
         get_app_system(): Shell.AppSystem;
-        /**
-         * Gets app usage.
-         *
-         * @returns the app usage
-         */
         get_app_usage(): Shell.AppUsage;
         get_automation_script(): Gio.File;
         get_backend(): Meta.Backend;
@@ -711,118 +437,30 @@ declare namespace classes {
         get_force_animations(): boolean;
         get_frame_finish_timestamp(): boolean;
         get_frame_timestamps(): boolean;
-        /**
-         * The shell maintains "persistent" state which will persist after
-         * logout or reboot.
-         *
-         * @returns The value of a serialized property, or %NULL if none stored
-         * @param property_type Expected data type
-         * @param property_name Name of the property
-         */
         get_persistent_state(property_type: string, property_name: string): GLib.Variant;
-        /**
-         * Gets the pointer coordinates and current modifier key state.
-         */
         get_pointer(): [number, number, Clutter.ModifierType];
-        /**
-         * The shell maintains "runtime" state which does not persist across
-         * logout or reboot.
-         *
-         * @returns The value of a serialized property, or %NULL if none stored
-         * @param property_type Expected data type
-         * @param property_name Name of the property
-         */
         get_runtime_state(property_type: string, property_name: string): GLib.Variant;
         get_screen_height(): number;
         get_screen_width(): number;
         get_session_mode(): string;
-        /**
-         * Get the global GSettings instance.
-         *
-         * @returns The GSettings object
-         */
         get_settings(): Gio.Settings;
         get_stage(): Clutter.Stage;
-        /**
-         * Get the global #GDBusProxy instance for the switcheroo-control
-         * daemon.
-         *
-         * @returns the #GDBusProxy for the daemon,
-         *   or %NULL on error.
-         */
         get_switcheroo_control(): Gio.DBusProxy;
         get_top_window_group(): Clutter.Actor;
         get_userdatadir(): string;
-        /**
-         * Gets the list of #MetaWindowActor for the plugin's screen
-         *
-         * @returns the list of windows
-         */
         get_window_actors(): Meta.WindowActor[];
         get_window_group(): Clutter.Actor;
         get_window_manager(): Shell.WM;
-        /**
-         * Gets window tracker.
-         *
-         * @returns the window tracker
-         */
         get_window_tracker(): Shell.WindowTracker;
         get_workspace_manager(): Meta.WorkspaceManager;
-        /**
-         * Show a system error notification.  Use this function
-         * when a user-initiated action results in a non-fatal problem
-         * from causes that may not be under system control.  For
-         * example, an application crash.
-         *
-         * @param msg Error message
-         * @param details Error details
-         */
         notify_error(msg: string, details: string): void;
-        /**
-         * Restart the current process.  Only intended for development purposes.
-         */
         reexec_self(): void;
-        /**
-         * Schedules a function to be called the next time the shell is idle.
-         * Idle means here no animations, no redrawing, and no ongoing background
-         * work. Since there is currently no way to hook into the Clutter master
-         * clock and know when is running, the implementation here is somewhat
-         * approximation. Animations may be detected as terminating early if they
-         * can be drawn fast enough so that the event loop goes idle between frames.
-         *
-         * The intent of this function is for performance measurement runs
-         * where a number of actions should be run serially and each action is
-         * timed individually. Using this function for other purposes will
-         * interfere with the ability to use it for performance measurement so
-         * should be avoided.
-         *
-         * @param func function to call at leisure
-         */
         run_at_leisure(func: Shell.LeisureFunction): void;
         set_force_animations(force: boolean): void;
         set_frame_finish_timestamp(enable: boolean): void;
         set_frame_timestamps(enable: boolean): void;
-        /**
-         * Change the value of serialized persistent state.
-         *
-         * @param property_name Name of the property
-         * @param variant A #GVariant, or %NULL to unset
-         */
-        set_persistent_state(property_name: string, variant?: GLib.Variant | null): void;
-        /**
-         * Change the value of serialized runtime state.
-         *
-         * @param property_name Name of the property
-         * @param variant A #GVariant, or %NULL to unset
-         */
-        set_runtime_state(property_name: string, variant?: GLib.Variant | null): void;
-        /**
-         * Sets the area of the stage that is responsive to mouse clicks when
-         * we don't have a modal or grab.
-         *
-         * @param rectangles a list of #MtkRectangle
-         * describing the input region.
-         */
+        set_persistent_state(property_name: string, variant: GLib.Variant): void;
+        set_runtime_state(property_name: string, variant: GLib.Variant): void;
         set_stage_input_region(rectangles: Mtk.Rectangle[]): void;
     }
     class InvertLightnessEffect extends ClutterClasses.OffscreenEffect {
@@ -858,57 +496,21 @@ declare namespace classes {
     class KeyringPrompt extends GObjectClasses.Object implements Gcr.Prompt {
         static '$gtype': GObject.GType<KeyringPrompt>;
         // Properties
-        /**
-         * Whether the choice check box is visible or not.
-         */
         get choice_visible(): boolean;
-        /**
-         * Whether the choice check box is visible or not.
-         */
         get choiceVisible(): boolean;
-        /**
-         * Text field for confirmation password
-         */
         get confirm_actor(): Clutter.Text;
         set confirm_actor(val: Clutter.Text);
-        /**
-         * Text field for confirmation password
-         */
         get confirmActor(): Clutter.Text;
         set confirmActor(val: Clutter.Text);
-        /**
-         * Whether the password confirm entry is visible or not.
-         */
         get confirm_visible(): boolean;
-        /**
-         * Whether the password confirm entry is visible or not.
-         */
         get confirmVisible(): boolean;
-        /**
-         * Text field for password
-         */
         get password_actor(): Clutter.Text;
         set password_actor(val: Clutter.Text);
-        /**
-         * Text field for password
-         */
         get passwordActor(): Clutter.Text;
         set passwordActor(val: Clutter.Text);
-        /**
-         * Whether the password entry is visible or not.
-         */
         get password_visible(): boolean;
-        /**
-         * Whether the password entry is visible or not.
-         */
         get passwordVisible(): boolean;
-        /**
-         * Whether the warning label is visible or not.
-         */
         get warning_visible(): boolean;
-        /**
-         * Whether the warning label is visible or not.
-         */
         get warningVisible(): boolean;
         /**
          * Compile-time signal type information.
@@ -938,45 +540,16 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * Called by implementation when the prompt is cancelled.
-         */
         cancel(): void;
-        /**
-         * Called by the implementation when the prompt completes. There are various
-         * checks done. %TRUE is returned if the prompt actually should complete.
-         *
-         * @returns whether the prompt completed
-         */
         complete(): boolean;
         get_choice_visible(): boolean;
-        /**
-         * Get the prompt password text actor
-         *
-         * @returns the password actor
-         */
-        get_confirm_actor(): Clutter.Text | null;
+        get_confirm_actor(): Clutter.Text;
         get_confirm_visible(): boolean;
-        /**
-         * Get the prompt password text actor
-         *
-         * @returns the password actor
-         */
-        get_password_actor(): Clutter.Text | null;
+        get_password_actor(): Clutter.Text;
         get_password_visible(): boolean;
         get_warning_visible(): boolean;
-        /**
-         * Set the prompt password confirmation text actor
-         *
-         * @param confirm_actor the confirm password actor
-         */
-        set_confirm_actor(confirm_actor?: Clutter.Text | null): void;
-        /**
-         * Set the prompt password text actor
-         *
-         * @param password_actor the password actor
-         */
-        set_password_actor(password_actor?: Clutter.Text | null): void;
+        set_confirm_actor(confirm_actor: Clutter.Text): void;
+        set_password_actor(password_actor: Clutter.Text): void;
         // Inherited properties
         /**
          * The string handle of the caller's window.
@@ -2070,7 +1643,7 @@ declare namespace classes {
         // Methods
         get_show_processes_choices(): string[];
         get_show_processes_message(): string;
-        get_show_processes_pids(): GLib.Pid[];
+        get_show_processes_pids(): number[];
     }
     class NetworkAgent extends NMClasses.SecretAgentOld implements Gio.AsyncInitable<Shell.NetworkAgent>, Gio.Initable {
         static '$gtype': GObject.GType<NetworkAgent>;
@@ -2106,13 +1679,13 @@ declare namespace classes {
         // Methods
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
         respond(request_id: string, response: Shell.NetworkAgentResponse | null): void;
-        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo | null>;
-        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo>;
+        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this>): void;
         search_vpn_plugin(
             service: string,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<NM.VpnPluginInfo | null> | void;
-        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
+            callback?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<NM.VpnPluginInfo> | void;
+        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo;
         set_password(request_id: string, setting_key: string, setting_value: string): void;
         // Inherited methods
         /**
@@ -2914,139 +2487,21 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Static methods
-        /**
-         * Gets the global singleton performance log. This is initially disabled
-         * and must be explicitly enabled with shell_perf_log_set_enabled().
-         */
         static get_default(): Shell.PerfLog;
         // Methods
-        /**
-         * Adds a function that will be called before statistics are recorded.
-         * The function would typically compute one or more statistics values
-         * and call a function such as shell_perf_log_update_statistic_i()
-         * to update the value that will be recorded.
-         *
-         * @param callback function to call before recording statistics
-         */
         add_statistics_callback(callback: Shell.PerfStatisticsCallback): void;
-        /**
-         * Calls all the update functions added with
-         * shell_perf_log_add_statistics_callback() and then records events
-         * for all statistics, followed by a perf.statisticsCollected event.
-         */
         collect_statistics(): void;
-        /**
-         * Defines a performance event for later recording.
-         *
-         * @param name name of the event. This should of the form
-         *   '<namespace>.<specific eventf'>, for example
-         *   'clutter.stagePaintDone'.
-         * @param description human readable description of the event.
-         * @param signature signature defining the arguments that event takes.
-         *   This is a string of type characters, using the same characters
-         *   as D-Bus or GVariant. Only a very limited number of signatures
-         *   are supported: , '', 's', 'i', and 'x'. This mean respectively:
-         *   no arguments, one string, one 32-bit integer, and one 64-bit
-         *   integer.
-         */
         define_event(name: string, description: string, signature: string): void;
-        /**
-         * Defines a statistic. A statistic is a numeric value that is stored
-         * by the performance log and recorded periodically or when
-         * shell_perf_log_collect_statistics() is called explicitly.
-         *
-         * Code that defines a statistic should update it by calling
-         * the update function for the particular data type of the statistic,
-         * such as shell_perf_log_update_statistic_i(). This can be done
-         * at any time, but would normally done inside a function registered
-         * with shell_perf_log_add_statistics_callback(). These functions
-         * are called immediately before statistics are recorded.
-         *
-         * @param name name of the statistic and of the corresponding event.
-         *  This should follow the same guidelines as for shell_perf_log_define_event()
-         * @param description human readable description of the statistic.
-         * @param signature The type of the data stored for statistic. Must
-         *  currently be 'i' or 'x'.
-         */
         define_statistic(name: string, description: string, signature: string): void;
-        /**
-         * Dump the definition of currently defined events and statistics, formatted
-         * as JSON, to the specified output stream. The JSON output is an array,
-         * with each element being a dictionary of the form:
-         *
-         * { name: <name of event>,
-         *   description: <description of string,
-         *   statistic: true } (only for statistics)
-         *
-         * @returns %TRUE if the dump succeeded. %FALSE if an IO error occurred
-         * @param out output stream into which to write the event definitions
-         */
         dump_events(out: Gio.OutputStream): boolean;
-        /**
-         * Writes the performance event log, formatted as JSON, to the specified
-         * output stream. For performance reasons, the output stream passed
-         * in should generally be a buffered (or memory) output stream, since
-         * it will be written to in small pieces. The JSON output is an array
-         * with the elements of the array also being arrays, of the form
-         * '[' <time>, <event name> [, <event_arg>... ] ']'.
-         *
-         * @returns %TRUE if the dump succeeded. %FALSE if an IO error occurred
-         * @param out output stream into which to write the event log
-         */
         dump_log(out: Gio.OutputStream): boolean;
-        /**
-         * Records a performance event with no arguments.
-         *
-         * @param name name of the event
-         */
         event(name: string): void;
-        /**
-         * Records a performance event with one 32-bit integer argument.
-         *
-         * @param name name of the event
-         * @param arg the argument
-         */
         event_i(name: string, arg: number): void;
-        /**
-         * Records a performance event with one string argument.
-         *
-         * @param name name of the event
-         * @param arg the argument
-         */
         event_s(name: string, arg: string): void;
-        /**
-         * Records a performance event with one 64-bit integer argument.
-         *
-         * @param name name of the event
-         * @param arg the argument
-         */
         event_x(name: string, arg: number): void;
-        /**
-         * Replays the log by calling the given function for each event
-         * in the log.
-         *
-         * @param replay_function function to call for each event in the log
-         */
         replay(replay_function: Shell.PerfReplayFunction): void;
-        /**
-         * Sets whether events are currently being recorded.
-         *
-         * @param enabled whether to record events
-         */
         set_enabled(enabled: boolean): void;
-        /**
-         * Updates the current value of an 32-bit integer statistic.
-         *
-         * @param name name of the statistic
-         * @param value new value for the statistic
-         */
         update_statistic_i(name: string, value: number): void;
-        /**
-         * Updates the current value of an 64-bit integer statistic.
-         *
-         * @param name name of the statistic
-         * @param value new value for the statistic
-         */
         update_statistic_x(name: string, value: number): void;
     }
     class PolkitAuthenticationAgent extends PolkitAgentClasses.Listener {
@@ -3115,25 +2570,6 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Static methods
-        /**
-         * Composite a rectangle defined by x, y, width, height from the texture to a
-         * pixbuf and write it as a PNG image into the stream.
-         *
-         * @param texture the source texture
-         * @param x x coordinate of the rectangle
-         * @param y y coordinate of the rectangle
-         * @param width width of the rectangle, or -1 to use the full texture
-         * @param height height of the rectangle, or -1 to use the full texture
-         * @param scale scale of the source texture
-         * @param cursor the cursor texture
-         * @param cursor_x x coordinate to put the cursor texture at, relative to the full
-         * source texture
-         * @param cursor_y y coordinate to put the cursor texture at, relative to the full
-         * source texture
-         * @param cursor_scale scale of the cursor texture
-         * @param stream the stream to write the PNG image into
-         * @param callback function to call returning success or failure
-         */
         static composite_to_stream(
             texture: Cogl.Texture,
             x: number,
@@ -3141,104 +2577,30 @@ declare namespace classes {
             width: number,
             height: number,
             scale: number,
-            cursor: Cogl.Texture | null,
+            cursor: Cogl.Texture,
             cursor_x: number,
             cursor_y: number,
             cursor_scale: number,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<Shell.Screenshot> | null,
+            callback: Gio.AsyncReadyCallback<Shell.Screenshot>,
         ): void;
-        /**
-         * Finish the asynchronous operation started by
-         * shell_screenshot_composite_to_stream () and obtain its result.
-         *
-         * @param result the #GAsyncResult that was provided to the callback
-         */
-        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
+        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf;
         // Methods
-        /**
-         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
-         *
-         * @param x The X coordinate to pick
-         * @param y The Y coordinate to pick
-         */
         pick_color(x: number, y: number): globalThis.Promise<Cogl.Color>;
-        /**
-         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
-         *
-         * @param x The X coordinate to pick
-         * @param y The Y coordinate to pick
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
-        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
-         *
-         * @param x The X coordinate to pick
-         * @param y The Y coordinate to pick
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
+        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this>): void;
         pick_color(
             x: number,
             y: number,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Cogl.Color> | void;
-        /**
-         * Finish the asynchronous operation started by shell_screenshot_pick_color()
-         * and obtain its result.
-         *
-         * @returns whether the operation was successful
-         * @param result the #GAsyncResult that was provided to the callback
-         */
         pick_color_finish(result: Gio.AsyncResult): [boolean, Cogl.Color];
-        /**
-         * Takes a screenshot of the whole screen
-         * in `stream` as png image.
-         *
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         */
         screenshot(include_cursor: boolean, stream: Gio.OutputStream): globalThis.Promise<Mtk.Rectangle>;
-        /**
-         * Takes a screenshot of the whole screen
-         * in `stream` as png image.
-         *
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<this>): void;
         screenshot(
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Takes a screenshot of the whole screen
-         * in `stream` as png image.
-         *
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
-        screenshot(
-            include_cursor: boolean,
-            stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Mtk.Rectangle> | void;
-        /**
-         * Takes a screenshot of the passed in area and saves it
-         * in `stream` as png image.
-         *
-         * @param x The X coordinate of the area
-         * @param y The Y coordinate of the area
-         * @param width The width of the area
-         * @param height The height of the area
-         * @param stream The stream for the screenshot
-         */
         screenshot_area(
             x: number,
             y: number,
@@ -3246,146 +2608,51 @@ declare namespace classes {
             height: number,
             stream: Gio.OutputStream,
         ): globalThis.Promise<Mtk.Rectangle>;
-        /**
-         * Takes a screenshot of the passed in area and saves it
-         * in `stream` as png image.
-         *
-         * @param x The X coordinate of the area
-         * @param y The Y coordinate of the area
-         * @param width The width of the area
-         * @param height The height of the area
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
         screenshot_area(
             x: number,
             y: number,
             width: number,
             height: number,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this>,
         ): void;
-        /**
-         * Takes a screenshot of the passed in area and saves it
-         * in `stream` as png image.
-         *
-         * @param x The X coordinate of the area
-         * @param y The Y coordinate of the area
-         * @param width The width of the area
-         * @param height The height of the area
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
         screenshot_area(
             x: number,
             y: number,
             width: number,
             height: number,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Mtk.Rectangle> | void;
-        /**
-         * Finish the asynchronous operation started by shell_screenshot_screenshot_area()
-         * and obtain its result.
-         *
-         * @returns whether the operation was successful
-         * @param result the #GAsyncResult that was provided to the callback
-         */
         screenshot_area_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
-        /**
-         * Finish the asynchronous operation started by shell_screenshot_screenshot()
-         * and obtain its result.
-         *
-         * @returns whether the operation was successful
-         * @param result the #GAsyncResult that was provided to the callback
-         */
         screenshot_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
-        /**
-         * Takes a screenshot of the whole screen as #ClutterContent.
-         */
         screenshot_stage_to_content(): globalThis.Promise<
-            [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]
+            [Clutter.Content, number, Clutter.Content, Graphene.Point, number]
         >;
-        /**
-         * Takes a screenshot of the whole screen as #ClutterContent.
-         *
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
-        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Takes a screenshot of the whole screen as #ClutterContent.
-         *
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
+        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this>): void;
         screenshot_stage_to_content(
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
-        /**
-         * Finish the asynchronous operation started by
-         * shell_screenshot_screenshot_stage_to_content() and obtain its result.
-         *
-         * @returns the #ClutterContent, or NULL
-         * @param result the #GAsyncResult that was provided to the callback
-         */
+            callback?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content, Graphene.Point, number]> | void;
         screenshot_stage_to_content_finish(
             result: Gio.AsyncResult,
-        ): [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number];
-        /**
-         * Takes a screenshot of the focused window (optionally omitting the frame)
-         * in `stream` as png image.
-         *
-         * @param include_frame Whether to include the frame or not
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         */
+        ): [Clutter.Content, number, Clutter.Content, Graphene.Point, number];
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
         ): globalThis.Promise<Mtk.Rectangle>;
-        /**
-         * Takes a screenshot of the focused window (optionally omitting the frame)
-         * in `stream` as png image.
-         *
-         * @param include_frame Whether to include the frame or not
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<this> | null,
+            callback: Gio.AsyncReadyCallback<this>,
         ): void;
-        /**
-         * Takes a screenshot of the focused window (optionally omitting the frame)
-         * in `stream` as png image.
-         *
-         * @param include_frame Whether to include the frame or not
-         * @param include_cursor Whether to include the cursor or not
-         * @param stream The stream for the screenshot
-         * @param callback function to call returning success or failure
-         * of the async grabbing
-         */
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Mtk.Rectangle> | void;
-        /**
-         * Finish the asynchronous operation started by shell_screenshot_screenshot_window()
-         * and obtain its result.
-         *
-         * @returns whether the operation was successful
-         * @param result the #GAsyncResult that was provided to the callback
-         */
         screenshot_window_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
     }
     class SecureTextBuffer extends ClutterClasses.TextBuffer {
@@ -4464,15 +3731,6 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * Fakes a press and release on `icon`. `event` must be a
-         * %CLUTTER_BUTTON_RELEASE, %CLUTTER_KEY_PRESS or %CLUTTER_KEY_RELEASE event.
-         * Its relevant details will be passed on to the icon, but its
-         * coordinates will be ignored; the click is
-         * always made on the center of `icon`.
-         *
-         * @param event the #ClutterEvent triggering the fake click
-         */
         click(event: Clutter.Event): void;
         get_pid(): number;
         get_title(): string;
@@ -5019,41 +4277,12 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * The plugin must call this after the user responded to the confirmation dialog.
-         *
-         * @param ok if the new configuration was OK
-         */
         complete_display_change(ok: boolean): void;
-        /**
-         * The plugin must call this when it has completed a window destroy effect.
-         *
-         * @param actor the MetaWindowActor actor
-         */
         completed_destroy(actor: Meta.WindowActor): void;
-        /**
-         * The plugin must call this when it has completed a window map effect.
-         *
-         * @param actor the MetaWindowActor actor
-         */
         completed_map(actor: Meta.WindowActor): void;
-        /**
-         * The plugin must call this when it has completed a window minimize effect.
-         *
-         * @param actor the MetaWindowActor actor
-         */
         completed_minimize(actor: Meta.WindowActor): void;
         completed_size_change(actor: Meta.WindowActor): void;
-        /**
-         * The plugin must call this when it has finished switching the
-         * workspace.
-         */
         completed_switch_workspace(): void;
-        /**
-         * The plugin must call this when it has completed a window unminimize effect.
-         *
-         * @param actor the MetaWindowActor actor
-         */
         completed_unminimize(actor: Meta.WindowActor): void;
     }
     class WindowPreview extends StClasses.Widget implements Atk.ImplementorIface, Clutter.Animatable {
@@ -5596,31 +4825,9 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        /**
-         * Creates a ClutterActor drawing the texture of `window` and adds it
-         * to the container. If `window` is already part of the preview, this
-         * function will do nothing.
-         *
-         * @returns The newly created actor drawing `window`
-         * @param window the #MetaWindow
-         */
-        add_window(window: Meta.Window): Clutter.Actor | null;
+        add_window(window: Meta.Window): Clutter.Actor;
         get_bounding_box(): Clutter.ActorBox;
-        /**
-         * Gets an array of all MetaWindows that were added to the layout
-         * using shell_window_preview_layout_add_window(), ordered by the
-         * insertion order.
-         *
-         * @returns The list of windows
-         */
         get_windows(): Meta.Window[];
-        /**
-         * Removes a MetaWindow `window` from the preview which has been added
-         * previously using shell_window_preview_layout_add_window().
-         * If `window` is not part of preview, this function will do nothing.
-         *
-         * @param window the #MetaWindow
-         */
         remove_window(window: Meta.Window): void;
     }
     class WindowTracker extends GObjectClasses.Object {
@@ -5657,14 +4864,8 @@ declare namespace classes {
         // Static methods
         static get_default(): Shell.WindowTracker;
         // Methods
-        /**
-         * Look up the application corresponding to a process.
-         *
-         * @returns A #ShellApp, or %NULL if none
-         * @param pid A Unix process identifier
-         */
         get_app_from_pid(pid: number): Shell.App;
-        get_focus_app(): Shell.App | null;
+        get_focus_app(): Shell.App;
         get_startup_sequences(): Meta.StartupSequence[];
         get_window_app(metawin: Meta.Window): Shell.App;
     }

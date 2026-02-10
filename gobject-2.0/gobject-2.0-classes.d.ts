@@ -1103,12 +1103,11 @@ declare namespace classes {
          *
          * @returns the new or existing type ID
          * @param name name for the type
-         * @param const_static_values an array of #GEnumValue structs for the
-         *                       possible enumeration values. The array is
-         *                       terminated by a struct with all members being
-         *                       0.
+         * @param const_static_values an array of #GEnumValue
+         *  structs for the possible enumeration values. The array is terminated by a
+         *  struct with all members being 0.
          */
-        register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+        register_enum(name: string, const_static_values: GObject.EnumValue[]): GObject.GType;
         /**
          * Looks up or registers a flags type that is implemented with a particular
          * type plugin. If a type with name `type_name` was previously registered,
@@ -1123,12 +1122,11 @@ declare namespace classes {
          *
          * @returns the new or existing type ID
          * @param name name for the type
-         * @param const_static_values an array of #GFlagsValue structs for the
-         *                       possible flags values. The array is
-         *                       terminated by a struct with all members being
-         *                       0.
+         * @param const_static_values an array of #GFlagsValue
+         *  structs for the possible flags values. The array is terminated by a struct
+         *  with all members being 0.
          */
-        register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+        register_flags(name: string, const_static_values: GObject.FlagsValue[]): GObject.GType;
         /**
          * Looks up or registers a type that is implemented with a particular
          * type plugin. If a type with name `type_name` was previously registered,

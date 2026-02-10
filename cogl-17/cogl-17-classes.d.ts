@@ -567,6 +567,7 @@ declare namespace classes {
          * @returns The frame counter value
          */
         get_frame_counter(): number;
+        get_global_frame_counter(): number;
         get_is_symbolic(): boolean;
         /**
          * Gets the presentation time for the frame. This is the time at which
@@ -2511,9 +2512,9 @@ declare namespace classes {
          * @param uniform_location The uniform's location identifier
          * @param n_components The number of components in the corresponding uniform's type
          * @param count The number of values to set
-         * @param value Pointer to the new values to set
+         * @param value The array of float to set `uniform`
          */
-        set_uniform_float(uniform_location: number, n_components: number, count: number, value: number): void;
+        set_uniform_float(uniform_location: number, n_components: number, count: number, value: number[]): void;
         /**
          * Sets new values for the uniform at `uniform_location`. If this
          * pipeline has a user program attached and is later used as a source
@@ -2531,9 +2532,9 @@ declare namespace classes {
          * @param uniform_location The uniform's location identifier
          * @param n_components The number of components in the corresponding uniform's type
          * @param count The number of values to set
-         * @param value Pointer to the new values to set
+         * @param value The array of int to set `uniform`
          */
-        set_uniform_int(uniform_location: number, n_components: number, count: number, value: number): void;
+        set_uniform_int(uniform_location: number, n_components: number, count: number, value: number[]): void;
         /**
          * Sets new values for the uniform at `uniform_location`. If this
          * pipeline has a user program attached and is later used as a source
@@ -2557,14 +2558,14 @@ declare namespace classes {
          * @param dimensions The size of the matrix
          * @param count The number of values to set
          * @param transpose Whether to transpose the matrix
-         * @param value Pointer to the new values to set
+         * @param value The array of float to set `uniform`
          */
         set_uniform_matrix(
             uniform_location: number,
             dimensions: number,
             count: number,
             transpose: boolean,
-            value: number,
+            value: number[],
         ): void;
         /**
          * Associates a linked CoglProgram with the given pipeline so that the
@@ -2956,7 +2957,7 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
-        blit_to_framebuffer(framebuffer: Cogl.Framebuffer, x: number, y: number): boolean;
+        copy_to_framebuffer(framebuffer: Cogl.Framebuffer): boolean;
         get_buffer(): Cogl.ScanoutBuffer;
         get_dst_rect(dst_rect: Mtk.Rectangle): void;
         get_src_rect(rect: Graphene.Rect): void;

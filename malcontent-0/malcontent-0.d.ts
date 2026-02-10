@@ -19,24 +19,6 @@ export namespace Malcontent {
      * Malcontent-0
      */
     /**
-     * Different semantics for interpreting an application list.
-     */
-    export namespace AppFilterListType {
-        export const $gtype: GObject.GType<AppFilterListType>;
-    }
-    enum AppFilterListType {
-        /**
-         * Any program in the list is not allowed to
-         *    be run.
-         */
-        BLOCKLIST,
-        /**
-         * Any program not in the list is not allowed
-         *    to be run.
-         */
-        ALLOWLIST = 1,
-    }
-    /**
      * Rating values of the intensity of a given section in an app or game.
      * These are directly equivalent to the values in the #AsContentRatingValue
      * enumeration in libappstream.
@@ -98,24 +80,6 @@ export namespace Malcontent {
         _init(...args: any[]): void;
         // Static methods
         static quark(): GLib.Quark;
-    }
-    /**
-     * Types of session limit which can be imposed on an account. Additional types
-     * may be added in future.
-     */
-    export namespace SessionLimitsType {
-        export const $gtype: GObject.GType<SessionLimitsType>;
-    }
-    enum SessionLimitsType {
-        /**
-         * No session limits are imposed.
-         */
-        NONE,
-        /**
-         * Sessions are limited to between a
-         *     pair of given times each day.
-         */
-        DAILY_SCHEDULE = 1,
     }
     /**
      * Deserialize an app filter previously serialized with
@@ -212,15 +176,8 @@ export namespace Malcontent {
      * are read-only for non-administrative users. The precise policy is set using
      * polkit.
      */
-    class AppFilter {
+    abstract class AppFilter {
         static '$gtype': GObject.GType<AppFilter>;
-        // Fields
-        ref_count: number;
-        user_id: number;
-        app_list: string;
-        app_list_type: AppFilterListType;
-        allow_user_installation: boolean;
-        allow_system_installation: boolean;
         // Constructors
         _init(...args: any[]): void;
         // Static methods
@@ -279,6 +236,10 @@ export namespace Malcontent {
          * Check whether the app with the given `app_info` is allowed to be run
          * according to this app filter. This matches on multiple keys potentially
          * present in the #GAppInfo, including the path of the executable.
+         *
+         * If the appfilter is a blocklist, the `app_info` is blocked if any of its
+         * keys are blocked. If the appfilter is an allowlist, the `app_info` is allowed
+         * if any of its keys are allowed.
          *
          * @returns %TRUE if the user this `filter` corresponds to is allowed to run the
          *    app represented by `app_info` according to the `filter` policy; %FALSE
@@ -507,14 +468,8 @@ export namespace Malcontent {
      * and are read-only for non-administrative users. The precise policy is set
      * using polkit.
      */
-    class SessionLimits {
+    abstract class SessionLimits {
         static '$gtype': GObject.GType<SessionLimits>;
-        // Fields
-        ref_count: number;
-        user_id: number;
-        limit_type: SessionLimitsType;
-        daily_start_time: number;
-        daily_end_time: number;
         // Constructors
         _init(...args: any[]): void;
         // Static methods

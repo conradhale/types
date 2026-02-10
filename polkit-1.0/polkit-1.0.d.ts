@@ -92,10 +92,7 @@ export namespace Polkit {
      * @param str A string obtained from polkit_identity_to_string().
      */
     function identity_from_string(str: string): Identity | null;
-    function implicit_authorization_from_string(
-        string: string,
-        out_implicit_authorization: ImplicitAuthorization | null,
-    ): boolean;
+    function implicit_authorization_from_string(string: string): [boolean, ImplicitAuthorization];
     function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization | null): string;
     /**
      * Creates an object from `str` that implements the #PolkitSubject
@@ -140,6 +137,10 @@ export namespace Polkit {
          * means that the method used for checking authorization is likely to block for a long time.
          */
         ALLOW_USER_INTERACTION = 1,
+        /**
+         * Check access against policy even for root user.
+         */
+        ALWAYS_CHECK = 2,
     }
     namespace ActionDescription {
         // Signal signatures
@@ -157,6 +158,7 @@ export namespace Polkit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed(): void;
+            'sessions-changed'(): void;
             'notify::backend-features'(pspec: GObject.ParamSpec): void;
             'notify::backend-name'(pspec: GObject.ParamSpec): void;
             'notify::backend-version'(pspec: GObject.ParamSpec): void;
@@ -330,16 +332,29 @@ export namespace Polkit {
     namespace UnixProcess {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gids'(pspec: GObject.ParamSpec): void;
             'notify::pid'(pspec: GObject.ParamSpec): void;
+            'notify::pidfd'(pspec: GObject.ParamSpec): void;
+            'notify::pidfd-is-safe'(pspec: GObject.ParamSpec): void;
             'notify::start-time'(pspec: GObject.ParamSpec): void;
             'notify::uid'(pspec: GObject.ParamSpec): void;
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
             /**
+             * The UNIX group ids of the process.
+             */
+            gids: any[];
+            /**
              * The UNIX process id.
              */
             pid: number;
+            /**
+             * The UNIX process id file descriptor.
+             */
+            pidfd: number;
+            pidfd_is_safe: boolean;
+            pidfdIsSafe: boolean;
             /**
              * The start time of the process.
              */

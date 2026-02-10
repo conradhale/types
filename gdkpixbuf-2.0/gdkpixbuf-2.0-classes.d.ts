@@ -701,9 +701,9 @@ declare namespace classes {
          * See [method`GdkPixbuf`.Pixbuf.save_to_callback] for more details.
          *
          * @returns whether an error was set
-         * @param save_func a function that is called to save each block of data that
-         *   the save routine generates.
-         * @param type name of file format.
+         * @param save_func a function that is called to
+         *   save each block of data that the save routine generates
+         * @param type name of file format
          * @param option_keys name of options to set
          * @param option_values values for named options
          */

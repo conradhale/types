@@ -10320,6 +10320,12 @@ declare namespace classes {
             ...args: GObject.GjsParameters<Clutter.Sprite.SignalSignatures[K]>
         ): void;
         emit(signal: string, ...args: any[]): void;
+        // Methods
+        /**
+         * Returns the current position that `sprite` points to, in stage-global
+         * coordinate system.
+         */
+        get_coords(): [Graphene.Point];
     }
     class Stage extends Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static '$gtype': GObject.GType<Stage>;

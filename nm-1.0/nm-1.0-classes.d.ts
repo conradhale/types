@@ -790,7 +790,7 @@ declare namespace classes {
          * Expose version info and capabilities of NetworkManager. If non-empty,
          * the first element is NM_VERSION, which encodes the version of the
          * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-         * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+         * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
          * the running NetworkManager has the respective capability.
          */
         get version_info(): number[];
@@ -798,7 +798,7 @@ declare namespace classes {
          * Expose version info and capabilities of NetworkManager. If non-empty,
          * the first element is NM_VERSION, which encodes the version of the
          * daemon as "(major << 16 | minor << 8 | micro)". The following elements
-         * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
+         * is a bitfields of %NMVersionInfoCapability. If a bit is set, then
          * the running NetworkManager has the respective capability.
          */
         get versionInfo(): number[];
@@ -2206,7 +2206,7 @@ declare namespace classes {
         /**
          * If available, the first element in the array is NM_VERSION which
          * encodes the daemon version as "(major << 16 | minor << 8 | micro)".
-         * The following elements are a bitfield of %NMVersionInfoCapabilities
+         * The following elements are a bitfield of %NMVersionInfoCapability
          * that indicate that the daemon supports a certain capability.
          *
          * @returns the
@@ -4105,7 +4105,7 @@ declare namespace classes {
          *   settings with or %NULL to reuse existing
          * @param version_id zero or the expected version id of the applied connection.
          *   If specified and the version id mismatches, the call fails without
-         *   modification. This allows to catch concurrent accesses.
+         *   modification. This allows one to catch concurrent accesses.
          * @param flags always set this to zero
          * @param cancellable a #GCancellable, or %NULL
          */
@@ -4123,7 +4123,7 @@ declare namespace classes {
          *   settings with or %NULL to reuse existing
          * @param version_id zero or the expected version id of the applied
          *   connection. If specified and the version id mismatches, the call
-         *   fails without modification. This allows to catch concurrent
+         *   fails without modification. This allows one to catch concurrent
          *   accesses.
          * @param flags always set this to zero
          * @param cancellable a #GCancellable, or %NULL
@@ -4142,7 +4142,7 @@ declare namespace classes {
          *   settings with or %NULL to reuse existing
          * @param version_id zero or the expected version id of the applied
          *   connection. If specified and the version id mismatches, the call
-         *   fails without modification. This allows to catch concurrent
+         *   fails without modification. This allows one to catch concurrent
          *   accesses.
          * @param flags always set this to zero
          * @param cancellable a #GCancellable, or %NULL
@@ -4163,7 +4163,7 @@ declare namespace classes {
          *   settings with or %NULL to reuse existing
          * @param version_id zero or the expected version id of the applied
          *   connection. If specified and the version id mismatches, the call
-         *   fails without modification. This allows to catch concurrent
+         *   fails without modification. This allows one to catch concurrent
          *   accesses.
          * @param flags always set this to zero
          * @param cancellable a #GCancellable, or %NULL
@@ -4818,6 +4818,73 @@ declare namespace classes {
          * @returns %TRUE if the device has carrier
          */
         get_carrier(): boolean;
+    }
+    class DeviceIpvlan extends Device {
+        static '$gtype': GObject.GType<DeviceIpvlan>;
+        // Properties
+        /**
+         * The IPVLAN mode.
+         */
+        get mode(): string;
+        /**
+         * The devices's parent device.
+         */
+        get parent(): NM.Device;
+        /**
+         * Whether the device has the private flag.
+         */
+        get private(): boolean;
+        /**
+         * Whether the device has the VEPA flag.
+         */
+        get vepa(): boolean;
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         */
+        '$signals': NM.DeviceIpvlan.SignalSignatures;
+        // Constructors
+        constructor(properties?: Partial<NM.DeviceIpvlan.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
+        // Signals
+        connect<K extends keyof NM.DeviceIpvlan.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.DeviceIpvlan.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: any): number;
+        connect_after<K extends keyof NM.DeviceIpvlan.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.DeviceIpvlan.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: any): number;
+        emit<K extends keyof NM.DeviceIpvlan.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<NM.DeviceIpvlan.SignalSignatures[K]>
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+        // Methods
+        /**
+         * Gets the IPVLAN mode of the device.
+         *
+         * @returns the IPVLAN mode. This is the internal string used by the
+         * device, and must not be modified.
+         */
+        get_mode(): string;
+        get_parent(): NM.Device;
+        /**
+         * Gets the private flag of the device.
+         *
+         * @returns the private flag of the device.
+         */
+        get_private(): boolean;
+        /**
+         * Gets the VEPA flag of the device.
+         *
+         * @returns the VEPA flag of the device.
+         */
+        get_vepa(): boolean;
     }
     class DeviceLoopback extends Device {
         static '$gtype': GObject.GType<DeviceLoopback>;
@@ -12234,6 +12301,60 @@ declare namespace classes {
         get interfaceName(): string;
         set interfaceName(val: string);
         /**
+         * The property specifies a list of target IP addresses for pinging.
+         * When multiple targets are set, NetworkManager will start multiple ping processes
+         * in parallel. This property can only be set if connection.ip-ping-timeout is
+         * set. The ip-ping-timeout is used to delay the success of IP addressing until
+         * either the specified timeout (in seconds) is reached, or an target IP address replies
+         * to a ping. Configuring #NMSettingConnection:ip-ping-addresses may delay reaching the
+         * systemd's network-online.target due to waiting for the ping operations to complete or timeout.
+         */
+        get ip_ping_addresses(): string[];
+        set ip_ping_addresses(val: string[]);
+        /**
+         * The property specifies a list of target IP addresses for pinging.
+         * When multiple targets are set, NetworkManager will start multiple ping processes
+         * in parallel. This property can only be set if connection.ip-ping-timeout is
+         * set. The ip-ping-timeout is used to delay the success of IP addressing until
+         * either the specified timeout (in seconds) is reached, or an target IP address replies
+         * to a ping. Configuring #NMSettingConnection:ip-ping-addresses may delay reaching the
+         * systemd's network-online.target due to waiting for the ping operations to complete or timeout.
+         */
+        get ipPingAddresses(): string[];
+        set ipPingAddresses(val: string[]);
+        /**
+         * The property determines whether it is sufficient for any ping check
+         * to succeed among #NMSettingConnection:ip-ping-addresses, or if all
+         * ping checks must succeed for #NMSettingConnection:ip-ping-addresses.
+         */
+        get ip_ping_addresses_require_all(): number;
+        set ip_ping_addresses_require_all(val: number);
+        /**
+         * The property determines whether it is sufficient for any ping check
+         * to succeed among #NMSettingConnection:ip-ping-addresses, or if all
+         * ping checks must succeed for #NMSettingConnection:ip-ping-addresses.
+         */
+        get ipPingAddressesRequireAll(): number;
+        set ipPingAddressesRequireAll(val: number);
+        /**
+         * If greater than zero, delay success of IP addressing until either the specified
+         * timeout (in seconds) is reached, or a target IP address replies to a ping. The
+         * property specifies the timeout for the #NMSettingConnection:ip-ping-addresses.
+         * This property is incompatible with #NMSettingConnection:gateway-ping-timeout,
+         * you cannot set these two properties at the same time.
+         */
+        get ip_ping_timeout(): number;
+        set ip_ping_timeout(val: number);
+        /**
+         * If greater than zero, delay success of IP addressing until either the specified
+         * timeout (in seconds) is reached, or a target IP address replies to a ping. The
+         * property specifies the timeout for the #NMSettingConnection:ip-ping-addresses.
+         * This property is incompatible with #NMSettingConnection:gateway-ping-timeout,
+         * you cannot set these two properties at the same time.
+         */
+        get ipPingTimeout(): number;
+        set ipPingTimeout(val: number);
+        /**
          * Whether LLDP is enabled for the connection.
          */
         get lldp(): number;
@@ -12487,7 +12608,7 @@ declare namespace classes {
         set slaveType(val: string);
         /**
          * This represents the identity of the connection used for various purposes.
-         * It allows to configure multiple profiles to share the identity. Also,
+         * It allows configuring multiple profiles to share the identity. Also,
          * the stable-id can contain placeholders that are substituted dynamically and
          * deterministically depending on the context.
          *
@@ -12529,7 +12650,7 @@ declare namespace classes {
         set stable_id(val: string);
         /**
          * This represents the identity of the connection used for various purposes.
-         * It allows to configure multiple profiles to share the identity. Also,
+         * It allows configuring multiple profiles to share the identity. Also,
          * the stable-id can contain placeholders that are substituted dynamically and
          * deterministically depending on the context.
          *
@@ -12689,6 +12810,14 @@ declare namespace classes {
         emit(signal: string, ...args: any[]): void;
         // Methods
         /**
+         * Adds a new IP address string to the ip-ping-addresses.
+         *
+         * @returns %TRUE if the new IP address was added; %FALSE if the IP address
+         * was already present
+         * @param address the IP address string to add
+         */
+        add_ip_ping_address(address: string): boolean;
+        /**
          * Adds a permission to the connection's permission list.  At this time, only
          * the "user" permission type is supported, and `pitem` must be a username. See
          * #NMSettingConnection:permissions: for more details.
@@ -12711,6 +12840,10 @@ declare namespace classes {
          * @param sec_uuid the secondary connection UUID to add
          */
         add_secondary(sec_uuid: string): boolean;
+        /**
+         * Removes all configured ip-ping-addresses.
+         */
+        clear_ip_ping_addresses(): void;
         /**
          * Returns the value contained in the #NMSettingConnection:auth-retries property.
          *
@@ -12786,6 +12919,14 @@ declare namespace classes {
          * @returns the connection's interface name
          */
         get_interface_name(): string;
+        get_ip_ping_address(idx: number): string;
+        /**
+         * Returns the #NMSettingConnection:ip-ping-addresses-require-all property of the connection.
+         *
+         * @returns whether all the ip ping addresses pass the connectivity check.
+         */
+        get_ip_ping_addresses_require_all(): NM.Ternary;
+        get_ip_ping_timeout(): number;
         /**
          * Returns the #NMSettingConnection:lldp property of the connection.
          *
@@ -12885,6 +13026,19 @@ declare namespace classes {
          * @param uname the user name to check permissions for
          */
         permissions_user_allowed(uname: string): boolean;
+        /**
+         * Removes the IP address at index `idx`.
+         *
+         * @param idx index number of the IP address
+         */
+        remove_ip_ping_address(idx: number): void;
+        /**
+         * Removes the IP address `address` from ip-ping-addresses.
+         *
+         * @returns %TRUE if the IP address was found and removed; %FALSE if it was not.
+         * @param address the IP address to remove
+         */
+        remove_ip_ping_address_by_value(address: string): boolean;
         /**
          * Removes the permission at index `idx` from the connection.
          *
@@ -13480,6 +13634,122 @@ declare namespace classes {
         get initialEpsBearerConfigure(): boolean;
         set initialEpsBearerConfigure(val: boolean);
         /**
+         * For LTE modems, this sets NOAUTH authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         * If %TRUE, do not require the other side to authenticate itself to the client.
+         * If %FALSE, require authentication from the remote side.  In almost all cases,
+         * this should be %TRUE.
+         */
+        get initial_eps_bearer_noauth(): boolean;
+        set initial_eps_bearer_noauth(val: boolean);
+        /**
+         * For LTE modems, this sets NOAUTH authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         * If %TRUE, do not require the other side to authenticate itself to the client.
+         * If %FALSE, require authentication from the remote side.  In almost all cases,
+         * this should be %TRUE.
+         */
+        get initialEpsBearerNoauth(): boolean;
+        set initialEpsBearerNoauth(val: boolean);
+        /**
+         * For LTE modems, this sets the password for the initial EPS bearer that is set
+         * up when attaching to the network.  Setting this parameter implies
+         * initial-eps-bearer-configure to be TRUE.
+         */
+        get initial_eps_bearer_password(): string;
+        set initial_eps_bearer_password(val: string);
+        /**
+         * For LTE modems, this sets the password for the initial EPS bearer that is set
+         * up when attaching to the network.  Setting this parameter implies
+         * initial-eps-bearer-configure to be TRUE.
+         */
+        get initialEpsBearerPassword(): string;
+        set initialEpsBearerPassword(val: string);
+        /**
+         * Flags indicating how to handle the #NMSettingGsm:initial-eps-bearer-password property.
+         */
+        get initial_eps_bearer_password_flags(): NM.SettingSecretFlags;
+        set initial_eps_bearer_password_flags(val: NM.SettingSecretFlags);
+        /**
+         * Flags indicating how to handle the #NMSettingGsm:initial-eps-bearer-password property.
+         */
+        get initialEpsBearerPasswordFlags(): NM.SettingSecretFlags;
+        set initialEpsBearerPasswordFlags(val: NM.SettingSecretFlags);
+        /**
+         * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initial_eps_bearer_refuse_chap(): boolean;
+        set initial_eps_bearer_refuse_chap(val: boolean);
+        /**
+         * For LTE modems, this disables CHAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initialEpsBearerRefuseChap(): boolean;
+        set initialEpsBearerRefuseChap(val: boolean);
+        /**
+         * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initial_eps_bearer_refuse_eap(): boolean;
+        set initial_eps_bearer_refuse_eap(val: boolean);
+        /**
+         * For LTE modems, this disables EAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initialEpsBearerRefuseEap(): boolean;
+        set initialEpsBearerRefuseEap(val: boolean);
+        /**
+         * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initial_eps_bearer_refuse_mschap(): boolean;
+        set initial_eps_bearer_refuse_mschap(val: boolean);
+        /**
+         * For LTE modems, this disables MSCHAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initialEpsBearerRefuseMschap(): boolean;
+        set initialEpsBearerRefuseMschap(val: boolean);
+        /**
+         * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initial_eps_bearer_refuse_mschapv2(): boolean;
+        set initial_eps_bearer_refuse_mschapv2(val: boolean);
+        /**
+         * For LTE modems, this disables MSCHAPV2 authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initialEpsBearerRefuseMschapv2(): boolean;
+        set initialEpsBearerRefuseMschapv2(val: boolean);
+        /**
+         * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initial_eps_bearer_refuse_pap(): boolean;
+        set initial_eps_bearer_refuse_pap(val: boolean);
+        /**
+         * For LTE modems, this disables PAP authentication method for the initial EPS bearer that is set
+         * up when attaching to the network.
+         */
+        get initialEpsBearerRefusePap(): boolean;
+        set initialEpsBearerRefusePap(val: boolean);
+        /**
+         * For LTE modems, this sets the username for the initial EPS bearer that is set
+         * up when attaching to the network.  Setting this parameter implies
+         * initial-eps-bearer-configure to be TRUE.
+         */
+        get initial_eps_bearer_username(): string;
+        set initial_eps_bearer_username(val: string);
+        /**
+         * For LTE modems, this sets the username for the initial EPS bearer that is set
+         * up when attaching to the network.  Setting this parameter implies
+         * initial-eps-bearer-configure to be TRUE.
+         */
+        get initialEpsBearerUsername(): string;
+        set initialEpsBearerUsername(val: string);
+        /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
          */
@@ -13618,6 +13888,14 @@ declare namespace classes {
         get_home_only(): boolean;
         get_initial_eps_apn(): string;
         get_initial_eps_config(): boolean;
+        get_initial_eps_noauth(): boolean;
+        get_initial_eps_password(): string;
+        get_initial_eps_refuse_chap(): boolean;
+        get_initial_eps_refuse_eap(): boolean;
+        get_initial_eps_refuse_mschap(): boolean;
+        get_initial_eps_refuse_mschapv2(): boolean;
+        get_initial_eps_refuse_pap(): boolean;
+        get_initial_eps_username(): string;
         get_mtu(): number;
         get_network_id(): string;
         get_number(): string;
@@ -13782,6 +14060,11 @@ declare namespace classes {
         static '$gtype': GObject.GType<SettingHsr>;
         // Properties
         /**
+         * The optional interlink port name of the HSR interface.
+         */
+        get interlink(): string;
+        set interlink(val: string);
+        /**
          * The last byte of supervision address.
          */
         get multicast_spec(): number;
@@ -13801,6 +14084,22 @@ declare namespace classes {
          */
         get port2(): string;
         set port2(val: string);
+        /**
+         * Configures the protocol version to be used for the HSR/PRP interface.
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_DEFAULT sets the protocol version to the default version for the protocol.
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2010 sets the protocol version to HSRv0 (IEC 62439-3:2010).
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2012 sets the protocol version to HSRv1 (IEC 62439-3:2012).
+         */
+        get protocol_version(): number;
+        set protocol_version(val: number);
+        /**
+         * Configures the protocol version to be used for the HSR/PRP interface.
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_DEFAULT sets the protocol version to the default version for the protocol.
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2010 sets the protocol version to HSRv0 (IEC 62439-3:2010).
+         * %NM_SETTING_HSR_PROTOCOL_VERSION_HSR_2012 sets the protocol version to HSRv1 (IEC 62439-3:2012).
+         */
+        get protocolVersion(): number;
+        set protocolVersion(val: number);
         /**
          * The protocol used by the interface, whether it is PRP or HSR.
          */
@@ -13834,9 +14133,11 @@ declare namespace classes {
         ): void;
         emit(signal: string, ...args: any[]): void;
         // Methods
+        get_interlink(): string;
         get_multicast_spec(): number;
         get_port1(): string;
         get_port2(): string;
+        get_protocol_version(): NM.SettingHsrProtocolVersion;
         get_prp(): boolean;
     }
     class SettingIP4Config extends SettingIPConfig {
@@ -13937,6 +14238,44 @@ declare namespace classes {
         get dhcpFqdn(): string;
         set dhcpFqdn(val: string);
         /**
+         * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+         *
+         * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_YES, the host adds the
+         * option to the parameter request list; if the DHCP server sends the option back,
+         * the host stops the DHCP client for the time interval specified in the option.
+         *
+         * Enable this feature if the host supports an IPv6-only mode, i.e. either all
+         * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+         *
+         * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_DEFAULT, the actual value
+         * is looked up in the global configuration; if not specified, it defaults to
+         * %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_NO.
+         *
+         * If the connection has IPv6 method set to "disabled", this property does not
+         * have effect and the "IPv6-Only Preferred" option is always disabled.
+         */
+        get dhcp_ipv6_only_preferred(): number;
+        set dhcp_ipv6_only_preferred(val: number);
+        /**
+         * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+         *
+         * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_YES, the host adds the
+         * option to the parameter request list; if the DHCP server sends the option back,
+         * the host stops the DHCP client for the time interval specified in the option.
+         *
+         * Enable this feature if the host supports an IPv6-only mode, i.e. either all
+         * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+         *
+         * When set to %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_DEFAULT, the actual value
+         * is looked up in the global configuration; if not specified, it defaults to
+         * %NM_SETTING_IP4_DHCP_IPV6_ONLY_PREFERRED_NO.
+         *
+         * If the connection has IPv6 method set to "disabled", this property does not
+         * have effect and the "IPv6-Only Preferred" option is always disabled.
+         */
+        get dhcpIpv6OnlyPreferred(): number;
+        set dhcpIpv6OnlyPreferred(val: number);
+        /**
          * The Vendor Class Identifier DHCP option (60).
          * Special characters in the data string may be escaped using C-style escapes,
          * nevertheless this property cannot contain nul bytes.
@@ -13966,6 +14305,8 @@ declare namespace classes {
          * When set to "default", it honors the global connection default, before
          * falling back to "auto". Note that if "ipv4.method" is "disabled", then
          * link local addressing is always disabled too. The default is "default".
+         * Since 1.52, when set to "fallback", a link-local address is obtained
+         * if no other IPv4 address is set.
          */
         get link_local(): number;
         set link_local(val: number);
@@ -13979,6 +14320,8 @@ declare namespace classes {
          * When set to "default", it honors the global connection default, before
          * falling back to "auto". Note that if "ipv4.method" is "disabled", then
          * link local addressing is always disabled too. The default is "default".
+         * Since 1.52, when set to "fallback", a link-local address is obtained
+         * if no other IPv4 address is set.
          */
         get linkLocal(): number;
         set linkLocal(val: number);
@@ -14025,6 +14368,13 @@ declare namespace classes {
          * @returns the configured FQDN to send to the DHCP server
          */
         get_dhcp_fqdn(): string;
+        /**
+         * Returns the value in the #NMSettingIP4Config:dhcp-ipv6-only-preferred
+         * property.
+         *
+         * @returns the DHCP IPv6-only preferred property value
+         */
+        get_dhcp_ipv6_only_preferred(): NM.SettingIP4DhcpIpv6OnlyPreferred;
         /**
          * Returns the value contained in the #NMSettingIP4Config:dhcp_vendor_class_identifier
          * property.
@@ -14622,23 +14972,51 @@ declare namespace classes {
         get dhcpRejectServers(): string[];
         set dhcpRejectServers(val: string[]);
         /**
-         * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
-         * Some DHCP servers use this hostname to update DNS databases, essentially
-         * providing a static hostname for the computer.  If the
-         * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
-         * %TRUE, the current persistent hostname of the computer is sent.
+         * Since 1.52 this property is deprecated and is only used as fallback value
+         * for #NMSettingIPConfig:dhcp-send-hostname-v2 if it's set to 'default'.
+         * This is only done to avoid breaking existing configurations, the new
+         * property should be used from now on.
          */
         get dhcp_send_hostname(): boolean;
         set dhcp_send_hostname(val: boolean);
+        /**
+         * Since 1.52 this property is deprecated and is only used as fallback value
+         * for #NMSettingIPConfig:dhcp-send-hostname-v2 if it's set to 'default'.
+         * This is only done to avoid breaking existing configurations, the new
+         * property should be used from now on.
+         */
+        get dhcpSendHostname(): boolean;
+        set dhcpSendHostname(val: boolean);
         /**
          * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
          * Some DHCP servers use this hostname to update DNS databases, essentially
          * providing a static hostname for the computer.  If the
          * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
          * %TRUE, the current persistent hostname of the computer is sent.
+         *
+         * The default value is %NM_TERNARY_DEFAULT. In this case the global value
+         * from NetworkManager configuration is looked up. If it's not set, the value
+         * from #NMSettingIPConfig:dhcp-send-hostname, which defaults to %TRUE, is
+         * used for backwards compatibility. In the future this will change and, in
+         * absence of a global default, it will always fallback to %TRUE.
          */
-        get dhcpSendHostname(): boolean;
-        set dhcpSendHostname(val: boolean);
+        get dhcp_send_hostname_v2(): number;
+        set dhcp_send_hostname_v2(val: number);
+        /**
+         * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
+         * Some DHCP servers use this hostname to update DNS databases, essentially
+         * providing a static hostname for the computer.  If the
+         * #NMSettingIPConfig:dhcp-hostname property is %NULL and this property is
+         * %TRUE, the current persistent hostname of the computer is sent.
+         *
+         * The default value is %NM_TERNARY_DEFAULT. In this case the global value
+         * from NetworkManager configuration is looked up. If it's not set, the value
+         * from #NMSettingIPConfig:dhcp-send-hostname, which defaults to %TRUE, is
+         * used for backwards compatibility. In the future this will change and, in
+         * absence of a global default, it will always fallback to %TRUE.
+         */
+        get dhcpSendHostnameV2(): number;
+        set dhcpSendHostnameV2(val: number);
         /**
          * Whether the DHCP client will send RELEASE message when
          * bringing the connection down. The default value is %NM_TERNARY_DEFAULT.
@@ -14674,11 +15052,16 @@ declare namespace classes {
         get dhcpTimeout(): number;
         set dhcpTimeout(val: number);
         /**
-         * Array of IP addresses of DNS servers.
+         * Array of DNS servers.
          *
-         * For DoT (DNS over TLS), the SNI server name can be specified by appending
-         * "#example.com" to the IP address of the DNS server. This currently only has
-         * effect when using systemd-resolved.
+         * Each server can be specified either as a plain IP address (optionally followed
+         * by a "#" and the SNI server name for DNS over TLS) or with a URI syntax.
+         *
+         * When it is specified as an URI, the following forms are supported:
+         * dns+udp://ADDRESS[:PORT], dns+tls://ADDRESS[:PORT][#SERVERNAME] .
+         *
+         * When using the URI syntax, IPv6 addresses must be enclosed in square
+         * brackets ('[', ']').
          */
         get dns(): string[];
         set dns(val: string[]);
@@ -14882,6 +15265,22 @@ declare namespace classes {
          */
         get dnsSearch(): string[];
         set dnsSearch(val: string[]);
+        /**
+         * Whether to configure sysctl interface-specific forwarding. When enabled, the interface
+         * will act as a router to forward the packet from one interface to another. When set to
+         * %NM_SETTING_IP_CONFIG_FORWARDING_DEFAULT, the value from global configuration is used;
+         * if no global default is defined, %NM_SETTING_IP_CONFIG_FORWARDING_AUTO will be used.
+         * The #NMSettingIPConfig:forwarding property is ignored when #NMSettingIPConfig:method
+         * is set to "shared", because forwarding is always enabled in this case.
+         * The accepted values are:
+         *   %NM_SETTING_IP_CONFIG_FORWARDING_DEFAULT: use global default.
+         *   %NM_SETTING_IP_CONFIG_FORWARDING_NO: disabled.
+         *   %NM_SETTING_IP_CONFIG_FORWARDING_YES: enabled.
+         *   %NM_SETTING_IP_CONFIG_FORWARDING_AUTO: enable if any shared connection is active,
+         *        use kernel default otherwise.
+         */
+        get forwarding(): number;
+        set forwarding(val: number);
         /**
          * The gateway associated with this configuration. This is only meaningful
          * if #NMSettingIPConfig:addresses is also set.
@@ -15109,10 +15508,74 @@ declare namespace classes {
         get routeTable(): number;
         set routeTable(val: number);
         /**
+         * Whether to add routes for DNS servers. When enabled, NetworkManager adds a route
+         * for each DNS server that is associated with this connection either statically
+         * (defined in the connection profile) or dynamically (for example, retrieved via
+         * DHCP). The route guarantees that the DNS server is reached via this interface. When
+         * set to %NM_SETTING_IP_CONFIG_ROUTED_DNS_DEFAULT, the value from global
+         * configuration is used; if no global default is defined, this feature is disabled.
+         */
+        get routed_dns(): number;
+        set routed_dns(val: number);
+        /**
+         * Whether to add routes for DNS servers. When enabled, NetworkManager adds a route
+         * for each DNS server that is associated with this connection either statically
+         * (defined in the connection profile) or dynamically (for example, retrieved via
+         * DHCP). The route guarantees that the DNS server is reached via this interface. When
+         * set to %NM_SETTING_IP_CONFIG_ROUTED_DNS_DEFAULT, the value from global
+         * configuration is used; if no global default is defined, this feature is disabled.
+         */
+        get routedDns(): number;
+        set routedDns(val: number);
+        /**
          * Array of IP routes.
          */
         get routes(): NM.IPRoute[];
         set routes(val: NM.IPRoute[]);
+        /**
+         * This option allows you to specify a custom DHCP lease time for the shared connection
+         * method in seconds. The value should be either a number between 120 and 31536000 (one year)
+         * If this option is not specified, 3600 (one hour) is used.
+         *
+         * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
+         */
+        get shared_dhcp_lease_time(): number;
+        set shared_dhcp_lease_time(val: number);
+        /**
+         * This option allows you to specify a custom DHCP lease time for the shared connection
+         * method in seconds. The value should be either a number between 120 and 31536000 (one year)
+         * If this option is not specified, 3600 (one hour) is used.
+         *
+         * Special values are 0 for default value of 1 hour and 2147483647 (MAXINT32) for infinite lease time.
+         */
+        get sharedDhcpLeaseTime(): number;
+        set sharedDhcpLeaseTime(val: number);
+        /**
+         * This option allows you to specify a custom DHCP range for the shared connection
+         * method. The value is expected to be in `<START_ADDRESS>,<END_ADDRESS>` format.
+         * The range should be part of network set by ipv4.address option and it should
+         * not contain network address or broadcast address. If this option is not specified,
+         * the DHCP range will be automatically determined based on the interface address.
+         * The range will be selected to be adjacent to the interface address, either before
+         * or after it, with the larger possible range being preferred. The range will be
+         * adjusted to fill the available address space, except for networks with a prefix
+         * length greater than 24, which will be treated as if they have a prefix length of 24.
+         */
+        get shared_dhcp_range(): string;
+        set shared_dhcp_range(val: string);
+        /**
+         * This option allows you to specify a custom DHCP range for the shared connection
+         * method. The value is expected to be in `<START_ADDRESS>,<END_ADDRESS>` format.
+         * The range should be part of network set by ipv4.address option and it should
+         * not contain network address or broadcast address. If this option is not specified,
+         * the DHCP range will be automatically determined based on the interface address.
+         * The range will be selected to be adjacent to the interface address, either before
+         * or after it, with the larger possible range being preferred. The range will be
+         * adjusted to fill the available address space, except for networks with a prefix
+         * length greater than 24, which will be treated as if they have a prefix length of 24.
+         */
+        get sharedDhcpRange(): string;
+        set sharedDhcpRange(val: string);
         /**
          * Compile-time signal type information.
          *
@@ -15278,6 +15741,13 @@ declare namespace classes {
          * update DNS information for this machine.
          */
         get_dhcp_send_hostname(): boolean;
+        /**
+         * Returns the value contained in the #NMSettingIPConfig:dhcp-send-hostname-v2
+         * property.
+         *
+         * @returns the #NMSettingIPConfig:dhcp-send-hostname-v2 property of the setting
+         */
+        get_dhcp_send_hostname_v2(): NM.Ternary;
         get_dhcp_send_release(): NM.Ternary;
         /**
          * Returns the value contained in the #NMSettingIPConfig:dhcp-timeout
@@ -15303,6 +15773,7 @@ declare namespace classes {
          * @param idx index number of the DNS search domain to return
          */
         get_dns_search(idx: number): string;
+        get_forwarding(): NM.SettingIPConfigForwarding;
         get_gateway(): string;
         /**
          * Returns the value contained in the #NMSettingIPConfig:ignore-auto-dns
@@ -15367,7 +15838,22 @@ declare namespace classes {
          * @returns the configured route-table.
          */
         get_route_table(): number;
+        get_routed_dns(): NM.SettingIPConfigRoutedDns;
         get_routing_rule(idx: number): NM.IPRoutingRule;
+        /**
+         * Returns the value contained in the #NMSettingIPConfig:shared-dhcp-lease-time
+         * property.
+         *
+         * @returns the configured DHCP server lease time
+         */
+        get_shared_dhcp_lease_time(): number;
+        /**
+         * Returns the value contained in the #NMSettingIPConfig:shared-dhcp-range
+         * property.
+         *
+         * @returns the configured DHCP server range
+         */
+        get_shared_dhcp_range(): string;
         /**
          * NMSettingIPConfig can have a list of dns-options. If the list
          * is empty, there are two similar (but differentiated) states.
@@ -15830,6 +16316,66 @@ declare namespace classes {
          */
         get_virtual_interface_name(): string;
     }
+    class SettingIpvlan extends Setting {
+        static '$gtype': GObject.GType<SettingIpvlan>;
+        // Properties
+        /**
+         * The IPVLAN mode. Valid values: %NM_SETTING_IPVLAN_MODE_L2,
+         * %NM_SETTING_IPVLAN_MODE_L3 and %NM_SETTING_IPVLAN_MODE_L3S.
+         */
+        get mode(): number;
+        set mode(val: number);
+        /**
+         * If given, specifies the parent interface name or parent connection UUID
+         * from which this IPVLAN interface should be created. If this property is
+         * not specified, the connection must contain an #NMSettingWired setting
+         * with a #NMSettingWired:mac-address property.
+         */
+        get parent(): string;
+        set parent(val: string);
+        /**
+         * Whether the interface should be put in private mode.
+         */
+        get private(): boolean;
+        set private(val: boolean);
+        /**
+         * Whether the interface should be put in VEPA mode.
+         */
+        get vepa(): boolean;
+        set vepa(val: boolean);
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         */
+        '$signals': NM.SettingIpvlan.SignalSignatures;
+        // Constructors
+        constructor(properties?: Partial<NM.SettingIpvlan.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
+        static new(): NM.SettingIpvlan;
+        // Signals
+        connect<K extends keyof NM.SettingIpvlan.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.SettingIpvlan.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: any): number;
+        connect_after<K extends keyof NM.SettingIpvlan.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.SettingIpvlan.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: any): number;
+        emit<K extends keyof NM.SettingIpvlan.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<NM.SettingIpvlan.SignalSignatures[K]>
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+        // Methods
+        get_mode(): NM.SettingIpvlanMode;
+        get_parent(): string;
+        get_private(): boolean;
+        get_vepa(): boolean;
+    }
     class SettingLink extends Setting {
         static '$gtype': GObject.GType<SettingLink>;
         // Properties
@@ -16137,7 +16683,7 @@ declare namespace classes {
         get parent(): string;
         set parent(val: string);
         /**
-         * Whether the interface should be put in promiscuous mode.
+         * Whether the parent interface should be put in promiscuous mode (true by default).
          */
         get promiscuous(): boolean;
         set promiscuous(val: boolean);
@@ -16352,7 +16898,7 @@ declare namespace classes {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          *
          * @returns the driver at index `idx`
-         * @param idx index number of the DNS search domain to return
+         * @param idx index number of the driver to return
          */
         get_driver(idx: number): string;
         /**
@@ -16385,9 +16931,10 @@ declare namespace classes {
          */
         get_kernel_command_line(idx: number): string;
         /**
-         * Returns all the interface names.
+         * Returns all the kernel command line arguments.
          *
-         * @returns the configured interface names.
+         * @returns the configured kernel command
+         *    line arguments.
          */
         get_kernel_command_lines(): string[];
         get_num_drivers(): number;
@@ -16619,6 +17166,26 @@ declare namespace classes {
         get devargs(): string;
         set devargs(val: string);
         /**
+         * Configures the Link State Change (LSC) detection mode for the OVS DPDK interface.
+         * When set to %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_IGNORE, NetworkManager doesn't
+         * change the default value configured by Open vSwitch.
+         * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_ENABLED enables interrupts.
+         * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_DISABLED disables interrupts, thus setting the
+         * interface in poll mode.
+         */
+        get lsc_interrupt(): number;
+        set lsc_interrupt(val: number);
+        /**
+         * Configures the Link State Change (LSC) detection mode for the OVS DPDK interface.
+         * When set to %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_IGNORE, NetworkManager doesn't
+         * change the default value configured by Open vSwitch.
+         * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_ENABLED enables interrupts.
+         * %NM_SETTING_OVS_DPDK_LSC_INTERRUPT_DISABLED disables interrupts, thus setting the
+         * interface in poll mode.
+         */
+        get lscInterrupt(): number;
+        set lscInterrupt(val: number);
+        /**
          * Open vSwitch DPDK number of rx queues.
          * Defaults to zero which means to leave the parameter in OVS unspecified
          * and effectively configures one queue.
@@ -16697,6 +17264,7 @@ declare namespace classes {
         emit(signal: string, ...args: any[]): void;
         // Methods
         get_devargs(): string;
+        get_lsc_interrupt(): NM.SettingOvsDpdkLscInterrupt;
         get_n_rxq(): number;
         get_n_rxq_desc(): number;
         get_n_txq_desc(): number;
@@ -17331,6 +17899,55 @@ declare namespace classes {
         get_service(): string;
         get_username(): string;
     }
+    class SettingPrefixDelegation extends Setting {
+        static '$gtype': GObject.GType<SettingPrefixDelegation>;
+        // Properties
+        /**
+         * The subnet ID to use on the interface from the prefix delegation received via
+         * an upstream interface. Set to a value between 0 and 0xffffffff (2^32 - 1)
+         * to indicate a specific subnet ID; or set to -1 to automatically choose
+         * an available subnet ID.
+         */
+        get subnet_id(): number;
+        set subnet_id(val: number);
+        /**
+         * The subnet ID to use on the interface from the prefix delegation received via
+         * an upstream interface. Set to a value between 0 and 0xffffffff (2^32 - 1)
+         * to indicate a specific subnet ID; or set to -1 to automatically choose
+         * an available subnet ID.
+         */
+        get subnetId(): number;
+        set subnetId(val: number);
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         */
+        '$signals': NM.SettingPrefixDelegation.SignalSignatures;
+        // Constructors
+        constructor(properties?: Partial<NM.SettingPrefixDelegation.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
+        static new(): NM.SettingPrefixDelegation;
+        // Signals
+        connect<K extends keyof NM.SettingPrefixDelegation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.SettingPrefixDelegation.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: any): number;
+        connect_after<K extends keyof NM.SettingPrefixDelegation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NM.SettingPrefixDelegation.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: any): number;
+        emit<K extends keyof NM.SettingPrefixDelegation.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<NM.SettingPrefixDelegation.SignalSignatures[K]>
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+        // Methods
+        get_subnet_id(): number;
+    }
     class SettingProxy extends Setting {
         static '$gtype': GObject.GType<SettingProxy>;
         // Properties
@@ -17585,6 +18202,38 @@ declare namespace classes {
         get eswitchMode(): number;
         set eswitchMode(val: number);
         /**
+         * This controls whether NetworkManager preserves the SR-IOV parameters set on
+         * the device when the connection is deactivated, or whether it resets them to
+         * their default value. The SR-IOV parameters are those specified in this setting
+         * (the "sriov" setting), like the number of VFs to create, the eswitch
+         * configuration, etc.
+         *
+         * If set to %NM_SRIOV_PRESERVE_ON_DOWN_NO, NetworkManager resets the SR-IOV
+         * parameters when the connection is deactivated. When set to
+         * %NM_SRIOV_PRESERVE_ON_DOWN_YES, NetworkManager preserves those parameters
+         * on the device. If the value is %NM_SRIOV_PRESERVE_ON_DOWN_DEFAULT, NetworkManager
+         * looks up a global default value in the configuration; in case no such value is
+         * defined, it uses %NM_SRIOV_PRESERVE_ON_DOWN_NO as fallback.
+         */
+        get preserve_on_down(): number;
+        set preserve_on_down(val: number);
+        /**
+         * This controls whether NetworkManager preserves the SR-IOV parameters set on
+         * the device when the connection is deactivated, or whether it resets them to
+         * their default value. The SR-IOV parameters are those specified in this setting
+         * (the "sriov" setting), like the number of VFs to create, the eswitch
+         * configuration, etc.
+         *
+         * If set to %NM_SRIOV_PRESERVE_ON_DOWN_NO, NetworkManager resets the SR-IOV
+         * parameters when the connection is deactivated. When set to
+         * %NM_SRIOV_PRESERVE_ON_DOWN_YES, NetworkManager preserves those parameters
+         * on the device. If the value is %NM_SRIOV_PRESERVE_ON_DOWN_DEFAULT, NetworkManager
+         * looks up a global default value in the configuration; in case no such value is
+         * defined, it uses %NM_SRIOV_PRESERVE_ON_DOWN_NO as fallback.
+         */
+        get preserveOnDown(): number;
+        set preserveOnDown(val: number);
+        /**
          * The total number of virtual functions to create.
          *
          * Note that when the sriov setting is present NetworkManager
@@ -17685,6 +18334,7 @@ declare namespace classes {
         get_eswitch_inline_mode(): NM.SriovEswitchInlineMode;
         get_eswitch_mode(): NM.SriovEswitchMode;
         get_num_vfs(): number;
+        get_preserve_on_down(): NM.SriovPreserveOnDown;
         /**
          * Returns the value contained in the #NMSettingSriov:total-vfs
          * property.
@@ -19484,7 +20134,7 @@ declare namespace classes {
         /**
          * With #NMSettingWired:cloned-mac-address setting "random" or "stable",
          * by default all bits of the MAC address are scrambled and a locally-administered,
-         * unicast MAC address is created. This property allows to specify that certain bits
+         * unicast MAC address is created. This property allows one to specify that certain bits
          * are fixed. Note that the least significant bit of the first MAC address will
          * always be unset to create a unicast MAC address.
          *
@@ -19516,7 +20166,7 @@ declare namespace classes {
         /**
          * With #NMSettingWired:cloned-mac-address setting "random" or "stable",
          * by default all bits of the MAC address are scrambled and a locally-administered,
-         * unicast MAC address is created. This property allows to specify that certain bits
+         * unicast MAC address is created. This property allows one to specify that certain bits
          * are fixed. Note that the least significant bit of the first MAC address will
          * always be unset to create a unicast MAC address.
          *
@@ -20066,7 +20716,7 @@ declare namespace classes {
         /**
          * With #NMSettingWireless:cloned-mac-address setting "random" or "stable",
          * by default all bits of the MAC address are scrambled and a locally-administered,
-         * unicast MAC address is created. This property allows to specify that certain bits
+         * unicast MAC address is created. This property allows one to specify that certain bits
          * are fixed. Note that the least significant bit of the first MAC address will
          * always be unset to create a unicast MAC address.
          *
@@ -20098,7 +20748,7 @@ declare namespace classes {
         /**
          * With #NMSettingWireless:cloned-mac-address setting "random" or "stable",
          * by default all bits of the MAC address are scrambled and a locally-administered,
-         * unicast MAC address is created. This property allows to specify that certain bits
+         * unicast MAC address is created. This property allows one to specify that certain bits
          * are fixed. Note that the least significant bit of the first MAC address will
          * always be unset to create a unicast MAC address.
          *
@@ -22159,6 +22809,7 @@ declare namespace classes {
         set_editor_plugin(plugin?: NM.VpnEditorPlugin | null): void;
         supports_hints(): boolean;
         supports_multiple(): boolean;
+        supports_safe_private_file_access(): boolean;
         // Inherited methods
         /**
          * Initializes the object implementing the interface.
