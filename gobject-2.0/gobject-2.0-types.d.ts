@@ -444,7 +444,7 @@ declare module './gobject-2.0.d.ts' {
             [K in keyof T]: T[K] extends (...args: infer P) => infer R
                 ? (...args: ParametersToGType<P>) => R extends TypesWithGType ? TypeFromGType<R> : R
                 : T[K] extends [...args: TypesWithGType[]]
-                  ? (...args: TypeFromGType<T[K]>) => void
+                  ? (...args: ParametersToGType<T[K]>) => void
                   : never;
         };
 
