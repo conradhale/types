@@ -7,33 +7,33 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type Clutter from '@girs/clutter-17';
-import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GL from '@girs/gl-1.0';
-import type Cogl from '@girs/cogl-17';
-import type Atk from '@girs/atk-1.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GioUnix from '@girs/giounix-2.0';
-import type Gvc from '@girs/gvc-1.0';
+import type St from '@girs/st-17';
 import type Meta from '@girs/meta-17';
 import type xlib from '@girs/xlib-2.0';
 import type xfixes from '@girs/xfixes-4.0';
+import type Mtk from '@girs/mtk-17';
+import type Graphene from '@girs/graphene-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type NM from '@girs/nm-1.0';
+import type Cogl from '@girs/cogl-17';
+import type GL from '@girs/gl-1.0';
+import type Clutter from '@girs/clutter-17';
+import type Pango from '@girs/pango-1.0';
+import type cairo from '@girs/cairo-1.0';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type Atk from '@girs/atk-1.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type PolkitAgent from '@girs/polkitagent-1.0';
 import type Polkit from '@girs/polkit-1.0';
-import type St from '@girs/st-17';
+import type NM from '@girs/nm-1.0';
+import type Gvc from '@girs/gvc-1.0';
+import type GioUnix from '@girs/giounix-2.0';
+import type Gcr from '@girs/gcr-4';
+import type Gck from '@girs/gck-2';
 import '@girs/gjs';
 import type classes from './shell-17-classes.d.ts';
 export { classes as ShellClasses };
@@ -57,11 +57,20 @@ export namespace Shell {
         STARTING = 1,
         RUNNING = 2,
     }
+    /**
+     * The mode of blurring of the effect.
+     */
     export namespace BlurMode {
         export const $gtype: GObject.GType<BlurMode>;
     }
     enum BlurMode {
+        /**
+         * blur the actor contents, and its children
+         */
         ACTOR,
+        /**
+         * blur what's beneath the actor
+         */
         BACKGROUND = 1,
     }
     export namespace NetworkAgentResponse {
@@ -75,9 +84,50 @@ export namespace Shell {
     const KEYRING_SK_TAG: string;
     const KEYRING_SN_TAG: string;
     const KEYRING_UUID_TAG: string;
+    /**
+     * Synchronously load the contents of a file as a NUL terminated
+     * string, validating it as UTF-8.  Embedded NUL characters count as
+     * invalid content.
+     *
+     * @returns File contents
+     * @param path UTF-8 encoded filename path
+     */
     function get_file_contents_utf8_sync(path: string): string;
+    /**
+     * Creates a #GSource which is dispatched every time the system realtime clock
+     * changes relative to the monotonic clock.
+     *
+     * This typically happens after NTP synchronisation.
+     *
+     * On error, a #GFileError will be returned. This happens if a timerfd cannot be
+     * created.
+     *
+     * Any callback attached to the returned #GSource must have type
+     * #GSourceFunc.
+     *
+     * @returns the newly created #GSource, or %NULL on error
+     */
     function time_change_source_new(): GLib.Source;
+    /**
+     * Walk over all open file descriptors. Check them for the FD_CLOEXEC flag.
+     * If this flag is not set, log the offending file descriptor number.
+     *
+     * It is important that gnome-shell's file descriptors are all marked CLOEXEC,
+     * so that the shell's open file descriptors are not passed to child processes
+     * that we launch.
+     */
     function util_check_cloexec_fds(): void;
+    /**
+     * Workaround for non-introspectability of gdk_pixbuf_from_data().
+     *
+     * @param data
+     * @param colorspace
+     * @param has_alpha
+     * @param bits_per_sample
+     * @param width
+     * @param height
+     * @param rowstride
+     */
     function util_create_pixbuf_from_data(
         data: Uint8Array[] | string,
         colorspace: GdkPixbuf.Colorspace | null,
@@ -87,125 +137,289 @@ export namespace Shell {
         height: number,
         rowstride: number,
     ): GdkPixbuf.Pixbuf;
-    function util_get_translated_folder_name(name: string): string;
+    /**
+     * Attempts to translate the folder `name` using translations provided
+     * by .directory files.
+     *
+     * @returns a translated string or %NULL
+     * @param name the untranslated folder name
+     */
+    function util_get_translated_folder_name(name: string): string | null;
+    /**
+     * A wrapper around getuid() so that it can be used from JavaScript. This
+     * function will always succeed.
+     *
+     * @returns the real user ID of the calling process
+     */
     function util_get_uid(): number;
+    /**
+     * Gets the first week day for the current locale, expressed as a
+     * number in the range 0..6, representing week days from Sunday to
+     * Saturday.
+     *
+     * @returns A number representing the first week day for the current
+     *          locale
+     */
     function util_get_week_start(): number;
+    /**
+     * If the corresponding X11 display provides the passed extension, return %TRUE,
+     * otherwise %FALSE. If there is no X11 display, %FALSE is passed.
+     *
+     * @param display A #MetaDisplay
+     * @param extension An X11 extension
+     */
     function util_has_x11_display_extension(display: Meta.Display, extension: string): boolean;
+    /**
+     * A wrapper around g_regex_escape_string() that takes its argument as
+     * \0-terminated string rather than a byte-array that confuses gjs.
+     *
+     * @returns `str` with all regex-special characters escaped
+     * @param str a UTF-8 string to escape
+     */
     function util_regex_escape(str: string): string;
     function util_sd_notify(): void;
+    /**
+     * If `hidden` is %TRUE, hide `actor` from pick even with a mode of
+     * %CLUTTER_PICK_ALL; if `hidden` is %FALSE, unhide `actor`.
+     *
+     * @param actor A #ClutterActor
+     * @param hidden Whether `actor` should be hidden from pick
+     */
     function util_set_hidden_from_pick(actor: Clutter.Actor, hidden: boolean): void;
+    /**
+     * A wrapper around g_spawn_async() with async-signal-safe implementation of
+     * #GSpawnChildSetupFunc to launch a child program asynchronously resetting the
+     * rlimit nofile on child setup.
+     *
+     * @returns the PID of the child on success, 0 if error is set
+     * @param working_directory child's current working
+     *     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     */
     function util_spawn_async(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
-    ): number;
+    ): GLib.Pid;
+    /**
+     * A wrapper around g_spawn_async_with_fds() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     *
+     * @returns the PID of the child on success, 0 if error is set
+     * @param working_directory child's current working
+     *     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     */
     function util_spawn_async_with_fds(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
-    ): number;
+    ): GLib.Pid;
+    /**
+     * A wrapper around g_spawn_async_with_pipes() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     *
+     * @returns the PID of the child on success, 0 if error is set
+     * @param working_directory child's current working
+     *     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     */
     function util_spawn_async_with_pipes(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
-    ): [number, number, number, number];
+    ): [GLib.Pid, number, number, number];
+    /**
+     * A wrapper around g_spawn_async_with_pipes_and_fds() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     *
+     * @returns the PID of the child on success, 0 if error is set
+     * @param working_directory child's current working
+     *     directory, or %NULL to inherit parent's, in the GLib file name encoding
+     * @param argv child's argument
+     *     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
+     * @param envp child's environment, or %NULL to inherit parent's, in the GLib file
+     *     name encoding
+     * @param flags flags from #GSpawnFlags
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     * @param source_fds array of FDs from the parent
+     *    process to make available in the child process
+     * @param target_fds array of FDs to remap
+     *    `source_fds` to in the child process
+     */
     function util_spawn_async_with_pipes_and_fds(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
-        source_fds: number[],
-        target_fds: number[],
-    ): [number, number, number, number];
+        source_fds: number[] | null,
+        target_fds: number[] | null,
+    ): [GLib.Pid, number, number, number];
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
+        cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
+        cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
-    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
     function util_systemd_unit_exists(
         unit: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_systemd_unit_exists(
         unit: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
     function util_touch_file_async(file: Gio.File): globalThis.Promise<boolean>;
-    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File>): void;
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     function util_touch_file_async(
         file: Gio.File,
-        callback: Gio.AsyncReadyCallback<Gio.File>,
+        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<boolean> | void;
     function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
+    /**
+     * Translate `str` according to the locale defined by LC_TIME; unlike
+     * dcgettext(), the translations is still taken from the LC_MESSAGES
+     * catalogue and not the LC_TIME one.
+     *
+     * @returns the translated string
+     * @param str String to translate
+     */
     function util_translate_time_string(str: string): string;
+    /**
+     * Implements libc standard WIFEXITED, that cannot be used JS
+     * code.
+     *
+     * @returns TRUE if the process exited normally, FALSE otherwise
+     * @param status the status returned by wait() or waitpid()
+     */
     function util_wifexited(status: number): [boolean, number];
+    /**
+     * Write a string to a GOutputStream as UTF-8. This is a workaround
+     * for not having binary buffers in GJS.
+     *
+     * @returns %TRUE if write succeeded
+     * @param stream a #GOutputStream
+     * @param str a UTF-8 string to write to `stream`
+     */
     function write_string_to_stream(stream: Gio.OutputStream, str: string): boolean;
     interface LeisureFunction {
-        (data: any): void;
+        (data?: any | null): void;
     }
     interface PerfReplayFunction {
         (time: number, name: string, signature: string, arg: GObject.Value | any): void;
     }
     interface PerfStatisticsCallback {
-        (perf_log: PerfLog, data: any): void;
+        (perf_log: PerfLog, data?: any | null): void;
     }
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
     export namespace ActionMode {
         export const $gtype: GObject.GType<ActionMode>;
     }
     enum ActionMode {
+        /**
+         * block action
+         */
         NONE,
+        /**
+         * allow action when in window mode,
+         *     e.g. when the focus is in an application window
+         */
         NORMAL = 1,
+        /**
+         * allow action while the overview
+         *     is active
+         */
         OVERVIEW = 2,
+        /**
+         * allow action when the screen
+         *     is locked, e.g. when the screen shield is shown
+         */
         LOCK_SCREEN = 4,
+        /**
+         * allow action in the unlock
+         *     dialog
+         */
         UNLOCK_SCREEN = 8,
+        /**
+         * allow action in the login screen
+         */
         LOGIN_SCREEN = 16,
+        /**
+         * allow action when a system modal
+         *     dialog (e.g. authentication or session dialogs) is open
+         */
         SYSTEM_MODAL = 32,
+        /**
+         * allow action in looking glass
+         */
         LOOKING_GLASS = 64,
+        /**
+         * allow action while a shell menu is open
+         */
         POPUP = 128,
+        /**
+         * always allow action
+         */
         ALL = -1,
     }
     namespace App {
@@ -221,13 +435,41 @@ export namespace Shell {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            /**
+             * The #GDBusActionGroup associated with this ShellApp, if any. See the
+             * documentation of #GApplication and #GActionGroup for details.
+             */
             action_group: Gio.ActionGroup;
+            /**
+             * The #GDBusActionGroup associated with this ShellApp, if any. See the
+             * documentation of #GApplication and #GActionGroup for details.
+             */
             actionGroup: Gio.ActionGroup;
+            /**
+             * The #GDesktopAppInfo associated with this ShellApp, if any.
+             */
             app_info: GioUnix.DesktopAppInfo;
+            /**
+             * The #GDesktopAppInfo associated with this ShellApp, if any.
+             */
             appInfo: GioUnix.DesktopAppInfo;
+            /**
+             * Whether the application has marked itself as busy.
+             */
             busy: boolean;
+            /**
+             * The #GIcon representing this ShellApp
+             */
             icon: Gio.Icon;
+            /**
+             * The id of this application (a desktop filename, or a special string
+             * like window:0xabcd1234)
+             */
             id: string;
+            /**
+             * The high-level state of the application, effectively whether it's
+             * running or not, or transitioning between those states.
+             */
             state: AppState;
         }
     }
@@ -316,6 +558,9 @@ export namespace Shell {
         }
         // Constructor properties interface
         interface ConstructorProps extends Clutter.Gesture.ConstructorProps {
+            /**
+             * Edge that the gesture may start at. Defaults to the top edge.
+             */
             side: Clutter.GestureState;
         }
     }
@@ -454,17 +699,53 @@ export namespace Shell {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gcr.Prompt.ConstructorProps {
+            /**
+             * Whether the choice check box is visible or not.
+             */
             choice_visible: boolean;
+            /**
+             * Whether the choice check box is visible or not.
+             */
             choiceVisible: boolean;
+            /**
+             * Text field for confirmation password
+             */
             confirm_actor: Clutter.Text;
+            /**
+             * Text field for confirmation password
+             */
             confirmActor: Clutter.Text;
+            /**
+             * Whether the password confirm entry is visible or not.
+             */
             confirm_visible: boolean;
+            /**
+             * Whether the password confirm entry is visible or not.
+             */
             confirmVisible: boolean;
+            /**
+             * Text field for password
+             */
             password_actor: Clutter.Text;
+            /**
+             * Text field for password
+             */
             passwordActor: Clutter.Text;
+            /**
+             * Whether the password entry is visible or not.
+             */
             password_visible: boolean;
+            /**
+             * Whether the password entry is visible or not.
+             */
             passwordVisible: boolean;
+            /**
+             * Whether the warning label is visible or not.
+             */
             warning_visible: boolean;
+            /**
+             * Whether the warning label is visible or not.
+             */
             warningVisible: boolean;
         }
     }
@@ -1170,58 +1451,16 @@ export namespace Shell {
             properties?: Partial<Shell.WorkspaceBackground.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WorkspaceBackground.SignalSignatures> & classes.WorkspaceBackground);
-    class AppClass {
-        static '$gtype': GObject.GType<AppClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class AppSystemClass {
-        static '$gtype': GObject.GType<AppSystemClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class AppUsageClass {
-        static '$gtype': GObject.GType<AppUsageClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class BlurEffectClass {
-        static '$gtype': GObject.GType<BlurEffectClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class CameraMonitorClass {
-        static '$gtype': GObject.GType<CameraMonitorClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class EdgeDragGestureClass {
-        static '$gtype': GObject.GType<EdgeDragGestureClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class GLSLEffectClass {
-        static '$gtype': GObject.GType<GLSLEffectClass>;
-        // Fields
-        base_pipeline: Cogl.Pipeline;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class GlobalClass {
-        static '$gtype': GObject.GType<GlobalClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class InvertLightnessEffectClass {
-        static '$gtype': GObject.GType<InvertLightnessEffectClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class KeyringPromptClass {
-        static '$gtype': GObject.GType<KeyringPromptClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type AppClass = typeof App;
+    export type AppSystemClass = typeof AppSystem;
+    export type AppUsageClass = typeof AppUsage;
+    export type BlurEffectClass = typeof BlurEffect;
+    export type CameraMonitorClass = typeof CameraMonitor;
+    export type EdgeDragGestureClass = typeof EdgeDragGesture;
+    export type GLSLEffectClass = typeof GLSLEffect;
+    export type GlobalClass = typeof Global;
+    export type InvertLightnessEffectClass = typeof InvertLightnessEffect;
+    export type KeyringPromptClass = typeof KeyringPrompt;
     class MemoryInfo {
         static '$gtype': GObject.GType<MemoryInfo>;
         // Fields
@@ -1246,86 +1485,26 @@ export namespace Shell {
         );
         _init(...args: any[]): void;
     }
-    class MountOperationClass {
-        static '$gtype': GObject.GType<MountOperationClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class NetworkAgentClass {
-        static '$gtype': GObject.GType<NetworkAgentClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class PerfLogClass {
-        static '$gtype': GObject.GType<PerfLogClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class PolkitAuthenticationAgentClass {
-        static '$gtype': GObject.GType<PolkitAuthenticationAgentClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ScreenshotClass {
-        static '$gtype': GObject.GType<ScreenshotClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class SecureTextBufferClass {
-        static '$gtype': GObject.GType<SecureTextBufferClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class SquareBinClass {
-        static '$gtype': GObject.GType<SquareBinClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class StackClass {
-        static '$gtype': GObject.GType<StackClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class TrayIconClass {
-        static '$gtype': GObject.GType<TrayIconClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class TrayManagerClass {
-        static '$gtype': GObject.GType<TrayManagerClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WMClass {
-        static '$gtype': GObject.GType<WMClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WindowPreviewClass {
-        static '$gtype': GObject.GType<WindowPreviewClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WindowPreviewLayoutClass {
-        static '$gtype': GObject.GType<WindowPreviewLayoutClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WindowPreviewLayoutPrivate {
+    export type MountOperationClass = typeof MountOperation;
+    export type NetworkAgentClass = typeof NetworkAgent;
+    export type PerfLogClass = typeof PerfLog;
+    export type PolkitAuthenticationAgentClass = typeof PolkitAuthenticationAgent;
+    export type ScreenshotClass = typeof Screenshot;
+    export type SecureTextBufferClass = typeof SecureTextBuffer;
+    export type SquareBinClass = typeof SquareBin;
+    export type StackClass = typeof Stack;
+    export type TrayIconClass = typeof TrayIcon;
+    export type TrayManagerClass = typeof TrayManager;
+    export type WMClass = typeof WM;
+    export type WindowPreviewClass = typeof WindowPreview;
+    export type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
+    abstract class WindowPreviewLayoutPrivate {
         static '$gtype': GObject.GType<WindowPreviewLayoutPrivate>;
         // Constructors
         _init(...args: any[]): void;
     }
-    class WindowTrackerClass {
-        static '$gtype': GObject.GType<WindowTrackerClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WorkspaceBackgroundClass {
-        static '$gtype': GObject.GType<WorkspaceBackgroundClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type WindowTrackerClass = typeof WindowTracker;
+    export type WorkspaceBackgroundClass = typeof WorkspaceBackground;
     /**
      * Name of the imported GIR library
      *

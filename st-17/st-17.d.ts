@@ -7,25 +7,25 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type Clutter from '@girs/clutter-17';
-import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GL from '@girs/gl-1.0';
-import type Cogl from '@girs/cogl-17';
-import type Atk from '@girs/atk-1.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Meta from '@girs/meta-17';
 import type xlib from '@girs/xlib-2.0';
 import type xfixes from '@girs/xfixes-4.0';
+import type Mtk from '@girs/mtk-17';
+import type Graphene from '@girs/graphene-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
+import type Cogl from '@girs/cogl-17';
+import type GL from '@girs/gl-1.0';
+import type Clutter from '@girs/clutter-17';
+import type Pango from '@girs/pango-1.0';
+import type cairo from '@girs/cairo-1.0';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type Atk from '@girs/atk-1.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import '@girs/gjs';
 import type classes from './st-17-classes.d.ts';
 export { classes as StClasses };
@@ -49,51 +49,127 @@ export namespace St {
         PRIMARY,
         CLIPBOARD = 1,
     }
+    /**
+     * Used to target a particular corner of a #StThemeNode element.
+     */
     export namespace Corner {
         export const $gtype: GObject.GType<Corner>;
     }
     enum Corner {
+        /**
+         * The top-right corner.
+         */
         TOPLEFT,
+        /**
+         * The top-right corner.
+         */
         TOPRIGHT = 1,
+        /**
+         * The bottom-right corner.
+         */
         BOTTOMRIGHT = 2,
+        /**
+         * The bottom-left corner.
+         */
         BOTTOMLEFT = 3,
     }
+    /**
+     * Enumeration for focus direction.
+     */
     export namespace DirectionType {
         export const $gtype: GObject.GType<DirectionType>;
     }
     enum DirectionType {
+        /**
+         * Move forward.
+         */
         TAB_FORWARD,
+        /**
+         * Move backward.
+         */
         TAB_BACKWARD = 1,
+        /**
+         * Move up.
+         */
         UP = 2,
+        /**
+         * Move down.
+         */
         DOWN = 3,
+        /**
+         * Move left.
+         */
         LEFT = 4,
+        /**
+         * Move right.
+         */
         RIGHT = 5,
     }
+    /**
+     * Used to specify options when rendering gradients.
+     */
     export namespace GradientType {
         export const $gtype: GObject.GType<GradientType>;
     }
     enum GradientType {
+        /**
+         * No gradient.
+         */
         NONE,
+        /**
+         * A vertical gradient.
+         */
         VERTICAL = 1,
+        /**
+         * A horizontal gradient.
+         */
         HORIZONTAL = 2,
+        /**
+         * Lookup the style requested in the icon name.
+         */
         RADIAL = 3,
     }
+    /**
+     * Used to specify options when looking up icons.
+     */
     export namespace IconStyle {
         export const $gtype: GObject.GType<IconStyle>;
     }
     enum IconStyle {
+        /**
+         * Lookup the style requested in the icon name.
+         */
         REQUESTED,
+        /**
+         * Try to always load regular icons, even when symbolic
+         *   icon names are given.
+         */
         REGULAR = 1,
+        /**
+         * Try to always load symbolic icons, even when regular
+         *   icon names are given.
+         */
         SYMBOLIC = 2,
     }
+    /**
+     * Error codes for StIconTheme operations.
+     */
     class IconThemeError extends GLib.Error {
         static '$gtype': GObject.GType<IconThemeError>;
         // Static Fields
+        /**
+         * The icon specified does not exist in the theme
+         */
         static NOT_FOUND: number;
+        /**
+         * An unspecified error occurred.
+         */
         static FAILED: number;
         // Constructors
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
+        // Static methods
+        static quark(): GLib.Quark;
     }
     export namespace PolicyType {
         export const $gtype: GObject.GType<PolicyType>;
@@ -104,13 +180,28 @@ export namespace St {
         NEVER = 2,
         EXTERNAL = 3,
     }
+    /**
+     * Used to target a particular side of a #StThemeNode element.
+     */
     export namespace Side {
         export const $gtype: GObject.GType<Side>;
     }
     enum Side {
+        /**
+         * The top side.
+         */
         TOP,
+        /**
+         * The right side.
+         */
         RIGHT = 1,
+        /**
+         * The bottom side.
+         */
         BOTTOM = 2,
+        /**
+         * The left side.
+         */
         LEFT = 3,
     }
     export namespace SystemAccentColor {
@@ -135,12 +226,24 @@ export namespace St {
         PREFER_DARK = 1,
         PREFER_LIGHT = 2,
     }
+    /**
+     * Used to align text in a label.
+     */
     export namespace TextAlign {
         export const $gtype: GObject.GType<TextAlign>;
     }
     enum TextAlign {
+        /**
+         * Text is aligned at the beginning of the label.
+         */
         LEFT,
+        /**
+         * Text is aligned in the middle of the label.
+         */
         CENTER = 1,
+        /**
+         * Text is aligned at the end of the label.
+         */
         RIGHT = 2,
         JUSTIFY = 3,
     }
@@ -151,8 +254,16 @@ export namespace St {
         NONE,
         FOREVER = 1,
     }
+    /**
+     * Creates a string describing `actor,` for use in debugging. This
+     * includes the class name and actor name (if any), plus if `actor`
+     * is an #StWidget, its style class and pseudo class names.
+     *
+     * @returns the debug name.
+     * @param actor a #ClutterActor
+     */
     function describe_actor(actor: Clutter.Actor): string;
-    function icon_theme_error_quark(): number;
+    function icon_theme_error_quark(): GLib.Quark;
     interface ClipboardCallbackFunc {
         (clipboard: Clipboard, text: string): void;
     }
@@ -160,36 +271,101 @@ export namespace St {
         (clipboard: Clipboard, bytes: GLib.Bytes | Uint8Array): void;
     }
     interface EntryCursorFunc {
-        (entry: Entry, use_ibeam: boolean, data: any): void;
+        (entry: Entry, use_ibeam: boolean, data?: any | null): void;
     }
+    /**
+     * A mask representing which mouse buttons an #StButton responds to.
+     */
     export namespace ButtonMask {
         export const $gtype: GObject.GType<ButtonMask>;
     }
     enum ButtonMask {
+        /**
+         * button 1 (left)
+         */
         ONE = 1,
+        /**
+         * button 2 (middle)
+         */
         TWO = 2,
+        /**
+         * button 3 (right)
+         */
         THREE = 4,
     }
+    /**
+     * Used to specify options for [method`St`.IconTheme.lookup_icon]
+     */
     export namespace IconLookupFlags {
         export const $gtype: GObject.GType<IconLookupFlags>;
     }
     enum IconLookupFlags {
+        /**
+         * Never get SVG icons, even if gdk-pixbuf
+         *   supports them. Cannot be used together with %ST_ICON_LOOKUP_FORCE_SVG.
+         */
         NO_SVG = 1,
+        /**
+         * Get SVG icons, even if gdk-pixbuf
+         *   doesn’t support them.
+         *   Cannot be used together with %ST_ICON_LOOKUP_NO_SVG.
+         */
         FORCE_SVG = 2,
+        /**
+         * Try to shorten icon name at '-'
+         *   characters before looking at inherited themes. This flag is only
+         *   supported in functions that take a single icon name. For more general
+         *   fallback, see st_icon_theme_choose_icon().
+         */
         GENERIC_FALLBACK = 4,
+        /**
+         * Always get the icon scaled to the
+         *   requested size.
+         */
         FORCE_SIZE = 8,
+        /**
+         * Try to always load regular icons, even
+         *   when symbolic icon names are given.
+         */
         FORCE_REGULAR = 16,
+        /**
+         * Try to always load symbolic icons, even
+         *   when regular icon names are given.
+         */
         FORCE_SYMBOLIC = 32,
+        /**
+         * Try to load a variant of the icon for left-to-right
+         *   text direction.
+         */
         DIR_LTR = 64,
+        /**
+         * Try to load a variant of the icon for right-to-left
+         *   text direction.
+         */
         DIR_RTL = 128,
     }
+    /**
+     * Flags used to determine the decoration of text.
+     *
+     * Not that neither %ST_TEXT_DECORATION_OVERLINE or %ST_TEXT_DECORATION_BLINK
+     * are implemented, currently.
+     */
     export namespace TextDecoration {
         export const $gtype: GObject.GType<TextDecoration>;
     }
     enum TextDecoration {
         UNDERLINE = 1,
+        /**
+         * Text is overlined
+         */
         OVERLINE = 2,
+        /**
+         * Text is striked out
+         */
         LINE_THROUGH = 4,
+        /**
+         * Text blinks
+         */
         BLINK = 8,
     }
     namespace Adjustment {
@@ -206,15 +382,56 @@ export namespace St {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Animatable.ConstructorProps {
+            /**
+             * If the adjustment is used as #ClutterAnimatable for a
+             * #ClutterPropertyTransition, this property is used to determine which
+             * monitor should drive the animation.
+             */
             actor: Clutter.Actor;
+            /**
+             * The minimum value of the adjustment.
+             */
             lower: number;
+            /**
+             * The page increment of the adjustment.
+             */
             page_increment: number;
+            /**
+             * The page increment of the adjustment.
+             */
             pageIncrement: number;
+            /**
+             * The page size of the adjustment.
+             *
+             * Note that the page-size is irrelevant and should be set to zero if the
+             * adjustment is used for a simple scalar value.
+             */
             page_size: number;
+            /**
+             * The page size of the adjustment.
+             *
+             * Note that the page-size is irrelevant and should be set to zero if the
+             * adjustment is used for a simple scalar value.
+             */
             pageSize: number;
+            /**
+             * The step increment of the adjustment.
+             */
             step_increment: number;
+            /**
+             * The step increment of the adjustment.
+             */
             stepIncrement: number;
+            /**
+             * The maximum value of the adjustment.
+             *
+             * Note that values will be restricted by `upper - page-size` if
+             * #StAdjustment:page-size is non-zero.
+             */
             upper: number;
+            /**
+             * The value of the adjustment.
+             */
             value: number;
         }
     }
@@ -315,6 +532,9 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The child #ClutterActor of the #StBin container.
+             */
             child: A;
         }
     }
@@ -432,7 +652,15 @@ export namespace St {
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Scrollable.ConstructorProps {
+            /**
+             * The orientation of the #StBoxLayout, either horizontal or
+             * vertical
+             */
             orientation: Clutter.Orientation;
+            /**
+             * A convenience property for the #ClutterBoxLayout:vertical property of the
+             * internal layout for #StBoxLayout.
+             */
             vertical: boolean;
         }
     }
@@ -540,14 +768,46 @@ export namespace St {
             extends Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * Which buttons will trigger the #StButton::clicked signal.
+             */
             button_mask: ButtonMask;
+            /**
+             * Which buttons will trigger the #StButton::clicked signal.
+             */
             buttonMask: ButtonMask;
+            /**
+             * If #StButton:toggle-mode is %TRUE, indicates if the #StButton is toggled
+             * "on" or "off".
+             *
+             * When the value is %TRUE, the #StButton will have the `checked` CSS
+             * pseudo-class set.
+             */
             checked: boolean;
+            /**
+             * The icon name of the #StButton.
+             */
             icon_name: string;
+            /**
+             * The icon name of the #StButton.
+             */
             iconName: string;
+            /**
+             * The label of the #StButton.
+             */
             label: string;
+            /**
+             * In contrast to #StButton:checked, this property indicates whether the
+             * #StButton is being actively pressed, rather than just in the "on" state.
+             */
             pressed: boolean;
+            /**
+             * Whether the #StButton is operating in toggle mode (on/off).
+             */
             toggle_mode: boolean;
+            /**
+             * Whether the #StButton is operating in toggle mode (on/off).
+             */
             toggleMode: boolean;
         }
     }
@@ -791,20 +1051,75 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The internal #ClutterText actor supporting the #StEntry.
+             */
             clutter_text: Clutter.Text;
+            /**
+             * The internal #ClutterText actor supporting the #StEntry.
+             */
             clutterText: Clutter.Text;
+            /**
+             * A #ClutterActor to display when the entry is empty and unfocused. Setting
+             * this will replace the actor displaying #StEntry:hint-text.
+             */
             hint_actor: Clutter.Actor;
+            /**
+             * A #ClutterActor to display when the entry is empty and unfocused. Setting
+             * this will replace the actor displaying #StEntry:hint-text.
+             */
             hintActor: Clutter.Actor;
+            /**
+             * The text to display when the entry is empty and unfocused. Setting this
+             * will replace the actor of #StEntry::hint-actor.
+             */
             hint_text: string;
+            /**
+             * The text to display when the entry is empty and unfocused. Setting this
+             * will replace the actor of #StEntry::hint-actor.
+             */
             hintText: string;
+            /**
+             * The #ClutterInputContentHintFlags providing additional hints (beyond
+             * #StEntry:input-purpose) that allow input methods to fine-tune their
+             * behaviour.
+             */
             input_hints: Clutter.InputContentHintFlags;
+            /**
+             * The #ClutterInputContentHintFlags providing additional hints (beyond
+             * #StEntry:input-purpose) that allow input methods to fine-tune their
+             * behaviour.
+             */
             inputHints: Clutter.InputContentHintFlags;
+            /**
+             * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
+             * input methods to decide which keys should be presented to the user.
+             */
             input_purpose: Clutter.InputContentPurpose;
+            /**
+             * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
+             * input methods to decide which keys should be presented to the user.
+             */
             inputPurpose: Clutter.InputContentPurpose;
+            /**
+             * The #ClutterActor acting as the primary icon at the start of the #StEntry.
+             */
             primary_icon: Clutter.Actor;
+            /**
+             * The #ClutterActor acting as the primary icon at the start of the #StEntry.
+             */
             primaryIcon: Clutter.Actor;
+            /**
+             * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
+             */
             secondary_icon: Clutter.Actor;
+            /**
+             * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
+             */
             secondaryIcon: Clutter.Actor;
+            /**
+             * The current text value of the #StEntry.
+             */
             text: string;
         }
     }
@@ -960,14 +1275,45 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The fallback #GIcon to display if #StIcon:gicon fails to load.
+             */
             fallback_gicon: Gio.Icon;
+            /**
+             * The fallback #GIcon to display if #StIcon:gicon fails to load.
+             */
             fallbackGicon: Gio.Icon;
+            /**
+             * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
+             * for details.
+             */
             fallback_icon_name: string;
+            /**
+             * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
+             * for details.
+             */
             fallbackIconName: string;
+            /**
+             * The #GIcon being displayed by this #StIcon.
+             */
             gicon: Gio.Icon;
+            /**
+             * The name of the icon if the icon being displayed is a #GThemedIcon.
+             */
             icon_name: string;
+            /**
+             * The name of the icon if the icon being displayed is a #GThemedIcon.
+             */
             iconName: string;
+            /**
+             * The size of the icon, if greater than `0`. Otherwise the icon size is derived
+             * from the current style.
+             */
             icon_size: number;
+            /**
+             * The size of the icon, if greater than `0`. Otherwise the icon size is derived
+             * from the current style.
+             */
             iconSize: number;
             is_symbolic: boolean;
             isSymbolic: boolean;
@@ -1121,8 +1467,17 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The internal #ClutterText actor supporting the label
+             */
             clutter_text: Clutter.Text;
+            /**
+             * The internal #ClutterText actor supporting the label
+             */
             clutterText: Clutter.Text;
+            /**
+             * The current text being display in the #StLabel.
+             */
             text: string;
         }
     }
@@ -1232,9 +1587,23 @@ export namespace St {
             extends Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * Whether the text in the entry is masked for privacy.
+             */
             password_visible: boolean;
+            /**
+             * Whether the text in the entry is masked for privacy.
+             */
             passwordVisible: boolean;
+            /**
+             * Whether to display an icon button to toggle the masking enabled by the
+             * #StPasswordEntry:password-visible property.
+             */
             show_peek_icon: boolean;
+            /**
+             * Whether to display an icon button to toggle the masking enabled by the
+             * #StPasswordEntry:password-visible property.
+             */
             showPeekIcon: boolean;
         }
     }
@@ -1338,7 +1707,13 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The #StAdjustment controlling the #StScrollBar.
+             */
             adjustment: Adjustment;
+            /**
+             * The orientation of the #StScrollBar, horizontal or vertical.
+             */
             orientation: Clutter.Orientation;
         }
     }
@@ -1447,20 +1822,65 @@ export namespace St {
             extends Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * The child #StScrollable of the #StScrollView container.
+             */
             child: Scrollable;
+            /**
+             * Whether to enable automatic mouse wheel scrolling.
+             */
             enable_mouse_scrolling: boolean;
+            /**
+             * Whether to enable automatic mouse wheel scrolling.
+             */
             enableMouseScrolling: boolean;
+            /**
+             * The horizontal #StAdjustment for the #StScrollView.
+             */
             hadjustment: Adjustment;
+            /**
+             * The #StPolicyType for when to show the horizontal #StScrollBar.
+             */
             hscrollbar_policy: PolicyType;
+            /**
+             * The #StPolicyType for when to show the horizontal #StScrollBar.
+             */
             hscrollbarPolicy: PolicyType;
+            /**
+             * Whether the horizontal #StScrollBar is visible.
+             */
             hscrollbar_visible: boolean;
+            /**
+             * Whether the horizontal #StScrollBar is visible.
+             */
             hscrollbarVisible: boolean;
+            /**
+             * Whether scrollbars are painted on top of the content.
+             */
             overlay_scrollbars: boolean;
+            /**
+             * Whether scrollbars are painted on top of the content.
+             */
             overlayScrollbars: boolean;
+            /**
+             * The vertical #StAdjustment for the #StScrollView.
+             */
             vadjustment: Adjustment;
+            /**
+             * The #StPolicyType for when to show the vertical #StScrollBar.
+             */
             vscrollbar_policy: PolicyType;
+            /**
+             * The #StPolicyType for when to show the vertical #StScrollBar.
+             */
             vscrollbarPolicy: PolicyType;
+            /**
+             * Whether the vertical #StScrollBar is visible.
+             */
             vscrollbar_visible: boolean;
+            /**
+             * Whether the vertical #StScrollBar is visible.
+             */
             vscrollbarVisible: boolean;
         }
     }
@@ -1483,11 +1903,29 @@ export namespace St {
         }
         // Constructor properties interface
         interface ConstructorProps extends Clutter.ShaderEffect.ConstructorProps {
+            /**
+             * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
+             */
             extend_fade_area: boolean;
+            /**
+             * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
+             */
             extendFadeArea: boolean;
+            /**
+             * Whether the faded area should extend to the edges of the #StScrollViewFade.
+             */
             fade_edges: boolean;
+            /**
+             * Whether the faded area should extend to the edges of the #StScrollViewFade.
+             */
             fadeEdges: boolean;
+            /**
+             * The margins widths that are faded.
+             */
             fade_margins: Clutter.Margin;
+            /**
+             * The margins widths that are faded.
+             */
             fadeMargins: Clutter.Margin;
         }
     }
@@ -1514,27 +1952,95 @@ export namespace St {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            /**
+             * The current accent color.
+             */
             accent_color: SystemAccentColor;
+            /**
+             * The current accent color.
+             */
             accentColor: SystemAccentColor;
+            /**
+             * The preferred color-scheme
+             */
             color_scheme: SystemColorScheme;
+            /**
+             * The preferred color-scheme
+             */
             colorScheme: SystemColorScheme;
+            /**
+             * Whether password showing can be locked down
+             */
             disable_show_password: boolean;
+            /**
+             * Whether password showing can be locked down
+             */
             disableShowPassword: boolean;
+            /**
+             * The threshold before a drag operation begins.
+             */
             drag_threshold: number;
+            /**
+             * The threshold before a drag operation begins.
+             */
             dragThreshold: number;
+            /**
+             * Whether animations are enabled.
+             */
             enable_animations: boolean;
+            /**
+             * Whether animations are enabled.
+             */
             enableAnimations: boolean;
+            /**
+             * The current font name.
+             */
             font_name: string;
+            /**
+             * The current font name.
+             */
             fontName: string;
+            /**
+             * The current GTK icon theme
+             */
             gtk_icon_theme: string;
+            /**
+             * The current GTK icon theme
+             */
             gtkIconTheme: string;
+            /**
+             * Whether the accessibility high contrast mode is enabled.
+             */
             high_contrast: boolean;
+            /**
+             * Whether the accessibility high contrast mode is enabled.
+             */
             highContrast: boolean;
+            /**
+             * Whether the accessibility magnifier is active.
+             */
             magnifier_active: boolean;
+            /**
+             * Whether the accessibility magnifier is active.
+             */
             magnifierActive: boolean;
+            /**
+             * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
+             * paste).
+             */
             primary_paste: boolean;
+            /**
+             * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
+             * paste).
+             */
             primaryPaste: boolean;
+            /**
+             * The slow-down factor applied to all animation durations.
+             */
             slow_down_factor: number;
+            /**
+             * The slow-down factor applied to all animation durations.
+             */
             slowDownFactor: number;
         }
     }
@@ -1581,11 +2087,35 @@ export namespace St {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            /**
+             * The highest priority stylesheet, representing application-specific
+             * styling; this is associated with the CSS "author" stylesheet.
+             */
             application_stylesheet: Gio.File;
+            /**
+             * The highest priority stylesheet, representing application-specific
+             * styling; this is associated with the CSS "author" stylesheet.
+             */
             applicationStylesheet: Gio.File;
+            /**
+             * The lowest priority stylesheet, representing global default
+             * styling; this is associated with the CSS "user agent" stylesheet.
+             */
             default_stylesheet: Gio.File;
+            /**
+             * The lowest priority stylesheet, representing global default
+             * styling; this is associated with the CSS "user agent" stylesheet.
+             */
             defaultStylesheet: Gio.File;
+            /**
+             * The second priority stylesheet, representing theme-specific styling;
+             * this is associated with the CSS "user" stylesheet.
+             */
             theme_stylesheet: Gio.File;
+            /**
+             * The second priority stylesheet, representing theme-specific styling;
+             * this is associated with the CSS "user" stylesheet.
+             */
             themeStylesheet: Gio.File;
         }
     }
@@ -1603,7 +2133,13 @@ export namespace St {
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            /**
+             * The scaling factor used for HiDPI scaling.
+             */
             scale_factor: number;
+            /**
+             * The scaling factor used for HiDPI scaling.
+             */
             scaleFactor: number;
         }
     }
@@ -1828,17 +2364,66 @@ export namespace St {
         > extends Clutter.Actor.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
+            /**
+             * Whether or not the widget can be focused via keyboard navigation.
+             */
             can_focus: boolean;
+            /**
+             * Whether or not the widget can be focused via keyboard navigation.
+             */
             canFocus: boolean;
+            /**
+             * Whether or not the pointer is currently hovering over the widget. This is
+             * only tracked automatically if #StWidget:track-hover is %TRUE, but you can
+             * adjust it manually in any case.
+             */
             hover: boolean;
+            /**
+             * An actor that labels this widget.
+             */
             label_actor: Clutter.Actor;
+            /**
+             * An actor that labels this widget.
+             */
             labelActor: Clutter.Actor;
+            /**
+             * The pseudo-class of the actor. Typical values include "hover", "active",
+             * "focus".
+             */
             pseudo_class: string;
+            /**
+             * The pseudo-class of the actor. Typical values include "hover", "active",
+             * "focus".
+             */
             pseudoClass: string;
+            /**
+             * Inline style information for the actor as a ';'-separated list of
+             * CSS properties.
+             */
             style: string;
+            /**
+             * The style-class of the actor for use in styling.
+             */
             style_class: string;
+            /**
+             * The style-class of the actor for use in styling.
+             */
             styleClass: string;
+            /**
+             * Determines whether the widget tracks pointer hover state. If
+             * %TRUE (and the widget is visible and reactive), the
+             * #StWidget:hover property and "hover" style pseudo class will be
+             * adjusted automatically as the pointer moves in and out of the
+             * widget.
+             */
             track_hover: boolean;
+            /**
+             * Determines whether the widget tracks pointer hover state. If
+             * %TRUE (and the widget is visible and reactive), the
+             * #StWidget:hover property and "hover" style pseudo class will be
+             * adjusted automatically as the pointer moves in and out of the
+             * widget.
+             */
             trackHover: boolean;
         }
     }
@@ -1881,71 +2466,27 @@ export namespace St {
             properties?: Partial<St.WidgetAccessible.ConstructorProps>,
             ...args: any[]
         ) => GObject.RegisteredClass<Opts, WidgetAccessible.SignalSignatures> & classes.WidgetAccessible);
-    class AdjustmentClass {
-        static '$gtype': GObject.GType<AdjustmentClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class BinClass {
-        static '$gtype': GObject.GType<BinClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class BorderImageClass {
-        static '$gtype': GObject.GType<BorderImageClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class BoxLayoutClass {
-        static '$gtype': GObject.GType<BoxLayoutClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class BoxLayoutPrivate {
+    export type AdjustmentClass = typeof Adjustment;
+    export type BinClass = typeof Bin;
+    export type BorderImageClass = typeof BorderImage;
+    export type BoxLayoutClass = typeof BoxLayout;
+    abstract class BoxLayoutPrivate {
         static '$gtype': GObject.GType<BoxLayoutPrivate>;
         // Constructors
         _init(...args: any[]): void;
     }
-    class ButtonClass {
-        static '$gtype': GObject.GType<ButtonClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ClipboardClass {
-        static '$gtype': GObject.GType<ClipboardClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class DndStartGestureClass {
-        static '$gtype': GObject.GType<DndStartGestureClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class DrawingAreaClass {
-        static '$gtype': GObject.GType<DrawingAreaClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class EntryClass {
-        static '$gtype': GObject.GType<EntryClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class FocusManagerClass {
-        static '$gtype': GObject.GType<FocusManagerClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class GenericAccessibleClass {
-        static '$gtype': GObject.GType<GenericAccessibleClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class IconClass {
-        static '$gtype': GObject.GType<IconClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type ButtonClass = typeof Button;
+    export type ClipboardClass = typeof Clipboard;
+    export type DndStartGestureClass = typeof DndStartGesture;
+    export type DrawingAreaClass = typeof DrawingArea;
+    export type EntryClass = typeof Entry;
+    export type FocusManagerClass = typeof FocusManager;
+    export type GenericAccessibleClass = typeof GenericAccessible;
+    export type IconClass = typeof Icon;
+    /**
+     * The #StIconColors structure encapsulates colors for colorizing a symbolic
+     * icon.
+     */
     class IconColors {
         static '$gtype': GObject.GType<IconColors>;
         // Fields
@@ -1965,71 +2506,61 @@ export namespace St {
         _init(...args: any[]): void;
         static new(): IconColors;
         // Methods
+        /**
+         * Creates a new StIconColors structure that is a copy of the passed
+         * in `colors`. You would use this function instead of st_icon_colors_ref()
+         * if you were planning to change colors in the result.
+         *
+         * @returns a newly created #StIconColors.
+         */
         copy(): IconColors;
+        /**
+         * Check if two #StIconColors objects are identical.
+         *
+         * @returns %TRUE if the #StIconColors are equal
+         * @param other another #StIconColors
+         */
         equal(other: IconColors): boolean;
+        /**
+         * Atomically increments the reference count of `colors` by one.
+         *
+         * @returns the passed in #StIconColors.
+         */
         ref(): IconColors;
+        /**
+         * Atomically decrements the reference count of `colors` by one.
+         * If the reference count drops to 0, all memory allocated by the
+         * #StIconColors is released.
+         */
         unref(): void;
     }
-    class IconInfoClass {
-        static '$gtype': GObject.GType<IconInfoClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class IconPrivate {
+    export type IconInfoClass = typeof IconInfo;
+    abstract class IconPrivate {
         static '$gtype': GObject.GType<IconPrivate>;
         // Constructors
         _init(...args: any[]): void;
     }
-    class IconThemeClass {
-        static '$gtype': GObject.GType<IconThemeClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ImageContentClass {
-        static '$gtype': GObject.GType<ImageContentClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class LabelClass {
-        static '$gtype': GObject.GType<LabelClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class LabelPrivate {
+    export type IconThemeClass = typeof IconTheme;
+    export type ImageContentClass = typeof ImageContent;
+    export type LabelClass = typeof Label;
+    abstract class LabelPrivate {
         static '$gtype': GObject.GType<LabelPrivate>;
         // Constructors
         _init(...args: any[]): void;
     }
-    class PasswordEntryClass {
-        static '$gtype': GObject.GType<PasswordEntryClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ScrollBarClass {
-        static '$gtype': GObject.GType<ScrollBarClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ScrollViewClass {
-        static '$gtype': GObject.GType<ScrollViewClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ScrollViewFadeClass {
-        static '$gtype': GObject.GType<ScrollViewFadeClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ScrollableInterface {
-        static '$gtype': GObject.GType<ScrollableInterface>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class SettingsClass {
-        static '$gtype': GObject.GType<SettingsClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type PasswordEntryClass = typeof PasswordEntry;
+    export type ScrollBarClass = typeof ScrollBar;
+    export type ScrollViewClass = typeof ScrollView;
+    export type ScrollViewFadeClass = typeof ScrollViewFade;
+    export type ScrollableInterface = typeof Scrollable;
+    export type SettingsClass = typeof Settings;
+    /**
+     * A type representing -st-shadow attributes
+     *
+     * #StShadow is a boxed type for storing attributes of the -st-shadow
+     * property, modelled liberally after the CSS3 box-shadow property.
+     * See http://www.css3.info/preview/box-shadow/
+     */
     class Shadow {
         static '$gtype': GObject.GType<Shadow>;
         // Fields
@@ -2060,11 +2591,42 @@ export namespace St {
             inset: boolean,
         ): Shadow;
         // Methods
+        /**
+         * Check if two shadow objects are identical. Note that two shadows may
+         * compare non-identically if they differ only by floating point rounding
+         * errors.
+         *
+         * @returns %TRUE if the two shadows are identical
+         * @param other a different #StShadow
+         */
         equal(other: Shadow): boolean;
+        /**
+         * Gets the box used to paint `shadow,` which will be partly
+         * outside of `actor_box`
+         *
+         * @param actor_box the box allocated to a #ClutterAlctor
+         * @param shadow_box computed box occupied by `shadow`
+         */
         get_box(actor_box: Clutter.ActorBox, shadow_box: Clutter.ActorBox): void;
+        /**
+         * Atomically increments the reference count of `shadow` by one.
+         *
+         * @returns the passed in #StShadow.
+         */
         ref(): Shadow;
+        /**
+         * Atomically decrements the reference count of `shadow` by one.
+         * If the reference count drops to 0, all memory allocated by the
+         * #StShadow is released.
+         */
         unref(): void;
     }
+    /**
+     * A helper for implementing a drop shadow on a actor.
+     * The actor is expected to recreate the helper whenever its contents
+     * or size change. Then, it would call st_shadow_helper_paint() inside
+     * its paint() virtual function.
+     */
     class ShadowHelper {
         static '$gtype': GObject.GType<ShadowHelper>;
         // Constructors
@@ -2073,35 +2635,32 @@ export namespace St {
         static new(shadow: Shadow): ShadowHelper;
         // Methods
         copy(): ShadowHelper;
+        /**
+         * Free resources associated with `helper`.
+         */
         free(): void;
+        /**
+         * Paints the shadow associated with `helper` This must only
+         * be called from the implementation of ClutterActor::paint().
+         *
+         * @param node a #ClutterPaintNode
+         * @param actor_box the bounding box of the shadow
+         * @param paint_opacity the opacity at which the shadow is painted
+         */
         paint(node: Clutter.PaintNode, actor_box: Clutter.ActorBox, paint_opacity: number): void;
+        /**
+         * Update `helper` from `source`.
+         *
+         * @param source a #ClutterActor
+         * @param paint_context a #ClutterPaintContext
+         */
         update(source: Clutter.Actor, paint_context: Clutter.PaintContext): void;
     }
-    class SpinnerContentClass {
-        static '$gtype': GObject.GType<SpinnerContentClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class TextureCacheClass {
-        static '$gtype': GObject.GType<TextureCacheClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ThemeClass {
-        static '$gtype': GObject.GType<ThemeClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ThemeContextClass {
-        static '$gtype': GObject.GType<ThemeContextClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class ThemeNodeClass {
-        static '$gtype': GObject.GType<ThemeNodeClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type SpinnerContentClass = typeof SpinnerContent;
+    export type TextureCacheClass = typeof TextureCache;
+    export type ThemeClass = typeof Theme;
+    export type ThemeContextClass = typeof ThemeContext;
+    export type ThemeNodeClass = typeof ThemeNode;
     class ThemeNodePaintState {
         static '$gtype': GObject.GType<ThemeNodePaintState>;
         // Fields
@@ -2125,21 +2684,9 @@ export namespace St {
         invalidate_for_file(file: Gio.File): boolean;
         set_node(node: ThemeNode): void;
     }
-    class ViewportClass {
-        static '$gtype': GObject.GType<ViewportClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WidgetAccessibleClass {
-        static '$gtype': GObject.GType<WidgetAccessibleClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
-    class WidgetClass {
-        static '$gtype': GObject.GType<WidgetClass>;
-        // Constructors
-        _init(...args: any[]): void;
-    }
+    export type ViewportClass = typeof Viewport;
+    export type WidgetAccessibleClass = typeof WidgetAccessible;
+    export type WidgetClass = typeof Widget;
     namespace Scrollable {
         /**
          * Interface for implementing Scrollable.
@@ -2148,11 +2695,62 @@ export namespace St {
         interface Interface {
             // Virtual methods
             vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+            /**
+             * This method should be implemented by classes implementing the #StScrollable
+             * interface.
+             *
+             * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
+             * method.
+             *
+             * @param hadjustment the horizontal #StAdjustment
+             * @param vadjustment the vertical #StAdjustment
+             */
             vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
         }
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            /**
+             * The horizontal #StAdjustment used by the #StScrollable.
+             *
+             * Implementations should override this property to provide read-write
+             * access to the #StAdjustment.
+             *
+             * JavaScript code may override this as demonstrated below:
+             *
+             * ```js
+             * export const MyScrollable = GObject.registerClass({
+             *     Properties: {
+             *         'hadjustment': GObject.ParamSpec.override(
+             *             'hadjustment',
+             *             St.Scrollable
+             *         )
+             *     }
+             * }, class MyScrollable extends St.Scrollable {
+             *
+             *     get hadjustment() {
+             *         return this._hadjustment || null;
+             *     }
+             *
+             *     set hadjustment(adjustment) {
+             *         if (this.hadjustment === adjustment)
+             *             return;
+             *
+             *         this._hadjustment = adjustment;
+             *         this.notify('hadjustment');
+             *     }
+             * });
+             * ```
+             */
             hadjustment: Adjustment;
+            /**
+             * The vertical #StAdjustment used by the #StScrollable.
+             *
+             * Implementations should override this property to provide read-write
+             * access to the #StAdjustment.
+             *
+             * See #StScrollable:hadjustment for an example of how to override this
+             * property in JavaScript code.
+             */
             vadjustment: Adjustment;
         }
     }
@@ -2162,10 +2760,61 @@ export namespace St {
     }
     interface Scrollable extends GObject.Object, Scrollable.Interface {
         // Properties
+        /**
+         * The horizontal #StAdjustment used by the #StScrollable.
+         *
+         * Implementations should override this property to provide read-write
+         * access to the #StAdjustment.
+         *
+         * JavaScript code may override this as demonstrated below:
+         *
+         * ```js
+         * export const MyScrollable = GObject.registerClass({
+         *     Properties: {
+         *         'hadjustment': GObject.ParamSpec.override(
+         *             'hadjustment',
+         *             St.Scrollable
+         *         )
+         *     }
+         * }, class MyScrollable extends St.Scrollable {
+         *
+         *     get hadjustment() {
+         *         return this._hadjustment || null;
+         *     }
+         *
+         *     set hadjustment(adjustment) {
+         *         if (this.hadjustment === adjustment)
+         *             return;
+         *
+         *         this._hadjustment = adjustment;
+         *         this.notify('hadjustment');
+         *     }
+         * });
+         * ```
+         */
         hadjustment: Adjustment;
+        /**
+         * The vertical #StAdjustment used by the #StScrollable.
+         *
+         * Implementations should override this property to provide read-write
+         * access to the #StAdjustment.
+         *
+         * See #StScrollable:hadjustment for an example of how to override this
+         * property in JavaScript code.
+         */
         vadjustment: Adjustment;
         // Methods
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+        /**
+         * This method should be implemented by classes implementing the #StScrollable
+         * interface.
+         *
+         * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
+         * method.
+         *
+         * @param hadjustment the horizontal #StAdjustment
+         * @param vadjustment the vertical #StAdjustment
+         */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
     export const Scrollable: ScrollableNamespace & (new () => Scrollable);
