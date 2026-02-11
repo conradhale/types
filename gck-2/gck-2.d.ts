@@ -12,8 +12,8 @@ import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import GModule from '@girs/gmodule-2.0';
 import '@girs/gjs';
-import { type classes } from './gck-2-classes.d.ts';
-export { GckClasses as classes };
+import type classes from './gck-2-classes.d.ts';
+export { classes as GckClasses };
 export namespace Gck {
     /**
      * Gck-2

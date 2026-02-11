@@ -35,8 +35,8 @@ import GioUnix from '@girs/giounix-2.0';
 import Gcr from '@girs/gcr-4';
 import Gck from '@girs/gck-2';
 import '@girs/gjs';
-import { type classes } from './shell-17-classes.d.ts';
-export { ShellClasses as classes };
+import type classes from './shell-17-classes.d.ts';
+export { classes as ShellClasses };
 export namespace Shell {
     /**
      * Shell-17

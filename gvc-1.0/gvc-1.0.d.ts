@@ -12,8 +12,8 @@ import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import GModule from '@girs/gmodule-2.0';
 import '@girs/gjs';
-import { type classes } from './gvc-1.0-classes.d.ts';
-export { GvcClasses as classes };
+import type classes from './gvc-1.0-classes.d.ts';
+export { classes as GvcClasses };
 export namespace Gvc {
     /**
      * Gvc-1.0

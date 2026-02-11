@@ -14,8 +14,8 @@ import GModule from '@girs/gmodule-2.0';
 import GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import GDesktopEnums from '@girs/gdesktopenums-3.0';
 import '@girs/gjs';
-import { type classes } from './gnomedesktop-4.0-classes.d.ts';
-export { GnomeDesktopClasses as classes };
+import type classes from './gnomedesktop-4.0-classes.d.ts';
+export { classes as GnomeDesktopClasses };
 export namespace GnomeDesktop {
     /**
      * GnomeDesktop-4.0

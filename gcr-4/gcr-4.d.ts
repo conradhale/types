@@ -13,8 +13,8 @@ import GLib from '@girs/glib-2.0';
 import GModule from '@girs/gmodule-2.0';
 import Gck from '@girs/gck-2';
 import '@girs/gjs';
-import { type classes } from './gcr-4-classes.d.ts';
-export { GcrClasses as classes };
+import type classes from './gcr-4-classes.d.ts';
+export { classes as GcrClasses };
 export namespace Gcr {
     /**
      * Gcr-4

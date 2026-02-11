@@ -12,8 +12,8 @@ import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import GModule from '@girs/gmodule-2.0';
 import '@girs/gjs';
-import { type classes } from './gjsprivate-1.0-classes.d.ts';
-export { GjsPrivateClasses as classes };
+import type classes from './gjsprivate-1.0-classes.d.ts';
+export { classes as GjsPrivateClasses };
 export namespace GjsPrivate {
     /**
      * GjsPrivate-1.0

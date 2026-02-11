@@ -27,8 +27,8 @@ import freetype2 from '@girs/freetype2-2.0';
 import Atk from '@girs/atk-1.0';
 import GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import '@girs/gjs';
-import { type classes } from './st-17-classes.d.ts';
-export { StClasses as classes };
+import type classes from './st-17-classes.d.ts';
+export { classes as StClasses };
 export namespace St {
     /**
      * St-17

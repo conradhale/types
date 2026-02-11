@@ -13,8 +13,8 @@ import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import GL from '@girs/gl-1.0';
 import '@girs/gjs';
-import { type classes } from './cogl-17-classes.d.ts';
-export { CoglClasses as classes };
+import type classes from './cogl-17-classes.d.ts';
+export { classes as CoglClasses };
 export namespace Cogl {
     /**
      * Cogl-17

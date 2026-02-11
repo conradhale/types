@@ -21,8 +21,8 @@ import GL from '@girs/gl-1.0';
 import Cogl from '@girs/cogl-17';
 import Atk from '@girs/atk-1.0';
 import '@girs/gjs';
-import { type classes } from './clutter-17-classes.d.ts';
-export { ClutterClasses as classes };
+import type classes from './clutter-17-classes.d.ts';
+export { classes as ClutterClasses };
 export namespace Clutter {
     /**
      * Clutter-17

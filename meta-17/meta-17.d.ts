@@ -25,8 +25,8 @@ import HarfBuzz from '@girs/harfbuzz-0.0';
 import freetype2 from '@girs/freetype2-2.0';
 import Atk from '@girs/atk-1.0';
 import '@girs/gjs';
-import { type classes } from './meta-17-classes.d.ts';
-export { MetaClasses as classes };
+import type classes from './meta-17-classes.d.ts';
+export { classes as MetaClasses };
 export namespace Meta {
     /**
      * Meta-17

@@ -21,8 +21,8 @@ import Pango from '@girs/pango-1.0';
 import HarfBuzz from '@girs/harfbuzz-0.0';
 import freetype2 from '@girs/freetype2-2.0';
 import '@girs/gjs';
-import { type classes } from './gnomebg-4.0-classes.d.ts';
-export { GnomeBGClasses as classes };
+import type classes from './gnomebg-4.0-classes.d.ts';
+export { classes as GnomeBGClasses };
 export namespace GnomeBG {
     /**
      * GnomeBG-4.0

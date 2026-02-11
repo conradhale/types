@@ -18,8 +18,8 @@ import Gio from '@girs/gio-2.0';
 import GModule from '@girs/gmodule-2.0';
 import GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import '@girs/gjs';
-import { type classes } from './gdk-4.0-classes.d.ts';
-export { GdkClasses as classes };
+import type classes from './gdk-4.0-classes.d.ts';
+export { classes as GdkClasses };
 export namespace Gdk {
     /**
      * Gdk-4.0

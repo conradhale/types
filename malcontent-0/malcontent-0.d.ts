@@ -12,8 +12,8 @@ import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import GModule from '@girs/gmodule-2.0';
 import '@girs/gjs';
-import { type classes } from './malcontent-0-classes.d.ts';
-export { MalcontentClasses as classes };
+import type classes from './malcontent-0-classes.d.ts';
+export { classes as MalcontentClasses };
 export namespace Malcontent {
     /**
      * Malcontent-0

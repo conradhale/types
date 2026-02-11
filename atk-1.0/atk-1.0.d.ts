@@ -10,8 +10,8 @@
 import GObject from '@girs/gobject-2.0';
 import GLib from '@girs/glib-2.0';
 import '@girs/gjs';
-import { type classes } from './atk-1.0-classes.d.ts';
-export { AtkClasses as classes };
+import type classes from './atk-1.0-classes.d.ts';
+export { classes as AtkClasses };
 export namespace Atk {
     /**
      * Atk-1.0

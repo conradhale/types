@@ -10,8 +10,8 @@
 import './gobject-2.0-types.d.ts';
 import GLib from '@girs/glib-2.0';
 import '@girs/gjs';
-import { type classes } from './gobject-2.0-classes.d.ts';
-export { GObjectClasses as classes };
+import type classes from './gobject-2.0-classes.d.ts';
+export { classes as GObjectClasses };
 export namespace GObject {
     /**
      * GObject-2.0

@@ -15,8 +15,8 @@ import freetype2 from '@girs/freetype2-2.0';
 import Gio from '@girs/gio-2.0';
 import GModule from '@girs/gmodule-2.0';
 import '@girs/gjs';
-import { type classes } from './pango-1.0-classes.d.ts';
-export { PangoClasses as classes };
+import type classes from './pango-1.0-classes.d.ts';
+export { classes as PangoClasses };
 export namespace Pango {
     /**
      * Pango-1.0
