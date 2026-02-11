@@ -7,22 +7,22 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type GnomeDesktop from '@girs/gnomedesktop-4.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type Gdk from '@girs/gdk-4.0';
-import type cairo from '@girs/cairo-1.0';
-import type PangoCairo from '@girs/pangocairo-1.0';
-import type Pango from '@girs/pango-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
+import GnomeDesktop from '@girs/gnomedesktop-4.0';
+import Gio from '@girs/gio-2.0';
+import GObject from '@girs/gobject-2.0';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
+import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import GDesktopEnums from '@girs/gdesktopenums-3.0';
+import Gdk from '@girs/gdk-4.0';
+import cairo from '@girs/cairo-1.0';
+import PangoCairo from '@girs/pangocairo-1.0';
+import Pango from '@girs/pango-1.0';
+import HarfBuzz from '@girs/harfbuzz-0.0';
+import freetype2 from '@girs/freetype2-2.0';
 import '@girs/gjs';
-import type classes from './gnomebg-4.0-classes.d.ts';
-export { classes as GnomeBGClasses };
+import { type classes } from './gnomebg-4.0-classes.d.ts';
+export { GnomeBGClasses as classes };
 export namespace GnomeBG {
     /**
      * GnomeBG-4.0

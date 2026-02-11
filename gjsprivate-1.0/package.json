@@ -1,25 +1,25 @@
 {
-    "name": "@girs/gvc-1.0",
+    "name": "@girs/gjsprivate-1.0",
     "version": "1.0.0-4.0.0-beta.38",
-    "description": "GJS TypeScript type definitions for Gvc-1.0, generated from library version 1.0.0",
+    "description": "GJS TypeScript type definitions for GjsPrivate-1.0, generated from library version 1.0.0",
     "type": "module",
-    "module": "gvc-1.0.js",
-    "main": "gvc-1.0.js",
+    "module": "gjsprivate-1.0.js",
+    "main": "gjsprivate-1.0.js",
     "exports": {
         "./ambient": {
-            "types": "./gvc-1.0-ambient.d.ts",
-            "import": "./gvc-1.0-ambient.js",
-            "default": "./gvc-1.0-ambient.js"
+            "types": "./gjsprivate-1.0-ambient.d.ts",
+            "import": "./gjsprivate-1.0-ambient.js",
+            "default": "./gjsprivate-1.0-ambient.js"
         },
         "./import": {
-            "types": "./gvc-1.0-import.d.ts",
-            "import": "./gvc-1.0-import.js",
-            "default": "./gvc-1.0-import.js"
+            "types": "./gjsprivate-1.0-import.d.ts",
+            "import": "./gjsprivate-1.0-import.js",
+            "default": "./gjsprivate-1.0-import.js"
         },
-        "./gvc-1.0": {
-            "types": "./gvc-1.0.d.ts",
-            "import": "./gvc-1.0.js",
-            "default": "./gvc-1.0.js"
+        "./gjsprivate-1.0": {
+            "types": "./gjsprivate-1.0.d.ts",
+            "import": "./gjsprivate-1.0.js",
+            "default": "./gjsprivate-1.0.js"
         },
         ".": {
             "types": "./index.d.ts",
@@ -46,7 +46,7 @@
         "types",
         "GObject-Introspection",
         "GJS",
-        "Gvc-1.0"
+        "GjsPrivate-1.0"
     ],
     "author": "ts-for-gir",
     "license": "MIT",
@@ -57,5 +57,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/types/tree/main/gvc-1.0#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/gjsprivate-1.0#readme"
 }

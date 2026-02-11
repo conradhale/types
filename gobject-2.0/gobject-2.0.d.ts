@@ -8,10 +8,10 @@
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
 import './gobject-2.0-types.d.ts';
-import type GLib from '@girs/glib-2.0';
+import GLib from '@girs/glib-2.0';
 import '@girs/gjs';
-import type classes from './gobject-2.0-classes.d.ts';
-export { classes as GObjectClasses };
+import { type classes } from './gobject-2.0-classes.d.ts';
+export { GObjectClasses as classes };
 export namespace GObject {
     /**
      * GObject-2.0

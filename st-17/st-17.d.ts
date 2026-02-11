@@ -7,28 +7,28 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type Meta from '@girs/meta-17';
-import type xlib from '@girs/xlib-2.0';
-import type xfixes from '@girs/xfixes-4.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type Cogl from '@girs/cogl-17';
-import type GL from '@girs/gl-1.0';
-import type Clutter from '@girs/clutter-17';
-import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Atk from '@girs/atk-1.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import Meta from '@girs/meta-17';
+import xlib from '@girs/xlib-2.0';
+import xfixes from '@girs/xfixes-4.0';
+import Mtk from '@girs/mtk-17';
+import Graphene from '@girs/graphene-1.0';
+import GObject from '@girs/gobject-2.0';
+import GLib from '@girs/glib-2.0';
+import Gio from '@girs/gio-2.0';
+import GModule from '@girs/gmodule-2.0';
+import GDesktopEnums from '@girs/gdesktopenums-3.0';
+import Cogl from '@girs/cogl-17';
+import GL from '@girs/gl-1.0';
+import Clutter from '@girs/clutter-17';
+import Pango from '@girs/pango-1.0';
+import cairo from '@girs/cairo-1.0';
+import HarfBuzz from '@girs/harfbuzz-0.0';
+import freetype2 from '@girs/freetype2-2.0';
+import Atk from '@girs/atk-1.0';
+import GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import '@girs/gjs';
-import type classes from './st-17-classes.d.ts';
-export { classes as StClasses };
+import { type classes } from './st-17-classes.d.ts';
+export { StClasses as classes };
 export namespace St {
     /**
      * St-17

@@ -7,36 +7,36 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type St from '@girs/st-17';
-import type Meta from '@girs/meta-17';
-import type xlib from '@girs/xlib-2.0';
-import type xfixes from '@girs/xfixes-4.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type Cogl from '@girs/cogl-17';
-import type GL from '@girs/gl-1.0';
-import type Clutter from '@girs/clutter-17';
-import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Atk from '@girs/atk-1.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type PolkitAgent from '@girs/polkitagent-1.0';
-import type Polkit from '@girs/polkit-1.0';
-import type NM from '@girs/nm-1.0';
-import type Gvc from '@girs/gvc-1.0';
-import type GioUnix from '@girs/giounix-2.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
+import St from '@girs/st-17';
+import Meta from '@girs/meta-17';
+import xlib from '@girs/xlib-2.0';
+import xfixes from '@girs/xfixes-4.0';
+import Mtk from '@girs/mtk-17';
+import Graphene from '@girs/graphene-1.0';
+import GObject from '@girs/gobject-2.0';
+import GLib from '@girs/glib-2.0';
+import Gio from '@girs/gio-2.0';
+import GModule from '@girs/gmodule-2.0';
+import GDesktopEnums from '@girs/gdesktopenums-3.0';
+import Cogl from '@girs/cogl-17';
+import GL from '@girs/gl-1.0';
+import Clutter from '@girs/clutter-17';
+import Pango from '@girs/pango-1.0';
+import cairo from '@girs/cairo-1.0';
+import HarfBuzz from '@girs/harfbuzz-0.0';
+import freetype2 from '@girs/freetype2-2.0';
+import Atk from '@girs/atk-1.0';
+import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import PolkitAgent from '@girs/polkitagent-1.0';
+import Polkit from '@girs/polkit-1.0';
+import NM from '@girs/nm-1.0';
+import Gvc from '@girs/gvc-1.0';
+import GioUnix from '@girs/giounix-2.0';
+import Gcr from '@girs/gcr-4';
+import Gck from '@girs/gck-2';
 import '@girs/gjs';
-import type classes from './shell-17-classes.d.ts';
-export { classes as ShellClasses };
+import { type classes } from './shell-17-classes.d.ts';
+export { ShellClasses as classes };
 export namespace Shell {
     /**
      * Shell-17

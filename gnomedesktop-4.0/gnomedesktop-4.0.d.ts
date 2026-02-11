@@ -7,15 +7,15 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
+import Gio from '@girs/gio-2.0';
+import GObject from '@girs/gobject-2.0';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
+import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import GDesktopEnums from '@girs/gdesktopenums-3.0';
 import '@girs/gjs';
-import type classes from './gnomedesktop-4.0-classes.d.ts';
-export { classes as GnomeDesktopClasses };
+import { type classes } from './gnomedesktop-4.0-classes.d.ts';
+export { GnomeDesktopClasses as classes };
 export namespace GnomeDesktop {
     /**
      * GnomeDesktop-4.0

@@ -7,14 +7,14 @@
  *
  * The based EJS template file is used for the generated.d.ts file of each GIR module like Gtk - 4.0, GObject - 2.0, ...
  */
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Gck from '@girs/gck-2';
+import Gio from '@girs/gio-2.0';
+import GObject from '@girs/gobject-2.0';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
+import Gck from '@girs/gck-2';
 import '@girs/gjs';
-import type classes from './gcr-4-classes.d.ts';
-export { classes as GcrClasses };
+import { type classes } from './gcr-4-classes.d.ts';
+export { GcrClasses as classes };
 export namespace Gcr {
     /**
      * Gcr-4
