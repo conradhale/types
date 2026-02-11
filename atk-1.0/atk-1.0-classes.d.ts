@@ -1,7 +1,7 @@
 import type Atk from './atk-1.0.d.ts';
-import type GObject from '@girs/gobject-2.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
+import GLib from '@girs/glib-2.0';
 declare namespace classes {
     class GObjectAccessible extends Object {
         static '$gtype': GObject.GType<GObjectAccessible>;

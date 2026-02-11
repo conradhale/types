@@ -1,18 +1,18 @@
 import type GnomeBG from './gnomebg-4.0.d.ts';
-import type GnomeDesktop from '@girs/gnomedesktop-4.0';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
+import GnomeDesktop from '@girs/gnomedesktop-4.0';
+import Gio from '@girs/gio-2.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type Gdk from '@girs/gdk-4.0';
-import type cairo from '@girs/cairo-1.0';
-import type PangoCairo from '@girs/pangocairo-1.0';
-import type Pango from '@girs/pango-1.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
+import GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import GDesktopEnums from '@girs/gdesktopenums-3.0';
+import Gdk from '@girs/gdk-4.0';
+import cairo from '@girs/cairo-1.0';
+import PangoCairo from '@girs/pangocairo-1.0';
+import Pango from '@girs/pango-1.0';
+import HarfBuzz from '@girs/harfbuzz-0.0';
+import freetype2 from '@girs/freetype2-2.0';
 declare namespace classes {
     class BG extends GObjectClasses.Object {
         static '$gtype': GObject.GType<BG>;

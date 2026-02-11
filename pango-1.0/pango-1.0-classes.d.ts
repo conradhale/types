@@ -1,12 +1,12 @@
 import type Pango from './pango-1.0.d.ts';
-import type cairo from '@girs/cairo-1.0';
-import type GObject from '@girs/gobject-2.0';
+import cairo from '@girs/cairo-1.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
+import GLib from '@girs/glib-2.0';
+import HarfBuzz from '@girs/harfbuzz-0.0';
+import freetype2 from '@girs/freetype2-2.0';
+import Gio from '@girs/gio-2.0';
+import GModule from '@girs/gmodule-2.0';
 declare namespace classes {
     class Context extends GObjectClasses.Object {
         static '$gtype': GObject.GType<Context>;

@@ -1,5 +1,2 @@
-
-// @ts-expect-error
-import Shell from './shell-17.js';
+import Shell from "./shell-17.js";
 export default Shell;
-

@@ -1,10 +1,10 @@
 import type Gcr from './gcr-4.d.ts';
-import type Gio from '@girs/gio-2.0';
-import type GObject from '@girs/gobject-2.0';
+import Gio from '@girs/gio-2.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Gck from '@girs/gck-2';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
+import Gck from '@girs/gck-2';
 import { type GckClasses } from '@girs/gck-2/gck-2';
 declare namespace classes {
     class AccessDescription extends GObjectClasses.Object {

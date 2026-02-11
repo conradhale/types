@@ -1,5 +1,2 @@
-
-// @ts-expect-error
-import Graphene from './graphene-1.0.js';
+import Graphene from "./graphene-1.0.js";
 export default Graphene;
-

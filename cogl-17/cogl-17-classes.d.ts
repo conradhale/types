@@ -1,10 +1,10 @@
 import type Cogl from './cogl-17.d.ts';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GObject from '@girs/gobject-2.0';
+import Mtk from '@girs/mtk-17';
+import Graphene from '@girs/graphene-1.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GL from '@girs/gl-1.0';
+import GLib from '@girs/glib-2.0';
+import GL from '@girs/gl-1.0';
 declare namespace classes {
     class Atlas extends GObjectClasses.Object {
         static '$gtype': GObject.GType<Atlas>;

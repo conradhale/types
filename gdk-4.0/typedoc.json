@@ -1,7 +1,8 @@
 {
-    "entryPoints": ["./gdk-4.0.d.ts"],
+    "entryPoints": [
+        "./gdk-4.0.d.ts"
+    ],
     "readme": "./README.md",
     "name": "Gdk-4.0",
     "tsconfig": "./tsconfig.json"
 }
-

@@ -1,8 +1,8 @@
 import type Gio from './gio-2.0.d.ts';
-import type GObject from '@girs/gobject-2.0';
+import GObject from '@girs/gobject-2.0';
 import { type GObjectClasses } from '@girs/gobject-2.0/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
+import GLib from '@girs/glib-2.0';
+import GModule from '@girs/gmodule-2.0';
 declare namespace classes {
     class AppInfoMonitor extends GObjectClasses.Object {
         static '$gtype': GObject.GType<AppInfoMonitor>;
